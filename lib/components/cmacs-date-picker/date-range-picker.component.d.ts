@@ -1,0 +1,31 @@
+import { ChangeDetectorRef, EventEmitter, OnChanges, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
+import { FunctionProp, NzNoAnimationDirective } from 'ng-zorro-antd/core';
+import { DateHelperService, NzI18nService } from 'ng-zorro-antd/i18n';
+import { AbstractPickerComponent } from './abstract-picker.component';
+import { CandyDate } from './lib/candy-date/candy-date';
+import { DisabledTimeFn, PanelMode, PresetRanges } from './standard-types';
+export declare class CmacsDateRangePickerComponent extends AbstractPickerComponent implements OnInit, OnChanges {
+    showWeek: boolean;
+    dateRender: FunctionProp<TemplateRef<Date> | string>;
+    disabledTime: DisabledTimeFn;
+    renderExtraFooter: FunctionProp<TemplateRef<void> | string>;
+    showToday: boolean;
+    mode: PanelMode | PanelMode[];
+    ranges: PresetRanges;
+    readonly cmacsOnPanelChange: EventEmitter<"time" | "month" | "year" | "decade" | "date" | PanelMode[]>;
+    readonly cmacsOnCalendarChange: EventEmitter<Date[]>;
+    private _showTime;
+    showTime: object | boolean;
+    readonly cmacsOnOk: EventEmitter<Date | Date[]>;
+    readonly realShowToday: boolean;
+    pickerStyle: object;
+    extraFooter: TemplateRef<void> | string;
+    constructor(i18n: NzI18nService, cdr: ChangeDetectorRef, dateHelper: DateHelperService, noAnimation?: NzNoAnimationDirective);
+    ngOnInit(): void;
+    ngOnChanges(changes: SimpleChanges): void;
+    onValueChange(value: CandyDate): void;
+    onCalendarChange(value: CandyDate[]): void;
+    onResultOk(): void;
+    onOpenChange(open: boolean): void;
+    private setFixedPickerStyle;
+}

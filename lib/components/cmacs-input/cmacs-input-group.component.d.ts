@@ -1,0 +1,34 @@
+import { AfterContentInit, QueryList, TemplateRef } from '@angular/core';
+import { NgClassType, NzSizeLDSType } from 'ng-zorro-antd/core';
+import { CmacsInputDirective } from './cmacs-input.directive';
+export declare class CmacsInputGroupComponent implements AfterContentInit {
+    listOfNzInputDirective: QueryList<CmacsInputDirective>;
+    private _size;
+    addOnBeforeIcon: NgClassType;
+    addOnAfterIcon: NgClassType;
+    prefixIcon: NgClassType;
+    suffixIcon: NgClassType;
+    addOnBefore: string | TemplateRef<void>;
+    addOnAfter: string | TemplateRef<void>;
+    prefix: string | TemplateRef<void>;
+    suffix: string | TemplateRef<void>;
+    search: boolean;
+    compact: boolean;
+    size: NzSizeLDSType;
+    readonly isLarge: boolean;
+    readonly isSmall: boolean;
+    readonly isAffix: boolean;
+    readonly isAddOn: boolean;
+    readonly isAffixWrapper: boolean;
+    readonly isGroup: boolean;
+    readonly isLargeGroup: boolean;
+    readonly isLargeGroupWrapper: boolean;
+    readonly isLargeAffix: boolean;
+    readonly isLargeSearch: boolean;
+    readonly isSmallGroup: boolean;
+    readonly isSmallAffix: boolean;
+    readonly isSmallGroupWrapper: boolean;
+    readonly isSmallSearch: boolean;
+    updateChildrenInputSize(): void;
+    ngAfterContentInit(): void;
+}
