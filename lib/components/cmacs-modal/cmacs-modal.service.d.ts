@@ -1,6 +1,6 @@
 import { Overlay } from '@angular/cdk/overlay';
 import { Observable } from 'rxjs';
-import { LoggerService } from 'ng-zorro-antd/core';
+import { LoggerService } from 'ng-zorro-antd/core/logger/public-api';
 import { ModalControlService } from './cmacs-modal-control.service';
 import { CmacsModalRef } from './cmacs-modal-ref.class';
 import { CmacsModalComponent } from './cmacs-modal.component';

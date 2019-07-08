@@ -14,6 +14,10 @@ export declare class CmacsTagComponent implements OnInit, OnChanges {
     private nzUpdateHostClassService;
     presetColor: boolean;
     mode: 'default' | 'closeable' | 'checkable';
+    cmacsGridType: 'active' | 'created' | 'pre-bid' | 'archive' | 'inactive' | 'warranty';
+    cmacsPriorityType: 'high' | 'low' | 'medium';
+    cmacsStatusType: boolean;
+    disabled: boolean;
     color: string;
     checked: boolean;
     noAnimation: boolean;
