@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common/locales/en'), require('@angular/platform-browser/animations'), require('date-fns'), require('jspdf'), require('jspdf-autotable'), require('xlsx'), require('@angular/cdk/platform'), require('@angular/cdk/a11y'), require('@angular/cdk/keycodes'), require('@angular/router'), require('rxjs'), require('rxjs/operators'), require('ng-zorro-antd'), require('ng-zorro-antd/icon'), require('@angular/common'), require('ng-zorro-antd/time-picker'), require('ng-zorro-antd/core'), require('ng-zorro-antd/i18n'), require('ngx-export-as'), require('@angular/forms'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core'), require('ng-zorro-antd/core/logger/public-api')) :
-    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/common/locales/en', '@angular/platform-browser/animations', 'date-fns', 'jspdf', 'jspdf-autotable', 'xlsx', '@angular/cdk/platform', '@angular/cdk/a11y', '@angular/cdk/keycodes', '@angular/router', 'rxjs', 'rxjs/operators', 'ng-zorro-antd', 'ng-zorro-antd/icon', '@angular/common', 'ng-zorro-antd/time-picker', 'ng-zorro-antd/core', 'ng-zorro-antd/i18n', 'ngx-export-as', '@angular/forms', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core', 'ng-zorro-antd/core/logger/public-api'], factory) :
-    (factory((global['cmacs-components-lib'] = {}),global.ng.common.locales.en,global.ng.platformBrowser.animations,global.dateFns,global.jsPDF,null,global.XLSX,global.ng.cdk.platform,global.ng.cdk.a11y,global.ng.cdk.keycodes,global.ng.router,global.rxjs,global.rxjs.operators,global.ngZorroAntd,global.icon,global.ng.common,global.timePicker,global.core,global.i18n,global.ngxExportAs,global.ng.forms,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core,global.i2));
-}(this, (function (exports,en,animations,dateFns,jsPDF,jspdfAutotable,XLSX,platform,a11y,keycodes,router,rxjs,operators,ngZorroAntd,icon,common,timePicker,core,i18n,ngxExportAs,forms,i1,portal,i0,i2) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common/locales/en'), require('@angular/platform-browser/animations'), require('date-fns'), require('jspdf'), require('jspdf-autotable'), require('xlsx'), require('@angular/cdk/platform'), require('@angular/cdk/a11y'), require('@angular/cdk/keycodes'), require('@angular/router'), require('rxjs'), require('rxjs/operators'), require('ng-zorro-antd'), require('ng-zorro-antd/icon'), require('@angular/common'), require('ng-zorro-antd/time-picker'), require('ng-zorro-antd/core'), require('ng-zorro-antd/i18n'), require('ngx-export-as'), require('@angular/forms'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core')) :
+    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/common/locales/en', '@angular/platform-browser/animations', 'date-fns', 'jspdf', 'jspdf-autotable', 'xlsx', '@angular/cdk/platform', '@angular/cdk/a11y', '@angular/cdk/keycodes', '@angular/router', 'rxjs', 'rxjs/operators', 'ng-zorro-antd', 'ng-zorro-antd/icon', '@angular/common', 'ng-zorro-antd/time-picker', 'ng-zorro-antd/core', 'ng-zorro-antd/i18n', 'ngx-export-as', '@angular/forms', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core'], factory) :
+    (factory((global['cmacs-components-lib'] = {}),global.ng.common.locales.en,global.ng.platformBrowser.animations,global.dateFns,global.jsPDF,null,global.XLSX,global.ng.cdk.platform,global.ng.cdk.a11y,global.ng.cdk.keycodes,global.ng.router,global.rxjs,global.rxjs.operators,global.ngZorroAntd,global.icon,global.ng.common,global.timePicker,global.core,global.i18n,global.ngxExportAs,global.ng.forms,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core));
+}(this, (function (exports,en,animations,dateFns,jsPDF,jspdfAutotable,XLSX,platform,a11y,keycodes,router,rxjs,operators,ngZorroAntd,icon,common,timePicker,core,i18n,ngxExportAs,forms,i1,portal,i0) { 'use strict';
 
     en = en && en.hasOwnProperty('default') ? en['default'] : en;
     jsPDF = jsPDF && jsPDF.hasOwnProperty('default') ? jsPDF['default'] : jsPDF;
@@ -12897,6 +12897,163 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    /** @type {?} */
+    var NZ_LOGGER_STATE = new i0.InjectionToken('nz-logger-state');
+    // Whether print the log
+    var LoggerService = /** @class */ (function () {
+        function LoggerService(_loggerState) {
+            this._loggerState = _loggerState;
+        }
+        // tslint:disable-next-line:no-any
+        // tslint:disable-next-line:no-any
+        /**
+         * @param {...?} args
+         * @return {?}
+         */
+        LoggerService.prototype.log =
+            // tslint:disable-next-line:no-any
+            /**
+             * @param {...?} args
+             * @return {?}
+             */
+            function () {
+                var args = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    args[_i] = arguments[_i];
+                }
+                if (this._loggerState) {
+                    console.log.apply(console, __spread(args));
+                }
+            };
+        // tslint:disable-next-line:no-any
+        // tslint:disable-next-line:no-any
+        /**
+         * @param {...?} args
+         * @return {?}
+         */
+        LoggerService.prototype.warn =
+            // tslint:disable-next-line:no-any
+            /**
+             * @param {...?} args
+             * @return {?}
+             */
+            function () {
+                var args = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    args[_i] = arguments[_i];
+                }
+                if (this._loggerState) {
+                    console.warn.apply(console, __spread(args));
+                }
+            };
+        // tslint:disable-next-line:no-any
+        // tslint:disable-next-line:no-any
+        /**
+         * @param {...?} args
+         * @return {?}
+         */
+        LoggerService.prototype.error =
+            // tslint:disable-next-line:no-any
+            /**
+             * @param {...?} args
+             * @return {?}
+             */
+            function () {
+                var args = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    args[_i] = arguments[_i];
+                }
+                if (this._loggerState) {
+                    console.error.apply(console, __spread(args));
+                }
+            };
+        // tslint:disable-next-line:no-any
+        // tslint:disable-next-line:no-any
+        /**
+         * @param {...?} args
+         * @return {?}
+         */
+        LoggerService.prototype.info =
+            // tslint:disable-next-line:no-any
+            /**
+             * @param {...?} args
+             * @return {?}
+             */
+            function () {
+                var args = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    args[_i] = arguments[_i];
+                }
+                if (this._loggerState) {
+                    console.log.apply(console, __spread(args));
+                }
+            };
+        // tslint:disable-next-line:no-any
+        // tslint:disable-next-line:no-any
+        /**
+         * @param {...?} args
+         * @return {?}
+         */
+        LoggerService.prototype.debug =
+            // tslint:disable-next-line:no-any
+            /**
+             * @param {...?} args
+             * @return {?}
+             */
+            function () {
+                var args = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    args[_i] = arguments[_i];
+                }
+                if (this._loggerState) {
+                    console.log.apply(console, __spread(['[NG-ZORRO-DEBUG]'], args));
+                }
+            };
+        LoggerService.decorators = [
+            { type: i0.Injectable }
+        ];
+        /** @nocollapse */
+        LoggerService.ctorParameters = function () {
+            return [
+                { type: Boolean, decorators: [{ type: i0.Inject, args: [NZ_LOGGER_STATE,] }] }
+            ];
+        };
+        return LoggerService;
+    }());
+    /**
+     * @param {?} exist
+     * @param {?} loggerState
+     * @return {?}
+     */
+    function LOGGER_SERVICE_PROVIDER_FACTORY(exist, loggerState) {
+        return exist || new LoggerService(loggerState);
+    }
+    /** @type {?} */
+    var LOGGER_SERVICE_PROVIDER = {
+        provide: LoggerService,
+        useFactory: LOGGER_SERVICE_PROVIDER_FACTORY,
+        deps: [[new i0.Optional(), new i0.SkipSelf(), LoggerService], NZ_LOGGER_STATE]
+    };
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
     // A builder used for managing service creating modals
     var  
     // A builder used for managing service creating modals
@@ -13180,11 +13337,11 @@
         CmacsModalService.ctorParameters = function () {
             return [
                 { type: i1.Overlay },
-                { type: i2.LoggerService },
+                { type: LoggerService },
                 { type: ModalControlService }
             ];
         };
-        /** @nocollapse */ CmacsModalService.ngInjectableDef = i0.defineInjectable({ factory: function CmacsModalService_Factory() { return new CmacsModalService(i0.inject(i1.Overlay), i0.inject(i2.LoggerService), i0.inject(ModalControlService)); }, token: CmacsModalService, providedIn: "root" });
+        /** @nocollapse */ CmacsModalService.ngInjectableDef = i0.defineInjectable({ factory: function CmacsModalService_Factory() { return new CmacsModalService(i0.inject(i1.Overlay), i0.inject(LoggerService), i0.inject(ModalControlService)); }, token: CmacsModalService, providedIn: "root" });
         return CmacsModalService;
     }());
 
@@ -13298,6 +13455,7 @@
     exports.ɵb = CmacsSubmenuService;
     exports.ɵh = MODAL_CONFIG;
     exports.ɵf = NzTreeService;
+    exports.ɵw = LoggerService;
     exports.ɵe = ExcelService;
 
     Object.defineProperty(exports, '__esModule', { value: true });

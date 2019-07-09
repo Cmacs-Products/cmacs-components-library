@@ -16,13 +16,12 @@ import { DatePipe, DOCUMENT, CommonModule, registerLocaleData } from '@angular/c
 import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 import { NzUpdateHostClassService, findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzMeasureScrollbarService, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef } from 'ng-zorro-antd/core';
 import { DateHelperService, NzI18nService, NzI18nModule } from 'ng-zorro-antd/i18n';
-import { __extends, __assign, __decorate, __metadata, __read, __spread, __values } from 'tslib';
 import { ExportAsService, ExportAsModule } from 'ngx-export-as';
 import { NgControl, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
+import { __extends, __assign, __decorate, __metadata, __read, __spread, __values } from 'tslib';
 import { ChangeDetectionStrategy, Component, ElementRef, Input, ViewEncapsulation, ChangeDetectorRef, ContentChildren, HostBinding, Inject, NgZone, Optional, Renderer2, ViewChild, Directive, Self, forwardRef, EventEmitter, Output, Host, TemplateRef, HostListener, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, NgModule, defineInjectable, inject, ContentChild, Injector, Type, ComponentFactoryResolver } from '@angular/core';
-import { LoggerService } from 'ng-zorro-antd/core/logger/public-api';
 
 /**
  * @fileoverview added by tsickle
@@ -12963,6 +12962,161 @@ var CmacsComponentsLibModule = /** @class */ (function () {
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+/** @type {?} */
+var NZ_LOGGER_STATE = new InjectionToken('nz-logger-state');
+// Whether print the log
+var LoggerService = /** @class */ (function () {
+    function LoggerService(_loggerState) {
+        this._loggerState = _loggerState;
+    }
+    // tslint:disable-next-line:no-any
+    // tslint:disable-next-line:no-any
+    /**
+     * @param {...?} args
+     * @return {?}
+     */
+    LoggerService.prototype.log = 
+    // tslint:disable-next-line:no-any
+    /**
+     * @param {...?} args
+     * @return {?}
+     */
+    function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        if (this._loggerState) {
+            console.log.apply(console, __spread(args));
+        }
+    };
+    // tslint:disable-next-line:no-any
+    // tslint:disable-next-line:no-any
+    /**
+     * @param {...?} args
+     * @return {?}
+     */
+    LoggerService.prototype.warn = 
+    // tslint:disable-next-line:no-any
+    /**
+     * @param {...?} args
+     * @return {?}
+     */
+    function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        if (this._loggerState) {
+            console.warn.apply(console, __spread(args));
+        }
+    };
+    // tslint:disable-next-line:no-any
+    // tslint:disable-next-line:no-any
+    /**
+     * @param {...?} args
+     * @return {?}
+     */
+    LoggerService.prototype.error = 
+    // tslint:disable-next-line:no-any
+    /**
+     * @param {...?} args
+     * @return {?}
+     */
+    function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        if (this._loggerState) {
+            console.error.apply(console, __spread(args));
+        }
+    };
+    // tslint:disable-next-line:no-any
+    // tslint:disable-next-line:no-any
+    /**
+     * @param {...?} args
+     * @return {?}
+     */
+    LoggerService.prototype.info = 
+    // tslint:disable-next-line:no-any
+    /**
+     * @param {...?} args
+     * @return {?}
+     */
+    function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        if (this._loggerState) {
+            console.log.apply(console, __spread(args));
+        }
+    };
+    // tslint:disable-next-line:no-any
+    // tslint:disable-next-line:no-any
+    /**
+     * @param {...?} args
+     * @return {?}
+     */
+    LoggerService.prototype.debug = 
+    // tslint:disable-next-line:no-any
+    /**
+     * @param {...?} args
+     * @return {?}
+     */
+    function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        if (this._loggerState) {
+            console.log.apply(console, __spread(['[NG-ZORRO-DEBUG]'], args));
+        }
+    };
+    LoggerService.decorators = [
+        { type: Injectable }
+    ];
+    /** @nocollapse */
+    LoggerService.ctorParameters = function () { return [
+        { type: Boolean, decorators: [{ type: Inject, args: [NZ_LOGGER_STATE,] }] }
+    ]; };
+    return LoggerService;
+}());
+/**
+ * @param {?} exist
+ * @param {?} loggerState
+ * @return {?}
+ */
+function LOGGER_SERVICE_PROVIDER_FACTORY(exist, loggerState) {
+    return exist || new LoggerService(loggerState);
+}
+/** @type {?} */
+var LOGGER_SERVICE_PROVIDER = {
+    provide: LoggerService,
+    useFactory: LOGGER_SERVICE_PROVIDER_FACTORY,
+    deps: [[new Optional(), new SkipSelf(), LoggerService], NZ_LOGGER_STATE]
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
 // A builder used for managing service creating modals
 var  
 // A builder used for managing service creating modals
@@ -13285,6 +13439,6 @@ var ModeTabType = {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsDropdownComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, CmacsModalRef, AbstractPickerComponent as ɵa, CalendarFooterComponent as ɵk, CalendarHeaderComponent as ɵi, CalendarInputComponent as ɵj, OkButtonComponent as ɵl, TimePickerButtonComponent as ɵm, TodayButtonComponent as ɵn, DateTableComponent as ɵo, DecadePanelComponent as ɵs, MonthPanelComponent as ɵq, MonthTableComponent as ɵr, DateRangePopupComponent as ɵu, InnerPopupComponent as ɵt, YearPanelComponent as ɵp, CmacsMenuServiceFactory as ɵd, CmacsMenuService as ɵc, CmacsSubmenuService as ɵb, MODAL_CONFIG as ɵh, NzTreeService as ɵf, ExcelService as ɵe };
+export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsDropdownComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, CmacsModalRef, AbstractPickerComponent as ɵa, CalendarFooterComponent as ɵk, CalendarHeaderComponent as ɵi, CalendarInputComponent as ɵj, OkButtonComponent as ɵl, TimePickerButtonComponent as ɵm, TodayButtonComponent as ɵn, DateTableComponent as ɵo, DecadePanelComponent as ɵs, MonthPanelComponent as ɵq, MonthTableComponent as ɵr, DateRangePopupComponent as ɵu, InnerPopupComponent as ɵt, YearPanelComponent as ɵp, CmacsMenuServiceFactory as ɵd, CmacsMenuService as ɵc, CmacsSubmenuService as ɵb, MODAL_CONFIG as ɵh, NzTreeService as ɵf, LoggerService as ɵw, ExcelService as ɵe };
 
 //# sourceMappingURL=cmacs-components-lib.js.map
