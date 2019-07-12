@@ -8,6 +8,7 @@ export declare class CmacsSearchComponent implements ControlValueAccessor, OnIni
     allowClear: boolean;
     showSearch: boolean;
     size: NzSizeLDSType;
+    placeholder: string;
     selected: any;
     mode: 'default' | 'multiple';
     onChange: (value: string | string[]) => void;

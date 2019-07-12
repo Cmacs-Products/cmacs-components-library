@@ -1,10 +1,10 @@
 import { Overlay } from '@angular/cdk/overlay';
 import { Observable } from 'rxjs';
-import { LoggerService } from 'ng-zorro-antd/core';
 import { ModalControlService } from './cmacs-modal-control.service';
 import { CmacsModalRef } from './cmacs-modal-ref.class';
 import { CmacsModalComponent } from './cmacs-modal.component';
 import { ConfirmType, ModalOptionsForService } from './cmacs-modal.type';
+import { LoggerService } from '../core/logger';
 export declare class ModalBuilderForService {
     private overlay;
     private modalRef;

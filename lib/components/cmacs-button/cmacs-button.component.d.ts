@@ -1,6 +1,7 @@
 import { AfterContentInit, ChangeDetectorRef, ElementRef, NgZone, OnChanges, OnDestroy, OnInit, QueryList, Renderer2, SimpleChanges } from '@angular/core';
 import { NzSizeLDSType, NzUpdateHostClassService, NzWaveConfig, NzWaveDirective } from 'ng-zorro-antd/core';
 export declare type CmacsButtonType = 'primary' | 'dashed' | 'danger' | 'default';
+export declare type CmacsEmphasis = 'low' | 'medium' | 'high' | 'icon';
 export declare type CmacsButtonShape = 'circle' | 'round' | null;
 export declare class CmacsButtonComponent implements AfterContentInit, OnInit, OnDestroy, OnChanges {
     private elementRef;
@@ -21,6 +22,7 @@ export declare class CmacsButtonComponent implements AfterContentInit, OnInit, O
     nzSearch: boolean;
     loading: boolean;
     type: CmacsButtonType;
+    emphasis: CmacsEmphasis;
     shape: CmacsButtonShape;
     size: NzSizeLDSType;
     setClassMap(): void;

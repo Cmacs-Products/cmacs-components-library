@@ -15,13 +15,13 @@ import { InputBoolean as InputBoolean$1, NzSelectService, NzOptionGroupComponent
 import { NzIconDirective, NzIconModule } from 'ng-zorro-antd/icon';
 import { DatePipe, DOCUMENT, CommonModule, registerLocaleData } from '@angular/common';
 import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
+import { NzUpdateHostClassService, findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzMeasureScrollbarService, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef } from 'ng-zorro-antd/core';
 import { DateHelperService, NzI18nService, NzI18nModule } from 'ng-zorro-antd/i18n';
 import { ExportAsService, ExportAsModule } from 'ngx-export-as';
 import { NgControl, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ChangeDetectionStrategy, Component, ElementRef, Input, ViewEncapsulation, ChangeDetectorRef, ContentChildren, HostBinding, Inject, NgZone, Optional, Renderer2, ViewChild, Directive, Self, forwardRef, EventEmitter, Output, Host, TemplateRef, HostListener, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, NgModule, defineInjectable, inject, Injector, ContentChild, Type, ComponentFactoryResolver } from '@angular/core';
-import { NzUpdateHostClassService, findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzMeasureScrollbarService, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, LoggerService } from 'ng-zorro-antd/core';
 
 /**
  * @fileoverview added by tsickle
@@ -121,6 +121,7 @@ class CmacsButtonComponent {
         this.nzSearch = false;
         this.loading = false;
         this.type = 'default';
+        this.emphasis = null;
         this.shape = null;
         this.size = 'default';
         this.renderer.addClass(elementRef.nativeElement, 'ant-btn');
@@ -132,6 +133,8 @@ class CmacsButtonComponent {
         /** @type {?} */
         const prefixCls = 'ant-btn';
         /** @type {?} */
+        const prefixCmacs = 'cmacs-btn';
+        /** @type {?} */
         const sizeMap = { large: 'lg', small: 'sm' };
         this.updateHostClassService.updateHostClass(this.el, {
             [`${prefixCls}-${this.type}`]: this.type,
@@ -139,6 +142,8 @@ class CmacsButtonComponent {
             [`${prefixCls}-${sizeMap[this.size]}`]: sizeMap[this.size],
             [`${prefixCls}-loading`]: this.loading,
             [`${prefixCls}-icon-only`]: this.iconOnly,
+            [`${prefixCmacs}-action-${this.emphasis}`]: this.emphasis !== null,
+            [`${prefixCmacs}-with-icon`]: this.listOfIconElement !== undefined && this.listOfIconElement.length > 0 && this.contentElement.nativeElement.style.display !== 'none',
             [`${prefixCls}-background-ghost`]: this.nzGhost,
             [`${prefixCls}-block`]: this.nzBlock,
             [`ant-input-search-button`]: this.nzSearch
@@ -240,8 +245,8 @@ CmacsButtonComponent.decorators = [
                 preserveWhitespaces: false,
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 encapsulation: ViewEncapsulation.None,
-                template: "<i nz-icon type=\"loading\" *ngIf=\"loading\"></i>\r\n<span (cdkObserveContent)=\"checkContent()\" #contentElement><ng-content></ng-content></span>",
-                styles: [".ant-btn{font-size:14px;line-height:20px;font-weight:400;height:34px;box-shadow:none;border-radius:3px}.ant-btn-primary{background-color:#2a7cff;border-color:#2a7cff}.ant-btn-primary:focus,.ant-btn-primary:hover{background-color:#2164c9;border-color:#2164c9}.ant-btn-primary:disabled{border:none}.ant-btn-default{border:1px solid #bec4cd;color:#2a7cff}.ant-btn-default:focus,.ant-btn-default:hover{background-color:#f6f7fb;color:#2164c9;border:1px solid #bec4cd}.ant-btn-background-ghost.ant-btn-default:enabled,.ant-btn-background-ghost.ant-btn-primary:enabled{color:#2a7cff;border:none}.ant-btn-background-ghost.ant-btn-default:enabled:focus,.ant-btn-background-ghost.ant-btn-default:enabled:hover,.ant-btn-background-ghost.ant-btn-primary:enabled:focus,.ant-btn-background-ghost.ant-btn-primary:enabled:hover{background-color:#f6f7fb!important;color:#2a7cff}.ant-btn-background-ghost:disabled{border:none}"]
+                template: "<i nz-icon type=\"loading\" *ngIf=\"loading\"></i>\r\n<span (cdkObserveContent)=\"checkContent()\" #contentElement><ng-content></ng-content></span>\r\n",
+                styles: [".ant-btn{font-size:14px;line-height:20px;font-weight:400;height:34px;box-shadow:none;border-radius:3px}.ant-btn-primary{background-color:#2a7cff;border-color:#2a7cff}.ant-btn-primary:focus,.ant-btn-primary:hover{background-color:#2164c9;border-color:#2164c9}.ant-btn-primary:disabled{border:none}.ant-btn-default{border:1px solid #bec4cd;color:#2a7cff}.ant-btn-default:focus,.ant-btn-default:hover{background-color:#f6f7fb;color:#2164c9;border:1px solid #bec4cd}.ant-btn-background-ghost.ant-btn-default:enabled,.ant-btn-background-ghost.ant-btn-primary:enabled{color:#2a7cff;border:none}.ant-btn-background-ghost.ant-btn-default:enabled:focus,.ant-btn-background-ghost.ant-btn-default:enabled:hover,.ant-btn-background-ghost.ant-btn-primary:enabled:focus,.ant-btn-background-ghost.ant-btn-primary:enabled:hover{background-color:#f6f7fb!important;color:#2a7cff}.ant-btn-background-ghost:disabled{border:none}.cmacs-btn-with-icon{background-color:#fff!important;border:1px solid transparent!important;color:#2a7cff!important}.cmacs-btn-with-icon:hover{border-color:#bec4cd!important}.cmacs-btn-with-icon:focus{background-color:#2a7cff!important;color:#fff!important}.cmacs-btn-with-icon:disabled{background-color:#f3f3f4!important;color:#97a0ae!important}.cmacs-btn-with-icon:disabled:hover{border:1px solid transparent!important}.cmacs-btn-with-icon:disabled i{color:#fff!important}.ant-btn-icon-only{border:1px solid #dee0e5;color:#656c79;background-color:#fff!important}.ant-btn-icon-only:focus,.ant-btn-icon-only:hover{color:#2a7cff;background-color:#fff!important}.ant-btn-icon-only:disabled{background-color:#f3f3f4!important;color:#97a0ae!important}.cmacs-btn-action-low,.cmacs-btn-action-low:focus,.cmacs-btn-action-low:hover{padding:0;font-size:14px;font-weight:700;color:#2a7cff;height:20px;border:none;background-color:transparent}.cmacs-btn-action-medium,.cmacs-btn-action-medium:focus,.cmacs-btn-action-medium:hover{font-size:14px;color:#2a7cff;font-weight:700;border:2px solid #2a7cff;background-color:#fff;height:30px;padding:0 25px}.cmacs-btn-action-high,.cmacs-btn-action-high:focus,.cmacs-btn-action-high:hover{font-size:14px;color:#fff;font-weight:700;background-color:#2a7cff;border:2px solid #2a7cff;height:30px;padding:0 25px}.cmacs-btn-action-icon,.cmacs-btn-action-icon:hover{height:30px;color:#656c79!important;border:1px solid #dee0e5}"]
             }] }
 ];
 /** @nocollapse */
@@ -263,6 +268,7 @@ CmacsButtonComponent.propDecorators = {
     nzSearch: [{ type: Input }],
     loading: [{ type: Input }],
     type: [{ type: Input }],
+    emphasis: [{ type: Input }],
     shape: [{ type: Input }],
     size: [{ type: Input }]
 };
@@ -5705,7 +5711,7 @@ CmacsTreeComponent.decorators = [
                 // tslint:disable-next-line: component-selector
                 selector: 'cmacs-tree',
                 exportAs: 'cmacsTree',
-                template: "<ul\r\n  role=\"tree\"\r\n  unselectable=\"on\"\r\n  [ngClass]=\"classMap\">\r\n  <ng-container *ngFor=\"let node of nzNodes\">\r\n    <cmacs-tree-node\r\n      [treeNode]=\"node\"\r\n      [selectMode]=\"selectMode\"\r\n      [showLine]=\"showLine\"\r\n      [expandedIcon]=\"expandedIcon\"\r\n      [draggable]=\"draggable\"\r\n      [checkable]=\"checkable\"\r\n      [showExpand]=\"showExpand\"\r\n      [asyncData]=\"asyncData\"\r\n      [searchValue]=\"searchValue\"\r\n      [hideUnMatched]=\"hideUnMatched\"\r\n      [beforeDrop]=\"beforeDrop\"\r\n      [expandAll]=\"expandAll\"\r\n      [defaultExpandAll]=\"defaultExpandAll\"\r\n      [showIcon]=\"showIcon\"\r\n      [treeTemplate]=\"treeTemplate\"\r\n      [noAnimation]=\"noAnimation?.nzNoAnimation\">\r\n    </cmacs-tree-node>\r\n  </ng-container>\r\n</ul>",
+                template: "<ul\r\n  role=\"tree\"\r\n  unselectable=\"on\"\r\n  [ngClass]=\"classMap\">\r\n  <ng-container *ngFor=\"let node of nzNodes\">\r\n    <cmacs-tree-node\r\n      [treeNode]=\"node\"\r\n      [selectMode]=\"selectMode\"\r\n      [showLine]=\"showLine\"\r\n      [expandedIcon]=\"expandedIcon\"\r\n      [draggable]=\"draggable\"\r\n      [checkable]=\"checkable\"\r\n      [showExpand]=\"showExpand\"\r\n      [asyncData]=\"asyncData\"\r\n      [searchValue]=\"searchValue\"\r\n      [hideUnMatched]=\"hideUnMatched\"\r\n      [beforeDrop]=\"beforeDrop\"\r\n      [expandAll]=\"expandAll\"\r\n      [defaultExpandAll]=\"defaultExpandAll\"\r\n      [showIcon]=\"showIcon\"\r\n      [treeTemplate]=\"treeTemplate\"\r\n      [noAnimation]=\"noAnimation?.nzNoAnimation\">\r\n    </cmacs-tree-node>\r\n  </ng-container>\r\n</ul>\r\n",
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 providers: [
                     NzTreeService,
@@ -6432,7 +6438,7 @@ CmacsTreeNodeComponent.decorators = [
                 // tslint:disable-next-line: component-selector
                 selector: 'cmacs-tree-node',
                 exportAs: 'cmacsTreeNode',
-                template: "<li\r\n  #dragElement\r\n  role=\"treeitem\"\r\n  [style.display]=\"displayStyle\"\r\n  [ngClass]=\"nzNodeClass\">\r\n  <ng-container *ngIf=\"showExpand\">\r\n    <span\r\n      [ngClass]=\"nzNodeSwitcherClass\"\r\n      (click)=\"_clickExpand($event)\">\r\n      <ng-container *ngIf=\"isShowSwitchIcon\">\r\n        <ng-container *ngIf=\"!treeNode.isLoading\">\r\n          <ng-template\r\n            *ngIf=\"isTemplateRef(expandedIcon)\"\r\n            [ngTemplateOutlet]=\"expandedIcon\"\r\n            [ngTemplateOutletContext]=\"{ $implicit: treeNode }\">\r\n          </ng-template>\r\n          <i\r\n            *ngIf=\"!isTemplateRef(expandedIcon)\" \r\n            nz-icon \r\n            type=\"caret-down\"           \r\n            [class.ant-select-switcher-icon]=\"selectMode\"\r\n            [class.ant-tree-switcher-icon]=\"!selectMode\">\r\n          </i>\r\n        </ng-container>\r\n        <i *ngIf=\"treeNode.isLoading\" nz-icon type=\"loading\" [spin]=\"true\" class=\"ant-tree-switcher-loading-icon\"></i>\r\n      </ng-container>\r\n      <ng-container *ngIf=\"showLine\">\r\n        <ng-template\r\n          *ngIf=\"isTemplateRef(expandedIcon)\"\r\n          [ngTemplateOutlet]=\"expandedIcon\"\r\n          [ngTemplateOutletContext]=\"{ $implicit: treeNode }\">\r\n        </ng-template>\r\n        <ng-container *ngIf=\"!isTemplateRef(expandedIcon)\">\r\n          <i *ngIf=\"isShowLineIcon\" nz-icon [type]=\"isSwitcherOpen ? 'minus-square' : 'plus-square'\" class=\"ant-tree-switcher-line-icon\"></i>\r\n          <i *ngIf=\"!isShowLineIcon\" nz-icon type=\"file\" class=\"ant-tree-switcher-line-icon\"></i>\r\n        </ng-container>\r\n      </ng-container>\r\n    </span>\r\n  </ng-container>\r\n  <ng-container *ngIf=\"checkable\">\r\n    <span\r\n      [ngClass]=\"nzNodeCheckboxClass\"\r\n      (click)=\"_clickCheckBox($event)\">\r\n      <span [class.ant-tree-checkbox-inner]=\"!selectMode\"\r\n            [class.ant-select-tree-checkbox-inner]=\"selectMode\"></span>\r\n    </span>\r\n  </ng-container>\r\n  <ng-container *ngIf=\"!treeTemplate\">\r\n    <span\r\n      title=\"{{treeNode.title}}\"\r\n      [attr.draggable]=\"canDraggable\"\r\n      [attr.aria-grabbed]=\"canDraggable\"\r\n      [ngClass]=\"nzNodeContentClass\"\r\n      [class.draggable]=\"canDraggable\">\r\n      <span\r\n        *ngIf=\"treeNode.icon && showIcon\"\r\n        [class.ant-tree-icon__open]=\"isSwitcherOpen\"\r\n        [class.ant-tree-icon__close]=\"isSwitcherClose\"\r\n        [class.ant-tree-icon_loading]=\"treeNode.isLoading\"\r\n        [ngClass]=\"nzNodeContentLoadingClass\">\r\n        <span\r\n          [ngClass]=\"nzNodeContentIconClass\">\r\n          <i nz-icon *ngIf=\"nzIcon\" [type]=\"nzIcon\"></i>\r\n        </span>\r\n      </span>\r\n      <span class=\"ant-tree-title\">\r\n        <ng-container *ngIf=\"treeNode.isMatched\">\r\n          <span>\r\n            {{highlightKeys[0]}}<span class=\"font-highlight\">{{searchValue}}</span>{{highlightKeys[1]}}\r\n          </span>\r\n        </ng-container>\r\n        <ng-container *ngIf=\"!treeNode.isMatched\">\r\n          {{treeNode.title}}\r\n        </ng-container>\r\n      </span>\r\n    </span>\r\n  </ng-container>\r\n  <ng-template\r\n    [ngTemplateOutlet]=\"treeTemplate\"\r\n    [ngTemplateOutletContext]=\"{ $implicit: treeNode }\">\r\n  </ng-template>\r\n\r\n  <ul\r\n    role=\"group\"\r\n    class=\"ant-tree-child-tree\"\r\n    [class.ant-tree-child-tree-open]=\"!selectMode || treeNode.isExpanded\"\r\n    data-expanded=\"true\"\r\n    [@.disabled]=\"nzNoAnimation\"\r\n    [@collapseMotion]=\"treeNode.isExpanded ? 'expanded' : 'collapsed'\">\r\n    <cmacs-tree-node\r\n      *ngFor=\"let node of treeNode.getChildren()\"\r\n      [treeNode]=\"node\"\r\n      [showExpand]=\"showExpand\"\r\n      [noAnimation]=\"nzNoAnimation\"\r\n      [selectMode]=\"selectMode\"\r\n      [showLine]=\"showLine\"\r\n      [expandedIcon]=\"expandedIcon\"\r\n      [draggable]=\"draggable\"\r\n      [checkable]=\"checkable\"\r\n      [asyncData]=\"asyncData\"\r\n      [expandAll]=\"expandAll\"\r\n      [defaultExpandAll]=\"defaultExpandAll\"\r\n      [showIcon]=\"showIcon\"\r\n      [searchValue]=\"searchValue\"\r\n      [hideUnMatched]=\"hideUnMatched\"\r\n      [beforeDrop]=\"beforeDrop\"\r\n      [treeTemplate]=\"treeTemplate\">\r\n    </cmacs-tree-node>\r\n  </ul>\r\n</li>",
+                template: "<li\r\n  #dragElement\r\n  role=\"treeitem\"\r\n  [style.display]=\"displayStyle\"\r\n  [ngClass]=\"nzNodeClass\">\r\n  <ng-container *ngIf=\"showExpand\">\r\n    <span\r\n      [ngClass]=\"nzNodeSwitcherClass\"\r\n      (click)=\"_clickExpand($event)\">\r\n      <ng-container *ngIf=\"isShowSwitchIcon\">\r\n        <ng-container *ngIf=\"!treeNode.isLoading\">\r\n          <ng-template\r\n            *ngIf=\"isTemplateRef(expandedIcon)\"\r\n            [ngTemplateOutlet]=\"expandedIcon\"\r\n            [ngTemplateOutletContext]=\"{ $implicit: treeNode }\">\r\n          </ng-template>\r\n          <i\r\n            *ngIf=\"!isTemplateRef(expandedIcon)\"\r\n            nz-icon\r\n            type=\"caret-down\"\r\n            [class.ant-select-switcher-icon]=\"selectMode\"\r\n            [class.ant-tree-switcher-icon]=\"!selectMode\">\r\n          </i>\r\n        </ng-container>\r\n        <i *ngIf=\"treeNode.isLoading\" nz-icon type=\"loading\" [spin]=\"true\" class=\"ant-tree-switcher-loading-icon\"></i>\r\n      </ng-container>\r\n      <ng-container *ngIf=\"showLine\">\r\n        <ng-template\r\n          *ngIf=\"isTemplateRef(expandedIcon)\"\r\n          [ngTemplateOutlet]=\"expandedIcon\"\r\n          [ngTemplateOutletContext]=\"{ $implicit: treeNode }\">\r\n        </ng-template>\r\n        <ng-container *ngIf=\"!isTemplateRef(expandedIcon)\">\r\n          <i *ngIf=\"isShowLineIcon\" nz-icon [type]=\"isSwitcherOpen ? 'minus-square' : 'plus-square'\" class=\"ant-tree-switcher-line-icon\"></i>\r\n          <i *ngIf=\"!isShowLineIcon\" nz-icon type=\"file\" class=\"ant-tree-switcher-line-icon\"></i>\r\n        </ng-container>\r\n      </ng-container>\r\n    </span>\r\n  </ng-container>\r\n  <ng-container *ngIf=\"checkable\">\r\n    <span\r\n      [ngClass]=\"nzNodeCheckboxClass\"\r\n      (click)=\"_clickCheckBox($event)\">\r\n      <span [class.ant-tree-checkbox-inner]=\"!selectMode\"\r\n            [class.ant-select-tree-checkbox-inner]=\"selectMode\"></span>\r\n    </span>\r\n  </ng-container>\r\n  <ng-container *ngIf=\"!treeTemplate\">\r\n    <span\r\n      title=\"{{treeNode.title}}\"\r\n      [attr.draggable]=\"canDraggable\"\r\n      [attr.aria-grabbed]=\"canDraggable\"\r\n      [ngClass]=\"nzNodeContentClass\"\r\n      [class.draggable]=\"canDraggable\">\r\n      <span\r\n        *ngIf=\"treeNode.icon && showIcon\"\r\n        [class.ant-tree-icon__open]=\"isSwitcherOpen\"\r\n        [class.ant-tree-icon__close]=\"isSwitcherClose\"\r\n        [class.ant-tree-icon_loading]=\"treeNode.isLoading\"\r\n        [ngClass]=\"nzNodeContentLoadingClass\">\r\n        <span\r\n          [ngClass]=\"nzNodeContentIconClass\">\r\n          <i nz-icon *ngIf=\"nzIcon\" [type]=\"nzIcon\"></i>\r\n        </span>\r\n      </span>\r\n      <span class=\"ant-tree-title\">\r\n        <ng-container *ngIf=\"treeNode.isMatched\">\r\n          <span>\r\n            {{highlightKeys[0]}}<span class=\"font-highlight\">{{searchValue}}</span>{{highlightKeys[1]}}\r\n          </span>\r\n        </ng-container>\r\n        <ng-container *ngIf=\"!treeNode.isMatched\">\r\n          {{treeNode.title}}\r\n        </ng-container>\r\n      </span>\r\n    </span>\r\n  </ng-container>\r\n  <ng-template\r\n    [ngTemplateOutlet]=\"treeTemplate\"\r\n    [ngTemplateOutletContext]=\"{ $implicit: treeNode }\">\r\n  </ng-template>\r\n\r\n  <ul\r\n    role=\"group\"\r\n    class=\"ant-tree-child-tree\"\r\n    [class.ant-tree-child-tree-open]=\"!selectMode || treeNode.isExpanded\"\r\n    data-expanded=\"true\"\r\n    [@.disabled]=\"noAnimation\"\r\n    [@collapseMotion]=\"treeNode.isExpanded ? 'expanded' : 'collapsed'\">\r\n    <cmacs-tree-node\r\n      *ngFor=\"let node of treeNode.getChildren()\"\r\n      [treeNode]=\"node\"\r\n      [showExpand]=\"showExpand\"\r\n      [noAnimation]=\"noAnimation\"\r\n      [selectMode]=\"selectMode\"\r\n      [showLine]=\"showLine\"\r\n      [expandedIcon]=\"expandedIcon\"\r\n      [draggable]=\"draggable\"\r\n      [checkable]=\"checkable\"\r\n      [asyncData]=\"asyncData\"\r\n      [expandAll]=\"expandAll\"\r\n      [defaultExpandAll]=\"defaultExpandAll\"\r\n      [showIcon]=\"showIcon\"\r\n      [searchValue]=\"searchValue\"\r\n      [hideUnMatched]=\"hideUnMatched\"\r\n      [beforeDrop]=\"beforeDrop\"\r\n      [treeTemplate]=\"treeTemplate\">\r\n    </cmacs-tree-node>\r\n  </ul>\r\n</li>\r\n",
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 preserveWhitespaces: false,
                 animations: [collapseMotion]
@@ -7146,7 +7152,7 @@ CmacsDropdownComponent.decorators = [
         margin-top: 4px;
         margin-bottom: 4px;
       }
-    `]
+    `, ".ant-select-selection{border:1px solid #dee0e5;border-radius:3px}.ant-select-selection:focus-within,.ant-select-selection:hover{border:1px solid #bec4cd;text-shadow:none}.ant-select-open .ant-select-selection{border-color:#bec4cd;box-shadow:none}.ant-select-search--inline .ant-select-search__field{margin-left:21px!important}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item:hover .ant-select-selected-icon{color:transparent}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item-selected .ant-select-selected-icon,.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item-selected:hover .ant-select-selected-icon{color:#2a7cff!important;padding:2px;border:1px solid #dee0e5}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item-selected:hover .ant-select-selected-icon{border-color:#2a7cff}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item .ant-select-selected-icon{padding:2px;border:1px solid #dee0e5}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item .ant-select-selected-icon:hover{color:transparent}.ant-select-dropdown-menu-item-active,.ant-select-dropdown-menu-item:hover{background-color:#f6f7fb}.ant-select-dropdown{margin-top:0!important;margin-bottom:0!important}.ant-select-dropdown-menu-item{border-top:1px solid #dee0e5;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.ant-select-dropdown-menu-item:first-child{border-top:none}.ant-select-selection--multiple .ant-select-selection__rendered>ul>li{font-size:14px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.ant-select-selection:focus{box-shadow:none;border:1px solid #bec4cd}.ant-select-selection--multiple .ant-select-selection__choice__remove>*{line-height:2.2}.ant-select-selection__placeholder{margin-left:0}.ant-select-selection--multiple .ant-select-selection__placeholder{margin-left:5px}.ant-select-selection-selected-value{padding-left:0}"]
             }] }
 ];
 /** @nocollapse */
@@ -7226,6 +7232,7 @@ class CmacsSearchComponent {
         this.allowClear = false;
         this.showSearch = false;
         this.size = 'default';
+        this.placeholder = 'placeholder';
         this.mode = 'default';
         this.onChange = (/**
          * @return {?}
@@ -7277,7 +7284,7 @@ CmacsSearchComponent.decorators = [
     { type: Component, args: [{
                 // tslint:disable-next-line: component-selector
                 selector: 'cmacs-search',
-                template: "<cmacs-dropdown style=\"width: 100%\" [(ngModel)]=\"selected\" [disabled]=disabled [allowClear]=allowClear\r\n    placeHolder=placeHolder [size]=size mode={{mode}} showSearch showCustomSearch>\r\n    <cmacs-option *ngFor=\"let item of options; index as i; trackBy: trackByFn\" value=\"{{item.value}}\"\r\n        label=\"{{item.label}}\"></cmacs-option>\r\n</cmacs-dropdown>\r\n\r\n<!-- <cmacs-dropdown style=\"width: 100%\" [(ngModel)]=\"selected\" [disabled]=disabled allowClear placeHolder=\"Choose\" showSearch\r\n    showCustomSearch>\r\n    <cmacs-option *ngFor=\"let item of options; index as i; trackBy: trackByFn\" value=\"{{item.value}}\" label=\"{{item.label}}\"></cmacs-option>\r\n</cmacs-dropdown> -->",
+                template: "<cmacs-dropdown class=\"cmacs-search\" style=\"width: 100%\" [(ngModel)]=\"selected\" [disabled]=disabled [allowClear]=allowClear\r\n    placeHolder={{placeholder}} [size]=size mode={{mode}} showSearch showCustomSearch>\r\n    <cmacs-option *ngFor=\"let item of options; index as i; trackBy: trackByFn\" value=\"{{item.value}}\"\r\n        label=\"{{item.label}}\"></cmacs-option>\r\n</cmacs-dropdown>\r\n\r\n<!-- <cmacs-dropdown style=\"width: 100%\" [(ngModel)]=\"selected\" [disabled]=disabled allowClear placeHolder=\"Choose\" showSearch\r\n    showCustomSearch>\r\n    <cmacs-option *ngFor=\"let item of options; index as i; trackBy: trackByFn\" value=\"{{item.value}}\" label=\"{{item.label}}\"></cmacs-option>\r\n</cmacs-dropdown> -->\r\n",
                 providers: [
                     {
                         provide: NG_VALUE_ACCESSOR,
@@ -7299,6 +7306,7 @@ CmacsSearchComponent.propDecorators = {
     allowClear: [{ type: Input }],
     showSearch: [{ type: Input }],
     size: [{ type: Input }],
+    placeholder: [{ type: Input }],
     selected: [{ type: Input }, { type: Output }],
     mode: [{ type: Input }]
 };
@@ -8414,7 +8422,7 @@ CmacsCardComponent.decorators = [
       cmacs-card {
         display: block;
       }
-    `]
+    `, ".ant-card,.ant-card-head{font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.ant-card-head{min-height:40px;padding:0 14px}.ant-card-extra{padding:8px 0}.ant-card-head-title{padding:12px 0}.ant-card-grid{font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}"]
             }] }
 ];
 /** @nocollapse */
@@ -10826,6 +10834,108 @@ CmacsComponentsLibModule.decorators = [
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+/** @type {?} */
+const NZ_LOGGER_STATE = new InjectionToken('nz-logger-state');
+// Whether print the log
+class LoggerService {
+    /**
+     * @param {?} _loggerState
+     */
+    constructor(_loggerState) {
+        this._loggerState = _loggerState;
+    }
+    // tslint:disable-next-line:no-any
+    /**
+     * @param {...?} args
+     * @return {?}
+     */
+    log(...args) {
+        if (this._loggerState) {
+            console.log(...args);
+        }
+    }
+    // tslint:disable-next-line:no-any
+    /**
+     * @param {...?} args
+     * @return {?}
+     */
+    warn(...args) {
+        if (this._loggerState) {
+            console.warn(...args);
+        }
+    }
+    // tslint:disable-next-line:no-any
+    /**
+     * @param {...?} args
+     * @return {?}
+     */
+    error(...args) {
+        if (this._loggerState) {
+            console.error(...args);
+        }
+    }
+    // tslint:disable-next-line:no-any
+    /**
+     * @param {...?} args
+     * @return {?}
+     */
+    info(...args) {
+        if (this._loggerState) {
+            console.log(...args);
+        }
+    }
+    // tslint:disable-next-line:no-any
+    /**
+     * @param {...?} args
+     * @return {?}
+     */
+    debug(...args) {
+        if (this._loggerState) {
+            console.log('[NG-ZORRO-DEBUG]', ...args);
+        }
+    }
+}
+LoggerService.decorators = [
+    { type: Injectable }
+];
+/** @nocollapse */
+LoggerService.ctorParameters = () => [
+    { type: Boolean, decorators: [{ type: Inject, args: [NZ_LOGGER_STATE,] }] }
+];
+/**
+ * @param {?} exist
+ * @param {?} loggerState
+ * @return {?}
+ */
+function LOGGER_SERVICE_PROVIDER_FACTORY(exist, loggerState) {
+    return exist || new LoggerService(loggerState);
+}
+/** @type {?} */
+const LOGGER_SERVICE_PROVIDER = {
+    provide: LoggerService,
+    useFactory: LOGGER_SERVICE_PROVIDER_FACTORY,
+    deps: [[new Optional(), new SkipSelf(), LoggerService], NZ_LOGGER_STATE]
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
 // A builder used for managing service creating modals
 class ModalBuilderForService {
     /**
@@ -11071,6 +11181,6 @@ const ModeTabType = {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsDropdownComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, CmacsModalRef, AbstractPickerComponent as ɵa, CalendarFooterComponent as ɵk, CalendarHeaderComponent as ɵi, CalendarInputComponent as ɵj, OkButtonComponent as ɵl, TimePickerButtonComponent as ɵm, TodayButtonComponent as ɵn, DateTableComponent as ɵo, DecadePanelComponent as ɵs, MonthPanelComponent as ɵq, MonthTableComponent as ɵr, DateRangePopupComponent as ɵu, InnerPopupComponent as ɵt, YearPanelComponent as ɵp, CmacsMenuServiceFactory as ɵd, CmacsMenuService as ɵc, CmacsSubmenuService as ɵb, MODAL_CONFIG as ɵh, NzTreeService as ɵf, ExcelService as ɵe };
+export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsDropdownComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, CmacsModalRef, AbstractPickerComponent as ɵa, CalendarFooterComponent as ɵk, CalendarHeaderComponent as ɵi, CalendarInputComponent as ɵj, OkButtonComponent as ɵl, TimePickerButtonComponent as ɵm, TodayButtonComponent as ɵn, DateTableComponent as ɵo, DecadePanelComponent as ɵs, MonthPanelComponent as ɵq, MonthTableComponent as ɵr, DateRangePopupComponent as ɵu, InnerPopupComponent as ɵt, YearPanelComponent as ɵp, CmacsMenuServiceFactory as ɵd, CmacsMenuService as ɵc, CmacsSubmenuService as ɵb, MODAL_CONFIG as ɵh, NzTreeService as ɵf, LoggerService as ɵw, ExcelService as ɵe };
 
 //# sourceMappingURL=cmacs-components-lib.js.map

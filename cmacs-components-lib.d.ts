@@ -22,4 +22,5 @@ export { CmacsSubmenuService as ɵb } from './lib/components/cmacs-menu/cmacs-su
 export { MODAL_CONFIG as ɵh, ModalConfig as ɵg } from './lib/components/cmacs-modal/cmacs-modal-config';
 export { ModalOptionsForService as ɵv } from './lib/components/cmacs-modal/cmacs-modal.type';
 export { NzTreeService as ɵf } from './lib/components/cmacs-tree/cmacs-tree.service';
+export { LoggerService as ɵw } from './lib/components/core/logger';
 export { ExcelService as ɵe } from './lib/components/core/services/excel.service';
