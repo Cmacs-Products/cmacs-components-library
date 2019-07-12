@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common/locales/en'), require('@angular/platform-browser/animations'), require('date-fns'), require('jspdf'), require('jspdf-autotable'), require('xlsx'), require('@angular/cdk/platform'), require('@angular/cdk/a11y'), require('@angular/cdk/keycodes'), require('@angular/router'), require('rxjs'), require('rxjs/operators'), require('ng-zorro-antd'), require('ng-zorro-antd/icon'), require('@angular/common'), require('ng-zorro-antd/time-picker'), require('ng-zorro-antd/core'), require('ng-zorro-antd/i18n'), require('ngx-export-as'), require('@angular/forms'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core')) :
-    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/common/locales/en', '@angular/platform-browser/animations', 'date-fns', 'jspdf', 'jspdf-autotable', 'xlsx', '@angular/cdk/platform', '@angular/cdk/a11y', '@angular/cdk/keycodes', '@angular/router', 'rxjs', 'rxjs/operators', 'ng-zorro-antd', 'ng-zorro-antd/icon', '@angular/common', 'ng-zorro-antd/time-picker', 'ng-zorro-antd/core', 'ng-zorro-antd/i18n', 'ngx-export-as', '@angular/forms', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core'], factory) :
-    (factory((global['cmacs-components-lib'] = {}),global.ng.common.locales.en,global.ng.platformBrowser.animations,global.dateFns,global.jsPDF,null,global.XLSX,global.ng.cdk.platform,global.ng.cdk.a11y,global.ng.cdk.keycodes,global.ng.router,global.rxjs,global.rxjs.operators,global.ngZorroAntd,global.icon,global.ng.common,global.timePicker,global.core,global.i18n,global.ngxExportAs,global.ng.forms,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core));
-}(this, (function (exports,en,animations,dateFns,jsPDF,jspdfAutotable,XLSX,platform,a11y,keycodes,router,rxjs,operators,ngZorroAntd,icon,common,timePicker,core,i18n,ngxExportAs,forms,i1,portal,i0) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common/locales/en'), require('@angular/platform-browser/animations'), require('date-fns'), require('jspdf'), require('jspdf-autotable'), require('xlsx'), require('@angular/cdk/platform'), require('@angular/cdk/a11y'), require('@angular/cdk/keycodes'), require('@angular/router'), require('rxjs'), require('rxjs/operators'), require('ng-zorro-antd'), require('ng-zorro-antd/icon'), require('@angular/common'), require('ng-zorro-antd/time-picker'), require('ng-zorro-antd/i18n'), require('ngx-export-as'), require('@angular/forms'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core'), require('ng-zorro-antd/core')) :
+    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/common/locales/en', '@angular/platform-browser/animations', 'date-fns', 'jspdf', 'jspdf-autotable', 'xlsx', '@angular/cdk/platform', '@angular/cdk/a11y', '@angular/cdk/keycodes', '@angular/router', 'rxjs', 'rxjs/operators', 'ng-zorro-antd', 'ng-zorro-antd/icon', '@angular/common', 'ng-zorro-antd/time-picker', 'ng-zorro-antd/i18n', 'ngx-export-as', '@angular/forms', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core', 'ng-zorro-antd/core'], factory) :
+    (factory((global['cmacs-components-lib'] = {}),global.ng.common.locales.en,global.ng.platformBrowser.animations,global.dateFns,global.jsPDF,null,global.XLSX,global.ng.cdk.platform,global.ng.cdk.a11y,global.ng.cdk.keycodes,global.ng.router,global.rxjs,global.rxjs.operators,global.ngZorroAntd,global.icon,global.ng.common,global.timePicker,global.i18n,global.ngxExportAs,global.ng.forms,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core,global.i2));
+}(this, (function (exports,en,animations,dateFns,jsPDF,jspdfAutotable,XLSX,platform,a11y,keycodes,router,rxjs,operators,ngZorroAntd,icon,common,timePicker,i18n,ngxExportAs,forms,i1,portal,i0,i2) { 'use strict';
 
     en = en && en.hasOwnProperty('default') ? en['default'] : en;
     jsPDF = jsPDF && jsPDF.hasOwnProperty('default') ? jsPDF['default'] : jsPDF;
@@ -66,14 +66,14 @@
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
                         encapsulation: i0.ViewEncapsulation.None,
                         preserveWhitespaces: false,
-                        providers: [core.NzUpdateHostClassService],
+                        providers: [i2.NzUpdateHostClassService],
                         template: "<ng-content></ng-content>\r\n"
                     }] }
         ];
         /** @nocollapse */
         CmacsButtonGroupComponent.ctorParameters = function () {
             return [
-                { type: core.NzUpdateHostClassService },
+                { type: i2.NzUpdateHostClassService },
                 { type: i0.ElementRef }
             ];
         };
@@ -194,7 +194,7 @@
             this.animationType = animationType;
             this.el = this.elementRef.nativeElement;
             this.iconOnly = false;
-            this.nzWave = new core.NzWaveDirective(this.zone, this.elementRef, this.waveConfig, this.animationType);
+            this.nzWave = new i2.NzWaveDirective(this.zone, this.elementRef, this.waveConfig, this.animationType);
             this.nzBlock = false;
             this.nzGhost = false;
             this.nzSearch = false;
@@ -258,7 +258,7 @@
                     this.moveIcon();
                 }
                 this.renderer.removeStyle(this.contentElement.nativeElement, 'display');
-                if (core.isEmpty(this.contentElement.nativeElement)) {
+                if (i2.isEmpty(this.contentElement.nativeElement)) {
                     this.renderer.setStyle(this.contentElement.nativeElement, 'display', 'none');
                     this.iconOnly = !!hasIcon;
                 }
@@ -279,9 +279,9 @@
             function () {
                 if (this.listOfIconElement && this.listOfIconElement.length) {
                     /** @type {?} */
-                    var firstChildElement = core.findFirstNotEmptyNode(this.contentElement.nativeElement);
+                    var firstChildElement = i2.findFirstNotEmptyNode(this.contentElement.nativeElement);
                     /** @type {?} */
-                    var lastChildElement = core.findLastNotEmptyNode(this.contentElement.nativeElement);
+                    var lastChildElement = i2.findLastNotEmptyNode(this.contentElement.nativeElement);
                     if (firstChildElement && firstChildElement === this.listOfIconElement.first.nativeElement) {
                         this.renderer.insertBefore(this.el, firstChildElement, this.contentElement.nativeElement);
                         this.iconElement = ( /** @type {?} */(firstChildElement));
@@ -346,7 +346,7 @@
                         // tslint:disable-next-line: component-selector
                         selector: '[cmacs-button]',
                         exportAs: 'cmacsButton',
-                        providers: [core.NzUpdateHostClassService],
+                        providers: [i2.NzUpdateHostClassService],
                         preserveWhitespaces: false,
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
                         encapsulation: i0.ViewEncapsulation.None,
@@ -360,9 +360,9 @@
                 { type: i0.ElementRef },
                 { type: i0.ChangeDetectorRef },
                 { type: i0.Renderer2 },
-                { type: core.NzUpdateHostClassService },
+                { type: i2.NzUpdateHostClassService },
                 { type: i0.NgZone },
-                { type: undefined, decorators: [{ type: i0.Optional }, { type: i0.Inject, args: [core.NZ_WAVE_GLOBAL_CONFIG,] }] },
+                { type: undefined, decorators: [{ type: i0.Optional }, { type: i0.Inject, args: [i2.NZ_WAVE_GLOBAL_CONFIG,] }] },
                 { type: String, decorators: [{ type: i0.Optional }, { type: i0.Inject, args: [animations.ANIMATION_MODULE_TYPE,] }] }
             ];
         };
@@ -380,19 +380,19 @@
             size: [{ type: i0.Input }]
         };
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsButtonComponent.prototype, "nzBlock", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsButtonComponent.prototype, "nzGhost", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsButtonComponent.prototype, "nzSearch", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsButtonComponent.prototype, "loading", void 0);
         return CmacsButtonComponent;
@@ -423,7 +423,7 @@
              * @param {?} value
              * @return {?}
              */ function (value) {
-                this._disabled = core.toBoolean(value);
+                this._disabled = i2.toBoolean(value);
             },
             enumerable: true,
             configurable: true
@@ -609,7 +609,7 @@
                 if (this.isNotCompleteNumber(num)) {
                     return ( /** @type {?} */(num));
                 }
-                if (core.isNotNil(this.precision)) {
+                if (i2.isNotNil(this.precision)) {
                     return Number(Number(num).toFixed(this.precision));
                 }
                 return Number(num);
@@ -727,7 +727,7 @@
          * @return {?}
          */
             function (currentValue, ratio) {
-                if (core.isNotNil(this.precision)) {
+                if (i2.isNotNil(this.precision)) {
                     return this.precision;
                 }
                 /** @type {?} */
@@ -885,7 +885,7 @@
                 this.value = value;
                 this.actualValue = value;
                 /** @type {?} */
-                var displayValue = core.isNotNil(this.formatter(this.value)) ? this.formatter(this.value) : '';
+                var displayValue = i2.isNotNil(this.formatter(this.value)) ? this.formatter(this.value) : '';
                 this.displayValue = displayValue;
                 this.inputElement.nativeElement.value = displayValue;
                 this.disabledUp = this.disabledDown = false;
@@ -1116,11 +1116,11 @@
             formatter: [{ type: i0.Input }]
         };
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsInputNumberComponent.prototype, "disabled", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsInputNumberComponent.prototype, "autoFocus", void 0);
         return CmacsInputNumberComponent;
@@ -1346,11 +1346,11 @@
             size: [{ type: i0.Input }]
         };
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsInputGroupComponent.prototype, "search", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsInputGroupComponent.prototype, "compact", void 0);
         return CmacsInputGroupComponent;
@@ -2188,7 +2188,7 @@
                         selector: 'cmacs-picker',
                         exportAs: 'cmacsPicker',
                         template: "<span\r\n  cdkOverlayOrigin\r\n  #origin=\"cdkOverlayOrigin\"\r\n  class=\"{{ prefixCls }}-picker {{ size ? prefixCls + '-picker-' + size : '' }} {{ className }}\"\r\n  [ngStyle]=\"style\"\r\n  tabindex=\"0\"\r\n  (click)=\"onClickInputBox()\"\r\n>\r\n  <!-- Content of single picker -->\r\n  <ng-container *ngIf=\"!isRange\">\r\n    <input\r\n      #pickerInput\r\n      class=\"{{ prefixCls }}-picker-input ant-input\"\r\n      [class.ant-input-lg]=\"size === 'large'\"\r\n      [class.ant-input-sm]=\"size === 'small'\"\r\n      [class.ant-input-disabled]=\"disabled\"\r\n\r\n      [disabled]=\"disabled\"\r\n      readonly\r\n      value=\"{{ getReadableValue() }}\"\r\n      placeholder=\"{{ getPlaceholder() }}\"\r\n    />\r\n    <ng-container *ngTemplateOutlet=\"tplRightRest\"></ng-container>\r\n  </ng-container>\r\n\r\n  <!-- Content of range picker -->\r\n  <ng-container *ngIf=\"isRange\">\r\n    <span\r\n      #pickerInput\r\n      class=\"{{ prefixCls }}-picker-input ant-input\"\r\n      [class.ant-input-lg]=\"size === 'large'\"\r\n      [class.ant-input-sm]=\"size === 'small'\"\r\n      [class.ant-input-disabled]=\"disabled\"\r\n    >\r\n      <ng-container *ngTemplateOutlet=\"tplRangeInput; context: { partType: 'left' }\"></ng-container>\r\n      <span class=\"{{ prefixCls }}-range-picker-separator\"> ~ </span>\r\n      <ng-container *ngTemplateOutlet=\"tplRangeInput; context: { partType: 'right' }\"></ng-container>\r\n      <ng-container *ngTemplateOutlet=\"tplRightRest\"></ng-container>\r\n    </span>\r\n  </ng-container>\r\n</span>\r\n\r\n<!-- Input for Range ONLY -->\r\n<ng-template #tplRangeInput let-partType=\"partType\">\r\n  <input\r\n    class=\"{{ prefixCls }}-range-picker-input\"\r\n    [disabled]=\"disabled\"\r\n    readonly\r\n    value=\"{{ getReadableValue(partType) }}\"\r\n    placeholder=\"{{ getPlaceholder(partType) }}\"\r\n  />\r\n</ng-template>\r\n\r\n<!-- Right operator icons -->\r\n<ng-template #tplRightRest>\r\n  <i\r\n    nz-icon\r\n    type=\"close-circle\"\r\n    theme=\"fill\"\r\n    *ngIf=\"!disabled && !isEmptyValue(value) && allowClear\"\r\n    class=\"{{ prefixCls }}-picker-clear\"\r\n    (click)=\"onClickClear($event)\"\r\n  ></i>\r\n  <span class=\"{{ prefixCls }}-picker-icon\">\r\n    <i nz-icon type=\"calendar\"></i>\r\n  </span>\r\n</ng-template>\r\n\r\n<!-- Overlay -->\r\n<ng-template\r\n  cdkConnectedOverlay\r\n  nzConnectedOverlay\r\n  [cdkConnectedOverlayOrigin]=\"origin\"\r\n  [cdkConnectedOverlayOpen]=\"realOpenState\"\r\n  [cdkConnectedOverlayHasBackdrop]=\"!isOpenHandledByUser()\"\r\n  [cdkConnectedOverlayPositions]=\"overlayPositions\"\r\n  (positionChange)=\"onPositionChange($event)\"\r\n  (backdropClick)=\"onClickBackdrop()\"\r\n  (detach)=\"onOverlayDetach()\"\r\n>\r\n  <div\r\n    [nzNoAnimation]=\"noAnimation\"\r\n    [@slideMotion]=\"dropdownAnimation\"\r\n    (@slideMotion.start)=\"animationStart()\"\r\n    (@slideMotion.done)=\"animationDone()\"\r\n    style=\"position: relative;\"\r\n    [style.left]=\"currentPositionX === 'start' ? '-2px' : '2px'\"\r\n    [style.top]=\"currentPositionY === 'top' ? '-2px' : '2px'\"\r\n  > <!-- Compatible for overlay that not support offset dynamically and immediately -->\r\n    <ng-content></ng-content>\r\n  </div>\r\n</ng-template>",
-                        animations: [core.slideMotion],
+                        animations: [i2.slideMotion],
                         changeDetection: i0.ChangeDetectionStrategy.OnPush
                     }] }
         ];
@@ -2526,19 +2526,19 @@
             picker: [{ type: i0.ViewChild, args: [CmacsPickerComponent,] }]
         };
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], AbstractPickerComponent.prototype, "allowClear", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], AbstractPickerComponent.prototype, "autoFocus", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], AbstractPickerComponent.prototype, "disabled", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Boolean)
         ], AbstractPickerComponent.prototype, "open", void 0);
         return AbstractPickerComponent;
@@ -2580,7 +2580,7 @@
             function (changes) {
                 _super.prototype.ngOnChanges.call(this, changes);
                 if (changes.nzRenderExtraFooter) {
-                    this.extraFooter = core.valueFunctionProp(this.renderExtraFooter);
+                    this.extraFooter = i2.valueFunctionProp(this.renderExtraFooter);
                 }
             };
         /**
@@ -2656,7 +2656,7 @@
                 { type: i18n.NzI18nService },
                 { type: i0.ChangeDetectorRef },
                 { type: i18n.DateHelperService },
-                { type: core.NzNoAnimationDirective }
+                { type: i2.NzNoAnimationDirective }
             ];
         };
         CmacsHeaderPickerComponent.propDecorators = {
@@ -2693,7 +2693,7 @@
              * @param {?} value
              * @return {?}
              */ function (value) {
-                this._showTime = typeof value === 'object' ? value : core.toBoolean(value);
+                this._showTime = typeof value === 'object' ? value : i2.toBoolean(value);
             },
             enumerable: true,
             configurable: true
@@ -2741,7 +2741,7 @@
             function (changes) {
                 _super.prototype.ngOnChanges.call(this, changes);
                 if (changes.nzRenderExtraFooter) {
-                    this.extraFooter = core.valueFunctionProp(this.renderExtraFooter);
+                    this.extraFooter = i2.valueFunctionProp(this.renderExtraFooter);
                 }
                 if (changes.nzShowTime || changes.nzStyle) {
                     this.setFixedPickerStyle();
@@ -2860,7 +2860,7 @@
                 { type: i18n.NzI18nService },
                 { type: i0.ChangeDetectorRef },
                 { type: i18n.DateHelperService },
-                { type: core.NzNoAnimationDirective }
+                { type: i2.NzNoAnimationDirective }
             ];
         };
         CmacsDateRangePickerComponent.propDecorators = {
@@ -2876,7 +2876,7 @@
             cmacsOnOk: [{ type: i0.Output }]
         };
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsDateRangePickerComponent.prototype, "showToday", void 0);
         return CmacsDateRangePickerComponent;
@@ -2923,7 +2923,7 @@
                 { type: i18n.DateHelperService },
                 { type: i0.Renderer2 },
                 { type: i0.ElementRef },
-                { type: core.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
+                { type: i2.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
             ];
         };
         return CmacsDatePickerComponent;
@@ -2970,7 +2970,7 @@
                 { type: i18n.DateHelperService },
                 { type: i0.Renderer2 },
                 { type: i0.ElementRef },
-                { type: core.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
+                { type: i2.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
             ];
         };
         CmacsMonthPickerComponent.propDecorators = {
@@ -3020,7 +3020,7 @@
                 { type: i18n.DateHelperService },
                 { type: i0.Renderer2 },
                 { type: i0.ElementRef },
-                { type: core.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
+                { type: i2.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
             ];
         };
         CmacsYearPickerComponent.propDecorators = {
@@ -3069,7 +3069,7 @@
                 { type: i18n.DateHelperService },
                 { type: i0.Renderer2 },
                 { type: i0.ElementRef },
-                { type: core.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
+                { type: i2.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
             ];
         };
         return CmacsWeekPickerComponent;
@@ -3115,7 +3115,7 @@
                 { type: i18n.DateHelperService },
                 { type: i0.Renderer2 },
                 { type: i0.ElementRef },
-                { type: core.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
+                { type: i2.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
             ];
         };
         return CmacsRangePickerComponent;
@@ -3411,7 +3411,7 @@
                     this.customProcessDotTemplate = value;
                 }
                 else {
-                    this.showProcessDot = core.toBoolean(value);
+                    this.showProcessDot = i2.toBoolean(value);
                 }
                 this.updateChildrenSteps();
             },
@@ -3771,7 +3771,7 @@
          * @return {?}
          */
             function () {
-                if (core.isEmpty(this.contentElement.nativeElement)) {
+                if (i2.isEmpty(this.contentElement.nativeElement)) {
                     this.renderer.setStyle(this.contentElement.nativeElement, 'display', 'none');
                 }
                 else {
@@ -3879,19 +3879,19 @@
             checked: [{ type: i0.Input }]
         };
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsCheckboxComponent.prototype, "autoFocus", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsCheckboxComponent.prototype, "disabled", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsCheckboxComponent.prototype, "indeterminate", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsCheckboxComponent.prototype, "checked", void 0);
         return CmacsCheckboxComponent;
@@ -4036,7 +4036,7 @@
             disabled: [{ type: i0.Input }]
         };
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsCheckboxGroupComponent.prototype, "disabled", void 0);
         return CmacsCheckboxGroupComponent;
@@ -4264,11 +4264,11 @@
             onClick: [{ type: i0.HostListener, args: ['click', ['$event'],] }]
         };
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsRadioComponent.prototype, "disabled", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsRadioComponent.prototype, "autoFocus", void 0);
         return CmacsRadioComponent;
@@ -4363,7 +4363,7 @@
                          * @return {?}
                          */function (radio) {
                             radio.checked = radio.value === _this.value;
-                            if (core.isNotNil(_this.disabled)) {
+                            if (i2.isNotNil(_this.disabled)) {
                                 radio.disabled = _this.disabled;
                             }
                             if (_this.name) {
@@ -4536,7 +4536,7 @@
             name: [{ type: i0.Input }]
         };
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Boolean)
         ], CmacsRadioGroupComponent.prototype, "disabled", void 0);
         return CmacsRadioGroupComponent;
@@ -4668,8 +4668,8 @@
                         selector: 'cmacs-tag',
                         exportAs: 'cmacsTag',
                         preserveWhitespaces: false,
-                        providers: [core.NzUpdateHostClassService],
-                        animations: [core.fadeMotion],
+                        providers: [i2.NzUpdateHostClassService],
+                        animations: [i2.fadeMotion],
                         template: "<div [class.cmacs-closeable-inner]=\"mode === 'closeable' && !disabled\" [class.cmacs-closeable-disabled]=\"disabled\">\r\n  <ng-content></ng-content>\r\n</div>\r\n\r\n<i nz-icon type=\"close\" *ngIf=\"mode==='closeable' && !disabled\" tabindex=\"-1\" (click)=\"closeTag($event)\"></i>\r\n",
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
                         encapsulation: i0.ViewEncapsulation.None,
@@ -4687,7 +4687,7 @@
             return [
                 { type: i0.Renderer2 },
                 { type: i0.ElementRef },
-                { type: core.NzUpdateHostClassService }
+                { type: i2.NzUpdateHostClassService }
             ];
         };
         CmacsTagComponent.propDecorators = {
@@ -4704,11 +4704,11 @@
             checkedChange: [{ type: i0.Output }]
         };
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Boolean)
         ], CmacsTagComponent.prototype, "checked", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Boolean)
         ], CmacsTagComponent.prototype, "noAnimation", void 0);
         return CmacsTagComponent;
@@ -4862,7 +4862,7 @@
             { type: i0.Injectable }
         ];
         return CmacsMenuService;
-    }(core.NzMenuBaseService));
+    }(i2.NzMenuBaseService));
 
     /**
      * @fileoverview added by tsickle
@@ -5064,7 +5064,7 @@
                     /** @type {?} */
                     var padding = null;
                     if (_this.menuService.mode === 'inline') {
-                        if (core.isNotNil(_this.paddingLeft)) {
+                        if (i2.isNotNil(_this.paddingLeft)) {
                             padding = _this.paddingLeft;
                         }
                         else {
@@ -5116,7 +5116,7 @@
                         // tslint:disable-next-line: directive-selector
                         selector: '[cmacs-menu-item]',
                         exportAs: 'cmacsMenuItem',
-                        providers: [core.NzUpdateHostClassService],
+                        providers: [i2.NzUpdateHostClassService],
                         // tslint:disable-next-line: use-host-property-decorator
                         host: {
                             '(click)': 'clickMenuItem($event)'
@@ -5126,8 +5126,8 @@
         /** @nocollapse */
         CmacsMenuItemDirective.ctorParameters = function () {
             return [
-                { type: core.NzUpdateHostClassService },
-                { type: core.NzMenuBaseService },
+                { type: i2.NzUpdateHostClassService },
+                { type: i2.NzMenuBaseService },
                 { type: CmacsSubmenuService, decorators: [{ type: i0.Optional }] },
                 { type: i0.Renderer2 },
                 { type: i0.ElementRef }
@@ -5139,11 +5139,11 @@
             selected: [{ type: i0.Input }]
         };
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsMenuItemDirective.prototype, "disabled", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsMenuItemDirective.prototype, "selected", void 0);
         return CmacsMenuItemDirective;
@@ -5187,7 +5187,7 @@
             this.openChange = new i0.EventEmitter();
             this.placement = 'rightTop';
             this.expandState = 'collapsed';
-            this.overlayPositions = __spread(core.DEFAULT_SUBMENU_POSITIONS);
+            this.overlayPositions = __spread(i2.DEFAULT_SUBMENU_POSITIONS);
             this.destroy$ = new rxjs.Subject();
             this.isChildMenuSelected = false;
             this.isMouseHover = false;
@@ -5248,7 +5248,7 @@
          */
             function (position) {
                 // tslint:disable-next-line: no-non-null-assertion
-                this.placement = ( /** @type {?} */(core.getPlacementName(position)));
+                this.placement = ( /** @type {?} */(i2.getPlacementName(position)));
                 this.cdr.markForCheck();
             };
         /**
@@ -5301,7 +5301,7 @@
                         _this.expandState = 'collapsed';
                     }
                     _this.overlayPositions =
-                        mode === 'horizontal' ? [core.POSITION_MAP.bottomLeft] : [core.POSITION_MAP.rightTop, core.POSITION_MAP.leftTop];
+                        mode === 'horizontal' ? [i2.POSITION_MAP.bottomLeft] : [i2.POSITION_MAP.rightTop, i2.POSITION_MAP.leftTop];
                     if (open !== _this.open) {
                         _this.open = open;
                         _this.openChange.emit(_this.open);
@@ -5388,8 +5388,8 @@
                         // tslint:disable-next-line: component-selector
                         selector: '[cmacs-submenu]',
                         exportAs: 'cmacsSubmenu',
-                        providers: [CmacsSubmenuService, core.NzUpdateHostClassService],
-                        animations: [core.collapseMotion, core.zoomBigMotion, core.slideMotion],
+                        providers: [CmacsSubmenuService, i2.NzUpdateHostClassService],
+                        animations: [i2.collapseMotion, i2.zoomBigMotion, i2.slideMotion],
                         encapsulation: i0.ViewEncapsulation.None,
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
                         preserveWhitespaces: false,
@@ -5401,12 +5401,12 @@
         CmacsSubMenuComponent.ctorParameters = function () {
             return [
                 { type: i0.ElementRef },
-                { type: core.NzMenuBaseService },
+                { type: i2.NzMenuBaseService },
                 { type: i0.ChangeDetectorRef },
                 { type: CmacsSubmenuService },
-                { type: core.NzUpdateHostClassService },
+                { type: i2.NzUpdateHostClassService },
                 { type: platform.Platform },
-                { type: core.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
+                { type: i2.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
             ];
         };
         CmacsSubMenuComponent.propDecorators = {
@@ -5421,11 +5421,11 @@
             listOfCmacsMenuItemDirective: [{ type: i0.ContentChildren, args: [CmacsMenuItemDirective, { descendants: true },] }]
         };
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsSubMenuComponent.prototype, "open", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsSubMenuComponent.prototype, "disabled", void 0);
         return CmacsSubMenuComponent;
@@ -5581,12 +5581,12 @@
                         selector: '[cmacs-menu]',
                         exportAs: 'cmacsMenu',
                         providers: [
-                            core.NzUpdateHostClassService,
+                            i2.NzUpdateHostClassService,
                             CmacsMenuService,
                             {
-                                provide: core.NzMenuBaseService,
+                                provide: i2.NzMenuBaseService,
                                 useFactory: ɵ0,
-                                deps: [[new i0.SkipSelf(), new i0.Optional(), core.NzDropdownHigherOrderServiceToken], CmacsMenuService]
+                                deps: [[new i0.SkipSelf(), new i0.Optional(), i2.NzDropdownHigherOrderServiceToken], CmacsMenuService]
                             }
                         ]
                     },] }
@@ -5595,8 +5595,8 @@
         CmacsMenuDirective.ctorParameters = function () {
             return [
                 { type: i0.ElementRef },
-                { type: core.NzMenuBaseService },
-                { type: core.NzUpdateHostClassService }
+                { type: i2.NzMenuBaseService },
+                { type: i2.NzUpdateHostClassService }
             ];
         };
         CmacsMenuDirective.propDecorators = {
@@ -5611,15 +5611,15 @@
             click: [{ type: i0.Output }]
         };
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsMenuDirective.prototype, "inDropDown", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsMenuDirective.prototype, "inlineCollapsed", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsMenuDirective.prototype, "selectable", void 0);
         return CmacsMenuDirective;
@@ -6230,7 +6230,7 @@
                 { type: i0.Renderer2 },
                 { type: i0.NgZone },
                 { type: i0.ChangeDetectorRef },
-                { type: core.NzMeasureScrollbarService },
+                { type: i2.NzMeasureScrollbarService },
                 { type: i18n.NzI18nService },
                 { type: platform.Platform },
                 { type: i0.ElementRef },
@@ -6283,63 +6283,63 @@
             handleClick: [{ type: i0.HostListener, args: ['window:click', ['$event'],] }]
         };
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsGridComponent.prototype, "virtualScroll", void 0);
         __decorate([
-            core.InputNumber(),
+            i2.InputNumber(),
             __metadata("design:type", Object)
         ], CmacsGridComponent.prototype, "virtualItemSize", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsGridComponent.prototype, "frontPagination", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsGridComponent.prototype, "templateMode", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsGridComponent.prototype, "bordered", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsGridComponent.prototype, "showPagination", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsGridComponent.prototype, "loading", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsGridComponent.prototype, "showSizeChanger", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsGridComponent.prototype, "hideOnSinglePage", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsGridComponent.prototype, "showQuickJumper", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsGridComponent.prototype, "simple", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsGridComponent.prototype, "checkboxSelect", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsGridComponent.prototype, "inLineEdit", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsGridComponent.prototype, "dataTable", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsGridComponent.prototype, "showRate", void 0);
         return CmacsGridComponent;
@@ -6358,7 +6358,7 @@
             { type: i0.Injectable }
         ];
         return NzTreeService;
-    }(core.NzTreeBaseService));
+    }(i2.NzTreeBaseService));
 
     /**
      * @fileoverview added by tsickle
@@ -6439,8 +6439,8 @@
              * @param {?} value
              * @return {?}
              */ function (value) {
-                this._nzMultiple = core.toBoolean(value);
-                this.nzTreeService.isMultiple = core.toBoolean(value);
+                this._nzMultiple = i2.toBoolean(value);
+                this.nzTreeService.isMultiple = i2.toBoolean(value);
             },
             enumerable: true,
             configurable: true
@@ -6545,7 +6545,7 @@
              */ function (value) {
                 this._searchValue = value;
                 this.nzTreeService.searchExpand(value);
-                if (core.isNotNil(value)) {
+                if (i2.isNotNil(value)) {
                     this.searchValueChange.emit(this.nzTreeService.formatEvent('search', null, null));
                     // tslint:disable-next-line: deprecation
                     this.nzOnSearchNode.emit(this.nzTreeService.formatEvent('search', null, null));
@@ -6723,10 +6723,10 @@
          */
             function (changes) {
                 if (changes.nzCheckStrictly) {
-                    this.nzTreeService.isCheckStrictly = core.toBoolean(changes.nzCheckStrictly.currentValue);
+                    this.nzTreeService.isCheckStrictly = i2.toBoolean(changes.nzCheckStrictly.currentValue);
                 }
                 if (changes.nzMultiple) {
-                    this.nzTreeService.isMultiple = core.toBoolean(changes.nzMultiple.currentValue);
+                    this.nzTreeService.isMultiple = i2.toBoolean(changes.nzMultiple.currentValue);
                 }
             };
         /**
@@ -6749,9 +6749,9 @@
                         providers: [
                             NzTreeService,
                             {
-                                provide: core.NzTreeBaseService,
+                                provide: i2.NzTreeBaseService,
                                 useFactory: NzTreeServiceFactory,
-                                deps: [[new i0.SkipSelf(), new i0.Optional(), core.NzTreeHigherOrderServiceToken], NzTreeService]
+                                deps: [[new i0.SkipSelf(), new i0.Optional(), i2.NzTreeHigherOrderServiceToken], NzTreeService]
                             },
                             {
                                 provide: forms.NG_VALUE_ACCESSOR,
@@ -6766,9 +6766,9 @@
         /** @nocollapse */
         CmacsTreeComponent.ctorParameters = function () {
             return [
-                { type: core.NzTreeBaseService },
+                { type: i2.NzTreeBaseService },
                 { type: i0.ChangeDetectorRef },
-                { type: core.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
+                { type: i2.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
             ];
         };
         CmacsTreeComponent.propDecorators = {
@@ -6814,60 +6814,60 @@
             treeTemplate: [{ type: i0.ContentChild, args: ['treeTemplate',] }]
         };
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsTreeComponent.prototype, "showIcon", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsTreeComponent.prototype, "showExpand", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsTreeComponent.prototype, "showLine", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsTreeComponent.prototype, "checkable", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsTreeComponent.prototype, "asyncData", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsTreeComponent.prototype, "draggable", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsTreeComponent.prototype, "expandAll", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsTreeComponent.prototype, "hideUnMatched", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsTreeComponent.prototype, "selectMode", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsTreeComponent.prototype, "nzCheckStrictly", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsTreeComponent.prototype, "nzBlockNode", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsTreeComponent.prototype, "defaultExpandAll", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Boolean),
             __metadata("design:paramtypes", [Boolean])
         ], CmacsTreeComponent.prototype, "nzMultiple", null);
         return CmacsTreeComponent;
-    }(core.NzTreeBase));
+    }(i2.NzTreeBase));
 
     /**
      * @fileoverview added by tsickle
@@ -7604,18 +7604,18 @@
                         template: "<li\r\n  #dragElement\r\n  role=\"treeitem\"\r\n  [style.display]=\"displayStyle\"\r\n  [ngClass]=\"nzNodeClass\">\r\n  <ng-container *ngIf=\"showExpand\">\r\n    <span\r\n      [ngClass]=\"nzNodeSwitcherClass\"\r\n      (click)=\"_clickExpand($event)\">\r\n      <ng-container *ngIf=\"isShowSwitchIcon\">\r\n        <ng-container *ngIf=\"!treeNode.isLoading\">\r\n          <ng-template\r\n            *ngIf=\"isTemplateRef(expandedIcon)\"\r\n            [ngTemplateOutlet]=\"expandedIcon\"\r\n            [ngTemplateOutletContext]=\"{ $implicit: treeNode }\">\r\n          </ng-template>\r\n          <i\r\n            *ngIf=\"!isTemplateRef(expandedIcon)\"\r\n            nz-icon\r\n            type=\"caret-down\"\r\n            [class.ant-select-switcher-icon]=\"selectMode\"\r\n            [class.ant-tree-switcher-icon]=\"!selectMode\">\r\n          </i>\r\n        </ng-container>\r\n        <i *ngIf=\"treeNode.isLoading\" nz-icon type=\"loading\" [spin]=\"true\" class=\"ant-tree-switcher-loading-icon\"></i>\r\n      </ng-container>\r\n      <ng-container *ngIf=\"showLine\">\r\n        <ng-template\r\n          *ngIf=\"isTemplateRef(expandedIcon)\"\r\n          [ngTemplateOutlet]=\"expandedIcon\"\r\n          [ngTemplateOutletContext]=\"{ $implicit: treeNode }\">\r\n        </ng-template>\r\n        <ng-container *ngIf=\"!isTemplateRef(expandedIcon)\">\r\n          <i *ngIf=\"isShowLineIcon\" nz-icon [type]=\"isSwitcherOpen ? 'minus-square' : 'plus-square'\" class=\"ant-tree-switcher-line-icon\"></i>\r\n          <i *ngIf=\"!isShowLineIcon\" nz-icon type=\"file\" class=\"ant-tree-switcher-line-icon\"></i>\r\n        </ng-container>\r\n      </ng-container>\r\n    </span>\r\n  </ng-container>\r\n  <ng-container *ngIf=\"checkable\">\r\n    <span\r\n      [ngClass]=\"nzNodeCheckboxClass\"\r\n      (click)=\"_clickCheckBox($event)\">\r\n      <span [class.ant-tree-checkbox-inner]=\"!selectMode\"\r\n            [class.ant-select-tree-checkbox-inner]=\"selectMode\"></span>\r\n    </span>\r\n  </ng-container>\r\n  <ng-container *ngIf=\"!treeTemplate\">\r\n    <span\r\n      title=\"{{treeNode.title}}\"\r\n      [attr.draggable]=\"canDraggable\"\r\n      [attr.aria-grabbed]=\"canDraggable\"\r\n      [ngClass]=\"nzNodeContentClass\"\r\n      [class.draggable]=\"canDraggable\">\r\n      <span\r\n        *ngIf=\"treeNode.icon && showIcon\"\r\n        [class.ant-tree-icon__open]=\"isSwitcherOpen\"\r\n        [class.ant-tree-icon__close]=\"isSwitcherClose\"\r\n        [class.ant-tree-icon_loading]=\"treeNode.isLoading\"\r\n        [ngClass]=\"nzNodeContentLoadingClass\">\r\n        <span\r\n          [ngClass]=\"nzNodeContentIconClass\">\r\n          <i nz-icon *ngIf=\"nzIcon\" [type]=\"nzIcon\"></i>\r\n        </span>\r\n      </span>\r\n      <span class=\"ant-tree-title\">\r\n        <ng-container *ngIf=\"treeNode.isMatched\">\r\n          <span>\r\n            {{highlightKeys[0]}}<span class=\"font-highlight\">{{searchValue}}</span>{{highlightKeys[1]}}\r\n          </span>\r\n        </ng-container>\r\n        <ng-container *ngIf=\"!treeNode.isMatched\">\r\n          {{treeNode.title}}\r\n        </ng-container>\r\n      </span>\r\n    </span>\r\n  </ng-container>\r\n  <ng-template\r\n    [ngTemplateOutlet]=\"treeTemplate\"\r\n    [ngTemplateOutletContext]=\"{ $implicit: treeNode }\">\r\n  </ng-template>\r\n\r\n  <ul\r\n    role=\"group\"\r\n    class=\"ant-tree-child-tree\"\r\n    [class.ant-tree-child-tree-open]=\"!selectMode || treeNode.isExpanded\"\r\n    data-expanded=\"true\"\r\n    [@.disabled]=\"noAnimation\"\r\n    [@collapseMotion]=\"treeNode.isExpanded ? 'expanded' : 'collapsed'\">\r\n    <cmacs-tree-node\r\n      *ngFor=\"let node of treeNode.getChildren()\"\r\n      [treeNode]=\"node\"\r\n      [showExpand]=\"showExpand\"\r\n      [noAnimation]=\"noAnimation\"\r\n      [selectMode]=\"selectMode\"\r\n      [showLine]=\"showLine\"\r\n      [expandedIcon]=\"expandedIcon\"\r\n      [draggable]=\"draggable\"\r\n      [checkable]=\"checkable\"\r\n      [asyncData]=\"asyncData\"\r\n      [expandAll]=\"expandAll\"\r\n      [defaultExpandAll]=\"defaultExpandAll\"\r\n      [showIcon]=\"showIcon\"\r\n      [searchValue]=\"searchValue\"\r\n      [hideUnMatched]=\"hideUnMatched\"\r\n      [beforeDrop]=\"beforeDrop\"\r\n      [treeTemplate]=\"treeTemplate\">\r\n    </cmacs-tree-node>\r\n  </ul>\r\n</li>\r\n",
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
                         preserveWhitespaces: false,
-                        animations: [core.collapseMotion]
+                        animations: [i2.collapseMotion]
                     }] }
         ];
         /** @nocollapse */
         CmacsTreeNodeComponent.ctorParameters = function () {
             return [
-                { type: core.NzTreeBaseService },
+                { type: i2.NzTreeBaseService },
                 { type: i0.NgZone },
                 { type: i0.Renderer2 },
                 { type: i0.ElementRef },
                 { type: i0.ChangeDetectorRef },
-                { type: core.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
+                { type: i2.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
             ];
         };
         CmacsTreeNodeComponent.propDecorators = {
@@ -7642,35 +7642,35 @@
             nzContextMenu: [{ type: i0.HostListener, args: ['contextmenu', ['$event'],] }]
         };
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Boolean)
         ], CmacsTreeNodeComponent.prototype, "showLine", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Boolean)
         ], CmacsTreeNodeComponent.prototype, "showExpand", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Boolean)
         ], CmacsTreeNodeComponent.prototype, "checkable", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Boolean)
         ], CmacsTreeNodeComponent.prototype, "asyncData", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsTreeNodeComponent.prototype, "hideUnMatched", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsTreeNodeComponent.prototype, "noAnimation", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsTreeNodeComponent.prototype, "selectMode", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsTreeNodeComponent.prototype, "showIcon", void 0);
         return CmacsTreeNodeComponent;
@@ -7867,7 +7867,7 @@
                         selector: '[cmacs-select-top-control]',
                         exportAs: 'cmacsSelectTopControl',
                         preserveWhitespaces: false,
-                        animations: [core.zoomMotion],
+                        animations: [i2.zoomMotion],
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
                         encapsulation: i0.ViewEncapsulation.None,
                         template: "<ng-template #inputTemplate>\r\n  <input #inputElement autocomplete=\"something-new\" [ngStyle]=\"showCustomSearchStyle\" class=\"ant-select-search__field\"\r\n    (compositionstart)=\"isComposing = true\" (compositionend)=\"isComposing = false\" (input)=\"updateWidth()\"\r\n    [ngModel]=\"inputValue\" (ngModelChange)=\"setInputValue($event)\" [disabled]=\"nzSelectService.disabled\">\r\n</ng-template>\r\n<span class=\"ant-select-arrow\" style=\"right: auto !important; margin-left: 2px;\" nz-select-unselectable\r\n  *ngIf=\"showCustomSearch\">\r\n  <i nz-icon type=\"search\" style=\"font-size: 16px !important;\" *ngIf=\"!nzSuffixIcon; else nzSuffixIcon\"></i>\r\n</span>\r\n<div class=\"ant-select-selection__rendered\">\r\n  <div *ngIf=\"nzPlaceHolder\" nz-select-unselectable [style.display]=\"placeHolderDisplay\"\r\n    class=\"ant-select-selection__placeholder\">{{ nzPlaceHolder }}</div>\r\n  <!--single mode-->\r\n  <ng-container *ngIf=\"nzSelectService.isSingleMode\">\r\n    <!--selected label-->\r\n    <div *ngIf=\"nzSelectService.listOfCachedSelectedOption.length && nzSelectService.listOfSelectedValue.length\"\r\n      class=\"ant-select-selection-selected-value\" [attr.title]=\"nzSelectService.listOfCachedSelectedOption[0]?.nzLabel\"\r\n      [ngStyle]=\"selectedValueStyle\">\r\n      {{ nzSelectService.listOfCachedSelectedOption[0]?.nzLabel }}\r\n    </div>\r\n    <!--show search-->\r\n    <div *ngIf=\"nzShowSearch\" class=\"ant-select-search ant-select-search--inline\"\r\n      [style.display]=\"nzOpen ? 'block' : 'none'\">\r\n      <div class=\"ant-select-search__field__wrap\">\r\n        <ng-template [ngTemplateOutlet]=\"inputTemplate\"></ng-template>\r\n        <span class=\"ant-select-search__field__mirror\">{{inputValue}}&nbsp;</span>\r\n      </div>\r\n    </div>\r\n  </ng-container>\r\n  <!--multiple or tags mode-->\r\n  <ul *ngIf=\"nzSelectService.isMultipleOrTags\">\r\n    <ng-container\r\n      *ngFor=\"let option of nzSelectService.listOfCachedSelectedOption | slice: 0 : nzMaxTagCount;trackBy:trackValue;\">\r\n      <li [@zoomMotion] [nzNoAnimation]=\"noAnimation?.nzNoAnimation\" [attr.title]=\"option.nzLabel\"\r\n        [class.ant-select-selection__choice__disabled]=\"option.nzDisabled\" class=\"ant-select-selection__choice\">\r\n        <div class=\"ant-select-selection__choice__content\">{{ option.nzLabel }}</div>\r\n        <span *ngIf=\"!option.nzDisabled\" class=\"ant-select-selection__choice__remove\"\r\n          (mousedown)=\"$event.preventDefault()\" (click)=\"removeSelectedValue(option, $event)\">\r\n          <i nz-icon type=\"close\" class=\"ant-select-remove-icon\" *ngIf=\"!nzRemoveIcon; else nzRemoveIcon\"></i>\r\n        </span>\r\n      </li>\r\n    </ng-container>\r\n    <li *ngIf=\"nzSelectService.listOfCachedSelectedOption.length > nzMaxTagCount\" [@zoomMotion]\r\n      [nzNoAnimation]=\"noAnimation?.nzNoAnimation\" class=\"ant-select-selection__choice\">\r\n      <div class=\"ant-select-selection__choice__content\">\r\n        <ng-container *ngIf=\"nzMaxTagPlaceholder\">\r\n          <ng-template [ngTemplateOutlet]=\"nzMaxTagPlaceholder\"\r\n            [ngTemplateOutletContext]=\"{ $implicit: nzSelectService.listOfSelectedValue | slice: nzMaxTagCount}\">\r\n          </ng-template>\r\n        </ng-container>\r\n        <ng-container *ngIf=\"!nzMaxTagPlaceholder\">\r\n          + {{ nzSelectService.listOfCachedSelectedOption.length - nzMaxTagCount }} ...\r\n        </ng-container>\r\n      </div>\r\n    </li>\r\n    <li class=\"ant-select-search ant-select-search--inline\">\r\n      <ng-template [ngTemplateOutlet]=\"inputTemplate\"></ng-template>\r\n    </li>\r\n  </ul>\r\n</div>\r\n<span *ngIf=\"nzAllowClear && nzSelectService.listOfSelectedValue.length\" class=\"ant-select-selection__clear\"\r\n  nz-select-unselectable (mousedown)=\"$event.preventDefault()\" (click)=\"onClearSelection($event)\">\r\n  <i nz-icon type=\"close-circle\" theme=\"fill\" *ngIf=\"!nzClearIcon; else nzClearIcon\" class=\"ant-select-close-icon\"></i>\r\n</span>\r\n<span class=\"ant-select-arrow\" nz-select-unselectable *ngIf=\"showCustomSearch; else notCustomArrow\">\r\n    <i nz-icon type=\"arrow-right\" class=\"ant-select-arrow-icon\" *ngIf=\"!nzSuffixIcon; else nzSuffixIcon\"></i>\r\n</span>\r\n<ng-template #notCustomArrow>\r\n  <span class=\"ant-select-arrow\" nz-select-unselectable *ngIf=\"nzShowArrow\">\r\n    <i nz-icon type=\"loading\" *ngIf=\"nzLoading; else defaultArrow\"></i>\r\n    <ng-template #defaultArrow>\r\n      <i nz-icon type=\"down\" class=\"ant-select-arrow-icon\" *ngIf=\"!nzSuffixIcon; else nzSuffixIcon\"></i>\r\n    </ng-template>\r\n  </span>\r\n</ng-template>"
@@ -7879,7 +7879,7 @@
                 { type: i0.Renderer2 },
                 { type: ngZorroAntd.NzSelectService },
                 { type: i0.ChangeDetectorRef },
-                { type: core.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
+                { type: i2.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
             ];
         };
         CmacsSelectTopControlComponent.propDecorators = {
@@ -7938,11 +7938,11 @@
             nzCustomContent: [{ type: i0.Input, args: ['customContent',] }]
         };
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsOptionComponent.prototype, "nzDisabled", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsOptionComponent.prototype, "nzCustomContent", void 0);
         return CmacsOptionComponent;
@@ -8014,7 +8014,7 @@
              * @param {?} value
              * @return {?}
              */ function (value) {
-                this.nzSelectService.autoClearSearchValue = core.toBoolean(value);
+                this.nzSelectService.autoClearSearchValue = i2.toBoolean(value);
             },
             enumerable: true,
             configurable: true
@@ -8034,7 +8034,7 @@
              * @param {?} value
              * @return {?}
              */ function (value) {
-                this.nzSelectService.serverSearch = core.toBoolean(value);
+                this.nzSelectService.serverSearch = i2.toBoolean(value);
             },
             enumerable: true,
             configurable: true
@@ -8081,7 +8081,7 @@
              * @param {?} value
              * @return {?}
              */ function (value) {
-                this._autoFocus = core.toBoolean(value);
+                this._autoFocus = i2.toBoolean(value);
                 this.updateAutoFocus();
             },
             enumerable: true,
@@ -8108,7 +8108,7 @@
              * @param {?} value
              * @return {?}
              */ function (value) {
-                this._disabled = core.toBoolean(value);
+                this._disabled = i2.toBoolean(value);
                 this.nzSelectService.disabled = this._disabled;
                 this.nzSelectService.check();
                 if (this.disabled && this.isInit) {
@@ -8249,7 +8249,7 @@
                 this.value = value;
                 /** @type {?} */
                 var listValue = [];
-                if (core.isNotNil(value)) {
+                if (i2.isNotNil(value)) {
                     if (Array.isArray(value)) {
                         listValue = value;
                     }
@@ -8409,7 +8409,7 @@
                         ],
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
                         encapsulation: i0.ViewEncapsulation.None,
-                        animations: [core.slideMotion],
+                        animations: [i2.slideMotion],
                         template: "<div cdkOverlayOrigin\r\n  cmacs-select-top-control\r\n  tabindex=\"0\"\r\n  class=\"ant-select-selection\"\r\n  [nzOpen]=\"nzOpen\"\r\n  [nzNoAnimation]=\"noAnimation?.nzNoAnimation\"\r\n  [nzMaxTagPlaceholder]=\"maxTagPlaceholder\"\r\n  [nzPlaceHolder]=\"placeHolder\"\r\n  [nzAllowClear]=\"allowClear\"\r\n  [nzMaxTagCount]=\"maxTagCount\"\r\n  [nzShowArrow]=\"showArrow\"\r\n  [nzLoading]=\"loading\"\r\n  [nzSuffixIcon]=\"suffixIcon\"\r\n  [nzClearIcon]=\"clearIcon\"\r\n  [nzRemoveIcon]=\"removeIcon\"\r\n  [nzShowSearch]=\"showSearch\"\r\n  [showCustomSearch]=\"showCustomSearch\"\r\n  [nzTokenSeparators]=\"tokenSeparators\"\r\n  [class.ant-select-selection--single]=\"nzSelectService.isSingleMode\"\r\n  [class.ant-select-selection--multiple]=\"nzSelectService.isMultipleOrTags\"\r\n  (keydown)=\"onKeyDown($event)\">\r\n</div>\r\n<ng-template\r\n  cdkConnectedOverlay\r\n  nzConnectedOverlay\r\n  [cdkConnectedOverlayHasBackdrop]=\"true\"\r\n  [cdkConnectedOverlayMinWidth]=\"dropdownMatchSelectWidth? null : triggerWidth\"\r\n  [cdkConnectedOverlayWidth]=\"dropdownMatchSelectWidth? triggerWidth : null\"\r\n  [cdkConnectedOverlayOrigin]=\"cdkOverlayOrigin\"\r\n  (backdropClick)=\"closeDropDown()\"\r\n  (detach)=\"closeDropDown();\"\r\n  (positionChange)=\"onPositionChange($event)\"\r\n  [cdkConnectedOverlayOpen]=\"nzOpen\">\r\n  <div\r\n    class=\"ant-select-dropdown\"\r\n    [class.ant-select-dropdown--single]=\"nzSelectService.isSingleMode\"\r\n    [class.ant-select-dropdown--multiple]=\"nzSelectService.isMultipleOrTags\"\r\n    [class.ant-select-dropdown-placement-bottomLeft]=\"dropDownPosition === 'bottom'\"\r\n    [class.ant-select-dropdown-placement-topLeft]=\"dropDownPosition === 'top'\"\r\n    \r\n    [@slideMotion]=\"dropDownPosition\"\r\n    [nzNoAnimation]=\"noAnimation?.nzNoAnimation\"\r\n    [ngStyle]=\"dropdownStyle\">\r\n    <div nz-option-container\r\n      style=\"overflow: auto;transform: translateZ(0px);\"\r\n      (keydown)=\"onKeyDown($event)\"\r\n      [nzMenuItemSelectedIcon]=\"menuItemSelectedIcon\"\r\n      [nzNotFoundContent]=\"notFoundContent\"\r\n      (nzScrollToBottom)=\"scrollToBottom.emit()\">\r\n    </div>\r\n    <ng-template [ngTemplateOutlet]=\"dropdownRender\"></ng-template>\r\n  </div>\r\n</ng-template>\r\n<!--can not use ViewChild since it will match sub options in option group -->\r\n<ng-template>\r\n  <ng-content></ng-content>\r\n</ng-template>",
                         // tslint:disable-next-line: use-host-property-decorator
                         host: {
@@ -8434,7 +8434,7 @@
                 { type: a11y.FocusMonitor },
                 { type: platform.Platform },
                 { type: i0.ElementRef },
-                { type: core.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
+                { type: i2.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
             ];
         };
         CmacsDropdownComponent.propDecorators = {
@@ -8478,19 +8478,19 @@
             disabled: [{ type: i0.Input }]
         };
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsDropdownComponent.prototype, "allowClear", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsDropdownComponent.prototype, "showSearch", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsDropdownComponent.prototype, "showCustomSearch", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsDropdownComponent.prototype, "loading", void 0);
         return CmacsDropdownComponent;
@@ -9235,7 +9235,7 @@
                      * @param {?} doClose
                      * @return {?}
                      */function (doClose) { return doClose !== false && _this.close(( /** @type {?} */(doClose))); });
-                    if (core.isPromise(result)) {
+                    if (i2.isPromise(result)) {
                         this[loadingKey] = true;
                         /** @type {?} */
                         var handleThen = ( /**
@@ -9380,7 +9380,7 @@
             function (button) {
                 /** @type {?} */
                 var result = this.getButtonCallableProp(button, 'onClick');
-                if (core.isPromise(result)) {
+                if (i2.isPromise(result)) {
                     button.loading = true;
                     (( /** @type {?} */(result))).then(( /**
                      * @return {?}
@@ -9548,7 +9548,7 @@
                     /** @type {?} */
                     var previouslyDOMRect = this.previouslyFocusedElement.getBoundingClientRect();
                     /** @type {?} */
-                    var lastPosition = core.getElementOffset(this.previouslyFocusedElement);
+                    var lastPosition = i2.getElementOffset(this.previouslyFocusedElement);
                     /** @type {?} */
                     var x = lastPosition.left + previouslyDOMRect.width / 2;
                     /** @type {?} */
@@ -9663,43 +9663,43 @@
             autoFocusButtonOk: [{ type: i0.ViewChild, args: ['autoFocusButtonOk', { read: i0.ElementRef },] }]
         };
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Boolean)
         ], CmacsModalComponent.prototype, "visible", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Boolean)
         ], CmacsModalComponent.prototype, "closable", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Boolean)
         ], CmacsModalComponent.prototype, "okLoading", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Boolean)
         ], CmacsModalComponent.prototype, "okDisabled", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Boolean)
         ], CmacsModalComponent.prototype, "cancelDisabled", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Boolean)
         ], CmacsModalComponent.prototype, "cancelLoading", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Boolean)
         ], CmacsModalComponent.prototype, "keyboard", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsModalComponent.prototype, "noAnimation", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Boolean)
         ], CmacsModalComponent.prototype, "cmacsMask", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Boolean)
         ], CmacsModalComponent.prototype, "cmacsMaskClosable", void 0);
         return CmacsModalComponent;
@@ -9908,7 +9908,7 @@
             cmacsSeparator: [{ type: i0.Input }]
         };
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsBreadcrumbComponent.prototype, "cmacsAutoGenerate", void 0);
         return CmacsBreadcrumbComponent;
@@ -10014,15 +10014,15 @@
             tab: [{ type: i0.ContentChild, args: [CmacsCardTabComponent,] }]
         };
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsCardComponent.prototype, "bordered", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsCardComponent.prototype, "loading", void 0);
         __decorate([
-            core.InputBoolean(),
+            i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsCardComponent.prototype, "hoverable", void 0);
         return CmacsCardComponent;
@@ -10131,8 +10131,8 @@
             this.clickOk = new i0.EventEmitter();
             this.clickToday = new i0.EventEmitter();
             this.prefixCls = 'ant-calendar';
-            this.isTemplateRef = core.isTemplateRef;
-            this.isNonEmptyString = core.isNonEmptyString;
+            this.isTemplateRef = i2.isTemplateRef;
+            this.isNonEmptyString = i2.isNonEmptyString;
         }
         CalendarFooterComponent.decorators = [
             { type: i0.Component, args: [{
@@ -10730,8 +10730,8 @@
             this.dayHover = new i0.EventEmitter(); // Emitted when hover on a day by mouse enter
             // Emitted when hover on a day by mouse enter
             this.prefixCls = 'ant-calendar';
-            this.isTemplateRef = core.isTemplateRef;
-            this.isNonEmptyString = core.isNonEmptyString;
+            this.isTemplateRef = i2.isTemplateRef;
+            this.isNonEmptyString = i2.isNonEmptyString;
         }
         /**
          * @return {?}
@@ -10921,7 +10921,7 @@
                             isDisabled: false,
                             isToday: false,
                             title: this_1.getDateTitle(current),
-                            customContent: core.valueFunctionProp(this_1.dateRender, current),
+                            customContent: i2.valueFunctionProp(this_1.dateRender, current),
                             // Customized content
                             content: "" + current.getDate(),
                             onClick: ( /**
@@ -12905,163 +12905,6 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
-    /** @type {?} */
-    var NZ_LOGGER_STATE = new i0.InjectionToken('nz-logger-state');
-    // Whether print the log
-    var LoggerService = /** @class */ (function () {
-        function LoggerService(_loggerState) {
-            this._loggerState = _loggerState;
-        }
-        // tslint:disable-next-line:no-any
-        // tslint:disable-next-line:no-any
-        /**
-         * @param {...?} args
-         * @return {?}
-         */
-        LoggerService.prototype.log =
-            // tslint:disable-next-line:no-any
-            /**
-             * @param {...?} args
-             * @return {?}
-             */
-            function () {
-                var args = [];
-                for (var _i = 0; _i < arguments.length; _i++) {
-                    args[_i] = arguments[_i];
-                }
-                if (this._loggerState) {
-                    console.log.apply(console, __spread(args));
-                }
-            };
-        // tslint:disable-next-line:no-any
-        // tslint:disable-next-line:no-any
-        /**
-         * @param {...?} args
-         * @return {?}
-         */
-        LoggerService.prototype.warn =
-            // tslint:disable-next-line:no-any
-            /**
-             * @param {...?} args
-             * @return {?}
-             */
-            function () {
-                var args = [];
-                for (var _i = 0; _i < arguments.length; _i++) {
-                    args[_i] = arguments[_i];
-                }
-                if (this._loggerState) {
-                    console.warn.apply(console, __spread(args));
-                }
-            };
-        // tslint:disable-next-line:no-any
-        // tslint:disable-next-line:no-any
-        /**
-         * @param {...?} args
-         * @return {?}
-         */
-        LoggerService.prototype.error =
-            // tslint:disable-next-line:no-any
-            /**
-             * @param {...?} args
-             * @return {?}
-             */
-            function () {
-                var args = [];
-                for (var _i = 0; _i < arguments.length; _i++) {
-                    args[_i] = arguments[_i];
-                }
-                if (this._loggerState) {
-                    console.error.apply(console, __spread(args));
-                }
-            };
-        // tslint:disable-next-line:no-any
-        // tslint:disable-next-line:no-any
-        /**
-         * @param {...?} args
-         * @return {?}
-         */
-        LoggerService.prototype.info =
-            // tslint:disable-next-line:no-any
-            /**
-             * @param {...?} args
-             * @return {?}
-             */
-            function () {
-                var args = [];
-                for (var _i = 0; _i < arguments.length; _i++) {
-                    args[_i] = arguments[_i];
-                }
-                if (this._loggerState) {
-                    console.log.apply(console, __spread(args));
-                }
-            };
-        // tslint:disable-next-line:no-any
-        // tslint:disable-next-line:no-any
-        /**
-         * @param {...?} args
-         * @return {?}
-         */
-        LoggerService.prototype.debug =
-            // tslint:disable-next-line:no-any
-            /**
-             * @param {...?} args
-             * @return {?}
-             */
-            function () {
-                var args = [];
-                for (var _i = 0; _i < arguments.length; _i++) {
-                    args[_i] = arguments[_i];
-                }
-                if (this._loggerState) {
-                    console.log.apply(console, __spread(['[NG-ZORRO-DEBUG]'], args));
-                }
-            };
-        LoggerService.decorators = [
-            { type: i0.Injectable }
-        ];
-        /** @nocollapse */
-        LoggerService.ctorParameters = function () {
-            return [
-                { type: Boolean, decorators: [{ type: i0.Inject, args: [NZ_LOGGER_STATE,] }] }
-            ];
-        };
-        return LoggerService;
-    }());
-    /**
-     * @param {?} exist
-     * @param {?} loggerState
-     * @return {?}
-     */
-    function LOGGER_SERVICE_PROVIDER_FACTORY(exist, loggerState) {
-        return exist || new LoggerService(loggerState);
-    }
-    /** @type {?} */
-    var LOGGER_SERVICE_PROVIDER = {
-        provide: LoggerService,
-        useFactory: LOGGER_SERVICE_PROVIDER_FACTORY,
-        deps: [[new i0.Optional(), new i0.SkipSelf(), LoggerService], NZ_LOGGER_STATE]
-    };
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
     // A builder used for managing service creating modals
     var  
     // A builder used for managing service creating modals
@@ -13345,11 +13188,11 @@
         CmacsModalService.ctorParameters = function () {
             return [
                 { type: i1.Overlay },
-                { type: LoggerService },
+                { type: i2.LoggerService },
                 { type: ModalControlService }
             ];
         };
-        /** @nocollapse */ CmacsModalService.ngInjectableDef = i0.defineInjectable({ factory: function CmacsModalService_Factory() { return new CmacsModalService(i0.inject(i1.Overlay), i0.inject(LoggerService), i0.inject(ModalControlService)); }, token: CmacsModalService, providedIn: "root" });
+        /** @nocollapse */ CmacsModalService.ngInjectableDef = i0.defineInjectable({ factory: function CmacsModalService_Factory() { return new CmacsModalService(i0.inject(i1.Overlay), i0.inject(i2.LoggerService), i0.inject(ModalControlService)); }, token: CmacsModalService, providedIn: "root" });
         return CmacsModalService;
     }());
 
@@ -13463,7 +13306,6 @@
     exports.ɵb = CmacsSubmenuService;
     exports.ɵh = MODAL_CONFIG;
     exports.ɵf = NzTreeService;
-    exports.ɵw = LoggerService;
     exports.ɵe = ExcelService;
 
     Object.defineProperty(exports, '__esModule', { value: true });
