@@ -84,7 +84,7 @@ CmacsSearchComponent.decorators = [
                         multi: true
                     }
                 ],
-                styles: [""]
+                styles: [":host ::ng-deep .ant-select-selection__placeholder{margin-left:21px}:host ::ng-deep .ant-select-selection--multiple .ant-select-selection__placeholder{margin-left:30px}:host ::ng-deep .anticon-search{margin-left:8px}:host ::ng-deep .ant-select-selection-selected-value{padding-left:10px}:host ::ng-deep .ant-select-arrow{top:44%}"]
             }] }
 ];
 /** @nocollapse */

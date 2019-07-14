@@ -2,6 +2,7 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import { AfterViewInit, ChangeDetectorRef, ElementRef, EventEmitter, OnChanges, OnDestroy, OnInit, Renderer2, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 import { CmacsCheckboxWrapperComponent } from './cmacs-checkbox-wrapper.component';
+export declare type CmacsTheme = 'light' | 'dark';
 export declare class CmacsCheckboxComponent implements OnInit, ControlValueAccessor, OnChanges, AfterViewInit, OnDestroy {
     private elementRef;
     private renderer;
@@ -14,6 +15,7 @@ export declare class CmacsCheckboxComponent implements OnInit, ControlValueAcces
     private contentElement;
     readonly checkedChange: EventEmitter<boolean>;
     value: string;
+    theme: CmacsTheme;
     autoFocus: boolean;
     disabled: boolean;
     indeterminate: boolean;
