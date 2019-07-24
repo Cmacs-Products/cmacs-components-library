@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common/locales/en'), require('@angular/platform-browser/animations'), require('date-fns'), require('jspdf'), require('jspdf-autotable'), require('xlsx'), require('@angular/cdk/platform'), require('@angular/cdk/a11y'), require('@angular/cdk/keycodes'), require('@angular/router'), require('rxjs'), require('rxjs/operators'), require('ng-zorro-antd'), require('ng-zorro-antd/icon'), require('@angular/common'), require('ng-zorro-antd/time-picker'), require('ng-zorro-antd/i18n'), require('ngx-export-as'), require('@angular/forms'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core'), require('ng-zorro-antd/core')) :
-    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/common/locales/en', '@angular/platform-browser/animations', 'date-fns', 'jspdf', 'jspdf-autotable', 'xlsx', '@angular/cdk/platform', '@angular/cdk/a11y', '@angular/cdk/keycodes', '@angular/router', 'rxjs', 'rxjs/operators', 'ng-zorro-antd', 'ng-zorro-antd/icon', '@angular/common', 'ng-zorro-antd/time-picker', 'ng-zorro-antd/i18n', 'ngx-export-as', '@angular/forms', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core', 'ng-zorro-antd/core'], factory) :
-    (factory((global['cmacs-components-lib'] = {}),global.ng.common.locales.en,global.ng.platformBrowser.animations,global.dateFns,global.jsPDF,null,global.XLSX,global.ng.cdk.platform,global.ng.cdk.a11y,global.ng.cdk.keycodes,global.ng.router,global.rxjs,global.rxjs.operators,global.ngZorroAntd,global.icon,global.ng.common,global.timePicker,global.i18n,global.ngxExportAs,global.ng.forms,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core,global.i2));
-}(this, (function (exports,en,animations,dateFns,jsPDF,jspdfAutotable,XLSX,platform,a11y,keycodes,router,rxjs,operators,ngZorroAntd,icon,common,timePicker,i18n,ngxExportAs,forms,i1,portal,i0,i2) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common/locales/en'), require('@angular/platform-browser/animations'), require('date-fns'), require('jspdf'), require('jspdf-autotable'), require('xlsx'), require('@angular/cdk/a11y'), require('@angular/cdk/keycodes'), require('@angular/router'), require('ng-zorro-antd'), require('ng-zorro-antd/icon'), require('@angular/common'), require('ng-zorro-antd/time-picker'), require('ng-zorro-antd/i18n'), require('ngx-export-as'), require('ng-zorro-antd/menu'), require('@angular/forms'), require('@angular/cdk/layout'), require('@angular/cdk/platform'), require('ng-zorro-antd/grid'), require('rxjs'), require('rxjs/operators'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core'), require('ng-zorro-antd/core')) :
+    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/common/locales/en', '@angular/platform-browser/animations', 'date-fns', 'jspdf', 'jspdf-autotable', 'xlsx', '@angular/cdk/a11y', '@angular/cdk/keycodes', '@angular/router', 'ng-zorro-antd', 'ng-zorro-antd/icon', '@angular/common', 'ng-zorro-antd/time-picker', 'ng-zorro-antd/i18n', 'ngx-export-as', 'ng-zorro-antd/menu', '@angular/forms', '@angular/cdk/layout', '@angular/cdk/platform', 'ng-zorro-antd/grid', 'rxjs', 'rxjs/operators', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core', 'ng-zorro-antd/core'], factory) :
+    (factory((global['cmacs-components-lib'] = {}),global.ng.common.locales.en,global.ng.platformBrowser.animations,global.dateFns,global.jsPDF,null,global.XLSX,global.ng.cdk.a11y,global.ng.cdk.keycodes,global.ng.router,global.ngZorroAntd,global.icon,global.ng.common,global.timePicker,global.i18n,global.ngxExportAs,global.menu,global.ng.forms,global.ng.cdk.layout,global.ng.cdk.platform,global.grid,global.rxjs,global.rxjs.operators,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core,global.i2));
+}(this, (function (exports,en,animations,dateFns,jsPDF,jspdfAutotable,XLSX,a11y,keycodes,router,ngZorroAntd,icon,common,timePicker,i18n,ngxExportAs,menu,forms,layout,platform,grid,rxjs,operators,i1,portal,i0,i2) { 'use strict';
 
     en = en && en.hasOwnProperty('default') ? en['default'] : en;
     jsPDF = jsPDF && jsPDF.hasOwnProperty('default') ? jsPDF['default'] : jsPDF;
@@ -351,7 +351,7 @@
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
                         encapsulation: i0.ViewEncapsulation.None,
                         template: "<i nz-icon type=\"loading\" *ngIf=\"loading\"></i>\r\n<span (cdkObserveContent)=\"checkContent()\" #contentElement><ng-content></ng-content></span>\r\n",
-                        styles: [".ant-btn{font-size:14px;line-height:20px;font-weight:400;height:34px;box-shadow:none;border-radius:3px}.ant-btn-primary{background-color:#2a7cff;border-color:#2a7cff}.ant-btn-primary:focus,.ant-btn-primary:hover{background-color:#2164c9;border-color:#2164c9}.ant-btn-primary:disabled{border:none}.ant-btn-default{border:1px solid #bec4cd;color:#2a7cff}.ant-btn-default:focus,.ant-btn-default:hover{background-color:#f6f7fb;color:#2164c9;border:1px solid #bec4cd}.ant-btn-background-ghost.ant-btn-default:enabled,.ant-btn-background-ghost.ant-btn-primary:enabled{color:#2a7cff;border:none}.ant-btn-background-ghost.ant-btn-default:enabled:focus,.ant-btn-background-ghost.ant-btn-default:enabled:hover,.ant-btn-background-ghost.ant-btn-primary:enabled:focus,.ant-btn-background-ghost.ant-btn-primary:enabled:hover{background-color:#f6f7fb!important;color:#2a7cff}.ant-btn-background-ghost:disabled{border:none}.cmacs-btn-with-icon{background-color:#fff!important;border:1px solid transparent!important;color:#2a7cff!important}.cmacs-btn-with-icon:hover{border-color:#bec4cd!important}.cmacs-btn-with-icon:focus{background-color:#2a7cff!important;color:#fff!important}.cmacs-btn-with-icon:disabled{background-color:#f3f3f4!important;color:#97a0ae!important}.cmacs-btn-with-icon:disabled:hover{border:1px solid transparent!important}.cmacs-btn-with-icon:disabled i{color:#fff!important}.ant-btn-icon-only{border:1px solid #dee0e5;color:#656c79;background-color:#fff!important}.ant-btn-icon-only:focus,.ant-btn-icon-only:hover{color:#2a7cff;background-color:#fff!important}.ant-btn-icon-only:disabled{background-color:#f3f3f4!important;color:#97a0ae!important}.cmacs-btn-action{height:30px}.ant-btn-danger{color:#fff;background-color:#ff4d4f;border-color:#ff4d4f}.ant-btn-danger:hover{opacity:.8}"]
+                        styles: [".ant-btn{font-size:14px;line-height:20px;font-weight:400;height:34px;box-shadow:none;border-radius:3px}.ant-btn-primary{background-color:#2a7cff;border-color:#2a7cff}.ant-btn-primary:focus,.ant-btn-primary:hover{background-color:#2164c9;border-color:#2164c9}.ant-btn-primary:disabled{border:none}.ant-btn-default{border:1px solid #bec4cd;color:#2a7cff}.ant-btn-default:focus,.ant-btn-default:hover{background-color:#f6f7fb;color:#2164c9;border:1px solid #bec4cd}.ant-btn-background-ghost.ant-btn-default:enabled,.ant-btn-background-ghost.ant-btn-primary:enabled{color:#2a7cff;border:none}.ant-btn-background-ghost.ant-btn-default:enabled:focus,.ant-btn-background-ghost.ant-btn-default:enabled:hover,.ant-btn-background-ghost.ant-btn-primary:enabled:focus,.ant-btn-background-ghost.ant-btn-primary:enabled:hover{background-color:#f6f7fb!important;color:#2a7cff}.ant-btn-background-ghost:disabled{border:none}.cmacs-btn-with-icon{background-color:#fff!important;border:1px solid transparent!important;color:#2a7cff!important}.cmacs-btn-with-icon:hover{border-color:#bec4cd!important}.cmacs-btn-with-icon:focus{background-color:#2a7cff!important;color:#fff!important}.cmacs-btn-with-icon:disabled{background-color:#f3f3f4!important;color:#97a0ae!important}.cmacs-btn-with-icon:disabled:hover{border:1px solid transparent!important}.cmacs-btn-with-icon:disabled i{color:#fff!important}.ant-btn-icon-only{border:1px solid #dee0e5;color:#656c79;background-color:#fff!important}.ant-btn-icon-only:focus,.ant-btn-icon-only:hover{color:#2a7cff;background-color:#fff!important}.ant-btn-icon-only:disabled{background-color:#f3f3f4!important;color:#97a0ae!important}.cmacs-btn-action{height:30px}.ant-btn-danger{color:#fff;background-color:#ff4d4f;border-color:#ff4d4f}.ant-btn-danger:hover{opacity:.8}.cmacs-btn-action.cmacs-btn-with-icon{border:1px solid #dee0e5!important;color:#656c79!important;background-color:#fff!important}.cmacs-btn-action.cmacs-btn-with-icon:focus,.cmacs-btn-action.cmacs-btn-with-icon:hover{color:#2a7cff!important;background-color:#fff!important;border-color:#bec4cd!important}.cmacs-btn-action.cmacs-btn-with-icon:disabled{background-color:#f3f3f4!important;color:#97a0ae!important}"]
                     }] }
         ];
         /** @nocollapse */
@@ -2681,7 +2681,7 @@
         function CmacsDateRangePickerComponent(i18n$$1, cdr, dateHelper, noAnimation) {
             var _this = _super.call(this, i18n$$1, cdr, dateHelper, noAnimation) || this;
             _this.showWeek = false; // Should show as week picker
-            _this.showToday = true;
+            _this.showToday = false;
             _this.cmacsOnPanelChange = new i0.EventEmitter();
             _this.cmacsOnCalendarChange = new i0.EventEmitter();
             _this.cmacsOnOk = new i0.EventEmitter();
@@ -2916,7 +2916,7 @@
                                  */function () { return CmacsDatePickerComponent; }))
                             }
                         ],
-                        styles: [".ant-calendar-picker-input{box-shadow:none}.ant-calendar-picker:hover .ant-calendar-picker-input:not(.ant-input-disabled){border-color:#bec4cd;color:#bec4cd}"]
+                        styles: [".ant-calendar-picker-input{box-shadow:none}.ant-calendar-picker:hover .ant-calendar-picker-input:not(.ant-input-disabled){border-color:#bec4cd;color:#bec4cd}.ant-calendar-date{padding-top:2px}.ant-calendar-selected-day .ant-calendar-date{display:-ms-grid;display:grid}.ant-calendar-selected-day:not(.ant-calendar-today)>.ant-calendar-date{background-color:transparent;color:rgba(0,0,0,.65)}.ant-calendar-selected-day:not(.ant-calendar-today)>.ant-calendar-date:after{content:'\u25CF';color:#2a7cff;margin-top:-9px;font-size:10px}.ant-calendar-today .ant-calendar-date{color:#fff!important;background-color:#2a7cff!important}.ant-calendar-cell.ng-star-inserted>.ant-calendar-date{width:30px;height:30px}.ant-calendar-header{margin-top:17px;margin-bottom:17px;border:none;height:17px;line-height:17px}.ant-calendar-header a{line-height:17px!important}.ant-calendar th{padding-top:0;padding-bottom:12px}.ant-calendar-date:hover{background-color:#f6f7fb}.ant-calendar-picker-icon{color:#656c79;cursor:pointer}.ant-calendar-picker i svg{height:16px;width:16px}.ant-calendar-picker-clear,.ant-calendar-picker-icon{width:16px;height:16px}"]
                     }] }
         ];
         /** @nocollapse */
@@ -2963,7 +2963,8 @@
                                  * @return {?}
                                  */function () { return CmacsMonthPickerComponent; }))
                             }
-                        ]
+                        ],
+                        styles: [".ant-calendar-month-panel-header{line-height:17px;border:0}.ant-calendar-month-panel-month{padding-top:3px}.ant-calendar-month-panel-selected-cell .ant-calendar-month-panel-month{background-color:transparent;color:#656c79;display:-ms-grid;display:grid}.ant-calendar-month-panel-selected-cell .ant-calendar-month-panel-month::after{content:'\u25CF';color:#2a7cff;font-size:10px}.ant-calendar-month-panel-selected-cell .ant-calendar-month-panel-month:hover{color:#656c79;background-color:#fff}.ant-calendar-month-panel-month:hover{background-color:#f6f7fb}"]
                     }] }
         ];
         /** @nocollapse */
@@ -3013,7 +3014,8 @@
                                  * @return {?}
                                  */function () { return CmacsYearPickerComponent; }))
                             }
-                        ]
+                        ],
+                        styles: [".ant-calendar-year-panel-header{line-height:17px;border:0}.ant-calendar-year-panel-year{padding-top:3px}.ant-calendar-year-panel-selected-cell .ant-calendar-year-panel-year{background-color:transparent;color:#656c79;display:-ms-grid;display:grid}.ant-calendar-year-panel-selected-cell .ant-calendar-year-panel-year::after{content:'\u25CF';color:#2a7cff;font-size:10px}.ant-calendar-year-panel-selected-cell .ant-calendar-year-panel-year:hover{color:#656c79;background-color:#fff}.ant-calendar-year-panel-year:hover{background-color:#f6f7fb}"]
                     }] }
         ];
         /** @nocollapse */
@@ -5364,7 +5366,7 @@
                     return rxjs.merge.apply(void 0, __spread([_this.listOfCmacsMenuItemDirective.changes], _this.listOfCmacsMenuItemDirective.map(( /**
                      * @param {?} menu
                      * @return {?}
-                     */function (menu) { return menu.selected$; }))));
+                     */function (menu$$1) { return menu$$1.selected$; }))));
                 })), operators.map(( /**
                  * @return {?}
                  */function () {
@@ -5536,13 +5538,13 @@
                 this.menuService.menuItemClick$.pipe(operators.takeUntil(this.destroy$)).subscribe(( /**
                  * @param {?} menu
                  * @return {?}
-                 */function (menu) {
-                    _this.click.emit(menu);
+                 */function (menu$$1) {
+                    _this.click.emit(menu$$1);
                     if (_this.selectable) {
                         _this.listOfCmacsMenuItemDirective.forEach(( /**
                          * @param {?} item
                          * @return {?}
-                         */function (item) { return item.setSelectedState(item === menu); }));
+                         */function (item) { return item.setSelectedState(item === menu$$1); }));
                     }
                 }));
             };
@@ -5876,6 +5878,7 @@
                  * @param {?} item
                  * @return {?}
                  */function (item) { return !item.selected; })).length !== this.checkboxCache.length && !this.allChecked;
+                console.log('this.isIndeterminate' + this.isIndeterminate);
             };
         /**
          * @param {?} count
@@ -6245,8 +6248,8 @@
                         // tslint:disable-next-line: component-selector
                         selector: 'cmacs-grid',
                         exportAs: 'cmacsGrid',
-                        template: "<div id=\"tableGrid\">\r\n  <nz-table #gridComponent [nzData]=\"data\" [nzShowTotal]=\"showTotal\" [nzPageSizeOptions]=\"pageSizeOptions\"\r\n    [nzVirtualScroll]=\"virtualScroll\" [nzVirtualItemSize]=\"virtualItemSize\" [nzLoadingDelay]=\"loadingDelay\"\r\n    [nzLoadingIndicator]=\"loadingIndicator\" [nzTotal]=\"total\" [nzTitle]=\"title\" [nzFooter]=\"footer\"\r\n    [nzNoResult]=\"noResult\" [nzWidthConfig]=\"widthConfig\" [nzPageIndex]=\"pageIndex\" [nzPageSize]=\"pageSize\"\r\n    [nzPaginationPosition]=\"paginationPosition\" [nzScroll]=\"scroll\" [nzFrontPagination]=\"frontPagination\"\r\n    [nzTemplateMode]=\"templateMode\" [nzShowPagination]=\"showPagination\" [nzLoading]=\"loading\"\r\n    [nzShowSizeChanger]=\"showSizeChanger\" [nzHideOnSinglePage]=\"hideOnSinglePage\" [nzShowQuickJumper]=\"showQuickJumper\"\r\n    [nzSimple]=\"simple\">\r\n    <thead class=\"ant-table-thead\" *ngIf=\"!dataTable\">\r\n      <tr>\r\n        <th *ngIf=\"checkboxSelect\" nzWidth=\"2%\"><label cmacs-checkbox [(ngModel)]=\"selected\"\r\n            [indeterminate]=\"isIndeterminate\" (checkedChange)=onCheckboxAllChange($event)></label></th>\r\n        <th *ngFor=\"let field of config.fields\" nzWidth=\"{{field.width}}\">{{field.display}}</th>\r\n        <th *ngIf=\"showRate\"></th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let data of gridComponent.data\">\r\n        <td *ngIf=\"checkboxCache[data[config.fieldId]]\" nzWidth=\"2%\"><label cmacs-checkbox\r\n            [(ngModel)]=\"checkboxCache[data[config.fieldId]].selected\" class=onCheckboxChange($event)></label>\r\n        </td>\r\n        <td *ngFor=\"let field of config.fields\" class=\"editable-row\">\r\n          <div *ngIf=\"isCeldTypeDefault(field); else componentTpl\">\r\n            <div class=\"editable-cell\"\r\n              *ngIf=\"editId !== data[config.fieldId] || property !== field.property; else editTpl\">\r\n              <div class=\"editable-cell-value-wrap\" (click)=\"startEdit(data[config.fieldId], field.property, $event)\">\r\n                <ng-container *ngIf=\"!isDate(field) && !isSelect(field)\">{{ data[field.property] }}</ng-container>\r\n                <ng-container *ngIf=\"isDate(field)\">{{ data[field.property]  | date: 'MMMM dd yyyy'}}</ng-container>\r\n                <ng-container *ngIf=\"isSelect(field)\">{{ getLabel(data, field) }}</ng-container>\r\n              </div>\r\n            </div>\r\n            <ng-template #editTpl>\r\n              <input *ngIf=\"isString(data[field.property]) && !isSelect(field)\" type=\"text\" cmacs-input\r\n                [(ngModel)]=\"data[field.property]\" />\r\n              <cmacs-input-number *ngIf=\"isNumber(data[field.property]) && !isSelect(field)\"\r\n                [(ngModel)]=\"data[field.property]\" [cmacsStep]=\"1\"></cmacs-input-number>\r\n              <label cmacs-checkbox *ngIf=\"isBoolean(data[field.property])\" [(ngModel)]=\"data[field.property]\"></label>\r\n              <cmacs-date-picker *ngIf=\"isDate(field)\" [format]=\"'MM/dd/yyyy'\" [allowClear]=\"false\" open\r\n                [(ngModel)]=\"data[field.property]\"></cmacs-date-picker>\r\n              <cmacs-dropdown *ngIf=\"isSelect(field)\" style=\"width: 200px;\" showSearch\r\n                [(ngModel)]=\"data[field.property]\">\r\n                <cmacs-option *ngFor=\"let sData of field.select.selectData\" label=\"{{sData[field.select.label]}}\"\r\n                  value=\"{{sData[field.select.value]}}\"></cmacs-option>\r\n              </cmacs-dropdown>\r\n            </ng-template>\r\n          </div>\r\n          <ng-template #componentTpl>\r\n            <button *ngIf=\"isCeldTypeButton(field)\" cmacs-button type=\"{{field.button.style}}\"\r\n              (click)=onButtonClick(data)>\r\n              <i *ngIf=\"!isUndefined(field.button.icon); else titleTpl\" nz-icon type=\"{{field.button.icon}}\"></i>\r\n              <ng-template #titleTpl>{{field.display}}</ng-template>\r\n            </button>\r\n            <cmacs-tag *ngIf=\"isCeldTypeTag(field) && (field.tag === undefined || field.tag.color === undefined)\">{{ data[field.property] }}</cmacs-tag>\r\n            <cmacs-tag *ngIf=\"isCeldTypeTag(field) && field.tag !== undefined && field.tag.color !== undefined\" [color]=data[field.tag.color]>{{  data[field.property] }}</cmacs-tag>\r\n           </ng-template>\r\n        </td>\r\n        <td *ngIf=\"showRate\"><nz-rate [ngModel]=\"data[config.fieldRate]\" [nzCount]='rateCount' (ngModelChange)=\"onRateChange($event, data)\"></nz-rate></td>\r\n      </tr>\r\n    </tbody>\r\n  </nz-table>\r\n</div>",
-                        styles: [".editable-cell{position:relative}.editable-cell-value-wrap{padding:5px 12px;cursor:pointer}.editable-row:hover .editable-cell-value-wrap{border:1px solid #2a7cff;border-radius:4px;padding:4px 11px}.ant-table-tbody>tr>td,.ant-table-thead>tr>th{padding:8px}"]
+                        template: "<div id=\"tableGrid\">\r\n  <nz-table #gridComponent [nzData]=\"data\" [nzShowTotal]=\"showTotal\" [nzPageSizeOptions]=\"pageSizeOptions\"\r\n    [nzVirtualScroll]=\"virtualScroll\" [nzVirtualItemSize]=\"virtualItemSize\" [nzLoadingDelay]=\"loadingDelay\"\r\n    [nzLoadingIndicator]=\"loadingIndicator\" [nzTotal]=\"total\" [nzTitle]=\"title\" [nzFooter]=\"footer\"\r\n    [nzNoResult]=\"noResult\" [nzWidthConfig]=\"widthConfig\" [nzPageIndex]=\"pageIndex\" [nzPageSize]=\"pageSize\"\r\n    [nzPaginationPosition]=\"paginationPosition\" [nzScroll]=\"scroll\" [nzFrontPagination]=\"frontPagination\"\r\n    [nzTemplateMode]=\"templateMode\" [nzShowPagination]=\"showPagination\" [nzLoading]=\"loading\"\r\n    [nzShowSizeChanger]=\"showSizeChanger\" [nzHideOnSinglePage]=\"hideOnSinglePage\" [nzShowQuickJumper]=\"showQuickJumper\"\r\n    [nzSimple]=\"simple\">\r\n    <thead class=\"ant-table-thead\" *ngIf=\"!dataTable\">\r\n      <tr>\r\n        <th *ngIf=\"checkboxSelect\" nzWidth=\"2%\"><label cmacs-checkbox [(ngModel)]=\"selected\"\r\n            [indeterminate]=\"isIndeterminate\" (checkedChange)=onCheckboxAllChange($event)></label></th>\r\n        <th *ngFor=\"let field of config.fields\" nzWidth=\"{{field.width}}\">{{field.display}}</th>\r\n        <th *ngIf=\"showRate\"></th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let data of gridComponent.data\">\r\n        <td *ngIf=\"checkboxCache[data[config.fieldId]]\" nzWidth=\"2%\"><label cmacs-checkbox\r\n            [(ngModel)]=\"checkboxCache[data[config.fieldId]].selected\" class=onCheckboxChange($event)></label>\r\n        </td>\r\n        <td *ngFor=\"let field of config.fields\" class=\"editable-row\">\r\n          <div *ngIf=\"isCeldTypeDefault(field); else componentTpl\">\r\n            <div class=\"editable-cell\"\r\n              *ngIf=\"editId !== data[config.fieldId] || property !== field.property; else editTpl\">\r\n              <div class=\"editable-cell-value-wrap\" (click)=\"startEdit(data[config.fieldId], field.property, $event)\">\r\n                <ng-container *ngIf=\"!isDate(field) && !isSelect(field)\">{{ data[field.property] }}</ng-container>\r\n                <ng-container *ngIf=\"isDate(field)\">{{ data[field.property]  | date: 'MMMM dd yyyy'}}</ng-container>\r\n                <ng-container *ngIf=\"isSelect(field)\">{{ getLabel(data, field) }}</ng-container>\r\n              </div>\r\n            </div>\r\n            <ng-template #editTpl>\r\n              <input *ngIf=\"isString(data[field.property]) && !isSelect(field)\" type=\"text\" cmacs-input\r\n                [(ngModel)]=\"data[field.property]\" />\r\n              <cmacs-input-number *ngIf=\"isNumber(data[field.property]) && !isSelect(field)\"\r\n                [(ngModel)]=\"data[field.property]\" [cmacsStep]=\"1\"></cmacs-input-number>\r\n              <label cmacs-checkbox *ngIf=\"isBoolean(data[field.property])\" [(ngModel)]=\"data[field.property]\"></label>\r\n              <cmacs-date-picker *ngIf=\"isDate(field)\" [format]=\"'MM/dd/yyyy'\" [allowClear]=\"false\" open\r\n                [(ngModel)]=\"data[field.property]\"></cmacs-date-picker>\r\n              <cmacs-select *ngIf=\"isSelect(field)\" style=\"width: 200px;\" showSearch\r\n                [(ngModel)]=\"data[field.property]\">\r\n                <cmacs-option *ngFor=\"let sData of field.select.selectData\" label=\"{{sData[field.select.label]}}\"\r\n                  value=\"{{sData[field.select.value]}}\"></cmacs-option>\r\n              </cmacs-select>\r\n            </ng-template>\r\n          </div>\r\n          <ng-template #componentTpl>\r\n            <button *ngIf=\"isCeldTypeButton(field)\" cmacs-button type=\"{{field.button.style}}\"\r\n              (click)=onButtonClick(data)>\r\n              <i *ngIf=\"!isUndefined(field.button.icon); else titleTpl\" nz-icon type=\"{{field.button.icon}}\"></i>\r\n              <ng-template #titleTpl>{{field.display}}</ng-template>\r\n            </button>\r\n            <cmacs-tag *ngIf=\"isCeldTypeTag(field) && (field.tag === undefined || field.tag.color === undefined)\">{{ data[field.property] }}</cmacs-tag>\r\n            <cmacs-tag *ngIf=\"isCeldTypeTag(field) && field.tag !== undefined && field.tag.color !== undefined\" [color]=data[field.tag.color]>{{  data[field.property] }}</cmacs-tag>\r\n           </ng-template>\r\n        </td>\r\n        <td *ngIf=\"showRate\"><nz-rate [ngModel]=\"data[config.fieldRate]\" [nzCount]='rateCount' (ngModelChange)=\"onRateChange($event, data)\"></nz-rate></td>\r\n      </tr>\r\n    </tbody>\r\n  </nz-table>\r\n</div>\r\n",
+                        styles: [".editable-cell{position:relative}.editable-cell-value-wrap{padding:5px 12px;cursor:pointer}.editable-row:hover .editable-cell-value-wrap{border:1px solid #2a7cff;border-radius:4px;padding:4px 11px}.ant-table-tbody>tr>td,.ant-table-thead>tr>th{padding:8px}.ant-table-thead{font-family:Roboto;font-size:12px;font-weight:500;font-style:normal;font-stretch:normal;line-height:1.25;letter-spacing:normal;color:#656c79}.editable-row,.ng-star-inserted{font-family:Roboto;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#97a0ae}"]
                     }] }
         ];
         /** @nocollapse */
@@ -7629,7 +7632,8 @@
                         template: "<li\r\n  #dragElement\r\n  role=\"treeitem\"\r\n  [style.display]=\"displayStyle\"\r\n  [ngClass]=\"nzNodeClass\">\r\n  <ng-container *ngIf=\"showExpand\">\r\n    <span\r\n      [ngClass]=\"nzNodeSwitcherClass\"\r\n      (click)=\"_clickExpand($event)\">\r\n      <ng-container *ngIf=\"isShowSwitchIcon\">\r\n        <ng-container *ngIf=\"!treeNode.isLoading\">\r\n          <ng-template\r\n            *ngIf=\"isTemplateRef(expandedIcon)\"\r\n            [ngTemplateOutlet]=\"expandedIcon\"\r\n            [ngTemplateOutletContext]=\"{ $implicit: treeNode }\">\r\n          </ng-template>\r\n          <i\r\n            *ngIf=\"!isTemplateRef(expandedIcon)\"\r\n            nz-icon\r\n            type=\"caret-down\"\r\n            [class.ant-select-switcher-icon]=\"selectMode\"\r\n            [class.ant-tree-switcher-icon]=\"!selectMode\">\r\n          </i>\r\n        </ng-container>\r\n        <i *ngIf=\"treeNode.isLoading\" nz-icon type=\"loading\" [spin]=\"true\" class=\"ant-tree-switcher-loading-icon\"></i>\r\n      </ng-container>\r\n      <ng-container *ngIf=\"showLine\">\r\n        <ng-template\r\n          *ngIf=\"isTemplateRef(expandedIcon)\"\r\n          [ngTemplateOutlet]=\"expandedIcon\"\r\n          [ngTemplateOutletContext]=\"{ $implicit: treeNode }\">\r\n        </ng-template>\r\n        <ng-container *ngIf=\"!isTemplateRef(expandedIcon)\">\r\n          <i *ngIf=\"isShowLineIcon\" nz-icon [type]=\"isSwitcherOpen ? 'minus-square' : 'plus-square'\" class=\"ant-tree-switcher-line-icon\"></i>\r\n          <i *ngIf=\"!isShowLineIcon\" nz-icon type=\"file\" class=\"ant-tree-switcher-line-icon\"></i>\r\n        </ng-container>\r\n      </ng-container>\r\n    </span>\r\n  </ng-container>\r\n  <ng-container *ngIf=\"checkable\">\r\n    <span\r\n      [ngClass]=\"nzNodeCheckboxClass\"\r\n      (click)=\"_clickCheckBox($event)\">\r\n      <span [class.ant-tree-checkbox-inner]=\"!selectMode\"\r\n            [class.ant-select-tree-checkbox-inner]=\"selectMode\"></span>\r\n    </span>\r\n  </ng-container>\r\n  <ng-container *ngIf=\"!treeTemplate\">\r\n    <span\r\n      title=\"{{treeNode.title}}\"\r\n      [attr.draggable]=\"canDraggable\"\r\n      [attr.aria-grabbed]=\"canDraggable\"\r\n      [ngClass]=\"nzNodeContentClass\"\r\n      [class.draggable]=\"canDraggable\">\r\n      <span\r\n        *ngIf=\"treeNode.icon && showIcon\"\r\n        [class.ant-tree-icon__open]=\"isSwitcherOpen\"\r\n        [class.ant-tree-icon__close]=\"isSwitcherClose\"\r\n        [class.ant-tree-icon_loading]=\"treeNode.isLoading\"\r\n        [ngClass]=\"nzNodeContentLoadingClass\">\r\n        <span\r\n          [ngClass]=\"nzNodeContentIconClass\">\r\n          <i nz-icon *ngIf=\"nzIcon\" [type]=\"nzIcon\"></i>\r\n        </span>\r\n      </span>\r\n      <span class=\"ant-tree-title\">\r\n        <ng-container *ngIf=\"treeNode.isMatched\">\r\n          <span>\r\n            {{highlightKeys[0]}}<span class=\"font-highlight\">{{searchValue}}</span>{{highlightKeys[1]}}\r\n          </span>\r\n        </ng-container>\r\n        <ng-container *ngIf=\"!treeNode.isMatched\">\r\n          {{treeNode.title}}\r\n        </ng-container>\r\n      </span>\r\n    </span>\r\n  </ng-container>\r\n  <ng-template\r\n    [ngTemplateOutlet]=\"treeTemplate\"\r\n    [ngTemplateOutletContext]=\"{ $implicit: treeNode }\">\r\n  </ng-template>\r\n\r\n  <ul\r\n    role=\"group\"\r\n    class=\"ant-tree-child-tree\"\r\n    [class.ant-tree-child-tree-open]=\"!selectMode || treeNode.isExpanded\"\r\n    data-expanded=\"true\"\r\n    [@.disabled]=\"noAnimation\"\r\n    [@collapseMotion]=\"treeNode.isExpanded ? 'expanded' : 'collapsed'\">\r\n    <cmacs-tree-node\r\n      *ngFor=\"let node of treeNode.getChildren()\"\r\n      [treeNode]=\"node\"\r\n      [showExpand]=\"showExpand\"\r\n      [noAnimation]=\"noAnimation\"\r\n      [selectMode]=\"selectMode\"\r\n      [showLine]=\"showLine\"\r\n      [expandedIcon]=\"expandedIcon\"\r\n      [draggable]=\"draggable\"\r\n      [checkable]=\"checkable\"\r\n      [asyncData]=\"asyncData\"\r\n      [expandAll]=\"expandAll\"\r\n      [defaultExpandAll]=\"defaultExpandAll\"\r\n      [showIcon]=\"showIcon\"\r\n      [searchValue]=\"searchValue\"\r\n      [hideUnMatched]=\"hideUnMatched\"\r\n      [beforeDrop]=\"beforeDrop\"\r\n      [treeTemplate]=\"treeTemplate\">\r\n    </cmacs-tree-node>\r\n  </ul>\r\n</li>\r\n",
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
                         preserveWhitespaces: false,
-                        animations: [i2.collapseMotion]
+                        animations: [i2.collapseMotion],
+                        styles: [""]
                     }] }
         ];
         /** @nocollapse */
@@ -7705,17 +7709,790 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    var CmacsOptionComponent = /** @class */ (function () {
+        function CmacsOptionComponent() {
+            this.changes = new rxjs.Subject();
+            this.nzDisabled = false;
+            this.nzCustomContent = false;
+        }
+        /**
+         * @return {?}
+         */
+        CmacsOptionComponent.prototype.ngOnChanges = /**
+         * @return {?}
+         */
+            function () {
+                this.changes.next();
+            };
+        CmacsOptionComponent.decorators = [
+            { type: i0.Component, args: [{
+                        // tslint:disable-next-line: component-selector
+                        selector: 'cmacs-option',
+                        exportAs: 'cmacsOption',
+                        encapsulation: i0.ViewEncapsulation.None,
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        template: "<ng-template>\r\n  <ng-content></ng-content>\r\n</ng-template>"
+                    }] }
+        ];
+        CmacsOptionComponent.propDecorators = {
+            template: [{ type: i0.ViewChild, args: [i0.TemplateRef,] }],
+            nzLabel: [{ type: i0.Input, args: ['label',] }],
+            nzValue: [{ type: i0.Input, args: ['value',] }],
+            nzDisabled: [{ type: i0.Input, args: ['disabled',] }],
+            nzCustomContent: [{ type: i0.Input, args: ['customContent',] }]
+        };
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsOptionComponent.prototype, "nzDisabled", void 0);
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsOptionComponent.prototype, "nzCustomContent", void 0);
+        return CmacsOptionComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var NzFilterOptionPipe = /** @class */ (function () {
+        function NzFilterOptionPipe() {
+        }
+        /**
+         * @param {?} options
+         * @param {?} searchValue
+         * @param {?} filterOption
+         * @param {?} serverSearch
+         * @return {?}
+         */
+        NzFilterOptionPipe.prototype.transform = /**
+         * @param {?} options
+         * @param {?} searchValue
+         * @param {?} filterOption
+         * @param {?} serverSearch
+         * @return {?}
+         */
+            function (options, searchValue, filterOption, serverSearch) {
+                if (serverSearch || !searchValue) {
+                    return options;
+                }
+                else {
+                    return (( /** @type {?} */(options))).filter(( /**
+                     * @param {?} o
+                     * @return {?}
+                     */function (o) { return filterOption(searchValue, o); }));
+                }
+            };
+        NzFilterOptionPipe.decorators = [
+            { type: i0.Pipe, args: [{ name: 'nzFilterOption' },] }
+        ];
+        return NzFilterOptionPipe;
+    }());
+    var NzFilterGroupOptionPipe = /** @class */ (function () {
+        function NzFilterGroupOptionPipe() {
+        }
+        /**
+         * @param {?} groups
+         * @param {?} searchValue
+         * @param {?} filterOption
+         * @param {?} serverSearch
+         * @return {?}
+         */
+        NzFilterGroupOptionPipe.prototype.transform = /**
+         * @param {?} groups
+         * @param {?} searchValue
+         * @param {?} filterOption
+         * @param {?} serverSearch
+         * @return {?}
+         */
+            function (groups, searchValue, filterOption, serverSearch) {
+                if (serverSearch || !searchValue) {
+                    return groups;
+                }
+                else {
+                    return (( /** @type {?} */(groups))).filter(( /**
+                     * @param {?} g
+                     * @return {?}
+                     */function (g) {
+                        return g.listOfNzOptionComponent.some(( /**
+                         * @param {?} o
+                         * @return {?}
+                         */function (o) { return filterOption(searchValue, o); }));
+                    }));
+                }
+            };
+        NzFilterGroupOptionPipe.decorators = [
+            { type: i0.Pipe, args: [{ name: 'nzFilterGroupOption' },] }
+        ];
+        return NzFilterGroupOptionPipe;
+    }());
+    /**
+     * @param {?} searchValue
+     * @param {?} option
+     * @return {?}
+     */
+    function defaultFilterOption(searchValue, option) {
+        if (option && option.nzLabel) {
+            return option.nzLabel.toLowerCase().indexOf(searchValue.toLowerCase()) > -1;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsSelectService = /** @class */ (function () {
+        function CmacsSelectService() {
+            var _this = this;
+            // Input params
+            this.autoClearSearchValue = true;
+            this.serverSearch = false;
+            this.filterOption = defaultFilterOption;
+            this.mode = 'default';
+            this.maxMultipleCount = Infinity;
+            this.disabled = false;
+            // tslint:disable-next-line:no-any
+            this.compareWith = ( /**
+             * @param {?} o1
+             * @param {?} o2
+             * @return {?}
+             */function (o1, o2) { return o1 === o2; });
+            // selectedValueChanged should emit ngModelChange or not
+            // tslint:disable-next-line:no-any
+            this.listOfSelectedValueWithEmit$ = new rxjs.BehaviorSubject({
+                value: [],
+                emit: false
+            });
+            // ContentChildren Change
+            this.mapOfTemplateOption$ = new rxjs.BehaviorSubject({
+                listOfNzOptionComponent: [],
+                listOfNzOptionGroupComponent: []
+            });
+            // searchValue Change
+            this.searchValueRaw$ = new rxjs.BehaviorSubject('');
+            this.listOfFilteredOption = [];
+            this.openRaw$ = new rxjs.Subject();
+            this.checkRaw$ = new rxjs.Subject();
+            this.open = false;
+            this.clearInput$ = new rxjs.Subject();
+            this.searchValue = '';
+            this.isShowNotFound = false;
+            // open
+            this.open$ = this.openRaw$.pipe(operators.distinctUntilChanged(), operators.share(), operators.tap(( /**
+             * @return {?}
+             */function () { return _this.clearInput(); })));
+            this.activatedOption$ = new rxjs.ReplaySubject(1);
+            this.listOfSelectedValue$ = this.listOfSelectedValueWithEmit$.pipe(operators.map(( /**
+             * @param {?} data
+             * @return {?}
+             */function (data) { return data.value; })));
+            this.modelChange$ = this.listOfSelectedValueWithEmit$.pipe(operators.filter(( /**
+             * @param {?} item
+             * @return {?}
+             */function (item) { return item.emit; })), operators.map(( /**
+             * @param {?} data
+             * @return {?}
+             */function (data) {
+                /** @type {?} */
+                var selectedList = data.value;
+                /** @type {?} */
+                var modelValue = null;
+                if (_this.isSingleMode) {
+                    if (selectedList.length) {
+                        modelValue = selectedList[0];
+                    }
+                }
+                else {
+                    modelValue = selectedList;
+                }
+                return modelValue;
+            })));
+            this.searchValue$ = this.searchValueRaw$.pipe(operators.distinctUntilChanged(), operators.skip(1), operators.share(), operators.tap(( /**
+             * @param {?} value
+             * @return {?}
+             */function (value) {
+                _this.searchValue = value;
+                if (value) {
+                    _this.updateActivatedOption(_this.listOfFilteredOption[0]);
+                }
+                _this.updateListOfFilteredOption();
+            })));
+            // tslint:disable-next-line:no-any
+            this.listOfSelectedValue = [];
+            // flat ViewChildren
+            this.listOfTemplateOption = [];
+            // tag option
+            this.listOfTagOption = [];
+            // tag option concat template option
+            this.listOfTagAndTemplateOption = [];
+            // ViewChildren
+            this.listOfNzOptionComponent = [];
+            this.listOfNzOptionGroupComponent = [];
+            // display in top control
+            this.listOfCachedSelectedOption = [];
+            // selected value or ViewChildren change
+            this.valueOrOption$ = rxjs.combineLatest(this.listOfSelectedValue$, this.mapOfTemplateOption$).pipe(operators.tap(( /**
+             * @param {?} data
+             * @return {?}
+             */function (data) {
+                _this.listOfSelectedValue = data[0];
+                _this.listOfNzOptionComponent = data[1].listOfNzOptionComponent;
+                _this.listOfNzOptionGroupComponent = data[1].listOfNzOptionGroupComponent;
+                _this.listOfTemplateOption = _this.listOfNzOptionComponent.concat(_this.listOfNzOptionGroupComponent.reduce(( /**
+                 * @param {?} pre
+                 * @param {?} cur
+                 * @return {?}
+                 */function (pre, cur) { return __spread(pre, cur.listOfNzOptionComponent.toArray()); }), ( /** @type {?} */([]))));
+                _this.updateListOfTagOption();
+                _this.updateListOfFilteredOption();
+                _this.resetActivatedOptionIfNeeded();
+                _this.updateListOfCachedOption();
+            })), operators.share());
+            this.check$ = rxjs.merge(this.checkRaw$, this.valueOrOption$, this.searchValue$, this.activatedOption$, this.open$, this.modelChange$).pipe(operators.share());
+        }
+        /**
+         * @param {?} option
+         * @return {?}
+         */
+        CmacsSelectService.prototype.clickOption = /**
+         * @param {?} option
+         * @return {?}
+         */
+            function (option) {
+                var _this = this;
+                /** update listOfSelectedOption -> update listOfSelectedValue -> next listOfSelectedValue$ **/
+                if (!option.nzDisabled) {
+                    this.updateActivatedOption(option);
+                    /** @type {?} */
+                    var listOfSelectedValue = __spread(this.listOfSelectedValue);
+                    if (this.isMultipleOrTags) {
+                        /** @type {?} */
+                        var targetValue = listOfSelectedValue.find(( /**
+                         * @param {?} o
+                         * @return {?}
+                         */function (o) { return _this.compareWith(o, option.nzValue); }));
+                        if (i2.isNotNil(targetValue)) {
+                            listOfSelectedValue.splice(listOfSelectedValue.indexOf(targetValue), 1);
+                            this.updateListOfSelectedValue(listOfSelectedValue, true);
+                        }
+                        else if (listOfSelectedValue.length < this.maxMultipleCount) {
+                            listOfSelectedValue.push(option.nzValue);
+                            this.updateListOfSelectedValue(listOfSelectedValue, true);
+                        }
+                    }
+                    else if (!this.compareWith(listOfSelectedValue[0], option.nzValue)) {
+                        listOfSelectedValue = [option.nzValue];
+                        this.updateListOfSelectedValue(listOfSelectedValue, true);
+                    }
+                    if (this.isSingleMode) {
+                        this.setOpenState(false);
+                    }
+                    else if (this.autoClearSearchValue) {
+                        this.clearInput();
+                    }
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsSelectService.prototype.updateListOfCachedOption = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                if (this.isSingleMode) {
+                    /** @type {?} */
+                    var selectedOption = this.listOfTemplateOption.find(( /**
+                     * @param {?} o
+                     * @return {?}
+                     */function (o) {
+                        return _this.compareWith(o.nzValue, _this.listOfSelectedValue[0]);
+                    }));
+                    if (!i2.isNil(selectedOption)) {
+                        this.listOfCachedSelectedOption = [selectedOption];
+                    }
+                }
+                else {
+                    /** @type {?} */
+                    var listOfCachedSelectedOption_1 = [];
+                    this.listOfSelectedValue.forEach(( /**
+                     * @param {?} v
+                     * @return {?}
+                     */function (v) {
+                        /** @type {?} */
+                        var listOfMixedOption = __spread(_this.listOfTagAndTemplateOption, _this.listOfCachedSelectedOption);
+                        /** @type {?} */
+                        var option = listOfMixedOption.find(( /**
+                         * @param {?} o
+                         * @return {?}
+                         */function (o) { return _this.compareWith(o.nzValue, v); }));
+                        if (option) {
+                            listOfCachedSelectedOption_1.push(option);
+                        }
+                    }));
+                    this.listOfCachedSelectedOption = listOfCachedSelectedOption_1;
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsSelectService.prototype.updateListOfTagOption = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                if (this.isTagsMode) {
+                    /** @type {?} */
+                    var listOfMissValue = this.listOfSelectedValue.filter(( /**
+                     * @param {?} value
+                     * @return {?}
+                     */function (value) {
+                        return !_this.listOfTemplateOption.find(( /**
+                         * @param {?} o
+                         * @return {?}
+                         */function (o) { return _this.compareWith(o.nzValue, value); }));
+                    }));
+                    this.listOfTagOption = listOfMissValue.map(( /**
+                     * @param {?} value
+                     * @return {?}
+                     */function (value) {
+                        /** @type {?} */
+                        var nzOptionComponent = new CmacsOptionComponent();
+                        nzOptionComponent.nzValue = value;
+                        nzOptionComponent.nzLabel = value;
+                        return nzOptionComponent;
+                    }));
+                    this.listOfTagAndTemplateOption = __spread(this.listOfTemplateOption.concat(this.listOfTagOption));
+                }
+                else {
+                    this.listOfTagAndTemplateOption = __spread(this.listOfTemplateOption);
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsSelectService.prototype.updateAddTagOption = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                /** @type {?} */
+                var isMatch = this.listOfTagAndTemplateOption.find(( /**
+                 * @param {?} item
+                 * @return {?}
+                 */function (item) { return item.nzLabel === _this.searchValue; }));
+                if (this.isTagsMode && this.searchValue && !isMatch) {
+                    /** @type {?} */
+                    var option = new CmacsOptionComponent();
+                    option.nzValue = this.searchValue;
+                    option.nzLabel = this.searchValue;
+                    this.addedTagOption = option;
+                    this.updateActivatedOption(option);
+                }
+                else {
+                    this.addedTagOption = null;
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsSelectService.prototype.updateListOfFilteredOption = /**
+         * @return {?}
+         */
+            function () {
+                this.updateAddTagOption();
+                /** @type {?} */
+                var listOfFilteredOption = new NzFilterOptionPipe().transform(this.listOfTagAndTemplateOption, this.searchValue, this.filterOption, this.serverSearch);
+                this.listOfFilteredOption = this.addedTagOption
+                    ? __spread([this.addedTagOption], listOfFilteredOption) : __spread(listOfFilteredOption);
+                this.isShowNotFound = !this.isTagsMode && !this.listOfFilteredOption.length;
+            };
+        /**
+         * @return {?}
+         */
+        CmacsSelectService.prototype.clearInput = /**
+         * @return {?}
+         */
+            function () {
+                this.clearInput$.next();
+            };
+        // tslint:disable-next-line:no-any
+        // tslint:disable-next-line:no-any
+        /**
+         * @param {?} value
+         * @param {?} emit
+         * @return {?}
+         */
+        CmacsSelectService.prototype.updateListOfSelectedValue =
+            // tslint:disable-next-line:no-any
+            /**
+             * @param {?} value
+             * @param {?} emit
+             * @return {?}
+             */
+            function (value, emit) {
+                this.listOfSelectedValueWithEmit$.next({ value: value, emit: emit });
+            };
+        /**
+         * @param {?} option
+         * @return {?}
+         */
+        CmacsSelectService.prototype.updateActivatedOption = /**
+         * @param {?} option
+         * @return {?}
+         */
+            function (option) {
+                this.activatedOption$.next(option);
+                this.activatedOption = option;
+            };
+        /**
+         * @param {?} inputValue
+         * @param {?} tokenSeparators
+         * @return {?}
+         */
+        CmacsSelectService.prototype.tokenSeparate = /**
+         * @param {?} inputValue
+         * @param {?} tokenSeparators
+         * @return {?}
+         */
+            function (inputValue, tokenSeparators) {
+                // auto tokenSeparators
+                if (inputValue &&
+                    inputValue.length &&
+                    tokenSeparators.length &&
+                    this.isMultipleOrTags &&
+                    this.includesSeparators(inputValue, tokenSeparators)) {
+                    /** @type {?} */
+                    var listOfLabel = this.splitBySeparators(inputValue, tokenSeparators);
+                    this.updateSelectedValueByLabelList(listOfLabel);
+                    this.clearInput();
+                }
+            };
+        /**
+         * @param {?} str
+         * @param {?} separators
+         * @return {?}
+         */
+        CmacsSelectService.prototype.includesSeparators = /**
+         * @param {?} str
+         * @param {?} separators
+         * @return {?}
+         */
+            function (str, separators) {
+                // tslint:disable-next-line:prefer-for-of
+                for (var i = 0; i < separators.length; ++i) {
+                    if (str.lastIndexOf(separators[i]) > 0) {
+                        return true;
+                    }
+                }
+                return false;
+            };
+        /**
+         * @param {?} str
+         * @param {?} separators
+         * @return {?}
+         */
+        CmacsSelectService.prototype.splitBySeparators = /**
+         * @param {?} str
+         * @param {?} separators
+         * @return {?}
+         */
+            function (str, separators) {
+                /** @type {?} */
+                var reg = new RegExp("[" + separators.join() + "]");
+                /** @type {?} */
+                var array = (( /** @type {?} */(str))).split(reg).filter(( /**
+                 * @param {?} token
+                 * @return {?}
+                 */function (token) { return token; }));
+                return Array.from(new Set(array));
+            };
+        /**
+         * @return {?}
+         */
+        CmacsSelectService.prototype.resetActivatedOptionIfNeeded = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                /** @type {?} */
+                var resetActivatedOption = ( /**
+                 * @return {?}
+                 */function () {
+                    /** @type {?} */
+                    var activatedOption = _this.listOfFilteredOption.find(( /**
+                     * @param {?} item
+                     * @return {?}
+                     */function (item) {
+                        return _this.compareWith(item.nzValue, _this.listOfSelectedValue[0]);
+                    }));
+                    _this.updateActivatedOption(activatedOption || null);
+                });
+                if (this.activatedOption) {
+                    if (!this.listOfFilteredOption.find(( /**
+                     * @param {?} item
+                     * @return {?}
+                     */function (item) { return _this.compareWith(item.nzValue, ( /** @type {?} */(_this.activatedOption)).nzValue); })) ||
+                        !this.listOfSelectedValue.find(( /**
+                         * @param {?} item
+                         * @return {?}
+                         */function (item) { return _this.compareWith(item, ( /** @type {?} */(_this.activatedOption)).nzValue); }))) {
+                        resetActivatedOption();
+                    }
+                }
+                else {
+                    resetActivatedOption();
+                }
+            };
+        /**
+         * @param {?} listOfNzOptionComponent
+         * @param {?} listOfNzOptionGroupComponent
+         * @return {?}
+         */
+        CmacsSelectService.prototype.updateTemplateOption = /**
+         * @param {?} listOfNzOptionComponent
+         * @param {?} listOfNzOptionGroupComponent
+         * @return {?}
+         */
+            function (listOfNzOptionComponent, listOfNzOptionGroupComponent) {
+                this.mapOfTemplateOption$.next({ listOfNzOptionComponent: listOfNzOptionComponent, listOfNzOptionGroupComponent: listOfNzOptionGroupComponent });
+            };
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        CmacsSelectService.prototype.updateSearchValue = /**
+         * @param {?} value
+         * @return {?}
+         */
+            function (value) {
+                this.searchValueRaw$.next(value);
+            };
+        /**
+         * @param {?} listOfLabel
+         * @return {?}
+         */
+        CmacsSelectService.prototype.updateSelectedValueByLabelList = /**
+         * @param {?} listOfLabel
+         * @return {?}
+         */
+            function (listOfLabel) {
+                var _this = this;
+                /** @type {?} */
+                var listOfSelectedValue = __spread(this.listOfSelectedValue);
+                /** @type {?} */
+                var listOfMatchOptionValue = this.listOfTagAndTemplateOption
+                    .filter(( /**
+             * @param {?} item
+             * @return {?}
+             */function (item) { return listOfLabel.indexOf(item.nzLabel) !== -1; }))
+                    .map(( /**
+             * @param {?} item
+             * @return {?}
+             */function (item) { return item.nzValue; }))
+                    .filter(( /**
+             * @param {?} item
+             * @return {?}
+             */function (item) {
+                    return !i2.isNotNil(_this.listOfSelectedValue.find(( /**
+                     * @param {?} v
+                     * @return {?}
+                     */function (v) { return _this.compareWith(v, item); })));
+                }));
+                if (this.isMultipleMode) {
+                    this.updateListOfSelectedValue(__spread(listOfSelectedValue, listOfMatchOptionValue), true);
+                }
+                else {
+                    /** @type {?} */
+                    var listOfUnMatchOptionValue = listOfLabel.filter(( /**
+                     * @param {?} label
+                     * @return {?}
+                     */function (label) {
+                        return _this.listOfTagAndTemplateOption.map(( /**
+                         * @param {?} item
+                         * @return {?}
+                         */function (item) { return item.nzLabel; })).indexOf(label) === -1;
+                    }));
+                    this.updateListOfSelectedValue(__spread(listOfSelectedValue, listOfMatchOptionValue, listOfUnMatchOptionValue), true);
+                }
+            };
+        /**
+         * @param {?} e
+         * @return {?}
+         */
+        CmacsSelectService.prototype.onKeyDown = /**
+         * @param {?} e
+         * @return {?}
+         */
+            function (e) {
+                var _this = this;
+                /** @type {?} */
+                var keyCode = e.keyCode;
+                /** @type {?} */
+                var eventTarget = ( /** @type {?} */(e.target));
+                /** @type {?} */
+                var listOfFilteredOptionWithoutDisabled = this.listOfFilteredOption.filter(( /**
+                 * @param {?} item
+                 * @return {?}
+                 */function (item) { return !item.nzDisabled; }));
+                /** @type {?} */
+                var activatedIndex = listOfFilteredOptionWithoutDisabled.findIndex(( /**
+                 * @param {?} item
+                 * @return {?}
+                 */function (item) { return item === _this.activatedOption; }));
+                switch (keyCode) {
+                    case keycodes.UP_ARROW:
+                        e.preventDefault();
+                        /** @type {?} */
+                        var preIndex = activatedIndex > 0 ? activatedIndex - 1 : listOfFilteredOptionWithoutDisabled.length - 1;
+                        this.updateActivatedOption(listOfFilteredOptionWithoutDisabled[preIndex]);
+                        break;
+                    case keycodes.DOWN_ARROW:
+                        e.preventDefault();
+                        /** @type {?} */
+                        var nextIndex = activatedIndex < listOfFilteredOptionWithoutDisabled.length - 1 ? activatedIndex + 1 : 0;
+                        this.updateActivatedOption(listOfFilteredOptionWithoutDisabled[nextIndex]);
+                        if (!this.disabled && !this.open) {
+                            this.setOpenState(true);
+                        }
+                        break;
+                    case keycodes.ENTER:
+                        e.preventDefault();
+                        if (this.open) {
+                            if (this.activatedOption && !this.activatedOption.nzDisabled) {
+                                this.clickOption(this.activatedOption);
+                            }
+                        }
+                        else {
+                            this.setOpenState(true);
+                        }
+                        break;
+                    case keycodes.BACKSPACE:
+                        if (this.isMultipleOrTags && !eventTarget.value && this.listOfCachedSelectedOption.length) {
+                            e.preventDefault();
+                            this.removeValueFormSelected(this.listOfCachedSelectedOption[this.listOfCachedSelectedOption.length - 1]);
+                        }
+                        break;
+                    case keycodes.SPACE:
+                        if (!this.disabled && !this.open) {
+                            this.setOpenState(true);
+                            e.preventDefault();
+                        }
+                        break;
+                    case keycodes.TAB:
+                        this.setOpenState(false);
+                        break;
+                }
+            };
+        // tslint:disable-next-line:no-any
+        // tslint:disable-next-line:no-any
+        /**
+         * @param {?} option
+         * @return {?}
+         */
+        CmacsSelectService.prototype.removeValueFormSelected =
+            // tslint:disable-next-line:no-any
+            /**
+             * @param {?} option
+             * @return {?}
+             */
+            function (option) {
+                var _this = this;
+                if (this.disabled || option.nzDisabled) {
+                    return;
+                }
+                /** @type {?} */
+                var listOfSelectedValue = this.listOfSelectedValue.filter(( /**
+                 * @param {?} item
+                 * @return {?}
+                 */function (item) { return !_this.compareWith(item, option.nzValue); }));
+                this.updateListOfSelectedValue(listOfSelectedValue, true);
+                this.clearInput();
+            };
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        CmacsSelectService.prototype.setOpenState = /**
+         * @param {?} value
+         * @return {?}
+         */
+            function (value) {
+                this.openRaw$.next(value);
+                this.open = value;
+            };
+        /**
+         * @return {?}
+         */
+        CmacsSelectService.prototype.check = /**
+         * @return {?}
+         */
+            function () {
+                this.checkRaw$.next();
+            };
+        Object.defineProperty(CmacsSelectService.prototype, "isSingleMode", {
+            get: /**
+             * @return {?}
+             */ function () {
+                return this.mode === 'default';
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(CmacsSelectService.prototype, "isTagsMode", {
+            get: /**
+             * @return {?}
+             */ function () {
+                return this.mode === 'tags';
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(CmacsSelectService.prototype, "isMultipleMode", {
+            get: /**
+             * @return {?}
+             */ function () {
+                return this.mode === 'multiple';
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(CmacsSelectService.prototype, "isMultipleOrTags", {
+            get: /**
+             * @return {?}
+             */ function () {
+                return this.mode === 'tags' || this.mode === 'multiple';
+            },
+            enumerable: true,
+            configurable: true
+        });
+        CmacsSelectService.decorators = [
+            { type: i0.Injectable }
+        ];
+        return CmacsSelectService;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
     var CmacsSelectTopControlComponent = /** @class */ (function () {
         function CmacsSelectTopControlComponent(renderer, nzSelectService, cdr, noAnimation) {
             this.renderer = renderer;
             this.nzSelectService = nzSelectService;
             this.cdr = cdr;
             this.noAnimation = noAnimation;
+            this.searchValue = '';
             this.isComposing = false;
             this.destroy$ = new rxjs.Subject();
             this.nzShowSearch = false;
             this.showCustomSearch = false;
             this.nzOpen = false;
+            this.action = false;
             this.nzAllowClear = false;
             this.nzShowArrow = true;
             this.nzLoading = false;
@@ -7887,6 +8664,19 @@
                 this.destroy$.next();
                 this.destroy$.complete();
             };
+        /**
+         * @param {?} changes
+         * @return {?}
+         */
+        CmacsSelectTopControlComponent.prototype.ngOnChanges = /**
+         * @param {?} changes
+         * @return {?}
+         */
+            function (changes) {
+                if (changes.searchValue && changes.searchValue.currentValue !== undefined) {
+                    this.setInputValue(changes.searchValue.currentValue);
+                }
+            };
         CmacsSelectTopControlComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: '[cmacs-select-top-control]',
@@ -7895,24 +8685,27 @@
                         animations: [i2.zoomMotion],
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
                         encapsulation: i0.ViewEncapsulation.None,
-                        template: "<ng-template #inputTemplate>\r\n  <input #inputElement autocomplete=\"something-new\" [ngStyle]=\"showCustomSearchStyle\" class=\"ant-select-search__field\"\r\n    (compositionstart)=\"isComposing = true\" (compositionend)=\"isComposing = false\" (input)=\"updateWidth()\"\r\n    [ngModel]=\"inputValue\" (ngModelChange)=\"setInputValue($event)\" [disabled]=\"nzSelectService.disabled\">\r\n</ng-template>\r\n<span class=\"ant-select-arrow\" style=\"right: auto !important; margin-left: 2px;\" nz-select-unselectable\r\n  *ngIf=\"showCustomSearch\">\r\n  <i nz-icon type=\"search\" style=\"font-size: 16px !important;\" *ngIf=\"!nzSuffixIcon; else nzSuffixIcon\"></i>\r\n</span>\r\n<div class=\"ant-select-selection__rendered\">\r\n  <div *ngIf=\"nzPlaceHolder\" nz-select-unselectable [style.display]=\"placeHolderDisplay\"\r\n    class=\"ant-select-selection__placeholder\">{{ nzPlaceHolder }}</div>\r\n  <!--single mode-->\r\n  <ng-container *ngIf=\"nzSelectService.isSingleMode\">\r\n    <!--selected label-->\r\n    <div *ngIf=\"nzSelectService.listOfCachedSelectedOption.length && nzSelectService.listOfSelectedValue.length\"\r\n      class=\"ant-select-selection-selected-value\" [attr.title]=\"nzSelectService.listOfCachedSelectedOption[0]?.nzLabel\"\r\n      [ngStyle]=\"selectedValueStyle\">\r\n      {{ nzSelectService.listOfCachedSelectedOption[0]?.nzLabel }}\r\n    </div>\r\n    <!--show search-->\r\n    <div *ngIf=\"nzShowSearch\" class=\"ant-select-search ant-select-search--inline\"\r\n      [style.display]=\"nzOpen ? 'block' : 'none'\">\r\n      <div class=\"ant-select-search__field__wrap\">\r\n        <ng-template [ngTemplateOutlet]=\"inputTemplate\"></ng-template>\r\n        <span class=\"ant-select-search__field__mirror\">{{inputValue}}&nbsp;</span>\r\n      </div>\r\n    </div>\r\n  </ng-container>\r\n  <!--multiple or tags mode-->\r\n  <ul *ngIf=\"nzSelectService.isMultipleOrTags\">\r\n    <ng-container\r\n      *ngFor=\"let option of nzSelectService.listOfCachedSelectedOption | slice: 0 : nzMaxTagCount;trackBy:trackValue;\">\r\n      <li [@zoomMotion] [nzNoAnimation]=\"noAnimation?.nzNoAnimation\" [attr.title]=\"option.nzLabel\"\r\n        [class.ant-select-selection__choice__disabled]=\"option.nzDisabled\" class=\"ant-select-selection__choice\">\r\n        <div class=\"ant-select-selection__choice__content\">{{ option.nzLabel }}</div>\r\n        <span *ngIf=\"!option.nzDisabled\" class=\"ant-select-selection__choice__remove\"\r\n          (mousedown)=\"$event.preventDefault()\" (click)=\"removeSelectedValue(option, $event)\">\r\n          <i nz-icon type=\"close\" class=\"ant-select-remove-icon\" *ngIf=\"!nzRemoveIcon; else nzRemoveIcon\"></i>\r\n        </span>\r\n      </li>\r\n    </ng-container>\r\n    <li *ngIf=\"nzSelectService.listOfCachedSelectedOption.length > nzMaxTagCount\" [@zoomMotion]\r\n      [nzNoAnimation]=\"noAnimation?.nzNoAnimation\" class=\"ant-select-selection__choice\">\r\n      <div class=\"ant-select-selection__choice__content\">\r\n        <ng-container *ngIf=\"nzMaxTagPlaceholder\">\r\n          <ng-template [ngTemplateOutlet]=\"nzMaxTagPlaceholder\"\r\n            [ngTemplateOutletContext]=\"{ $implicit: nzSelectService.listOfSelectedValue | slice: nzMaxTagCount}\">\r\n          </ng-template>\r\n        </ng-container>\r\n        <ng-container *ngIf=\"!nzMaxTagPlaceholder\">\r\n          + {{ nzSelectService.listOfCachedSelectedOption.length - nzMaxTagCount }} ...\r\n        </ng-container>\r\n      </div>\r\n    </li>\r\n    <li class=\"ant-select-search ant-select-search--inline\">\r\n      <ng-template [ngTemplateOutlet]=\"inputTemplate\"></ng-template>\r\n    </li>\r\n  </ul>\r\n</div>\r\n<span *ngIf=\"nzAllowClear && nzSelectService.listOfSelectedValue.length\" class=\"ant-select-selection__clear\"\r\n  nz-select-unselectable (mousedown)=\"$event.preventDefault()\" (click)=\"onClearSelection($event)\">\r\n  <i nz-icon type=\"close-circle\" theme=\"fill\" *ngIf=\"!nzClearIcon; else nzClearIcon\" class=\"ant-select-close-icon\"></i>\r\n</span>\r\n<span class=\"ant-select-arrow\" nz-select-unselectable *ngIf=\"showCustomSearch; else notCustomArrow\">\r\n    <i nz-icon type=\"arrow-right\" class=\"ant-select-arrow-icon\" *ngIf=\"!nzSuffixIcon; else nzSuffixIcon\"></i>\r\n</span>\r\n<ng-template #notCustomArrow>\r\n  <span class=\"ant-select-arrow\" nz-select-unselectable *ngIf=\"nzShowArrow\">\r\n    <i nz-icon type=\"loading\" *ngIf=\"nzLoading; else defaultArrow\"></i>\r\n    <ng-template #defaultArrow>\r\n      <i nz-icon type=\"down\" class=\"ant-select-arrow-icon\" *ngIf=\"!nzSuffixIcon; else nzSuffixIcon\"></i>\r\n    </ng-template>\r\n  </span>\r\n</ng-template>"
+                        template: "<ng-template #inputTemplate>\r\n  <input #inputElement autocomplete=\"something-new\" [ngStyle]=\"showCustomSearchStyle\" class=\"ant-select-search__field\"\r\n    (compositionstart)=\"isComposing = true\" (compositionend)=\"isComposing = false\" (input)=\"updateWidth()\"\r\n    [ngModel]=\"inputValue\" (ngModelChange)=\"setInputValue($event)\" [disabled]=\"nzSelectService.disabled\">\r\n</ng-template>\r\n<span class=\"ant-select-arrow\" style=\"right: auto !important; margin-left: 2px;\" cmacs-select-unselectable\r\n  *ngIf=\"showCustomSearch\">\r\n  <i nz-icon type=\"search\" style=\"font-size: 16px !important;\" *ngIf=\"!nzSuffixIcon; else nzSuffixIcon\"></i>\r\n</span>\r\n<div class=\"ant-select-selection__rendered\">\r\n  <div *ngIf=\"nzPlaceHolder\" cmacs-select-unselectable [style.display]=\"placeHolderDisplay\"\r\n    class=\"ant-select-selection__placeholder\">{{ nzPlaceHolder }}</div>\r\n  <!--single mode-->\r\n  <ng-container *ngIf=\"nzSelectService.isSingleMode\">\r\n    <!--selected label-->\r\n    <div *ngIf=\"nzSelectService.listOfCachedSelectedOption.length && nzSelectService.listOfSelectedValue.length\"\r\n      class=\"ant-select-selection-selected-value\" [attr.title]=\"nzSelectService.listOfCachedSelectedOption[0]?.nzLabel\"\r\n      [ngStyle]=\"selectedValueStyle\">\r\n      {{ nzSelectService.listOfCachedSelectedOption[0]?.nzLabel }}\r\n    </div>\r\n    <!--show search-->\r\n    <!--<div *ngIf=\"nzShowSearch\" class=\"ant-select-search ant-select-search&#45;&#45;inline\"\r\n      [style.display]=\"nzOpen ? 'block' : 'none'\">\r\n      <div class=\"ant-select-search__field__wrap\">\r\n        <ng-template [ngTemplateOutlet]=\"inputTemplate\"></ng-template>\r\n        <span class=\"ant-select-search__field__mirror\">{{inputValue}}&nbsp;</span>\r\n      </div>\r\n    </div>-->\r\n  </ng-container>\r\n  <!--multiple or tags mode-->\r\n  <ul *ngIf=\"nzSelectService.isMultipleOrTags\">\r\n    <ng-container\r\n      *ngFor=\"let option of nzSelectService.listOfCachedSelectedOption | slice: 0 : nzMaxTagCount;trackBy:trackValue;\">\r\n      <li [@zoomMotion] [nzNoAnimation]=\"noAnimation?.nzNoAnimation\" [attr.title]=\"option.nzLabel\"\r\n        [class.ant-select-selection__choice__disabled]=\"option.nzDisabled\" class=\"ant-select-selection__choice\">\r\n        <div class=\"ant-select-selection__choice__content\">{{ option.nzLabel }}</div>\r\n        <span *ngIf=\"!option.nzDisabled\" class=\"ant-select-selection__choice__remove\"\r\n          (mousedown)=\"$event.preventDefault()\" (click)=\"removeSelectedValue(option, $event)\">\r\n          <i nz-icon type=\"close\" class=\"ant-select-remove-icon\" *ngIf=\"!nzRemoveIcon; else nzRemoveIcon\"></i>\r\n        </span>\r\n      </li>\r\n    </ng-container>\r\n    <li *ngIf=\"nzSelectService.listOfCachedSelectedOption.length > nzMaxTagCount\" [@zoomMotion]\r\n      [nzNoAnimation]=\"noAnimation?.nzNoAnimation\" class=\"ant-select-selection__choice\">\r\n      <div class=\"ant-select-selection__choice__content\">\r\n        <ng-container *ngIf=\"nzMaxTagPlaceholder\">\r\n          <ng-template [ngTemplateOutlet]=\"nzMaxTagPlaceholder\"\r\n            [ngTemplateOutletContext]=\"{ $implicit: nzSelectService.listOfSelectedValue | slice: nzMaxTagCount}\">\r\n          </ng-template>\r\n        </ng-container>\r\n        <ng-container *ngIf=\"!nzMaxTagPlaceholder\">\r\n          + {{ nzSelectService.listOfCachedSelectedOption.length - nzMaxTagCount }} ...\r\n        </ng-container>\r\n      </div>\r\n    </li>\r\n    <li class=\"ant-select-search ant-select-search--inline\">\r\n      <ng-template [ngTemplateOutlet]=\"inputTemplate\"></ng-template>\r\n    </li>\r\n  </ul>\r\n</div>\r\n<span *ngIf=\"nzAllowClear && nzSelectService.listOfSelectedValue.length\" class=\"ant-select-selection__clear\"\r\n  cmacs-select-unselectable (mousedown)=\"$event.preventDefault()\" (click)=\"onClearSelection($event)\">\r\n  <i nz-icon type=\"close-circle\" theme=\"fill\" *ngIf=\"!nzClearIcon; else nzClearIcon\" class=\"ant-select-close-icon\"></i>\r\n</span>\r\n<span class=\"ant-select-arrow\" cmacs-select-unselectable *ngIf=\"showCustomSearch; else notCustomArrow\">\r\n    <i nz-icon type=\"arrow-right\" class=\"ant-select-arrow-icon\" *ngIf=\"!nzSuffixIcon; else nzSuffixIcon\"></i>\r\n</span>\r\n<ng-template #notCustomArrow>\r\n  <span class=\"ant-select-arrow\" cmacs-select-unselectable *ngIf=\"nzShowArrow\">\r\n    <i nz-icon type=\"loading\" *ngIf=\"nzLoading; else defaultArrow\"></i>\r\n    <ng-template #defaultArrow>\r\n      <div [class.cmacs-select-action]=\"action\">\r\n        <i nz-icon type=\"down\" class=\"ant-select-arrow-icon\" *ngIf=\"!nzSuffixIcon; else nzSuffixIcon\"></i>\r\n      </div>\r\n    </ng-template>\r\n  </span>\r\n</ng-template>\r\n",
+                        styles: [".cmacs-select-action{padding:9px;position:relative;top:-9px;left:10px;border-left:1px solid #dee0e5}.ant-select-selection__rendered:hover .cmacs-select-action,.cmacs-select-action:hover{background-color:#f6f7fb}"]
                     }] }
         ];
         /** @nocollapse */
         CmacsSelectTopControlComponent.ctorParameters = function () {
             return [
                 { type: i0.Renderer2 },
-                { type: ngZorroAntd.NzSelectService },
+                { type: CmacsSelectService },
                 { type: i0.ChangeDetectorRef },
                 { type: i2.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
             ];
         };
         CmacsSelectTopControlComponent.propDecorators = {
+            searchValue: [{ type: i0.Input }],
             inputElement: [{ type: i0.ViewChild, args: ['inputElement',] }],
             nzShowSearch: [{ type: i0.Input }],
             showCustomSearch: [{ type: i0.Input }],
             nzPlaceHolder: [{ type: i0.Input }],
             nzOpen: [{ type: i0.Input }],
+            action: [{ type: i0.Input }],
             nzMaxTagCount: [{ type: i0.Input }],
             nzAllowClear: [{ type: i0.Input }],
             nzShowArrow: [{ type: i0.Input }],
@@ -7930,55 +8723,48 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
-    var CmacsOptionComponent = /** @class */ (function () {
-        function CmacsOptionComponent() {
-            this.changes = new rxjs.Subject();
-            this.nzDisabled = false;
-            this.nzCustomContent = false;
+    var CmacsOptionGroupComponent = /** @class */ (function () {
+        function CmacsOptionGroupComponent() {
+            this.isLabelString = false;
         }
-        /**
-         * @return {?}
-         */
-        CmacsOptionComponent.prototype.ngOnChanges = /**
-         * @return {?}
-         */
-            function () {
-                this.changes.next();
-            };
-        CmacsOptionComponent.decorators = [
+        Object.defineProperty(CmacsOptionGroupComponent.prototype, "nzLabel", {
+            get: /**
+             * @return {?}
+             */ function () {
+                return this.label;
+            },
+            set: /**
+             * @param {?} value
+             * @return {?}
+             */ function (value) {
+                this.label = value;
+                this.isLabelString = !(this.nzLabel instanceof i0.TemplateRef);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        CmacsOptionGroupComponent.decorators = [
             { type: i0.Component, args: [{
-                        // tslint:disable-next-line: component-selector
-                        selector: 'cmacs-option',
-                        exportAs: 'cmacsOption',
+                        selector: 'nz-option-group',
+                        exportAs: 'nzOptionGroup',
                         encapsulation: i0.ViewEncapsulation.None,
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
-                        template: "<ng-template>\r\n  <ng-content></ng-content>\r\n</ng-template>"
+                        template: "<ng-content></ng-content>"
                     }] }
         ];
-        CmacsOptionComponent.propDecorators = {
-            template: [{ type: i0.ViewChild, args: [i0.TemplateRef,] }],
-            nzLabel: [{ type: i0.Input, args: ['label',] }],
-            nzValue: [{ type: i0.Input, args: ['value',] }],
-            nzDisabled: [{ type: i0.Input, args: ['disabled',] }],
-            nzCustomContent: [{ type: i0.Input, args: ['customContent',] }]
+        CmacsOptionGroupComponent.propDecorators = {
+            listOfNzOptionComponent: [{ type: i0.ContentChildren, args: [CmacsOptionComponent,] }],
+            nzLabel: [{ type: i0.Input }]
         };
-        __decorate([
-            i2.InputBoolean(),
-            __metadata("design:type", Object)
-        ], CmacsOptionComponent.prototype, "nzDisabled", void 0);
-        __decorate([
-            i2.InputBoolean(),
-            __metadata("design:type", Object)
-        ], CmacsOptionComponent.prototype, "nzCustomContent", void 0);
-        return CmacsOptionComponent;
+        return CmacsOptionGroupComponent;
     }());
 
     /**
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
-    var CmacsDropdownComponent = /** @class */ (function () {
-        function CmacsDropdownComponent(renderer, nzSelectService, cdr, focusMonitor, platform$$1, elementRef, noAnimation) {
+    var CmacsSelectComponent = /** @class */ (function () {
+        function CmacsSelectComponent(renderer, nzSelectService, cdr, focusMonitor, platform$$1, elementRef, noAnimation) {
             this.renderer = renderer;
             this.nzSelectService = nzSelectService;
             this.cdr = cdr;
@@ -7986,6 +8772,7 @@
             this.platform = platform$$1;
             this.noAnimation = noAnimation;
             this.nzOpen = false;
+            this.searchValue = '';
             this.onChange = ( /**
              * @return {?}
              */function () { return null; });
@@ -8021,6 +8808,8 @@
             // tslint:disable-next-line: member-ordering
             this.dropdownMatchSelectWidth = true;
             // tslint:disable-next-line: member-ordering
+            this.action = false;
+            // tslint:disable-next-line: member-ordering
             this.allowClear = false;
             // tslint:disable-next-line: member-ordering
             this.showSearch = false;
@@ -8034,7 +8823,7 @@
             this.tokenSeparators = [];
             renderer.addClass(elementRef.nativeElement, 'ant-select');
         }
-        Object.defineProperty(CmacsDropdownComponent.prototype, "autoClearSearchValue", {
+        Object.defineProperty(CmacsSelectComponent.prototype, "autoClearSearchValue", {
             set: /**
              * @param {?} value
              * @return {?}
@@ -8044,7 +8833,7 @@
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(CmacsDropdownComponent.prototype, "maxMultipleCount", {
+        Object.defineProperty(CmacsSelectComponent.prototype, "maxMultipleCount", {
             set: /**
              * @param {?} value
              * @return {?}
@@ -8054,7 +8843,7 @@
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(CmacsDropdownComponent.prototype, "serverSearch", {
+        Object.defineProperty(CmacsSelectComponent.prototype, "serverSearch", {
             set: /**
              * @param {?} value
              * @return {?}
@@ -8064,7 +8853,7 @@
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(CmacsDropdownComponent.prototype, "mode", {
+        Object.defineProperty(CmacsSelectComponent.prototype, "mode", {
             set: /**
              * @param {?} value
              * @return {?}
@@ -8076,7 +8865,7 @@
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(CmacsDropdownComponent.prototype, "filterOption", {
+        Object.defineProperty(CmacsSelectComponent.prototype, "filterOption", {
             set: /**
              * @param {?} value
              * @return {?}
@@ -8086,7 +8875,7 @@
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(CmacsDropdownComponent.prototype, "compareWith", {
+        Object.defineProperty(CmacsSelectComponent.prototype, "compareWith", {
             set: /**
              * @param {?} value
              * @return {?}
@@ -8096,7 +8885,7 @@
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(CmacsDropdownComponent.prototype, "autoFocus", {
+        Object.defineProperty(CmacsSelectComponent.prototype, "autoFocus", {
             get: /**
              * @return {?}
              */ function () {
@@ -8112,7 +8901,7 @@
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(CmacsDropdownComponent.prototype, "cmacsOpen", {
+        Object.defineProperty(CmacsSelectComponent.prototype, "cmacsOpen", {
             set: /**
              * @param {?} value
              * @return {?}
@@ -8123,7 +8912,7 @@
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(CmacsDropdownComponent.prototype, "disabled", {
+        Object.defineProperty(CmacsSelectComponent.prototype, "disabled", {
             get: /**
              * @return {?}
              */ function () {
@@ -8146,7 +8935,7 @@
         /**
          * @return {?}
          */
-        CmacsDropdownComponent.prototype.updateAutoFocus = /**
+        CmacsSelectComponent.prototype.updateAutoFocus = /**
          * @return {?}
          */
             function () {
@@ -8162,7 +8951,7 @@
         /**
          * @return {?}
          */
-        CmacsDropdownComponent.prototype.focus = /**
+        CmacsSelectComponent.prototype.focus = /**
          * @return {?}
          */
             function () {
@@ -8174,7 +8963,7 @@
         /**
          * @return {?}
          */
-        CmacsDropdownComponent.prototype.blur = /**
+        CmacsSelectComponent.prototype.blur = /**
          * @return {?}
          */
             function () {
@@ -8187,7 +8976,7 @@
          * @param {?} event
          * @return {?}
          */
-        CmacsDropdownComponent.prototype.onKeyDown = /**
+        CmacsSelectComponent.prototype.onKeyDown = /**
          * @param {?} event
          * @return {?}
          */
@@ -8197,7 +8986,7 @@
         /**
          * @return {?}
          */
-        CmacsDropdownComponent.prototype.toggleDropDown = /**
+        CmacsSelectComponent.prototype.toggleDropDown = /**
          * @return {?}
          */
             function () {
@@ -8208,7 +8997,7 @@
         /**
          * @return {?}
          */
-        CmacsDropdownComponent.prototype.closeDropDown = /**
+        CmacsSelectComponent.prototype.closeDropDown = /**
          * @return {?}
          */
             function () {
@@ -8218,7 +9007,7 @@
          * @param {?} position
          * @return {?}
          */
-        CmacsDropdownComponent.prototype.onPositionChange = /**
+        CmacsSelectComponent.prototype.onPositionChange = /**
          * @param {?} position
          * @return {?}
          */
@@ -8228,7 +9017,7 @@
         /**
          * @return {?}
          */
-        CmacsDropdownComponent.prototype.updateCdkConnectedOverlayStatus = /**
+        CmacsSelectComponent.prototype.updateCdkConnectedOverlayStatus = /**
          * @return {?}
          */
             function () {
@@ -8239,7 +9028,7 @@
         /**
          * @return {?}
          */
-        CmacsDropdownComponent.prototype.updateCdkConnectedOverlayPositions = /**
+        CmacsSelectComponent.prototype.updateCdkConnectedOverlayPositions = /**
          * @return {?}
          */
             function () {
@@ -8262,7 +9051,7 @@
          * @return {?}
          */
         // tslint:disable-next-line:no-any
-        CmacsDropdownComponent.prototype.writeValue =
+        CmacsSelectComponent.prototype.writeValue =
             // tslint:disable-next-line: jsdoc-format
             /**
              * update ngModel -> update listOfSelectedValue *
@@ -8289,7 +9078,7 @@
          * @param {?} fn
          * @return {?}
          */
-        CmacsDropdownComponent.prototype.registerOnChange = /**
+        CmacsSelectComponent.prototype.registerOnChange = /**
          * @param {?} fn
          * @return {?}
          */
@@ -8300,7 +9089,7 @@
          * @param {?} fn
          * @return {?}
          */
-        CmacsDropdownComponent.prototype.registerOnTouched = /**
+        CmacsSelectComponent.prototype.registerOnTouched = /**
          * @param {?} fn
          * @return {?}
          */
@@ -8311,7 +9100,7 @@
          * @param {?} isDisabled
          * @return {?}
          */
-        CmacsDropdownComponent.prototype.setDisabledState = /**
+        CmacsSelectComponent.prototype.setDisabledState = /**
          * @param {?} isDisabled
          * @return {?}
          */
@@ -8322,7 +9111,7 @@
         /**
          * @return {?}
          */
-        CmacsDropdownComponent.prototype.ngOnInit = /**
+        CmacsSelectComponent.prototype.ngOnInit = /**
          * @return {?}
          */
             function () {
@@ -8370,7 +9159,7 @@
         /**
          * @return {?}
          */
-        CmacsDropdownComponent.prototype.ngAfterViewInit = /**
+        CmacsSelectComponent.prototype.ngAfterViewInit = /**
          * @return {?}
          */
             function () {
@@ -8380,7 +9169,7 @@
         /**
          * @return {?}
          */
-        CmacsDropdownComponent.prototype.ngAfterContentInit = /**
+        CmacsSelectComponent.prototype.ngAfterContentInit = /**
          * @return {?}
          */
             function () {
@@ -8409,33 +9198,44 @@
         /**
          * @return {?}
          */
-        CmacsDropdownComponent.prototype.ngOnDestroy = /**
+        CmacsSelectComponent.prototype.ngOnDestroy = /**
          * @return {?}
          */
             function () {
                 this.destroy$.next();
                 this.destroy$.complete();
             };
-        CmacsDropdownComponent.decorators = [
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        CmacsSelectComponent.prototype.onSearch = /**
+         * @param {?} value
+         * @return {?}
+         */
+            function (value) {
+                this.searchValue = value;
+            };
+        CmacsSelectComponent.decorators = [
             { type: i0.Component, args: [{
                         // tslint:disable-next-line: component-selector
-                        selector: 'cmacs-dropdown',
-                        exportAs: 'cmacsDropdown',
+                        selector: 'cmacs-select',
+                        exportAs: 'cmacsSelect',
                         preserveWhitespaces: false,
                         providers: [
-                            ngZorroAntd.NzSelectService,
+                            CmacsSelectService,
                             {
                                 provide: forms.NG_VALUE_ACCESSOR,
                                 useExisting: i0.forwardRef(( /**
                                  * @return {?}
-                                 */function () { return CmacsDropdownComponent; })),
+                                 */function () { return CmacsSelectComponent; })),
                                 multi: true
                             }
                         ],
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
                         encapsulation: i0.ViewEncapsulation.None,
                         animations: [i2.slideMotion],
-                        template: "<div cdkOverlayOrigin\r\n  cmacs-select-top-control\r\n  tabindex=\"0\"\r\n  class=\"ant-select-selection\"\r\n  [nzOpen]=\"nzOpen\"\r\n  [nzNoAnimation]=\"noAnimation?.nzNoAnimation\"\r\n  [nzMaxTagPlaceholder]=\"maxTagPlaceholder\"\r\n  [nzPlaceHolder]=\"placeHolder\"\r\n  [nzAllowClear]=\"allowClear\"\r\n  [nzMaxTagCount]=\"maxTagCount\"\r\n  [nzShowArrow]=\"showArrow\"\r\n  [nzLoading]=\"loading\"\r\n  [nzSuffixIcon]=\"suffixIcon\"\r\n  [nzClearIcon]=\"clearIcon\"\r\n  [nzRemoveIcon]=\"removeIcon\"\r\n  [nzShowSearch]=\"showSearch\"\r\n  [showCustomSearch]=\"showCustomSearch\"\r\n  [nzTokenSeparators]=\"tokenSeparators\"\r\n  [class.ant-select-selection--single]=\"nzSelectService.isSingleMode\"\r\n  [class.ant-select-selection--multiple]=\"nzSelectService.isMultipleOrTags\"\r\n  (keydown)=\"onKeyDown($event)\">\r\n</div>\r\n<ng-template\r\n  cdkConnectedOverlay\r\n  nzConnectedOverlay\r\n  [cdkConnectedOverlayHasBackdrop]=\"true\"\r\n  [cdkConnectedOverlayMinWidth]=\"dropdownMatchSelectWidth? null : triggerWidth\"\r\n  [cdkConnectedOverlayWidth]=\"dropdownMatchSelectWidth? triggerWidth : null\"\r\n  [cdkConnectedOverlayOrigin]=\"cdkOverlayOrigin\"\r\n  (backdropClick)=\"closeDropDown()\"\r\n  (detach)=\"closeDropDown();\"\r\n  (positionChange)=\"onPositionChange($event)\"\r\n  [cdkConnectedOverlayOpen]=\"nzOpen\">\r\n  <div\r\n    class=\"ant-select-dropdown\"\r\n    [class.ant-select-dropdown--single]=\"nzSelectService.isSingleMode\"\r\n    [class.ant-select-dropdown--multiple]=\"nzSelectService.isMultipleOrTags\"\r\n    [class.ant-select-dropdown-placement-bottomLeft]=\"dropDownPosition === 'bottom'\"\r\n    [class.ant-select-dropdown-placement-topLeft]=\"dropDownPosition === 'top'\"\r\n    \r\n    [@slideMotion]=\"dropDownPosition\"\r\n    [nzNoAnimation]=\"noAnimation?.nzNoAnimation\"\r\n    [ngStyle]=\"dropdownStyle\">\r\n    <div nz-option-container\r\n      style=\"overflow: auto;transform: translateZ(0px);\"\r\n      (keydown)=\"onKeyDown($event)\"\r\n      [nzMenuItemSelectedIcon]=\"menuItemSelectedIcon\"\r\n      [nzNotFoundContent]=\"notFoundContent\"\r\n      (nzScrollToBottom)=\"scrollToBottom.emit()\">\r\n    </div>\r\n    <ng-template [ngTemplateOutlet]=\"dropdownRender\"></ng-template>\r\n  </div>\r\n</ng-template>\r\n<!--can not use ViewChild since it will match sub options in option group -->\r\n<ng-template>\r\n  <ng-content></ng-content>\r\n</ng-template>",
+                        template: "<div cdkOverlayOrigin\r\n  cmacs-select-top-control\r\n  tabindex=\"0\"\r\n  class=\"ant-select-selection\"\r\n  [nzOpen]=\"nzOpen\"\r\n  [searchValue]=\"searchValue\"\r\n  [nzNoAnimation]=\"noAnimation?.nzNoAnimation\"\r\n  [nzMaxTagPlaceholder]=\"maxTagPlaceholder\"\r\n  [nzPlaceHolder]=\"placeHolder\"\r\n  [nzAllowClear]=\"allowClear\"\r\n  [nzMaxTagCount]=\"maxTagCount\"\r\n  [nzShowArrow]=\"showArrow\"\r\n  [nzLoading]=\"loading\"\r\n  [nzSuffixIcon]=\"suffixIcon\"\r\n  [nzClearIcon]=\"clearIcon\"\r\n  [action]=\"action\"\r\n  [nzRemoveIcon]=\"removeIcon\"\r\n  [nzShowSearch]=\"showSearch\"\r\n  [showCustomSearch]=\"showCustomSearch\"\r\n  [nzTokenSeparators]=\"tokenSeparators\"\r\n  [class.ant-select-selection--single]=\"nzSelectService.isSingleMode\"\r\n  [class.ant-select-selection--multiple]=\"nzSelectService.isMultipleOrTags\"\r\n  (keydown)=\"onKeyDown($event)\">\r\n</div>\r\n<ng-template\r\n  cdkConnectedOverlay\r\n  nzConnectedOverlay\r\n  [cdkConnectedOverlayHasBackdrop]=\"true\"\r\n  [cdkConnectedOverlayMinWidth]=\"dropdownMatchSelectWidth? null : triggerWidth\"\r\n  [cdkConnectedOverlayWidth]=\"dropdownMatchSelectWidth? triggerWidth : null\"\r\n  [cdkConnectedOverlayOrigin]=\"cdkOverlayOrigin\"\r\n  (backdropClick)=\"closeDropDown()\"\r\n  (detach)=\"closeDropDown();\"\r\n  (positionChange)=\"onPositionChange($event)\"\r\n  [cdkConnectedOverlayOpen]=\"nzOpen\">\r\n  <div\r\n    class=\"ant-select-dropdown\"\r\n    [class.ant-select-dropdown--single]=\"nzSelectService.isSingleMode\"\r\n    [class.ant-select-dropdown--multiple]=\"nzSelectService.isMultipleOrTags\"\r\n    [class.ant-select-dropdown-placement-bottomLeft]=\"dropDownPosition === 'bottom'\"\r\n    [class.ant-select-dropdown-placement-topLeft]=\"dropDownPosition === 'top'\"\r\n\r\n    [@slideMotion]=\"dropDownPosition\"\r\n    [nzNoAnimation]=\"noAnimation?.nzNoAnimation\"\r\n    [ngStyle]=\"dropdownStyle\">\r\n    <div cmacs-option-container\r\n      style=\"overflow: auto;transform: translateZ(0px);\"\r\n      (onSearch)=\"onSearch($event)\"\r\n      [showSearch]=\"showSearch\"\r\n      (keydown)=\"onKeyDown($event)\"\r\n      [nzMenuItemSelectedIcon]=\"menuItemSelectedIcon\"\r\n      [nzNotFoundContent]=\"notFoundContent\"\r\n      (nzScrollToBottom)=\"scrollToBottom.emit()\">\r\n    </div>\r\n    <ng-template [ngTemplateOutlet]=\"dropdownRender\"></ng-template>\r\n  </div>\r\n</ng-template>\r\n<!--can not use ViewChild since it will match sub options in option group -->\r\n<ng-template>\r\n  <ng-content></ng-content>\r\n</ng-template>\r\n",
                         // tslint:disable-next-line: use-host-property-decorator
                         host: {
                             '[class.ant-select-lg]': 'size==="large"',
@@ -8447,14 +9247,14 @@
                             '[class.ant-select-open]': 'nzOpen',
                             '(click)': 'toggleDropDown()'
                         },
-                        styles: ["\n      .ant-select-dropdown {\n        top: 100%;\n        left: 0;\n        position: relative;\n        width: 100%;\n        margin-top: 4px;\n        margin-bottom: 4px;\n      }\n    ", ".ant-select-selection{border:1px solid #dee0e5;border-radius:3px}.ant-select-selection:focus-within,.ant-select-selection:hover{border:1px solid #bec4cd;text-shadow:none}.ant-select-open .ant-select-selection{border-color:#bec4cd;box-shadow:none}.ant-select-search--inline .ant-select-search__field{margin-left:21px!important}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item:hover .ant-select-selected-icon{color:transparent}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item-selected .ant-select-selected-icon,.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item-selected:hover .ant-select-selected-icon{color:#2a7cff!important;padding:2px;border:1px solid #dee0e5}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item-selected:hover .ant-select-selected-icon{border-color:#2a7cff}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item .ant-select-selected-icon{padding:2px;border:1px solid #dee0e5}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item .ant-select-selected-icon:hover{color:transparent}.ant-select-dropdown-menu-item-active,.ant-select-dropdown-menu-item:hover{background-color:#f6f7fb}.ant-select-dropdown{margin-top:0!important;margin-bottom:0!important}.ant-select-dropdown-menu-item{border-top:1px solid #dee0e5;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.ant-select-dropdown-menu-item:first-child{border-top:none}.ant-select-selection--multiple .ant-select-selection__rendered>ul>li{font-size:14px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.ant-select-selection:focus{box-shadow:none;border:1px solid #bec4cd}.ant-select-selection--multiple .ant-select-selection__choice__remove>*{line-height:2.2}.ant-select-selection__placeholder{margin-left:0}.ant-select-selection--multiple .ant-select-selection__placeholder{margin-left:5px}.ant-select-selection-selected-value{padding-left:0}"]
+                        styles: ["\n      .ant-select-dropdown {\n        top: 100%;\n        left: 0;\n        position: relative;\n        width: 100%;\n        margin-top: 4px;\n        margin-bottom: 4px;\n      }\n    ", ".ant-select-selection{border:1px solid #dee0e5;border-radius:3px}.ant-select-selection:focus-within,.ant-select-selection:hover{border:1px solid #bec4cd;text-shadow:none}.ant-select-open .ant-select-selection{border-color:#bec4cd;box-shadow:none}.ant-select-search--inline .ant-select-search__field{margin-left:21px!important}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item:hover .ant-select-selected-icon{color:transparent}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item-selected .ant-select-selected-icon,.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item-selected:hover .ant-select-selected-icon{color:#2a7cff!important;padding:2px;border:1px solid #dee0e5}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item-selected:hover .ant-select-selected-icon{border-color:#2a7cff}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item .ant-select-selected-icon{padding:2px;border:1px solid #dee0e5;left:12px;right:unset}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item .ant-select-selected-icon:hover{color:transparent}.ant-select-dropdown-menu-item-active,.ant-select-dropdown-menu-item:hover{background-color:#f6f7fb}.ant-select-dropdown{margin-top:0!important;margin-bottom:0!important}.ant-select-dropdown-menu-item{border-top:1px solid #dee0e5;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.ant-select-dropdown-menu-item:first-child{border-top:none}.ant-select-selection--multiple .ant-select-selection__rendered>ul>li{font-size:14px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.ant-select-selection:focus{box-shadow:none;border:1px solid #bec4cd}.ant-select-selection--multiple .ant-select-selection__choice__remove>*{line-height:2.2}.ant-select-selection__placeholder{margin-left:0}.ant-select-selection--multiple .ant-select-selection__placeholder{margin-left:5px}.ant-select-selection-selected-value{padding-left:0}.ant-select-dropdown-menu-item-selected{color:#2a7cff!important}.ant-select-dropdown-menu-item-selected,.ant-select-dropdown-menu-item-selected:hover{color:#2a7cff}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item{padding-right:12px;padding-left:42px}.cmacs-select-search-input{width:100%;border:none;outline:0;padding:0 10px 0 6px}.cmacs-select-search-input::-webkit-input-placeholder{color:#acb3bf}.cmacs-select-search-input::-moz-placeholder{color:#acb3bf}.cmacs-select-search-input:-ms-input-placeholder{color:#acb3bf}.cmacs-select-search-input::-ms-input-placeholder{color:#acb3bf}.cmacs-select-search-input::placeholder{color:#acb3bf}.cmacs-select-search,.cmacs-select-search:hover{background-color:#fff}.cmacs-select-search-icon{color:#dee0e5}"]
                     }] }
         ];
         /** @nocollapse */
-        CmacsDropdownComponent.ctorParameters = function () {
+        CmacsSelectComponent.ctorParameters = function () {
             return [
                 { type: i0.Renderer2 },
-                { type: ngZorroAntd.NzSelectService },
+                { type: CmacsSelectService },
                 { type: i0.ChangeDetectorRef },
                 { type: a11y.FocusMonitor },
                 { type: platform.Platform },
@@ -8462,12 +9262,12 @@
                 { type: i2.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
             ];
         };
-        CmacsDropdownComponent.propDecorators = {
+        CmacsSelectComponent.propDecorators = {
             cdkOverlayOrigin: [{ type: i0.ViewChild, args: [i1.CdkOverlayOrigin,] }],
             cdkConnectedOverlay: [{ type: i0.ViewChild, args: [i1.CdkConnectedOverlay,] }],
             selectTopControlComponent: [{ type: i0.ViewChild, args: [CmacsSelectTopControlComponent,] }],
             listOfCmacsOptionComponent: [{ type: i0.ContentChildren, args: [CmacsOptionComponent,] }],
-            listOfCmacsOptionGroupComponent: [{ type: i0.ContentChildren, args: [ngZorroAntd.NzOptionGroupComponent,] }],
+            listOfCmacsOptionGroupComponent: [{ type: i0.ContentChildren, args: [CmacsOptionGroupComponent,] }],
             cmacsOnSearch: [{ type: i0.Output }],
             scrollToBottom: [{ type: i0.Output }],
             openChange: [{ type: i0.Output }],
@@ -8476,6 +9276,7 @@
             size: [{ type: i0.Input }],
             dropdownClassName: [{ type: i0.Input }],
             dropdownMatchSelectWidth: [{ type: i0.Input }],
+            action: [{ type: i0.Input }],
             dropdownStyle: [{ type: i0.Input }],
             notFoundContent: [{ type: i0.Input }],
             allowClear: [{ type: i0.Input }],
@@ -8505,20 +9306,20 @@
         __decorate([
             i2.InputBoolean(),
             __metadata("design:type", Object)
-        ], CmacsDropdownComponent.prototype, "allowClear", void 0);
+        ], CmacsSelectComponent.prototype, "allowClear", void 0);
         __decorate([
             i2.InputBoolean(),
             __metadata("design:type", Object)
-        ], CmacsDropdownComponent.prototype, "showSearch", void 0);
+        ], CmacsSelectComponent.prototype, "showSearch", void 0);
         __decorate([
             i2.InputBoolean(),
             __metadata("design:type", Object)
-        ], CmacsDropdownComponent.prototype, "showCustomSearch", void 0);
+        ], CmacsSelectComponent.prototype, "showCustomSearch", void 0);
         __decorate([
             i2.InputBoolean(),
             __metadata("design:type", Object)
-        ], CmacsDropdownComponent.prototype, "loading", void 0);
-        return CmacsDropdownComponent;
+        ], CmacsSelectComponent.prototype, "loading", void 0);
+        return CmacsSelectComponent;
     }());
 
     /**
@@ -8600,7 +9401,7 @@
             { type: i0.Component, args: [{
                         // tslint:disable-next-line: component-selector
                         selector: 'cmacs-search',
-                        template: "<cmacs-dropdown class=\"cmacs-search\" style=\"width: 100%\" [(ngModel)]=\"selected\" [disabled]=disabled [allowClear]=allowClear\r\n    placeHolder={{placeholder}} [size]=size mode={{mode}} showSearch showCustomSearch>\r\n    <cmacs-option *ngFor=\"let item of options; index as i; trackBy: trackByFn\" value=\"{{item.value}}\"\r\n        label=\"{{item.label}}\"></cmacs-option>\r\n</cmacs-dropdown>\r\n\r\n<!-- <cmacs-dropdown style=\"width: 100%\" [(ngModel)]=\"selected\" [disabled]=disabled allowClear placeHolder=\"Choose\" showSearch\r\n    showCustomSearch>\r\n    <cmacs-option *ngFor=\"let item of options; index as i; trackBy: trackByFn\" value=\"{{item.value}}\" label=\"{{item.label}}\"></cmacs-option>\r\n</cmacs-dropdown> -->\r\n",
+                        template: "<cmacs-select class=\"cmacs-search\" style=\"width: 100%\" [(ngModel)]=\"selected\" [disabled]=disabled [allowClear]=allowClear\r\n    placeHolder={{placeholder}} [size]=size mode={{mode}} showSearch showCustomSearch>\r\n    <cmacs-option *ngFor=\"let item of options; index as i; trackBy: trackByFn\" value=\"{{item.value}}\"\r\n        label=\"{{item.label}}\"></cmacs-option>\r\n</cmacs-select>\r\n",
                         providers: [
                             {
                                 provide: forms.NG_VALUE_ACCESSOR,
@@ -12810,8 +13611,1490 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    var CmacsDropdownADirective = /** @class */ (function () {
+        function CmacsDropdownADirective(elementRef, renderer) {
+            this.elementRef = elementRef;
+            this.renderer = renderer;
+            this.renderer.addClass(this.elementRef.nativeElement, 'ant-dropdown-link');
+        }
+        CmacsDropdownADirective.decorators = [
+            { type: i0.Directive, args: [{
+                        selector: 'a[cmacs-dropdown]'
+                    },] }
+        ];
+        /** @nocollapse */
+        CmacsDropdownADirective.ctorParameters = function () {
+            return [
+                { type: i0.ElementRef },
+                { type: i0.Renderer2 }
+            ];
+        };
+        return CmacsDropdownADirective;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsDropdownDirective = /** @class */ (function () {
+        function CmacsDropdownDirective(elementRef, renderer) {
+            this.elementRef = elementRef;
+            this.renderer = renderer;
+            this.el = this.elementRef.nativeElement;
+            this.hover$ = rxjs.merge(rxjs.fromEvent(this.el, 'mouseenter').pipe(operators.mapTo(true)), rxjs.fromEvent(this.el, 'mouseleave').pipe(operators.mapTo(false)));
+            this.$click = rxjs.fromEvent(this.el, 'click').pipe(operators.tap(( /**
+             * @param {?} e
+             * @return {?}
+             */function (e) { return e.stopPropagation(); })), operators.mapTo(true));
+            renderer.addClass(elementRef.nativeElement, 'ant-dropdown-trigger');
+        }
+        /**
+         * @param {?} disabled
+         * @return {?}
+         */
+        CmacsDropdownDirective.prototype.setDisabled = /**
+         * @param {?} disabled
+         * @return {?}
+         */
+            function (disabled) {
+                if (disabled) {
+                    this.renderer.setAttribute(this.el, 'disabled', '');
+                }
+                else {
+                    this.renderer.removeAttribute(this.el, 'disabled');
+                }
+            };
+        CmacsDropdownDirective.decorators = [
+            { type: i0.Directive, args: [{
+                        selector: '[cmacs-dropdown]',
+                        exportAs: 'cmacsDropdown'
+                    },] }
+        ];
+        /** @nocollapse */
+        CmacsDropdownDirective.ctorParameters = function () {
+            return [
+                { type: i0.ElementRef },
+                { type: i0.Renderer2 }
+            ];
+        };
+        return CmacsDropdownDirective;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsMenuDropdownService = /** @class */ (function (_super) {
+        __extends(CmacsMenuDropdownService, _super);
+        function CmacsMenuDropdownService() {
+            var _this = _super !== null && _super.apply(this, arguments) || this;
+            _this.isInDropDown = true;
+            return _this;
+        }
+        CmacsMenuDropdownService.decorators = [
+            { type: i0.Injectable }
+        ];
+        return CmacsMenuDropdownService;
+    }(i2.NzMenuBaseService));
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    /**
+     * @param {?} injector
+     * @return {?}
+     */
+    function menuServiceFactory(injector) {
+        return injector.get(CmacsMenuDropdownService);
+    }
+    var CmacsDropdownComponent = /** @class */ (function () {
+        function CmacsDropdownComponent(cdr, cmacsMenuDropdownService, noAnimation) {
+            this.cdr = cdr;
+            this.cmacsMenuDropdownService = cmacsMenuDropdownService;
+            this.noAnimation = noAnimation;
+            this.triggerWidth = 0;
+            this.dropDownPosition = 'bottom';
+            this.positions = __spread(i2.DEFAULT_DROPDOWN_POSITIONS);
+            this.visible$ = new rxjs.Subject();
+            this.destroy$ = new rxjs.Subject();
+            this.trigger = 'hover';
+            this.overlayClassName = '';
+            this.overlayStyle = {};
+            this.placement = 'bottomLeft';
+            this.clickHide = true;
+            this.disabled = false;
+            this.visible = false;
+            this.tableFilter = false;
+            this.visibleChange = new i0.EventEmitter();
+        }
+        /**
+         * @param {?} visible
+         * @param {?=} trigger
+         * @return {?}
+         */
+        CmacsDropdownComponent.prototype.setVisibleStateWhen = /**
+         * @param {?} visible
+         * @param {?=} trigger
+         * @return {?}
+         */
+            function (visible, trigger) {
+                if (trigger === void 0) {
+                    trigger = 'all';
+                }
+                if (this.trigger === trigger || trigger === 'all') {
+                    this.visible$.next(visible);
+                }
+            };
+        /**
+         * @param {?} position
+         * @return {?}
+         */
+        CmacsDropdownComponent.prototype.onPositionChange = /**
+         * @param {?} position
+         * @return {?}
+         */
+            function (position) {
+                this.dropDownPosition = position.connectionPair.originY;
+                this.cdr.markForCheck();
+            };
+        /**
+         * @param {?} observable$
+         * @return {?}
+         */
+        CmacsDropdownComponent.prototype.startSubscribe = /**
+         * @param {?} observable$
+         * @return {?}
+         */
+            function (observable$) {
+                var _this = this;
+                /** @type {?} */
+                var click$ = this.clickHide ? this.cmacsMenuDropdownService.menuItemClick$.pipe(operators.mapTo(false)) : rxjs.EMPTY;
+                rxjs.combineLatest(rxjs.merge(observable$, click$), this.cmacsMenuDropdownService.menuOpen$)
+                    .pipe(operators.map(( /**
+             * @param {?} value
+             * @return {?}
+             */function (value) { return value[0] || value[1]; })), operators.debounceTime(50), operators.distinctUntilChanged(), operators.takeUntil(this.destroy$))
+                    .subscribe(( /**
+             * @param {?} visible
+             * @return {?}
+             */function (visible) {
+                    if (!_this.disabled && _this.visible !== visible) {
+                        _this.visible = visible;
+                        _this.visibleChange.emit(_this.visible);
+                        _this.triggerWidth = _this.cmacsDropdownDirective.elementRef.nativeElement.getBoundingClientRect().width;
+                        _this.cdr.markForCheck();
+                    }
+                }));
+            };
+        /**
+         * @return {?}
+         */
+        CmacsDropdownComponent.prototype.updateDisabledState = /**
+         * @return {?}
+         */
+            function () {
+                if (this.cmacsDropdownDirective) {
+                    this.cmacsDropdownDirective.setDisabled(this.disabled);
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsDropdownComponent.prototype.ngOnDestroy = /**
+         * @return {?}
+         */
+            function () {
+                this.destroy$.next();
+                this.destroy$.complete();
+            };
+        /**
+         * @return {?}
+         */
+        CmacsDropdownComponent.prototype.ngAfterContentInit = /**
+         * @return {?}
+         */
+            function () {
+                this.startSubscribe(rxjs.merge(this.visible$, this.trigger === 'hover' ? this.cmacsDropdownDirective.hover$ : this.cmacsDropdownDirective.$click));
+                this.updateDisabledState();
+            };
+        /**
+         * @param {?} changes
+         * @return {?}
+         */
+        CmacsDropdownComponent.prototype.ngOnChanges = /**
+         * @param {?} changes
+         * @return {?}
+         */
+            function (changes) {
+                if (changes.visible) {
+                    this.visible$.next(this.visible);
+                }
+                if (changes.disabled) {
+                    this.updateDisabledState();
+                }
+                if (changes.placement) {
+                    this.dropDownPosition = this.placement.indexOf('top') !== -1 ? 'top' : 'bottom';
+                    this.positions = __spread([i2.POSITION_MAP[this.placement]], this.positions);
+                }
+            };
+        CmacsDropdownComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-dropdown',
+                        exportAs: 'cmacsDropdown',
+                        preserveWhitespaces: false,
+                        providers: [
+                            CmacsMenuDropdownService,
+                            {
+                                provide: i2.NzDropdownHigherOrderServiceToken,
+                                useFactory: menuServiceFactory,
+                                deps: [[new i0.Self(), i0.Injector]]
+                            }
+                        ],
+                        animations: [i2.slideMotion],
+                        encapsulation: i0.ViewEncapsulation.None,
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        template: "<ng-content select=\"[cmacs-dropdown]\"></ng-content>\r\n<ng-template\r\n  cdkConnectedOverlay\r\n  nzConnectedOverlay\r\n  [cdkConnectedOverlayHasBackdrop]=\"trigger === 'click'\"\r\n  [cdkConnectedOverlayPositions]=\"positions\"\r\n  [cdkConnectedOverlayOrigin]=\"cmacsDropdownDirective\"\r\n  [cdkConnectedOverlayMinWidth]=\"triggerWidth\"\r\n  [cdkConnectedOverlayOpen]=\"visible\"\r\n  (backdropClick)=\"setVisibleStateWhen(false)\"\r\n  (detach)=\"setVisibleStateWhen(false)\"\r\n  (positionChange)=\"onPositionChange($event)\">\r\n  <div class=\"{{'ant-dropdown ant-dropdown-placement-'+placement}}\"\r\n    [ngClass]=\"overlayClassName\"\r\n    [ngStyle]=\"overlayStyle\"\r\n    [@slideMotion]=\"dropDownPosition\"\r\n    [nzNoAnimation]=\"noAnimation?.nzNoAnimation\"\r\n    [style.minWidth.px]=\"triggerWidth\"\r\n    (mouseenter)=\"setVisibleStateWhen(true,'hover')\"\r\n    (mouseleave)=\"setVisibleStateWhen(false,'hover')\">\r\n    <div [class.ant-table-filter-dropdown]=\"tableFilter\">\r\n      <ng-content select=\"[nz-menu]\"></ng-content>\r\n      <ng-content></ng-content>\r\n    </div>\r\n  </div>\r\n</ng-template>\r\n",
+                        styles: ["\n      .ant-dropdown {\n        top: 100%;\n        left: 0;\n        position: relative;\n        width: 100%;\n        margin-top: 4px;\n        margin-bottom: 4px;\n      }\n    "]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsDropdownComponent.ctorParameters = function () {
+            return [
+                { type: i0.ChangeDetectorRef },
+                { type: CmacsMenuDropdownService },
+                { type: i2.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
+            ];
+        };
+        CmacsDropdownComponent.propDecorators = {
+            cmacsDropdownDirective: [{ type: i0.ContentChild, args: [CmacsDropdownDirective,] }],
+            nzMenuDirective: [{ type: i0.ContentChild, args: [menu.NzMenuDirective,] }],
+            cdkConnectedOverlay: [{ type: i0.ViewChild, args: [i1.CdkConnectedOverlay,] }],
+            trigger: [{ type: i0.Input }],
+            overlayClassName: [{ type: i0.Input }],
+            overlayStyle: [{ type: i0.Input }],
+            placement: [{ type: i0.Input }],
+            clickHide: [{ type: i0.Input }],
+            disabled: [{ type: i0.Input }],
+            visible: [{ type: i0.Input }],
+            tableFilter: [{ type: i0.Input }],
+            visibleChange: [{ type: i0.Output }]
+        };
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsDropdownComponent.prototype, "clickHide", void 0);
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsDropdownComponent.prototype, "disabled", void 0);
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsDropdownComponent.prototype, "visible", void 0);
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsDropdownComponent.prototype, "tableFilter", void 0);
+        return CmacsDropdownComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var ɵ0$1 = menuServiceFactory;
+    var CmacsDropdownButtonComponent = /** @class */ (function (_super) {
+        __extends(CmacsDropdownButtonComponent, _super);
+        function CmacsDropdownButtonComponent(cdr, cmacsMenuDropdownService, noAnimation) {
+            var _this = _super.call(this, cdr, cmacsMenuDropdownService, noAnimation) || this;
+            _this.noAnimation = noAnimation;
+            _this.size = 'default';
+            _this.type = 'default';
+            _this.cmacsClick = new i0.EventEmitter();
+            return _this;
+        }
+        /** rewrite afterViewInit hook */
+        /**
+         * rewrite afterViewInit hook
+         * @return {?}
+         */
+        CmacsDropdownButtonComponent.prototype.ngAfterContentInit = /**
+         * rewrite afterViewInit hook
+         * @return {?}
+         */
+            function () {
+                this.startSubscribe(this.visible$);
+            };
+        CmacsDropdownButtonComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-dropdown-button',
+                        exportAs: 'cmacsDropdownButton',
+                        preserveWhitespaces: false,
+                        animations: [i2.slideMotion],
+                        encapsulation: i0.ViewEncapsulation.None,
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        providers: [
+                            CmacsMenuDropdownService,
+                            {
+                                provide: i2.NzDropdownHigherOrderServiceToken,
+                                useFactory: ɵ0$1,
+                                deps: [[new i0.Self(), i0.Injector]]
+                            }
+                        ],
+                        template: "<div class=\"ant-btn-group ant-dropdown-button\" cmacs-dropdown>\r\n  <button cmacs-button\r\n    type=\"button\"\r\n    [disabled]=\"disabled\"\r\n    [type]=\"type\"\r\n    [size]=\"size\"\r\n    (click)=\"cmacsClick.emit($event)\">\r\n    <span><ng-content></ng-content></span>\r\n  </button>\r\n  <button cmacs-button\r\n    type=\"button\"\r\n    class=\"ant-dropdown-trigger\"\r\n    [type]=\"type\"\r\n    [size]=\"size\"\r\n    [disabled]=\"disabled\"\r\n    (click)=\"setVisibleStateWhen(true,'click')\"\r\n    (mouseenter)=\"setVisibleStateWhen(true,'hover')\"\r\n    (mouseleave)=\"setVisibleStateWhen(false,'hover')\">\r\n    <i nz-icon type=\"ellipsis\"></i>\r\n  </button>\r\n</div>\r\n<ng-template\r\n  cdkConnectedOverlay\r\n  nzConnectedOverlay\r\n  [cdkConnectedOverlayHasBackdrop]=\"trigger === 'click'\"\r\n  [cdkConnectedOverlayPositions]=\"positions\"\r\n  [cdkConnectedOverlayOrigin]=\"cmacsDropDownDirective\"\r\n  (backdropClick)=\"setVisibleStateWhen(false)\"\r\n  (detach)=\"setVisibleStateWhen(false)\"\r\n  [cdkConnectedOverlayMinWidth]=\"triggerWidth\"\r\n  (positionChange)=\"onPositionChange($event)\"\r\n  [cdkConnectedOverlayOpen]=\"visible\">\r\n  <div class=\"{{'ant-dropdown ant-dropdown-placement-'+ placement}}\"\r\n    [nzNoAnimation]=\"noAnimation?.nzNoAnimation\"\r\n    [@slideMotion]=\"dropDownPosition\"\r\n    (mouseenter)=\"setVisibleStateWhen(true,'hover')\"\r\n    (mouseleave)=\"setVisibleStateWhen(false,'hover')\"\r\n    [style.minWidth.px]=\"triggerWidth\">\r\n    <ng-content select=\"[nz-menu]\"></ng-content>\r\n  </div>\r\n</ng-template>\r\n",
+                        styles: ["\n      cmacs-dropdown-button {\n        position: relative;\n        display: inline-block;\n      }\n\n      .ant-dropdown {\n        top: 100%;\n        left: 0;\n        position: relative;\n        width: 100%;\n        margin-top: 4px;\n        margin-bottom: 4px;\n      }\n    "]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsDropdownButtonComponent.ctorParameters = function () {
+            return [
+                { type: i0.ChangeDetectorRef },
+                { type: CmacsMenuDropdownService },
+                { type: i2.NzNoAnimationDirective, decorators: [{ type: i0.Host }, { type: i0.Optional }] }
+            ];
+        };
+        CmacsDropdownButtonComponent.propDecorators = {
+            size: [{ type: i0.Input }],
+            type: [{ type: i0.Input }],
+            cmacsClick: [{ type: i0.Output }],
+            cmacsDropDownDirective: [{ type: i0.ViewChild, args: [CmacsDropdownDirective,] }]
+        };
+        return CmacsDropdownButtonComponent;
+    }(CmacsDropdownComponent));
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsDropdownContextComponent = /** @class */ (function () {
+        function CmacsDropdownContextComponent(cdr) {
+            this.cdr = cdr;
+            this.open = true;
+            this.dropDownPosition = 'bottom';
+            this.destroy$ = new rxjs.Subject();
+        }
+        /**
+         * @param {?} open
+         * @param {?} templateRef
+         * @param {?} positionChanges
+         * @param {?} control
+         * @return {?}
+         */
+        CmacsDropdownContextComponent.prototype.init = /**
+         * @param {?} open
+         * @param {?} templateRef
+         * @param {?} positionChanges
+         * @param {?} control
+         * @return {?}
+         */
+            function (open, templateRef, positionChanges, control) {
+                var _this = this;
+                this.open = open;
+                this.templateRef = templateRef;
+                this.control = control;
+                positionChanges.pipe(operators.takeUntil(this.destroy$)).subscribe(( /**
+                 * @param {?} data
+                 * @return {?}
+                 */function (data) {
+                    _this.dropDownPosition = data.connectionPair.overlayY === 'bottom' ? 'top' : 'bottom';
+                    _this.cdr.markForCheck();
+                }));
+            };
+        /**
+         * @return {?}
+         */
+        CmacsDropdownContextComponent.prototype.close = /**
+         * @return {?}
+         */
+            function () {
+                this.open = false;
+                this.cdr.markForCheck();
+            };
+        /**
+         * @return {?}
+         */
+        CmacsDropdownContextComponent.prototype.afterAnimation = /**
+         * @return {?}
+         */
+            function () {
+                if (!this.open) {
+                    this.control.dispose();
+                }
+            };
+        // TODO auto set dropdown class after the bug resolved
+        /** https://github.com/angular/angular/issues/14842 **/
+        // TODO auto set dropdown class after the bug resolved
+        /**
+         * https://github.com/angular/angular/issues/14842 *
+         * @return {?}
+         */
+        CmacsDropdownContextComponent.prototype.ngOnDestroy =
+            // TODO auto set dropdown class after the bug resolved
+            /**
+             * https://github.com/angular/angular/issues/14842 *
+             * @return {?}
+             */
+            function () {
+                this.destroy$.next();
+                this.destroy$.complete();
+            };
+        CmacsDropdownContextComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-dropdown-context',
+                        exportAs: 'cmacsDropdownContext',
+                        animations: [i2.slideMotion],
+                        preserveWhitespaces: false,
+                        template: "<div *ngIf=\"open\"\r\n  class=\"ant-dropdown ant-dropdown-placement-bottomLeft\"\r\n  [@slideMotion]=\"dropDownPosition\"\r\n  (@slideMotion.done)=\"afterAnimation()\">\r\n  <ng-template [ngTemplateOutlet]=\"templateRef\"></ng-template>\r\n</div>",
+                        encapsulation: i0.ViewEncapsulation.None,
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        providers: [CmacsMenuDropdownService],
+                        styles: ["\n      cmacs-dropdown-context {\n        display: block;\n      }\n\n      .ant-dropdown {\n        top: 100%;\n        left: 0;\n        position: relative;\n        width: 100%;\n        margin-top: 4px;\n        margin-bottom: 4px;\n      }\n    "]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsDropdownContextComponent.ctorParameters = function () {
+            return [
+                { type: i0.ChangeDetectorRef }
+            ];
+        };
+        return CmacsDropdownContextComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsDropdownService = /** @class */ (function () {
+        function CmacsDropdownService(overlay) {
+            this.overlay = overlay;
+        }
+        /**
+         * @param {?} $event
+         * @param {?} templateRef
+         * @return {?}
+         */
+        CmacsDropdownService.prototype.create = /**
+         * @param {?} $event
+         * @param {?} templateRef
+         * @return {?}
+         */
+            function ($event, templateRef) {
+                var _this = this;
+                $event.preventDefault();
+                this.dispose();
+                this.overlayRef = this.overlay.create(new i1.OverlayConfig({
+                    scrollStrategy: this.overlay.scrollStrategies.close(),
+                    panelClass: 'nz-dropdown-panel',
+                    positionStrategy: this.overlay
+                        .position()
+                        .flexibleConnectedTo({
+                        x: $event.x,
+                        y: $event.y
+                    })
+                        .withPositions([
+                        new i1.ConnectionPositionPair({ originX: 'start', originY: 'top' }, { overlayX: 'start', overlayY: 'top' }),
+                        new i1.ConnectionPositionPair({ originX: 'start', originY: 'top' }, { overlayX: 'start', overlayY: 'bottom' }),
+                        new i1.ConnectionPositionPair({ originX: 'start', originY: 'top' }, { overlayX: 'end', overlayY: 'bottom' }),
+                        new i1.ConnectionPositionPair({ originX: 'start', originY: 'top' }, { overlayX: 'end', overlayY: 'top' })
+                    ])
+                }));
+                /** @type {?} */
+                var positionChanges = (( /** @type {?} */(this.overlayRef.getConfig().positionStrategy)))
+                    .positionChanges;
+                /** @type {?} */
+                var instance = this.overlayRef.attach(new portal.ComponentPortal(CmacsDropdownContextComponent)).instance;
+                rxjs.fromEvent(document, 'click')
+                    .pipe(operators.filter(( /**
+             * @param {?} event
+             * @return {?}
+             */function (event) { return !!_this.overlayRef && !_this.overlayRef.overlayElement.contains(( /** @type {?} */(event.target))); })), operators.take(1))
+                    .subscribe(( /**
+             * @return {?}
+             */function () { return instance.close(); }));
+                instance.init(true, templateRef, positionChanges, this);
+                return instance;
+            };
+        /**
+         * @return {?}
+         */
+        CmacsDropdownService.prototype.dispose = /**
+         * @return {?}
+         */
+            function () {
+                if (this.overlayRef) {
+                    this.overlayRef.dispose();
+                    this.overlayRef = null;
+                }
+            };
+        CmacsDropdownService.decorators = [
+            { type: i0.Injectable }
+        ];
+        /** @nocollapse */
+        CmacsDropdownService.ctorParameters = function () {
+            return [
+                { type: i1.Overlay }
+            ];
+        };
+        return CmacsDropdownService;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsFormExplainComponent = /** @class */ (function () {
+        function CmacsFormExplainComponent(elementRef, renderer) {
+            this.elementRef = elementRef;
+            this.renderer = renderer;
+            this.renderer.addClass(this.elementRef.nativeElement, 'ant-form-explain');
+        }
+        CmacsFormExplainComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-form-explain',
+                        exportAs: 'cmacsFormExplain',
+                        preserveWhitespaces: false,
+                        encapsulation: i0.ViewEncapsulation.None,
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        animations: [i2.helpMotion],
+                        template: "<div [@helpMotion]>\r\n  <ng-content></ng-content>\r\n</div>",
+                        styles: ["\n      cmacs-form-explain {\n        display: block;\n      }\n    "]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsFormExplainComponent.ctorParameters = function () {
+            return [
+                { type: i0.ElementRef },
+                { type: i0.Renderer2 }
+            ];
+        };
+        return CmacsFormExplainComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    /**
+     * should add nz-row directive to host, track https://github.com/angular/angular/issues/8785 *
+     */
+    var CmacsFormItemComponent = /** @class */ (function (_super) {
+        __extends(CmacsFormItemComponent, _super);
+        function CmacsFormItemComponent(elementRef, renderer, nzUpdateHostClassService, mediaMatcher, ngZone, platform$$1, cdr) {
+            var _this = _super.call(this, elementRef, renderer, nzUpdateHostClassService, mediaMatcher, ngZone, platform$$1) || this;
+            _this.cdr = cdr;
+            _this.flex = false;
+            renderer.addClass(elementRef.nativeElement, 'ant-form-item');
+            return _this;
+        }
+        /**
+         * @return {?}
+         */
+        CmacsFormItemComponent.prototype.updateFlexStyle = /**
+         * @return {?}
+         */
+            function () {
+                if (this.flex) {
+                    this.renderer.setStyle(this.elementRef.nativeElement, 'display', 'flex');
+                }
+                else {
+                    this.renderer.removeStyle(this.elementRef.nativeElement, 'display');
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFormItemComponent.prototype.ngAfterContentInit = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                if (this.listOfNzFormExplainComponent) {
+                    this.listOfNzFormExplainComponent.changes.pipe(operators.takeUntil(this.destroy$)).subscribe(( /**
+                     * @return {?}
+                     */function () {
+                        _this.cdr.markForCheck();
+                    }));
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFormItemComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+                _super.prototype.ngOnInit.call(this);
+                this.updateFlexStyle();
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFormItemComponent.prototype.ngOnDestroy = /**
+         * @return {?}
+         */
+            function () {
+                _super.prototype.ngOnDestroy.call(this);
+            };
+        /**
+         * @param {?} changes
+         * @return {?}
+         */
+        CmacsFormItemComponent.prototype.ngOnChanges = /**
+         * @param {?} changes
+         * @return {?}
+         */
+            function (changes) {
+                _super.prototype.ngOnChanges.call(this, changes);
+                if (changes.hasOwnProperty('flex')) {
+                    this.updateFlexStyle();
+                }
+            };
+        CmacsFormItemComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-form-item',
+                        exportAs: 'cmacsFormItem',
+                        preserveWhitespaces: false,
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        encapsulation: i0.ViewEncapsulation.None,
+                        providers: [i2.NzUpdateHostClassService],
+                        template: "<ng-content></ng-content>",
+                        host: {
+                            '[class.ant-form-item-with-help]': 'listOfNzFormExplainComponent && (listOfNzFormExplainComponent.length > 0)'
+                        },
+                        styles: ["\n      cmacs-form-item {\n        display: block;\n      }\n    "]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsFormItemComponent.ctorParameters = function () {
+            return [
+                { type: i0.ElementRef },
+                { type: i0.Renderer2 },
+                { type: i2.NzUpdateHostClassService },
+                { type: layout.MediaMatcher },
+                { type: i0.NgZone },
+                { type: platform.Platform },
+                { type: i0.ChangeDetectorRef }
+            ];
+        };
+        CmacsFormItemComponent.propDecorators = {
+            flex: [{ type: i0.Input }],
+            listOfNzFormExplainComponent: [{ type: i0.ContentChildren, args: [CmacsFormExplainComponent, { descendants: true },] }]
+        };
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Boolean)
+        ], CmacsFormItemComponent.prototype, "flex", void 0);
+        return CmacsFormItemComponent;
+    }(grid.NzRowDirective));
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsFormControlComponent = /** @class */ (function (_super) {
+        __extends(CmacsFormControlComponent, _super);
+        function CmacsFormControlComponent(nzUpdateHostClassService, elementRef, cmacsFormItemComponent, nzRowDirective, cdr, renderer) {
+            var _this = _super.call(this, nzUpdateHostClassService, elementRef, cmacsFormItemComponent || nzRowDirective, renderer) || this;
+            _this.cdr = cdr;
+            _this._hasFeedback = false;
+            _this.controlClassMap = {};
+            renderer.addClass(elementRef.nativeElement, 'ant-form-item-control-wrapper');
+            return _this;
+        }
+        Object.defineProperty(CmacsFormControlComponent.prototype, "cmacsHasFeedback", {
+            get: /**
+             * @return {?}
+             */ function () {
+                return this._hasFeedback;
+            },
+            set: /**
+             * @param {?} value
+             * @return {?}
+             */ function (value) {
+                this._hasFeedback = i2.toBoolean(value);
+                this.setControlClassMap();
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(CmacsFormControlComponent.prototype, "cmacsValidateStatus", {
+            set: /**
+             * @param {?} value
+             * @return {?}
+             */ function (value) {
+                if (value instanceof forms.FormControl || value instanceof forms.NgModel) {
+                    this.validateControl = value;
+                    this.validateString = null;
+                    this.watchControl();
+                }
+                else if (value instanceof forms.FormControlName) {
+                    this.validateControl = value.control;
+                    this.validateString = null;
+                    this.watchControl();
+                }
+                else {
+                    this.validateString = value;
+                    this.validateControl = null;
+                    this.setControlClassMap();
+                }
+            },
+            enumerable: true,
+            configurable: true
+        });
+        /**
+         * @return {?}
+         */
+        CmacsFormControlComponent.prototype.removeSubscribe = /**
+         * @return {?}
+         */
+            function () {
+                if (this.validateChanges) {
+                    this.validateChanges.unsubscribe();
+                    this.validateChanges = null;
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFormControlComponent.prototype.watchControl = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                this.removeSubscribe();
+                /** miss detect https://github.com/angular/angular/issues/10887 **/
+                if (this.validateControl && this.validateControl.statusChanges) {
+                    this.validateChanges = this.validateControl.statusChanges.pipe(operators.startWith(null)).subscribe(( /**
+                     * @return {?}
+                     */function () {
+                        _this.setControlClassMap();
+                        _this.cdr.markForCheck();
+                    }));
+                }
+            };
+        /**
+         * @param {?} status
+         * @return {?}
+         */
+        CmacsFormControlComponent.prototype.validateControlStatus = /**
+         * @param {?} status
+         * @return {?}
+         */
+            function (status) {
+                return ( /** @type {?} */((!!this.validateControl &&
+                    (this.validateControl.dirty || this.validateControl.touched) &&
+                    this.validateControl.status === status)));
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFormControlComponent.prototype.setControlClassMap = /**
+         * @return {?}
+         */
+            function () {
+                var _a;
+                if (this.validateString === 'warning') {
+                    this.status = 'warning';
+                    this.iconType = '';
+                }
+                else if (this.validateString === 'validating' ||
+                    this.validateString === 'pending' ||
+                    this.validateControlStatus('PENDING')) {
+                    this.status = 'validating';
+                    this.iconType = 'loading';
+                }
+                else if (this.validateString === 'error' || this.validateControlStatus('INVALID')) {
+                    this.status = 'error';
+                    this.iconType = 'exclamation';
+                }
+                else if (this.validateString === 'success' || this.validateControlStatus('VALID')) {
+                    this.status = 'success';
+                    this.iconType = '';
+                }
+                else {
+                    this.status = 'init';
+                    this.iconType = '';
+                }
+                this.controlClassMap = (_a = {},
+                    _a["has-warning"] = this.status === 'warning',
+                    _a["is-validating"] = this.status === 'validating',
+                    _a["has-error"] = this.status === 'error',
+                    _a["has-success"] = this.status === 'success',
+                    _a["has-feedback"] = this.cmacsHasFeedback,
+                    _a);
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFormControlComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+                _super.prototype.ngOnInit.call(this);
+                this.setControlClassMap();
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFormControlComponent.prototype.ngOnDestroy = /**
+         * @return {?}
+         */
+            function () {
+                this.removeSubscribe();
+                _super.prototype.ngOnDestroy.call(this);
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFormControlComponent.prototype.ngAfterContentInit = /**
+         * @return {?}
+         */
+            function () {
+                if (this.defaultValidateControl && !this.validateControl && !this.validateString) {
+                    this.cmacsValidateStatus = this.defaultValidateControl;
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFormControlComponent.prototype.ngAfterViewInit = /**
+         * @return {?}
+         */
+            function () {
+                _super.prototype.ngAfterViewInit.call(this);
+            };
+        CmacsFormControlComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-form-control',
+                        exportAs: 'cmacsFormControl',
+                        preserveWhitespaces: false,
+                        encapsulation: i0.ViewEncapsulation.None,
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        providers: [i2.NzUpdateHostClassService],
+                        template: "<div class=\"ant-form-item-control\" [ngClass]=\"controlClassMap\">\r\n  <span class=\"ant-form-item-children\">\r\n    <ng-content></ng-content>\r\n    <span class=\"ant-form-item-children-icon\">\r\n      <i *ngIf=\"cmacsHasFeedback && iconType\" nz-icon [type]=\"iconType\"></i>\r\n    </span>\r\n  </span>\r\n  <ng-content select=\"cmacs-form-explain\"></ng-content>\r\n</div>\r\n",
+                        styles: ["\n      cmacs-form-control {\n        display: block;\n      }\n    "]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsFormControlComponent.ctorParameters = function () {
+            return [
+                { type: i2.NzUpdateHostClassService },
+                { type: i0.ElementRef },
+                { type: CmacsFormItemComponent, decorators: [{ type: i0.Optional }, { type: i0.Host }] },
+                { type: grid.NzRowDirective, decorators: [{ type: i0.Optional }, { type: i0.Host }] },
+                { type: i0.ChangeDetectorRef },
+                { type: i0.Renderer2 }
+            ];
+        };
+        CmacsFormControlComponent.propDecorators = {
+            defaultValidateControl: [{ type: i0.ContentChild, args: [forms.NgControl,] }],
+            cmacsHasFeedback: [{ type: i0.Input }],
+            cmacsValidateStatus: [{ type: i0.Input }]
+        };
+        return CmacsFormControlComponent;
+    }(grid.NzColDirective));
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsFormExtraComponent = /** @class */ (function () {
+        function CmacsFormExtraComponent(elementRef, renderer) {
+            this.elementRef = elementRef;
+            this.renderer = renderer;
+            this.renderer.addClass(this.elementRef.nativeElement, 'ant-form-extra');
+        }
+        CmacsFormExtraComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-form-extra',
+                        exportAs: 'cmacsFormExtra',
+                        template: "<ng-content></ng-content>",
+                        preserveWhitespaces: false,
+                        encapsulation: i0.ViewEncapsulation.None,
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        styles: ["\n      cmacs-form-extra {\n        display: block;\n      }\n    "]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsFormExtraComponent.ctorParameters = function () {
+            return [
+                { type: i0.ElementRef },
+                { type: i0.Renderer2 }
+            ];
+        };
+        return CmacsFormExtraComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsFormLabelComponent = /** @class */ (function (_super) {
+        __extends(CmacsFormLabelComponent, _super);
+        function CmacsFormLabelComponent(nzUpdateHostClassService, elementRef, cmacsFormItemComponent, nzRowDirective, renderer, cdr) {
+            var _this = _super.call(this, nzUpdateHostClassService, elementRef, cmacsFormItemComponent || nzRowDirective, renderer) || this;
+            _this.cdr = cdr;
+            _this.cmacsRequired = false;
+            _this.defaultNoColon = false;
+            _this.noColon = 'default';
+            renderer.addClass(elementRef.nativeElement, 'ant-form-item-label');
+            return _this;
+        }
+        Object.defineProperty(CmacsFormLabelComponent.prototype, "cmacsNoColon", {
+            get: /**
+             * @return {?}
+             */ function () {
+                return !!this.noColon;
+            },
+            set: /**
+             * @param {?} value
+             * @return {?}
+             */ function (value) {
+                this.noColon = i2.toBoolean(value);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        CmacsFormLabelComponent.prototype.setDefaultNoColon = /**
+         * @param {?} value
+         * @return {?}
+         */
+            function (value) {
+                this.defaultNoColon = i2.toBoolean(value);
+                this.cdr.markForCheck();
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFormLabelComponent.prototype.ngOnDestroy = /**
+         * @return {?}
+         */
+            function () {
+                _super.prototype.ngOnDestroy.call(this);
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFormLabelComponent.prototype.ngAfterViewInit = /**
+         * @return {?}
+         */
+            function () {
+                _super.prototype.ngAfterViewInit.call(this);
+            };
+        CmacsFormLabelComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-form-label',
+                        exportAs: 'cmacsFormLabel',
+                        providers: [i2.NzUpdateHostClassService],
+                        preserveWhitespaces: false,
+                        encapsulation: i0.ViewEncapsulation.None,
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        template: "<label [attr.for]=\"cmacsFor\"\r\n  [class.ant-form-item-no-colon]=\"noColon === 'default' ? defaultNoColon : cmacsNoColon\"\r\n  [class.ant-form-item-required]=\"cmacsRequired\">\r\n  <ng-content></ng-content>\r\n</label>\r\n"
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsFormLabelComponent.ctorParameters = function () {
+            return [
+                { type: i2.NzUpdateHostClassService },
+                { type: i0.ElementRef },
+                { type: CmacsFormItemComponent, decorators: [{ type: i0.Optional }, { type: i0.Host }] },
+                { type: grid.NzRowDirective, decorators: [{ type: i0.Optional }, { type: i0.Host }] },
+                { type: i0.Renderer2 },
+                { type: i0.ChangeDetectorRef }
+            ];
+        };
+        CmacsFormLabelComponent.propDecorators = {
+            cmacsFor: [{ type: i0.Input }],
+            cmacsRequired: [{ type: i0.Input }],
+            cmacsNoColon: [{ type: i0.Input }]
+        };
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsFormLabelComponent.prototype, "cmacsRequired", void 0);
+        return CmacsFormLabelComponent;
+    }(grid.NzColDirective));
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsFormSplitComponent = /** @class */ (function () {
+        function CmacsFormSplitComponent(elementRef, renderer) {
+            this.elementRef = elementRef;
+            this.renderer = renderer;
+            this.renderer.addClass(this.elementRef.nativeElement, 'ant-form-split');
+        }
+        CmacsFormSplitComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-form-split',
+                        exportAs: 'cmacsFormSplit',
+                        preserveWhitespaces: false,
+                        encapsulation: i0.ViewEncapsulation.None,
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        template: "<ng-content></ng-content>"
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsFormSplitComponent.ctorParameters = function () {
+            return [
+                { type: i0.ElementRef },
+                { type: i0.Renderer2 }
+            ];
+        };
+        return CmacsFormSplitComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsFormTextComponent = /** @class */ (function () {
+        function CmacsFormTextComponent(elementRef, renderer) {
+            this.elementRef = elementRef;
+            this.renderer = renderer;
+            this.renderer.addClass(this.elementRef.nativeElement, 'ant-form-text');
+        }
+        CmacsFormTextComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-form-text',
+                        exportAs: 'cmacsFormText',
+                        preserveWhitespaces: false,
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        encapsulation: i0.ViewEncapsulation.None,
+                        template: "<ng-content></ng-content>"
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsFormTextComponent.ctorParameters = function () {
+            return [
+                { type: i0.ElementRef },
+                { type: i0.Renderer2 }
+            ];
+        };
+        return CmacsFormTextComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsFormDirective = /** @class */ (function () {
+        function CmacsFormDirective(elementRef, renderer, nzUpdateHostClassService) {
+            this.elementRef = elementRef;
+            this.renderer = renderer;
+            this.nzUpdateHostClassService = nzUpdateHostClassService;
+            this.layout = 'horizontal';
+            this.cmacsNoColon = false;
+            this.destroy$ = new rxjs.Subject();
+            this.renderer.addClass(elementRef.nativeElement, 'ant-form');
+        }
+        /**
+         * @return {?}
+         */
+        CmacsFormDirective.prototype.setClassMap = /**
+         * @return {?}
+         */
+            function () {
+                var _a;
+                this.nzUpdateHostClassService.updateHostClass(this.elementRef.nativeElement, (_a = {},
+                    _a["ant-form-" + this.layout] = this.layout,
+                    _a));
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFormDirective.prototype.updateItemsDefaultColon = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                if (this.cmacsFormLabelComponent) {
+                    this.cmacsFormLabelComponent.forEach(( /**
+                     * @param {?} item
+                     * @return {?}
+                     */function (item) { return item.setDefaultNoColon(_this.cmacsNoColon); }));
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFormDirective.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+                this.setClassMap();
+            };
+        /**
+         * @param {?} changes
+         * @return {?}
+         */
+        CmacsFormDirective.prototype.ngOnChanges = /**
+         * @param {?} changes
+         * @return {?}
+         */
+            function (changes) {
+                this.setClassMap();
+                if (changes.hasOwnProperty('cmacsNoColon')) {
+                    this.updateItemsDefaultColon();
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFormDirective.prototype.ngAfterContentInit = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                this.cmacsFormLabelComponent.changes
+                    .pipe(operators.startWith(null), operators.takeUntil(this.destroy$))
+                    .subscribe(( /**
+             * @return {?}
+             */function () {
+                    _this.updateItemsDefaultColon();
+                }));
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFormDirective.prototype.ngOnDestroy = /**
+         * @return {?}
+         */
+            function () {
+                this.destroy$.next();
+                this.destroy$.complete();
+            };
+        CmacsFormDirective.decorators = [
+            { type: i0.Directive, args: [{
+                        selector: '[cmacs-form]',
+                        exportAs: 'cmacsForm',
+                        providers: [i2.NzUpdateHostClassService]
+                    },] }
+        ];
+        /** @nocollapse */
+        CmacsFormDirective.ctorParameters = function () {
+            return [
+                { type: i0.ElementRef },
+                { type: i0.Renderer2 },
+                { type: i2.NzUpdateHostClassService }
+            ];
+        };
+        CmacsFormDirective.propDecorators = {
+            layout: [{ type: i0.Input }],
+            cmacsNoColon: [{ type: i0.Input }],
+            cmacsFormLabelComponent: [{ type: i0.ContentChildren, args: [CmacsFormLabelComponent, { descendants: true },] }]
+        };
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Boolean)
+        ], CmacsFormDirective.prototype, "cmacsNoColon", void 0);
+        return CmacsFormDirective;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsOptionLiComponent = /** @class */ (function () {
+        function CmacsOptionLiComponent(elementRef, nzSelectService, cdr, renderer) {
+            this.elementRef = elementRef;
+            this.nzSelectService = nzSelectService;
+            this.cdr = cdr;
+            this.el = this.elementRef.nativeElement;
+            this.selected = false;
+            this.active = false;
+            this.destroy$ = new rxjs.Subject();
+            renderer.addClass(elementRef.nativeElement, 'ant-select-dropdown-menu-item');
+        }
+        /**
+         * @return {?}
+         */
+        CmacsOptionLiComponent.prototype.clickOption = /**
+         * @return {?}
+         */
+            function () {
+                this.nzSelectService.clickOption(this.nzOption);
+            };
+        /**
+         * @return {?}
+         */
+        CmacsOptionLiComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                this.nzSelectService.listOfSelectedValue$.pipe(operators.takeUntil(this.destroy$)).subscribe(( /**
+                 * @param {?} list
+                 * @return {?}
+                 */function (list) {
+                    _this.selected = i2.isNotNil(list.find(( /**
+                     * @param {?} v
+                     * @return {?}
+                     */function (v) { return _this.nzSelectService.compareWith(v, _this.nzOption.nzValue); })));
+                    _this.cdr.markForCheck();
+                }));
+                this.nzSelectService.activatedOption$.pipe(operators.takeUntil(this.destroy$)).subscribe(( /**
+                 * @param {?} option
+                 * @return {?}
+                 */function (option) {
+                    if (option) {
+                        _this.active = _this.nzSelectService.compareWith(option.nzValue, _this.nzOption.nzValue);
+                    }
+                    else {
+                        _this.active = false;
+                    }
+                    _this.cdr.markForCheck();
+                }));
+            };
+        /**
+         * @return {?}
+         */
+        CmacsOptionLiComponent.prototype.ngOnDestroy = /**
+         * @return {?}
+         */
+            function () {
+                this.destroy$.next();
+                this.destroy$.complete();
+            };
+        CmacsOptionLiComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: '[cmacs-option-li]',
+                        exportAs: 'cmacsOptionLi',
+                        template: "<ng-container *ngIf=\"!nzOption.nzCustomContent; else nzOption.template\">\r\n  {{nzOption.nzLabel}}\r\n</ng-container>\r\n<ng-container *ngIf=\"nzSelectService.isMultipleOrTags\">\r\n  <i nz-icon type=\"check\" class=\"ant-select-selected-icon\" *ngIf=\"!nzMenuItemSelectedIcon; else nzMenuItemSelectedIcon\"></i>\r\n</ng-container>\r\n",
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        encapsulation: i0.ViewEncapsulation.None,
+                        host: {
+                            '[class.ant-select-dropdown-menu-item-selected]': 'selected && !nzOption.nzDisabled',
+                            '[class.ant-select-dropdown-menu-item-disabled]': 'nzOption.nzDisabled',
+                            '[class.ant-select-dropdown-menu-item-active]': 'active && !nzOption.nzDisabled',
+                            '[attr.unselectable]': '"unselectable"',
+                            '[style.user-select]': '"none"',
+                            '(click)': 'clickOption()',
+                            '(mousedown)': '$event.preventDefault()'
+                        }
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsOptionLiComponent.ctorParameters = function () {
+            return [
+                { type: i0.ElementRef },
+                { type: CmacsSelectService },
+                { type: i0.ChangeDetectorRef },
+                { type: i0.Renderer2 }
+            ];
+        };
+        CmacsOptionLiComponent.propDecorators = {
+            nzOption: [{ type: i0.Input }],
+            nzMenuItemSelectedIcon: [{ type: i0.Input }]
+        };
+        return CmacsOptionLiComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsOptionContainerComponent = /** @class */ (function () {
+        function CmacsOptionContainerComponent(nzSelectService, cdr, ngZone) {
+            this.nzSelectService = nzSelectService;
+            this.cdr = cdr;
+            this.ngZone = ngZone;
+            this.destroy$ = new rxjs.Subject();
+            this.lastScrollTop = 0;
+            this.showSearch = false;
+            this.nzScrollToBottom = new i0.EventEmitter();
+            this.onSearch = new i0.EventEmitter();
+        }
+        /**
+         * @param {?} option
+         * @return {?}
+         */
+        CmacsOptionContainerComponent.prototype.scrollIntoViewIfNeeded = /**
+         * @param {?} option
+         * @return {?}
+         */
+            function (option) {
+                var _this = this;
+                // delay after open
+                setTimeout(( /**
+                 * @return {?}
+                 */function () {
+                    if (_this.listOfNzOptionLiComponent && _this.listOfNzOptionLiComponent.length && option) {
+                        /** @type {?} */
+                        var targetOption = _this.listOfNzOptionLiComponent.find(( /**
+                         * @param {?} o
+                         * @return {?}
+                         */function (o) {
+                            return _this.nzSelectService.compareWith(o.nzOption.nzValue, option.nzValue);
+                        }));
+                        /* tslint:disable:no-any */
+                        if (targetOption && targetOption.el && (( /** @type {?} */(targetOption.el))).scrollIntoViewIfNeeded) {
+                            (( /** @type {?} */(targetOption.el))).scrollIntoViewIfNeeded(false);
+                        }
+                        /* tslint:enable:no-any */
+                    }
+                }));
+            };
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        CmacsOptionContainerComponent.prototype.setInputValue = /**
+         * @param {?} value
+         * @return {?}
+         */
+            function (value) {
+                if (this.inputElement) {
+                    this.inputElement.nativeElement.value = value;
+                }
+                this.onSearch.emit(value);
+            };
+        /**
+         * @param {?} _index
+         * @param {?} option
+         * @return {?}
+         */
+        CmacsOptionContainerComponent.prototype.trackLabel = /**
+         * @param {?} _index
+         * @param {?} option
+         * @return {?}
+         */
+            function (_index, option) {
+                return option.nzLabel;
+            };
+        // tslint:disable-next-line:no-any
+        // tslint:disable-next-line:no-any
+        /**
+         * @param {?} _index
+         * @param {?} option
+         * @return {?}
+         */
+        CmacsOptionContainerComponent.prototype.trackValue =
+            // tslint:disable-next-line:no-any
+            /**
+             * @param {?} _index
+             * @param {?} option
+             * @return {?}
+             */
+            function (_index, option) {
+                return option.nzValue;
+            };
+        /**
+         * @return {?}
+         */
+        CmacsOptionContainerComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                this.nzSelectService.activatedOption$.pipe(operators.takeUntil(this.destroy$)).subscribe(( /**
+                 * @param {?} option
+                 * @return {?}
+                 */function (option) {
+                    _this.scrollIntoViewIfNeeded(( /** @type {?} */(option)));
+                }));
+                this.nzSelectService.check$.pipe(operators.takeUntil(this.destroy$)).subscribe(( /**
+                 * @return {?}
+                 */function () {
+                    _this.cdr.markForCheck();
+                }));
+                this.ngZone.runOutsideAngular(( /**
+                 * @return {?}
+                 */function () {
+                    /** @type {?} */
+                    var ul = _this.dropdownUl.nativeElement;
+                    rxjs.fromEvent(ul, 'scroll')
+                        .pipe(operators.takeUntil(_this.destroy$))
+                        .subscribe(( /**
+                 * @param {?} e
+                 * @return {?}
+                 */function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        if (ul && ul.scrollTop > _this.lastScrollTop && ul.scrollHeight < ul.clientHeight + ul.scrollTop + 10) {
+                            _this.lastScrollTop = ul.scrollTop;
+                            _this.ngZone.run(( /**
+                             * @return {?}
+                             */function () {
+                                _this.nzScrollToBottom.emit();
+                            }));
+                        }
+                    }));
+                }));
+            };
+        /**
+         * @return {?}
+         */
+        CmacsOptionContainerComponent.prototype.ngOnDestroy = /**
+         * @return {?}
+         */
+            function () {
+                this.destroy$.next();
+                this.destroy$.complete();
+            };
+        CmacsOptionContainerComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: '[cmacs-option-container]',
+                        exportAs: 'cmacsOptionContainer',
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        encapsulation: i0.ViewEncapsulation.None,
+                        preserveWhitespaces: false,
+                        template: "<ul #dropdownUl\r\n  class=\"ant-select-dropdown-menu ant-select-dropdown-menu-root ant-select-dropdown-menu-vertical\"\r\n  role=\"menu\"\r\n  tabindex=\"0\">\r\n  <li *ngIf=\"showSearch\" class=\"ant-select-dropdown-menu-item cmacs-select-search\">\r\n    <div class=\"ant-select-search__field__wrap\">\r\n      <ng-template [ngTemplateOutlet]=\"inputTemplate\"></ng-template>\r\n      <span class=\"ant-select-search__field__mirror\">{{inputValue}}</span>\r\n    </div>\r\n    <ng-template #inputTemplate>\r\n      <i nz-icon type=\"search\" class=\"cmacs-select-search-icon\"></i>\r\n      <input class=\"cmacs-select-search-input\" placeholder=\"Search\" #inputElement autocomplete=\"something-new\"\r\n             [ngModel]=\"inputValue\" (ngModelChange)=\"setInputValue($event)\">\r\n    </ng-template>\r\n  </li>\r\n  <li *ngIf=\"nzSelectService.isShowNotFound\"\r\n    cmacs-select-unselectable\r\n    class=\"ant-select-dropdown-menu-item ant-select-dropdown-menu-item-disabled\">\r\n    <nz-embed-empty [nzComponentName]=\"'select'\" [specificContent]=\"nzNotFoundContent\"></nz-embed-empty>\r\n  </li>\r\n  <li cmacs-option-li\r\n    *ngIf=\"nzSelectService.addedTagOption\"\r\n    [nzMenuItemSelectedIcon]=\"nzMenuItemSelectedIcon\"\r\n    [nzOption]=\"nzSelectService.addedTagOption\">\r\n  </li>\r\n  <li cmacs-option-li\r\n    *ngFor=\"let option of nzSelectService.listOfNzOptionComponent | nzFilterOption : nzSelectService.searchValue : nzSelectService.filterOption : nzSelectService.serverSearch; trackBy: trackValue\"\r\n    [nzMenuItemSelectedIcon]=\"nzMenuItemSelectedIcon\"\r\n    [nzOption]=\"option\">\r\n  </li>\r\n  <li class=\"ant-select-dropdown-menu-item-group\"\r\n    *ngFor=\"let group of nzSelectService.listOfNzOptionGroupComponent | nzFilterGroupOption : nzSelectService.searchValue : nzSelectService.filterOption :nzSelectService.serverSearch; trackBy: trackLabel\">\r\n    <div class=\"ant-select-dropdown-menu-item-group-title\"\r\n      [attr.title]=\"group.isLabelString ? group.nzLabel : ''\">\r\n      <ng-container *cmacsStringTemplateOutlet=\"group.nzLabel\"> {{group.nzLabel}} </ng-container>\r\n    </div>\r\n    <ul class=\"ant-select-dropdown-menu-item-group-list\">\r\n      <li cmacs-option-li\r\n        *ngFor=\"let option of group.listOfNzOptionComponent | nzFilterOption : nzSelectService.searchValue : nzSelectService.filterOption :nzSelectService.serverSearch; trackBy: trackValue\"\r\n        [nzMenuItemSelectedIcon]=\"nzMenuItemSelectedIcon\"\r\n        [nzOption]=\"option\">\r\n      </li>\r\n    </ul>\r\n  </li>\r\n  <li cmacs-option-li\r\n    *ngFor=\"let option of nzSelectService.listOfTagOption | nzFilterOption : nzSelectService.searchValue : nzSelectService.filterOption : nzSelectService.serverSearch; trackBy: trackValue \"\r\n    [nzMenuItemSelectedIcon]=\"nzMenuItemSelectedIcon\"\r\n    [nzOption]=\"option\">\r\n  </li>\r\n</ul>\r\n"
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsOptionContainerComponent.ctorParameters = function () {
+            return [
+                { type: CmacsSelectService },
+                { type: i0.ChangeDetectorRef },
+                { type: i0.NgZone }
+            ];
+        };
+        CmacsOptionContainerComponent.propDecorators = {
+            listOfNzOptionLiComponent: [{ type: i0.ViewChildren, args: [CmacsOptionLiComponent,] }],
+            dropdownUl: [{ type: i0.ViewChild, args: ['dropdownUl',] }],
+            inputElement: [{ type: i0.ViewChild, args: ['inputElement',] }],
+            nzNotFoundContent: [{ type: i0.Input }],
+            showSearch: [{ type: i0.Input }],
+            nzMenuItemSelectedIcon: [{ type: i0.Input }],
+            nzScrollToBottom: [{ type: i0.Output }],
+            onSearch: [{ type: i0.Output }]
+        };
+        return CmacsOptionContainerComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsSelectUnselectableDirective = /** @class */ (function () {
+        function CmacsSelectUnselectableDirective() {
+        }
+        CmacsSelectUnselectableDirective.decorators = [
+            { type: i0.Directive, args: [{
+                        selector: '[cmacs-select-unselectable]',
+                        exportAs: 'cmacsSelectUnselectable',
+                        host: {
+                            '[attr.unselectable]': '"unselectable"',
+                            '[style.user-select]': '"none"'
+                        }
+                    },] }
+        ];
+        return CmacsSelectUnselectableDirective;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
     common.registerLocaleData(en);
-    var ɵ0$1 = ngZorroAntd.en_US;
+    var ɵ0$2 = ngZorroAntd.en_US;
     var CmacsComponentsLibModule = /** @class */ (function () {
         function CmacsComponentsLibModule() {
         }
@@ -12851,7 +15134,7 @@
                             CmacsGridComponent,
                             CmacsTreeComponent,
                             CmacsTreeNodeComponent,
-                            CmacsDropdownComponent,
+                            CmacsSelectComponent,
                             CmacsOptionComponent,
                             CmacsSelectTopControlComponent,
                             CmacsSearchComponent,
@@ -12865,6 +15148,25 @@
                             CmacsCardLoadingComponent,
                             CmacsCardMetaComponent,
                             CmacsCardGridDirective,
+                            CmacsDropdownComponent,
+                            CmacsDropdownButtonComponent,
+                            CmacsDropdownDirective,
+                            CmacsDropdownADirective,
+                            CmacsDropdownContextComponent,
+                            CmacsFormExtraComponent,
+                            CmacsFormLabelComponent,
+                            CmacsFormDirective,
+                            CmacsFormItemComponent,
+                            CmacsFormControlComponent,
+                            CmacsFormExplainComponent,
+                            CmacsFormTextComponent,
+                            CmacsFormSplitComponent,
+                            NzFilterGroupOptionPipe,
+                            NzFilterOptionPipe,
+                            CmacsOptionContainerComponent,
+                            CmacsOptionGroupComponent,
+                            CmacsOptionLiComponent,
+                            CmacsSelectUnselectableDirective
                         ],
                         imports: [
                             common.CommonModule,
@@ -12876,6 +15178,11 @@
                             ngZorroAntd.NzOverlayModule,
                             ngZorroAntd.NzNoAnimationModule,
                             ngxExportAs.ExportAsModule,
+                            menu.NzMenuModule,
+                            grid.NzGridModule,
+                            layout.LayoutModule,
+                            platform.PlatformModule,
+                            forms.ReactiveFormsModule
                         ],
                         exports: [
                             CmacsButtonGroupComponent,
@@ -12909,7 +15216,7 @@
                             CmacsGridComponent,
                             CmacsTreeComponent,
                             CmacsTreeNodeComponent,
-                            CmacsDropdownComponent,
+                            CmacsSelectComponent,
                             CmacsOptionComponent,
                             CmacsSelectTopControlComponent,
                             CmacsSearchComponent,
@@ -12923,11 +15230,33 @@
                             CmacsCardLoadingComponent,
                             CmacsCardMetaComponent,
                             CmacsCardGridDirective,
-                            LibPackerModule
+                            LibPackerModule,
+                            menu.NzMenuModule,
+                            CmacsDropdownComponent,
+                            CmacsDropdownButtonComponent,
+                            CmacsDropdownDirective,
+                            CmacsDropdownADirective,
+                            CmacsFormExtraComponent,
+                            CmacsFormLabelComponent,
+                            CmacsFormDirective,
+                            CmacsFormItemComponent,
+                            CmacsFormControlComponent,
+                            CmacsFormExplainComponent,
+                            CmacsFormTextComponent,
+                            CmacsFormSplitComponent,
+                            grid.NzGridModule,
+                            layout.LayoutModule,
+                            platform.PlatformModule,
+                            forms.ReactiveFormsModule,
+                            CmacsOptionContainerComponent,
+                            CmacsOptionGroupComponent,
+                            CmacsOptionLiComponent,
+                            CmacsSelectUnselectableDirective
                         ],
-                        providers: [{ provide: ngZorroAntd.NZ_I18N, useValue: ɵ0$1 }, common.DatePipe],
+                        providers: [{ provide: ngZorroAntd.NZ_I18N, useValue: ɵ0$2 }, common.DatePipe, CmacsDropdownService],
                         entryComponents: [
-                            CmacsModalComponent
+                            CmacsModalComponent,
+                            CmacsDropdownContextComponent
                         ],
                     },] }
         ];
@@ -13294,7 +15623,7 @@
     exports.NzTreeServiceFactory = NzTreeServiceFactory;
     exports.CmacsTreeComponent = CmacsTreeComponent;
     exports.CmacsTreeNodeComponent = CmacsTreeNodeComponent;
-    exports.CmacsDropdownComponent = CmacsDropdownComponent;
+    exports.CmacsSelectComponent = CmacsSelectComponent;
     exports.CmacsOptionComponent = CmacsOptionComponent;
     exports.CmacsSelectTopControlComponent = CmacsSelectTopControlComponent;
     exports.CmacsSearchComponent = CmacsSearchComponent;
@@ -13321,23 +15650,46 @@
     exports.TemplateType = TemplateType;
     exports.CmacsModalRef = CmacsModalRef;
     exports.ɵa = AbstractPickerComponent;
-    exports.ɵk = CalendarFooterComponent;
-    exports.ɵi = CalendarHeaderComponent;
-    exports.ɵj = CalendarInputComponent;
-    exports.ɵl = OkButtonComponent;
-    exports.ɵm = TimePickerButtonComponent;
-    exports.ɵn = TodayButtonComponent;
-    exports.ɵo = DateTableComponent;
-    exports.ɵs = DecadePanelComponent;
-    exports.ɵq = MonthPanelComponent;
-    exports.ɵr = MonthTableComponent;
-    exports.ɵu = DateRangePopupComponent;
-    exports.ɵt = InnerPopupComponent;
-    exports.ɵp = YearPanelComponent;
+    exports.ɵbg = CalendarFooterComponent;
+    exports.ɵbe = CalendarHeaderComponent;
+    exports.ɵbf = CalendarInputComponent;
+    exports.ɵbh = OkButtonComponent;
+    exports.ɵbi = TimePickerButtonComponent;
+    exports.ɵbj = TodayButtonComponent;
+    exports.ɵbk = DateTableComponent;
+    exports.ɵbo = DecadePanelComponent;
+    exports.ɵbm = MonthPanelComponent;
+    exports.ɵbn = MonthTableComponent;
+    exports.ɵbq = DateRangePopupComponent;
+    exports.ɵbp = InnerPopupComponent;
+    exports.ɵbl = YearPanelComponent;
+    exports.ɵp = CmacsDropdownADirective;
+    exports.ɵo = CmacsDropdownButtonComponent;
+    exports.ɵq = CmacsDropdownContextComponent;
+    exports.ɵl = CmacsDropdownComponent;
+    exports.ɵk = menuServiceFactory;
+    exports.ɵn = CmacsDropdownDirective;
+    exports.ɵbr = CmacsDropdownService;
+    exports.ɵm = CmacsMenuDropdownService;
+    exports.ɵw = CmacsFormControlComponent;
+    exports.ɵu = CmacsFormExplainComponent;
+    exports.ɵr = CmacsFormExtraComponent;
+    exports.ɵt = CmacsFormItemComponent;
+    exports.ɵs = CmacsFormLabelComponent;
+    exports.ɵy = CmacsFormSplitComponent;
+    exports.ɵx = CmacsFormTextComponent;
+    exports.ɵv = CmacsFormDirective;
     exports.ɵd = CmacsMenuServiceFactory;
     exports.ɵc = CmacsMenuService;
     exports.ɵb = CmacsSubmenuService;
-    exports.ɵh = MODAL_CONFIG;
+    exports.ɵj = MODAL_CONFIG;
+    exports.ɵbb = CmacsOptionContainerComponent;
+    exports.ɵh = CmacsOptionGroupComponent;
+    exports.ɵbc = CmacsOptionLiComponent;
+    exports.ɵba = NzFilterGroupOptionPipe;
+    exports.ɵz = NzFilterOptionPipe;
+    exports.ɵbd = CmacsSelectUnselectableDirective;
+    exports.ɵg = CmacsSelectService;
     exports.ɵf = NzTreeService;
     exports.ɵe = ExcelService;
 
