@@ -7,7 +7,11 @@ import { utils, writeFile } from 'xlsx';
 import { FocusMonitor, FocusTrapFactory } from '@angular/cdk/a11y';
 import { DOWN_ARROW, ENTER, UP_ARROW, BACKSPACE, SPACE, TAB, ESCAPE } from '@angular/cdk/keycodes';
 import { ActivatedRoute, PRIMARY_OUTLET, Router } from '@angular/router';
+<<<<<<< HEAD
 import { InputBoolean as InputBoolean$1, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
+=======
+import { InputBoolean as InputBoolean$1, NzSelectService, NzOptionGroupComponent, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
+>>>>>>> b95d39584e4cf616a0853af3816b5e365af5166f
 import { NzIconDirective, NzIconModule } from 'ng-zorro-antd/icon';
 import { DatePipe, DOCUMENT, CommonModule, registerLocaleData } from '@angular/common';
 import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
@@ -20,11 +24,19 @@ import { Platform, PlatformModule } from '@angular/cdk/platform';
 import { NzRowDirective, NzColDirective, NzGridModule } from 'ng-zorro-antd/grid';
 import { __decorate, __metadata } from 'tslib';
 import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent } from 'rxjs';
+<<<<<<< HEAD
 import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take } from 'rxjs/operators';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ChangeDetectionStrategy, Component, ElementRef, Input, ViewEncapsulation, ChangeDetectorRef, ContentChildren, HostBinding, Inject, NgZone, Optional, Renderer2, ViewChild, Directive, Self, forwardRef, EventEmitter, Output, Host, TemplateRef, HostListener, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, Injector, ContentChild, ViewChildren, NgModule, defineInjectable, inject, Type, ComponentFactoryResolver } from '@angular/core';
 import { NzUpdateHostClassService, findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzMeasureScrollbarService, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, DEFAULT_DROPDOWN_POSITIONS, helpMotion, LoggerService } from 'ng-zorro-antd/core';
+=======
+import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, mapTo, debounceTime, take } from 'rxjs/operators';
+import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
+import { ComponentPortal } from '@angular/cdk/portal';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, ViewEncapsulation, ChangeDetectorRef, ContentChildren, HostBinding, Inject, NgZone, Optional, Renderer2, ViewChild, Directive, Self, forwardRef, EventEmitter, Output, Host, TemplateRef, HostListener, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Injector, ContentChild, Pipe, NgModule, defineInjectable, inject, Type, ComponentFactoryResolver } from '@angular/core';
+import { NzUpdateHostClassService, findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzMeasureScrollbarService, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, DEFAULT_DROPDOWN_POSITIONS, helpMotion, LoggerService } from 'ng-zorro-antd/core';
+>>>>>>> b95d39584e4cf616a0853af3816b5e365af5166f
 
 /**
  * @fileoverview added by tsickle
@@ -6588,7 +6600,11 @@ __decorate([
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+<<<<<<< HEAD
 class NzFilterOptionPipe {
+=======
+class CmacsSelectComponent {
+>>>>>>> b95d39584e4cf616a0853af3816b5e365af5166f
     /**
      * @param {?} options
      * @param {?} searchValue
@@ -7378,12 +7394,32 @@ class CmacsSelectTopControlComponent {
         }
     }
 }
+<<<<<<< HEAD
 CmacsSelectTopControlComponent.decorators = [
     { type: Component, args: [{
                 selector: '[cmacs-select-top-control]',
                 exportAs: 'cmacsSelectTopControl',
                 preserveWhitespaces: false,
                 animations: [zoomMotion],
+=======
+CmacsSelectComponent.decorators = [
+    { type: Component, args: [{
+                // tslint:disable-next-line: component-selector
+                selector: 'cmacs-select',
+                exportAs: 'cmacsSelect',
+                preserveWhitespaces: false,
+                providers: [
+                    NzSelectService,
+                    {
+                        provide: NG_VALUE_ACCESSOR,
+                        useExisting: forwardRef((/**
+                         * @return {?}
+                         */
+                        () => CmacsSelectComponent)),
+                        multi: true
+                    }
+                ],
+>>>>>>> b95d39584e4cf616a0853af3816b5e365af5166f
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 encapsulation: ViewEncapsulation.None,
                 template: "<ng-template #inputTemplate>\r\n  <input #inputElement autocomplete=\"something-new\" [ngStyle]=\"showCustomSearchStyle\" class=\"ant-select-search__field\"\r\n    (compositionstart)=\"isComposing = true\" (compositionend)=\"isComposing = false\" (input)=\"updateWidth()\"\r\n    [ngModel]=\"inputValue\" (ngModelChange)=\"setInputValue($event)\" [disabled]=\"nzSelectService.disabled\">\r\n</ng-template>\r\n<span class=\"ant-select-arrow\" style=\"right: auto !important; margin-left: 2px;\" cmacs-select-unselectable\r\n  *ngIf=\"showCustomSearch\">\r\n  <i nz-icon type=\"search\" style=\"font-size: 16px !important;\" *ngIf=\"!nzSuffixIcon; else nzSuffixIcon\"></i>\r\n</span>\r\n<div class=\"ant-select-selection__rendered\">\r\n  <div *ngIf=\"nzPlaceHolder\" cmacs-select-unselectable [style.display]=\"placeHolderDisplay\"\r\n    class=\"ant-select-selection__placeholder\">{{ nzPlaceHolder }}</div>\r\n  <!--single mode-->\r\n  <ng-container *ngIf=\"nzSelectService.isSingleMode\">\r\n    <!--selected label-->\r\n    <div *ngIf=\"nzSelectService.listOfCachedSelectedOption.length && nzSelectService.listOfSelectedValue.length\"\r\n      class=\"ant-select-selection-selected-value\" [attr.title]=\"nzSelectService.listOfCachedSelectedOption[0]?.nzLabel\"\r\n      [ngStyle]=\"selectedValueStyle\">\r\n      {{ nzSelectService.listOfCachedSelectedOption[0]?.nzLabel }}\r\n    </div>\r\n    <!--show search-->\r\n    <!--<div *ngIf=\"nzShowSearch\" class=\"ant-select-search ant-select-search&#45;&#45;inline\"\r\n      [style.display]=\"nzOpen ? 'block' : 'none'\">\r\n      <div class=\"ant-select-search__field__wrap\">\r\n        <ng-template [ngTemplateOutlet]=\"inputTemplate\"></ng-template>\r\n        <span class=\"ant-select-search__field__mirror\">{{inputValue}}&nbsp;</span>\r\n      </div>\r\n    </div>-->\r\n  </ng-container>\r\n  <!--multiple or tags mode-->\r\n  <ul *ngIf=\"nzSelectService.isMultipleOrTags\">\r\n    <ng-container\r\n      *ngFor=\"let option of nzSelectService.listOfCachedSelectedOption | slice: 0 : nzMaxTagCount;trackBy:trackValue;\">\r\n      <li [@zoomMotion] [nzNoAnimation]=\"noAnimation?.nzNoAnimation\" [attr.title]=\"option.nzLabel\"\r\n        [class.ant-select-selection__choice__disabled]=\"option.nzDisabled\" class=\"ant-select-selection__choice\">\r\n        <div class=\"ant-select-selection__choice__content\">{{ option.nzLabel }}</div>\r\n        <span *ngIf=\"!option.nzDisabled\" class=\"ant-select-selection__choice__remove\"\r\n          (mousedown)=\"$event.preventDefault()\" (click)=\"removeSelectedValue(option, $event)\">\r\n          <i nz-icon type=\"close\" class=\"ant-select-remove-icon\" *ngIf=\"!nzRemoveIcon; else nzRemoveIcon\"></i>\r\n        </span>\r\n      </li>\r\n    </ng-container>\r\n    <li *ngIf=\"nzSelectService.listOfCachedSelectedOption.length > nzMaxTagCount\" [@zoomMotion]\r\n      [nzNoAnimation]=\"noAnimation?.nzNoAnimation\" class=\"ant-select-selection__choice\">\r\n      <div class=\"ant-select-selection__choice__content\">\r\n        <ng-container *ngIf=\"nzMaxTagPlaceholder\">\r\n          <ng-template [ngTemplateOutlet]=\"nzMaxTagPlaceholder\"\r\n            [ngTemplateOutletContext]=\"{ $implicit: nzSelectService.listOfSelectedValue | slice: nzMaxTagCount}\">\r\n          </ng-template>\r\n        </ng-container>\r\n        <ng-container *ngIf=\"!nzMaxTagPlaceholder\">\r\n          + {{ nzSelectService.listOfCachedSelectedOption.length - nzMaxTagCount }} ...\r\n        </ng-container>\r\n      </div>\r\n    </li>\r\n    <li class=\"ant-select-search ant-select-search--inline\">\r\n      <ng-template [ngTemplateOutlet]=\"inputTemplate\"></ng-template>\r\n    </li>\r\n  </ul>\r\n</div>\r\n<span *ngIf=\"nzAllowClear && nzSelectService.listOfSelectedValue.length\" class=\"ant-select-selection__clear\"\r\n  cmacs-select-unselectable (mousedown)=\"$event.preventDefault()\" (click)=\"onClearSelection($event)\">\r\n  <i nz-icon type=\"close-circle\" theme=\"fill\" *ngIf=\"!nzClearIcon; else nzClearIcon\" class=\"ant-select-close-icon\"></i>\r\n</span>\r\n<span class=\"ant-select-arrow\" cmacs-select-unselectable *ngIf=\"showCustomSearch; else notCustomArrow\">\r\n    <i nz-icon type=\"arrow-right\" class=\"ant-select-arrow-icon\" *ngIf=\"!nzSuffixIcon; else nzSuffixIcon\"></i>\r\n</span>\r\n<ng-template #notCustomArrow>\r\n  <span class=\"ant-select-arrow\" cmacs-select-unselectable *ngIf=\"nzShowArrow\">\r\n    <i nz-icon type=\"loading\" *ngIf=\"nzLoading; else defaultArrow\"></i>\r\n    <ng-template #defaultArrow>\r\n      <div [class.cmacs-select-action]=\"action\">\r\n        <i nz-icon type=\"down\" class=\"ant-select-arrow-icon\" *ngIf=\"!nzSuffixIcon; else nzSuffixIcon\"></i>\r\n      </div>\r\n    </ng-template>\r\n  </span>\r\n</ng-template>\r\n",
@@ -7391,16 +7427,41 @@ CmacsSelectTopControlComponent.decorators = [
             }] }
 ];
 /** @nocollapse */
+<<<<<<< HEAD
 CmacsSelectTopControlComponent.ctorParameters = () => [
+=======
+CmacsSelectComponent.ctorParameters = () => [
+>>>>>>> b95d39584e4cf616a0853af3816b5e365af5166f
     { type: Renderer2 },
     { type: CmacsSelectService },
     { type: ChangeDetectorRef },
     { type: NzNoAnimationDirective, decorators: [{ type: Host }, { type: Optional }] }
 ];
+<<<<<<< HEAD
 CmacsSelectTopControlComponent.propDecorators = {
     searchValue: [{ type: Input }],
     inputElement: [{ type: ViewChild, args: ['inputElement',] }],
     nzShowSearch: [{ type: Input }],
+=======
+CmacsSelectComponent.propDecorators = {
+    cdkOverlayOrigin: [{ type: ViewChild, args: [CdkOverlayOrigin,] }],
+    cdkConnectedOverlay: [{ type: ViewChild, args: [CdkConnectedOverlay,] }],
+    selectTopControlComponent: [{ type: ViewChild, args: [CmacsSelectTopControlComponent,] }],
+    listOfCmacsOptionComponent: [{ type: ContentChildren, args: [CmacsOptionComponent,] }],
+    listOfCmacsOptionGroupComponent: [{ type: ContentChildren, args: [NzOptionGroupComponent,] }],
+    cmacsOnSearch: [{ type: Output }],
+    scrollToBottom: [{ type: Output }],
+    openChange: [{ type: Output }],
+    cmacsBlur: [{ type: Output }],
+    cmacsFocus: [{ type: Output }],
+    size: [{ type: Input }],
+    dropdownClassName: [{ type: Input }],
+    dropdownMatchSelectWidth: [{ type: Input }],
+    dropdownStyle: [{ type: Input }],
+    notFoundContent: [{ type: Input }],
+    allowClear: [{ type: Input }],
+    showSearch: [{ type: Input }],
+>>>>>>> b95d39584e4cf616a0853af3816b5e365af5166f
     showCustomSearch: [{ type: Input }],
     nzPlaceHolder: [{ type: Input }],
     nzOpen: [{ type: Input }],
@@ -7415,6 +7476,25 @@ CmacsSelectTopControlComponent.propDecorators = {
     nzMaxTagPlaceholder: [{ type: Input }],
     nzTokenSeparators: [{ type: Input }]
 };
+<<<<<<< HEAD
+=======
+__decorate([
+    InputBoolean(),
+    __metadata("design:type", Object)
+], CmacsSelectComponent.prototype, "allowClear", void 0);
+__decorate([
+    InputBoolean(),
+    __metadata("design:type", Object)
+], CmacsSelectComponent.prototype, "showSearch", void 0);
+__decorate([
+    InputBoolean(),
+    __metadata("design:type", Object)
+], CmacsSelectComponent.prototype, "showCustomSearch", void 0);
+__decorate([
+    InputBoolean(),
+    __metadata("design:type", Object)
+], CmacsSelectComponent.prototype, "loading", void 0);
+>>>>>>> b95d39584e4cf616a0853af3816b5e365af5166f
 
 /**
  * @fileoverview added by tsickle
@@ -7565,6 +7645,65 @@ class CmacsSelectComponent {
     set filterOption(value) {
         this.nzSelectService.filterOption = value;
     }
+<<<<<<< HEAD
+=======
+}
+CmacsSearchComponent.decorators = [
+    { type: Component, args: [{
+                // tslint:disable-next-line: component-selector
+                selector: 'cmacs-search',
+                template: "<cmacs-select class=\"cmacs-search\" style=\"width: 100%\" [(ngModel)]=\"selected\" [disabled]=disabled [allowClear]=allowClear\r\n    placeHolder={{placeholder}} [size]=size mode={{mode}} showSearch showCustomSearch>\r\n    <cmacs-option *ngFor=\"let item of options; index as i; trackBy: trackByFn\" value=\"{{item.value}}\"\r\n        label=\"{{item.label}}\"></cmacs-option>\r\n</cmacs-select>\r\n",
+                providers: [
+                    {
+                        provide: NG_VALUE_ACCESSOR,
+                        useExisting: forwardRef((/**
+                         * @return {?}
+                         */
+                        () => CmacsSearchComponent)),
+                        multi: true
+                    }
+                ],
+                styles: [":host ::ng-deep .ant-select-selection__placeholder{margin-left:21px}:host ::ng-deep .ant-select-selection--multiple .ant-select-selection__placeholder{margin-left:30px}:host ::ng-deep .anticon-search{margin-left:8px}:host ::ng-deep .ant-select-selection-selected-value{padding-left:10px}:host ::ng-deep .ant-select-arrow{top:44%}"]
+            }] }
+];
+/** @nocollapse */
+CmacsSearchComponent.ctorParameters = () => [];
+CmacsSearchComponent.propDecorators = {
+    options: [{ type: Input }],
+    disabled: [{ type: Input }],
+    allowClear: [{ type: Input }],
+    showSearch: [{ type: Input }],
+    size: [{ type: Input }],
+    placeholder: [{ type: Input }],
+    selected: [{ type: Input }, { type: Output }],
+    mode: [{ type: Input }]
+};
+__decorate([
+    InputBoolean$1(),
+    __metadata("design:type", Object)
+], CmacsSearchComponent.prototype, "disabled", void 0);
+__decorate([
+    InputBoolean$1(),
+    __metadata("design:type", Object)
+], CmacsSearchComponent.prototype, "allowClear", void 0);
+__decorate([
+    InputBoolean$1(),
+    __metadata("design:type", Object)
+], CmacsSearchComponent.prototype, "showSearch", void 0);
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/** @type {?} */
+const MODAL_CONFIG = new InjectionToken('MODAL_CONFIG');
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class ModalControlService {
+>>>>>>> b95d39584e4cf616a0853af3816b5e365af5166f
     /**
      * @param {?} value
      * @return {?}
@@ -12826,6 +12965,7 @@ CmacsSelectUnselectableDirective.decorators = [
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+<<<<<<< HEAD
 registerLocaleData(en);
 const ɵ0$2 = en_US;
 class CmacsComponentsLibModule {
@@ -12916,6 +13056,1208 @@ CmacsComponentsLibModule.decorators = [
                     PlatformModule,
                     ReactiveFormsModule
                 ],
+=======
+class CmacsDropdownADirective {
+    /**
+     * @param {?} elementRef
+     * @param {?} renderer
+     */
+    constructor(elementRef, renderer) {
+        this.elementRef = elementRef;
+        this.renderer = renderer;
+        this.renderer.addClass(this.elementRef.nativeElement, 'ant-dropdown-link');
+    }
+}
+CmacsDropdownADirective.decorators = [
+    { type: Directive, args: [{
+                selector: 'a[cmacs-dropdown]'
+            },] }
+];
+/** @nocollapse */
+CmacsDropdownADirective.ctorParameters = () => [
+    { type: ElementRef },
+    { type: Renderer2 }
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class CmacsDropdownDirective {
+    /**
+     * @param {?} elementRef
+     * @param {?} renderer
+     */
+    constructor(elementRef, renderer) {
+        this.elementRef = elementRef;
+        this.renderer = renderer;
+        this.el = this.elementRef.nativeElement;
+        this.hover$ = merge(fromEvent(this.el, 'mouseenter').pipe(mapTo(true)), fromEvent(this.el, 'mouseleave').pipe(mapTo(false)));
+        this.$click = fromEvent(this.el, 'click').pipe(tap((/**
+         * @param {?} e
+         * @return {?}
+         */
+        e => e.stopPropagation())), mapTo(true));
+        renderer.addClass(elementRef.nativeElement, 'ant-dropdown-trigger');
+    }
+    /**
+     * @param {?} disabled
+     * @return {?}
+     */
+    setDisabled(disabled) {
+        if (disabled) {
+            this.renderer.setAttribute(this.el, 'disabled', '');
+        }
+        else {
+            this.renderer.removeAttribute(this.el, 'disabled');
+        }
+    }
+}
+CmacsDropdownDirective.decorators = [
+    { type: Directive, args: [{
+                selector: '[cmacs-dropdown]',
+                exportAs: 'cmacsDropdown'
+            },] }
+];
+/** @nocollapse */
+CmacsDropdownDirective.ctorParameters = () => [
+    { type: ElementRef },
+    { type: Renderer2 }
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class CmacsMenuDropdownService extends NzMenuBaseService {
+    constructor() {
+        super(...arguments);
+        this.isInDropDown = true;
+    }
+}
+CmacsMenuDropdownService.decorators = [
+    { type: Injectable }
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @param {?} injector
+ * @return {?}
+ */
+function menuServiceFactory(injector) {
+    return injector.get(CmacsMenuDropdownService);
+}
+class CmacsDropdownComponent {
+    /**
+     * @param {?} cdr
+     * @param {?} cmacsMenuDropdownService
+     * @param {?=} noAnimation
+     */
+    constructor(cdr, cmacsMenuDropdownService, noAnimation) {
+        this.cdr = cdr;
+        this.cmacsMenuDropdownService = cmacsMenuDropdownService;
+        this.noAnimation = noAnimation;
+        this.triggerWidth = 0;
+        this.dropDownPosition = 'bottom';
+        this.positions = [...DEFAULT_DROPDOWN_POSITIONS];
+        this.visible$ = new Subject();
+        this.destroy$ = new Subject();
+        this.trigger = 'hover';
+        this.overlayClassName = '';
+        this.overlayStyle = {};
+        this.placement = 'bottomLeft';
+        this.clickHide = true;
+        this.disabled = false;
+        this.visible = false;
+        this.tableFilter = false;
+        this.visibleChange = new EventEmitter();
+    }
+    /**
+     * @param {?} visible
+     * @param {?=} trigger
+     * @return {?}
+     */
+    setVisibleStateWhen(visible, trigger = 'all') {
+        if (this.trigger === trigger || trigger === 'all') {
+            this.visible$.next(visible);
+        }
+    }
+    /**
+     * @param {?} position
+     * @return {?}
+     */
+    onPositionChange(position) {
+        this.dropDownPosition = position.connectionPair.originY;
+        this.cdr.markForCheck();
+    }
+    /**
+     * @param {?} observable$
+     * @return {?}
+     */
+    startSubscribe(observable$) {
+        /** @type {?} */
+        const click$ = this.clickHide ? this.cmacsMenuDropdownService.menuItemClick$.pipe(mapTo(false)) : EMPTY;
+        combineLatest(merge(observable$, click$), this.cmacsMenuDropdownService.menuOpen$)
+            .pipe(map((/**
+         * @param {?} value
+         * @return {?}
+         */
+        value => value[0] || value[1])), debounceTime(50), distinctUntilChanged(), takeUntil(this.destroy$))
+            .subscribe((/**
+         * @param {?} visible
+         * @return {?}
+         */
+        visible => {
+            if (!this.disabled && this.visible !== visible) {
+                this.visible = visible;
+                this.visibleChange.emit(this.visible);
+                this.triggerWidth = this.cmacsDropdownDirective.elementRef.nativeElement.getBoundingClientRect().width;
+                this.cdr.markForCheck();
+            }
+        }));
+    }
+    /**
+     * @return {?}
+     */
+    updateDisabledState() {
+        if (this.cmacsDropdownDirective) {
+            this.cmacsDropdownDirective.setDisabled(this.disabled);
+        }
+    }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        this.destroy$.next();
+        this.destroy$.complete();
+    }
+    /**
+     * @return {?}
+     */
+    ngAfterContentInit() {
+        this.startSubscribe(merge(this.visible$, this.trigger === 'hover' ? this.cmacsDropdownDirective.hover$ : this.cmacsDropdownDirective.$click));
+        this.updateDisabledState();
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    ngOnChanges(changes) {
+        if (changes.visible) {
+            this.visible$.next(this.visible);
+        }
+        if (changes.disabled) {
+            this.updateDisabledState();
+        }
+        if (changes.placement) {
+            this.dropDownPosition = this.placement.indexOf('top') !== -1 ? 'top' : 'bottom';
+            this.positions = [POSITION_MAP[this.placement], ...this.positions];
+        }
+    }
+}
+CmacsDropdownComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'cmacs-dropdown',
+                exportAs: 'cmacsDropdown',
+                preserveWhitespaces: false,
+                providers: [
+                    CmacsMenuDropdownService,
+                    {
+                        provide: NzDropdownHigherOrderServiceToken,
+                        useFactory: menuServiceFactory,
+                        deps: [[new Self(), Injector]]
+                    }
+                ],
+                animations: [slideMotion],
+                encapsulation: ViewEncapsulation.None,
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                template: "<ng-content select=\"[cmacs-dropdown]\"></ng-content>\r\n<ng-template\r\n  cdkConnectedOverlay\r\n  nzConnectedOverlay\r\n  [cdkConnectedOverlayHasBackdrop]=\"trigger === 'click'\"\r\n  [cdkConnectedOverlayPositions]=\"positions\"\r\n  [cdkConnectedOverlayOrigin]=\"cmacsDropdownDirective\"\r\n  [cdkConnectedOverlayMinWidth]=\"triggerWidth\"\r\n  [cdkConnectedOverlayOpen]=\"visible\"\r\n  (backdropClick)=\"setVisibleStateWhen(false)\"\r\n  (detach)=\"setVisibleStateWhen(false)\"\r\n  (positionChange)=\"onPositionChange($event)\">\r\n  <div class=\"{{'ant-dropdown ant-dropdown-placement-'+placement}}\"\r\n    [ngClass]=\"overlayClassName\"\r\n    [ngStyle]=\"overlayStyle\"\r\n    [@slideMotion]=\"dropDownPosition\"\r\n    [nzNoAnimation]=\"noAnimation?.nzNoAnimation\"\r\n    [style.minWidth.px]=\"triggerWidth\"\r\n    (mouseenter)=\"setVisibleStateWhen(true,'hover')\"\r\n    (mouseleave)=\"setVisibleStateWhen(false,'hover')\">\r\n    <div [class.ant-table-filter-dropdown]=\"tableFilter\">\r\n      <ng-content select=\"[nz-menu]\"></ng-content>\r\n      <ng-content></ng-content>\r\n    </div>\r\n  </div>\r\n</ng-template>\r\n",
+                styles: [`
+      .ant-dropdown {
+        top: 100%;
+        left: 0;
+        position: relative;
+        width: 100%;
+        margin-top: 4px;
+        margin-bottom: 4px;
+      }
+    `]
+            }] }
+];
+/** @nocollapse */
+CmacsDropdownComponent.ctorParameters = () => [
+    { type: ChangeDetectorRef },
+    { type: CmacsMenuDropdownService },
+    { type: NzNoAnimationDirective, decorators: [{ type: Host }, { type: Optional }] }
+];
+CmacsDropdownComponent.propDecorators = {
+    cmacsDropdownDirective: [{ type: ContentChild, args: [CmacsDropdownDirective,] }],
+    nzMenuDirective: [{ type: ContentChild, args: [NzMenuDirective,] }],
+    cdkConnectedOverlay: [{ type: ViewChild, args: [CdkConnectedOverlay,] }],
+    trigger: [{ type: Input }],
+    overlayClassName: [{ type: Input }],
+    overlayStyle: [{ type: Input }],
+    placement: [{ type: Input }],
+    clickHide: [{ type: Input }],
+    disabled: [{ type: Input }],
+    visible: [{ type: Input }],
+    tableFilter: [{ type: Input }],
+    visibleChange: [{ type: Output }]
+};
+__decorate([
+    InputBoolean(),
+    __metadata("design:type", Object)
+], CmacsDropdownComponent.prototype, "clickHide", void 0);
+__decorate([
+    InputBoolean(),
+    __metadata("design:type", Object)
+], CmacsDropdownComponent.prototype, "disabled", void 0);
+__decorate([
+    InputBoolean(),
+    __metadata("design:type", Object)
+], CmacsDropdownComponent.prototype, "visible", void 0);
+__decorate([
+    InputBoolean(),
+    __metadata("design:type", Object)
+], CmacsDropdownComponent.prototype, "tableFilter", void 0);
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+const ɵ0$1 = menuServiceFactory;
+class CmacsDropdownButtonComponent extends CmacsDropdownComponent {
+    /**
+     * @param {?} cdr
+     * @param {?} cmacsMenuDropdownService
+     * @param {?=} noAnimation
+     */
+    constructor(cdr, cmacsMenuDropdownService, noAnimation) {
+        super(cdr, cmacsMenuDropdownService, noAnimation);
+        this.noAnimation = noAnimation;
+        this.size = 'default';
+        this.type = 'default';
+        this.cmacsClick = new EventEmitter();
+    }
+    /**
+     * rewrite afterViewInit hook
+     * @return {?}
+     */
+    ngAfterContentInit() {
+        this.startSubscribe(this.visible$);
+    }
+}
+CmacsDropdownButtonComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'cmacs-dropdown-button',
+                exportAs: 'cmacsDropdownButton',
+                preserveWhitespaces: false,
+                animations: [slideMotion],
+                encapsulation: ViewEncapsulation.None,
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                providers: [
+                    CmacsMenuDropdownService,
+                    {
+                        provide: NzDropdownHigherOrderServiceToken,
+                        useFactory: ɵ0$1,
+                        deps: [[new Self(), Injector]]
+                    }
+                ],
+                template: "<div class=\"ant-btn-group ant-dropdown-button\" cmacs-dropdown>\r\n  <button cmacs-button\r\n    type=\"button\"\r\n    [disabled]=\"disabled\"\r\n    [type]=\"type\"\r\n    [size]=\"size\"\r\n    (click)=\"cmacsClick.emit($event)\">\r\n    <span><ng-content></ng-content></span>\r\n  </button>\r\n  <button cmacs-button\r\n    type=\"button\"\r\n    class=\"ant-dropdown-trigger\"\r\n    [type]=\"type\"\r\n    [size]=\"size\"\r\n    [disabled]=\"disabled\"\r\n    (click)=\"setVisibleStateWhen(true,'click')\"\r\n    (mouseenter)=\"setVisibleStateWhen(true,'hover')\"\r\n    (mouseleave)=\"setVisibleStateWhen(false,'hover')\">\r\n    <i nz-icon type=\"ellipsis\"></i>\r\n  </button>\r\n</div>\r\n<ng-template\r\n  cdkConnectedOverlay\r\n  nzConnectedOverlay\r\n  [cdkConnectedOverlayHasBackdrop]=\"trigger === 'click'\"\r\n  [cdkConnectedOverlayPositions]=\"positions\"\r\n  [cdkConnectedOverlayOrigin]=\"cmacsDropDownDirective\"\r\n  (backdropClick)=\"setVisibleStateWhen(false)\"\r\n  (detach)=\"setVisibleStateWhen(false)\"\r\n  [cdkConnectedOverlayMinWidth]=\"triggerWidth\"\r\n  (positionChange)=\"onPositionChange($event)\"\r\n  [cdkConnectedOverlayOpen]=\"visible\">\r\n  <div class=\"{{'ant-dropdown ant-dropdown-placement-'+ placement}}\"\r\n    [nzNoAnimation]=\"noAnimation?.nzNoAnimation\"\r\n    [@slideMotion]=\"dropDownPosition\"\r\n    (mouseenter)=\"setVisibleStateWhen(true,'hover')\"\r\n    (mouseleave)=\"setVisibleStateWhen(false,'hover')\"\r\n    [style.minWidth.px]=\"triggerWidth\">\r\n    <ng-content select=\"[nz-menu]\"></ng-content>\r\n  </div>\r\n</ng-template>\r\n",
+                styles: [`
+      cmacs-dropdown-button {
+        position: relative;
+        display: inline-block;
+      }
+
+      .ant-dropdown {
+        top: 100%;
+        left: 0;
+        position: relative;
+        width: 100%;
+        margin-top: 4px;
+        margin-bottom: 4px;
+      }
+    `]
+            }] }
+];
+/** @nocollapse */
+CmacsDropdownButtonComponent.ctorParameters = () => [
+    { type: ChangeDetectorRef },
+    { type: CmacsMenuDropdownService },
+    { type: NzNoAnimationDirective, decorators: [{ type: Host }, { type: Optional }] }
+];
+CmacsDropdownButtonComponent.propDecorators = {
+    size: [{ type: Input }],
+    type: [{ type: Input }],
+    cmacsClick: [{ type: Output }],
+    cmacsDropDownDirective: [{ type: ViewChild, args: [CmacsDropdownDirective,] }]
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class CmacsDropdownContextComponent {
+    /**
+     * @param {?} cdr
+     */
+    constructor(cdr) {
+        this.cdr = cdr;
+        this.open = true;
+        this.dropDownPosition = 'bottom';
+        this.destroy$ = new Subject();
+    }
+    /**
+     * @param {?} open
+     * @param {?} templateRef
+     * @param {?} positionChanges
+     * @param {?} control
+     * @return {?}
+     */
+    init(open, templateRef, positionChanges, control) {
+        this.open = open;
+        this.templateRef = templateRef;
+        this.control = control;
+        positionChanges.pipe(takeUntil(this.destroy$)).subscribe((/**
+         * @param {?} data
+         * @return {?}
+         */
+        data => {
+            this.dropDownPosition = data.connectionPair.overlayY === 'bottom' ? 'top' : 'bottom';
+            this.cdr.markForCheck();
+        }));
+    }
+    /**
+     * @return {?}
+     */
+    close() {
+        this.open = false;
+        this.cdr.markForCheck();
+    }
+    /**
+     * @return {?}
+     */
+    afterAnimation() {
+        if (!this.open) {
+            this.control.dispose();
+        }
+    }
+    // TODO auto set dropdown class after the bug resolved
+    /**
+     * https://github.com/angular/angular/issues/14842 *
+     * @return {?}
+     */
+    ngOnDestroy() {
+        this.destroy$.next();
+        this.destroy$.complete();
+    }
+}
+CmacsDropdownContextComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'cmacs-dropdown-context',
+                exportAs: 'cmacsDropdownContext',
+                animations: [slideMotion],
+                preserveWhitespaces: false,
+                template: "<div *ngIf=\"open\"\r\n  class=\"ant-dropdown ant-dropdown-placement-bottomLeft\"\r\n  [@slideMotion]=\"dropDownPosition\"\r\n  (@slideMotion.done)=\"afterAnimation()\">\r\n  <ng-template [ngTemplateOutlet]=\"templateRef\"></ng-template>\r\n</div>",
+                encapsulation: ViewEncapsulation.None,
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                providers: [CmacsMenuDropdownService],
+                styles: [`
+      cmacs-dropdown-context {
+        display: block;
+      }
+
+      .ant-dropdown {
+        top: 100%;
+        left: 0;
+        position: relative;
+        width: 100%;
+        margin-top: 4px;
+        margin-bottom: 4px;
+      }
+    `]
+            }] }
+];
+/** @nocollapse */
+CmacsDropdownContextComponent.ctorParameters = () => [
+    { type: ChangeDetectorRef }
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class CmacsDropdownService {
+    /**
+     * @param {?} overlay
+     */
+    constructor(overlay) {
+        this.overlay = overlay;
+    }
+    /**
+     * @param {?} $event
+     * @param {?} templateRef
+     * @return {?}
+     */
+    create($event, templateRef) {
+        $event.preventDefault();
+        this.dispose();
+        this.overlayRef = this.overlay.create(new OverlayConfig({
+            scrollStrategy: this.overlay.scrollStrategies.close(),
+            panelClass: 'nz-dropdown-panel',
+            positionStrategy: this.overlay
+                .position()
+                .flexibleConnectedTo({
+                x: $event.x,
+                y: $event.y
+            })
+                .withPositions([
+                new ConnectionPositionPair({ originX: 'start', originY: 'top' }, { overlayX: 'start', overlayY: 'top' }),
+                new ConnectionPositionPair({ originX: 'start', originY: 'top' }, { overlayX: 'start', overlayY: 'bottom' }),
+                new ConnectionPositionPair({ originX: 'start', originY: 'top' }, { overlayX: 'end', overlayY: 'bottom' }),
+                new ConnectionPositionPair({ originX: 'start', originY: 'top' }, { overlayX: 'end', overlayY: 'top' })
+            ])
+        }));
+        /** @type {?} */
+        const positionChanges = ((/** @type {?} */ (this.overlayRef.getConfig().positionStrategy)))
+            .positionChanges;
+        /** @type {?} */
+        const instance = this.overlayRef.attach(new ComponentPortal(CmacsDropdownContextComponent)).instance;
+        fromEvent(document, 'click')
+            .pipe(filter((/**
+         * @param {?} event
+         * @return {?}
+         */
+        event => !!this.overlayRef && !this.overlayRef.overlayElement.contains((/** @type {?} */ (event.target))))), take(1))
+            .subscribe((/**
+         * @return {?}
+         */
+        () => instance.close()));
+        instance.init(true, templateRef, positionChanges, this);
+        return instance;
+    }
+    /**
+     * @return {?}
+     */
+    dispose() {
+        if (this.overlayRef) {
+            this.overlayRef.dispose();
+            this.overlayRef = null;
+        }
+    }
+}
+CmacsDropdownService.decorators = [
+    { type: Injectable }
+];
+/** @nocollapse */
+CmacsDropdownService.ctorParameters = () => [
+    { type: Overlay }
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class CmacsFormExplainComponent {
+    /**
+     * @param {?} elementRef
+     * @param {?} renderer
+     */
+    constructor(elementRef, renderer) {
+        this.elementRef = elementRef;
+        this.renderer = renderer;
+        this.renderer.addClass(this.elementRef.nativeElement, 'ant-form-explain');
+    }
+}
+CmacsFormExplainComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'cmacs-form-explain',
+                exportAs: 'cmacsFormExplain',
+                preserveWhitespaces: false,
+                encapsulation: ViewEncapsulation.None,
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                animations: [helpMotion],
+                template: "<div [@helpMotion]>\r\n  <ng-content></ng-content>\r\n</div>",
+                styles: [`
+      cmacs-form-explain {
+        display: block;
+      }
+    `]
+            }] }
+];
+/** @nocollapse */
+CmacsFormExplainComponent.ctorParameters = () => [
+    { type: ElementRef },
+    { type: Renderer2 }
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * should add nz-row directive to host, track https://github.com/angular/angular/issues/8785 *
+ */
+class CmacsFormItemComponent extends NzRowDirective {
+    /**
+     * @param {?} elementRef
+     * @param {?} renderer
+     * @param {?} nzUpdateHostClassService
+     * @param {?} mediaMatcher
+     * @param {?} ngZone
+     * @param {?} platform
+     * @param {?} cdr
+     */
+    constructor(elementRef, renderer, nzUpdateHostClassService, mediaMatcher, ngZone, platform, cdr) {
+        super(elementRef, renderer, nzUpdateHostClassService, mediaMatcher, ngZone, platform);
+        this.cdr = cdr;
+        this.flex = false;
+        renderer.addClass(elementRef.nativeElement, 'ant-form-item');
+    }
+    /**
+     * @return {?}
+     */
+    updateFlexStyle() {
+        if (this.flex) {
+            this.renderer.setStyle(this.elementRef.nativeElement, 'display', 'flex');
+        }
+        else {
+            this.renderer.removeStyle(this.elementRef.nativeElement, 'display');
+        }
+    }
+    /**
+     * @return {?}
+     */
+    ngAfterContentInit() {
+        if (this.listOfNzFormExplainComponent) {
+            this.listOfNzFormExplainComponent.changes.pipe(takeUntil(this.destroy$)).subscribe((/**
+             * @return {?}
+             */
+            () => {
+                this.cdr.markForCheck();
+            }));
+        }
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        super.ngOnInit();
+        this.updateFlexStyle();
+    }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        super.ngOnDestroy();
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    ngOnChanges(changes) {
+        super.ngOnChanges(changes);
+        if (changes.hasOwnProperty('flex')) {
+            this.updateFlexStyle();
+        }
+    }
+}
+CmacsFormItemComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'cmacs-form-item',
+                exportAs: 'cmacsFormItem',
+                preserveWhitespaces: false,
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                encapsulation: ViewEncapsulation.None,
+                providers: [NzUpdateHostClassService],
+                template: "<ng-content></ng-content>",
+                host: {
+                    '[class.ant-form-item-with-help]': 'listOfNzFormExplainComponent && (listOfNzFormExplainComponent.length > 0)'
+                },
+                styles: [`
+      cmacs-form-item {
+        display: block;
+      }
+    `]
+            }] }
+];
+/** @nocollapse */
+CmacsFormItemComponent.ctorParameters = () => [
+    { type: ElementRef },
+    { type: Renderer2 },
+    { type: NzUpdateHostClassService },
+    { type: MediaMatcher },
+    { type: NgZone },
+    { type: Platform },
+    { type: ChangeDetectorRef }
+];
+CmacsFormItemComponent.propDecorators = {
+    flex: [{ type: Input }],
+    listOfNzFormExplainComponent: [{ type: ContentChildren, args: [CmacsFormExplainComponent, { descendants: true },] }]
+};
+__decorate([
+    InputBoolean(),
+    __metadata("design:type", Boolean)
+], CmacsFormItemComponent.prototype, "flex", void 0);
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class CmacsFormControlComponent extends NzColDirective {
+    /**
+     * @param {?} nzUpdateHostClassService
+     * @param {?} elementRef
+     * @param {?} cmacsFormItemComponent
+     * @param {?} nzRowDirective
+     * @param {?} cdr
+     * @param {?} renderer
+     */
+    constructor(nzUpdateHostClassService, elementRef, cmacsFormItemComponent, nzRowDirective, cdr, renderer) {
+        super(nzUpdateHostClassService, elementRef, cmacsFormItemComponent || nzRowDirective, renderer);
+        this.cdr = cdr;
+        this._hasFeedback = false;
+        this.controlClassMap = {};
+        renderer.addClass(elementRef.nativeElement, 'ant-form-item-control-wrapper');
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set cmacsHasFeedback(value) {
+        this._hasFeedback = toBoolean(value);
+        this.setControlClassMap();
+    }
+    /**
+     * @return {?}
+     */
+    get cmacsHasFeedback() {
+        return this._hasFeedback;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set cmacsValidateStatus(value) {
+        if (value instanceof FormControl || value instanceof NgModel) {
+            this.validateControl = value;
+            this.validateString = null;
+            this.watchControl();
+        }
+        else if (value instanceof FormControlName) {
+            this.validateControl = value.control;
+            this.validateString = null;
+            this.watchControl();
+        }
+        else {
+            this.validateString = value;
+            this.validateControl = null;
+            this.setControlClassMap();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    removeSubscribe() {
+        if (this.validateChanges) {
+            this.validateChanges.unsubscribe();
+            this.validateChanges = null;
+        }
+    }
+    /**
+     * @return {?}
+     */
+    watchControl() {
+        this.removeSubscribe();
+        /** miss detect https://github.com/angular/angular/issues/10887 **/
+        if (this.validateControl && this.validateControl.statusChanges) {
+            this.validateChanges = this.validateControl.statusChanges.pipe(startWith(null)).subscribe((/**
+             * @return {?}
+             */
+            () => {
+                this.setControlClassMap();
+                this.cdr.markForCheck();
+            }));
+        }
+    }
+    /**
+     * @param {?} status
+     * @return {?}
+     */
+    validateControlStatus(status) {
+        return (/** @type {?} */ ((!!this.validateControl &&
+            (this.validateControl.dirty || this.validateControl.touched) &&
+            this.validateControl.status === status)));
+    }
+    /**
+     * @return {?}
+     */
+    setControlClassMap() {
+        if (this.validateString === 'warning') {
+            this.status = 'warning';
+            this.iconType = '';
+        }
+        else if (this.validateString === 'validating' ||
+            this.validateString === 'pending' ||
+            this.validateControlStatus('PENDING')) {
+            this.status = 'validating';
+            this.iconType = 'loading';
+        }
+        else if (this.validateString === 'error' || this.validateControlStatus('INVALID')) {
+            this.status = 'error';
+            this.iconType = 'exclamation';
+        }
+        else if (this.validateString === 'success' || this.validateControlStatus('VALID')) {
+            this.status = 'success';
+            this.iconType = '';
+        }
+        else {
+            this.status = 'init';
+            this.iconType = '';
+        }
+        this.controlClassMap = {
+            [`has-warning`]: this.status === 'warning',
+            [`is-validating`]: this.status === 'validating',
+            [`has-error`]: this.status === 'error',
+            [`has-success`]: this.status === 'success',
+            [`has-feedback`]: this.cmacsHasFeedback
+        };
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        super.ngOnInit();
+        this.setControlClassMap();
+    }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        this.removeSubscribe();
+        super.ngOnDestroy();
+    }
+    /**
+     * @return {?}
+     */
+    ngAfterContentInit() {
+        if (this.defaultValidateControl && !this.validateControl && !this.validateString) {
+            this.cmacsValidateStatus = this.defaultValidateControl;
+        }
+    }
+    /**
+     * @return {?}
+     */
+    ngAfterViewInit() {
+        super.ngAfterViewInit();
+    }
+}
+CmacsFormControlComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'cmacs-form-control',
+                exportAs: 'cmacsFormControl',
+                preserveWhitespaces: false,
+                encapsulation: ViewEncapsulation.None,
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                providers: [NzUpdateHostClassService],
+                template: "<div class=\"ant-form-item-control\" [ngClass]=\"controlClassMap\">\r\n  <span class=\"ant-form-item-children\">\r\n    <ng-content></ng-content>\r\n    <span class=\"ant-form-item-children-icon\">\r\n      <i *ngIf=\"cmacsHasFeedback && iconType\" nz-icon [type]=\"iconType\"></i>\r\n    </span>\r\n  </span>\r\n  <ng-content select=\"cmacs-form-explain\"></ng-content>\r\n</div>\r\n",
+                styles: [`
+      cmacs-form-control {
+        display: block;
+      }
+    `]
+            }] }
+];
+/** @nocollapse */
+CmacsFormControlComponent.ctorParameters = () => [
+    { type: NzUpdateHostClassService },
+    { type: ElementRef },
+    { type: CmacsFormItemComponent, decorators: [{ type: Optional }, { type: Host }] },
+    { type: NzRowDirective, decorators: [{ type: Optional }, { type: Host }] },
+    { type: ChangeDetectorRef },
+    { type: Renderer2 }
+];
+CmacsFormControlComponent.propDecorators = {
+    defaultValidateControl: [{ type: ContentChild, args: [NgControl,] }],
+    cmacsHasFeedback: [{ type: Input }],
+    cmacsValidateStatus: [{ type: Input }]
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class CmacsFormExtraComponent {
+    /**
+     * @param {?} elementRef
+     * @param {?} renderer
+     */
+    constructor(elementRef, renderer) {
+        this.elementRef = elementRef;
+        this.renderer = renderer;
+        this.renderer.addClass(this.elementRef.nativeElement, 'ant-form-extra');
+    }
+}
+CmacsFormExtraComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'cmacs-form-extra',
+                exportAs: 'cmacsFormExtra',
+                template: "<ng-content></ng-content>",
+                preserveWhitespaces: false,
+                encapsulation: ViewEncapsulation.None,
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                styles: [`
+      cmacs-form-extra {
+        display: block;
+      }
+    `]
+            }] }
+];
+/** @nocollapse */
+CmacsFormExtraComponent.ctorParameters = () => [
+    { type: ElementRef },
+    { type: Renderer2 }
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class CmacsFormLabelComponent extends NzColDirective {
+    /**
+     * @param {?} nzUpdateHostClassService
+     * @param {?} elementRef
+     * @param {?} cmacsFormItemComponent
+     * @param {?} nzRowDirective
+     * @param {?} renderer
+     * @param {?} cdr
+     */
+    constructor(nzUpdateHostClassService, elementRef, cmacsFormItemComponent, nzRowDirective, renderer, cdr) {
+        super(nzUpdateHostClassService, elementRef, cmacsFormItemComponent || nzRowDirective, renderer);
+        this.cdr = cdr;
+        this.cmacsRequired = false;
+        this.defaultNoColon = false;
+        this.noColon = 'default';
+        renderer.addClass(elementRef.nativeElement, 'ant-form-item-label');
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set cmacsNoColon(value) {
+        this.noColon = toBoolean(value);
+    }
+    /**
+     * @return {?}
+     */
+    get cmacsNoColon() {
+        return !!this.noColon;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    setDefaultNoColon(value) {
+        this.defaultNoColon = toBoolean(value);
+        this.cdr.markForCheck();
+    }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        super.ngOnDestroy();
+    }
+    /**
+     * @return {?}
+     */
+    ngAfterViewInit() {
+        super.ngAfterViewInit();
+    }
+}
+CmacsFormLabelComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'cmacs-form-label',
+                exportAs: 'cmacsFormLabel',
+                providers: [NzUpdateHostClassService],
+                preserveWhitespaces: false,
+                encapsulation: ViewEncapsulation.None,
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                template: "<label [attr.for]=\"cmacsFor\"\r\n  [class.ant-form-item-no-colon]=\"noColon === 'default' ? defaultNoColon : cmacsNoColon\"\r\n  [class.ant-form-item-required]=\"cmacsRequired\">\r\n  <ng-content></ng-content>\r\n</label>\r\n"
+            }] }
+];
+/** @nocollapse */
+CmacsFormLabelComponent.ctorParameters = () => [
+    { type: NzUpdateHostClassService },
+    { type: ElementRef },
+    { type: CmacsFormItemComponent, decorators: [{ type: Optional }, { type: Host }] },
+    { type: NzRowDirective, decorators: [{ type: Optional }, { type: Host }] },
+    { type: Renderer2 },
+    { type: ChangeDetectorRef }
+];
+CmacsFormLabelComponent.propDecorators = {
+    cmacsFor: [{ type: Input }],
+    cmacsRequired: [{ type: Input }],
+    cmacsNoColon: [{ type: Input }]
+};
+__decorate([
+    InputBoolean(),
+    __metadata("design:type", Object)
+], CmacsFormLabelComponent.prototype, "cmacsRequired", void 0);
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class CmacsFormSplitComponent {
+    /**
+     * @param {?} elementRef
+     * @param {?} renderer
+     */
+    constructor(elementRef, renderer) {
+        this.elementRef = elementRef;
+        this.renderer = renderer;
+        this.renderer.addClass(this.elementRef.nativeElement, 'ant-form-split');
+    }
+}
+CmacsFormSplitComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'cmacs-form-split',
+                exportAs: 'cmacsFormSplit',
+                preserveWhitespaces: false,
+                encapsulation: ViewEncapsulation.None,
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                template: "<ng-content></ng-content>"
+            }] }
+];
+/** @nocollapse */
+CmacsFormSplitComponent.ctorParameters = () => [
+    { type: ElementRef },
+    { type: Renderer2 }
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class CmacsFormTextComponent {
+    /**
+     * @param {?} elementRef
+     * @param {?} renderer
+     */
+    constructor(elementRef, renderer) {
+        this.elementRef = elementRef;
+        this.renderer = renderer;
+        this.renderer.addClass(this.elementRef.nativeElement, 'ant-form-text');
+    }
+}
+CmacsFormTextComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'cmacs-form-text',
+                exportAs: 'cmacsFormText',
+                preserveWhitespaces: false,
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                encapsulation: ViewEncapsulation.None,
+                template: "<ng-content></ng-content>"
+            }] }
+];
+/** @nocollapse */
+CmacsFormTextComponent.ctorParameters = () => [
+    { type: ElementRef },
+    { type: Renderer2 }
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class CmacsFormDirective {
+    /**
+     * @param {?} elementRef
+     * @param {?} renderer
+     * @param {?} nzUpdateHostClassService
+     */
+    constructor(elementRef, renderer, nzUpdateHostClassService) {
+        this.elementRef = elementRef;
+        this.renderer = renderer;
+        this.nzUpdateHostClassService = nzUpdateHostClassService;
+        this.layout = 'horizontal';
+        this.cmacsNoColon = false;
+        this.destroy$ = new Subject();
+        this.renderer.addClass(elementRef.nativeElement, 'ant-form');
+    }
+    /**
+     * @return {?}
+     */
+    setClassMap() {
+        this.nzUpdateHostClassService.updateHostClass(this.elementRef.nativeElement, {
+            [`ant-form-${this.layout}`]: this.layout
+        });
+    }
+    /**
+     * @return {?}
+     */
+    updateItemsDefaultColon() {
+        if (this.cmacsFormLabelComponent) {
+            this.cmacsFormLabelComponent.forEach((/**
+             * @param {?} item
+             * @return {?}
+             */
+            item => item.setDefaultNoColon(this.cmacsNoColon)));
+        }
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        this.setClassMap();
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    ngOnChanges(changes) {
+        this.setClassMap();
+        if (changes.hasOwnProperty('cmacsNoColon')) {
+            this.updateItemsDefaultColon();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    ngAfterContentInit() {
+        this.cmacsFormLabelComponent.changes
+            .pipe(startWith(null), takeUntil(this.destroy$))
+            .subscribe((/**
+         * @return {?}
+         */
+        () => {
+            this.updateItemsDefaultColon();
+        }));
+    }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        this.destroy$.next();
+        this.destroy$.complete();
+    }
+}
+CmacsFormDirective.decorators = [
+    { type: Directive, args: [{
+                selector: '[cmacs-form]',
+                exportAs: 'cmacsForm',
+                providers: [NzUpdateHostClassService]
+            },] }
+];
+/** @nocollapse */
+CmacsFormDirective.ctorParameters = () => [
+    { type: ElementRef },
+    { type: Renderer2 },
+    { type: NzUpdateHostClassService }
+];
+CmacsFormDirective.propDecorators = {
+    layout: [{ type: Input }],
+    cmacsNoColon: [{ type: Input }],
+    cmacsFormLabelComponent: [{ type: ContentChildren, args: [CmacsFormLabelComponent, { descendants: true },] }]
+};
+__decorate([
+    InputBoolean(),
+    __metadata("design:type", Boolean)
+], CmacsFormDirective.prototype, "cmacsNoColon", void 0);
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+registerLocaleData(en);
+const ɵ0$2 = en_US;
+class CmacsComponentsLibModule {
+}
+CmacsComponentsLibModule.decorators = [
+    { type: NgModule, args: [{
+                declarations: [
+                    CmacsButtonGroupComponent,
+                    CmacsButtonComponent,
+                    CmacsInputDirective,
+                    CmacsButtonComponent,
+                    CmacsInputGroupComponent,
+                    CmacsInputNumberComponent,
+                    CmacsHeaderPickerComponent,
+                    CmacsDateRangePickerComponent,
+                    CmacsPickerComponent,
+                    CmacsDatePickerComponent,
+                    CmacsMonthPickerComponent,
+                    CmacsYearPickerComponent,
+                    CmacsWeekPickerComponent,
+                    CmacsRangePickerComponent,
+                    CmacsTimePickerComponent,
+                    CmacsWizardComponent,
+                    CmacsCheckboxComponent,
+                    CmacsCheckboxWrapperComponent,
+                    CmacsCheckboxGroupComponent,
+                    CmacsRadioComponent,
+                    CmacsRadioButtonComponent,
+                    CmacsRadioGroupComponent,
+                    CmacsTagComponent,
+                    CmacsStringTemplateOutletDirective,
+                    CmacsMenuDividerDirective,
+                    CmacsMenuGroupComponent,
+                    CmacsMenuItemDirective,
+                    CmacsMenuDirective,
+                    CmacsSubMenuComponent,
+                    CmacsSubMenuComponent,
+                    CmacsGridComponent,
+                    CmacsTreeComponent,
+                    CmacsTreeNodeComponent,
+                    CmacsSelectComponent,
+                    CmacsOptionComponent,
+                    CmacsSelectTopControlComponent,
+                    CmacsSearchComponent,
+                    CmacsStepComponent,
+                    CmacsModalComponent,
+                    CmacsToCssUnitPipe,
+                    CmacsBreadcrumbComponent,
+                    CmacsBreadcrumbItemComponent,
+                    CmacsCardComponent,
+                    CmacsCardTabComponent,
+                    CmacsCardLoadingComponent,
+                    CmacsCardMetaComponent,
+                    CmacsCardGridDirective,
+                    CmacsDropdownComponent,
+                    CmacsDropdownButtonComponent,
+                    CmacsDropdownDirective,
+                    CmacsDropdownADirective,
+                    CmacsDropdownContextComponent,
+                    CmacsFormExtraComponent,
+                    CmacsFormLabelComponent,
+                    CmacsFormDirective,
+                    CmacsFormItemComponent,
+                    CmacsFormControlComponent,
+                    CmacsFormExplainComponent,
+                    CmacsFormTextComponent,
+                    CmacsFormSplitComponent
+                ],
+                imports: [
+                    CommonModule,
+                    FormsModule,
+                    OverlayModule,
+                    LibPackerModule,
+                    NgZorroAntdModule,
+                    NzIconModule,
+                    NzOverlayModule,
+                    NzNoAnimationModule,
+                    ExportAsModule,
+                    NzMenuModule,
+                    NzGridModule,
+                    LayoutModule,
+                    PlatformModule,
+                    ReactiveFormsModule
+                ],
+>>>>>>> b95d39584e4cf616a0853af3816b5e365af5166f
                 exports: [
                     CmacsButtonGroupComponent,
                     CmacsButtonComponent,
@@ -12979,11 +14321,15 @@ CmacsComponentsLibModule.decorators = [
                     NzGridModule,
                     LayoutModule,
                     PlatformModule,
+<<<<<<< HEAD
                     ReactiveFormsModule,
                     CmacsOptionContainerComponent,
                     CmacsOptionGroupComponent,
                     CmacsOptionLiComponent,
                     CmacsSelectUnselectableDirective
+=======
+                    ReactiveFormsModule
+>>>>>>> b95d39584e4cf616a0853af3816b5e365af5166f
                 ],
                 providers: [{ provide: NZ_I18N, useValue: ɵ0$2 }, DatePipe, CmacsDropdownService],
                 entryComponents: [
@@ -13242,6 +14588,10 @@ const ModeTabType = {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
+<<<<<<< HEAD
 export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, CmacsModalRef, AbstractPickerComponent as ɵa, CalendarFooterComponent as ɵbg, CalendarHeaderComponent as ɵbe, CalendarInputComponent as ɵbf, OkButtonComponent as ɵbh, TimePickerButtonComponent as ɵbi, TodayButtonComponent as ɵbj, DateTableComponent as ɵbk, DecadePanelComponent as ɵbo, MonthPanelComponent as ɵbm, MonthTableComponent as ɵbn, DateRangePopupComponent as ɵbq, InnerPopupComponent as ɵbp, YearPanelComponent as ɵbl, CmacsDropdownADirective as ɵp, CmacsDropdownButtonComponent as ɵo, CmacsDropdownContextComponent as ɵq, CmacsDropdownComponent as ɵl, menuServiceFactory as ɵk, CmacsDropdownDirective as ɵn, CmacsDropdownService as ɵbr, CmacsMenuDropdownService as ɵm, CmacsFormControlComponent as ɵw, CmacsFormExplainComponent as ɵu, CmacsFormExtraComponent as ɵr, CmacsFormItemComponent as ɵt, CmacsFormLabelComponent as ɵs, CmacsFormSplitComponent as ɵy, CmacsFormTextComponent as ɵx, CmacsFormDirective as ɵv, CmacsMenuServiceFactory as ɵd, CmacsMenuService as ɵc, CmacsSubmenuService as ɵb, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵbb, CmacsOptionGroupComponent as ɵh, CmacsOptionLiComponent as ɵbc, NzFilterGroupOptionPipe as ɵba, NzFilterOptionPipe as ɵz, CmacsSelectUnselectableDirective as ɵbd, CmacsSelectService as ɵg, NzTreeService as ɵf, ExcelService as ɵe };
+=======
+export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, CmacsModalRef, AbstractPickerComponent as ɵa, CalendarFooterComponent as ɵz, CalendarHeaderComponent as ɵx, CalendarInputComponent as ɵy, OkButtonComponent as ɵba, TimePickerButtonComponent as ɵbb, TodayButtonComponent as ɵbc, DateTableComponent as ɵbd, DecadePanelComponent as ɵbh, MonthPanelComponent as ɵbf, MonthTableComponent as ɵbg, DateRangePopupComponent as ɵbj, InnerPopupComponent as ɵbi, YearPanelComponent as ɵbe, CmacsDropdownADirective as ɵn, CmacsDropdownButtonComponent as ɵm, CmacsDropdownContextComponent as ɵo, CmacsDropdownComponent as ɵj, menuServiceFactory as ɵi, CmacsDropdownDirective as ɵl, CmacsDropdownService as ɵbk, CmacsMenuDropdownService as ɵk, CmacsFormControlComponent as ɵu, CmacsFormExplainComponent as ɵs, CmacsFormExtraComponent as ɵp, CmacsFormItemComponent as ɵr, CmacsFormLabelComponent as ɵq, CmacsFormSplitComponent as ɵw, CmacsFormTextComponent as ɵv, CmacsFormDirective as ɵt, CmacsMenuServiceFactory as ɵd, CmacsMenuService as ɵc, CmacsSubmenuService as ɵb, MODAL_CONFIG as ɵh, NzTreeService as ɵf, ExcelService as ɵe };
+>>>>>>> b95d39584e4cf616a0853af3816b5e365af5166f
 
 //# sourceMappingURL=cmacs-components-lib.js.map

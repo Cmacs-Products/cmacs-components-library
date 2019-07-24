@@ -7,8 +7,11 @@ import { NzNoAnimationDirective, NzSizeLDSType } from 'ng-zorro-antd/core';
 import { TFilterOption } from 'ng-zorro-antd';
 import { CmacsSelectTopControlComponent } from './cmacs-select-top-control.component';
 import { CmacsOptionComponent } from './cmacs-option.component';
+<<<<<<< HEAD:lib/components/cmacs-select/cmacs-select.component.d.ts
 import { CmacsOptionGroupComponent } from "./cmacs-option-group.component";
 import { CmacsSelectService } from "./cmacs-select.service";
+=======
+>>>>>>> b95d39584e4cf616a0853af3816b5e365af5166f:lib/components/cmacs-select/cmacs-select.component.d.ts
 export declare class CmacsSelectComponent implements ControlValueAccessor, OnInit, AfterViewInit, OnDestroy, AfterContentInit {
     private renderer;
     nzSelectService: CmacsSelectService;
