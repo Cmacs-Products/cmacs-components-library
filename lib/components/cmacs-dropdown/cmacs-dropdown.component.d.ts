@@ -1,0 +1,41 @@
+import { CdkConnectedOverlay, ConnectedOverlayPositionChange, ConnectionPositionPair } from '@angular/cdk/overlay';
+import { AfterContentInit, ChangeDetectorRef, EventEmitter, Injector, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { NzMenuBaseService, NzNoAnimationDirective } from 'ng-zorro-antd/core';
+import { NzMenuDirective } from 'ng-zorro-antd/menu';
+import { CmacsDropdownDirective } from './cmacs-dropdown.directive';
+import { CmacsMenuDropdownService } from './cmacs-menu-dropdown.service';
+export declare type placement = 'bottomLeft' | 'bottomCenter' | 'bottomRight' | 'topLeft' | 'topCenter' | 'topRight';
+export declare function menuServiceFactory(injector: Injector): NzMenuBaseService;
+export declare class CmacsDropdownComponent implements OnDestroy, AfterContentInit, OnChanges {
+    protected cdr: ChangeDetectorRef;
+    private cmacsMenuDropdownService;
+    noAnimation?: NzNoAnimationDirective;
+    triggerWidth: number;
+    dropDownPosition: 'top' | 'center' | 'bottom';
+    positions: ConnectionPositionPair[];
+    visible$: Subject<boolean>;
+    private destroy$;
+    cmacsDropdownDirective: CmacsDropdownDirective;
+    nzMenuDirective: NzMenuDirective;
+    cdkConnectedOverlay: CdkConnectedOverlay;
+    trigger: 'click' | 'hover';
+    overlayClassName: string;
+    overlayStyle: {
+        [key: string]: string;
+    };
+    placement: placement;
+    clickHide: boolean;
+    disabled: boolean;
+    visible: boolean;
+    tableFilter: boolean;
+    readonly visibleChange: EventEmitter<boolean>;
+    setVisibleStateWhen(visible: boolean, trigger?: 'click' | 'hover' | 'all'): void;
+    onPositionChange(position: ConnectedOverlayPositionChange): void;
+    startSubscribe(observable$: Observable<boolean>): void;
+    updateDisabledState(): void;
+    constructor(cdr: ChangeDetectorRef, cmacsMenuDropdownService: CmacsMenuDropdownService, noAnimation?: NzNoAnimationDirective);
+    ngOnDestroy(): void;
+    ngAfterContentInit(): void;
+    ngOnChanges(changes: SimpleChanges): void;
+}
