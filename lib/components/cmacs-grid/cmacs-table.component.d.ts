@@ -8,7 +8,7 @@ import 'jspdf-autotable';
 import { GridConfig, Field } from '../core/interfaces/grid-config';
 import { GridExpConfig } from '../core/interfaces/grid-exp-config';
 import { ExcelService } from '../core/services/excel.service';
-export declare class CmacsGridComponent<T = any> implements OnInit, OnDestroy, OnChanges {
+export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, OnDestroy, OnChanges {
     private renderer;
     private ngZone;
     private cdr;
@@ -96,10 +96,10 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnDestroy, O
     isUndefined(value: any): boolean;
     constructor(renderer: Renderer2, ngZone: NgZone, cdr: ChangeDetectorRef, nzMeasureScrollbarService: NzMeasureScrollbarService, i18n: NzI18nService, platform: Platform, elementRef: ElementRef, exportAsService: ExportAsService, excelService: ExcelService, datePipe: DatePipe);
     ngOnInit(): void;
+    ngOnChanges(changes: SimpleChanges): void;
     exportToPng(fileName: string): void;
     exportToExcel(fileName: string): void;
     exportToPdf(fileName: string): void;
-    ngOnChanges(changes: SimpleChanges): void;
     ngOnDestroy(): void;
 }
 export interface CheckboxSelect {

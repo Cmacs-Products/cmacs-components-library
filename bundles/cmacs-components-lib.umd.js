@@ -6085,6 +6085,21 @@
                 }));
             };
         /**
+         * @param {?} changes
+         * @return {?}
+         */
+        CmacsGridComponent.prototype.ngOnChanges = /**
+         * @param {?} changes
+         * @return {?}
+         */
+            function (changes) {
+                if (changes.data) {
+                    if (this.checkboxSelect) {
+                        this.updateCheckboxCache();
+                    }
+                }
+            };
+        /**
          * @param {?} fileName
          * @return {?}
          */
@@ -6222,16 +6237,6 @@
                     columns: columns
                 });
                 doc.save(fileName + '_export_' + Date.now());
-            };
-        /**
-         * @param {?} changes
-         * @return {?}
-         */
-        CmacsGridComponent.prototype.ngOnChanges = /**
-         * @param {?} changes
-         * @return {?}
-         */
-            function (changes) {
             };
         /**
          * @return {?}

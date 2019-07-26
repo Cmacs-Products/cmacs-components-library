@@ -5143,6 +5143,17 @@ class CmacsGridComponent {
         }));
     }
     /**
+     * @param {?} changes
+     * @return {?}
+     */
+    ngOnChanges(changes) {
+        if (changes.data) {
+            if (this.checkboxSelect) {
+                this.updateCheckboxCache();
+            }
+        }
+    }
+    /**
      * @param {?} fileName
      * @return {?}
      */
@@ -5276,12 +5287,6 @@ class CmacsGridComponent {
             columns
         });
         doc.save(fileName + '_export_' + Date.now());
-    }
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    ngOnChanges(changes) {
     }
     /**
      * @return {?}
