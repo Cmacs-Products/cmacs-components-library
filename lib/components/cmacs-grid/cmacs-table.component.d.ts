@@ -8,7 +8,7 @@ import 'jspdf-autotable';
 import { GridConfig, Field } from '../core/interfaces/grid-config';
 import { GridExpConfig } from '../core/interfaces/grid-exp-config';
 import { ExcelService } from '../core/services/excel.service';
-export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, OnDestroy, OnChanges {
+export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, OnDestroy {
     private renderer;
     private ngZone;
     private cdr;
@@ -78,9 +78,10 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     datePickerElement: ElementRef;
     startEdit(id: string, property: string, event: MouseEvent): void;
     handleClick(e: MouseEvent): void;
+    getIndex(id: any): number;
     updateCheckboxCache(): void;
     onButtonClick(field: any): void;
-    onCheckboxChange(): void;
+    onCheckboxChange(event: any): void;
     onRateChange(count: number, data: any): void;
     onCheckboxAllChange(status: boolean): void;
     getLabel(data: any, field: Field): string;
