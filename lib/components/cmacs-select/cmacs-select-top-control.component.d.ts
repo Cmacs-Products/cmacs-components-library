@@ -14,6 +14,7 @@ export declare class CmacsSelectTopControlComponent implements OnInit, OnDestroy
     inputElement: ElementRef;
     nzShowSearch: boolean;
     showCustomSearch: boolean;
+    showCmacsSearch: boolean;
     nzPlaceHolder: string;
     nzOpen: boolean;
     action: boolean;

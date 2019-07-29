@@ -5,7 +5,8 @@ import { NzMenuBaseService, NzNoAnimationDirective } from 'ng-zorro-antd/core';
 import { NzMenuDirective } from 'ng-zorro-antd/menu';
 import { CmacsDropdownDirective } from './cmacs-dropdown.directive';
 import { CmacsMenuDropdownService } from './cmacs-menu-dropdown.service';
-export declare type placement = 'bottomLeft' | 'bottomCenter' | 'bottomRight' | 'topLeft' | 'topCenter' | 'topRight';
+export declare type placement = 'bottomLeft' | 'bottomCenter' | 'bottomRight' | 'topLeft' | 'topCenter' | 'topRight' | 'leftTop' | 'rightTop';
+export declare var CMACS_DROPDOWN_POSITIONS: ConnectionPositionPair[];
 export declare function menuServiceFactory(injector: Injector): NzMenuBaseService;
 export declare class CmacsDropdownComponent implements OnDestroy, AfterContentInit, OnChanges {
     protected cdr: ChangeDetectorRef;
@@ -13,6 +14,8 @@ export declare class CmacsDropdownComponent implements OnDestroy, AfterContentIn
     noAnimation?: NzNoAnimationDirective;
     triggerWidth: number;
     updatedPosition: string;
+    updatedOverLay: string;
+    updatedOrigin: string;
     dropDownPosition: 'top' | 'center' | 'bottom';
     positions: ConnectionPositionPair[];
     visible$: Subject<boolean>;

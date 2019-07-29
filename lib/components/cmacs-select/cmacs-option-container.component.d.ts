@@ -22,6 +22,7 @@ export declare class CmacsOptionContainerComponent implements OnDestroy, OnInit 
     inputElement: ElementRef;
     nzNotFoundContent: string;
     showSearch: boolean;
+    showCmacsSearch: boolean;
     nzMenuItemSelectedIcon: TemplateRef<void>;
     readonly nzScrollToBottom: EventEmitter<void>;
     readonly onSearch: EventEmitter<string>;

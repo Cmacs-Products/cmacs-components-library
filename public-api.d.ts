@@ -56,3 +56,8 @@ export * from './lib/components/core/interfaces/grid-config';
 export * from './lib/components/core/interfaces/grid-exp-config';
 export * from './lib/components/core/interfaces/options';
 export * from './lib/components/cmacs-modal/cmacs-modal-ref.class';
+export * from './lib/components/cmacs-dropdown/cmacs-dropdown-a.directive';
+export * from './lib/components/cmacs-dropdown/cmacs-dropdown-button.component';
+export * from './lib/components/cmacs-dropdown/cmacs-dropdown-context.component';
+export * from './lib/components/cmacs-dropdown/cmacs-dropdown.component';
+export * from './lib/components/cmacs-dropdown/cmacs-dropdown.directive';
