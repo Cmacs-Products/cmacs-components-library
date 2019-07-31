@@ -1,87 +1,11 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common/locales/en'), require('@angular/platform-browser/animations'), require('date-fns'), require('jspdf'), require('jspdf-autotable'), require('xlsx'), require('@angular/cdk/a11y'), require('@angular/cdk/keycodes'), require('@angular/router'), require('ng-zorro-antd'), require('ng-zorro-antd/icon'), require('@angular/common'), require('ng-zorro-antd/time-picker'), require('ng-zorro-antd/i18n'), require('ngx-export-as'), require('ng-zorro-antd/menu'), require('@angular/forms'), require('@angular/cdk/layout'), require('@angular/cdk/platform'), require('ng-zorro-antd/grid'), require('rxjs'), require('rxjs/operators'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core'), require('ng-zorro-antd/core')) :
-    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/common/locales/en', '@angular/platform-browser/animations', 'date-fns', 'jspdf', 'jspdf-autotable', 'xlsx', '@angular/cdk/a11y', '@angular/cdk/keycodes', '@angular/router', 'ng-zorro-antd', 'ng-zorro-antd/icon', '@angular/common', 'ng-zorro-antd/time-picker', 'ng-zorro-antd/i18n', 'ngx-export-as', 'ng-zorro-antd/menu', '@angular/forms', '@angular/cdk/layout', '@angular/cdk/platform', 'ng-zorro-antd/grid', 'rxjs', 'rxjs/operators', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core', 'ng-zorro-antd/core'], factory) :
-    (factory((global['cmacs-components-lib'] = {}),global.ng.common.locales.en,global.ng.platformBrowser.animations,global.dateFns,global.jsPDF,null,global.XLSX,global.ng.cdk.a11y,global.ng.cdk.keycodes,global.ng.router,global.ngZorroAntd,global.icon,global.ng.common,global.timePicker,global.i18n,global.ngxExportAs,global.menu,global.ng.forms,global.ng.cdk.layout,global.ng.cdk.platform,global.grid,global.rxjs,global.rxjs.operators,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core,global.i2));
-}(this, (function (exports,en,animations,dateFns,jsPDF,jspdfAutotable,XLSX,a11y,keycodes,router,ngZorroAntd,icon,common,timePicker,i18n,ngxExportAs,menu,forms,layout,platform,grid,rxjs,operators,i1,portal,i0,i2) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/platform-browser/animations'), require('@angular/common/locales/en'), require('date-fns'), require('jspdf'), require('jspdf-autotable'), require('xlsx'), require('@angular/cdk/a11y'), require('@angular/cdk/keycodes'), require('@angular/router'), require('ng-zorro-antd'), require('ng-zorro-antd/icon'), require('@angular/common'), require('ng-zorro-antd/time-picker'), require('ng-zorro-antd/i18n'), require('ngx-export-as'), require('ng-zorro-antd/menu'), require('@angular/forms'), require('@angular/cdk/layout'), require('@angular/cdk/platform'), require('ng-zorro-antd/grid'), require('rxjs'), require('rxjs/operators'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core'), require('ng-zorro-antd/core')) :
+    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/platform-browser/animations', '@angular/common/locales/en', 'date-fns', 'jspdf', 'jspdf-autotable', 'xlsx', '@angular/cdk/a11y', '@angular/cdk/keycodes', '@angular/router', 'ng-zorro-antd', 'ng-zorro-antd/icon', '@angular/common', 'ng-zorro-antd/time-picker', 'ng-zorro-antd/i18n', 'ngx-export-as', 'ng-zorro-antd/menu', '@angular/forms', '@angular/cdk/layout', '@angular/cdk/platform', 'ng-zorro-antd/grid', 'rxjs', 'rxjs/operators', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core', 'ng-zorro-antd/core'], factory) :
+    (factory((global['cmacs-components-lib'] = {}),global.ng.platformBrowser.animations,global.ng.common.locales.en,global.dateFns,global.jsPDF,null,global.XLSX,global.ng.cdk.a11y,global.ng.cdk.keycodes,global.ng.router,global.ngZorroAntd,global.icon,global.ng.common,global.timePicker,global.i18n,global.ngxExportAs,global.menu,global.ng.forms,global.ng.cdk.layout,global.ng.cdk.platform,global.grid,global.rxjs,global.rxjs.operators,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core,global.i2));
+}(this, (function (exports,animations,en,dateFns,jsPDF,jspdfAutotable,XLSX,a11y,keycodes,router,ngZorroAntd,icon,common,timePicker,i18n,ngxExportAs,menu,forms,layout,platform,grid,rxjs,operators,i1,portal,i0,i2) { 'use strict';
 
     en = en && en.hasOwnProperty('default') ? en['default'] : en;
     jsPDF = jsPDF && jsPDF.hasOwnProperty('default') ? jsPDF['default'] : jsPDF;
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-    var CmacsButtonGroupComponent = /** @class */ (function () {
-        function CmacsButtonGroupComponent(nzUpdateHostClassService, elementRef) {
-            this.nzUpdateHostClassService = nzUpdateHostClassService;
-            this.elementRef = elementRef;
-            this.prefixCls = 'ant-btn-group';
-        }
-        Object.defineProperty(CmacsButtonGroupComponent.prototype, "nzSize", {
-            get: /**
-             * @return {?}
-             */ function () {
-                return this._size;
-            },
-            set: /**
-             * @param {?} value
-             * @return {?}
-             */ function (value) {
-                this._size = value;
-                this.setClassMap();
-            },
-            enumerable: true,
-            configurable: true
-        });
-        /**
-         * @return {?}
-         */
-        CmacsButtonGroupComponent.prototype.setClassMap = /**
-         * @return {?}
-         */
-            function () {
-                var _a;
-                /** @type {?} */
-                var classMap = (_a = {},
-                    _a[this.prefixCls] = true,
-                    _a[this.prefixCls + "-lg"] = this.nzSize === 'large',
-                    _a[this.prefixCls + "-sm"] = this.nzSize === 'small',
-                    _a);
-                this.nzUpdateHostClassService.updateHostClass(this.elementRef.nativeElement, classMap);
-            };
-        /**
-         * @return {?}
-         */
-        CmacsButtonGroupComponent.prototype.ngOnInit = /**
-         * @return {?}
-         */
-            function () {
-                this.setClassMap();
-            };
-        CmacsButtonGroupComponent.decorators = [
-            { type: i0.Component, args: [{
-                        // tslint:disable-next-line: component-selector
-                        selector: 'cmacs-button-group',
-                        exportAs: 'cmacsButtonGroup',
-                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
-                        encapsulation: i0.ViewEncapsulation.None,
-                        preserveWhitespaces: false,
-                        providers: [i2.NzUpdateHostClassService],
-                        template: "<ng-content></ng-content>\r\n"
-                    }] }
-        ];
-        /** @nocollapse */
-        CmacsButtonGroupComponent.ctorParameters = function () {
-            return [
-                { type: i2.NzUpdateHostClassService },
-                { type: i0.ElementRef }
-            ];
-        };
-        CmacsButtonGroupComponent.propDecorators = {
-            nzSize: [{ type: i0.Input }]
-        };
-        return CmacsButtonGroupComponent;
-    }());
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -344,6 +268,33 @@
                     this.updateIconDisplay(this.loading);
                 }
             };
+        /**
+         * @return {?}
+         */
+        CmacsButtonComponent.prototype.hideBtn = /**
+         * @return {?}
+         */
+            function () {
+                this.elementRef.nativeElement.style.display = 'none';
+            };
+        /**
+         * @return {?}
+         */
+        CmacsButtonComponent.prototype.showBtn = /**
+         * @return {?}
+         */
+            function () {
+                this.elementRef.nativeElement.style.display = 'inline-block';
+            };
+        /**
+         * @return {?}
+         */
+        CmacsButtonComponent.prototype.disabledBtn = /**
+         * @return {?}
+         */
+            function () {
+                this.elementRef.nativeElement.disabled = true;
+            };
         CmacsButtonComponent.decorators = [
             { type: i0.Component, args: [{
                         // tslint:disable-next-line: component-selector
@@ -403,6 +354,177 @@
             __metadata("design:type", Object)
         ], CmacsButtonComponent.prototype, "action", void 0);
         return CmacsButtonComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsButtonGroupComponent = /** @class */ (function () {
+        function CmacsButtonGroupComponent(nzUpdateHostClassService, elementRef) {
+            this.nzUpdateHostClassService = nzUpdateHostClassService;
+            this.elementRef = elementRef;
+            this.overlap = false;
+            this.disabled = false;
+            this.disabledNav = false;
+            this.prefixCls = 'ant-btn-group';
+            this.buttons = [];
+            this.indexBtn = 0;
+        }
+        Object.defineProperty(CmacsButtonGroupComponent.prototype, "nzSize", {
+            get: /**
+             * @return {?}
+             */ function () {
+                return this._size;
+            },
+            set: /**
+             * @param {?} value
+             * @return {?}
+             */ function (value) {
+                this._size = value;
+                this.setClassMap();
+            },
+            enumerable: true,
+            configurable: true
+        });
+        /**
+         * @return {?}
+         */
+        CmacsButtonGroupComponent.prototype.setClassMap = /**
+         * @return {?}
+         */
+            function () {
+                var _a;
+                /** @type {?} */
+                var classMap = (_a = {},
+                    _a[this.prefixCls] = true,
+                    _a[this.prefixCls + "-lg"] = this.nzSize === 'large',
+                    _a[this.prefixCls + "-sm"] = this.nzSize === 'small',
+                    _a);
+                this.nzUpdateHostClassService.updateHostClass(this.elementRef.nativeElement, classMap);
+            };
+        /**
+         * @return {?}
+         */
+        CmacsButtonGroupComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+                this.setClassMap();
+            };
+        /**
+         * @return {?}
+         */
+        CmacsButtonGroupComponent.prototype.ngAfterContentInit = /**
+         * @return {?}
+         */
+            function () {
+                var e_1, _a;
+                this.buttons = this.contentButtons.toArray();
+                if (this.overlap) {
+                    for (var index = 1; index < this.buttons.length; index++) {
+                        this.buttons[index].hideBtn();
+                    }
+                }
+                if (this.disabled) {
+                    try {
+                        for (var _b = __values(this.buttons), _c = _b.next(); !_c.done; _c = _b.next()) {
+                            var iterator = _c.value;
+                            iterator.disabledBtn();
+                        }
+                    }
+                    catch (e_1_1) {
+                        e_1 = { error: e_1_1 };
+                    }
+                    finally {
+                        try {
+                            if (_c && !_c.done && (_a = _b.return))
+                                _a.call(_b);
+                        }
+                        finally {
+                            if (e_1)
+                                throw e_1.error;
+                        }
+                    }
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsButtonGroupComponent.prototype.moveLeft = /**
+         * @return {?}
+         */
+            function () {
+                this.buttons[this.indexBtn--].hideBtn();
+                this.buttons[this.indexBtn].showBtn();
+            };
+        /**
+         * @return {?}
+         */
+        CmacsButtonGroupComponent.prototype.moveRight = /**
+         * @return {?}
+         */
+            function () {
+                this.buttons[this.indexBtn++].hideBtn();
+                this.buttons[this.indexBtn].showBtn();
+            };
+        /**
+         * @return {?}
+         */
+        CmacsButtonGroupComponent.prototype.isDisableLeft = /**
+         * @return {?}
+         */
+            function () {
+                return this.indexBtn === 0 || this.disabled || this.disabledNav;
+            };
+        /**
+         * @return {?}
+         */
+        CmacsButtonGroupComponent.prototype.isDisableRight = /**
+         * @return {?}
+         */
+            function () {
+                return this.indexBtn === this.buttons.length - 1 || this.disabled || this.disabledNav;
+            };
+        CmacsButtonGroupComponent.decorators = [
+            { type: i0.Component, args: [{
+                        // tslint:disable-next-line: component-selector
+                        selector: 'cmacs-button-group',
+                        exportAs: 'cmacsButtonGroup',
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        encapsulation: i0.ViewEncapsulation.None,
+                        preserveWhitespaces: false,
+                        providers: [i2.NzUpdateHostClassService],
+                        template: "<button cmacs-button [disabled]=\"isDisableLeft()\" *ngIf=\"overlap\" (click)=\"moveLeft()\">\r\n    <i nz-icon type=\"left\"></i>\r\n</button>\r\n\r\n<ng-content></ng-content>\r\n\r\n<button cmacs-button [disabled]=\"isDisableRight()\" *ngIf=\"overlap\" (click)=\"moveRight()\">\r\n    <i nz-icon type=\"right\"></i>\r\n</button>"
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsButtonGroupComponent.ctorParameters = function () {
+            return [
+                { type: i2.NzUpdateHostClassService },
+                { type: i0.ElementRef }
+            ];
+        };
+        CmacsButtonGroupComponent.propDecorators = {
+            nzSize: [{ type: i0.Input }],
+            overlap: [{ type: i0.Input }],
+            disabled: [{ type: i0.Input }],
+            disabledNav: [{ type: i0.Input }],
+            contentButtons: [{ type: i0.ContentChildren, args: [CmacsButtonComponent,] }]
+        };
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsButtonGroupComponent.prototype, "overlap", void 0);
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsButtonGroupComponent.prototype, "disabled", void 0);
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsButtonGroupComponent.prototype, "disabledNav", void 0);
+        return CmacsButtonGroupComponent;
     }());
 
     /**
@@ -5900,7 +6022,7 @@
                 this.isIndeterminate = this.checkboxCache.filter(( /**
                  * @param {?} item
                  * @return {?}
-                 */function (item) { return !item.selected; })).length !== this.checkboxCache.length && !this.allChecked;
+                 */function (item) { return item.selected; })).length !== this.checkboxCache.length && !this.allChecked;
             };
         // tslint:disable-next-line: no-shadowed-variable
         // tslint:disable-next-line: no-shadowed-variable
@@ -6278,7 +6400,7 @@
                         selector: 'cmacs-grid',
                         exportAs: 'cmacsGrid',
                         template: "<div id=\"tableGrid\">\r\n  <nz-table #gridComponent [nzData]=\"data\" [nzShowTotal]=\"showTotal\" [nzPageSizeOptions]=\"pageSizeOptions\"\r\n    [nzVirtualScroll]=\"virtualScroll\" [nzVirtualItemSize]=\"virtualItemSize\" [nzLoadingDelay]=\"loadingDelay\"\r\n    [nzLoadingIndicator]=\"loadingIndicator\" [nzTotal]=\"total\" [nzTitle]=\"title\" [nzFooter]=\"footer\"\r\n    [nzNoResult]=\"noResult\" [nzWidthConfig]=\"widthConfig\" [nzPageIndex]=\"pageIndex\" [nzPageSize]=\"pageSize\"\r\n    [nzPaginationPosition]=\"paginationPosition\" [nzScroll]=\"scroll\" [nzFrontPagination]=\"frontPagination\"\r\n    [nzTemplateMode]=\"templateMode\" [nzShowPagination]=\"showPagination\" [nzLoading]=\"loading\"\r\n    [nzShowSizeChanger]=\"showSizeChanger\" [nzHideOnSinglePage]=\"hideOnSinglePage\" [nzShowQuickJumper]=\"showQuickJumper\"\r\n    [nzSimple]=\"simple\">\r\n    <thead class=\"ant-table-thead\" *ngIf=\"!dataTable\">\r\n      <tr>\r\n        <th *ngIf=\"checkboxSelect\" nzWidth=\"2%\">\r\n          <label cmacs-checkbox [(ngModel)]=\"selected\" [indeterminate]=\"isIndeterminate\"\r\n            (checkedChange)=onCheckboxAllChange($event)></label>\r\n        </th>\r\n        <th *ngFor=\"let field of config.fields\" nzWidth=\"{{field.width}}\">{{field.display}}</th>\r\n        <th *ngIf=\"showRate\"></th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let data of gridComponent.data\">\r\n        <td *ngIf=\"checkboxSelect\" nzWidth=\"2%\">\r\n          <label cmacs-checkbox [(ngModel)]=\"checkboxCache[getIndex(data[config.fieldId])].selected\"\r\n            (checkedChange)=onCheckboxChange($event)\r\n            *ngIf=\"data[config.fieldId] && checkboxCache[getIndex(data[config.fieldId])]\"\r\n            ></label>\r\n        </td>\r\n        <td *ngFor=\"let field of config.fields\" class=\"editable-row\">\r\n          <div *ngIf=\"isCeldTypeDefault(field) && inLineEdit; else componentTpl\">\r\n            <div class=\"editable-cell\"\r\n              *ngIf=\"(editId !== data[config.fieldId] || property !== field.property); else editTpl\">\r\n              <div class=\"editable-cell-value-wrap\" (click)=\"startEdit(data[config.fieldId], field.property, $event)\">\r\n                <ng-container *ngIf=\"!isDate(field) && !isSelect(field)\">{{ data[field.property] }}</ng-container>\r\n                <ng-container *ngIf=\"isDate(field)\">{{ data[field.property]  | date: 'MMMM dd yyyy'}}</ng-container>\r\n                <ng-container *ngIf=\"isSelect(field)\">{{ getLabel(data, field) }}</ng-container>\r\n              </div>\r\n            </div>\r\n            <ng-template #editTpl>\r\n              <input *ngIf=\"isString(data[field.property]) && !isSelect(field)\" type=\"text\" cmacs-input\r\n                [(ngModel)]=\"data[field.property]\" />\r\n              <cmacs-input-number *ngIf=\"isNumber(data[field.property]) && !isSelect(field)\"\r\n                [(ngModel)]=\"data[field.property]\" [cmacsStep]=\"1\"></cmacs-input-number>\r\n              <label cmacs-checkbox *ngIf=\"isBoolean(data[field.property])\" [(ngModel)]=\"data[field.property]\"></label>\r\n              <cmacs-date-picker *ngIf=\"isDate(field)\" [format]=\"'MM/dd/yyyy'\" [allowClear]=\"false\" open\r\n                [(ngModel)]=\"data[field.property]\"></cmacs-date-picker>\r\n              <cmacs-select *ngIf=\"isSelect(field)\" style=\"width: 200px;\" showSearch [(ngModel)]=\"data[field.property]\">\r\n                <cmacs-option *ngFor=\"let sData of field.select.selectData\" label=\"{{sData[field.select.label]}}\"\r\n                  value=\"{{sData[field.select.value]}}\"></cmacs-option>\r\n              </cmacs-select>\r\n            </ng-template>\r\n          </div>\r\n          <ng-template #componentTpl>\r\n            <button *ngIf=\"isCeldTypeButton(field)\" cmacs-button type=\"{{field.button.style}}\"\r\n              (click)=onButtonClick(data)>\r\n              <i *ngIf=\"!isUndefined(field.button.icon); else titleTpl\" nz-icon type=\"{{field.button.icon}}\"></i>\r\n              <ng-template #titleTpl>{{field.display}}</ng-template>\r\n            </button>\r\n            <cmacs-tag *ngIf=\"isCeldTypeTag(field) && (field.tag === undefined || field.tag.color === undefined)\">\r\n              {{ data[field.property] }}</cmacs-tag>\r\n            <cmacs-tag *ngIf=\"isCeldTypeTag(field) && field.tag !== undefined && field.tag.color !== undefined\"\r\n              [color]=data[field.tag.color]>{{  data[field.property] }}</cmacs-tag>\r\n            <ng-container *ngIf=\"!inLineEdit && !isCeldTypeButton(field) && !isCeldTypeTag(field)\">\r\n              {{ data[field.property] }}</ng-container>\r\n          </ng-template>\r\n        </td>\r\n        <td *ngIf=\"showRate\">\r\n          <nz-rate [ngModel]=\"data[config.fieldRate]\" [nzCount]='rateCount'\r\n            (ngModelChange)=\"onRateChange($event, data)\"></nz-rate>\r\n        </td>\r\n      </tr>\r\n    </tbody>\r\n  </nz-table>\r\n</div>\r\n",
-                        styles: [".editable-cell{position:relative}.editable-cell-value-wrap{padding:5px 12px;cursor:pointer}.editable-row:hover .editable-cell-value-wrap{border:1px solid #2a7cff;border-radius:4px;padding:4px 11px}.ant-table-tbody>tr>td,.ant-table-thead>tr>th{padding:8px}.ant-table-thead{font-family:Roboto;font-size:12px;font-weight:500;font-style:normal;font-stretch:normal;line-height:1.25;letter-spacing:normal;color:#656c79}.editable-row,.ng-star-inserted{font-family:Roboto;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#97a0ae}cmacs-tag{padding-left:5px;padding-right:5px}"]
+                        styles: [".editable-cell{position:relative}.editable-cell-value-wrap{padding:5px 12px;cursor:pointer}.editable-row:hover .editable-cell-value-wrap{border:1px solid #2a7cff;border-radius:4px;padding:4px 11px}:host ::ng-deep .ant-rate-star{font-size:16px}.ant-table-thead>tr{box-shadow:0 3px 7px -3px rgba(5,6,6,.18)}.ant-table-thead>tr>th{padding:15px;color:#656c79}.ant-table-tbody>tr>td{padding:10px 15px}.ant-table-thead{font-family:Roboto;font-size:12px;font-weight:500;font-style:normal;font-stretch:normal;line-height:1.25;letter-spacing:normal}.editable-row,.ng-star-inserted{font-family:Roboto;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal}cmacs-tag{padding-left:5px;padding-right:5px}.ant-table-tbody>tr.ant-table-row-hover:not(.ant-table-expanded-row)>td,.ant-table-tbody>tr:hover:not(.ant-table-expanded-row)>td,.ant-table-thead>tr.ant-table-row-hover:not(.ant-table-expanded-row)>td,.ant-table-thead>tr:hover:not(.ant-table-expanded-row)>td{background-color:#f2f7ff}"]
                     }] }
         ];
         /** @nocollapse */
@@ -13658,6 +13780,7 @@
         }
         CmacsDropdownADirective.decorators = [
             { type: i0.Directive, args: [{
+                        // tslint:disable-next-line: directive-selector
                         selector: 'a[cmacs-dropdown]'
                     },] }
         ];

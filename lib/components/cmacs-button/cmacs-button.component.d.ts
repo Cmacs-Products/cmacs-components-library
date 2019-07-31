@@ -33,4 +33,7 @@ export declare class CmacsButtonComponent implements AfterContentInit, OnInit, O
     ngOnInit(): void;
     ngOnDestroy(): void;
     ngOnChanges(changes: SimpleChanges): void;
+    hideBtn(): void;
+    showBtn(): void;
+    disabledBtn(): void;
 }
