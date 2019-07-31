@@ -1,7 +1,6 @@
-import { Platform } from '@angular/cdk/platform';
 import { DatePipe } from '@angular/common';
-import { ChangeDetectorRef, ElementRef, EventEmitter, NgZone, OnChanges, OnDestroy, OnInit, Renderer2, SimpleChanges, TemplateRef } from '@angular/core';
-import { NzMeasureScrollbarService, NzSizeMDSType } from 'ng-zorro-antd/core';
+import { ChangeDetectorRef, ElementRef, EventEmitter, OnChanges, OnDestroy, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
+import { NzSizeMDSType } from 'ng-zorro-antd/core';
 import { NzI18nService } from 'ng-zorro-antd/i18n';
 import { ExportAsService } from 'ngx-export-as';
 import 'jspdf-autotable';
@@ -9,12 +8,8 @@ import { GridConfig, Field } from '../core/interfaces/grid-config';
 import { GridExpConfig } from '../core/interfaces/grid-exp-config';
 import { ExcelService } from '../core/services/excel.service';
 export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, OnDestroy {
-    private renderer;
-    private ngZone;
     private cdr;
-    private nzMeasureScrollbarService;
     private i18n;
-    private platform;
     private exportAsService;
     private excelService;
     private datePipe;
@@ -66,6 +61,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     exportEvent: EventEmitter<GridExpConfig>;
     buttonClick: EventEmitter<any>;
     rateChange: EventEmitter<any>;
+    selectionChange: EventEmitter<T[]>;
     rateCount: number;
     selected: boolean;
     checkboxCache: CheckboxSelect[];
@@ -83,6 +79,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     onButtonClick(field: any): void;
     onCheckboxChange(event: any): void;
     onRateChange(count: number, data: any): void;
+    getFields(): Field[];
     onCheckboxAllChange(status: boolean): void;
     getLabel(data: any, field: Field): string;
     isSelect(field: Field): boolean;
@@ -95,7 +92,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     isCeldTypeButton(field: Field): boolean;
     isCeldTypeTag(field: Field): boolean;
     isUndefined(value: any): boolean;
-    constructor(renderer: Renderer2, ngZone: NgZone, cdr: ChangeDetectorRef, nzMeasureScrollbarService: NzMeasureScrollbarService, i18n: NzI18nService, platform: Platform, elementRef: ElementRef, exportAsService: ExportAsService, excelService: ExcelService, datePipe: DatePipe);
+    constructor(cdr: ChangeDetectorRef, i18n: NzI18nService, exportAsService: ExportAsService, excelService: ExcelService, datePipe: DatePipe);
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
     exportToPng(fileName: string): void;
