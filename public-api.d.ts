@@ -21,6 +21,8 @@ export * from './lib/components/cmacs-radio/cmacs-radio.component';
 export * from './lib/components/cmacs-radio/cmacs-radio-button.component';
 export * from './lib/components/cmacs-radio/cmacs-radio-group.component';
 export * from './lib/components/cmacs-tag/cmacs-tag.component';
+export * from './lib/components/cmacs-timeline/cmacs-timeline.components';
+export * from './lib/components/cmacs-timeline/cmacs-timeline-item.component';
 export * from './lib/components/core/string_template_outlet';
 export * from './lib/components/cmacs-menu/cmacs-menu-divider.directive';
 export * from './lib/components/cmacs-menu/cmacs-menu-group.component';

@@ -62,6 +62,8 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     buttonClick: EventEmitter<any>;
     rateChange: EventEmitter<any>;
     selectionChange: EventEmitter<T[]>;
+    ondlclickRow: EventEmitter<any>;
+    onclickRow: EventEmitter<any>;
     rateCount: number;
     selected: boolean;
     checkboxCache: CheckboxSelect[];
@@ -99,6 +101,8 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     exportToExcel(fileName: string): void;
     exportToPdf(fileName: string): void;
     ngOnDestroy(): void;
+    clickRow(data: any): void;
+    dblClickRow(data: any): void;
 }
 export interface CheckboxSelect {
     data: any;
