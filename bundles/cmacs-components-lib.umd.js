@@ -6454,6 +6454,7 @@
          * @return {?}
          */
             function (data) {
+                var _this = this;
                 /** @type {?} */
                 var dataSelectd = this.checkboxCache.filter(( /**
                  * @param {?} item
@@ -6461,8 +6462,8 @@
                  */function (item) { return item.selected; })).map(( /**
                  * @param {?} item
                  * @return {?}
-                 */function (item) { return item.data.id; }));
-                return dataSelectd.indexOf(data.id) !== -1;
+                 */function (item) { return item.data[_this.config.fieldId]; }));
+                return dataSelectd.indexOf(data[this.config.fieldId]) !== -1;
             };
         /**
          * @return {?}

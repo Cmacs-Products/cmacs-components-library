@@ -5435,8 +5435,8 @@ class CmacsGridComponent {
          * @param {?} item
          * @return {?}
          */
-        item => item.data.id));
-        return dataSelectd.indexOf(data.id) !== -1;
+        item => item.data[this.config.fieldId]));
+        return dataSelectd.indexOf(data[this.config.fieldId]) !== -1;
     }
     /**
      * @return {?}
