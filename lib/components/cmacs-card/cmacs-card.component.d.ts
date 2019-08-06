@@ -7,7 +7,6 @@ export declare class CmacsCardComponent implements OnInit {
     opened: boolean;
     editable: boolean;
     loading: boolean;
-    selected: boolean;
     disabled: boolean;
     hoverable: boolean;
     bodyStyle: {
@@ -25,6 +24,8 @@ export declare class CmacsCardComponent implements OnInit {
     tab: CmacsCardTabComponent;
     open: EventEmitter<any>;
     close: EventEmitter<any>;
+    selected: boolean;
+    selectedChange: EventEmitter<boolean>;
     constructor(renderer: Renderer2, elementRef: ElementRef);
     ngOnInit(): void;
     onClick(event: Event): void;

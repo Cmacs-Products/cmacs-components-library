@@ -1,12 +1,13 @@
 import { ANIMATION_MODULE_TYPE } from '@angular/platform-browser/animations';
 import en from '@angular/common/locales/en';
-import { addMonths, addYears, endOfMonth, setDay, setMonth } from 'date-fns';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { utils, writeFile } from 'xlsx';
 import { FocusMonitor, FocusTrapFactory } from '@angular/cdk/a11y';
 import { DOWN_ARROW, ENTER, UP_ARROW, BACKSPACE, SPACE, TAB, ESCAPE } from '@angular/cdk/keycodes';
 import { ActivatedRoute, PRIMARY_OUTLET, Router } from '@angular/router';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { addMonths, addYears, endOfMonth, setDay, setMonth, addDays, differenceInCalendarDays, differenceInCalendarMonths, differenceInCalendarWeeks, isSameDay, isSameMonth, isSameYear, isThisMonth, isThisYear, setYear, startOfMonth, startOfWeek, startOfYear } from 'date-fns';
 import { InputBoolean as InputBoolean$1, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
 import { NzIconDirective, NzIconModule } from 'ng-zorro-antd/icon';
 import { DatePipe, DOCUMENT, CommonModule, registerLocaleData } from '@angular/common';
@@ -9516,7 +9517,6 @@ class CmacsCardComponent {
         this.opened = false;
         this.editable = false;
         this.loading = false;
-        this.selected = false;
         this.disabled = false;
         this.hoverable = false;
         this.actions = [];
@@ -9526,6 +9526,8 @@ class CmacsCardComponent {
         this.cmacsIcon = '';
         this.open = new EventEmitter();
         this.close = new EventEmitter();
+        this.selected = false;
+        this.selectedChange = new EventEmitter();
         renderer.addClass(elementRef.nativeElement, 'ant-card');
     }
     /**
@@ -9567,6 +9569,7 @@ class CmacsCardComponent {
         event.stopPropagation();
         if (!this.disabled) {
             this.selected = !this.selected;
+            this.selectedChange.emit(this.selected);
         }
     }
     /**
@@ -9623,7 +9626,6 @@ CmacsCardComponent.propDecorators = {
     opened: [{ type: Input }],
     editable: [{ type: Input }],
     loading: [{ type: Input }],
-    selected: [{ type: Input }],
     disabled: [{ type: Input }],
     hoverable: [{ type: Input }],
     bodyStyle: [{ type: Input }],
@@ -9639,6 +9641,8 @@ CmacsCardComponent.propDecorators = {
     tab: [{ type: ContentChild, args: [CmacsCardTabComponent,] }],
     open: [{ type: Output }],
     close: [{ type: Output }],
+    selected: [{ type: Input }],
+    selectedChange: [{ type: Output }],
     onClick: [{ type: HostListener, args: ['click', ['$event'],] }],
     onDblClick: [{ type: HostListener, args: ['dblclick',] }]
 };
@@ -9658,10 +9662,6 @@ __decorate([
     InputBoolean(),
     __metadata("design:type", Object)
 ], CmacsCardComponent.prototype, "loading", void 0);
-__decorate([
-    InputBoolean(),
-    __metadata("design:type", Object)
-], CmacsCardComponent.prototype, "selected", void 0);
 __decorate([
     InputBoolean(),
     __metadata("design:type", Object)
@@ -9768,6 +9768,596 @@ CmacsCardGridDirective.ctorParameters = () => [
     { type: ElementRef },
     { type: Renderer2 }
 ];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class CmacsDateCellDirective {
+}
+CmacsDateCellDirective.decorators = [
+    { type: Directive, args: [{
+                selector: '[cmacsDateCell]',
+                exportAs: 'cmacsDateCell'
+            },] }
+];
+class CmacsMonthCellDirective {
+}
+CmacsMonthCellDirective.decorators = [
+    { type: Directive, args: [{
+                selector: '[cmacsMonthCell]',
+                exportAs: 'cmacsMonthCell'
+            },] }
+];
+class CmacsDateFullCellDirective {
+}
+CmacsDateFullCellDirective.decorators = [
+    { type: Directive, args: [{
+                selector: '[cmacsDateFullCell]',
+                exportAs: 'cmacsDateFullCell'
+            },] }
+];
+class CmacsMonthFullCellDirective {
+}
+CmacsMonthFullCellDirective.decorators = [
+    { type: Directive, args: [{
+                selector: '[cmacsMonthFullCell]',
+                exportAs: 'cmacsMonthFullCell'
+            },] }
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class CmacsCalendarHeaderComponent {
+    /**
+     * @param {?} i18n
+     * @param {?} dateHelper
+     */
+    constructor(i18n, dateHelper) {
+        this.i18n = i18n;
+        this.dateHelper = dateHelper;
+        this.mode = 'month';
+        this.modeChange = new EventEmitter();
+        this.fullscreen = true;
+        this.yearChange = new EventEmitter();
+        this.monthChange = new EventEmitter();
+        this._activeDate = new Date();
+        this.yearOffset = 10;
+        this.yearTotal = 20;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set activeDate(value) {
+        this._activeDate = value;
+        this.setUpYears();
+    }
+    /**
+     * @return {?}
+     */
+    get activeDate() {
+        return this._activeDate;
+    }
+    /**
+     * @return {?}
+     */
+    get activeYear() {
+        return this.activeDate.getFullYear();
+    }
+    /**
+     * @return {?}
+     */
+    get activeMonth() {
+        return this.activeDate.getMonth();
+    }
+    /**
+     * @return {?}
+     */
+    get size() {
+        return this.fullscreen ? 'default' : 'small';
+    }
+    /**
+     * @return {?}
+     */
+    get yearTypeText() {
+        return this.i18n.getLocale().Calendar.year;
+    }
+    /**
+     * @return {?}
+     */
+    get monthTypeText() {
+        return this.i18n.getLocale().Calendar.month;
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        this.setUpYears();
+        this.setUpMonths();
+    }
+    /**
+     * @param {?} year
+     * @return {?}
+     */
+    updateYear(year) {
+        this.yearChange.emit(year);
+        this.setUpYears(year);
+    }
+    /**
+     * @private
+     * @param {?=} year
+     * @return {?}
+     */
+    setUpYears(year) {
+        /** @type {?} */
+        const start = (year || this.activeYear) - this.yearOffset;
+        /** @type {?} */
+        const end = start + this.yearTotal;
+        this.years = [];
+        for (let i = start; i < end; i++) {
+            this.years.push({ label: `${i}`, value: i });
+        }
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    setUpMonths() {
+        this.months = [];
+        for (let i = 0; i < 12; i++) {
+            /** @type {?} */
+            const dateInMonth = setMonth(this.activeDate, i);
+            /** @type {?} */
+            const monthText = this.dateHelper.format(dateInMonth, 'MMM');
+            this.months.push({ label: monthText, value: i });
+        }
+    }
+}
+CmacsCalendarHeaderComponent.decorators = [
+    { type: Component, args: [{
+                encapsulation: ViewEncapsulation.None,
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                selector: 'cmacs-calendar-header',
+                exportAs: 'cmacsCalendarHeader',
+                template: "<nz-select class=\"ant-fullcalendar-year-select\" [nzSize]=\"size\" [nzDropdownMatchSelectWidth]=\"false\"\r\n           [ngModel]=\"activeYear\" (ngModelChange)=\"updateYear($event)\">\r\n  <nz-option *ngFor=\"let year of years\" [nzLabel]=\"year.label\" [nzValue]=\"year.value\"></nz-option>\r\n</nz-select>\r\n\r\n<nz-select *ngIf=\"mode === 'month'\" class=\"ant-fullcalendar-month-select\" [nzSize]=\"size\" [nzDropdownMatchSelectWidth]=\"false\"\r\n           [ngModel]=\"activeMonth\" (ngModelChange)=\"monthChange.emit($event)\">\r\n  <nz-option *ngFor=\"let month of months\" [nzLabel]=\"month.label\" [nzValue]=\"month.value\"></nz-option>\r\n</nz-select>\r\n\r\n<nz-radio-group [(ngModel)]=\"mode\" (ngModelChange)=\"modeChange.emit($event)\" [nzSize]=\"size\">\r\n  <label nz-radio-button nzValue=\"month\">{{ monthTypeText }}</label>\r\n  <label nz-radio-button nzValue=\"year\">{{ yearTypeText }}</label>\r\n</nz-radio-group>",
+                host: {
+                    '[style.display]': `'block'`,
+                    '[class.ant-fullcalendar-header]': `true`
+                }
+            }] }
+];
+/** @nocollapse */
+CmacsCalendarHeaderComponent.ctorParameters = () => [
+    { type: NzI18nService },
+    { type: DateHelperService }
+];
+CmacsCalendarHeaderComponent.propDecorators = {
+    mode: [{ type: Input }],
+    modeChange: [{ type: Output }],
+    fullscreen: [{ type: Input }],
+    activeDate: [{ type: Input }],
+    yearChange: [{ type: Output }],
+    monthChange: [{ type: Output }]
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class CmacsCalendarComponent {
+    /**
+     * @param {?} i18n
+     * @param {?} cdr
+     * @param {?} dateHelper
+     */
+    constructor(i18n, cdr, dateHelper) {
+        this.i18n = i18n;
+        this.cdr = cdr;
+        this.dateHelper = dateHelper;
+        this.nzMode = 'month';
+        this.nzModeChange = new EventEmitter();
+        this.nzPanelChange = new EventEmitter();
+        this.nzSelectChange = new EventEmitter();
+        this.nzValueChange = new EventEmitter();
+        this.fullscreen = true;
+        this.daysInWeek = [];
+        this.monthsInYear = [];
+        this.dateMatrix = [];
+        this.activeDate = new Date();
+        this.currentDateRow = -1;
+        this.currentDateCol = -1;
+        this.activeDateRow = -1;
+        this.activeDateCol = -1;
+        this.currentMonthRow = -1;
+        this.currentMonthCol = -1;
+        this.activeMonthRow = -1;
+        this.activeMonthCol = -1;
+        this.dateCell = null;
+        this.dateFullCell = null;
+        this.monthCell = null;
+        this.monthFullCell = null;
+        this.currentDate = new Date();
+        this.onChangeFn = (/**
+         * @return {?}
+         */
+        () => { });
+        this.onTouchFn = (/**
+         * @return {?}
+         */
+        () => { });
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set nzValue(value) {
+        this.updateDate(value, false);
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set nzDateCell(value) {
+        this.dateCell = value;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set nzDateFullCell(value) {
+        this.dateFullCell = value;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set nzMonthCell(value) {
+        this.monthCell = value;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set nzMonthFullCell(value) {
+        this.monthFullCell = value;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set nzFullscreen(value) {
+        this.fullscreen = coerceBooleanProperty(value);
+    }
+    /**
+     * @return {?}
+     */
+    get nzFullscreen() {
+        return this.fullscreen;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set nzCard(value) {
+        this.fullscreen = !coerceBooleanProperty(value);
+    }
+    /**
+     * @return {?}
+     */
+    get nzCard() {
+        return !this.fullscreen;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set dateCellChild(value) {
+        if (value) {
+            this.dateCell = value;
+        }
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set dateFullCellChild(value) {
+        if (value) {
+            this.dateFullCell = value;
+        }
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set monthCellChild(value) {
+        if (value) {
+            this.monthCell = value;
+        }
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set monthFullCellChild(value) {
+        if (value) {
+            this.monthFullCell = value;
+        }
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    get calendarStart() {
+        return startOfWeek(startOfMonth(this.activeDate), { weekStartsOn: this.dateHelper.getFirstDayOfWeek() });
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        this.setUpDaysInWeek();
+        this.setUpMonthsInYear();
+        this.setUpDateMatrix();
+        this.calculateCurrentDate();
+        this.calculateActiveDate();
+        this.calculateCurrentMonth();
+        this.calculateActiveMonth();
+    }
+    /**
+     * @param {?} mode
+     * @return {?}
+     */
+    onModeChange(mode) {
+        this.nzModeChange.emit(mode);
+        this.nzPanelChange.emit({ date: this.activeDate, mode });
+    }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
+    onDateSelect(date) {
+        this.updateDate(date);
+        this.nzSelectChange.emit(date);
+    }
+    /**
+     * @param {?} year
+     * @return {?}
+     */
+    onYearSelect(year) {
+        /** @type {?} */
+        const date = setYear(this.activeDate, year);
+        this.updateDate(date);
+        this.nzSelectChange.emit(date);
+    }
+    /**
+     * @param {?} month
+     * @return {?}
+     */
+    onMonthSelect(month) {
+        /** @type {?} */
+        const date = setMonth(this.activeDate, month);
+        this.updateDate(date);
+        this.nzSelectChange.emit(date);
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    writeValue(value) {
+        this.updateDate(value || new Date(), false);
+        this.cdr.markForCheck();
+    }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    registerOnChange(fn) {
+        this.onChangeFn = fn;
+    }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    registerOnTouched(fn) {
+        this.onTouchFn = fn;
+    }
+    /**
+     * @private
+     * @param {?} date
+     * @param {?=} touched
+     * @return {?}
+     */
+    updateDate(date, touched = true) {
+        /** @type {?} */
+        const dayChanged = !isSameDay(date, this.activeDate);
+        /** @type {?} */
+        const monthChanged = !isSameMonth(date, this.activeDate);
+        /** @type {?} */
+        const yearChanged = !isSameYear(date, this.activeDate);
+        this.activeDate = date;
+        if (dayChanged) {
+            this.calculateActiveDate();
+        }
+        if (monthChanged) {
+            this.setUpDateMatrix();
+            this.calculateCurrentDate();
+            this.calculateActiveMonth();
+        }
+        if (yearChanged) {
+            this.calculateCurrentMonth();
+        }
+        if (touched) {
+            this.onChangeFn(date);
+            this.onTouchFn();
+            this.nzValueChange.emit(date);
+        }
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    setUpDaysInWeek() {
+        this.daysInWeek = [];
+        /** @type {?} */
+        const weekStart = startOfWeek(this.activeDate, { weekStartsOn: this.dateHelper.getFirstDayOfWeek() });
+        for (let i = 0; i < 7; i++) {
+            /** @type {?} */
+            const date = addDays(weekStart, i);
+            /** @type {?} */
+            const title = this.dateHelper.format(date, this.dateHelper.relyOnDatePipe ? 'E' : 'ddd');
+            /** @type {?} */
+            const label = this.dateHelper.format(date, this.dateHelper.relyOnDatePipe ? 'EEEEEE' : 'dd');
+            this.daysInWeek.push({ title, label });
+        }
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    setUpMonthsInYear() {
+        this.monthsInYear = [];
+        for (let i = 0; i < 12; i++) {
+            /** @type {?} */
+            const date = setMonth(this.activeDate, i);
+            /** @type {?} */
+            const title = this.dateHelper.format(date, 'MMM');
+            /** @type {?} */
+            const label = this.dateHelper.format(date, 'MMM');
+            /** @type {?} */
+            const start = startOfMonth(date);
+            this.monthsInYear.push({ title, label, start });
+        }
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    setUpDateMatrix() {
+        this.dateMatrix = [];
+        /** @type {?} */
+        const monthStart = startOfMonth(this.activeDate);
+        /** @type {?} */
+        const monthEnd = endOfMonth(this.activeDate);
+        /** @type {?} */
+        const weekDiff = differenceInCalendarWeeks(monthEnd, monthStart, { weekStartsOn: this.dateHelper.getFirstDayOfWeek() }) + 2;
+        for (let week = 0; week < weekDiff; week++) {
+            /** @type {?} */
+            const row = [];
+            /** @type {?} */
+            const weekStart = addDays(this.calendarStart, week * 7);
+            for (let day = 0; day < 7; day++) {
+                /** @type {?} */
+                const date = addDays(weekStart, day);
+                /** @type {?} */
+                const monthDiff = differenceInCalendarMonths(date, this.activeDate);
+                /** @type {?} */
+                const dateFormat = this.dateHelper.relyOnDatePipe
+                    ? 'longDate'
+                    : this.i18n.getLocaleData('DatePicker.lang.dateFormat', 'YYYY-MM-DD');
+                /** @type {?} */
+                const title = this.dateHelper.format(date, dateFormat);
+                /** @type {?} */
+                const label = this.dateHelper.format(date, this.dateHelper.relyOnDatePipe ? 'dd' : 'DD');
+                /** @type {?} */
+                const rel = monthDiff === 0 ? 'current' : monthDiff < 0 ? 'last' : 'next';
+                row.push({ title, label, rel, value: date });
+            }
+            this.dateMatrix.push(row);
+        }
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    calculateCurrentDate() {
+        if (isThisMonth(this.activeDate)) {
+            this.currentDateRow = differenceInCalendarWeeks(this.currentDate, this.calendarStart, {
+                weekStartsOn: this.dateHelper.getFirstDayOfWeek()
+            });
+            this.currentDateCol = differenceInCalendarDays(this.currentDate, addDays(this.calendarStart, this.currentDateRow * 7));
+        }
+        else {
+            this.currentDateRow = -1;
+            this.currentDateCol = -1;
+        }
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    calculateActiveDate() {
+        this.activeDateRow = differenceInCalendarWeeks(this.activeDate, this.calendarStart, {
+            weekStartsOn: this.dateHelper.getFirstDayOfWeek()
+        });
+        this.activeDateCol = differenceInCalendarDays(this.activeDate, addDays(this.calendarStart, this.activeDateRow * 7));
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    calculateCurrentMonth() {
+        if (isThisYear(this.activeDate)) {
+            /** @type {?} */
+            const yearStart = startOfYear(this.currentDate);
+            /** @type {?} */
+            const monthDiff = differenceInCalendarMonths(this.currentDate, yearStart);
+            this.currentMonthRow = Math.floor(monthDiff / 3);
+            this.currentMonthCol = monthDiff % 3;
+        }
+        else {
+            this.currentMonthRow = -1;
+            this.currentMonthCol = -1;
+        }
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    calculateActiveMonth() {
+        this.activeMonthRow = Math.floor(this.activeDate.getMonth() / 3);
+        this.activeMonthCol = this.activeDate.getMonth() % 3;
+    }
+}
+CmacsCalendarComponent.decorators = [
+    { type: Component, args: [{
+                encapsulation: ViewEncapsulation.None,
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                selector: 'cmacs-calendar',
+                exportAs: 'cmacsCalendar',
+                template: "<cmacs-calendar-header [fullscreen]=\"fullscreen\" [activeDate]=\"activeDate\"\r\n                    [(mode)]=\"nzMode\" (modeChange)=\"onModeChange($event)\"\r\n                    (yearChange)=\"onYearSelect($event)\" (monthChange)=\"onMonthSelect($event)\">\r\n</cmacs-calendar-header>\r\n\r\n<div class=\"ant-fullcalendar ant-fullcalendar-full\" [ngClass]=\"fullscreen ? 'ant-fullcalendar-fullscreen' : ''\">\r\n  <div class=\"ant-fullcalendar-calendar-body\">\r\n    <ng-container *ngIf=\"nzMode === 'month' then monthModeTable else yearModeTable\"></ng-container>\r\n  </div>\r\n</div>\r\n\r\n<ng-template #monthModeTable>\r\n  <table class=\"ant-fullcalendar-table\" cellspacing=\"0\" role=\"grid\">\r\n    <thead>\r\n      <tr role=\"row\">\r\n        <th *ngFor=\"let day of daysInWeek\" class=\"ant-fullcalendar-column-header\" role=\"columnheader\" [title]=\"day.title\">\r\n          <span class=\"ant-fullcalendar-column-header-inner\">{{ day.label }}</span>\r\n        </th>\r\n      </tr>\r\n    </thead>\r\n    <tbody class=\"ant-fullcalendar-tbody\">\r\n      <tr *ngFor=\"let week of dateMatrix; index as row\"\r\n          [class.ant-fullcalendar-current-week]=\"row === currentDateRow\"\r\n          [class.ant-fullcalendar-active-week]=\"row === activeDateRow\">\r\n        <td *ngFor=\"let day of week; index as col\" role=\"gridcell\" class=\"ant-fullcalendar-cell\" [title]=\"day.title\"\r\n            [class.ant-fullcalendar-today]=\"row === currentDateRow && col === currentDateCol\"\r\n            [class.ant-fullcalendar-selected-day]=\"row === activeDateRow && col === activeDateCol\"\r\n            [class.ant-fullcalendar-last-month-cell]=\"day.rel === 'last'\"\r\n            [class.ant-fullcalendar-next-month-btn-day]=\"day.rel === 'next'\"\r\n            (click)=\"onDateSelect(day.value)\">\r\n            <div class=\"ant-fullcalendar-date\">\r\n              <ng-container *ngIf=\"dateFullCell else defaultCell\">\r\n                <ng-container *ngTemplateOutlet=\"dateFullCell; context: {$implicit: day.value}\"></ng-container>\r\n              </ng-container>\r\n              <ng-template #defaultCell>\r\n                <div class=\"ant-fullcalendar-value\">{{ day.label }}</div>\r\n                <div *ngIf=\"dateCell\" class=\"ant-fullcalendar-content\">\r\n                  <ng-container *ngTemplateOutlet=\"dateCell; context: {$implicit: day.value}\"></ng-container>\r\n                </div>\r\n              </ng-template>\r\n            </div>\r\n        </td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</ng-template>\r\n\r\n<ng-template #yearModeTable>\r\n  <table class=\"ant-fullcalendar-month-panel-table\" cellspacing=\"0\" role=\"grid\">\r\n    <tbody class=\"ant-fullcalendar-month-panel-tbody\">\r\n      <tr *ngFor=\"let row of [0, 1, 2, 3]\" role=\"row\">\r\n        <td *ngFor=\"let col of [0, 1, 2]\" role=\"gridcell\" [title]=\"monthsInYear[row * 3 + col].title\"\r\n            class=\"ant-fullcalendar-month-panel-cell\"\r\n            [class.ant-fullcalendar-month-panel-current-cell]=\"row === currentMonthRow && col === currentMonthCol\"\r\n            [class.ant-fullcalendar-month-panel-selected-cell]=\"row === activeMonthRow && col === activeMonthCol\"\r\n            (click)=\"onMonthSelect(row * 3 + col)\">\r\n          <div class=\"ant-fullcalendar-month\">\r\n            <ng-container *ngIf=\"monthFullCell else defaultCell\">\r\n              <ng-container *ngTemplateOutlet=\"monthFullCell; context: {$implicit: monthsInYear[row * 3 + col].start}\"></ng-container>\r\n            </ng-container>\r\n            <ng-template #defaultCell>\r\n              <div class=\"ant-fullcalendar-value\">{{ monthsInYear[row * 3 + col].label }}</div>\r\n              <div *ngIf=\"monthCell\" class=\"ant-fullcalendar-content\">\r\n                <ng-container *ngTemplateOutlet=\"monthCell; context: {$implicit: monthsInYear[row * 3 + col].start}\"></ng-container>\r\n              </div>\r\n            </ng-template>\r\n          </div>\r\n        </td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</ng-template>\r\n",
+                providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef((/**
+                         * @return {?}
+                         */
+                        () => CmacsCalendarComponent)), multi: true }]
+            }] }
+];
+/** @nocollapse */
+CmacsCalendarComponent.ctorParameters = () => [
+    { type: NzI18nService },
+    { type: ChangeDetectorRef },
+    { type: DateHelperService }
+];
+CmacsCalendarComponent.propDecorators = {
+    nzMode: [{ type: Input, args: ['mode',] }],
+    nzModeChange: [{ type: Output, args: ['modeChange',] }],
+    nzPanelChange: [{ type: Output, args: ['panelChange',] }],
+    nzSelectChange: [{ type: Output, args: ['selectChange',] }],
+    nzValue: [{ type: Input, args: ['value',] }],
+    nzValueChange: [{ type: Output, args: ['valueChange',] }],
+    nzDateCell: [{ type: Input, args: ['dateCell',] }],
+    nzDateFullCell: [{ type: Input, args: ['dateFullCell',] }],
+    nzMonthCell: [{ type: Input, args: ['monthCell',] }],
+    nzMonthFullCell: [{ type: Input, args: ['monthFullCell',] }],
+    nzFullscreen: [{ type: Input, args: ['fullScreen',] }],
+    nzCard: [{ type: Input, args: ['card',] }],
+    dateCellChild: [{ type: ContentChild, args: [CmacsDateCellDirective, { read: TemplateRef },] }],
+    dateFullCellChild: [{ type: ContentChild, args: [CmacsDateFullCellDirective, { read: TemplateRef },] }],
+    monthCellChild: [{ type: ContentChild, args: [CmacsMonthCellDirective, { read: TemplateRef },] }],
+    monthFullCellChild: [{ type: ContentChild, args: [CmacsMonthFullCellDirective, { read: TemplateRef },] }],
+    fullscreen: [{ type: HostBinding, args: ['class.ant-fullcalendar--fullscreen',] }]
+};
 
 /**
  * @fileoverview added by tsickle
@@ -13382,6 +13972,12 @@ CmacsComponentsLibModule.decorators = [
                     CmacsCardLoadingComponent,
                     CmacsCardMetaComponent,
                     CmacsCardGridDirective,
+                    CmacsCalendarComponent,
+                    CmacsCalendarHeaderComponent,
+                    CmacsDateCellDirective,
+                    CmacsDateFullCellDirective,
+                    CmacsMonthCellDirective,
+                    CmacsMonthFullCellDirective,
                     CmacsDropdownComponent,
                     CmacsDropdownButtonComponent,
                     CmacsDropdownDirective,
@@ -13466,6 +14062,11 @@ CmacsComponentsLibModule.decorators = [
                     CmacsCardLoadingComponent,
                     CmacsCardMetaComponent,
                     CmacsCardGridDirective,
+                    CmacsCalendarComponent,
+                    CmacsDateCellDirective,
+                    CmacsDateFullCellDirective,
+                    CmacsMonthCellDirective,
+                    CmacsMonthFullCellDirective,
                     LibPackerModule,
                     NzMenuModule,
                     CmacsDropdownComponent,
@@ -13746,6 +14347,6 @@ const ModeTabType = {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, CmacsModalRef, CmacsDropdownADirective, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, AbstractPickerComponent as ɵa, CalendarFooterComponent as ɵba, CalendarHeaderComponent as ɵy, CalendarInputComponent as ɵz, OkButtonComponent as ɵbb, TimePickerButtonComponent as ɵbc, TodayButtonComponent as ɵbd, DateTableComponent as ɵbe, DecadePanelComponent as ɵbi, MonthPanelComponent as ɵbg, MonthTableComponent as ɵbh, DateRangePopupComponent as ɵbk, InnerPopupComponent as ɵbj, YearPanelComponent as ɵbf, CmacsDropdownService as ɵbl, CmacsMenuDropdownService as ɵk, CmacsFormControlComponent as ɵq, CmacsFormExplainComponent as ɵo, CmacsFormExtraComponent as ɵl, CmacsFormItemComponent as ɵn, CmacsFormLabelComponent as ɵm, CmacsFormSplitComponent as ɵs, CmacsFormTextComponent as ɵr, CmacsFormDirective as ɵp, CmacsMenuServiceFactory as ɵd, CmacsMenuService as ɵc, CmacsSubmenuService as ɵb, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵv, CmacsOptionGroupComponent as ɵh, CmacsOptionLiComponent as ɵw, NzFilterGroupOptionPipe as ɵu, NzFilterOptionPipe as ɵt, CmacsSelectUnselectableDirective as ɵx, CmacsSelectService as ɵg, NzTreeService as ɵf, ExcelService as ɵe };
+export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, CmacsDateCellDirective, CmacsMonthCellDirective, CmacsDateFullCellDirective, CmacsMonthFullCellDirective, CmacsCalendarHeaderComponent, CmacsCalendarComponent, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, CmacsModalRef, CmacsDropdownADirective, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, AbstractPickerComponent as ɵa, CalendarFooterComponent as ɵba, CalendarHeaderComponent as ɵy, CalendarInputComponent as ɵz, OkButtonComponent as ɵbb, TimePickerButtonComponent as ɵbc, TodayButtonComponent as ɵbd, DateTableComponent as ɵbe, DecadePanelComponent as ɵbi, MonthPanelComponent as ɵbg, MonthTableComponent as ɵbh, DateRangePopupComponent as ɵbk, InnerPopupComponent as ɵbj, YearPanelComponent as ɵbf, CmacsDropdownService as ɵbl, CmacsMenuDropdownService as ɵk, CmacsFormControlComponent as ɵq, CmacsFormExplainComponent as ɵo, CmacsFormExtraComponent as ɵl, CmacsFormItemComponent as ɵn, CmacsFormLabelComponent as ɵm, CmacsFormSplitComponent as ɵs, CmacsFormTextComponent as ɵr, CmacsFormDirective as ɵp, CmacsMenuServiceFactory as ɵd, CmacsMenuService as ɵc, CmacsSubmenuService as ɵb, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵv, CmacsOptionGroupComponent as ɵh, CmacsOptionLiComponent as ɵw, NzFilterGroupOptionPipe as ɵu, NzFilterOptionPipe as ɵt, CmacsSelectUnselectableDirective as ɵx, CmacsSelectService as ɵg, NzTreeService as ɵf, ExcelService as ɵe };
 
 //# sourceMappingURL=cmacs-components-lib.js.map
