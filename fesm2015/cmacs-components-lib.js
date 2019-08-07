@@ -19,13 +19,13 @@ import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName
 import { MediaMatcher, LayoutModule } from '@angular/cdk/layout';
 import { Platform, PlatformModule } from '@angular/cdk/platform';
 import { NzRowDirective, NzColDirective, NzGridModule } from 'ng-zorro-antd/grid';
-import { __decorate, __metadata } from 'tslib';
 import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent } from 'rxjs';
 import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take } from 'rxjs/operators';
+import { __decorate, __metadata } from 'tslib';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
-import { ComponentPortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, TemplateRef, HostListener, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, Injector, NgModule, defineInjectable, inject, Type, ComponentFactoryResolver } from '@angular/core';
-import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, LoggerService } from 'ng-zorro-antd/core';
+import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, TemplateRef, HostListener, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, Injector, NgModule, defineInjectable, inject, ComponentFactoryResolver, Type } from '@angular/core';
+import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, LoggerService } from 'ng-zorro-antd/core';
 
 /**
  * @fileoverview added by tsickle
@@ -8626,12 +8626,12 @@ class CmacsModalComponent extends CmacsModalRef {
         this.cmacsAfterClose = new EventEmitter(); // Trigger when modal leave-animation over
         // Trigger when modal leave-animation over
         this.visibleChange = new EventEmitter();
+        this.showHelpfulTips = false;
         this.locale = {};
         this.transformOrigin = '0px 0px 0px'; // The origin point that animation based on
         this.unsubscribe$ = new Subject();
         this.scrollStrategy = this.overlay.scrollStrategies.block();
     }
-    // Only aim to focus the ok button that needs to be auto focused
     /**
      * @return {?}
      */
@@ -8768,6 +8768,16 @@ class CmacsModalComponent extends CmacsModalRef {
         if (this.autoFocusButtonOk) {
             ((/** @type {?} */ (this.autoFocusButtonOk.nativeElement))).focus();
         }
+        this.tipsCreationWizard.changes.subscribe((/**
+         * @param {?} component
+         * @return {?}
+         */
+        (component) => {
+            if (component._results.length > 0) {
+                this.showHelpfulTips = !!component.first.nativeElement.innerHTML;
+                this.cdr.detectChanges();
+            }
+        }));
     }
     /**
      * @return {?}
@@ -9176,7 +9186,7 @@ CmacsModalComponent.decorators = [
     { type: Component, args: [{
                 selector: 'cmacs-modal',
                 exportAs: 'cmacsModal',
-                template: "<ng-template #tplOriginContent><ng-content></ng-content></ng-template> <!-- Compatible: the <ng-content> can appear only once -->\r\n\r\n<div [nzNoAnimation]=\"nzNoAnimation\">\r\n  <div *ngIf=\"mask\"\r\n       class=\"ant-modal-mask\"\r\n       [ngClass]=\"maskAnimationClassMap\"\r\n       [class.ant-modal-mask-hidden]=\"hidden\"\r\n       [ngStyle]=\"maskStyle\"\r\n       [style.zIndex]=\"zIndex\"\r\n  ></div>\r\n  <div\r\n    (click)=\"onClickMask($event)\"\r\n    class=\"ant-modal-wrap {{ wrapClassName }}\"\r\n    [style.zIndex]=\"zIndex\"\r\n    [style.visibility]=\"hidden ? 'hidden' : null\"\r\n    tabindex=\"-1\"\r\n    role=\"dialog\"\r\n  >\r\n    <div #modalContainer\r\n         class=\"ant-modal {{ className }}\"\r\n         [ngClass]=\"modalAnimationClassMap\"\r\n         [ngStyle]=\"cmacsStyle\"\r\n         [style.top]=\"isModalType('creation') ? '10vh' : (isModalType('helpfulTips') || isModalType('basic') ||  isModalType('helpfulTipsNoPanel')) ? '4vh' : '100px'\"\r\n         [style.width]=\"isModalType('helpfulTipsNoPanel') ? '570px' : width | cmacsToCssUnit\"\r\n         [style.transform-origin]=\"transformOrigin\"\r\n         role=\"document\"\r\n    >\r\n      <div class=\"ant-modal-content\">\r\n        <button *ngIf=\"closable\" (click)=\"onClickCloseBtn()\" class=\"ant-modal-close\" aria-label=\"Close\">\r\n          <span *ngIf=\"isModalType('passive') || isModalType('interaction') || isModalType('basic')\"\r\n                [class.ant-modal-close-x]=\"!isModalType('basic')\"\r\n                [class.ant-modal-close-x-basic]=\"isModalType('basic')\"\r\n          >\r\n            <i nz-icon type=\"close\" class=\"ant-modal-close-icon\"></i>\r\n          </span>\r\n        </button>\r\n        <ng-container *ngIf=\"!hidden\" [ngSwitch]=\"true\">\r\n          <ng-container *ngSwitchCase=\"isModalType('transactional')\" [ngTemplateOutlet]=\"tplContentDefault\"></ng-container>\r\n          <ng-container *ngSwitchCase=\"isModalType('confirm')\" [ngTemplateOutlet]=\"tplContentConfirm\"></ng-container>\r\n          <ng-container *ngSwitchCase=\"isModalType('creation')\" [ngTemplateOutlet]=\"tplCreationDefault\"></ng-container>\r\n          <ng-container *ngSwitchCase=\"isModalType('helpfulTips')\" [ngTemplateOutlet]=\"tplHelpfulTips\"></ng-container>\r\n          <ng-container *ngSwitchCase=\"isModalType('helpfulTipsNoPanel') || isModalType('basic')\" [ngTemplateOutlet]=\"tplHelpfulTipsWithoutPanel\"></ng-container>\r\n          <ng-container *ngSwitchCase=\"isModalType('passive') || isModalType('interaction')\" [ngTemplateOutlet]=\"tplContentPassive\"></ng-container>\r\n        </ng-container>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<!-- [Predefined] Default Modal Content -->\r\n<ng-template #tplContentDefault>\r\n  <div *ngIf=\"title\"\r\n       class=\"ant-modal-header\"\r\n       [style.height.px]=\"modalType === 'transactional' ? 30 : 50\"\r\n       [style.padding]=\"modalType === 'transactional' ? '7px 24px' : '16px 24px'\"\r\n  >\r\n    <div class=\"ant-modal-title\">\r\n      <ng-container [ngSwitch]=\"true\">\r\n        <ng-container *ngSwitchCase=\"isTemplateRef(title)\" [ngTemplateOutlet]=\"title\"></ng-container>\r\n        <ng-container *ngSwitchCase=\"isNonEmptyString(title)\"><div [innerHTML]=\"title\"></div></ng-container>\r\n      </ng-container>\r\n    </div>\r\n  </div>\r\n  <div class=\"ant-modal-body\" [ngStyle]=\"bodyStyle\">\r\n    <ng-container #bodyContainer>\r\n      <ng-container *ngIf=\"!isComponent(content)\" [ngSwitch]=\"true\">\r\n        <ng-container *ngSwitchCase=\"isTemplateRef(content)\" [ngTemplateOutlet]=\"content\"></ng-container>\r\n        <ng-container *ngSwitchCase=\"isNonEmptyString(content)\"><div [innerHTML]=\"content\"></div></ng-container>\r\n        <ng-container *ngSwitchDefault [ngTemplateOutlet]=\"tplOriginContent\"></ng-container>\r\n      </ng-container>\r\n    </ng-container>\r\n  </div>\r\n  <div *ngIf=\"footer !== null\"\r\n       class=\"ant-modal-footer\"\r\n       [style.border-top]=\"modalType === 'transactional' ? 'none' : 'inherit'\"\r\n       [style.padding-bottom]=\"modalType === 'transactional' || modalType === 'passive' ? '20px' : 'inherit'\">\r\n    <ng-container [ngSwitch]=\"true\">\r\n      <ng-container *ngSwitchCase=\"isTemplateRef(footer)\" [ngTemplateOutlet]=\"footer\"></ng-container>\r\n      <ng-container *ngSwitchCase=\"isNonEmptyString(footer)\"><div [innerHTML]=\"footer\"></div></ng-container>\r\n      <ng-container *ngSwitchCase=\"isModalButtons(footer)\">\r\n        <button *ngFor=\"let button of footer\" nz-button\r\n                (click)=\"onButtonClick(button)\"\r\n                [hidden]=\"!getButtonCallableProp(button, 'show')\"\r\n                [nzLoading]=\"getButtonCallableProp(button, 'loading')\"\r\n                [disabled]=\"getButtonCallableProp(button, 'disabled')\"\r\n                [nzType]=\"button.type\"\r\n                [nzShape]=\"button.shape\"\r\n                [nzSize]=\"button.size\"\r\n                [nzGhost]=\"button.ghost\"\r\n        >{{ button.label }}</button>\r\n      </ng-container>\r\n      <ng-container *ngSwitchDefault>\r\n        <button *ngIf=\"cmacsCancelText!==null\" nz-button (click)=\"onClickOkCancel('cancel')\" [nzLoading]=\"cancelLoading\" [disabled]=\"cancelDisabled\">\r\n          {{ cancelText }}\r\n        </button>\r\n        <button *ngIf=\"cmacsOkText!==null\" nz-button [nzType]=\"okType\" (click)=\"onClickOkCancel('ok')\" [nzLoading]=\"okLoading\" [disabled]=\"okDisabled\">\r\n          {{ okText }}\r\n        </button>\r\n      </ng-container>\r\n    </ng-container>\r\n  </div>\r\n</ng-template>\r\n<!-- /[Predefined] Default Modal Content -->\r\n\r\n<!-- [Predefined] Creation Modal Content -->\r\n<ng-template #tplCreationDefault>\r\n  <div *ngIf=\"title\"\r\n       class=\"ant-modal-header\"\r\n  >\r\n    <div class=\"ant-modal-title\">\r\n      <ng-container [ngSwitch]=\"true\">\r\n        <ng-container *ngSwitchCase=\"isTemplateRef(title)\" [ngTemplateOutlet]=\"title\"></ng-container>\r\n        <ng-container *ngSwitchCase=\"isNonEmptyString(title)\"><div [innerHTML]=\"title\"></div></ng-container>\r\n      </ng-container>\r\n    </div>\r\n  </div>\r\n  <div class=\"ant-modal-body\" style=\"padding: 0\" [ngStyle]=\"bodyStyle\">\r\n    <div nz-row style=\"height: 100%; overflow: hidden;\">\r\n      <div nz-col [nzSpan]=\"6\" class=\"cmacs-modal-creation-left-panel\">\r\n        <ng-content select=\"[cmacs-modal-creation-left-panel]\"></ng-content>\r\n      </div>\r\n      <div nz-col [nzSpan]=\"12\" class=\"cmacs-modal-creation-center-panel\">\r\n        <ng-content select=\"[cmacs-modal-creation-center-panel]\"></ng-content>\r\n      </div>\r\n      <div nz-col [nzSpan]=\"6\" class=\"cmacs-modal-creation-right-panel\">\r\n        <ng-content select=\"[cmacs-modal-creation-right-panel]\"></ng-content>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div *ngIf=\"footer !== null\"\r\n       class=\"ant-modal-footer\">\r\n    <ng-container [ngSwitch]=\"true\">\r\n      <ng-container *ngSwitchCase=\"isTemplateRef(footer)\" [ngTemplateOutlet]=\"footer\"></ng-container>\r\n      <ng-container *ngSwitchCase=\"isNonEmptyString(footer)\"><div [innerHTML]=\"footer\"></div></ng-container>\r\n      <ng-container *ngSwitchCase=\"isModalButtons(footer)\">\r\n        <button *ngFor=\"let button of footer\" nz-button\r\n                (click)=\"onButtonClick(button)\"\r\n                [hidden]=\"!getButtonCallableProp(button, 'show')\"\r\n                [nzLoading]=\"getButtonCallableProp(button, 'loading')\"\r\n                [disabled]=\"getButtonCallableProp(button, 'disabled')\"\r\n                [nzType]=\"button.type\"\r\n                [nzShape]=\"button.shape\"\r\n                [nzSize]=\"button.size\"\r\n                [nzGhost]=\"button.ghost\"\r\n        >{{ button.label }}</button>\r\n      </ng-container>\r\n      <ng-container *ngSwitchDefault>\r\n        <button *ngIf=\"cmacsCancelText!==null\" nz-button (click)=\"onClickOkCancel('cancel')\" [nzLoading]=\"cancelLoading\" [disabled]=\"cancelDisabled\">\r\n          {{ cancelText }}\r\n        </button>\r\n        <button *ngIf=\"cmacsOkText!==null\" nz-button [nzType]=\"okType\" (click)=\"onClickOkCancel('ok')\" [nzLoading]=\"okLoading\" [disabled]=\"okDisabled\">\r\n          {{ okText }}\r\n        </button>\r\n      </ng-container>\r\n    </ng-container>\r\n  </div>\r\n</ng-template>\r\n<!-- /[Predefined] Creation Modal Content -->\r\n\r\n<!-- [Predefined] HelpfulTips Modal Content -->\r\n<ng-template #tplHelpfulTips>\r\n  <div *ngIf=\"title\"\r\n       class=\"ant-modal-header\"\r\n  >\r\n    <div class=\"ant-modal-title\">\r\n      <ng-container [ngSwitch]=\"true\">\r\n        <ng-container *ngSwitchCase=\"isTemplateRef(title)\" [ngTemplateOutlet]=\"title\"></ng-container>\r\n        <ng-container *ngSwitchCase=\"isNonEmptyString(title)\"><div [innerHTML]=\"title\"></div></ng-container>\r\n      </ng-container>\r\n    </div>\r\n  </div>\r\n  <div class=\"ant-modal-body\" style=\"padding: 0; height: 531px;\" [ngStyle]=\"bodyStyle\">\r\n    <div nz-row style=\"height: 100%; overflow: hidden;\">\r\n      <div nz-col [nzSpan]=\"8\" class=\"cmacs-modal-helpful-left-panel\">\r\n        <ng-content select=\"[cmacs-modal-helpful-left-panel]\"></ng-content>\r\n      </div>\r\n      <div nz-col [nzSpan]=\"8\" class=\"cmacs-modal-helpful-center-panel\">\r\n        <ng-content select=\"[cmacs-modal-helpful-center-panel]\"></ng-content>\r\n      </div>\r\n      <div nz-col [nzSpan]=\"8\" class=\"cmacs-modal-helpful-right-panel\">\r\n        <ng-content select=\"[cmacs-modal-helpful-right-panel]\"></ng-content>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div *ngIf=\"footer !== null\"\r\n       class=\"ant-modal-footer\">\r\n    <ng-container [ngSwitch]=\"true\">\r\n      <ng-container *ngSwitchCase=\"isTemplateRef(footer)\" [ngTemplateOutlet]=\"footer\"></ng-container>\r\n      <ng-container *ngSwitchCase=\"isNonEmptyString(footer)\"><div [innerHTML]=\"footer\"></div></ng-container>\r\n      <ng-container *ngSwitchCase=\"isModalButtons(footer)\">\r\n        <button *ngFor=\"let button of footer\" nz-button\r\n                (click)=\"onButtonClick(button)\"\r\n                [hidden]=\"!getButtonCallableProp(button, 'show')\"\r\n                [nzLoading]=\"getButtonCallableProp(button, 'loading')\"\r\n                [disabled]=\"getButtonCallableProp(button, 'disabled')\"\r\n                [nzType]=\"button.type\"\r\n                [nzShape]=\"button.shape\"\r\n                [nzSize]=\"button.size\"\r\n                [nzGhost]=\"button.ghost\"\r\n        >{{ button.label }}</button>\r\n      </ng-container>\r\n      <ng-container *ngSwitchDefault>\r\n        <button *ngIf=\"cmacsCancelText!==null\" nz-button (click)=\"onClickOkCancel('cancel')\" [nzLoading]=\"cancelLoading\" [disabled]=\"cancelDisabled\">\r\n          {{ cancelText }}\r\n        </button>\r\n        <button *ngIf=\"cmacsOkText!==null\" nz-button [nzType]=\"okType\" (click)=\"onClickOkCancel('ok')\" [nzLoading]=\"okLoading\" [disabled]=\"okDisabled\">\r\n          {{ okText }}\r\n        </button>\r\n      </ng-container>\r\n    </ng-container>\r\n  </div>\r\n</ng-template>\r\n<!-- /[Predefined] HelpfulTips Modal Content -->\r\n\r\n<!-- [Predefined] HelpfulTipsWithoutPanel Modal Content -->\r\n<ng-template #tplHelpfulTipsWithoutPanel>\r\n  <div *ngIf=\"title\"\r\n       class=\"ant-modal-header\"\r\n  >\r\n    <div class=\"ant-modal-title\">\r\n      <ng-container [ngSwitch]=\"true\">\r\n        <ng-container *ngSwitchCase=\"isTemplateRef(title)\" [ngTemplateOutlet]=\"title\"></ng-container>\r\n        <ng-container *ngSwitchCase=\"isNonEmptyString(title)\"><div [innerHTML]=\"title\"></div></ng-container>\r\n      </ng-container>\r\n    </div>\r\n  </div>\r\n  <div class=\"ant-modal-body\" style=\"padding: 0; height: 531px;\" [ngStyle]=\"bodyStyle\">\r\n    <div nz-row style=\"height: 100%; overflow: hidden;\">\r\n      <div nz-col [nzSpan]=\"12\" class=\"cmacs-modal-helpfulTips-no-panel-left\">\r\n        <ng-content select=\"[cmacs-modal-helpfulTips-no-panel-left]\"></ng-content>\r\n      </div>\r\n      <div nz-col [nzSpan]=\"12\" class=\"cmacs-modal-helpfulTips-no-panel-right\">\r\n        <ng-content select=\"[cmacs-modal-helpfulTips-no-panel-right]\"></ng-content>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div *ngIf=\"footer !== null\"\r\n       class=\"ant-modal-footer\">\r\n    <ng-container [ngSwitch]=\"true\">\r\n      <ng-container *ngSwitchCase=\"isTemplateRef(footer)\" [ngTemplateOutlet]=\"footer\"></ng-container>\r\n      <ng-container *ngSwitchCase=\"isNonEmptyString(footer)\"><div [innerHTML]=\"footer\"></div></ng-container>\r\n      <ng-container *ngSwitchCase=\"isModalButtons(footer)\">\r\n        <button *ngFor=\"let button of footer\" nz-button\r\n                (click)=\"onButtonClick(button)\"\r\n                [hidden]=\"!getButtonCallableProp(button, 'show')\"\r\n                [nzLoading]=\"getButtonCallableProp(button, 'loading')\"\r\n                [disabled]=\"getButtonCallableProp(button, 'disabled')\"\r\n                [nzType]=\"button.type\"\r\n                [nzShape]=\"button.shape\"\r\n                [nzSize]=\"button.size\"\r\n                [nzGhost]=\"button.ghost\"\r\n        >{{ button.label }}</button>\r\n      </ng-container>\r\n      <ng-container *ngSwitchDefault>\r\n        <button *ngIf=\"cmacsCancelText!==null\" nz-button (click)=\"onClickOkCancel('cancel')\" [nzLoading]=\"cancelLoading\" [disabled]=\"cancelDisabled\">\r\n          {{ cancelText }}\r\n        </button>\r\n        <button *ngIf=\"cmacsOkText!==null\" nz-button [nzType]=\"okType\" (click)=\"onClickOkCancel('ok')\" [nzLoading]=\"okLoading\" [disabled]=\"okDisabled\">\r\n          {{ okText }}\r\n        </button>\r\n      </ng-container>\r\n    </ng-container>\r\n  </div>\r\n</ng-template>\r\n<!-- /[Predefined] HelpfulTipsWithoutPanel Modal Content -->\r\n\r\n<!-- [Predefined] Confirm Modal Content -->\r\n<ng-template #tplContentConfirm>\r\n  <div class=\"ant-modal-body\" [ngStyle]=\"bodyStyle\">\r\n    <div class=\"ant-modal-confirm-body-wrapper\">\r\n      <div class=\"ant-modal-confirm-body\">\r\n        <i nz-icon [type]=\"iconType\"></i>\r\n        <span class=\"ant-modal-confirm-title\">\r\n          <ng-container [ngSwitch]=\"true\">\r\n            <ng-container *ngSwitchCase=\"isTemplateRef(title)\" [ngTemplateOutlet]=\"title\"></ng-container>\r\n            <ng-container *ngSwitchCase=\"isNonEmptyString(title)\"><span [innerHTML]=\"title\"></span></ng-container>\r\n          </ng-container>\r\n        </span>\r\n        <div class=\"ant-modal-confirm-content\">\r\n          <ng-container>\r\n            <ng-container *ngIf=\"!isComponent(content)\" [ngSwitch]=\"true\">\r\n              <ng-container *ngSwitchCase=\"isTemplateRef(content)\" [ngTemplateOutlet]=\"content\"></ng-container>\r\n              <ng-container *ngSwitchCase=\"isNonEmptyString(content)\"><div [innerHTML]=\"content\"></div></ng-container>\r\n              <ng-container *ngSwitchDefault [ngTemplateOutlet]=\"tplOriginContent\"></ng-container>\r\n            </ng-container>\r\n          </ng-container>\r\n        </div>\r\n      </div>\r\n      <div class=\"ant-modal-confirm-btns\">\r\n        <button nz-button *ngIf=\"cmacsCancelText!==null\" (click)=\"onClickOkCancel('cancel')\" [nzLoading]=\"cancelLoading\">\r\n          {{ cancelText }}\r\n        </button>\r\n        <button *ngIf=\"cmacsOkText!==null\" #autoFocusButtonOk nz-button [nzType]=\"okType\" (click)=\"onClickOkCancel('ok')\" [nzLoading]=\"okLoading\">\r\n          {{ okText }}\r\n        </button>\r\n      </div>\r\n    </div> <!-- /.ant-modal-confirm-body-wrapper -->\r\n  </div>\r\n</ng-template>\r\n<!-- /[Predefined] Confirm Modal Content -->\r\n\r\n<!-- [Predefined] Passive Modal Content -->\r\n<!-- [Predefined] Default Modal Content -->\r\n<ng-template #tplContentPassive>\r\n  <div *ngIf=\"title\" class=\"ant-modal-header\" [style.padding]=\"modalType === 'passive' ? '7px 24px' : '7px 10px'\" style=\"height: 30px\">\r\n    <div class=\"ant-modal-title\">\r\n      <ng-container [ngSwitch]=\"true\">\r\n        <ng-container *ngSwitchCase=\"isTemplateRef(title)\" [ngTemplateOutlet]=\"title\"></ng-container>\r\n        <ng-container *ngSwitchCase=\"isNonEmptyString(title)\"><div [innerHTML]=\"title\"></div></ng-container>\r\n      </ng-container>\r\n    </div>\r\n  </div>\r\n  <div class=\"ant-modal-body\" [ngStyle]=\"bodyStyle\" [style.padding]=\"modalType === 'passive' ? '24px' : '0'\">\r\n    <ng-container #bodyContainer>\r\n      <ng-container *ngIf=\"!isComponent(content)\" [ngSwitch]=\"true\">\r\n        <ng-container *ngSwitchCase=\"isTemplateRef(content)\" [ngTemplateOutlet]=\"content\"></ng-container>\r\n        <ng-container *ngSwitchCase=\"isNonEmptyString(content)\"><div [innerHTML]=\"content\"></div></ng-container>\r\n        <ng-container *ngSwitchDefault [ngTemplateOutlet]=\"tplOriginContent\"></ng-container>\r\n      </ng-container>\r\n    </ng-container>\r\n  </div>\r\n</ng-template>\r\n<!-- /[Predefined] Passive Modal Content -->\r\n",
+                template: "<ng-template #tplOriginContent><ng-content></ng-content></ng-template> <!-- Compatible: the <ng-content> can appear only once -->\r\n\r\n<div [nzNoAnimation]=\"nzNoAnimation\">\r\n  <div *ngIf=\"mask\"\r\n       class=\"ant-modal-mask\"\r\n       [ngClass]=\"maskAnimationClassMap\"\r\n       [class.ant-modal-mask-hidden]=\"hidden\"\r\n       [ngStyle]=\"maskStyle\"\r\n       [style.zIndex]=\"zIndex\"\r\n  ></div>\r\n  <div\r\n    (click)=\"onClickMask($event)\"\r\n    class=\"ant-modal-wrap {{ wrapClassName }}\"\r\n    [style.zIndex]=\"zIndex\"\r\n    [style.visibility]=\"hidden ? 'hidden' : null\"\r\n    tabindex=\"-1\"\r\n    role=\"dialog\"\r\n  >\r\n    <div #modalContainer\r\n         class=\"ant-modal {{ className }}\"\r\n         [ngClass]=\"modalAnimationClassMap\"\r\n         [ngStyle]=\"cmacsStyle\"\r\n         [style.top]=\"isModalType('creation') ? '10vh' : (isModalType('helpfulTips') || isModalType('basic') ||  isModalType('helpfulTipsNoPanel')) ? '4vh' : '100px'\"\r\n         [style.width]=\"isModalType('helpfulTipsNoPanel') ? '570px' : width | cmacsToCssUnit\"\r\n         [style.transform-origin]=\"transformOrigin\"\r\n         role=\"document\"\r\n    >\r\n      <div class=\"ant-modal-content\">\r\n        <button *ngIf=\"closable\" (click)=\"onClickCloseBtn()\" class=\"ant-modal-close\" aria-label=\"Close\">\r\n          <span *ngIf=\"isModalType('passive') || isModalType('interaction') || isModalType('basic')\"\r\n                [class.ant-modal-close-x]=\"!isModalType('basic')\"\r\n                [class.ant-modal-close-x-basic]=\"isModalType('basic')\"\r\n          >\r\n            <i nz-icon type=\"close\" class=\"ant-modal-close-icon\"></i>\r\n          </span>\r\n        </button>\r\n        <ng-container *ngIf=\"!hidden\" [ngSwitch]=\"true\">\r\n          <ng-container *ngSwitchCase=\"isModalType('transactional')\" [ngTemplateOutlet]=\"tplContentDefault\"></ng-container>\r\n          <ng-container *ngSwitchCase=\"isModalType('confirm')\" [ngTemplateOutlet]=\"tplContentConfirm\"></ng-container>\r\n          <ng-container *ngSwitchCase=\"isModalType('creation')\" [ngTemplateOutlet]=\"tplCreationDefault\"></ng-container>\r\n          <ng-container *ngSwitchCase=\"isModalType('helpfulTips')\" [ngTemplateOutlet]=\"tplHelpfulTips\"></ng-container>\r\n          <ng-container *ngSwitchCase=\"isModalType('helpfulTipsNoPanel') || isModalType('basic')\" [ngTemplateOutlet]=\"tplHelpfulTipsWithoutPanel\"></ng-container>\r\n          <ng-container *ngSwitchCase=\"isModalType('passive') || isModalType('interaction')\" [ngTemplateOutlet]=\"tplContentPassive\"></ng-container>\r\n        </ng-container>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<!-- [Predefined] Default Modal Content -->\r\n<ng-template #tplContentDefault>\r\n  <div *ngIf=\"title\"\r\n       class=\"ant-modal-header\"\r\n       [style.height.px]=\"modalType === 'transactional' ? 30 : 50\"\r\n       [style.padding]=\"modalType === 'transactional' ? '7px 24px' : '16px 24px'\"\r\n  >\r\n    <div class=\"ant-modal-title\">\r\n      <ng-container [ngSwitch]=\"true\">\r\n        <ng-container *ngSwitchCase=\"isTemplateRef(title)\" [ngTemplateOutlet]=\"title\"></ng-container>\r\n        <ng-container *ngSwitchCase=\"isNonEmptyString(title)\"><div [innerHTML]=\"title\"></div></ng-container>\r\n      </ng-container>\r\n    </div>\r\n  </div>\r\n  <div class=\"ant-modal-body\" [ngStyle]=\"bodyStyle\">\r\n    <ng-container #bodyContainer>\r\n      <ng-container *ngIf=\"!isComponent(content)\" [ngSwitch]=\"true\">\r\n        <ng-container *ngSwitchCase=\"isTemplateRef(content)\" [ngTemplateOutlet]=\"content\"></ng-container>\r\n        <ng-container *ngSwitchCase=\"isNonEmptyString(content)\"><div [innerHTML]=\"content\"></div></ng-container>\r\n        <ng-container *ngSwitchDefault [ngTemplateOutlet]=\"tplOriginContent\"></ng-container>\r\n      </ng-container>\r\n    </ng-container>\r\n  </div>\r\n  <div *ngIf=\"footer !== null\"\r\n       class=\"ant-modal-footer\"\r\n       [style.border-top]=\"modalType === 'transactional' ? 'none' : 'inherit'\"\r\n       [style.padding-bottom]=\"modalType === 'transactional' || modalType === 'passive' ? '20px' : 'inherit'\">\r\n    <ng-container [ngSwitch]=\"true\">\r\n      <ng-container *ngSwitchCase=\"isTemplateRef(footer)\" [ngTemplateOutlet]=\"footer\"></ng-container>\r\n      <ng-container *ngSwitchCase=\"isNonEmptyString(footer)\"><div [innerHTML]=\"footer\"></div></ng-container>\r\n      <ng-container *ngSwitchCase=\"isModalButtons(footer)\">\r\n        <button *ngFor=\"let button of footer\" nz-button\r\n                (click)=\"onButtonClick(button)\"\r\n                [hidden]=\"!getButtonCallableProp(button, 'show')\"\r\n                [nzLoading]=\"getButtonCallableProp(button, 'loading')\"\r\n                [disabled]=\"getButtonCallableProp(button, 'disabled')\"\r\n                [nzType]=\"button.type\"\r\n                [nzShape]=\"button.shape\"\r\n                [nzSize]=\"button.size\"\r\n                [nzGhost]=\"button.ghost\"\r\n        >{{ button.label }}</button>\r\n      </ng-container>\r\n      <ng-container *ngSwitchDefault>\r\n        <button *ngIf=\"cmacsCancelText!==null\" nz-button (click)=\"onClickOkCancel('cancel')\" [nzLoading]=\"cancelLoading\" [disabled]=\"cancelDisabled\">\r\n          {{ cancelText }}\r\n        </button>\r\n        <button *ngIf=\"cmacsOkText!==null\" nz-button [nzType]=\"okType\" (click)=\"onClickOkCancel('ok')\" [nzLoading]=\"okLoading\" [disabled]=\"okDisabled\">\r\n          {{ okText }}\r\n        </button>\r\n      </ng-container>\r\n    </ng-container>\r\n  </div>\r\n</ng-template>\r\n<!-- /[Predefined] Default Modal Content -->\r\n\r\n<!-- [Predefined] Creation Modal Content -->\r\n<ng-template #tplCreationDefault>\r\n  <div *ngIf=\"title\"\r\n       class=\"ant-modal-header\"\r\n  >\r\n    <div class=\"ant-modal-title\">\r\n      <ng-container [ngSwitch]=\"true\">\r\n        <ng-container *ngSwitchCase=\"isTemplateRef(title)\" [ngTemplateOutlet]=\"title\"></ng-container>\r\n        <ng-container *ngSwitchCase=\"isNonEmptyString(title)\"><div [innerHTML]=\"title\"></div></ng-container>\r\n      </ng-container>\r\n    </div>\r\n  </div>\r\n  <div class=\"ant-modal-body\" style=\"padding: 0\" [ngStyle]=\"bodyStyle\">\r\n    <div nz-row style=\"height: 100%; overflow: hidden;\">\r\n      <div nz-col [nzSpan]=\"6\" class=\"cmacs-modal-creation-left-panel\">\r\n        <ng-content select=\"[cmacs-modal-creation-left-panel]\"></ng-content>\r\n      </div>\r\n      <div nz-col [nzSpan]=\"showHelpfulTips ? 12 : 18\" class=\"cmacs-modal-creation-center-panel\">\r\n        <ng-content select=\"[cmacs-modal-creation-center-panel]\"></ng-content>\r\n      </div>\r\n      <div nz-col #tipsCreationWizard [nzSpan]=\"6\" class=\"cmacs-modal-creation-right-panel\">\r\n        <ng-content select=\"[cmacs-modal-creation-right-panel]\"></ng-content>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div *ngIf=\"footer !== null\"\r\n       class=\"ant-modal-footer\">\r\n    <ng-container [ngSwitch]=\"true\">\r\n      <ng-container *ngSwitchCase=\"isTemplateRef(footer)\" [ngTemplateOutlet]=\"footer\"></ng-container>\r\n      <ng-container *ngSwitchCase=\"isNonEmptyString(footer)\"><div [innerHTML]=\"footer\"></div></ng-container>\r\n      <ng-container *ngSwitchCase=\"isModalButtons(footer)\">\r\n        <button *ngFor=\"let button of footer\" nz-button\r\n                (click)=\"onButtonClick(button)\"\r\n                [hidden]=\"!getButtonCallableProp(button, 'show')\"\r\n                [nzLoading]=\"getButtonCallableProp(button, 'loading')\"\r\n                [disabled]=\"getButtonCallableProp(button, 'disabled')\"\r\n                [nzType]=\"button.type\"\r\n                [nzShape]=\"button.shape\"\r\n                [nzSize]=\"button.size\"\r\n                [nzGhost]=\"button.ghost\"\r\n        >{{ button.label }}</button>\r\n      </ng-container>\r\n      <ng-container *ngSwitchDefault>\r\n        <button *ngIf=\"cmacsCancelText!==null\" nz-button (click)=\"onClickOkCancel('cancel')\" [nzLoading]=\"cancelLoading\" [disabled]=\"cancelDisabled\">\r\n          {{ cancelText }}\r\n        </button>\r\n        <button *ngIf=\"cmacsOkText!==null\" nz-button [nzType]=\"okType\" (click)=\"onClickOkCancel('ok')\" [nzLoading]=\"okLoading\" [disabled]=\"okDisabled\">\r\n          {{ okText }}\r\n        </button>\r\n      </ng-container>\r\n    </ng-container>\r\n  </div>\r\n</ng-template>\r\n<!-- /[Predefined] Creation Modal Content -->\r\n\r\n<!-- [Predefined] HelpfulTips Modal Content -->\r\n<ng-template #tplHelpfulTips>\r\n  <div *ngIf=\"title\"\r\n       class=\"ant-modal-header\"\r\n  >\r\n    <div class=\"ant-modal-title\">\r\n      <ng-container [ngSwitch]=\"true\">\r\n        <ng-container *ngSwitchCase=\"isTemplateRef(title)\" [ngTemplateOutlet]=\"title\"></ng-container>\r\n        <ng-container *ngSwitchCase=\"isNonEmptyString(title)\"><div [innerHTML]=\"title\"></div></ng-container>\r\n      </ng-container>\r\n    </div>\r\n  </div>\r\n  <div class=\"ant-modal-body\" style=\"padding: 0; height: 531px;\" [ngStyle]=\"bodyStyle\">\r\n    <div nz-row style=\"height: 100%; overflow: hidden;\">\r\n      <div nz-col [nzSpan]=\"8\" class=\"cmacs-modal-helpful-left-panel\">\r\n        <ng-content select=\"[cmacs-modal-helpful-left-panel]\"></ng-content>\r\n      </div>\r\n      <div nz-col [nzSpan]=\"8\" class=\"cmacs-modal-helpful-center-panel\">\r\n        <ng-content select=\"[cmacs-modal-helpful-center-panel]\"></ng-content>\r\n      </div>\r\n      <div nz-col [nzSpan]=\"8\" class=\"cmacs-modal-helpful-right-panel\">\r\n        <ng-content select=\"[cmacs-modal-helpful-right-panel]\"></ng-content>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div *ngIf=\"footer !== null\"\r\n       class=\"ant-modal-footer\">\r\n    <ng-container [ngSwitch]=\"true\">\r\n      <ng-container *ngSwitchCase=\"isTemplateRef(footer)\" [ngTemplateOutlet]=\"footer\"></ng-container>\r\n      <ng-container *ngSwitchCase=\"isNonEmptyString(footer)\"><div [innerHTML]=\"footer\"></div></ng-container>\r\n      <ng-container *ngSwitchCase=\"isModalButtons(footer)\">\r\n        <button *ngFor=\"let button of footer\" nz-button\r\n                (click)=\"onButtonClick(button)\"\r\n                [hidden]=\"!getButtonCallableProp(button, 'show')\"\r\n                [nzLoading]=\"getButtonCallableProp(button, 'loading')\"\r\n                [disabled]=\"getButtonCallableProp(button, 'disabled')\"\r\n                [nzType]=\"button.type\"\r\n                [nzShape]=\"button.shape\"\r\n                [nzSize]=\"button.size\"\r\n                [nzGhost]=\"button.ghost\"\r\n        >{{ button.label }}</button>\r\n      </ng-container>\r\n      <ng-container *ngSwitchDefault>\r\n        <button *ngIf=\"cmacsCancelText!==null\" nz-button (click)=\"onClickOkCancel('cancel')\" [nzLoading]=\"cancelLoading\" [disabled]=\"cancelDisabled\">\r\n          {{ cancelText }}\r\n        </button>\r\n        <button *ngIf=\"cmacsOkText!==null\" nz-button [nzType]=\"okType\" (click)=\"onClickOkCancel('ok')\" [nzLoading]=\"okLoading\" [disabled]=\"okDisabled\">\r\n          {{ okText }}\r\n        </button>\r\n      </ng-container>\r\n    </ng-container>\r\n  </div>\r\n</ng-template>\r\n<!-- /[Predefined] HelpfulTips Modal Content -->\r\n\r\n<!-- [Predefined] HelpfulTipsWithoutPanel Modal Content -->\r\n<ng-template #tplHelpfulTipsWithoutPanel>\r\n  <div *ngIf=\"title\"\r\n       class=\"ant-modal-header\"\r\n  >\r\n    <div class=\"ant-modal-title\">\r\n      <ng-container [ngSwitch]=\"true\">\r\n        <ng-container *ngSwitchCase=\"isTemplateRef(title)\" [ngTemplateOutlet]=\"title\"></ng-container>\r\n        <ng-container *ngSwitchCase=\"isNonEmptyString(title)\"><div [innerHTML]=\"title\"></div></ng-container>\r\n      </ng-container>\r\n    </div>\r\n  </div>\r\n  <div class=\"ant-modal-body\" style=\"padding: 0; height: 531px;\" [ngStyle]=\"bodyStyle\">\r\n    <div nz-row style=\"height: 100%; overflow: hidden;\">\r\n      <div nz-col [nzSpan]=\"12\" class=\"cmacs-modal-helpfulTips-no-panel-left\">\r\n        <ng-content select=\"[cmacs-modal-helpfulTips-no-panel-left]\"></ng-content>\r\n      </div>\r\n      <div nz-col [nzSpan]=\"12\" class=\"cmacs-modal-helpfulTips-no-panel-right\">\r\n        <ng-content select=\"[cmacs-modal-helpfulTips-no-panel-right]\"></ng-content>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div *ngIf=\"footer !== null\"\r\n       class=\"ant-modal-footer\">\r\n    <ng-container [ngSwitch]=\"true\">\r\n      <ng-container *ngSwitchCase=\"isTemplateRef(footer)\" [ngTemplateOutlet]=\"footer\"></ng-container>\r\n      <ng-container *ngSwitchCase=\"isNonEmptyString(footer)\"><div [innerHTML]=\"footer\"></div></ng-container>\r\n      <ng-container *ngSwitchCase=\"isModalButtons(footer)\">\r\n        <button *ngFor=\"let button of footer\" nz-button\r\n                (click)=\"onButtonClick(button)\"\r\n                [hidden]=\"!getButtonCallableProp(button, 'show')\"\r\n                [nzLoading]=\"getButtonCallableProp(button, 'loading')\"\r\n                [disabled]=\"getButtonCallableProp(button, 'disabled')\"\r\n                [nzType]=\"button.type\"\r\n                [nzShape]=\"button.shape\"\r\n                [nzSize]=\"button.size\"\r\n                [nzGhost]=\"button.ghost\"\r\n        >{{ button.label }}</button>\r\n      </ng-container>\r\n      <ng-container *ngSwitchDefault>\r\n        <button *ngIf=\"cmacsCancelText!==null\" nz-button (click)=\"onClickOkCancel('cancel')\" [nzLoading]=\"cancelLoading\" [disabled]=\"cancelDisabled\">\r\n          {{ cancelText }}\r\n        </button>\r\n        <button *ngIf=\"cmacsOkText!==null\" nz-button [nzType]=\"okType\" (click)=\"onClickOkCancel('ok')\" [nzLoading]=\"okLoading\" [disabled]=\"okDisabled\">\r\n          {{ okText }}\r\n        </button>\r\n      </ng-container>\r\n    </ng-container>\r\n  </div>\r\n</ng-template>\r\n<!-- /[Predefined] HelpfulTipsWithoutPanel Modal Content -->\r\n\r\n<!-- [Predefined] Confirm Modal Content -->\r\n<ng-template #tplContentConfirm>\r\n  <div class=\"ant-modal-body\" [ngStyle]=\"bodyStyle\">\r\n    <div class=\"ant-modal-confirm-body-wrapper\">\r\n      <div class=\"ant-modal-confirm-body\">\r\n        <i nz-icon [type]=\"iconType\"></i>\r\n        <span class=\"ant-modal-confirm-title\">\r\n          <ng-container [ngSwitch]=\"true\">\r\n            <ng-container *ngSwitchCase=\"isTemplateRef(title)\" [ngTemplateOutlet]=\"title\"></ng-container>\r\n            <ng-container *ngSwitchCase=\"isNonEmptyString(title)\"><span [innerHTML]=\"title\"></span></ng-container>\r\n          </ng-container>\r\n        </span>\r\n        <div class=\"ant-modal-confirm-content\">\r\n          <ng-container>\r\n            <ng-container *ngIf=\"!isComponent(content)\" [ngSwitch]=\"true\">\r\n              <ng-container *ngSwitchCase=\"isTemplateRef(content)\" [ngTemplateOutlet]=\"content\"></ng-container>\r\n              <ng-container *ngSwitchCase=\"isNonEmptyString(content)\"><div [innerHTML]=\"content\"></div></ng-container>\r\n              <ng-container *ngSwitchDefault [ngTemplateOutlet]=\"tplOriginContent\"></ng-container>\r\n            </ng-container>\r\n          </ng-container>\r\n        </div>\r\n      </div>\r\n      <div class=\"ant-modal-confirm-btns\">\r\n        <button nz-button *ngIf=\"cmacsCancelText!==null\" (click)=\"onClickOkCancel('cancel')\" [nzLoading]=\"cancelLoading\">\r\n          {{ cancelText }}\r\n        </button>\r\n        <button *ngIf=\"cmacsOkText!==null\" #autoFocusButtonOk nz-button [nzType]=\"okType\" (click)=\"onClickOkCancel('ok')\" [nzLoading]=\"okLoading\">\r\n          {{ okText }}\r\n        </button>\r\n      </div>\r\n    </div> <!-- /.ant-modal-confirm-body-wrapper -->\r\n  </div>\r\n</ng-template>\r\n<!-- /[Predefined] Confirm Modal Content -->\r\n\r\n<!-- [Predefined] Passive Modal Content -->\r\n<!-- [Predefined] Default Modal Content -->\r\n<ng-template #tplContentPassive>\r\n  <div *ngIf=\"title\" class=\"ant-modal-header\" [style.padding]=\"modalType === 'passive' ? '7px 24px' : '7px 10px'\" style=\"height: 30px\">\r\n    <div class=\"ant-modal-title\">\r\n      <ng-container [ngSwitch]=\"true\">\r\n        <ng-container *ngSwitchCase=\"isTemplateRef(title)\" [ngTemplateOutlet]=\"title\"></ng-container>\r\n        <ng-container *ngSwitchCase=\"isNonEmptyString(title)\"><div [innerHTML]=\"title\"></div></ng-container>\r\n      </ng-container>\r\n    </div>\r\n  </div>\r\n  <div class=\"ant-modal-body\" [ngStyle]=\"bodyStyle\" [style.padding]=\"modalType === 'passive' ? '24px' : '0'\">\r\n    <ng-container #bodyContainer>\r\n      <ng-container *ngIf=\"!isComponent(content)\" [ngSwitch]=\"true\">\r\n        <ng-container *ngSwitchCase=\"isTemplateRef(content)\" [ngTemplateOutlet]=\"content\"></ng-container>\r\n        <ng-container *ngSwitchCase=\"isNonEmptyString(content)\"><div [innerHTML]=\"content\"></div></ng-container>\r\n        <ng-container *ngSwitchDefault [ngTemplateOutlet]=\"tplOriginContent\"></ng-container>\r\n      </ng-container>\r\n    </ng-container>\r\n  </div>\r\n</ng-template>\r\n<!-- /[Predefined] Passive Modal Content -->\r\n",
                 // Using OnPush for modal caused footer can not to detect changes. we can fix it when 8.x.
                 changeDetection: ChangeDetectionStrategy.Default,
                 styles: [".ant-modal-header{background:#2a7cff;height:50px;border-bottom:1px solid #2a7cff}.ant-modal-title{font-family:Roboto;font-size:14px;font-weight:500;font-style:normal;font-stretch:normal;line-height:1.29;letter-spacing:normal;color:#fff}.ant-modal-close-x{color:#fff;width:25px;height:25px;padding-right:15px;line-height:30px}.ant-modal-close-x-basic{color:#fff;width:30px;height:30px;padding-right:15px;line-height:52px;font-weight:700;font-size:20px}.cmacs-modal-creation-left-panel{padding:30px;height:100%}.cmacs-modal-creation-center-panel{height:100%;border-left:1px solid #dee0e5;padding:30px;text-align:justify}.cmacs-modal-creation-right-panel{background-color:#f6f7fb;padding:25px;height:100%}.cmacs-modal-helpful-left-panel{padding:30px;height:100%}.cmacs-modal-helpful-center-panel{height:100%;padding:25px;text-align:justify}.cmacs-modal-helpful-right-panel{background-color:#f6f7fb;padding:25px;height:100%}.cmacs-modal-helpfulTips-no-panel-left,.cmacs-modal-helpfulTips-no-panel-right{padding:25px;height:100%}"]
@@ -9230,7 +9240,8 @@ CmacsModalComponent.propDecorators = {
     visibleChange: [{ type: Output }],
     modalContainer: [{ type: ViewChild, args: ['modalContainer',] }],
     bodyContainer: [{ type: ViewChild, args: ['bodyContainer', { read: ViewContainerRef },] }],
-    autoFocusButtonOk: [{ type: ViewChild, args: ['autoFocusButtonOk', { read: ElementRef },] }]
+    autoFocusButtonOk: [{ type: ViewChild, args: ['autoFocusButtonOk', { read: ElementRef },] }],
+    tipsCreationWizard: [{ type: ViewChildren, args: ['tipsCreationWizard',] }]
 };
 __decorate([
     InputBoolean(),
@@ -13916,6 +13927,260 @@ CmacsSelectUnselectableDirective.decorators = [
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+class CmacsAlertComponent {
+    constructor() {
+        this.destroy = false;
+        this.iconType = 'info-circle';
+        this.iconTheme = 'fill';
+        this.isTypeSet = false;
+        this.isShowIconSet = false;
+        this.type = 'info';
+        this.closeable = false;
+        this.showIcon = false;
+        this.banner = false;
+        this.onClose = new EventEmitter();
+    }
+    /**
+     * @return {?}
+     */
+    closeAlert() {
+        this.destroy = true;
+    }
+    /**
+     * @return {?}
+     */
+    onFadeAnimationDone() {
+        if (this.destroy) {
+            this.onClose.emit(true);
+        }
+    }
+    /**
+     * @return {?}
+     */
+    updateIconClassMap() {
+        switch (this.type) {
+            case 'error':
+                this.iconType = 'close-circle';
+                break;
+            case 'success':
+                this.iconType = 'check-circle';
+                break;
+            case 'info':
+                this.iconType = 'info-circle';
+                break;
+            case 'warning':
+                this.iconType = 'exclamation-circle';
+                break;
+        }
+        this.iconTheme = this.description ? 'outline' : 'fill';
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    ngOnChanges(changes) {
+        const { showIcon, description, type, banner } = changes;
+        if (showIcon) {
+            this.isShowIconSet = true;
+        }
+        if (description || type) {
+            this.updateIconClassMap();
+        }
+        if (type) {
+            this.isTypeSet = true;
+        }
+        if (banner) {
+            if (!this.isTypeSet) {
+                this.type = 'warning';
+            }
+            if (!this.isShowIconSet) {
+                this.showIcon = true;
+            }
+        }
+    }
+}
+CmacsAlertComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'cmacs-alert',
+                exportAs: 'cmacsAlert',
+                animations: [slideAlertMotion],
+                template: "<div *ngIf=\"!destroy\"\r\n  class=\"ant-alert\"\r\n  [class.ant-alert-success]=\"type === 'success'\"\r\n  [class.ant-alert-info]=\"type === 'info'\"\r\n  [class.ant-alert-warning]=\"type === 'warning'\"\r\n  [class.ant-alert-error]=\"type === 'error'\"\r\n  [class.ant-alert-no-icon]=\"!showIcon\"\r\n  [class.ant-alert-banner]=\"banner\"\r\n  [class.ant-alert-closable]=\"closeable\"\r\n  [class.ant-alert-with-description]=\"!!description\"\r\n  [@slideAlertMotion]\r\n  (@slideAlertMotion.done)=\"onFadeAnimationDone()\">\r\n  <ng-container *ngIf=\"showIcon\">\r\n    <i class=\"ant-alert-icon\" [ngClass]=\"cmacsIconType\" *ngIf=\"cmacsIconType; else iconTemplate\"></i>\r\n    <ng-template #iconTemplate>\r\n      <i nz-icon class=\"ant-alert-icon\" [type]=\"iconType\" [theme]=\"iconTheme\"></i>\r\n    </ng-template>\r\n  </ng-container>\r\n  <span class=\"ant-alert-message\" *ngIf=\"message\">\r\n    <ng-container *cmacsStringTemplateOutlet=\"message\">{{ message }}</ng-container>\r\n  </span>\r\n  <span class=\"ant-alert-description\" *ngIf=\"description\">\r\n    <ng-container *cmacsStringTemplateOutlet=\"description\">{{ description }}</ng-container>\r\n  </span>\r\n  <a *ngIf=\"closeable || closeText\"\r\n    class=\"ant-alert-close-icon\"\r\n    (click)=\"closeAlert()\">\r\n    <ng-template #closeDefaultTemplate>\r\n      <i nz-icon type=\"close\" class=\"anticon-close\"></i>\r\n    </ng-template>\r\n    <ng-container *ngIf=\"closeText; else closeDefaultTemplate\">\r\n      <ng-container *cmacsStringTemplateOutlet=\"closeText\">{{ closeText }}</ng-container>\r\n    </ng-container>\r\n  </a>\r\n</div>\r\n",
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                encapsulation: ViewEncapsulation.None,
+                preserveWhitespaces: false,
+                styles: [".ant-alert-info{background-color:#009fe3;border:1px solid #009fe3}.ant-alert{font-family:Roboto;font-size:12px;font-weight:500;font-style:normal;font-stretch:normal;line-height:1;letter-spacing:normal;color:#fff}.ant-alert-close-icon .anticon-close{color:#fff;-webkit-transition:color .3s;transition:color .3s;vertical-align:2px}", `
+      cmacs-alert {
+        display: block;
+      }
+    `]
+            }] }
+];
+CmacsAlertComponent.propDecorators = {
+    closeText: [{ type: Input }],
+    cmacsIconType: [{ type: Input }],
+    message: [{ type: Input }],
+    description: [{ type: Input }],
+    type: [{ type: Input }],
+    closeable: [{ type: Input }],
+    showIcon: [{ type: Input }],
+    banner: [{ type: Input }],
+    onClose: [{ type: Output }]
+};
+__decorate([
+    InputBoolean(),
+    __metadata("design:type", Object)
+], CmacsAlertComponent.prototype, "closeable", void 0);
+__decorate([
+    InputBoolean(),
+    __metadata("design:type", Object)
+], CmacsAlertComponent.prototype, "showIcon", void 0);
+__decorate([
+    InputBoolean(),
+    __metadata("design:type", Object)
+], CmacsAlertComponent.prototype, "banner", void 0);
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class CmacsCommentAvatarDirective {
+}
+CmacsCommentAvatarDirective.decorators = [
+    { type: Directive, args: [{
+                selector: 'nz-avatar[cmacs-comment-avatar]',
+                exportAs: 'cmacsCommentAvatar'
+            },] }
+];
+class CmacsCommentContentDirective {
+}
+CmacsCommentContentDirective.decorators = [
+    { type: Directive, args: [{
+                selector: 'cmacs-comment-content, [cmacs-comment-content]',
+                exportAs: 'cmacsCommentContent',
+                host: { class: 'ant-comment-content-detail' }
+            },] }
+];
+class CmacsCommentActionHostDirective extends CdkPortalOutlet {
+    /**
+     * @param {?} componentFactoryResolver
+     * @param {?} viewContainerRef
+     */
+    constructor(componentFactoryResolver, viewContainerRef) {
+        super(componentFactoryResolver, viewContainerRef);
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        super.ngOnInit();
+        this.attach(this.cmacsCommentActionHost);
+    }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        super.ngOnDestroy();
+    }
+}
+CmacsCommentActionHostDirective.decorators = [
+    { type: Directive, args: [{
+                selector: '[cmacsCommentActionHost]',
+                exportAs: 'cmacsCommentActionHost'
+            },] }
+];
+/** @nocollapse */
+CmacsCommentActionHostDirective.ctorParameters = () => [
+    { type: ComponentFactoryResolver },
+    { type: ViewContainerRef }
+];
+CmacsCommentActionHostDirective.propDecorators = {
+    cmacsCommentActionHost: [{ type: Input }]
+};
+class CmacsCommentActionComponent {
+    /**
+     * @param {?} viewContainerRef
+     */
+    constructor(viewContainerRef) {
+        this.viewContainerRef = viewContainerRef;
+        this.contentPortal = null;
+    }
+    /**
+     * @return {?}
+     */
+    get content() {
+        return this.contentPortal;
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        this.contentPortal = new TemplatePortal(this.implicitContent, this.viewContainerRef);
+    }
+}
+CmacsCommentActionComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'cmacs-comment-action',
+                exportAs: 'cmacsCommentAction',
+                encapsulation: ViewEncapsulation.None,
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                template: '<ng-template><ng-content></ng-content></ng-template>'
+            }] }
+];
+/** @nocollapse */
+CmacsCommentActionComponent.ctorParameters = () => [
+    { type: ViewContainerRef }
+];
+CmacsCommentActionComponent.propDecorators = {
+    implicitContent: [{ type: ViewChild, args: [TemplateRef,] }]
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class CmacsCommentComponent {
+    constructor() { }
+}
+CmacsCommentComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'cmacs-comment',
+                exportAs: 'cmacsComment',
+                template: "<div class=\"ant-comment-inner\">\r\n  <div class=\"ant-comment-avatar\">\r\n    <ng-content select=\"nz-avatar[cmacs-comment-avatar]\"></ng-content>\r\n    <div class=\"ant-comment-content-author\">\r\n      <span *ngIf=\"author\" class=\"ant-comment-content-author-name\">\r\n        <ng-container *cmacsStringTemplateOutlet=\"author\">{{ author }}</ng-container>\r\n      </span>\r\n    </div>\r\n    <ul class=\"ant-comment-actions\" *ngIf=\"actions?.length\">\r\n      <li *ngFor=\"let action of actions\">\r\n        <span><ng-template [cmacsCommentActionHost]=\"action.content\"></ng-template></span>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n  <div class=\"ant-comment-content\">\r\n    <ng-content select=\"cmacs-comment-content\"></ng-content>\r\n    <span *ngIf=\"datetime\" class=\"ant-comment-content-author-time\">\r\n        <ng-container *cmacsStringTemplateOutlet=\"datetime\">{{ datetime }}</ng-container>\r\n    </span>\r\n  </div>\r\n</div>\r\n<div class=\"ant-comment-nested\">\r\n  <ng-content></ng-content>\r\n</div>\r\n",
+                encapsulation: ViewEncapsulation.None,
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                host: {
+                    class: 'ant-comment'
+                },
+                styles: [".ant-comment-content-author{display:inline-block;margin-left:10px;font-family:Roboto;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.67;letter-spacing:normal;color:#3b3f46}.ant-comment-inner{display:block;padding:16px 0}.ant-comment-avatar{margin-bottom:14px}.ant-comment-content{font-family:Roboto;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.83;letter-spacing:normal;color:#97a0ae}.ant-comment-content-author-time{font-family:Roboto;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.33;letter-spacing:normal;color:#656c79}.ant-comment-actions{display:inline-block;float:right;padding:0;margin:0;line-height:35px}.ant-comment-actions>li>span{font-size:19px;color:#bec4cd}", `
+      cmacs-comment {
+        display: block;
+      }
+
+      cmacs-comment-content {
+        display: block;
+      }
+    `]
+            }] }
+];
+/** @nocollapse */
+CmacsCommentComponent.ctorParameters = () => [];
+CmacsCommentComponent.propDecorators = {
+    author: [{ type: Input }],
+    datetime: [{ type: Input }],
+    actions: [{ type: ContentChildren, args: [CmacsCommentActionComponent,] }]
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/** @type {?} */
+const CMACS_COMMENT_CELLS = [
+    CmacsCommentActionComponent,
+    CmacsCommentAvatarDirective,
+    CmacsCommentActionHostDirective,
+    CmacsCommentContentDirective
+];
 registerLocaleData(en);
 const ɵ0$2 = en_US;
 class CmacsComponentsLibModule {
@@ -13996,7 +14261,10 @@ CmacsComponentsLibModule.decorators = [
                     CmacsOptionContainerComponent,
                     CmacsOptionGroupComponent,
                     CmacsOptionLiComponent,
-                    CmacsSelectUnselectableDirective
+                    CmacsSelectUnselectableDirective,
+                    CmacsAlertComponent,
+                    ...CMACS_COMMENT_CELLS,
+                    CmacsCommentComponent
                 ],
                 imports: [
                     CommonModule,
@@ -14088,7 +14356,10 @@ CmacsComponentsLibModule.decorators = [
                     CmacsOptionContainerComponent,
                     CmacsOptionGroupComponent,
                     CmacsOptionLiComponent,
-                    CmacsSelectUnselectableDirective
+                    CmacsSelectUnselectableDirective,
+                    CmacsAlertComponent,
+                    ...CMACS_COMMENT_CELLS,
+                    CmacsCommentComponent
                 ],
                 providers: [{ provide: NZ_I18N, useValue: ɵ0$2 }, DatePipe, CmacsDropdownService],
                 entryComponents: [
@@ -14347,6 +14618,6 @@ const ModeTabType = {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, CmacsDateCellDirective, CmacsMonthCellDirective, CmacsDateFullCellDirective, CmacsMonthFullCellDirective, CmacsCalendarHeaderComponent, CmacsCalendarComponent, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, CmacsModalRef, CmacsDropdownADirective, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, AbstractPickerComponent as ɵa, CalendarFooterComponent as ɵba, CalendarHeaderComponent as ɵy, CalendarInputComponent as ɵz, OkButtonComponent as ɵbb, TimePickerButtonComponent as ɵbc, TodayButtonComponent as ɵbd, DateTableComponent as ɵbe, DecadePanelComponent as ɵbi, MonthPanelComponent as ɵbg, MonthTableComponent as ɵbh, DateRangePopupComponent as ɵbk, InnerPopupComponent as ɵbj, YearPanelComponent as ɵbf, CmacsDropdownService as ɵbl, CmacsMenuDropdownService as ɵk, CmacsFormControlComponent as ɵq, CmacsFormExplainComponent as ɵo, CmacsFormExtraComponent as ɵl, CmacsFormItemComponent as ɵn, CmacsFormLabelComponent as ɵm, CmacsFormSplitComponent as ɵs, CmacsFormTextComponent as ɵr, CmacsFormDirective as ɵp, CmacsMenuServiceFactory as ɵd, CmacsMenuService as ɵc, CmacsSubmenuService as ɵb, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵv, CmacsOptionGroupComponent as ɵh, CmacsOptionLiComponent as ɵw, NzFilterGroupOptionPipe as ɵu, NzFilterOptionPipe as ɵt, CmacsSelectUnselectableDirective as ɵx, CmacsSelectService as ɵg, NzTreeService as ɵf, ExcelService as ɵe };
+export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, CmacsDateCellDirective, CmacsMonthCellDirective, CmacsDateFullCellDirective, CmacsMonthFullCellDirective, CmacsCalendarHeaderComponent, CmacsCalendarComponent, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, CmacsModalRef, CmacsDropdownADirective, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, CmacsAlertComponent, CmacsCommentComponent, CmacsCommentAvatarDirective, CmacsCommentContentDirective, CmacsCommentActionHostDirective, CmacsCommentActionComponent, AbstractPickerComponent as ɵa, CalendarFooterComponent as ɵba, CalendarHeaderComponent as ɵy, CalendarInputComponent as ɵz, OkButtonComponent as ɵbb, TimePickerButtonComponent as ɵbc, TodayButtonComponent as ɵbd, DateTableComponent as ɵbe, DecadePanelComponent as ɵbi, MonthPanelComponent as ɵbg, MonthTableComponent as ɵbh, DateRangePopupComponent as ɵbk, InnerPopupComponent as ɵbj, YearPanelComponent as ɵbf, CmacsDropdownService as ɵbl, CmacsMenuDropdownService as ɵk, CmacsFormControlComponent as ɵq, CmacsFormExplainComponent as ɵo, CmacsFormExtraComponent as ɵl, CmacsFormItemComponent as ɵn, CmacsFormLabelComponent as ɵm, CmacsFormSplitComponent as ɵs, CmacsFormTextComponent as ɵr, CmacsFormDirective as ɵp, CmacsMenuServiceFactory as ɵd, CmacsMenuService as ɵc, CmacsSubmenuService as ɵb, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵv, CmacsOptionGroupComponent as ɵh, CmacsOptionLiComponent as ɵw, NzFilterGroupOptionPipe as ɵu, NzFilterOptionPipe as ɵt, CmacsSelectUnselectableDirective as ɵx, CmacsSelectService as ɵg, NzTreeService as ɵf, ExcelService as ɵe };
 
 //# sourceMappingURL=cmacs-components-lib.js.map

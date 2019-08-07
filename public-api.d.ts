@@ -66,3 +66,6 @@ export * from './lib/components/cmacs-dropdown/cmacs-dropdown-button.component';
 export * from './lib/components/cmacs-dropdown/cmacs-dropdown-context.component';
 export * from './lib/components/cmacs-dropdown/cmacs-dropdown.component';
 export * from './lib/components/cmacs-dropdown/cmacs-dropdown.directive';
+export * from './lib/components/cmacs-alert/cmacs-alert.component';
+export * from './lib/components/cmacs-comments/cmacs-comment.component';
+export * from './lib/components/cmacs-comments/cmacs-comment-cells';

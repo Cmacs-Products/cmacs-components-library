@@ -1,6 +1,6 @@
 import { FocusTrapFactory } from '@angular/cdk/a11y';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
-import { AfterViewInit, ChangeDetectorRef, ComponentFactoryResolver, ComponentRef, ElementRef, EventEmitter, OnChanges, OnDestroy, OnInit, SimpleChanges, TemplateRef, Type, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, ComponentFactoryResolver, ComponentRef, ElementRef, EventEmitter, OnChanges, OnDestroy, OnInit, QueryList, SimpleChanges, TemplateRef, Type, ViewContainerRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NzI18nService } from 'ng-zorro-antd/i18n';
 import { ModalConfig } from './cmacs-modal-config';
@@ -54,6 +54,8 @@ export declare class CmacsModalComponent<T = any, R = any> extends CmacsModalRef
     modalContainer: ElementRef;
     bodyContainer: ViewContainerRef;
     autoFocusButtonOk: ElementRef;
+    tipsCreationWizard: QueryList<any>;
+    showHelpfulTips: boolean;
     readonly afterOpen: Observable<void>;
     readonly afterClose: Observable<R>;
     readonly cancelText: string;
