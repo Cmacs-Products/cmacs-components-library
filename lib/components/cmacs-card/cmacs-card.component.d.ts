@@ -13,6 +13,7 @@ export declare class CmacsCardComponent implements OnInit {
         [key: string]: string;
     };
     cover: TemplateRef<void>;
+    body: TemplateRef<void>;
     actions: Array<TemplateRef<void>>;
     team: any;
     project: any;
