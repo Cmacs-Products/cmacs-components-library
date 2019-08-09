@@ -15,17 +15,18 @@ import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 import { DateHelperService, NzI18nService, NzI18nModule } from 'ng-zorro-antd/i18n';
 import { ExportAsService, ExportAsModule } from 'ngx-export-as';
 import { NzMenuDirective, NzMenuModule } from 'ng-zorro-antd/menu';
-import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { MediaMatcher, LayoutModule } from '@angular/cdk/layout';
-import { Platform, PlatformModule } from '@angular/cdk/platform';
 import { NzRowDirective, NzColDirective, NzGridModule } from 'ng-zorro-antd/grid';
-import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent } from 'rxjs';
-import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take } from 'rxjs/operators';
+import { NzToolTipComponent } from 'ng-zorro-antd/tooltip';
+import { Platform, PlatformModule } from '@angular/cdk/platform';
+import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription } from 'rxjs';
+import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
 import { __extends, __decorate, __metadata, __assign, __spread, __read, __values } from 'tslib';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, TemplateRef, HostListener, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, defineInjectable, inject, Injector, NgModule, ComponentFactoryResolver, Type } from '@angular/core';
-import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, LoggerService } from 'ng-zorro-antd/core';
+import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, LoggerService } from 'ng-zorro-antd/core';
 
 /**
  * @fileoverview added by tsickle
@@ -4173,7 +4174,6 @@ var CmacsRadioComponent = /** @class */ (function () {
          * @return {?}
          */
         function () { return null; });
-        console.log(this.value);
         this.renderer.addClass(elementRef.nativeElement, 'ant-radio-wrapper');
     }
     /**
@@ -6119,6 +6119,7 @@ var CmacsGridComponent = /** @class */ (function () {
         this.ondlclickRow = new EventEmitter();
         this.onclickRow = new EventEmitter();
         this.rateCount = 5;
+        this.multiSelect = false;
         this.selected = false;
         this.checkboxCache = [];
         this.isIndeterminate = false;
@@ -6251,6 +6252,18 @@ var CmacsGridComponent = /** @class */ (function () {
     function (count, data) {
         data[this.config.fieldRate] = count;
         this.rateChange.emit(data);
+    };
+    /**
+     * @param {?} event
+     * @return {?}
+     */
+    CmacsGridComponent.prototype.onRateClick = /**
+     * @param {?} event
+     * @return {?}
+     */
+    function (event) {
+        event.preventDefault();
+        event.stopPropagation();
     };
     /**
      * @return {?}
@@ -6667,14 +6680,27 @@ var CmacsGridComponent = /** @class */ (function () {
      * @return {?}
      */
     function (data) {
+        var _this = this;
         this.onclickRow.emit(data);
         if (!this.checkboxSelect) {
+            if (!this.multiSelect) {
+                this.checkboxCache.filter((/**
+                 * @param {?} item
+                 * @return {?}
+                 */
+                function (item) { return item.selected && item.data[_this.config.fieldId] !== data[_this.config.fieldId]; }))
+                    .forEach((/**
+                 * @param {?} elem
+                 * @return {?}
+                 */
+                function (elem) { return elem.selected = false; }));
+            }
             /** @type {?} */
-            var index = this.checkboxCache.map((/**
+            var index = this.checkboxCache.findIndex((/**
              * @param {?} item
              * @return {?}
              */
-            function (item) { return item.data.id; })).indexOf(data.id);
+            function (item) { return item.data[_this.config.fieldId] === data[_this.config.fieldId]; }));
             if (index !== -1) {
                 this.checkboxCache[index].selected = !this.checkboxCache[index].selected;
             }
@@ -6705,7 +6731,7 @@ var CmacsGridComponent = /** @class */ (function () {
                     // tslint:disable-next-line: component-selector
                     selector: 'cmacs-grid',
                     exportAs: 'cmacsGrid',
-                    template: "<div id=\"tableGrid\">\r\n  <nz-table #gridComponent [nzData]=\"data\" [nzShowTotal]=\"showTotal\" [nzPageSizeOptions]=\"pageSizeOptions\"\r\n    [nzVirtualScroll]=\"virtualScroll\" [nzVirtualItemSize]=\"virtualItemSize\" [nzLoadingDelay]=\"loadingDelay\"\r\n    [nzLoadingIndicator]=\"loadingIndicator\" [nzTotal]=\"total\" [nzTitle]=\"title\" [nzFooter]=\"footer\"\r\n    [nzNoResult]=\"noResult\" [nzWidthConfig]=\"widthConfig\" [nzPageIndex]=\"pageIndex\" [nzPageSize]=\"pageSize\"\r\n    [nzPaginationPosition]=\"paginationPosition\" [nzScroll]=\"scroll\" [nzFrontPagination]=\"frontPagination\"\r\n    [nzTemplateMode]=\"templateMode\" [nzShowPagination]=\"showPagination\" [nzLoading]=\"loading\"\r\n    [nzShowSizeChanger]=\"showSizeChanger\" [nzHideOnSinglePage]=\"hideOnSinglePage\" [nzShowQuickJumper]=\"showQuickJumper\"\r\n    [nzSimple]=\"simple\">\r\n    <thead class=\"ant-table-thead\" *ngIf=\"!dataTable\">\r\n      <tr>\r\n        <th *ngIf=\"checkboxSelect\" nzWidth=\"2%\">\r\n          <label cmacs-checkbox [(ngModel)]=\"selected\" [indeterminate]=\"isIndeterminate\"\r\n            (checkedChange)=onCheckboxAllChange($event)></label>\r\n        </th>\r\n        <th *ngFor=\"let field of getFields()\" nzWidth=\"{{field.width}}\">{{field.display}}</th>\r\n        <th *ngIf=\"showRate\"></th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let data of gridComponent.data\" (click)=\"clickRow(data)\" (dblclick)=\"dblClickRow(data)\" [class.ant-table-selected-row]=\"isRowSelected(data)\">\r\n        <td *ngIf=\"checkboxSelect\" nzWidth=\"2%\">\r\n          <label cmacs-checkbox [(ngModel)]=\"checkboxCache[getIndex(data[config.fieldId])].selected\"\r\n            (checkedChange)=onCheckboxChange($event)\r\n            *ngIf=\"data[config.fieldId] && checkboxCache[getIndex(data[config.fieldId])]\"\r\n            ></label>\r\n        </td>\r\n        <td *ngFor=\"let field of getFields()\" class=\"editable-row\">\r\n          <div *ngIf=\"isCeldTypeDefault(field) && inLineEdit; else componentTpl\">\r\n            <div class=\"editable-cell\"\r\n              *ngIf=\"(editId !== data[config.fieldId] || property !== field.property); else editTpl\">\r\n              <div class=\"editable-cell-value-wrap\" (click)=\"startEdit(data[config.fieldId], field.property, $event)\">\r\n                <ng-container *ngIf=\"!isDate(field) && !isSelect(field)\">{{ data[field.property] }}</ng-container>\r\n                <ng-container *ngIf=\"isDate(field)\">{{ data[field.property]  | date: 'MMMM dd yyyy'}}</ng-container>\r\n                <ng-container *ngIf=\"isSelect(field)\">{{ getLabel(data, field) }}</ng-container>\r\n              </div>\r\n            </div>\r\n            <ng-template #editTpl>\r\n              <input *ngIf=\"isString(data[field.property]) && !isSelect(field)\" type=\"text\" cmacs-input\r\n                [(ngModel)]=\"data[field.property]\" />\r\n              <cmacs-input-number *ngIf=\"isNumber(data[field.property]) && !isSelect(field)\"\r\n                [(ngModel)]=\"data[field.property]\" [cmacsStep]=\"1\"></cmacs-input-number>\r\n              <label cmacs-checkbox *ngIf=\"isBoolean(data[field.property])\" [(ngModel)]=\"data[field.property]\"></label>\r\n              <cmacs-date-picker *ngIf=\"isDate(field)\" [format]=\"'MM/dd/yyyy'\" [allowClear]=\"false\" open\r\n                [(ngModel)]=\"data[field.property]\"></cmacs-date-picker>\r\n              <cmacs-select *ngIf=\"isSelect(field)\" style=\"width: 200px;\" showSearch [(ngModel)]=\"data[field.property]\">\r\n                <cmacs-option *ngFor=\"let sData of field.select.selectData\" label=\"{{sData[field.select.label]}}\"\r\n                  value=\"{{sData[field.select.value]}}\"></cmacs-option>\r\n              </cmacs-select>\r\n            </ng-template>\r\n          </div>\r\n          <ng-template #componentTpl>\r\n            <button *ngIf=\"isCeldTypeButton(field)\" cmacs-button type=\"{{field.button.style}}\"\r\n              (click)=onButtonClick(data)>\r\n              <i *ngIf=\"!isUndefined(field.button.icon); else titleTpl\" nz-icon type=\"{{field.button.icon}}\"></i>\r\n              <ng-template #titleTpl>{{field.display}}</ng-template>\r\n            </button>\r\n            <cmacs-tag *ngIf=\"isCeldTypeTag(field) && (field.tag === undefined || field.tag.color === undefined)\">\r\n              {{ data[field.property] }}</cmacs-tag>\r\n            <cmacs-tag *ngIf=\"isCeldTypeTag(field) && field.tag !== undefined && field.tag.color !== undefined\"\r\n              [color]=data[field.tag.color]>{{  data[field.property] }}</cmacs-tag>\r\n              <ng-container *ngIf=\"!inLineEdit && !isCeldTypeButton(field) && !isCeldTypeTag(field)\">\r\n                {{ data[field.property] }}</ng-container>\r\n          </ng-template>\r\n        </td>\r\n        <td *ngIf=\"showRate\">\r\n          <nz-rate [ngModel]=\"data[config.fieldRate]\" [nzCount]='rateCount'\r\n            (ngModelChange)=\"onRateChange($event, data)\"></nz-rate>\r\n        </td>\r\n      </tr>\r\n    </tbody>\r\n  </nz-table>\r\n</div>\r\n",
+                    template: "<div id=\"tableGrid\">\r\n  <nz-table #gridComponent [nzData]=\"data\" [nzShowTotal]=\"showTotal\" [nzPageSizeOptions]=\"pageSizeOptions\"\r\n    [nzVirtualScroll]=\"virtualScroll\" [nzVirtualItemSize]=\"virtualItemSize\" [nzLoadingDelay]=\"loadingDelay\"\r\n    [nzLoadingIndicator]=\"loadingIndicator\" [nzTotal]=\"total\" [nzTitle]=\"title\" [nzFooter]=\"footer\"\r\n    [nzNoResult]=\"noResult\" [nzWidthConfig]=\"widthConfig\" [nzPageIndex]=\"pageIndex\" [nzPageSize]=\"pageSize\"\r\n    [nzPaginationPosition]=\"paginationPosition\" [nzScroll]=\"scroll\" [nzFrontPagination]=\"frontPagination\"\r\n    [nzTemplateMode]=\"templateMode\" [nzShowPagination]=\"showPagination\" [nzLoading]=\"loading\"\r\n    [nzShowSizeChanger]=\"showSizeChanger\" [nzHideOnSinglePage]=\"hideOnSinglePage\" [nzShowQuickJumper]=\"showQuickJumper\"\r\n    [nzSimple]=\"simple\">\r\n    <thead class=\"ant-table-thead\" *ngIf=\"!dataTable\">\r\n      <tr>\r\n        <th *ngIf=\"checkboxSelect\" nzWidth=\"2%\">\r\n          <label cmacs-checkbox [(ngModel)]=\"selected\" [indeterminate]=\"isIndeterminate\"\r\n            (checkedChange)=onCheckboxAllChange($event)></label>\r\n        </th>\r\n        <th *ngFor=\"let field of getFields()\" nzWidth=\"{{field.width}}\">{{field.display}}</th>\r\n        <th *ngIf=\"showRate\"></th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let data of gridComponent.data\" (click)=\"clickRow(data)\" (dblclick)=\"dblClickRow(data)\" [class.ant-table-selected-row]=\"isRowSelected(data)\">\r\n        <td *ngIf=\"checkboxSelect\" nzWidth=\"2%\">\r\n          <label cmacs-checkbox [(ngModel)]=\"checkboxCache[getIndex(data[config.fieldId])].selected\"\r\n            (checkedChange)=onCheckboxChange($event)\r\n            *ngIf=\"data[config.fieldId] && checkboxCache[getIndex(data[config.fieldId])]\"\r\n            ></label>\r\n        </td>\r\n        <td *ngFor=\"let field of getFields()\" class=\"editable-row\">\r\n          <div *ngIf=\"isCeldTypeDefault(field) && inLineEdit; else componentTpl\">\r\n            <div class=\"editable-cell\"\r\n              *ngIf=\"(editId !== data[config.fieldId] || property !== field.property); else editTpl\">\r\n              <div class=\"editable-cell-value-wrap\" (click)=\"startEdit(data[config.fieldId], field.property, $event)\">\r\n                <ng-container *ngIf=\"!isDate(field) && !isSelect(field)\">{{ data[field.property] }}</ng-container>\r\n                <ng-container *ngIf=\"isDate(field)\">{{ data[field.property]  | date: 'MMMM dd yyyy'}}</ng-container>\r\n                <ng-container *ngIf=\"isSelect(field)\">{{ getLabel(data, field) }}</ng-container>\r\n              </div>\r\n            </div>\r\n            <ng-template #editTpl>\r\n              <input *ngIf=\"isString(data[field.property]) && !isSelect(field)\" type=\"text\" cmacs-input\r\n                [(ngModel)]=\"data[field.property]\" />\r\n              <cmacs-input-number *ngIf=\"isNumber(data[field.property]) && !isSelect(field)\"\r\n                [(ngModel)]=\"data[field.property]\" [cmacsStep]=\"1\"></cmacs-input-number>\r\n              <label cmacs-checkbox *ngIf=\"isBoolean(data[field.property])\" [(ngModel)]=\"data[field.property]\"></label>\r\n              <cmacs-date-picker *ngIf=\"isDate(field)\" [format]=\"'MM/dd/yyyy'\" [allowClear]=\"false\" open\r\n                [(ngModel)]=\"data[field.property]\"></cmacs-date-picker>\r\n              <cmacs-select *ngIf=\"isSelect(field)\" style=\"width: 200px;\" showSearch [(ngModel)]=\"data[field.property]\">\r\n                <cmacs-option *ngFor=\"let sData of field.select.selectData\" label=\"{{sData[field.select.label]}}\"\r\n                  value=\"{{sData[field.select.value]}}\"></cmacs-option>\r\n              </cmacs-select>\r\n            </ng-template>\r\n          </div>\r\n          <ng-template #componentTpl>\r\n            <button *ngIf=\"isCeldTypeButton(field)\" cmacs-button type=\"{{field.button.style}}\"\r\n              (click)=onButtonClick(data)>\r\n              <i *ngIf=\"!isUndefined(field.button.icon); else titleTpl\" nz-icon type=\"{{field.button.icon}}\"></i>\r\n              <ng-template #titleTpl>{{field.display}}</ng-template>\r\n            </button>\r\n            <cmacs-tag *ngIf=\"isCeldTypeTag(field) && (field.tag === undefined || field.tag.color === undefined)\">\r\n              {{ data[field.property] }}</cmacs-tag>\r\n            <cmacs-tag *ngIf=\"isCeldTypeTag(field) && field.tag !== undefined && field.tag.color !== undefined\"\r\n              [color]=data[field.tag.color]>{{  data[field.property] }}</cmacs-tag>\r\n              <ng-container *ngIf=\"!inLineEdit && !isCeldTypeButton(field) && !isCeldTypeTag(field)\">\r\n                {{ data[field.property] }}</ng-container>\r\n          </ng-template>\r\n        </td>\r\n        <td *ngIf=\"showRate\">\r\n          <nz-rate [ngModel]=\"data[config.fieldRate]\" [nzCount]='rateCount'\r\n            (ngModelChange)=\"onRateChange($event, data)\" (click)=\"onRateClick($event)\"></nz-rate>\r\n        </td>\r\n      </tr>\r\n    </tbody>\r\n  </nz-table>\r\n</div>\r\n",
                     styles: [".editable-cell{position:relative}.editable-cell-value-wrap{padding:5px 12px;cursor:pointer}.editable-row:hover .editable-cell-value-wrap{border:1px solid #2a7cff;border-radius:4px;padding:4px 11px}:host ::ng-deep .ant-rate-star{font-size:16px}.ant-table-thead>tr{box-shadow:0 3px 7px -3px rgba(5,6,6,.18)}.ant-table-thead>tr>th:first-child{border-left:3px solid transparent}.ant-table-thead>tr>th{padding:15px;color:#656c79}.ant-table-tbody>tr>td{padding:10px 15px}.ant-table-tbody>tr:hover{box-shadow:0 3px 7px -3px rgba(5,6,6,.18)}.ant-table-tbody>tr td:first-child{border-left:3px solid #fff}.ant-table-tbody>tr:hover td:first-child{border-left:3px solid #2a7cff}.ant-table-tbody>.ant-table-selected-row:hover td{border-bottom:1px solid #2a7cff;border-top:1px solid #2a7cff}.ant-table-thead{font-family:Roboto;font-size:12px;font-weight:500;font-style:normal;font-stretch:normal;line-height:1.25;letter-spacing:normal}.editable-row,.ng-star-inserted{font-family:Roboto;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal}cmacs-tag{padding-left:5px;padding-right:5px}.ant-table-tbody>tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-selected-row)>td,.ant-table-tbody>tr:hover:not(.ant-table-expanded-row):not(.ant-table-selected-row)>td,.ant-table-thead>tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-selected-row)>td,.ant-table-thead>tr:hover:not(.ant-table-expanded-row):not(.ant-table-selected-row)>td{background-color:#fff}.ant-table-tbody>tr.ant-table-selected-row>td{background-color:#f2f7ff}"]
                 }] }
     ];
@@ -6758,6 +6784,7 @@ var CmacsGridComponent = /** @class */ (function () {
         ondlclickRow: [{ type: Output }],
         onclickRow: [{ type: Output }],
         rateCount: [{ type: Input }],
+        multiSelect: [{ type: Input }],
         inputElement: [{ type: ViewChild, args: [CmacsInputDirective, { read: ElementRef },] }],
         inputNumberElement: [{ type: ViewChild, args: [CmacsInputNumberComponent, { read: ElementRef },] }],
         datePickerElement: [{ type: ViewChild, args: [CmacsDatePickerComponent, { read: ElementRef },] }],
@@ -6823,6 +6850,10 @@ var CmacsGridComponent = /** @class */ (function () {
         InputBoolean(),
         __metadata("design:type", Object)
     ], CmacsGridComponent.prototype, "showRate", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsGridComponent.prototype, "multiSelect", void 0);
     return CmacsGridComponent;
 }());
 
@@ -9404,7 +9435,6 @@ var CmacsSelectComponent = /** @class */ (function () {
         function (value) {
             this.nzSelectService.mode = value;
             this.nzSelectService.check();
-            console.log(value);
         },
         enumerable: true,
         configurable: true
@@ -9961,7 +9991,6 @@ var CmacsSearchComponent = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        console.log(this.options);
     };
     CmacsSearchComponent.decorators = [
         { type: Component, args: [{
@@ -11382,6 +11411,7 @@ var CmacsCardTabComponent = /** @class */ (function () {
 var CmacsCardComponent = /** @class */ (function () {
     function CmacsCardComponent(renderer, elementRef) {
         this.folderIcon = 'folder';
+        this.isEditable = false;
         this.bordered = true;
         this.opened = false;
         this.editable = false;
@@ -11393,6 +11423,7 @@ var CmacsCardComponent = /** @class */ (function () {
         this.project = [];
         this.cmacsType = 'none';
         this.cmacsIcon = '';
+        this.titleChange = new EventEmitter();
         this.open = new EventEmitter();
         this.close = new EventEmitter();
         this.selected = false;
@@ -11409,6 +11440,7 @@ var CmacsCardComponent = /** @class */ (function () {
         if (this.cmacsType === "folder") {
             this.folderIcon = this.opened ? 'folder-open' : 'folder';
         }
+        this.isEditable = this.editable;
     };
     /**
      * @param {?} event
@@ -11456,6 +11488,42 @@ var CmacsCardComponent = /** @class */ (function () {
         }
     };
     /**
+     * @param {?} event
+     * @param {?} titleContainer
+     * @param {?} titleSpan
+     * @return {?}
+     */
+    CmacsCardComponent.prototype.handleEnter = /**
+     * @param {?} event
+     * @param {?} titleContainer
+     * @param {?} titleSpan
+     * @return {?}
+     */
+    function (event, titleContainer, titleSpan) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        titleContainer.style.textOverflow = 'ellipsis';
+        /** @type {?} */
+        var text = titleSpan.innerText.replace(/(\r\n|\n|\r)/gm, "");
+        titleSpan.innerText = text;
+        this.isEditable = false;
+        this.titleChange.emit(text);
+    };
+    /**
+     * @param {?} titleContainer
+     * @return {?}
+     */
+    CmacsCardComponent.prototype.toggleEdit = /**
+     * @param {?} titleContainer
+     * @return {?}
+     */
+    function (titleContainer) {
+        this.isEditable = this.editable;
+        if (this.isEditable) {
+            titleContainer.style.textOverflow = 'initial';
+        }
+    };
+    /**
      * @param {?} name
      * @return {?}
      */
@@ -11476,7 +11544,7 @@ var CmacsCardComponent = /** @class */ (function () {
                     preserveWhitespaces: false,
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
-                    template: "<div class=\"ant-card-head\" *ngIf=\"(title || extra || tab ) && (cmacsType === 'none' || cmacsType === 'team' || cmacsType === 'project')\">\r\n  <div class=\"ant-card-head-wrapper\">\r\n    <div class=\"ant-card-head-title\" *ngIf=\"title\">\r\n      <ng-container *cmacsStringTemplateOutlet=\"title\">{{ title }}</ng-container>\r\n    </div>\r\n    <div class=\"ant-card-extra\" *ngIf=\"extra\">\r\n      <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n    </div>\r\n  </div>\r\n  <ng-container *ngIf=\"tab\">\r\n    <ng-template [ngTemplateOutlet]=\"tab.template\"></ng-template>\r\n  </ng-container>\r\n</div>\r\n\r\n<div class=\"ant-card-cover\" *ngIf=\"cover || cmacsType === 'selection' || cmacsType === 'action'\">\r\n  <ng-template [ngTemplateOutlet]=\"cover\"></ng-template>\r\n  <ng-container *ngIf=\"cmacsType === 'selection'\">\r\n    <label cmacs-radio [(ngModel)]=\"selected\" [disabled]=\"disabled\"></label>\r\n    <ng-template [ngTemplateOutlet]=\"body\"></ng-template>\r\n  </ng-container>\r\n</div>\r\n<div class=\"ant-card-body\" [ngStyle]=\"bodyStyle\">\r\n  <ng-container *ngIf=\"!loading\">\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'file'\">\r\n      <div class=\"cmacs-card-files-icon-wrapper\">\r\n        <a><i nz-icon [type]=\"cmacsIcon\"></i></a>\r\n      </div>\r\n      <div class=\"cmacs-card-label\">\r\n        <span>{{title}}</span>\r\n      </div>\r\n      <div class=\"cmacs-card-file-extra\" *ngIf=\"extra\">\r\n        <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'none' || cmacsType === 'selection' || cmacsType === 'action'\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'team'\">\r\n      <div style=\"margin-bottom: 20px; display: inline-flex\">\r\n        <div class=\"team-person-card\"\r\n             *ngFor=\"let person of team; index as i\"\r\n             [style.backgroundColor]=\"!person.image ? '#ffa800' : '#c7f5ff'\"\r\n             [style.display]=\"(i >= 4 && team.length > 5) ? 'none' : 'inline-flex' \"\r\n        >\r\n          <img width=\"30px\" height=\"30px\" *ngIf=\"person.image\" [src]=\"person.image\">\r\n          <span *ngIf=\"!person.image\">{{getInitials(person.name)}}</span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"plus-team-card\" *ngIf=\"team.length > 5\">+{{team.length - 4}}</div>\r\n      <ng-content select=\"[cmacs-action-panel]\"></ng-content>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'project'\">\r\n      <img width=\"221px\" height=\"107px\" [src]=\"project.projectImage\">\r\n      <cmacs-tag class=\"project-status\" [cmacsGridType]=\"project.statusTag\">{{project.status}}</cmacs-tag>\r\n      <div class=\"project-dates-wrapper\">\r\n        <span class=\"project-dates-title\">Project Dates</span>\r\n        <span class=\"project-dates project-dates-date\">{{project.startDate}}</span>\r\n        <a><i nz-icon [type]=\"'arrow-right'\" class=\"project-dates\" style=\"font-size: 16px;\"></i></a>\r\n        <span class=\"project-dates project-dates-date\">{{project.endDate}}</span>\r\n      </div>\r\n\r\n      <div class=\"project-card-progress-bar\">\r\n        <div class=\"project-card-progress-bar-inner\" [style.width]=\"project.completion\"></div>\r\n      </div>\r\n      <div class=\"project-manager-details\">\r\n        <img class=\"manager-avatar\" width=\"30px\" height=\"30px\" [src]=\"project.teamLead.avatar\">\r\n        <div class=\"project-manager-metadata\">\r\n          <span class=\"manager-name\">{{project.teamLead.name}}</span><br>\r\n          <span class=\"manager-charge\">{{project.teamLead.charge}}</span>\r\n        </div>\r\n        <a><i nz-icon [type]=\"'mail'\"></i></a>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'folder'\">\r\n      <div class=\"card-files-folders-icon-wrapper\">\r\n        <a><i nz-icon [type]=\"folderIcon\"></i></a>\r\n      </div>\r\n      <div class=\"card-files-folders-label\">\r\n        <span #name [attr.contentEditable]=\"editable\"\r\n        >{{title}}</span>\r\n      </div>\r\n      <div class=\"card-files-folder-extra\" *ngIf=\"extra\">\r\n        <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n      </div>\r\n    </ng-container>\r\n\r\n  </ng-container>\r\n  <cmacs-card-loading *ngIf=\"loading\"></cmacs-card-loading>\r\n</div>\r\n<ul class=\"ant-card-actions\" *ngIf=\"actions.length\">\r\n  <li *ngFor=\"let action of actions\" [style.width.%]=\"100 / actions.length\">\r\n    <span><ng-template [ngTemplateOutlet]=\"action\"></ng-template></span>\r\n  </li>\r\n</ul>\r\n\r\n",
+                    template: "<div class=\"ant-card-head\" *ngIf=\"(title || extra || tab ) && (cmacsType === 'none' || cmacsType === 'team' || cmacsType === 'project')\">\r\n  <div class=\"ant-card-head-wrapper\">\r\n    <div class=\"ant-card-head-title\" *ngIf=\"title\">\r\n      <ng-container *cmacsStringTemplateOutlet=\"title\">{{ title }}</ng-container>\r\n    </div>\r\n    <div class=\"ant-card-extra\" *ngIf=\"extra\">\r\n      <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n    </div>\r\n  </div>\r\n  <ng-container *ngIf=\"tab\">\r\n    <ng-template [ngTemplateOutlet]=\"tab.template\"></ng-template>\r\n  </ng-container>\r\n</div>\r\n\r\n<div class=\"ant-card-cover\" *ngIf=\"cover || cmacsType === 'selection' || cmacsType === 'action'\">\r\n  <ng-template [ngTemplateOutlet]=\"cover\"></ng-template>\r\n  <ng-container *ngIf=\"cmacsType === 'selection'\">\r\n    <label cmacs-radio [(ngModel)]=\"selected\" [disabled]=\"disabled\"></label>\r\n    <ng-template [ngTemplateOutlet]=\"body\"></ng-template>\r\n  </ng-container>\r\n</div>\r\n<div class=\"ant-card-body\" [ngStyle]=\"bodyStyle\">\r\n  <ng-container *ngIf=\"!loading\">\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'file'\">\r\n      <div class=\"cmacs-card-files-icon-wrapper\">\r\n        <a><i nz-icon [type]=\"cmacsIcon\"></i></a>\r\n      </div>\r\n      <div class=\"cmacs-card-label\">\r\n        <span>{{title}}</span>\r\n      </div>\r\n      <div class=\"cmacs-card-file-extra\" *ngIf=\"extra\">\r\n        <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'none' || cmacsType === 'selection' || cmacsType === 'action'\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'team'\">\r\n      <div style=\"margin-bottom: 20px; display: inline-flex\">\r\n        <div class=\"team-person-card\"\r\n             *ngFor=\"let person of team; index as i\"\r\n             [style.backgroundColor]=\"!person.image ? '#ffa800' : '#c7f5ff'\"\r\n             [style.display]=\"(i >= 4 && team.length > 5) ? 'none' : 'inline-flex' \"\r\n        >\r\n          <img width=\"30px\" height=\"30px\" *ngIf=\"person.image\" [src]=\"person.image\">\r\n          <span *ngIf=\"!person.image\">{{getInitials(person.name)}}</span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"plus-team-card\" *ngIf=\"team.length > 5\">+{{team.length - 4}}</div>\r\n      <ng-content select=\"[cmacs-action-panel]\"></ng-content>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'project'\">\r\n      <img width=\"221px\" height=\"107px\" [src]=\"project.projectImage\">\r\n      <cmacs-tag class=\"project-status\" [cmacsGridType]=\"project.statusTag\">{{project.status}}</cmacs-tag>\r\n      <div class=\"project-dates-wrapper\">\r\n        <span class=\"project-dates-title\">Project Dates</span>\r\n        <span class=\"project-dates project-dates-date\">{{project.startDate}}</span>\r\n        <a><i nz-icon [type]=\"'arrow-right'\" class=\"project-dates\" style=\"font-size: 16px;\"></i></a>\r\n        <span class=\"project-dates project-dates-date\">{{project.endDate}}</span>\r\n      </div>\r\n\r\n      <div class=\"project-card-progress-bar\">\r\n        <div class=\"project-card-progress-bar-inner\" [style.width]=\"project.completion\"></div>\r\n      </div>\r\n      <div class=\"project-manager-details\">\r\n        <img class=\"manager-avatar\" width=\"30px\" height=\"30px\" [src]=\"project.teamLead.avatar\">\r\n        <div class=\"project-manager-metadata\">\r\n          <span class=\"manager-name\">{{project.teamLead.name}}</span><br>\r\n          <span class=\"manager-charge\">{{project.teamLead.charge}}</span>\r\n        </div>\r\n        <a><i nz-icon [type]=\"'mail'\"></i></a>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'folder'\">\r\n      <div class=\"card-files-folders-icon-wrapper\">\r\n        <a><i nz-icon [type]=\"folderIcon\"></i></a>\r\n      </div>\r\n      <div #titleContainer (click)=\"toggleEdit(titleContainer)\" class=\"card-files-folders-label\">\r\n        <span #name (keydown.enter)=\"handleEnter($event, titleContainer, name)\" [attr.contentEditable]=\"isEditable\"\r\n        >{{title}}</span>\r\n      </div>\r\n      <div class=\"card-files-folder-extra\" *ngIf=\"extra\">\r\n        <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n      </div>\r\n    </ng-container>\r\n\r\n  </ng-container>\r\n  <cmacs-card-loading *ngIf=\"loading\"></cmacs-card-loading>\r\n</div>\r\n<ul class=\"ant-card-actions\" *ngIf=\"actions.length\">\r\n  <li *ngFor=\"let action of actions\" [style.width.%]=\"100 / actions.length\">\r\n    <span><ng-template [ngTemplateOutlet]=\"action\"></ng-template></span>\r\n  </li>\r\n</ul>\r\n\r\n",
                     host: {
                         '[class.ant-card-loading]': 'loading',
                         '[class.ant-card-bordered]': 'bordered',
@@ -11520,6 +11588,7 @@ var CmacsCardComponent = /** @class */ (function () {
         cmacsType: [{ type: Input }],
         cmacsIcon: [{ type: Input }],
         title: [{ type: Input }],
+        titleChange: [{ type: Output }],
         extra: [{ type: Input }],
         tab: [{ type: ContentChild, args: [CmacsCardTabComponent,] }],
         open: [{ type: Output }],
@@ -15937,7 +16006,7 @@ var CmacsFormControlComponent = /** @class */ (function (_super) {
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     providers: [NzUpdateHostClassService],
                     template: "<div class=\"ant-form-item-control\" [ngClass]=\"controlClassMap\">\r\n  <span class=\"ant-form-item-children\">\r\n    <ng-content></ng-content>\r\n    <span class=\"ant-form-item-children-icon\">\r\n      <i *ngIf=\"cmacsHasFeedback && iconType\" nz-icon [type]=\"iconType\"></i>\r\n    </span>\r\n  </span>\r\n  <ng-content select=\"cmacs-form-explain\"></ng-content>\r\n</div>\r\n",
-                    styles: ["\n      cmacs-form-control {\n        display: block;\n      }\n    "]
+                    styles: [".ant-form-item-label{display:block;text-align:left;width:100%;color:#97a0ae!important;font-size:12px!important}.ant-form-item-label>label{color:#97a0ae}.ant-form label{font-size:12px;font-family:Roboto}.ant-form-item-required::before{content:none}.ant-form-item-label>label.ant-form-item-required::after{display:inline-block;color:#f5222d;font-size:9px;font-family:SimSun,sans-serif;line-height:1;content:'*';position:relative;top:-5px;left:5px}", "\n      cmacs-form-control {\n        display: block;\n      }\n    "]
                 }] }
     ];
     /** @nocollapse */
@@ -16823,6 +16892,1446 @@ var CmacsCommentComponent = /** @class */ (function () {
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+var CmacsSliderTrackComponent = /** @class */ (function () {
+    function CmacsSliderTrackComponent() {
+        this.nzVertical = false;
+        this.nzIncluded = false;
+        this.style = {};
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    CmacsSliderTrackComponent.prototype.ngOnChanges = /**
+     * @param {?} changes
+     * @return {?}
+     */
+    function (changes) {
+        if (changes.nzIncluded) {
+            this.style.visibility = this.nzIncluded ? 'visible' : 'hidden';
+        }
+        if (changes.nzVertical || changes.nzOffset || changes.nzLength) {
+            if (this.nzVertical) {
+                this.style.bottom = this.nzOffset + "%";
+                this.style.height = this.nzLength + "%";
+                this.style.left = null;
+                this.style.width = null;
+            }
+            else {
+                this.style.left = this.nzOffset + "%";
+                this.style.width = this.nzLength + "%";
+                this.style.bottom = null;
+                this.style.height = null;
+            }
+        }
+    };
+    CmacsSliderTrackComponent.decorators = [
+        { type: Component, args: [{
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    encapsulation: ViewEncapsulation.None,
+                    selector: 'cmacs-slider-track',
+                    exportAs: 'cmacsSliderTrack',
+                    preserveWhitespaces: false,
+                    template: "<div class=\"ant-slider-track\" [ngStyle]=\"style\"></div>",
+                    styles: [".ant-slider-track{height:3px;border-radius:100px;background-color:#cfd3d9!important}"]
+                }] }
+    ];
+    CmacsSliderTrackComponent.propDecorators = {
+        nzOffset: [{ type: Input }],
+        nzLength: [{ type: Input }],
+        nzVertical: [{ type: Input }],
+        nzIncluded: [{ type: Input }]
+    };
+    __decorate([
+        InputNumber(),
+        __metadata("design:type", Number)
+    ], CmacsSliderTrackComponent.prototype, "nzOffset", void 0);
+    __decorate([
+        InputNumber(),
+        __metadata("design:type", Number)
+    ], CmacsSliderTrackComponent.prototype, "nzLength", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsSliderTrackComponent.prototype, "nzVertical", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsSliderTrackComponent.prototype, "nzIncluded", void 0);
+    return CmacsSliderTrackComponent;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var Marks = /** @class */ (function () {
+    function Marks() {
+    }
+    return Marks;
+}());
+/**
+ * @param {?} value
+ * @return {?}
+ */
+function isValueARange(value) {
+    if (value instanceof Array) {
+        return value.length === 2;
+    }
+    else {
+        return false;
+    }
+}
+/**
+ * @param {?} config
+ * @return {?}
+ */
+function isConfigAObject(config) {
+    return config instanceof Object;
+}
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @license
+ * Copyright Alibaba.com All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://github.com/NG-ZORRO/ng-zorro-antd/blob/master/LICENSE
+ */
+/**
+ * @return {?}
+ */
+function getValueTypeNotMatchError() {
+    return new Error("The \"range\" can't match the \"ngModel\"'s type, please check these properties: \"range\", \"ngModel\", \"defaultValue\".");
+}
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var CmacsSliderComponent = /** @class */ (function () {
+    function CmacsSliderComponent(cdr, platform) {
+        this.cdr = cdr;
+        this.platform = platform;
+        this.disabled = false;
+        this.dots = false;
+        this.included = true;
+        this.range = false;
+        this.vertical = false;
+        this.defaultValue = null;
+        this.marks = null;
+        this.max = 100;
+        this.min = 0;
+        this.step = 1;
+        this.tooltipVisible = 'default';
+        this.onAfterChange = new EventEmitter();
+        this.value = null;
+        this.cacheSliderStart = null;
+        this.cacheSliderLength = null;
+        this.activeValueIndex = undefined; // Current activated handle's index ONLY for range=true
+        // Current activated handle's index ONLY for range=true
+        this.track = { offset: null, length: null }; // Track's offset and length
+        // "steps" in array type with more data & FILTER out the invalid mark
+        this.bounds = { lower: null, upper: null }; // now for nz-slider-step
+        // now for nz-slider-step
+        this.isDragging = false; // Current dragging state
+    }
+    /**
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.ngOnInit = /**
+     * @return {?}
+     */
+    function () {
+        this.handles = this.generateHandles(this.range ? 2 : 1);
+        this.sliderDOM = this.slider.nativeElement;
+        this.marksArray = this.marks ? this.generateMarkItems(this.marks) : null;
+        if (this.platform.isBrowser) {
+            this.createDraggingObservables();
+        }
+        this.toggleDragDisabled(this.disabled);
+        if (this.getValue() === null) {
+            this.setValue(this.formatValue(null));
+        }
+    };
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.ngOnChanges = /**
+     * @param {?} changes
+     * @return {?}
+     */
+    function (changes) {
+        var disabled = changes.disabled, marks = changes.marks, range = changes.range;
+        if (disabled && !disabled.firstChange) {
+            this.toggleDragDisabled(disabled.currentValue);
+        }
+        else if (marks && !marks.firstChange) {
+            this.marksArray = this.marks ? this.generateMarkItems(this.marks) : null;
+        }
+        else if (range && !range.firstChange) {
+            this.setValue(this.formatValue(null));
+        }
+    };
+    /**
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.ngOnDestroy = /**
+     * @return {?}
+     */
+    function () {
+        this.unsubscribeDrag();
+    };
+    /**
+     * @param {?} val
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.writeValue = /**
+     * @param {?} val
+     * @return {?}
+     */
+    function (val) {
+        this.setValue(val, true);
+    };
+    /**
+     * @param {?} _value
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.onValueChange = /**
+     * @param {?} _value
+     * @return {?}
+     */
+    function (_value) { };
+    /**
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.onTouched = /**
+     * @return {?}
+     */
+    function () { };
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.registerOnChange = /**
+     * @param {?} fn
+     * @return {?}
+     */
+    function (fn) {
+        this.onValueChange = fn;
+    };
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.registerOnTouched = /**
+     * @param {?} fn
+     * @return {?}
+     */
+    function (fn) {
+        this.onTouched = fn;
+    };
+    /**
+     * @param {?} isDisabled
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.setDisabledState = /**
+     * @param {?} isDisabled
+     * @return {?}
+     */
+    function (isDisabled) {
+        this.disabled = isDisabled;
+        this.toggleDragDisabled(isDisabled);
+    };
+    /**
+     * @private
+     * @param {?} value
+     * @param {?=} isWriteValue
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.setValue = /**
+     * @private
+     * @param {?} value
+     * @param {?=} isWriteValue
+     * @return {?}
+     */
+    function (value, isWriteValue) {
+        if (isWriteValue === void 0) { isWriteValue = false; }
+        if (isWriteValue) {
+            this.value = this.formatValue(value);
+            this.updateTrackAndHandles();
+        }
+        else if (!this.valuesEqual((/** @type {?} */ (this.value)), (/** @type {?} */ (value)))) {
+            this.value = value;
+            this.updateTrackAndHandles();
+            this.onValueChange(this.getValue(true));
+        }
+    };
+    /**
+     * @private
+     * @param {?=} cloneAndSort
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.getValue = /**
+     * @private
+     * @param {?=} cloneAndSort
+     * @return {?}
+     */
+    function (cloneAndSort) {
+        if (cloneAndSort === void 0) { cloneAndSort = false; }
+        if (cloneAndSort && this.value && isValueARange(this.value)) {
+            return shallowCopyArray(this.value).sort((/**
+             * @param {?} a
+             * @param {?} b
+             * @return {?}
+             */
+            function (a, b) { return a - b; }));
+        }
+        return (/** @type {?} */ (this.value));
+    };
+    /**
+     * Clone & sort current value and convert them to offsets, then return the new one.
+     */
+    /**
+     * Clone & sort current value and convert them to offsets, then return the new one.
+     * @private
+     * @param {?=} value
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.getValueToOffset = /**
+     * Clone & sort current value and convert them to offsets, then return the new one.
+     * @private
+     * @param {?=} value
+     * @return {?}
+     */
+    function (value) {
+        var _this = this;
+        /** @type {?} */
+        var normalizedValue = value;
+        if (typeof normalizedValue === 'undefined') {
+            normalizedValue = this.getValue(true);
+        }
+        return isValueARange(normalizedValue)
+            ? normalizedValue.map((/**
+             * @param {?} val
+             * @return {?}
+             */
+            function (val) { return _this.valueToOffset(val); }))
+            : this.valueToOffset(normalizedValue);
+    };
+    /**
+     * Find the closest value to be activated (only for range = true).
+     */
+    /**
+     * Find the closest value to be activated (only for range = true).
+     * @private
+     * @param {?} pointerValue
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.setActiveValueIndex = /**
+     * Find the closest value to be activated (only for range = true).
+     * @private
+     * @param {?} pointerValue
+     * @return {?}
+     */
+    function (pointerValue) {
+        /** @type {?} */
+        var value = this.getValue();
+        if (isValueARange(value)) {
+            /** @type {?} */
+            var minimal_1 = null;
+            /** @type {?} */
+            var gap_1;
+            /** @type {?} */
+            var activeIndex_1 = -1;
+            value.forEach((/**
+             * @param {?} val
+             * @param {?} index
+             * @return {?}
+             */
+            function (val, index) {
+                gap_1 = Math.abs(pointerValue - val);
+                if (minimal_1 === null || gap_1 < (/** @type {?} */ (minimal_1))) {
+                    minimal_1 = gap_1;
+                    activeIndex_1 = index;
+                }
+            }));
+            this.activeValueIndex = activeIndex_1;
+        }
+    };
+    /**
+     * @private
+     * @param {?} pointerValue
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.setActiveValue = /**
+     * @private
+     * @param {?} pointerValue
+     * @return {?}
+     */
+    function (pointerValue) {
+        if (isValueARange((/** @type {?} */ (this.value)))) {
+            /** @type {?} */
+            var newValue = shallowCopyArray((/** @type {?} */ (this.value)));
+            newValue[(/** @type {?} */ (this.activeValueIndex))] = pointerValue;
+            this.setValue(newValue);
+        }
+        else {
+            this.setValue(pointerValue);
+        }
+    };
+    /**
+     * Update track and handles' position and length.
+     */
+    /**
+     * Update track and handles' position and length.
+     * @private
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.updateTrackAndHandles = /**
+     * Update track and handles' position and length.
+     * @private
+     * @return {?}
+     */
+    function () {
+        var _a, _b;
+        /** @type {?} */
+        var value = this.getValue();
+        /** @type {?} */
+        var offset = this.getValueToOffset(value);
+        /** @type {?} */
+        var valueSorted = this.getValue(true);
+        /** @type {?} */
+        var offsetSorted = this.getValueToOffset(valueSorted);
+        /** @type {?} */
+        var boundParts = isValueARange(valueSorted) ? valueSorted : [0, valueSorted];
+        /** @type {?} */
+        var trackParts = isValueARange(offsetSorted)
+            ? [offsetSorted[0], offsetSorted[1] - offsetSorted[0]]
+            : [0, offsetSorted];
+        this.handles.forEach((/**
+         * @param {?} handle
+         * @param {?} index
+         * @return {?}
+         */
+        function (handle, index) {
+            handle.offset = isValueARange(offset) ? offset[index] : offset;
+            handle.value = isValueARange(value) ? value[index] : value || 0;
+        }));
+        _a = __read(boundParts, 2), this.bounds.lower = _a[0], this.bounds.upper = _a[1];
+        _b = __read(trackParts, 2), this.track.offset = _b[0], this.track.length = _b[1];
+        this.cdr.markForCheck();
+    };
+    /**
+     * @private
+     * @param {?} value
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.onDragStart = /**
+     * @private
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
+        this.toggleDragMoving(true);
+        this.cacheSliderProperty();
+        this.setActiveValueIndex(value);
+        this.setActiveValue(value);
+        this.showHandleTooltip(this.range ? this.activeValueIndex : 0);
+    };
+    /**
+     * @private
+     * @param {?} value
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.onDragMove = /**
+     * @private
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
+        this.setActiveValue(value);
+        this.cdr.markForCheck();
+    };
+    /**
+     * @private
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.onDragEnd = /**
+     * @private
+     * @return {?}
+     */
+    function () {
+        this.onAfterChange.emit(this.getValue(true));
+        this.toggleDragMoving(false);
+        this.cacheSliderProperty(true);
+        this.hideAllHandleTooltip();
+        this.cdr.markForCheck();
+    };
+    /**
+     * Create user interactions handles.
+     */
+    /**
+     * Create user interactions handles.
+     * @private
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.createDraggingObservables = /**
+     * Create user interactions handles.
+     * @private
+     * @return {?}
+     */
+    function () {
+        var _this = this;
+        /** @type {?} */
+        var sliderDOM = this.sliderDOM;
+        /** @type {?} */
+        var orientField = this.vertical ? 'pageY' : 'pageX';
+        /** @type {?} */
+        var mouse = {
+            start: 'mousedown',
+            move: 'mousemove',
+            end: 'mouseup',
+            pluckKey: [orientField]
+        };
+        /** @type {?} */
+        var touch = {
+            start: 'touchstart',
+            move: 'touchmove',
+            end: 'touchend',
+            pluckKey: ['touches', '0', orientField],
+            filter: (/**
+             * @param {?} e
+             * @return {?}
+             */
+            function (e) { return e instanceof TouchEvent; })
+        };
+        [mouse, touch].forEach((/**
+         * @param {?} source
+         * @return {?}
+         */
+        function (source) {
+            var start = source.start, move = source.move, end = source.end, pluckKey = source.pluckKey, _a = source.filter, filterFunc = _a === void 0 ? (/**
+             * @return {?}
+             */
+            function () { return true; }) : _a;
+            source.startPlucked$ = fromEvent(sliderDOM, start).pipe(filter(filterFunc), tap(silentEvent), pluck.apply(void 0, __spread(pluckKey)), map((/**
+             * @param {?} position
+             * @return {?}
+             */
+            function (position) { return _this.findClosestValue(position); })));
+            source.end$ = fromEvent(document, end);
+            source.moveResolved$ = fromEvent(document, move).pipe(filter(filterFunc), tap(silentEvent), pluck.apply(void 0, __spread(pluckKey)), distinctUntilChanged(), map((/**
+             * @param {?} position
+             * @return {?}
+             */
+            function (position) { return _this.findClosestValue(position); })), distinctUntilChanged(), takeUntil(source.end$));
+        }));
+        this.dragStart$ = merge((/** @type {?} */ (mouse.startPlucked$)), (/** @type {?} */ (touch.startPlucked$)));
+        this.dragMove$ = merge((/** @type {?} */ (mouse.moveResolved$)), (/** @type {?} */ (touch.moveResolved$)));
+        this.dragEnd$ = merge((/** @type {?} */ (mouse.end$)), (/** @type {?} */ (touch.end$)));
+    };
+    /**
+     * @private
+     * @param {?=} periods
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.subscribeDrag = /**
+     * @private
+     * @param {?=} periods
+     * @return {?}
+     */
+    function (periods) {
+        if (periods === void 0) { periods = ['start', 'move', 'end']; }
+        if (periods.indexOf('start') !== -1 && this.dragStart$ && !this.dragStart_) {
+            this.dragStart_ = this.dragStart$.subscribe(this.onDragStart.bind(this));
+        }
+        if (periods.indexOf('move') !== -1 && this.dragMove$ && !this.dragMove_) {
+            this.dragMove_ = this.dragMove$.subscribe(this.onDragMove.bind(this));
+        }
+        if (periods.indexOf('end') !== -1 && this.dragEnd$ && !this.dragEnd_) {
+            this.dragEnd_ = this.dragEnd$.subscribe(this.onDragEnd.bind(this));
+        }
+    };
+    /**
+     * @private
+     * @param {?=} periods
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.unsubscribeDrag = /**
+     * @private
+     * @param {?=} periods
+     * @return {?}
+     */
+    function (periods) {
+        if (periods === void 0) { periods = ['start', 'move', 'end']; }
+        if (periods.indexOf('start') !== -1 && this.dragStart_) {
+            this.dragStart_.unsubscribe();
+            this.dragStart_ = null;
+        }
+        if (periods.indexOf('move') !== -1 && this.dragMove_) {
+            this.dragMove_.unsubscribe();
+            this.dragMove_ = null;
+        }
+        if (periods.indexOf('end') !== -1 && this.dragEnd_) {
+            this.dragEnd_.unsubscribe();
+            this.dragEnd_ = null;
+        }
+    };
+    /**
+     * @private
+     * @param {?} movable
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.toggleDragMoving = /**
+     * @private
+     * @param {?} movable
+     * @return {?}
+     */
+    function (movable) {
+        /** @type {?} */
+        var periods = ['move', 'end'];
+        if (movable) {
+            this.isDragging = true;
+            this.subscribeDrag(periods);
+        }
+        else {
+            this.isDragging = false;
+            this.unsubscribeDrag(periods);
+        }
+    };
+    /**
+     * @private
+     * @param {?} disabled
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.toggleDragDisabled = /**
+     * @private
+     * @param {?} disabled
+     * @return {?}
+     */
+    function (disabled) {
+        if (disabled) {
+            this.unsubscribeDrag();
+        }
+        else {
+            this.subscribeDrag(['start']);
+        }
+    };
+    /**
+     * @private
+     * @param {?} position
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.findClosestValue = /**
+     * @private
+     * @param {?} position
+     * @return {?}
+     */
+    function (position) {
+        /** @type {?} */
+        var sliderStart = this.getSliderStartPosition();
+        /** @type {?} */
+        var sliderLength = this.getSliderLength();
+        /** @type {?} */
+        var ratio = ensureNumberInRange((position - sliderStart) / sliderLength, 0, 1);
+        /** @type {?} */
+        var val = (this.max - this.min) * (this.vertical ? 1 - ratio : ratio) + this.min;
+        /** @type {?} */
+        var points = this.marks === null ? [] : Object.keys(this.marks).map(parseFloat);
+        if (this.step !== null && !this.dots) {
+            /** @type {?} */
+            var closestOne = Math.round(val / this.step) * this.step;
+            points.push(closestOne);
+        }
+        /** @type {?} */
+        var gaps = points.map((/**
+         * @param {?} point
+         * @return {?}
+         */
+        function (point) { return Math.abs(val - point); }));
+        /** @type {?} */
+        var closest = points[gaps.indexOf(Math.min.apply(Math, __spread(gaps)))];
+        return this.step === null ? closest : parseFloat(closest.toFixed(getPrecision(this.step)));
+    };
+    /**
+     * @private
+     * @param {?} value
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.valueToOffset = /**
+     * @private
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
+        return getPercent(this.min, this.max, value);
+    };
+    /**
+     * @private
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.getSliderStartPosition = /**
+     * @private
+     * @return {?}
+     */
+    function () {
+        if (this.cacheSliderStart !== null) {
+            return this.cacheSliderStart;
+        }
+        /** @type {?} */
+        var offset = getElementOffset(this.sliderDOM);
+        return this.vertical ? offset.top : offset.left;
+    };
+    /**
+     * @private
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.getSliderLength = /**
+     * @private
+     * @return {?}
+     */
+    function () {
+        if (this.cacheSliderLength !== null) {
+            return this.cacheSliderLength;
+        }
+        /** @type {?} */
+        var sliderDOM = this.sliderDOM;
+        return this.vertical ? sliderDOM.clientHeight : sliderDOM.clientWidth;
+    };
+    /**
+     * Cache DOM layout/reflow operations for performance (may not necessary?)
+     */
+    /**
+     * Cache DOM layout/reflow operations for performance (may not necessary?)
+     * @private
+     * @param {?=} remove
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.cacheSliderProperty = /**
+     * Cache DOM layout/reflow operations for performance (may not necessary?)
+     * @private
+     * @param {?=} remove
+     * @return {?}
+     */
+    function (remove) {
+        if (remove === void 0) { remove = false; }
+        this.cacheSliderStart = remove ? null : this.getSliderStartPosition();
+        this.cacheSliderLength = remove ? null : this.getSliderLength();
+    };
+    /**
+     * @private
+     * @param {?} value
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.formatValue = /**
+     * @private
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
+        var _this = this;
+        /** @type {?} */
+        var res = value;
+        if (!this.assertValueValid((/** @type {?} */ (value)))) {
+            res = this.defaultValue === null ? (this.range ? [this.min, this.max] : this.min) : this.defaultValue;
+        }
+        else {
+            res = isValueARange((/** @type {?} */ (value)))
+                ? ((/** @type {?} */ (value))).map((/**
+                 * @param {?} val
+                 * @return {?}
+                 */
+                function (val) { return ensureNumberInRange(val, _this.min, _this.max); }))
+                : ensureNumberInRange((/** @type {?} */ (value)), this.min, this.max);
+        }
+        return res;
+    };
+    /**
+     * Check if value is valid and throw error if value-type/range not match.
+     */
+    /**
+     * Check if value is valid and throw error if value-type/range not match.
+     * @private
+     * @param {?} value
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.assertValueValid = /**
+     * Check if value is valid and throw error if value-type/range not match.
+     * @private
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
+        if (!Array.isArray(value) && isNaN(typeof value !== 'number' ? parseFloat(value) : value)) {
+            return false;
+        }
+        return this.assertValueTypeMatch(value);
+    };
+    /**
+     * Assert that if `this.nzRange` is `true`, value is also a range, vice versa.
+     */
+    /**
+     * Assert that if `this.nzRange` is `true`, value is also a range, vice versa.
+     * @private
+     * @param {?} value
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.assertValueTypeMatch = /**
+     * Assert that if `this.nzRange` is `true`, value is also a range, vice versa.
+     * @private
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
+        if (!value) {
+            return true;
+        }
+        else if (isValueARange(value) !== this.range) {
+            throw getValueTypeNotMatchError();
+        }
+        else {
+            return true;
+        }
+    };
+    /**
+     * @private
+     * @param {?} valA
+     * @param {?} valB
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.valuesEqual = /**
+     * @private
+     * @param {?} valA
+     * @param {?} valB
+     * @return {?}
+     */
+    function (valA, valB) {
+        if (typeof valA !== typeof valB) {
+            return false;
+        }
+        return isValueARange(valA) && isValueARange(valB) ? arraysEqual(valA, valB) : valA === valB;
+    };
+    /**
+     * Show one handle's tooltip and hide others'.
+     */
+    /**
+     * Show one handle's tooltip and hide others'.
+     * @private
+     * @param {?=} handleIndex
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.showHandleTooltip = /**
+     * Show one handle's tooltip and hide others'.
+     * @private
+     * @param {?=} handleIndex
+     * @return {?}
+     */
+    function (handleIndex) {
+        if (handleIndex === void 0) { handleIndex = 0; }
+        this.handles.forEach((/**
+         * @param {?} handle
+         * @param {?} index
+         * @return {?}
+         */
+        function (handle, index) {
+            handle.active = index === handleIndex;
+        }));
+    };
+    /**
+     * @private
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.hideAllHandleTooltip = /**
+     * @private
+     * @return {?}
+     */
+    function () {
+        this.handles.forEach((/**
+         * @param {?} handle
+         * @return {?}
+         */
+        function (handle) { return (handle.active = false); }));
+    };
+    /**
+     * @private
+     * @param {?} amount
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.generateHandles = /**
+     * @private
+     * @param {?} amount
+     * @return {?}
+     */
+    function (amount) {
+        return Array(amount)
+            .fill(0)
+            .map((/**
+         * @return {?}
+         */
+        function () { return ({ offset: null, value: null, active: false }); }));
+    };
+    /**
+     * @private
+     * @param {?} marks
+     * @return {?}
+     */
+    CmacsSliderComponent.prototype.generateMarkItems = /**
+     * @private
+     * @param {?} marks
+     * @return {?}
+     */
+    function (marks) {
+        /** @type {?} */
+        var marksArray = [];
+        for (var key in marks) {
+            /** @type {?} */
+            var mark = marks[key];
+            /** @type {?} */
+            var val = typeof key === 'number' ? key : parseFloat(key);
+            if (val >= this.min && val <= this.max) {
+                marksArray.push({ value: val, offset: this.valueToOffset(val), config: mark });
+            }
+        }
+        return marksArray.length ? marksArray : null;
+    };
+    CmacsSliderComponent.decorators = [
+        { type: Component, args: [{
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    encapsulation: ViewEncapsulation.None,
+                    selector: 'cmacs-slider',
+                    exportAs: 'cmacsSlider',
+                    preserveWhitespaces: false,
+                    providers: [
+                        {
+                            provide: NG_VALUE_ACCESSOR,
+                            useExisting: forwardRef((/**
+                             * @return {?}
+                             */
+                            function () { return CmacsSliderComponent; })),
+                            multi: true
+                        }
+                    ],
+                    template: "<div #slider\r\n  class=\"ant-slider\"\r\n  [class.ant-slider-disabled]=\"disabled\"\r\n  [class.ant-slider-vertical]=\"vertical\"\r\n  [class.ant-slider-with-marks]=\"marksArray\">\r\n  <div class=\"ant-slider-rail\"></div>\r\n  <cmacs-slider-track\r\n    [nzVertical]=\"vertical\"\r\n    [nzIncluded]=\"included\"\r\n    [nzOffset]=\"track.offset\"\r\n    [nzLength]=\"track.length\"></cmacs-slider-track>\r\n  <cmacs-slider-step\r\n    *ngIf=\"marksArray\"\r\n    [nzVertical]=\"vertical\"\r\n    [nzLowerBound]=\"bounds.lower\"\r\n    [nzUpperBound]=\"bounds.upper\"\r\n    [nzMarksArray]=\"marksArray\"\r\n    [nzIncluded]=\"included\"></cmacs-slider-step>\r\n  <cmacs-slider-handle\r\n    *ngFor=\"let handle of handles\"\r\n    [nzVertical]=\"vertical\"\r\n    [nzOffset]=\"handle.offset\"\r\n    [nzValue]=\"handle.value\"\r\n    [nzActive]=\"handle.active\"\r\n    [nzTipFormatter]=\"tipFormatter\"\r\n    [nzTooltipVisible]=\"tooltipVisible\"></cmacs-slider-handle>\r\n  <cmacs-slider-marks\r\n    *ngIf=\"marksArray\"\r\n    [nzVertical]=\"vertical\"\r\n    [nzMin]=\"min\"\r\n    [nzMax]=\"max\"\r\n    [nzLowerBound]=\"bounds.lower\"\r\n    [nzUpperBound]=\"bounds.upper\"\r\n    [nzMarksArray]=\"marksArray\"\r\n    [nzIncluded]=\"included\"></cmacs-slider-marks>\r\n</div>\r\n",
+                    styles: [".ant-slider-rail{height:3px;border-radius:100px;background-color:#cfd3d9}"]
+                }] }
+    ];
+    /** @nocollapse */
+    CmacsSliderComponent.ctorParameters = function () { return [
+        { type: ChangeDetectorRef },
+        { type: Platform }
+    ]; };
+    CmacsSliderComponent.propDecorators = {
+        slider: [{ type: ViewChild, args: ['slider',] }],
+        disabled: [{ type: Input }],
+        dots: [{ type: Input }],
+        included: [{ type: Input }],
+        range: [{ type: Input }],
+        vertical: [{ type: Input }],
+        defaultValue: [{ type: Input }],
+        marks: [{ type: Input }],
+        max: [{ type: Input }],
+        min: [{ type: Input }],
+        step: [{ type: Input }],
+        tooltipVisible: [{ type: Input }],
+        tipFormatter: [{ type: Input }],
+        onAfterChange: [{ type: Output }]
+    };
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsSliderComponent.prototype, "disabled", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Boolean)
+    ], CmacsSliderComponent.prototype, "dots", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Boolean)
+    ], CmacsSliderComponent.prototype, "included", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Boolean)
+    ], CmacsSliderComponent.prototype, "range", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Boolean)
+    ], CmacsSliderComponent.prototype, "vertical", void 0);
+    return CmacsSliderComponent;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var CmacsSliderHandleComponent = /** @class */ (function () {
+    function CmacsSliderHandleComponent(sliderComponent, cdr) {
+        var _this = this;
+        this.sliderComponent = sliderComponent;
+        this.cdr = cdr;
+        this.nzTooltipVisible = 'default';
+        this.nzActive = false;
+        this.style = {};
+        this.hovers_ = new Subscription();
+        this.enterHandle = (/**
+         * @return {?}
+         */
+        function () {
+            if (!_this.sliderComponent.isDragging) {
+                _this.toggleTooltip(true);
+                _this.updateTooltipPosition();
+                _this.cdr.detectChanges();
+            }
+        });
+        this.leaveHandle = (/**
+         * @return {?}
+         */
+        function () {
+            if (!_this.sliderComponent.isDragging) {
+                _this.toggleTooltip(false);
+                _this.cdr.detectChanges();
+            }
+        });
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    CmacsSliderHandleComponent.prototype.ngOnChanges = /**
+     * @param {?} changes
+     * @return {?}
+     */
+    function (changes) {
+        var _this = this;
+        var nzOffset = changes.nzOffset, nzValue = changes.nzValue, nzActive = changes.nzActive, nzTooltipVisible = changes.nzTooltipVisible;
+        if (nzOffset) {
+            this.updateStyle();
+        }
+        if (nzValue) {
+            this.updateTooltipTitle();
+            this.updateTooltipPosition();
+        }
+        if (nzActive) {
+            if (nzActive.currentValue) {
+                this.toggleTooltip(true);
+            }
+            else {
+                this.toggleTooltip(false);
+            }
+        }
+        if (nzTooltipVisible && nzTooltipVisible.currentValue === 'always') {
+            Promise.resolve().then((/**
+             * @return {?}
+             */
+            function () { return _this.toggleTooltip(true, true); }));
+        }
+    };
+    /**
+     * @return {?}
+     */
+    CmacsSliderHandleComponent.prototype.ngOnDestroy = /**
+     * @return {?}
+     */
+    function () {
+        this.hovers_.unsubscribe();
+    };
+    /**
+     * @private
+     * @param {?} show
+     * @param {?=} force
+     * @return {?}
+     */
+    CmacsSliderHandleComponent.prototype.toggleTooltip = /**
+     * @private
+     * @param {?} show
+     * @param {?=} force
+     * @return {?}
+     */
+    function (show, force) {
+        if (force === void 0) { force = false; }
+        if (!force && (this.nzTooltipVisible !== 'default' || !this.tooltip)) {
+            return;
+        }
+        if (show) {
+            this.tooltip.show();
+        }
+        else {
+            this.tooltip.hide();
+        }
+    };
+    /**
+     * @private
+     * @return {?}
+     */
+    CmacsSliderHandleComponent.prototype.updateTooltipTitle = /**
+     * @private
+     * @return {?}
+     */
+    function () {
+        this.tooltipTitle = this.nzTipFormatter ? this.nzTipFormatter(this.nzValue) : "" + this.nzValue;
+    };
+    /**
+     * @private
+     * @return {?}
+     */
+    CmacsSliderHandleComponent.prototype.updateTooltipPosition = /**
+     * @private
+     * @return {?}
+     */
+    function () {
+        var _this = this;
+        if (this.tooltip) {
+            Promise.resolve().then((/**
+             * @return {?}
+             */
+            function () { return _this.tooltip.updatePosition(); }));
+        }
+    };
+    /**
+     * @private
+     * @return {?}
+     */
+    CmacsSliderHandleComponent.prototype.updateStyle = /**
+     * @private
+     * @return {?}
+     */
+    function () {
+        this.style[this.nzVertical ? 'bottom' : 'left'] = this.nzOffset + "%";
+    };
+    CmacsSliderHandleComponent.decorators = [
+        { type: Component, args: [{
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    encapsulation: ViewEncapsulation.None,
+                    selector: 'cmacs-slider-handle',
+                    exportAs: 'cmacsSliderHandle',
+                    preserveWhitespaces: false,
+                    template: "<nz-tooltip\r\n  *ngIf=\"nzTipFormatter !== null && nzTooltipVisible !== 'never'\"\r\n  [nzTitle]=\"tooltipTitle\"\r\n  [nzTrigger]=\"null\">\r\n  <div nz-tooltip class=\"ant-slider-handle\" [ngStyle]=\"style\"></div>\r\n</nz-tooltip>\r\n<div *ngIf=\"nzTipFormatter === null || nzTooltipVisible === 'never'\" class=\"ant-slider-handle\" [ngStyle]=\"style\"></div>\r\n",
+                    host: {
+                        '(mouseenter)': 'enterHandle()',
+                        '(mouseleave)': 'leaveHandle()'
+                    },
+                    styles: [".ant-slider-handle{background-color:#2a7cff;border:none}.ant-slider-disabled .ant-slider-handle{background-color:#cfd3d9}"]
+                }] }
+    ];
+    /** @nocollapse */
+    CmacsSliderHandleComponent.ctorParameters = function () { return [
+        { type: CmacsSliderComponent },
+        { type: ChangeDetectorRef }
+    ]; };
+    CmacsSliderHandleComponent.propDecorators = {
+        tooltip: [{ type: ViewChild, args: [NzToolTipComponent,] }],
+        nzVertical: [{ type: Input }],
+        nzOffset: [{ type: Input }],
+        nzValue: [{ type: Input }],
+        nzTooltipVisible: [{ type: Input }],
+        nzTipFormatter: [{ type: Input }],
+        nzActive: [{ type: Input }]
+    };
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsSliderHandleComponent.prototype, "nzActive", void 0);
+    return CmacsSliderHandleComponent;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var CmacsSliderMarksComponent = /** @class */ (function () {
+    function CmacsSliderMarksComponent() {
+        this.nzLowerBound = null;
+        this.nzUpperBound = null;
+        this.nzVertical = false;
+        this.nzIncluded = false;
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    CmacsSliderMarksComponent.prototype.ngOnChanges = /**
+     * @param {?} changes
+     * @return {?}
+     */
+    function (changes) {
+        if (changes.nzMarksArray) {
+            this.buildMarks();
+        }
+        if (changes.nzMarksArray || changes.nzLowerBound || changes.nzUpperBound) {
+            this.togglePointActive();
+        }
+    };
+    /**
+     * @param {?} _index
+     * @param {?} mark
+     * @return {?}
+     */
+    CmacsSliderMarksComponent.prototype.trackById = /**
+     * @param {?} _index
+     * @param {?} mark
+     * @return {?}
+     */
+    function (_index, mark) {
+        return mark.value;
+    };
+    /**
+     * @private
+     * @return {?}
+     */
+    CmacsSliderMarksComponent.prototype.buildMarks = /**
+     * @private
+     * @return {?}
+     */
+    function () {
+        var _this = this;
+        /** @type {?} */
+        var range = this.nzMax - this.nzMin;
+        this.marks = this.nzMarksArray.map((/**
+         * @param {?} mark
+         * @return {?}
+         */
+        function (mark) {
+            var value = mark.value, offset = mark.offset, config = mark.config;
+            /** @type {?} */
+            var style = _this.buildStyles(value, range, config);
+            /** @type {?} */
+            var label = isConfigAObject(config) ? config.label : config;
+            return {
+                label: label,
+                offset: offset,
+                style: style,
+                value: value,
+                config: config,
+                active: false
+            };
+        }));
+    };
+    /**
+     * @private
+     * @param {?} value
+     * @param {?} range
+     * @param {?} config
+     * @return {?}
+     */
+    CmacsSliderMarksComponent.prototype.buildStyles = /**
+     * @private
+     * @param {?} value
+     * @param {?} range
+     * @param {?} config
+     * @return {?}
+     */
+    function (value, range, config) {
+        /** @type {?} */
+        var style;
+        if (this.nzVertical) {
+            style = {
+                marginBottom: '-50%',
+                bottom: ((value - this.nzMin) / range) * 100 + "%"
+            };
+        }
+        else {
+            /** @type {?} */
+            var marksCount = this.nzMarksArray.length;
+            /** @type {?} */
+            var unit = 100 / (marksCount - 1);
+            /** @type {?} */
+            var markWidth = unit * 0.9;
+            style = {
+                width: markWidth + "%",
+                marginLeft: -markWidth / 2 + "%",
+                left: ((value - this.nzMin) / range) * 100 + "%"
+            };
+        }
+        if (isConfigAObject(config) && config.style) {
+            style = __assign({}, style, config.style);
+        }
+        return style;
+    };
+    /**
+     * @private
+     * @return {?}
+     */
+    CmacsSliderMarksComponent.prototype.togglePointActive = /**
+     * @private
+     * @return {?}
+     */
+    function () {
+        var _this = this;
+        if (this.marks && this.nzLowerBound !== null && this.nzUpperBound !== null) {
+            this.marks.forEach((/**
+             * @param {?} mark
+             * @return {?}
+             */
+            function (mark) {
+                /** @type {?} */
+                var value = mark.value;
+                /** @type {?} */
+                var isActive = (!_this.nzIncluded && value === _this.nzUpperBound) ||
+                    (_this.nzIncluded && value <= (/** @type {?} */ (_this.nzUpperBound)) && value >= (/** @type {?} */ (_this.nzLowerBound)));
+                mark.active = isActive;
+            }));
+        }
+    };
+    CmacsSliderMarksComponent.decorators = [
+        { type: Component, args: [{
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    encapsulation: ViewEncapsulation.None,
+                    preserveWhitespaces: false,
+                    selector: 'cmacs-slider-marks',
+                    exportAs: 'cmacsSliderMarks',
+                    template: "<div class=\"ant-slider-mark\">\r\n  <span\r\n    class=\"ant-slider-mark-text\"\r\n    *ngFor=\"let attr of marks; trackBy: trackById\"\r\n    [class.ant-slider-mark-active]=\"attr.active\"\r\n    [ngStyle]=\"attr.style\"\r\n    [innerHTML]=\"attr.label\">\r\n  </span>\r\n</div>"
+                }] }
+    ];
+    CmacsSliderMarksComponent.propDecorators = {
+        nzLowerBound: [{ type: Input }],
+        nzUpperBound: [{ type: Input }],
+        nzMarksArray: [{ type: Input }],
+        nzMin: [{ type: Input }],
+        nzMax: [{ type: Input }],
+        nzVertical: [{ type: Input }],
+        nzIncluded: [{ type: Input }]
+    };
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsSliderMarksComponent.prototype, "nzVertical", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsSliderMarksComponent.prototype, "nzIncluded", void 0);
+    return CmacsSliderMarksComponent;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var CmacsSliderStepComponent = /** @class */ (function () {
+    function CmacsSliderStepComponent() {
+        this.nzLowerBound = null;
+        this.nzUpperBound = null;
+        this.nzVertical = false;
+        this.nzIncluded = false;
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    CmacsSliderStepComponent.prototype.ngOnChanges = /**
+     * @param {?} changes
+     * @return {?}
+     */
+    function (changes) {
+        if (changes.nzMarksArray) {
+            this.buildSteps();
+        }
+        if (changes.nzMarksArray || changes.nzLowerBound || changes.nzUpperBound) {
+            this.togglePointActive();
+        }
+    };
+    /**
+     * @param {?} _index
+     * @param {?} step
+     * @return {?}
+     */
+    CmacsSliderStepComponent.prototype.trackById = /**
+     * @param {?} _index
+     * @param {?} step
+     * @return {?}
+     */
+    function (_index, step) {
+        return step.value;
+    };
+    /**
+     * @private
+     * @return {?}
+     */
+    CmacsSliderStepComponent.prototype.buildSteps = /**
+     * @private
+     * @return {?}
+     */
+    function () {
+        /** @type {?} */
+        var orient = this.nzVertical ? 'bottom' : 'left';
+        this.steps = this.nzMarksArray.map((/**
+         * @param {?} mark
+         * @return {?}
+         */
+        function (mark) {
+            var _a;
+            var value = mark.value, offset = mark.offset, config = mark.config;
+            return {
+                value: value,
+                offset: offset,
+                config: config,
+                active: false,
+                style: (_a = {},
+                    _a[orient] = offset + "%",
+                    _a)
+            };
+        }));
+    };
+    /**
+     * @private
+     * @return {?}
+     */
+    CmacsSliderStepComponent.prototype.togglePointActive = /**
+     * @private
+     * @return {?}
+     */
+    function () {
+        var _this = this;
+        if (this.steps && this.nzLowerBound !== null && this.nzUpperBound !== null) {
+            this.steps.forEach((/**
+             * @param {?} step
+             * @return {?}
+             */
+            function (step) {
+                /** @type {?} */
+                var value = step.value;
+                /** @type {?} */
+                var isActive = (!_this.nzIncluded && value === _this.nzUpperBound) ||
+                    (_this.nzIncluded && value <= (/** @type {?} */ (_this.nzUpperBound)) && value >= (/** @type {?} */ (_this.nzLowerBound)));
+                step.active = isActive;
+            }));
+        }
+    };
+    CmacsSliderStepComponent.decorators = [
+        { type: Component, args: [{
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    encapsulation: ViewEncapsulation.None,
+                    selector: 'cmacs-slider-step',
+                    exportAs: 'cmacsSliderStep',
+                    preserveWhitespaces: false,
+                    template: "<div class=\"ant-slider-step\">\r\n  <span\r\n    class=\"ant-slider-dot\"\r\n    *ngFor=\"let mark of steps; trackBy: trackById\"\r\n    [class.ant-slider-dot-active]=\"mark.active\"\r\n    [ngStyle]=\"mark.style\">\r\n  </span>\r\n</div>"
+                }] }
+    ];
+    CmacsSliderStepComponent.propDecorators = {
+        nzLowerBound: [{ type: Input }],
+        nzUpperBound: [{ type: Input }],
+        nzMarksArray: [{ type: Input }],
+        nzVertical: [{ type: Input }],
+        nzIncluded: [{ type: Input }]
+    };
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsSliderStepComponent.prototype, "nzVertical", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsSliderStepComponent.prototype, "nzIncluded", void 0);
+    return CmacsSliderStepComponent;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
 /** @type {?} */
 var CMACS_COMMENT_CELLS = [
     CmacsCommentActionComponent,
@@ -16914,7 +18423,12 @@ var CmacsComponentsLibModule = /** @class */ (function () {
                         CmacsSelectUnselectableDirective,
                         CmacsAlertComponent
                     ], CMACS_COMMENT_CELLS, [
-                        CmacsCommentComponent
+                        CmacsCommentComponent,
+                        CmacsSliderComponent,
+                        CmacsSliderHandleComponent,
+                        CmacsSliderMarksComponent,
+                        CmacsSliderStepComponent,
+                        CmacsSliderTrackComponent
                     ]),
                     imports: [
                         CommonModule,
@@ -17009,7 +18523,12 @@ var CmacsComponentsLibModule = /** @class */ (function () {
                         CmacsSelectUnselectableDirective,
                         CmacsAlertComponent
                     ], CMACS_COMMENT_CELLS, [
-                        CmacsCommentComponent
+                        CmacsCommentComponent,
+                        CmacsSliderComponent,
+                        CmacsSliderHandleComponent,
+                        CmacsSliderMarksComponent,
+                        CmacsSliderStepComponent,
+                        CmacsSliderTrackComponent
                     ]),
                     providers: [{ provide: NZ_I18N, useValue: ɵ0$2 }, DatePipe, CmacsDropdownService],
                     entryComponents: [
@@ -17347,6 +18866,6 @@ var ModeTabType = {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, CmacsDateCellDirective, CmacsMonthCellDirective, CmacsDateFullCellDirective, CmacsMonthFullCellDirective, CmacsCalendarHeaderComponent, CmacsCalendarComponent, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, CmacsModalRef, CmacsDropdownADirective, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, CmacsAlertComponent, CmacsCommentComponent, CmacsCommentAvatarDirective, CmacsCommentContentDirective, CmacsCommentActionHostDirective, CmacsCommentActionComponent, AbstractPickerComponent as ɵa, CalendarFooterComponent as ɵba, CalendarHeaderComponent as ɵy, CalendarInputComponent as ɵz, OkButtonComponent as ɵbb, TimePickerButtonComponent as ɵbc, TodayButtonComponent as ɵbd, DateTableComponent as ɵbe, DecadePanelComponent as ɵbi, MonthPanelComponent as ɵbg, MonthTableComponent as ɵbh, DateRangePopupComponent as ɵbk, InnerPopupComponent as ɵbj, YearPanelComponent as ɵbf, CmacsDropdownService as ɵbl, CmacsMenuDropdownService as ɵk, CmacsFormControlComponent as ɵq, CmacsFormExplainComponent as ɵo, CmacsFormExtraComponent as ɵl, CmacsFormItemComponent as ɵn, CmacsFormLabelComponent as ɵm, CmacsFormSplitComponent as ɵs, CmacsFormTextComponent as ɵr, CmacsFormDirective as ɵp, CmacsMenuServiceFactory as ɵd, CmacsMenuService as ɵc, CmacsSubmenuService as ɵb, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵv, CmacsOptionGroupComponent as ɵh, CmacsOptionLiComponent as ɵw, NzFilterGroupOptionPipe as ɵu, NzFilterOptionPipe as ɵt, CmacsSelectUnselectableDirective as ɵx, CmacsSelectService as ɵg, NzTreeService as ɵf, ExcelService as ɵe };
+export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, CmacsDateCellDirective, CmacsMonthCellDirective, CmacsDateFullCellDirective, CmacsMonthFullCellDirective, CmacsCalendarHeaderComponent, CmacsCalendarComponent, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, CmacsModalRef, CmacsDropdownADirective, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, CmacsAlertComponent, CmacsCommentComponent, CmacsCommentAvatarDirective, CmacsCommentContentDirective, CmacsCommentActionHostDirective, CmacsCommentActionComponent, CmacsSliderComponent, CmacsSliderHandleComponent, CmacsSliderMarksComponent, CmacsSliderStepComponent, CmacsSliderTrackComponent, isValueARange, isConfigAObject, Marks, AbstractPickerComponent as ɵa, CalendarFooterComponent as ɵba, CalendarHeaderComponent as ɵy, CalendarInputComponent as ɵz, OkButtonComponent as ɵbb, TimePickerButtonComponent as ɵbc, TodayButtonComponent as ɵbd, DateTableComponent as ɵbe, DecadePanelComponent as ɵbi, MonthPanelComponent as ɵbg, MonthTableComponent as ɵbh, DateRangePopupComponent as ɵbk, InnerPopupComponent as ɵbj, YearPanelComponent as ɵbf, CmacsDropdownService as ɵbl, CmacsMenuDropdownService as ɵk, CmacsFormControlComponent as ɵq, CmacsFormExplainComponent as ɵo, CmacsFormExtraComponent as ɵl, CmacsFormItemComponent as ɵn, CmacsFormLabelComponent as ɵm, CmacsFormSplitComponent as ɵs, CmacsFormTextComponent as ɵr, CmacsFormDirective as ɵp, CmacsMenuServiceFactory as ɵd, CmacsMenuService as ɵc, CmacsSubmenuService as ɵb, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵv, CmacsOptionGroupComponent as ɵh, CmacsOptionLiComponent as ɵw, NzFilterGroupOptionPipe as ɵu, NzFilterOptionPipe as ɵt, CmacsSelectUnselectableDirective as ɵx, CmacsSelectService as ɵg, NzTreeService as ɵf, ExcelService as ɵe };
 
 //# sourceMappingURL=cmacs-components-lib.js.map

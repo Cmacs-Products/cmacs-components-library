@@ -65,6 +65,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     ondlclickRow: EventEmitter<any>;
     onclickRow: EventEmitter<any>;
     rateCount: number;
+    multiSelect: boolean;
     selected: boolean;
     checkboxCache: CheckboxSelect[];
     isIndeterminate: boolean;
@@ -81,6 +82,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     onButtonClick(field: any): void;
     onCheckboxChange(event: any): void;
     onRateChange(count: number, data: any): void;
+    onRateClick(event: any): void;
     getFields(): Field[];
     onCheckboxAllChange(status: boolean): void;
     getLabel(data: any, field: Field): string;

@@ -3,6 +3,7 @@ import { CmacsCardTabComponent } from './cmacs-card-tab.component';
 export declare type CmacsCardType = 'file' | 'selection' | 'action' | 'team' | 'project' | 'folder' | 'none';
 export declare class CmacsCardComponent implements OnInit {
     folderIcon: string;
+    isEditable: boolean;
     bordered: boolean;
     opened: boolean;
     editable: boolean;
@@ -21,6 +22,7 @@ export declare class CmacsCardComponent implements OnInit {
     cmacsType: CmacsCardType;
     cmacsIcon: string;
     title: string | TemplateRef<void>;
+    titleChange: EventEmitter<string>;
     extra: string | TemplateRef<void>;
     tab: CmacsCardTabComponent;
     open: EventEmitter<any>;
@@ -32,5 +34,7 @@ export declare class CmacsCardComponent implements OnInit {
     onClick(event: Event): void;
     onDblClick(): void;
     select(event: Event): void;
+    handleEnter(event: KeyboardEvent, titleContainer: any, titleSpan: any): void;
+    toggleEdit(titleContainer: any): void;
     getInitials(name: any): any;
 }
