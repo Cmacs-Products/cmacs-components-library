@@ -25,7 +25,7 @@ import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMa
 import { __decorate, __metadata } from 'tslib';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, TemplateRef, HostListener, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, Injector, NgModule, defineInjectable, inject, ComponentFactoryResolver, Type } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, TemplateRef, HostListener, ContentChild, ViewContainerRef, Injectable, SkipSelf, Pipe, InjectionToken, ViewChildren, Injector, NgModule, defineInjectable, inject, ComponentFactoryResolver, Type } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -9565,6 +9565,7 @@ class CmacsCardComponent {
         this.close = new EventEmitter();
         this.selected = false;
         this.selectedChange = new EventEmitter();
+        this.onselect = new EventEmitter();
         renderer.addClass(elementRef.nativeElement, 'ant-card');
     }
     /**
@@ -9608,6 +9609,7 @@ class CmacsCardComponent {
         if (!this.disabled) {
             this.selected = !this.selected;
             this.selectedChange.emit(this.selected);
+            this.onselect.emit(this.selected);
         }
     }
     /**
@@ -9709,6 +9711,7 @@ CmacsCardComponent.propDecorators = {
     close: [{ type: Output }],
     selected: [{ type: Input }],
     selectedChange: [{ type: Output }],
+    onselect: [{ type: Output }],
     onClick: [{ type: HostListener, args: ['click', ['$event'],] }],
     onDblClick: [{ type: HostListener, args: ['dblclick',] }]
 };

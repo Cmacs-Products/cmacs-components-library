@@ -29,6 +29,7 @@ export declare class CmacsCardComponent implements OnInit {
     close: EventEmitter<any>;
     selected: boolean;
     selectedChange: EventEmitter<boolean>;
+    onselect: EventEmitter<boolean>;
     constructor(renderer: Renderer2, elementRef: ElementRef);
     ngOnInit(): void;
     onClick(event: Event): void;

@@ -11428,6 +11428,7 @@ var CmacsCardComponent = /** @class */ (function () {
         this.close = new EventEmitter();
         this.selected = false;
         this.selectedChange = new EventEmitter();
+        this.onselect = new EventEmitter();
         renderer.addClass(elementRef.nativeElement, 'ant-card');
     }
     /**
@@ -11485,6 +11486,7 @@ var CmacsCardComponent = /** @class */ (function () {
         if (!this.disabled) {
             this.selected = !this.selected;
             this.selectedChange.emit(this.selected);
+            this.onselect.emit(this.selected);
         }
     };
     /**
@@ -11595,6 +11597,7 @@ var CmacsCardComponent = /** @class */ (function () {
         close: [{ type: Output }],
         selected: [{ type: Input }],
         selectedChange: [{ type: Output }],
+        onselect: [{ type: Output }],
         onClick: [{ type: HostListener, args: ['click', ['$event'],] }],
         onDblClick: [{ type: HostListener, args: ['dblclick',] }]
     };

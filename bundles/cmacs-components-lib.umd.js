@@ -11327,6 +11327,7 @@
             this.close = new i0.EventEmitter();
             this.selected = false;
             this.selectedChange = new i0.EventEmitter();
+            this.onselect = new i0.EventEmitter();
             renderer.addClass(elementRef.nativeElement, 'ant-card');
         }
         /**
@@ -11384,6 +11385,7 @@
                 if (!this.disabled) {
                     this.selected = !this.selected;
                     this.selectedChange.emit(this.selected);
+                    this.onselect.emit(this.selected);
                 }
             };
         /**
@@ -11496,6 +11498,7 @@
             close: [{ type: i0.Output }],
             selected: [{ type: i0.Input }],
             selectedChange: [{ type: i0.Output }],
+            onselect: [{ type: i0.Output }],
             onClick: [{ type: i0.HostListener, args: ['click', ['$event'],] }],
             onDblClick: [{ type: i0.HostListener, args: ['dblclick',] }]
         };
