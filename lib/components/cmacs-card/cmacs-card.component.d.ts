@@ -1,7 +1,8 @@
-import { ElementRef, EventEmitter, OnInit, Renderer2, TemplateRef } from '@angular/core';
+import { ChangeDetectorRef, ElementRef, EventEmitter, OnInit, Renderer2, TemplateRef } from '@angular/core';
 import { CmacsCardTabComponent } from './cmacs-card-tab.component';
-export declare type CmacsCardType = 'file' | 'selection' | 'action' | 'team' | 'project' | 'folder' | 'none';
+export declare type CmacsCardType = 'file' | 'selection' | 'action' | 'team' | 'project' | 'folder' | 'measure' | 'none';
 export declare class CmacsCardComponent implements OnInit {
+    private cdr;
     folderIcon: string;
     isEditable: boolean;
     bordered: boolean;
@@ -28,12 +29,13 @@ export declare class CmacsCardComponent implements OnInit {
     open: EventEmitter<any>;
     close: EventEmitter<any>;
     selected: boolean;
+    value: any;
     selectedChange: EventEmitter<boolean>;
-    onselect: EventEmitter<boolean>;
-    constructor(renderer: Renderer2, elementRef: ElementRef);
+    constructor(cdr: ChangeDetectorRef, renderer: Renderer2, elementRef: ElementRef);
     ngOnInit(): void;
     onClick(event: Event): void;
     onDblClick(): void;
+    markForCheck(): void;
     select(event: Event): void;
     handleEnter(event: KeyboardEvent, titleContainer: any, titleSpan: any): void;
     toggleEdit(titleContainer: any): void;
