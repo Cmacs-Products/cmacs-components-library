@@ -8,6 +8,7 @@ export declare class CmacsCardComponent implements OnInit {
     bordered: boolean;
     opened: boolean;
     editable: boolean;
+    isRadio: boolean;
     loading: boolean;
     disabled: boolean;
     hoverable: boolean;
