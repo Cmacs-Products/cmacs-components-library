@@ -34,6 +34,7 @@ export declare class CmacsCardComponent implements OnInit {
     selectedChange: EventEmitter<boolean>;
     constructor(cdr: ChangeDetectorRef, renderer: Renderer2, elementRef: ElementRef);
     ngOnInit(): void;
+    checkRadio(): void;
     onClick(event: Event): void;
     onDblClick(): void;
     markForCheck(): void;
