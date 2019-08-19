@@ -12,21 +12,21 @@ import { InputBoolean as InputBoolean$1, isNotNil as isNotNil$1, NgZorroAntdModu
 import { NzIconDirective, NzIconModule } from 'ng-zorro-antd/icon';
 import { DatePipe, DOCUMENT, CommonModule, registerLocaleData } from '@angular/common';
 import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
-import { DateHelperService, NzI18nService, NzI18nModule } from 'ng-zorro-antd/i18n';
 import { ExportAsService, ExportAsModule } from 'ngx-export-as';
 import { NzMenuDirective, NzMenuModule } from 'ng-zorro-antd/menu';
 import { MediaMatcher, LayoutModule } from '@angular/cdk/layout';
 import { NzRowDirective, NzColDirective, NzGridModule } from 'ng-zorro-antd/grid';
 import { NzToolTipComponent } from 'ng-zorro-antd/tooltip';
 import { Platform, PlatformModule } from '@angular/cdk/platform';
-import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName, NgModel, ReactiveFormsModule } from '@angular/forms';
-import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription } from 'rxjs';
-import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
 import { __decorate, __metadata } from 'tslib';
+import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
+import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { DateHelperService, NzI18nService, NzI18nModule } from 'ng-zorro-antd/i18n';
+import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription } from 'rxjs';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, TemplateRef, HostListener, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, Injector, NgModule, defineInjectable, inject, ComponentFactoryResolver, Type } from '@angular/core';
-import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, LoggerService } from 'ng-zorro-antd/core';
+import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, LoggerService } from 'ng-zorro-antd/core';
 
 /**
  * @fileoverview added by tsickle
@@ -13135,6 +13135,30 @@ CmacsDropdownService.ctorParameters = () => [
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+class CmacsDividerComponent {
+    constructor() {
+        this.size = '17px';
+    }
+}
+CmacsDividerComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'cmacs-divider',
+                template: "<span class=\"ant-divider ant-divider-vertical\" [style.font-size]=\"size\">\r\n  <ng-container></ng-container>\r\n</span>\r\n",
+                preserveWhitespaces: false,
+                encapsulation: ViewEncapsulation.None,
+                styles: [".ant-divider,.ant-divider-vertical{height:1em}"]
+            }] }
+];
+/** @nocollapse */
+CmacsDividerComponent.ctorParameters = () => [];
+CmacsDividerComponent.propDecorators = {
+    size: [{ type: Input }]
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
 class CmacsFormExplainComponent {
     /**
      * @param {?} elementRef
@@ -13945,6 +13969,43 @@ __decorate([
     InputNumber(),
     __metadata("design:type", Number)
 ], CmacsProgressComponent.prototype, "nzGapDegree", void 0);
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class CmacsFloatingMenuComponent {
+    constructor() {
+        this.carrot = ''; // bottom | top | '';
+    }
+}
+CmacsFloatingMenuComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'cmacs-floating-menu',
+                exportAs: 'cmacsFloatingMenu',
+                template: "<div #fixedEl>\r\n  <ng-content></ng-content>\r\n</div>\r\n",
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                encapsulation: ViewEncapsulation.None,
+                host: {
+                    '[class.carrot-bottom-menu]': `carrot === 'bottom'`,
+                    '[class.carrot-top-menu]': `carrot === 'top'`,
+                    '[style.top]': `top`,
+                    '[style.bottom]': `bottom`,
+                    '[style.left]': `left`,
+                    '[style.right]': `right`,
+                },
+                styles: ["cmacs-floating-menu{display:inline-block;position:fixed}cmacs-floating-menu>div{border-radius:3px;background-color:#0d1e3b;box-shadow:0 8px 7px -3px rgba(5,6,6,.18);z-index:50}cmacs-floating-menu.carrot-top-menu::before{width:10px;border:8px solid #0d1e3b;display:block;content:'';margin:0 auto;position:relative;-webkit-transform:rotate(-135deg) translateY(-8px) translateX(-8px);transform:rotate(-135deg) translateY(-8px) translateX(-8px)}cmacs-floating-menu.carrot-bottom-menu::after{width:10px;border:8px solid #0d1e3b;display:block;content:'';margin:0 auto;position:relative;-webkit-transform:rotate(-135deg) translateY(8px) translateX(8px);transform:rotate(-135deg) translateY(8px) translateX(8px)}cmacs-floating-menu>div>button:first-child{padding-left:16px!important}cmacs-floating-menu>div>button:last-child{padding-right:16px!important}cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default:enabled:focus,cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default:enabled:hover,cmacs-floating-menu .ant-btn-icon-only,cmacs-floating-menu .ant-menu-vertical{background-color:transparent!important}cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default:enabled,cmacs-floating-menu .ant-menu-item>a{color:#fff}cmacs-floating-menu .ant-menu-vertical .ant-menu-item,cmacs-floating-menu .ant-menu-vertical .ant-menu-item:not(:last-child){margin:0 auto}cmacs-floating-menu .ant-menu-vertical,cmacs-floating-menu .ant-menu-vertical-left{border:#97a0ae}cmacs-floating-menu .ant-menu-item>a{color:#97a0ae}cmacs-floating-menu .ant-menu-item .ant-menu-item-selected,cmacs-floating-menu .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{background-color:#001333;border-radius:3px}cmacs-floating-menu cmacs-divider .ant-divider{background-color:#656c79}"]
+            }] }
+];
+/** @nocollapse */
+CmacsFloatingMenuComponent.ctorParameters = () => [];
+CmacsFloatingMenuComponent.propDecorators = {
+    carrot: [{ type: Input }],
+    top: [{ type: Input }],
+    bottom: [{ type: Input }],
+    left: [{ type: Input }],
+    right: [{ type: Input }]
+};
 
 /**
  * @fileoverview added by tsickle
@@ -15618,6 +15679,1507 @@ __decorate([
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+class CmacsDateTimePickerComponent {
+    /**
+     * @param {?} element
+     * @param {?} renderer
+     * @param {?} updateCls
+     * @param {?} cdr
+     */
+    constructor(element, renderer, updateCls, cdr) {
+        this.element = element;
+        this.renderer = renderer;
+        this.updateCls = updateCls;
+        this.cdr = cdr;
+        this._disabled = false;
+        this._value = null;
+        this._allowEmpty = true;
+        this._autoFocus = false;
+        this._hideDisabledOptions = false;
+        this.isInit = false;
+        this.overlayPositions = [
+            {
+                originX: 'start',
+                originY: 'top',
+                overlayX: 'end',
+                overlayY: 'top',
+                offsetX: 0,
+                offsetY: 0
+            }
+        ];
+        this.size = null;
+        this.hourStep = 1;
+        this.minuteStep = 1;
+        this.secondStep = 1;
+        this.clearText = 'clear';
+        this.popupClassName = '';
+        this.placeHolder = '';
+        this.defaultOpenValue = new Date();
+        this.format = 'HH:mm';
+        this.cmacsOpen = false;
+        this.use12Hours = false;
+        this.openChange = new EventEmitter();
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set hideDisabledOptions(value) {
+        this._hideDisabledOptions = toBoolean(value);
+    }
+    /**
+     * @return {?}
+     */
+    get hideDisabledOptions() {
+        return this._hideDisabledOptions;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set allowEmpty(value) {
+        this._allowEmpty = toBoolean(value);
+    }
+    /**
+     * @return {?}
+     */
+    get allowEmpty() {
+        return this._allowEmpty;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set autoFocus(value) {
+        this._autoFocus = toBoolean(value);
+        this.updateAutoFocus();
+    }
+    /**
+     * @return {?}
+     */
+    get autoFocus() {
+        return this._autoFocus;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set disabled(value) {
+        this._disabled = toBoolean(value);
+        /** @type {?} */
+        const input = (/** @type {?} */ (this.inputRef.nativeElement));
+        if (this._disabled) {
+            this.renderer.setAttribute(input, 'disabled', '');
+        }
+        else {
+            this.renderer.removeAttribute(input, 'disabled');
+        }
+    }
+    /**
+     * @return {?}
+     */
+    get disabled() {
+        return this._disabled;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set value(value) {
+        this._value = value;
+        if (this._onChange) {
+            this._onChange(this.value);
+        }
+        if (this._onTouched) {
+            this._onTouched();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    get value() {
+        return this._value;
+    }
+    /**
+     * @return {?}
+     */
+    open() {
+        if (this.disabled) {
+            return;
+        }
+        this.cmacsOpen = true;
+        this.openChange.emit(this.cmacsOpen);
+    }
+    /**
+     * @return {?}
+     */
+    close() {
+        this.cmacsOpen = false;
+        this.openChange.emit(this.cmacsOpen);
+    }
+    /**
+     * @return {?}
+     */
+    updateAutoFocus() {
+        if (this.isInit && !this.disabled) {
+            if (this.autoFocus) {
+                this.renderer.setAttribute(this.inputRef.nativeElement, 'autofocus', 'autofocus');
+            }
+            else {
+                this.renderer.removeAttribute(this.inputRef.nativeElement, 'autofocus');
+            }
+        }
+    }
+    /**
+     * @return {?}
+     */
+    onClickClearBtn() {
+        this.value = null;
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    setClassMap() {
+        this.updateCls.updateHostClass(this.element.nativeElement, {
+            [`ant-time-picker`]: true,
+            [`ant-time-picker-${this.size}`]: isNotNil(this.size)
+        });
+    }
+    /**
+     * @return {?}
+     */
+    focus() {
+        if (this.inputRef.nativeElement) {
+            this.inputRef.nativeElement.focus();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    blur() {
+        if (this.inputRef.nativeElement) {
+            this.inputRef.nativeElement.blur();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        this.setClassMap();
+        this.origin = new CdkOverlayOrigin(this.element);
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    ngOnChanges(changes) {
+        const { use12Hours, format } = changes;
+        if (use12Hours && !use12Hours.previousValue && use12Hours.currentValue && !format) {
+            this.format = 'h:mm:ss a';
+        }
+    }
+    /**
+     * @return {?}
+     */
+    ngAfterViewInit() {
+        this.isInit = true;
+        this.updateAutoFocus();
+    }
+    /**
+     * @param {?} time
+     * @return {?}
+     */
+    writeValue(time) {
+        this._value = time;
+        this.cdr.markForCheck();
+    }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    registerOnChange(fn) {
+        this._onChange = fn;
+    }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    registerOnTouched(fn) {
+        this._onTouched = fn;
+    }
+    /**
+     * @param {?} isDisabled
+     * @return {?}
+     */
+    setDisabledState(isDisabled) {
+        this.disabled = isDisabled;
+        this.cdr.markForCheck();
+    }
+}
+CmacsDateTimePickerComponent.decorators = [
+    { type: Component, args: [{
+                encapsulation: ViewEncapsulation.None,
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                selector: 'cmacs-datetime-picker',
+                exportAs: 'cmacsDateTimePicker',
+                template: "<input\r\n  type=\"text\"\r\n  [nzTime]=\"format\"\r\n  class=\"ant-time-picker-input\"\r\n  [placeholder]=\"placeHolder || ('TimePicker.placeholder' | nzI18n)\"\r\n  [(ngModel)]=\"value\"\r\n  readonly=\"readonly\"\r\n  (click)=\"open()\"\r\n  #inputElement>\r\n<span class=\"ant-time-picker-icon\">\r\n  <i nz-icon type=\"clock-circle\"></i>\r\n</span>\r\n<i\r\n  *ngIf=\"allowEmpty && value\"\r\n  nz-icon\r\n  type=\"close-circle\"\r\n  theme=\"fill\"\r\n  class=\"anticon anticon-close-circle ant-time-picker-clear\"\r\n  tabindex=\"-1\"\r\n  [attr.aria-label]=\"clearText\"\r\n  [attr.title]=\"clearText\"\r\n  (click)=\"onClickClearBtn()\"\r\n></i>\r\n\r\n<ng-template\r\n  cdkConnectedOverlay\r\n  nzConnectedOverlay\r\n  cdkConnectedOverlayHasBackdrop\r\n  [cdkConnectedOverlayPositions]=\"overlayPositions\"\r\n  [cdkConnectedOverlayOrigin]=\"origin\"\r\n  [cdkConnectedOverlayOpen]=\"cmacsOpen\"\r\n  [cdkConnectedOverlayOffsetY]=\"-2\"\r\n  (detach)=\"close()\"\r\n  (backdropClick)=\"close()\">\r\n  <cmacs-datetime-picker-panel\r\n    [ngClass]=\"popupClassName\"\r\n    [@slideMotion]=\"'bottom'\"\r\n    [format]=\"format\"\r\n    [nzHourStep]=\"hourStep\"\r\n    [nzMinuteStep]=\"minuteStep\"\r\n    [nzSecondStep]=\"secondStep\"\r\n    [nzDisabledHours]=\"disabledHours\"\r\n    [nzDisabledMinutes]=\"disabledMinutes\"\r\n    [nzDisabledSeconds]=\"disabledSeconds\"\r\n    [nzPlaceHolder]=\"placeHolder || ('TimePicker.placeholder' | nzI18n)\"\r\n    [nzHideDisabledOptions]=\"hideDisabledOptions\"\r\n    [nzUse12Hours]=\"use12Hours\"\r\n    [nzDefaultOpenValue]=\"defaultOpenValue\"\r\n    [nzAddOn]=\"addOn\"\r\n    [opened]=\"cmacsOpen\"\r\n    [nzClearText]=\"clearText\"\r\n    [nzAllowEmpty]=\"allowEmpty\"\r\n    [(ngModel)]=\"value\">\r\n  </cmacs-datetime-picker-panel>\r\n</ng-template>\r\n\r\n",
+                animations: [slideMotion],
+                providers: [NzUpdateHostClassService, { provide: NG_VALUE_ACCESSOR, useExisting: CmacsDateTimePickerComponent, multi: true }]
+            }] }
+];
+/** @nocollapse */
+CmacsDateTimePickerComponent.ctorParameters = () => [
+    { type: ElementRef },
+    { type: Renderer2 },
+    { type: NzUpdateHostClassService },
+    { type: ChangeDetectorRef }
+];
+CmacsDateTimePickerComponent.propDecorators = {
+    inputRef: [{ type: ViewChild, args: ['inputElement',] }],
+    size: [{ type: Input }],
+    hourStep: [{ type: Input }],
+    minuteStep: [{ type: Input }],
+    secondStep: [{ type: Input }],
+    clearText: [{ type: Input }],
+    popupClassName: [{ type: Input }],
+    placeHolder: [{ type: Input }],
+    addOn: [{ type: Input }],
+    defaultOpenValue: [{ type: Input }],
+    disabledHours: [{ type: Input }],
+    disabledMinutes: [{ type: Input }],
+    disabledSeconds: [{ type: Input }],
+    format: [{ type: Input }],
+    cmacsOpen: [{ type: Input }],
+    use12Hours: [{ type: Input }],
+    openChange: [{ type: Output }],
+    hideDisabledOptions: [{ type: Input }],
+    allowEmpty: [{ type: Input }],
+    autoFocus: [{ type: Input }],
+    disabled: [{ type: Input }]
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class CmacsDatetimeValueAccessorDirective {
+    /**
+     * @param {?} dateHelper
+     * @param {?} elementRef
+     */
+    constructor(dateHelper, elementRef) {
+        this.dateHelper = dateHelper;
+        this.elementRef = elementRef;
+    }
+    /**
+     * @return {?}
+     */
+    keyup() {
+        this.changed();
+    }
+    /**
+     * @return {?}
+     */
+    blur() {
+        this.touched();
+    }
+    /**
+     * @return {?}
+     */
+    changed() {
+        if (this._onChange) {
+            /** @type {?} */
+            const value = this.dateHelper.parseTime(this.elementRef.nativeElement.value);
+            this._onChange((/** @type {?} */ (value)));
+        }
+    }
+    /**
+     * @return {?}
+     */
+    touched() {
+        if (this._onTouch) {
+            this._onTouch();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    setRange() {
+        this.elementRef.nativeElement.focus();
+        this.elementRef.nativeElement.setSelectionRange(0, this.elementRef.nativeElement.value.length);
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    writeValue(value) {
+        this.elementRef.nativeElement.value = this.dateHelper.format(value, this.nzTime);
+    }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    registerOnChange(fn) {
+        this._onChange = fn;
+    }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    registerOnTouched(fn) {
+        this._onTouch = fn;
+    }
+}
+CmacsDatetimeValueAccessorDirective.decorators = [
+    { type: Directive, args: [{
+                selector: 'input[nzTime]',
+                exportAs: 'nzTime',
+                providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: CmacsDatetimeValueAccessorDirective, multi: true }]
+            },] }
+];
+/** @nocollapse */
+CmacsDatetimeValueAccessorDirective.ctorParameters = () => [
+    { type: DateHelperService },
+    { type: ElementRef }
+];
+CmacsDatetimeValueAccessorDirective.propDecorators = {
+    nzTime: [{ type: Input }],
+    keyup: [{ type: HostListener, args: ['keyup',] }],
+    blur: [{ type: HostListener, args: ['blur',] }]
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class TimeHolder {
+    constructor() {
+        this._seconds = undefined;
+        this._hours = undefined;
+        this._minutes = undefined;
+        this._selected12Hours = undefined;
+        this._use12Hours = false;
+        this._defaultOpenValue = new Date();
+        this._changes = new Subject();
+    }
+    /**
+     * @return {?}
+     */
+    setDefaultValueIfNil() {
+        if (!isNotNil(this._value)) {
+            this._value = new Date(this.defaultOpenValue);
+        }
+    }
+    /**
+     * @template THIS
+     * @this {THIS}
+     * @param {?} value
+     * @param {?} disabled
+     * @return {THIS}
+     */
+    setMinutes(value, disabled) {
+        if (disabled) {
+            return (/** @type {?} */ (this));
+        }
+        (/** @type {?} */ (this)).setDefaultValueIfNil();
+        (/** @type {?} */ (this)).minutes = value;
+        return (/** @type {?} */ (this));
+    }
+    /**
+     * @template THIS
+     * @this {THIS}
+     * @param {?} value
+     * @param {?} disabled
+     * @return {THIS}
+     */
+    setHours(value, disabled) {
+        if (disabled) {
+            return (/** @type {?} */ (this));
+        }
+        (/** @type {?} */ (this)).setDefaultValueIfNil();
+        (/** @type {?} */ (this)).hours = value;
+        return (/** @type {?} */ (this));
+    }
+    /**
+     * @template THIS
+     * @this {THIS}
+     * @param {?} value
+     * @param {?} disabled
+     * @return {THIS}
+     */
+    setSeconds(value, disabled) {
+        if (disabled) {
+            return (/** @type {?} */ (this));
+        }
+        (/** @type {?} */ (this)).setDefaultValueIfNil();
+        (/** @type {?} */ (this)).seconds = value;
+        return (/** @type {?} */ (this));
+    }
+    /**
+     * @template THIS
+     * @this {THIS}
+     * @param {?} value
+     * @return {THIS}
+     */
+    setUse12Hours(value) {
+        (/** @type {?} */ (this))._use12Hours = value;
+        return (/** @type {?} */ (this));
+    }
+    /**
+     * @return {?}
+     */
+    get changes() {
+        return this._changes.asObservable();
+    }
+    /**
+     * @return {?}
+     */
+    get value() {
+        return this._value;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set value(value) {
+        if (value !== this._value) {
+            this._value = value;
+            if (isNotNil(this._value)) {
+                this._hours = (/** @type {?} */ (this._value)).getHours();
+                this._minutes = (/** @type {?} */ (this._value)).getMinutes();
+                this._seconds = (/** @type {?} */ (this._value)).getSeconds();
+                if (this._use12Hours && isNotNil(this._hours)) {
+                    this._selected12Hours = this._hours >= 12 ? 'PM' : 'AM';
+                }
+            }
+            else {
+                this._clear();
+            }
+        }
+    }
+    /**
+     * @template THIS
+     * @this {THIS}
+     * @param {?} value
+     * @param {?=} use12Hours
+     * @return {THIS}
+     */
+    setValue(value, use12Hours) {
+        if (isNotNil(use12Hours)) {
+            (/** @type {?} */ (this))._use12Hours = (/** @type {?} */ (use12Hours));
+        }
+        (/** @type {?} */ (this)).value = value;
+        return (/** @type {?} */ (this));
+    }
+    /**
+     * @return {?}
+     */
+    clear() {
+        this._clear();
+        this.update();
+    }
+    /**
+     * @return {?}
+     */
+    get isEmpty() {
+        return !(isNotNil(this._hours) || isNotNil(this._minutes) || isNotNil(this._seconds));
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    _clear() {
+        this._hours = undefined;
+        this._minutes = undefined;
+        this._seconds = undefined;
+        this._selected12Hours = undefined;
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    update() {
+        if (this.isEmpty) {
+            this._value = undefined;
+        }
+        else {
+            if (!isNotNil(this._hours)) {
+                this._hours = this.defaultHours;
+            }
+            else {
+                (/** @type {?} */ (this._value)).setHours((/** @type {?} */ (this.hours)));
+            }
+            if (!isNotNil(this._minutes)) {
+                this._minutes = this.defaultMinutes;
+            }
+            else {
+                (/** @type {?} */ (this._value)).setMinutes((/** @type {?} */ (this.minutes)));
+            }
+            if (!isNotNil(this._seconds)) {
+                this._seconds = this.defaultSeconds;
+            }
+            else {
+                (/** @type {?} */ (this._value)).setSeconds((/** @type {?} */ (this.seconds)));
+            }
+            if (this._use12Hours) {
+                if (!isNotNil(this._selected12Hours)) {
+                    this._selected12Hours = this.default12Hours;
+                }
+                if (this.selected12Hours === 'PM' && (/** @type {?} */ (this._hours)) < 12) {
+                    (/** @type {?} */ (this._hours)) += 12;
+                    (/** @type {?} */ (this._value)).setHours((/** @type {?} */ (this._hours)));
+                }
+                if (this.selected12Hours === 'AM' && (/** @type {?} */ (this._hours)) >= 12) {
+                    (/** @type {?} */ (this._hours)) -= 12;
+                    (/** @type {?} */ (this._value)).setHours((/** @type {?} */ (this._hours)));
+                }
+            }
+            this._value = new Date((/** @type {?} */ (this._value)));
+        }
+        this.changed();
+    }
+    /**
+     * @return {?}
+     */
+    changed() {
+        this._changes.next(this._value);
+    }
+    /**
+     * \@description
+     * UI view hours
+     * Get viewHours which is selected in `time-picker-panel` and its range is [12, 1, 2, ..., 11]
+     * @return {?}
+     */
+    get viewHours() {
+        return this._use12Hours && isNotNil(this._hours) ? this.calculateViewHour((/** @type {?} */ (this._hours))) : this._hours;
+    }
+    /**
+     * \@description
+     * Value hours
+     * Get realHours and its range is [0, 1, 2, ..., 22, 23]
+     * @return {?}
+     */
+    get realHours() {
+        return this._hours;
+    }
+    /**
+     * \@description
+     * Same as realHours
+     * @see realHours
+     * @return {?}
+     */
+    get hours() {
+        return this._hours;
+    }
+    /**
+     * \@description
+     * Set viewHours to realHours
+     * @param {?} value
+     * @return {?}
+     */
+    set hours(value) {
+        if (value !== this._hours) {
+            if (this._use12Hours) {
+                if (this.selected12Hours === 'PM' && value !== 12) {
+                    (/** @type {?} */ (this._hours)) = ((/** @type {?} */ (value))) + 12;
+                }
+                else if (this.selected12Hours === 'AM' && value === 12) {
+                    this._hours = 0;
+                }
+                else {
+                    this._hours = value;
+                }
+            }
+            else {
+                this._hours = value;
+            }
+            this.update();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    get minutes() {
+        return this._minutes;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set minutes(value) {
+        if (value !== this._minutes) {
+            this._minutes = value;
+            this.update();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    get seconds() {
+        return this._seconds;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set seconds(value) {
+        if (value !== this._seconds) {
+            this._seconds = value;
+            this.update();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    get selected12Hours() {
+        return this._selected12Hours;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set selected12Hours(value) {
+        if ((/** @type {?} */ (value)).toUpperCase() !== this._selected12Hours) {
+            this._selected12Hours = (/** @type {?} */ (value)).toUpperCase();
+            this.update();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    get defaultOpenValue() {
+        return this._defaultOpenValue;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set defaultOpenValue(value) {
+        if (this._defaultOpenValue !== value) {
+            this._defaultOpenValue = value;
+            this.update();
+        }
+    }
+    /**
+     * @template THIS
+     * @this {THIS}
+     * @param {?} value
+     * @return {THIS}
+     */
+    setDefaultOpenValue(value) {
+        (/** @type {?} */ (this)).defaultOpenValue = value;
+        return (/** @type {?} */ (this));
+    }
+    /**
+     * \@description
+     * Get deafultViewHours when defaultOpenValue is setted
+     * @see viewHours
+     * @return {?}
+     */
+    get defaultViewHours() {
+        /** @type {?} */
+        const hours = this._defaultOpenValue.getHours();
+        return this._use12Hours && isNotNil(hours) ? this.calculateViewHour(hours) : hours;
+    }
+    /**
+     * \@description
+     * Get defaultRealHours when defaultOpenValue is setted
+     * @see realHours
+     * @return {?}
+     */
+    get defaultRealHours() {
+        return this._defaultOpenValue.getHours();
+    }
+    /**
+     * \@description
+     * Same as defaultRealHours
+     * @return {?}
+     */
+    get defaultHours() {
+        return this._defaultOpenValue.getHours();
+    }
+    /**
+     * @return {?}
+     */
+    get defaultMinutes() {
+        return this._defaultOpenValue.getMinutes();
+    }
+    /**
+     * @return {?}
+     */
+    get defaultSeconds() {
+        return this._defaultOpenValue.getSeconds();
+    }
+    /**
+     * @return {?}
+     */
+    get default12Hours() {
+        return this._defaultOpenValue.getHours() >= 12 ? 'PM' : 'AM';
+    }
+    /**
+     * @private
+     * @param {?} value
+     * @return {?}
+     */
+    calculateViewHour(value) {
+        /** @type {?} */
+        const selected12Hours = this._selected12Hours || this.default12Hours;
+        if (selected12Hours === 'PM' && value > 12) {
+            return value - 12;
+        }
+        if (selected12Hours === 'AM' && value === 0) {
+            return 12;
+        }
+        return value;
+    }
+}
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @param {?} length
+ * @param {?=} step
+ * @param {?=} start
+ * @return {?}
+ */
+function makeRange(length, step = 1, start = 0) {
+    return new Array(Math.ceil(length / step)).fill(0).map((/**
+     * @param {?} _
+     * @param {?} i
+     * @return {?}
+     */
+    (_, i) => (i + start) * step));
+}
+class CmacsDatetimePickerPanelComponent {
+    /**
+     * @param {?} element
+     * @param {?} updateCls
+     * @param {?} cdr
+     */
+    constructor(element, updateCls, cdr) {
+        this.element = element;
+        this.updateCls = updateCls;
+        this.cdr = cdr;
+        this._nzHourStep = 1;
+        this._nzMinuteStep = 1;
+        this._nzSecondStep = 1;
+        this.unsubscribe$ = new Subject();
+        this._format = 'HH:mm:ss';
+        this._defaultOpenValue = new Date();
+        this._opened = false;
+        this._allowEmpty = true;
+        this.prefixCls = 'ant-time-picker-panel';
+        this.time = new TimeHolder();
+        this.hourEnabled = true;
+        this.minuteEnabled = true;
+        this.secondEnabled = true;
+        this.enabledColumns = 3;
+        this.nzInDatePicker = false; // If inside a date-picker, more diff works need to be done
+        this.nzHideDisabledOptions = false;
+        this.nzUse12Hours = false;
+    }
+    // tslint:disable-next-line: member-ordering
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set nzAllowEmpty(value) {
+        if (isNotNil(value)) {
+            this._allowEmpty = value;
+        }
+    }
+    /**
+     * @return {?}
+     */
+    get nzAllowEmpty() {
+        return this._allowEmpty;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set opened(value) {
+        this._opened = value;
+        if (this.opened) {
+            this.initPosition();
+            this.selectInputRange();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    get opened() {
+        return this._opened;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set nzDefaultOpenValue(value) {
+        if (isNotNil(value)) {
+            this._defaultOpenValue = value;
+            this.time.setDefaultOpenValue(this.nzDefaultOpenValue);
+        }
+    }
+    /**
+     * @return {?}
+     */
+    get nzDefaultOpenValue() {
+        return this._defaultOpenValue;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set nzDisabledHours(value) {
+        this._disabledHours = value;
+        if (this._disabledHours) {
+            this.buildHours();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    get nzDisabledHours() {
+        return this._disabledHours;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set nzDisabledMinutes(value) {
+        if (isNotNil(value)) {
+            this._disabledMinutes = value;
+            this.buildMinutes();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    get nzDisabledMinutes() {
+        return this._disabledMinutes;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set nzDisabledSeconds(value) {
+        if (isNotNil(value)) {
+            this._disabledSeconds = value;
+            this.buildSeconds();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    get nzDisabledSeconds() {
+        return this._disabledSeconds;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set format(value) {
+        if (isNotNil(value)) {
+            this._format = value;
+            this.enabledColumns = 0;
+            /** @type {?} */
+            const charSet = new Set(value);
+            this.hourEnabled = charSet.has('H') || charSet.has('h');
+            this.minuteEnabled = charSet.has('m');
+            this.secondEnabled = charSet.has('s');
+            if (this.hourEnabled) {
+                this.enabledColumns++;
+            }
+            if (this.minuteEnabled) {
+                this.enabledColumns++;
+            }
+            if (this.secondEnabled) {
+                this.enabledColumns++;
+            }
+            if (this.nzUse12Hours) {
+                this.build12Hours();
+            }
+        }
+    }
+    /**
+     * @return {?}
+     */
+    get format() {
+        return this._format;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set nzHourStep(value) {
+        if (isNotNil(value)) {
+            this._nzHourStep = value;
+            this.buildHours();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    get nzHourStep() {
+        return this._nzHourStep;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set nzMinuteStep(value) {
+        if (isNotNil(value)) {
+            this._nzMinuteStep = value;
+            this.buildMinutes();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    get nzMinuteStep() {
+        return this._nzMinuteStep;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set nzSecondStep(value) {
+        if (isNotNil(value)) {
+            this._nzSecondStep = value;
+            this.buildSeconds();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    get nzSecondStep() {
+        return this._nzSecondStep;
+    }
+    /**
+     * @return {?}
+     */
+    selectInputRange() {
+        setTimeout((/**
+         * @return {?}
+         */
+        () => {
+            if (this.nzTimeValueAccessorDirective) {
+                this.nzTimeValueAccessorDirective.setRange();
+            }
+        }));
+    }
+    /**
+     * @return {?}
+     */
+    buildHours() {
+        /** @type {?} */
+        let hourRanges = 24;
+        /** @type {?} */
+        let disabledHours = this.nzDisabledHours && this.nzDisabledHours();
+        /** @type {?} */
+        let startIndex = 0;
+        if (this.nzUse12Hours) {
+            hourRanges = 12;
+            if (disabledHours) {
+                if (this.time.selected12Hours === 'PM') {
+                    /**
+                     * Filter and transform hours which greater or equal to 12
+                     * [0, 1, 2, ..., 12, 13, 14, 15, ..., 23] => [12, 1, 2, 3, ..., 11]
+                     */
+                    disabledHours = disabledHours.filter((/**
+                     * @param {?} i
+                     * @return {?}
+                     */
+                    i => i >= 12)).map((/**
+                     * @param {?} i
+                     * @return {?}
+                     */
+                    i => (i > 12 ? i - 12 : i)));
+                }
+                else {
+                    /**
+                     * Filter and transform hours which less than 12
+                     * [0, 1, 2,..., 12, 13, 14, 15, ...23] => [12, 1, 2, 3, ..., 11]
+                     */
+                    disabledHours = disabledHours.filter((/**
+                     * @param {?} i
+                     * @return {?}
+                     */
+                    i => i < 12 || i === 24)).map((/**
+                     * @param {?} i
+                     * @return {?}
+                     */
+                    i => (i === 24 || i === 0 ? 12 : i)));
+                }
+            }
+            startIndex = 1;
+        }
+        this.hourRange = makeRange(hourRanges, this.nzHourStep, startIndex).map((/**
+         * @param {?} r
+         * @return {?}
+         */
+        r => {
+            return {
+                index: r,
+                disabled: this.nzDisabledHours && disabledHours.indexOf(r) !== -1
+            };
+        }));
+        if (this.nzUse12Hours && this.hourRange[this.hourRange.length - 1].index === 12) {
+            /** @type {?} */
+            const temp = [...this.hourRange];
+            temp.unshift(temp[temp.length - 1]);
+            temp.splice(temp.length - 1, 1);
+            this.hourRange = temp;
+        }
+    }
+    /**
+     * @return {?}
+     */
+    buildMinutes() {
+        this.minuteRange = makeRange(60, this.nzMinuteStep).map((/**
+         * @param {?} r
+         * @return {?}
+         */
+        r => {
+            return {
+                index: r,
+                disabled: this.nzDisabledMinutes && this.nzDisabledMinutes((/** @type {?} */ (this.time.hours))).indexOf(r) !== -1
+            };
+        }));
+    }
+    /**
+     * @return {?}
+     */
+    buildSeconds() {
+        this.secondRange = makeRange(60, this.nzSecondStep).map((/**
+         * @param {?} r
+         * @return {?}
+         */
+        r => {
+            return {
+                index: r,
+                disabled: this.nzDisabledSeconds && this.nzDisabledSeconds((/** @type {?} */ (this.time.hours)), (/** @type {?} */ (this.time.minutes))).indexOf(r) !== -1
+            };
+        }));
+    }
+    /**
+     * @return {?}
+     */
+    build12Hours() {
+        /** @type {?} */
+        const isUpperForamt = this._format.includes('A');
+        this.use12HoursRange = [
+            {
+                index: 0,
+                value: isUpperForamt ? 'AM' : 'am'
+            },
+            {
+                index: 1,
+                value: isUpperForamt ? 'PM' : 'pm'
+            }
+        ];
+    }
+    /**
+     * @return {?}
+     */
+    buildTimes() {
+        this.buildHours();
+        this.buildMinutes();
+        this.buildSeconds();
+        this.build12Hours();
+    }
+    /**
+     * @param {?} hour
+     * @return {?}
+     */
+    selectHour(hour) {
+        this.time.setHours(hour.index, hour.disabled);
+        this.scrollToSelected(this.hourListElement.nativeElement, hour.index, 120, 'hour');
+        if (this._disabledMinutes) {
+            this.buildMinutes();
+        }
+        if (this._disabledSeconds || this._disabledMinutes) {
+            this.buildSeconds();
+        }
+    }
+    /**
+     * @param {?} minute
+     * @return {?}
+     */
+    selectMinute(minute) {
+        this.time.setMinutes(minute.index, minute.disabled);
+        this.scrollToSelected(this.minuteListElement.nativeElement, minute.index, 120, 'minute');
+        if (this._disabledSeconds) {
+            this.buildSeconds();
+        }
+    }
+    /**
+     * @param {?} second
+     * @return {?}
+     */
+    selectSecond(second) {
+        this.time.setSeconds(second.index, second.disabled);
+        this.scrollToSelected(this.secondListElement.nativeElement, second.index, 120, 'second');
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    select12Hours(value) {
+        this.time.selected12Hours = value;
+        if (this._disabledHours) {
+            this.buildHours();
+        }
+        if (this._disabledMinutes) {
+            this.buildMinutes();
+        }
+        if (this._disabledSeconds) {
+            this.buildSeconds();
+        }
+        /*this.scrollToSelected(this.use12HoursListElement.nativeElement, value.index, 120, '12-hour');*/
+    }
+    /**
+     * @param {?} instance
+     * @param {?} index
+     * @param {?=} duration
+     * @param {?=} unit
+     * @return {?}
+     */
+    scrollToSelected(instance, index, duration = 0, unit) {
+        /** @type {?} */
+        const transIndex = this.translateIndex(index, unit);
+        /** @type {?} */
+        const currentOption = (/** @type {?} */ ((instance.children[0].children[transIndex] ||
+            instance.children[0].children[0])));
+        this.scrollTo(instance, currentOption.offsetTop, duration);
+    }
+    /**
+     * @param {?} index
+     * @param {?} unit
+     * @return {?}
+     */
+    translateIndex(index, unit) {
+        if (unit === 'hour') {
+            /** @type {?} */
+            const disabledHours = this.nzDisabledHours && this.nzDisabledHours();
+            return this.calcIndex(disabledHours, this.hourRange.map((/**
+             * @param {?} item
+             * @return {?}
+             */
+            item => item.index)).indexOf(index));
+        }
+        else if (unit === 'minute') {
+            /** @type {?} */
+            const disabledMinutes = this.nzDisabledMinutes && this.nzDisabledMinutes((/** @type {?} */ (this.time.hours)));
+            return this.calcIndex(disabledMinutes, this.minuteRange.map((/**
+             * @param {?} item
+             * @return {?}
+             */
+            item => item.index)).indexOf(index));
+        }
+        else if (unit === 'second') {
+            // second
+            /** @type {?} */
+            const disabledSeconds = this.nzDisabledSeconds && this.nzDisabledSeconds((/** @type {?} */ (this.time.hours)), (/** @type {?} */ (this.time.minutes)));
+            return this.calcIndex(disabledSeconds, this.secondRange.map((/**
+             * @param {?} item
+             * @return {?}
+             */
+            item => item.index)).indexOf(index));
+        }
+        else {
+            // 12-hour
+            return this.calcIndex([], this.use12HoursRange.map((/**
+             * @param {?} item
+             * @return {?}
+             */
+            item => item.index)).indexOf(index));
+        }
+    }
+    /**
+     * @param {?} element
+     * @param {?} to
+     * @param {?} duration
+     * @return {?}
+     */
+    scrollTo(element, to, duration) {
+        if (duration <= 0) {
+            element.scrollTop = to;
+            return;
+        }
+        /** @type {?} */
+        const difference = to - element.scrollTop;
+        /** @type {?} */
+        const perTick = (difference / duration) * 10;
+        reqAnimFrame((/**
+         * @return {?}
+         */
+        () => {
+            element.scrollTop = element.scrollTop + perTick;
+            if (element.scrollTop === to) {
+                return;
+            }
+            this.scrollTo(element, to, duration - 10);
+        }));
+    }
+    /**
+     * @param {?} array
+     * @param {?} index
+     * @return {?}
+     */
+    calcIndex(array, index) {
+        if (array && array.length && this.nzHideDisabledOptions) {
+            return (index -
+                array.reduce((/**
+                 * @param {?} pre
+                 * @param {?} value
+                 * @return {?}
+                 */
+                (pre, value) => {
+                    return pre + (value < index ? 1 : 0);
+                }), 0));
+        }
+        else {
+            return index;
+        }
+    }
+    /**
+     * @protected
+     * @return {?}
+     */
+    changed() {
+        if (this.onChange) {
+            this.onChange((/** @type {?} */ (this.time.value)));
+        }
+    }
+    /**
+     * @protected
+     * @return {?}
+     */
+    touched() {
+        if (this.onTouch) {
+            this.onTouch();
+        }
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    setClassMap() {
+        this.updateCls.updateHostClass(this.element.nativeElement, {
+            [`${this.prefixCls}`]: true,
+            [`${this.prefixCls}-column-${this.enabledColumns}`]: this.nzInDatePicker ? false : true,
+            [`${this.prefixCls}-narrow`]: this.enabledColumns < 3,
+            [`${this.prefixCls}-placement-bottomLeft`]: this.nzInDatePicker ? false : true
+        });
+    }
+    /**
+     * @param {?} hour
+     * @return {?}
+     */
+    isSelectedHour(hour) {
+        return (hour.index === this.time.viewHours ||
+            (!isNotNil(this.time.viewHours) && hour.index === this.time.defaultViewHours));
+    }
+    /**
+     * @param {?} minute
+     * @return {?}
+     */
+    isSelectedMinute(minute) {
+        return (minute.index === this.time.minutes || (!isNotNil(this.time.minutes) && minute.index === this.time.defaultMinutes));
+    }
+    /**
+     * @param {?} second
+     * @return {?}
+     */
+    isSelectedSecond(second) {
+        return (second.index === this.time.seconds || (!isNotNil(this.time.seconds) && second.index === this.time.defaultSeconds));
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    isSelected12Hours(value) {
+        return (value.value.toUpperCase() === this.time.selected12Hours ||
+            (!isNotNil(this.time.selected12Hours) && value.value.toUpperCase() === this.time.default12Hours));
+    }
+    /**
+     * @return {?}
+     */
+    initPosition() {
+        setTimeout((/**
+         * @return {?}
+         */
+        () => {
+            if (this.hourEnabled && this.hourListElement) {
+                if (isNotNil(this.time.viewHours)) {
+                    this.scrollToSelected(this.hourListElement.nativeElement, (/** @type {?} */ (this.time.viewHours)), 0, 'hour');
+                }
+                else {
+                    this.scrollToSelected(this.hourListElement.nativeElement, this.time.defaultViewHours, 0, 'hour');
+                }
+            }
+            if (this.minuteEnabled && this.minuteListElement) {
+                if (isNotNil(this.time.minutes)) {
+                    this.scrollToSelected(this.minuteListElement.nativeElement, (/** @type {?} */ (this.time.minutes)), 0, 'minute');
+                }
+                else {
+                    this.scrollToSelected(this.minuteListElement.nativeElement, this.time.defaultMinutes, 0, 'minute');
+                }
+            }
+            if (this.secondEnabled && this.secondListElement) {
+                if (isNotNil(this.time.seconds)) {
+                    this.scrollToSelected(this.secondListElement.nativeElement, (/** @type {?} */ (this.time.seconds)), 0, 'second');
+                }
+                else {
+                    this.scrollToSelected(this.secondListElement.nativeElement, this.time.defaultSeconds, 0, 'second');
+                }
+            }
+            if (this.nzUse12Hours && this.use12HoursListElement) {
+                /** @type {?} */
+                const selectedHours = isNotNil(this.time.selected12Hours)
+                    ? this.time.selected12Hours
+                    : this.time.default12Hours;
+                /** @type {?} */
+                const index = selectedHours === 'AM' ? 0 : 1;
+                this.scrollToSelected(this.use12HoursListElement.nativeElement, index, 0, '12-hour');
+            }
+        }));
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        if (this.nzInDatePicker) {
+            this.prefixCls = 'ant-calendar-time-picker';
+        }
+        this.time.changes.pipe(takeUntil(this.unsubscribe$)).subscribe((/**
+         * @return {?}
+         */
+        () => {
+            this.changed();
+            this.touched();
+        }));
+        this.buildTimes();
+        this.setClassMap();
+        this.hours = (((this.time.hours ? this.time.hours : this.time.defaultHours) + 11) % 12 + 1);
+        this.seconds = this.time.seconds ? this.time.seconds : this.time.defaultSeconds;
+        this.minutes = this.time.minutes ? this.time.minutes : this.time.defaultMinutes;
+        this.range = this.time.selected12Hours ? this.time.selected12Hours : this.time.default12Hours.toLowerCase();
+    }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    ngOnChanges(changes) {
+        const { nzUse12Hours } = changes;
+        if (nzUse12Hours && !nzUse12Hours.previousValue && nzUse12Hours.currentValue) {
+            this.build12Hours();
+            this.enabledColumns++;
+        }
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    writeValue(value) {
+        this.time.setValue(value, this.nzUse12Hours);
+        this.buildTimes();
+        // Mark this component to be checked manually with internal properties changing (see: https://github.com/angular/angular/issues/10816)
+        this.cdr.markForCheck();
+    }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    registerOnChange(fn) {
+        this.onChange = fn;
+    }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    registerOnTouched(fn) {
+        this.onTouch = fn;
+    }
+    /* Customized code */
+    /**
+     * @param {?} $event
+     * @param {?} type
+     * @return {?}
+     */
+    updateTime($event, type) {
+        if (type === 'hours') {
+            this.time.setHours($event, false);
+        }
+        if (type === 'minutes') {
+            this.time.setMinutes($event, false);
+        }
+        if (type === 'seconds') {
+            this.time.setSeconds($event, false);
+        }
+    }
+}
+CmacsDatetimePickerPanelComponent.decorators = [
+    { type: Component, args: [{
+                encapsulation: ViewEncapsulation.None,
+                changeDetection: ChangeDetectionStrategy.OnPush,
+                selector: 'cmacs-datetime-picker-panel',
+                exportAs: 'cmacsDateTimePickerPanel',
+                template: "<div class=\"{{ nzInDatePicker ? prefixCls + '-panel' : '' }}\">\r\n  <div\r\n    class=\"{{ prefixCls }}-inner {{ nzInDatePicker ? prefixCls + '-column-' + enabledColumns : '' }}\"\r\n    [style.width.px]=\"nzInDatePicker ? null : enabledColumns * 56\">\r\n    <div class=\"{{ prefixCls }}-input-wrap\">\r\n      <input\r\n        type=\"text\"\r\n        class=\"{{ prefixCls }}-input\"\r\n        [placeholder]=\"nzPlaceHolder\"\r\n        [nzTime]=\"format\"\r\n        [(ngModel)]=\"time.value\"\r\n        (blur)=\"time.changed()\">\r\n    </div>\r\n    <div>\r\n      <cmacs-input-number style=\"margin-right: 5px\" class=\"cmacs-datetime-picker-input-number\" [min]=\"1\" [max]=\"12\" [(ngModel)]=\"hours\"\r\n                          (ngModelChange)=\"updateTime($event, 'hours')\"></cmacs-input-number>\r\n      <div class=\"cmacs-datetime-dividers\"><span>:</span></div>\r\n      <cmacs-input-number style=\"margin-left: 5px\" class=\"cmacs-datetime-picker-input-number\" [min]=\"0\" [max]=\"59\" [(ngModel)]=\"minutes\"\r\n                          (ngModelChange)=\"updateTime($event, 'minutes')\"></cmacs-input-number>\r\n      <!--<cmacs-input-number [min]=\"0\" [max]=\"59\" [(ngModel)]=\"seconds\"\r\n                          (ngModelChange)=\"updateTime($event, 'seconds')\"></cmacs-input-number>-->\r\n      <cmacs-select style=\"margin: 11px 11px 11px 0\" [(ngModel)]=\"range\" (ngModelChange)=\"select12Hours($event)\">\r\n        <cmacs-option class=\"{{ isSelected12Hours(range) ? prefixCls + '-select-option-selected' : '' }}\"\r\n                    *ngFor=\"let range of use12HoursRange\" [value]=\"range.value\" [label]=\"range.value | uppercase\"></cmacs-option>\r\n      </cmacs-select>\r\n    </div>\r\n    <!--<div class=\"{{ prefixCls }}-combobox\">\r\n      <div\r\n        *ngIf=\"hourEnabled\"\r\n        #hourListElement\r\n        class=\"{{ prefixCls }}-select\">\r\n        <ul>\r\n          <ng-container *ngFor=\"let hour of hourRange\">\r\n            <li\r\n              *ngIf=\"!(nzHideDisabledOptions && hour.disabled)\"\r\n              (click)=\"selectHour(hour)\"\r\n              class=\"\r\n                {{ isSelectedHour(hour) ? prefixCls + '-select-option-selected' : '' }}\r\n                {{ hour.disabled ? prefixCls + '-select-option-disabled' : '' }}\r\n              \"\r\n            >\r\n              {{ hour.index | number:'2.0-0' }}\r\n            </li>\r\n          </ng-container>\r\n        </ul>\r\n      </div>\r\n      <div\r\n        *ngIf=\"minuteEnabled\"\r\n        #minuteListElement\r\n        class=\"{{ prefixCls }}-select\">\r\n        <ul>\r\n          <ng-container *ngFor=\"let minute of minuteRange\">\r\n            <li\r\n              *ngIf=\"!(nzHideDisabledOptions && minute.disabled)\"\r\n              (click)=\"selectMinute(minute)\"\r\n              class=\"\r\n                {{ isSelectedMinute(minute) ? prefixCls + '-select-option-selected' : '' }}\r\n                {{ minute.disabled ? prefixCls + '-select-option-disabled' : '' }}\r\n              \"\r\n            >\r\n              {{ minute.index | number:'2.0-0' }}\r\n            </li>\r\n          </ng-container>\r\n        </ul>\r\n      </div>\r\n      <div\r\n        *ngIf=\"secondEnabled\"\r\n        #secondListElement\r\n        class=\"{{ prefixCls }}-select\">\r\n        <ul>\r\n          <ng-container *ngFor=\"let second of secondRange\">\r\n            <li\r\n              *ngIf=\"!(nzHideDisabledOptions && second.disabled)\"\r\n              (click)=\"selectSecond(second)\"\r\n              class=\"\r\n                {{ isSelectedSecond(second) ? prefixCls + '-select-option-selected' : '' }}\r\n                {{ second.disabled ? prefixCls + '-select-option-disabled' : '' }}\r\n              \"\r\n            >\r\n              {{ second.index | number:'2.0-0' }}\r\n            </li>\r\n          </ng-container>\r\n        </ul>\r\n      </div>\r\n      <div\r\n        *ngIf=\"nzUse12Hours\"\r\n        #use12HoursListElement\r\n        class=\"{{ prefixCls }}-select\">\r\n        <ul>\r\n          <ng-container *ngFor=\"let range of use12HoursRange \">\r\n            <li\r\n              *ngIf=\"!nzHideDisabledOptions\"\r\n              (click)=\"select12Hours(range)\"\r\n              class=\"\r\n                {{ isSelected12Hours(range) ? prefixCls + '-select-option-selected' : '' }}\r\n              \"\r\n            >\r\n              {{ range.value }}\r\n            </li>\r\n          </ng-container>\r\n        </ul>\r\n      </div>\r\n    </div>-->\r\n    <div class=\"{{ prefixCls }}-addon\" *ngIf=\"nzAddOn\">\r\n      <ng-template [ngTemplateOutlet]=\"nzAddOn\"></ng-template>\r\n    </div>\r\n  </div>\r\n</div>\r\n",
+                providers: [NzUpdateHostClassService, { provide: NG_VALUE_ACCESSOR, useExisting: CmacsDatetimePickerPanelComponent, multi: true }],
+                styles: [".cmacs-datetime-picker-input-number{width:55px;height:30px!important;margin:11px}cmacs-select .ant-select-selection{height:30px}.cmacs-datetime-dividers{display:inline-block;position:relative;top:-3px}.ant-time-picker-panel-inner{width:224px!important}"]
+            }] }
+];
+/** @nocollapse */
+CmacsDatetimePickerPanelComponent.ctorParameters = () => [
+    { type: ElementRef },
+    { type: NzUpdateHostClassService },
+    { type: ChangeDetectorRef }
+];
+CmacsDatetimePickerPanelComponent.propDecorators = {
+    nzTimeValueAccessorDirective: [{ type: ViewChild, args: [CmacsDatetimeValueAccessorDirective,] }],
+    hourListElement: [{ type: ViewChild, args: ['hourListElement',] }],
+    minuteListElement: [{ type: ViewChild, args: ['minuteListElement',] }],
+    secondListElement: [{ type: ViewChild, args: ['secondListElement',] }],
+    use12HoursListElement: [{ type: ViewChild, args: ['use12HoursListElement',] }],
+    nzInDatePicker: [{ type: Input }],
+    nzAddOn: [{ type: Input }],
+    nzHideDisabledOptions: [{ type: Input }],
+    nzClearText: [{ type: Input }],
+    nzPlaceHolder: [{ type: Input }],
+    nzUse12Hours: [{ type: Input }],
+    nzAllowEmpty: [{ type: Input }],
+    opened: [{ type: Input }],
+    nzDefaultOpenValue: [{ type: Input }],
+    nzDisabledHours: [{ type: Input }],
+    nzDisabledMinutes: [{ type: Input }],
+    nzDisabledSeconds: [{ type: Input }],
+    format: [{ type: Input }],
+    nzHourStep: [{ type: Input }],
+    nzMinuteStep: [{ type: Input }],
+    nzSecondStep: [{ type: Input }]
+};
+__decorate([
+    InputBoolean(),
+    __metadata("design:type", Object)
+], CmacsDatetimePickerPanelComponent.prototype, "nzUse12Hours", void 0);
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
 /** @type {?} */
 const CMACS_COMMENT_CELLS = [
     CmacsCommentActionComponent,
@@ -15687,12 +17249,14 @@ CmacsComponentsLibModule.decorators = [
                     CmacsDateFullCellDirective,
                     CmacsMonthCellDirective,
                     CmacsMonthFullCellDirective,
+                    CmacsDividerComponent,
                     CmacsDropdownComponent,
                     CmacsDropdownButtonComponent,
                     CmacsDropdownDirective,
                     CmacsDropdownADirective,
                     CmacsDropdownContextComponent,
                     CmacsProgressComponent,
+                    CmacsFloatingMenuComponent,
                     CmacsFormExtraComponent,
                     CmacsFormLabelComponent,
                     CmacsFormDirective,
@@ -15714,7 +17278,10 @@ CmacsComponentsLibModule.decorators = [
                     CmacsSliderHandleComponent,
                     CmacsSliderMarksComponent,
                     CmacsSliderStepComponent,
-                    CmacsSliderTrackComponent
+                    CmacsSliderTrackComponent,
+                    CmacsDateTimePickerComponent,
+                    CmacsDatetimePickerPanelComponent,
+                    CmacsDatetimeValueAccessorDirective
                 ],
                 imports: [
                     CommonModule,
@@ -15723,6 +17290,7 @@ CmacsComponentsLibModule.decorators = [
                     LibPackerModule,
                     NgZorroAntdModule,
                     NzIconModule,
+                    NzI18nModule,
                     NzOverlayModule,
                     NzNoAnimationModule,
                     ExportAsModule,
@@ -15791,7 +17359,9 @@ CmacsComponentsLibModule.decorators = [
                     CmacsDropdownButtonComponent,
                     CmacsDropdownDirective,
                     CmacsDropdownADirective,
+                    CmacsDividerComponent,
                     CmacsProgressComponent,
+                    CmacsFloatingMenuComponent,
                     CmacsFormExtraComponent,
                     CmacsFormLabelComponent,
                     CmacsFormDirective,
@@ -15815,7 +17385,10 @@ CmacsComponentsLibModule.decorators = [
                     CmacsSliderHandleComponent,
                     CmacsSliderMarksComponent,
                     CmacsSliderStepComponent,
-                    CmacsSliderTrackComponent
+                    CmacsSliderTrackComponent,
+                    CmacsDateTimePickerComponent,
+                    CmacsDatetimePickerPanelComponent,
+                    CmacsDatetimeValueAccessorDirective
                 ],
                 providers: [{ provide: NZ_I18N, useValue: ɵ0$2 }, DatePipe, CmacsDropdownService],
                 entryComponents: [
@@ -16074,6 +17647,6 @@ const ModeTabType = {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, CmacsDateCellDirective, CmacsMonthCellDirective, CmacsDateFullCellDirective, CmacsMonthFullCellDirective, CmacsCalendarHeaderComponent, CmacsCalendarComponent, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, CmacsModalRef, CmacsDropdownADirective, CmacsProgressComponent, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, CmacsAlertComponent, CmacsCommentComponent, CmacsCommentAvatarDirective, CmacsCommentContentDirective, CmacsCommentActionHostDirective, CmacsCommentActionComponent, CmacsSliderComponent, CmacsSliderHandleComponent, CmacsSliderMarksComponent, CmacsSliderStepComponent, CmacsSliderTrackComponent, isValueARange, isConfigAObject, Marks, AbstractPickerComponent as ɵa, CalendarFooterComponent as ɵba, CalendarHeaderComponent as ɵy, CalendarInputComponent as ɵz, OkButtonComponent as ɵbb, TimePickerButtonComponent as ɵbc, TodayButtonComponent as ɵbd, DateTableComponent as ɵbe, DecadePanelComponent as ɵbi, MonthPanelComponent as ɵbg, MonthTableComponent as ɵbh, DateRangePopupComponent as ɵbk, InnerPopupComponent as ɵbj, YearPanelComponent as ɵbf, CmacsDropdownService as ɵbl, CmacsMenuDropdownService as ɵk, CmacsFormControlComponent as ɵq, CmacsFormExplainComponent as ɵo, CmacsFormExtraComponent as ɵl, CmacsFormItemComponent as ɵn, CmacsFormLabelComponent as ɵm, CmacsFormSplitComponent as ɵs, CmacsFormTextComponent as ɵr, CmacsFormDirective as ɵp, CmacsMenuServiceFactory as ɵd, CmacsMenuService as ɵc, CmacsSubmenuService as ɵb, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵv, CmacsOptionGroupComponent as ɵh, CmacsOptionLiComponent as ɵw, NzFilterGroupOptionPipe as ɵu, NzFilterOptionPipe as ɵt, CmacsSelectUnselectableDirective as ɵx, CmacsSelectService as ɵg, NzTreeService as ɵf, ExcelService as ɵe };
+export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsDividerComponent, CmacsFloatingMenuComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, CmacsDateCellDirective, CmacsMonthCellDirective, CmacsDateFullCellDirective, CmacsMonthFullCellDirective, CmacsCalendarHeaderComponent, CmacsCalendarComponent, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, CmacsModalRef, CmacsDropdownADirective, CmacsProgressComponent, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, CmacsAlertComponent, CmacsCommentComponent, CmacsCommentAvatarDirective, CmacsCommentContentDirective, CmacsCommentActionHostDirective, CmacsCommentActionComponent, CmacsSliderComponent, CmacsSliderHandleComponent, CmacsSliderMarksComponent, CmacsSliderStepComponent, CmacsSliderTrackComponent, isValueARange, isConfigAObject, Marks, CmacsDatetimePickerPanelComponent, CmacsDateTimePickerComponent, CmacsDatetimeValueAccessorDirective, AbstractPickerComponent as ɵa, CalendarFooterComponent as ɵba, CalendarHeaderComponent as ɵy, CalendarInputComponent as ɵz, OkButtonComponent as ɵbb, TimePickerButtonComponent as ɵbc, TodayButtonComponent as ɵbd, DateTableComponent as ɵbe, DecadePanelComponent as ɵbi, MonthPanelComponent as ɵbg, MonthTableComponent as ɵbh, DateRangePopupComponent as ɵbk, InnerPopupComponent as ɵbj, YearPanelComponent as ɵbf, CmacsDropdownService as ɵbl, CmacsMenuDropdownService as ɵk, CmacsFormControlComponent as ɵq, CmacsFormExplainComponent as ɵo, CmacsFormExtraComponent as ɵl, CmacsFormItemComponent as ɵn, CmacsFormLabelComponent as ɵm, CmacsFormSplitComponent as ɵs, CmacsFormTextComponent as ɵr, CmacsFormDirective as ɵp, CmacsMenuServiceFactory as ɵd, CmacsMenuService as ɵc, CmacsSubmenuService as ɵb, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵv, CmacsOptionGroupComponent as ɵh, CmacsOptionLiComponent as ɵw, NzFilterGroupOptionPipe as ɵu, NzFilterOptionPipe as ɵt, CmacsSelectUnselectableDirective as ɵx, CmacsSelectService as ɵg, NzTreeService as ɵf, ExcelService as ɵe };
 
 //# sourceMappingURL=cmacs-components-lib.js.map
