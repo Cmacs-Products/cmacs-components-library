@@ -29,11 +29,15 @@ export declare class CmacsModalComponent<T = any, R = any> extends CmacsModalRef
     noAnimation: boolean;
     cmacsMask: boolean;
     cmacsMaskClosable: boolean;
+    showHelpfulTips: boolean;
     content: string | TemplateRef<{}> | Type<T>;
     componentParams: T;
     footer: string | TemplateRef<{}> | Array<ModalButtonOptions<T>> | null;
     getContainer: HTMLElement | OverlayRef | (() => HTMLElement | OverlayRef);
     zIndex: number;
+    leftPanelCols: number;
+    centerPanelCols: number;
+    rightPanelCols: number;
     width: number | string;
     wrapClassName: string;
     className: string;
@@ -55,7 +59,6 @@ export declare class CmacsModalComponent<T = any, R = any> extends CmacsModalRef
     bodyContainer: ViewContainerRef;
     autoFocusButtonOk: ElementRef;
     tipsCreationWizard: QueryList<any>;
-    showHelpfulTips: boolean;
     readonly afterOpen: Observable<void>;
     readonly afterClose: Observable<R>;
     readonly cancelText: string;
