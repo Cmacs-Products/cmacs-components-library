@@ -81,3 +81,5 @@ export * from './lib/components/cmacs-slider/cmacs-slider-definitions';
 export * from './lib/components/cmacs-datetime-picker/cmacs-datetime-picker-panel.component';
 export * from './lib/components/cmacs-datetime-picker/cmacs-datetime-picker.component';
 export * from './lib/components/cmacs-datetime-picker/cmacs-datetime-value-accessor.directive';
+export * from './lib/components/cmacs-video-player/cmacs-video-player.component';
+export * from './lib/components/cmacs-phone-number/cmacs-phone-number.component';

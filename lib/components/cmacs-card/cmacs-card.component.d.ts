@@ -1,6 +1,11 @@
 import { ChangeDetectorRef, ElementRef, EventEmitter, OnInit, Renderer2, TemplateRef } from '@angular/core';
 import { CmacsCardTabComponent } from './cmacs-card-tab.component';
-export declare type CmacsCardType = 'file' | 'selection' | 'action' | 'team' | 'project' | 'folder' | 'measure' | 'none';
+export declare type CmacsCardType = 'file' | 'selection' | 'action' | 'team' | 'project' | 'folder' | 'measure' | 'big-file' | 'none';
+export interface BigFile {
+    title?: string;
+    extension?: string;
+    created_at?: string;
+}
 export declare class CmacsCardComponent implements OnInit {
     private cdr;
     folderIcon: string;
@@ -19,6 +24,7 @@ export declare class CmacsCardComponent implements OnInit {
     body: TemplateRef<void>;
     actions: Array<TemplateRef<void>>;
     team: any;
+    file: BigFile;
     project: any;
     type: string;
     cmacsType: CmacsCardType;
