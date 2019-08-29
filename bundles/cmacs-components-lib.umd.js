@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/platform-browser/animations'), require('@angular/common/locales/en'), require('jspdf'), require('jspdf-autotable'), require('xlsx'), require('@angular/cdk/a11y'), require('@angular/cdk/keycodes'), require('@angular/router'), require('@angular/cdk/coercion'), require('date-fns'), require('ng-zorro-antd'), require('ng-zorro-antd/icon'), require('@angular/common'), require('ng-zorro-antd/time-picker'), require('ngx-export-as'), require('ng-zorro-antd/menu'), require('@angular/cdk/layout'), require('ng-zorro-antd/grid'), require('ng-zorro-antd/tooltip'), require('@angular/cdk/platform'), require('videogular2/compiled/controls'), require('videogular2/compiled/overlay-play'), require('videogular2/compiled/buffering'), require('videogular2/compiled/core'), require('ng2-tel-input'), require('rxjs/operators'), require('@angular/forms'), require('ng-zorro-antd/i18n'), require('rxjs'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core'), require('ng-zorro-antd/core')) :
-    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/platform-browser/animations', '@angular/common/locales/en', 'jspdf', 'jspdf-autotable', 'xlsx', '@angular/cdk/a11y', '@angular/cdk/keycodes', '@angular/router', '@angular/cdk/coercion', 'date-fns', 'ng-zorro-antd', 'ng-zorro-antd/icon', '@angular/common', 'ng-zorro-antd/time-picker', 'ngx-export-as', 'ng-zorro-antd/menu', '@angular/cdk/layout', 'ng-zorro-antd/grid', 'ng-zorro-antd/tooltip', '@angular/cdk/platform', 'videogular2/compiled/controls', 'videogular2/compiled/overlay-play', 'videogular2/compiled/buffering', 'videogular2/compiled/core', 'ng2-tel-input', 'rxjs/operators', '@angular/forms', 'ng-zorro-antd/i18n', 'rxjs', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core', 'ng-zorro-antd/core'], factory) :
-    (factory((global['cmacs-components-lib'] = {}),global.ng.platformBrowser.animations,global.ng.common.locales.en,global.jsPDF,null,global.XLSX,global.ng.cdk.a11y,global.ng.cdk.keycodes,global.ng.router,global.ng.cdk.coercion,global.dateFns,global.ngZorroAntd,global.icon,global.ng.common,global.timePicker,global.ngxExportAs,global.menu,global.ng.cdk.layout,global.grid,global.tooltip,global.ng.cdk.platform,global.controls,global.overlayPlay,global.buffering,global.core,global.ng2TelInput,global.rxjs.operators,global.ng.forms,global.i18n,global.rxjs,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core,global.i2));
-}(this, (function (exports,animations,en,jsPDF,jspdfAutotable,XLSX,a11y,keycodes,router,coercion,dateFns,ngZorroAntd,icon,common,timePicker,ngxExportAs,menu,layout,grid,tooltip,platform,controls,overlayPlay,buffering,core,ng2TelInput,operators,forms,i18n,rxjs,i1,portal,i0,i2) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/platform-browser/animations'), require('@angular/common/locales/en'), require('jspdf'), require('jspdf-autotable'), require('xlsx'), require('@angular/cdk/a11y'), require('@angular/cdk/keycodes'), require('@angular/router'), require('@angular/cdk/coercion'), require('date-fns'), require('ng-zorro-antd/icon'), require('@angular/common'), require('ng-zorro-antd/time-picker'), require('ngx-export-as'), require('ng-zorro-antd/menu'), require('@angular/cdk/layout'), require('ng-zorro-antd/grid'), require('ng-zorro-antd'), require('ng-zorro-antd/tooltip'), require('@angular/cdk/platform'), require('videogular2/compiled/controls'), require('videogular2/compiled/overlay-play'), require('videogular2/compiled/buffering'), require('videogular2/compiled/core'), require('ng2-tel-input'), require('@angular/cdk/drag-drop'), require('rxjs/operators'), require('@angular/forms'), require('ng-zorro-antd/i18n'), require('rxjs'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core'), require('ng-zorro-antd/core')) :
+    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/platform-browser/animations', '@angular/common/locales/en', 'jspdf', 'jspdf-autotable', 'xlsx', '@angular/cdk/a11y', '@angular/cdk/keycodes', '@angular/router', '@angular/cdk/coercion', 'date-fns', 'ng-zorro-antd/icon', '@angular/common', 'ng-zorro-antd/time-picker', 'ngx-export-as', 'ng-zorro-antd/menu', '@angular/cdk/layout', 'ng-zorro-antd/grid', 'ng-zorro-antd', 'ng-zorro-antd/tooltip', '@angular/cdk/platform', 'videogular2/compiled/controls', 'videogular2/compiled/overlay-play', 'videogular2/compiled/buffering', 'videogular2/compiled/core', 'ng2-tel-input', '@angular/cdk/drag-drop', 'rxjs/operators', '@angular/forms', 'ng-zorro-antd/i18n', 'rxjs', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core', 'ng-zorro-antd/core'], factory) :
+    (factory((global['cmacs-components-lib'] = {}),global.ng.platformBrowser.animations,global.ng.common.locales.en,global.jsPDF,null,global.XLSX,global.ng.cdk.a11y,global.ng.cdk.keycodes,global.ng.router,global.ng.cdk.coercion,global.dateFns,global.icon,global.ng.common,global.timePicker,global.ngxExportAs,global.menu,global.ng.cdk.layout,global.grid,global.ngZorroAntd,global.tooltip,global.ng.cdk.platform,global.controls,global.overlayPlay,global.buffering,global.core,global.ng2TelInput,global.ng.cdk['drag-drop'],global.rxjs.operators,global.ng.forms,global.i18n,global.rxjs,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core,global.i2));
+}(this, (function (exports,animations,en,jsPDF,jspdfAutotable,XLSX,a11y,keycodes,router,coercion,dateFns,icon,common,timePicker,ngxExportAs,menu,layout,grid,ngZorroAntd,tooltip,platform,controls,overlayPlay,buffering,core,ng2TelInput,dragDrop,operators,forms,i18n,rxjs,i1,portal,i0,i2) { 'use strict';
 
     en = en && en.hasOwnProperty('default') ? en['default'] : en;
     jsPDF = jsPDF && jsPDF.hasOwnProperty('default') ? jsPDF['default'] : jsPDF;
@@ -16843,6 +16843,154 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    var CmacsKanbanComponent = /** @class */ (function () {
+        function CmacsKanbanComponent() {
+            /**
+             * Template for items to render. "item" object ist passed (see examples)
+             */
+            this.itemTemplate = null;
+            /**
+             * Template for column headers. Current groupName will be passed (see examples)
+             */
+            this.columnHeaderTemplate = null;
+            // scrolling
+            this.hasVerticalScroll = false;
+            this.heightContainer = '500px';
+            this.draggedItem = new i0.EventEmitter();
+            this.onclickItem = new i0.EventEmitter();
+            this.ondblclickItem = new i0.EventEmitter();
+            this.selectionChange = new i0.EventEmitter();
+            this.selectedItems = [];
+        }
+        /**
+         * @return {?}
+         */
+        CmacsKanbanComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+            };
+        /**
+         * @return {?}
+         */
+        CmacsKanbanComponent.prototype.verticalScrollStyle = /**
+         * @return {?}
+         */
+            function () {
+                return (this.hasVerticalScroll) ? { height: this.heightContainer } : {};
+            };
+        /**
+         * @return {?}
+         */
+        CmacsKanbanComponent.prototype.columnStyle = /**
+         * @return {?}
+         */
+            function () {
+                return (this.columnWidth) ? { minWidth: this.columnWidth } : {};
+            };
+        /**
+         * @param {?} event
+         * @return {?}
+         */
+        CmacsKanbanComponent.prototype.drop = /**
+         * @param {?} event
+         * @return {?}
+         */
+            function (event) {
+                this.draggedItem.emit(event.item.data);
+                if (event.previousContainer === event.container) {
+                    dragDrop.moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+                }
+                else {
+                    dragDrop.transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+                }
+            };
+        /**
+         * @param {?} item
+         * @return {?}
+         */
+        CmacsKanbanComponent.prototype.clickItem = /**
+         * @param {?} item
+         * @return {?}
+         */
+            function (item) {
+                this.onclickItem.emit(item);
+                // add or remove elements to selected items
+                if (!item.disabled) {
+                    /** @type {?} */
+                    var idx = this.selectedItems.findIndex(( /**
+                     * @param {?} elem
+                     * @return {?}
+                     */function (elem) { return elem.id === item.id; }));
+                    if (idx === -1) {
+                        this.selectedItems.push(item);
+                    }
+                    else {
+                        this.selectedItems.splice(idx, 1);
+                    }
+                    this.selectionChange.emit(this.selectedItems);
+                }
+            };
+        /**
+         * @param {?} item
+         * @return {?}
+         */
+        CmacsKanbanComponent.prototype.dblclickItem = /**
+         * @param {?} item
+         * @return {?}
+         */
+            function (item) {
+                this.ondblclickItem.emit(item);
+            };
+        /**
+         * @param {?} id
+         * @return {?}
+         */
+        CmacsKanbanComponent.prototype.isItemSelected = /**
+         * @param {?} id
+         * @return {?}
+         */
+            function (id) {
+                return this.selectedItems.some(( /**
+                 * @param {?} elem
+                 * @return {?}
+                 */function (elem) { return elem.id === id; }));
+            };
+        CmacsKanbanComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-kanban',
+                        exportAs: 'cmacsKanban',
+                        template: "<div class=\"root\">\r\n    <div class=\"board\">\r\n      <div class=\"board-wrapper\">\r\n        <div class=\"board-columns\" cdkDropListGroup>\r\n          <div class=\"board-column\" *ngFor=\"let column of board.columns\" [ngStyle]=\"columnStyle()\">\r\n            <ng-container [ngIf]=\"columnHeaderTemplate\" *ngTemplateOutlet=\"columnHeaderTemplate; context: { column: column}\" ></ng-container>\r\n            <div class=\"column-header\" *ngIf=\"!columnHeaderTemplate\">\r\n              <span class=\"column-title\">{{column.name}}</span>\r\n              <span class=\"column-title-items\">{{column.items.length}} Items</span>\r\n            </div>\r\n            <div class=\"tasks-container\" cdkDropList [cdkDropListData]=\"column.items\"\r\n            (cdkDropListDropped)=\"drop($event)\" [ngStyle]=\"verticalScrollStyle()\">\r\n              <div class=\"task\" *ngFor=\"let item of column.items\" \r\n                   cdkDrag \r\n                   [cdkDragData]=\"item\"\r\n                   [cdkDragDisabled]=\"item.disabled\"\r\n                   (click)=\"clickItem(item)\"\r\n                   (dblclick)=\"dblclickItem(item)\"\r\n                   [class.task-selected]=\"isItemSelected(item.id)\"\r\n              >\r\n                <ng-container *ngTemplateOutlet=\"itemTemplate; context: {item: item}\"></ng-container>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>",
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        encapsulation: i0.ViewEncapsulation.None,
+                        styles: [".root{display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;height:100%}.has-gradient-text{background:-webkit-linear-gradient(#13f7f4,#2af598);-webkit-text-fill-color:transparent}.board{display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;-webkit-box-flex:1;flex-grow:1;min-width:0;min-height:0}.board-bar{background-color:rgba(225,222,222,.52);padding:8px 15px}.board-name{font-size:20px;font-weight:700}.board-wrapper{display:-webkit-box;display:flex;-webkit-box-flex:1;flex-grow:1;overflow-x:auto}.board-columns{display:-webkit-box;display:flex;-webkit-box-flex:1;flex-grow:1}.board-column{display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;-webkit-box-flex:1;flex-grow:1;flex-basis:0;border-radius:4px}.board-column:not(:first-child){margin-left:0}.column-header{font-size:14px;font-weight:500;padding:10px 20px;font-family:Roboto;line-height:1.17;border-left:1px solid #dee0e5;box-shadow:0 3px 7px -3px rgba(5,6,6,.18);margin-bottom:10px}.column-title{text-transform:capitalize;color:#656c79}.column-title-items{line-height:1.67;font-size:12px;color:#acb3bf;float:right}.tasks-container{-webkit-box-flex:1;flex-grow:1;overflow-y:auto}.task{display:-webkit-box;display:flex;padding:15px 12px;margin:10px 20px;background:#fff;border:1px solid #dee0e5;border-radius:3px}.task.cdk-drag-preview{box-sizing:border-box;box-shadow:0 3px 7px -3px rgba(5,6,6,.18)}.task-selected{border-color:#2a7cff}.cdk-drag-placeholder{opacity:0}.cdk-drag-animating,.tasks-container.cdk-drop-list-dragging .task:not(.cdk-drag-placeholder){-webkit-transition:-webkit-transform 250ms cubic-bezier(0,0,.2,1);transition:transform 250ms cubic-bezier(0,0,.2,1);transition:transform 250ms cubic-bezier(0,0,.2,1),-webkit-transform 250ms cubic-bezier(0,0,.2,1)}.cdk-drag-disabled{background-color:#f5f5f5;color:rgba(0,0,0,.25);cursor:no-drop}"]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsKanbanComponent.ctorParameters = function () { return []; };
+        CmacsKanbanComponent.propDecorators = {
+            board: [{ type: i0.Input }],
+            itemTemplate: [{ type: i0.Input }],
+            columnHeaderTemplate: [{ type: i0.Input }],
+            hasVerticalScroll: [{ type: i0.Input }],
+            heightContainer: [{ type: i0.Input }],
+            columnWidth: [{ type: i0.Input }],
+            draggedItem: [{ type: i0.Output }],
+            onclickItem: [{ type: i0.Output }],
+            ondblclickItem: [{ type: i0.Output }],
+            selectionChange: [{ type: i0.Output }]
+        };
+        __decorate([
+            ngZorroAntd.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsKanbanComponent.prototype, "hasVerticalScroll", void 0);
+        return CmacsKanbanComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
     var CmacsAlertComponent = /** @class */ (function () {
         function CmacsAlertComponent() {
             this.destroy = false;
@@ -20624,6 +20772,7 @@
                             CmacsSliderMarksComponent,
                             CmacsSliderStepComponent,
                             CmacsSliderTrackComponent,
+                            CmacsKanbanComponent,
                             CmacsDateTimePickerComponent,
                             CmacsDatetimePickerPanelComponent,
                             CmacsDatetimeValueAccessorDirective,
@@ -20649,7 +20798,8 @@
                             controls.VgControlsModule,
                             overlayPlay.VgOverlayPlayModule,
                             buffering.VgBufferingModule,
-                            ng2TelInput.Ng2TelInputModule
+                            ng2TelInput.Ng2TelInputModule,
+                            dragDrop.DragDropModule
                         ],
                         exports: __spread([
                             CmacsButtonGroupComponent,
@@ -20737,6 +20887,7 @@
                             CmacsSliderMarksComponent,
                             CmacsSliderStepComponent,
                             CmacsSliderTrackComponent,
+                            CmacsKanbanComponent,
                             CmacsDateTimePickerComponent,
                             CmacsDatetimePickerPanelComponent,
                             CmacsDatetimeValueAccessorDirective,
@@ -21176,6 +21327,7 @@
     exports.CmacsDatetimeValueAccessorDirective = CmacsDatetimeValueAccessorDirective;
     exports.CmacsVideoPlayerComponent = CmacsVideoPlayerComponent;
     exports.CmacsPhoneNumberComponent = CmacsPhoneNumberComponent;
+    exports.CmacsKanbanComponent = CmacsKanbanComponent;
     exports.ɵa = AbstractPickerComponent;
     exports.ɵba = CalendarFooterComponent;
     exports.ɵy = CalendarHeaderComponent;
