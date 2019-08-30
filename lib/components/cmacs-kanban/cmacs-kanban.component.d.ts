@@ -20,7 +20,7 @@ export declare class CmacsKanbanComponent implements OnInit {
     ngOnInit(): void;
     verticalScrollStyle(): any;
     columnStyle(): any;
-    drop(event: CdkDragDrop<string[]>): void;
+    drop(event: CdkDragDrop<string[]>, columnId: string): void;
     clickItem(item: KanbanItem): void;
     dblclickItem(item: object): void;
     isItemSelected(id: string): boolean;

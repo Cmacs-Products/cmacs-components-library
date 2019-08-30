@@ -5,12 +5,13 @@ export interface KanbanItem {
     id: string;
     disabled?: boolean;
     data?: any;
+    columnId?: string;
 }
 /**
  * Columns
  */
 export interface KanbanColumn {
-    id?: string;
+    id: string;
     name: string;
     items: KanbanItem[];
 }
