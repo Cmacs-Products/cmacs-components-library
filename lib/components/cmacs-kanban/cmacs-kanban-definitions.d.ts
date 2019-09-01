@@ -1,3 +1,4 @@
+import { TemplateRef } from '@angular/core';
 /**
  * Item to render
  */
@@ -21,4 +22,11 @@ export interface KanbanColumn {
 export interface KanbanBoard {
     name: string;
     columns: KanbanColumn[];
+}
+/**
+ * Kanban Column id and TemplateRef
+ */
+export interface KanbanColumnTemplate {
+    id: string;
+    template: TemplateRef<any>;
 }

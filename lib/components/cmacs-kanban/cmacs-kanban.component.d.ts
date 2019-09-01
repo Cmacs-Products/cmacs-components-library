@@ -1,15 +1,23 @@
 import { EventEmitter, OnInit, TemplateRef } from '@angular/core';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { KanbanBoard, KanbanItem } from './cmacs-kanban-definitions';
+import { KanbanBoard, KanbanItem, KanbanColumnTemplate } from './cmacs-kanban-definitions';
 export declare class CmacsKanbanComponent implements OnInit {
     /** Items to display  */
     board: KanbanBoard;
-    /** Template for items to render. "item" object ist passed (see examples) */
+    /**
+     * Template for items to render. "item" object ist passed (see examples)
+     * itemTemplate is for each column
+     * itemTemplates is for change the template of a column
+     */
     itemTemplate: TemplateRef<any>;
+    itemTemplates: KanbanColumnTemplate[];
     /** Template for column headers. Current groupName will be passed (see examples) */
     columnHeaderTemplate: TemplateRef<any>;
     hasVerticalScroll: boolean;
     heightContainer: string;
+    /** Templates for actions and description panels  */
+    actionPanelTemplates: KanbanColumnTemplate[];
+    descriptionPanelTemplates: KanbanColumnTemplate[];
     columnWidth: string;
     draggedItem: EventEmitter<object>;
     onclickItem: EventEmitter<object>;
@@ -18,6 +26,9 @@ export declare class CmacsKanbanComponent implements OnInit {
     selectedItems: KanbanItem[];
     constructor();
     ngOnInit(): void;
+    getItemTemplate(id: string): TemplateRef<any>;
+    getActionPanel(id: string): TemplateRef<any>;
+    getDescriptionPanel(id: string): TemplateRef<any>;
     verticalScrollStyle(): any;
     columnStyle(): any;
     drop(event: CdkDragDrop<string[]>, columnId: string): void;

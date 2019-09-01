@@ -31,7 +31,7 @@ import { DateHelperService, NzI18nService, NzI18nModule } from 'ng-zorro-antd/i1
 import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription } from 'rxjs';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, TemplateRef, HostListener, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, Pipe, InjectionToken, defineInjectable, NgModule, inject, Injector, Type, ComponentFactoryResolver } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, TemplateRef, HostListener, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, defineInjectable, NgModule, Injector, inject, Type, ComponentFactoryResolver } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -16991,8 +16991,11 @@ var CmacsKanbanComponent = /** @class */ (function () {
     function CmacsKanbanComponent() {
         /**
          * Template for items to render. "item" object ist passed (see examples)
+         * itemTemplate is for each column
+         * itemTemplates is for change the template of a column
          */
         this.itemTemplate = null;
+        this.itemTemplates = null;
         /**
          * Template for column headers. Current groupName will be passed (see examples)
          */
@@ -17000,6 +17003,11 @@ var CmacsKanbanComponent = /** @class */ (function () {
         // scrolling
         this.hasVerticalScroll = false;
         this.heightContainer = '500px';
+        /**
+         * Templates for actions and description panels
+         */
+        this.actionPanelTemplates = null;
+        this.descriptionPanelTemplates = null;
         this.draggedItem = new EventEmitter();
         this.onclickItem = new EventEmitter();
         this.ondblclickItem = new EventEmitter();
@@ -17013,6 +17021,68 @@ var CmacsKanbanComponent = /** @class */ (function () {
      * @return {?}
      */
     function () {
+    };
+    /**
+     * @param {?} id
+     * @return {?}
+     */
+    CmacsKanbanComponent.prototype.getItemTemplate = /**
+     * @param {?} id
+     * @return {?}
+     */
+    function (id) {
+        if (this.actionPanelTemplates) {
+            /** @type {?} */
+            var elem = this.itemTemplates.find((/**
+             * @param {?} i
+             * @return {?}
+             */
+            function (i) { return i.id === id; }));
+            if (elem) {
+                return elem.template;
+            }
+        }
+        return this.itemTemplate;
+    };
+    /**
+     * @param {?} id
+     * @return {?}
+     */
+    CmacsKanbanComponent.prototype.getActionPanel = /**
+     * @param {?} id
+     * @return {?}
+     */
+    function (id) {
+        if (this.actionPanelTemplates == null) {
+            return null;
+        }
+        /** @type {?} */
+        var elem = this.actionPanelTemplates.find((/**
+         * @param {?} d
+         * @return {?}
+         */
+        function (d) { return d.id === id; }));
+        return elem ? elem.template : null;
+    };
+    /**
+     * @param {?} id
+     * @return {?}
+     */
+    CmacsKanbanComponent.prototype.getDescriptionPanel = /**
+     * @param {?} id
+     * @return {?}
+     */
+    function (id) {
+        if (this.descriptionPanelTemplates == null) {
+            return null;
+        }
+        /** @type {?} */
+        var elem = this.descriptionPanelTemplates.find((/**
+         * @param {?} d
+         * @return {?}
+         */
+        function (d) { return d.id === id; }));
+        return elem ? elem.template : null;
     };
     /**
      * @return {?}
@@ -17109,7 +17179,7 @@ var CmacsKanbanComponent = /** @class */ (function () {
         { type: Component, args: [{
                     selector: 'cmacs-kanban',
                     exportAs: 'cmacsKanban',
-                    template: "<div class=\"root\">\r\n    <div class=\"board\">\r\n      <div class=\"board-wrapper\">\r\n        <div class=\"board-columns\" cdkDropListGroup>\r\n          <div class=\"board-column\" *ngFor=\"let column of board.columns\" [ngStyle]=\"columnStyle()\">\r\n            <ng-container [ngIf]=\"columnHeaderTemplate\" *ngTemplateOutlet=\"columnHeaderTemplate; context: { column: column}\" ></ng-container>\r\n            <div class=\"column-header\" *ngIf=\"!columnHeaderTemplate\">\r\n              <span class=\"column-title\">{{column.name}}</span>\r\n              <span class=\"column-title-items\">{{column.items.length}} Items</span>\r\n            </div>\r\n            <div class=\"tasks-container\" cdkDropList [cdkDropListData]=\"column.items\"\r\n            (cdkDropListDropped)=\"drop($event, column.id)\" [ngStyle]=\"verticalScrollStyle()\">\r\n              <div class=\"task\" *ngFor=\"let item of column.items\" \r\n                   cdkDrag \r\n                   [cdkDragData]=\"item\"\r\n                   [cdkDragDisabled]=\"item.disabled\"\r\n                   (click)=\"clickItem(item)\"\r\n                   (dblclick)=\"dblclickItem(item)\"\r\n                   [class.task-selected]=\"isItemSelected(item.id)\"\r\n              >\r\n                <ng-container *ngTemplateOutlet=\"itemTemplate; context: {item: item}\"></ng-container>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>",
+                    template: "<div class=\"root\">\r\n    <div class=\"board\">\r\n      <div class=\"board-wrapper\">\r\n        <div class=\"board-columns\" cdkDropListGroup>\r\n          <div class=\"board-column\" *ngFor=\"let column of board.columns\" [ngStyle]=\"columnStyle()\">\r\n            <ng-container [ngIf]=\"columnHeaderTemplate\" *ngTemplateOutlet=\"columnHeaderTemplate; context: { column: column}\" ></ng-container>\r\n            <div class=\"column-header\" *ngIf=\"!columnHeaderTemplate\">\r\n              <span class=\"column-title\">{{column.name}}</span>\r\n              <span class=\"column-title-items\">{{column.items.length}} Items</span>\r\n            </div>\r\n            <ng-container [ngIf]=\"getActionPanel(column.id)\" *ngTemplateOutlet=\"getActionPanel(column.id); context: { column: column}\" ></ng-container>\r\n            <div class=\"tasks-container\" cdkDropList [cdkDropListData]=\"column.items\"\r\n            (cdkDropListDropped)=\"drop($event, column.id)\" [ngStyle]=\"verticalScrollStyle()\">\r\n              <div class=\"task\" *ngFor=\"let item of column.items\" \r\n                   cdkDrag \r\n                   [cdkDragData]=\"item\"\r\n                   [cdkDragDisabled]=\"item.disabled\"\r\n                   (click)=\"clickItem(item)\"\r\n                   (dblclick)=\"dblclickItem(item)\"\r\n                   [class.task-selected]=\"isItemSelected(item.id)\"\r\n              >\r\n                <ng-container *ngTemplateOutlet=\"getItemTemplate(column.id); context: {item: item}\"></ng-container>\r\n              </div>\r\n            </div>\r\n            <ng-container [ngIf]=\"getDescriptionPanel(column.id)\" *ngTemplateOutlet=\"getDescriptionPanel(column.id); context: { column: column}\" ></ng-container>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>",
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
                     styles: [".root{display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;height:100%}.has-gradient-text{background:-webkit-linear-gradient(#13f7f4,#2af598);-webkit-text-fill-color:transparent}.board{display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;-webkit-box-flex:1;flex-grow:1;min-width:0;min-height:0}.board-bar{background-color:rgba(225,222,222,.52);padding:8px 15px}.board-name{font-size:20px;font-weight:700}.board-wrapper{display:-webkit-box;display:flex;-webkit-box-flex:1;flex-grow:1;overflow-x:auto}.board-columns{display:-webkit-box;display:flex;-webkit-box-flex:1;flex-grow:1}.board-column{display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;-webkit-box-flex:1;flex-grow:1;flex-basis:0;border-radius:4px}.board-column:not(:first-child){margin-left:0}.column-header{font-size:14px;font-weight:500;padding:10px 20px;font-family:Roboto;line-height:1.17;border-left:1px solid #dee0e5;box-shadow:0 3px 7px -3px rgba(5,6,6,.18);margin-bottom:10px}.column-title{text-transform:capitalize;color:#656c79}.column-title-items{line-height:1.67;font-size:12px;color:#acb3bf;float:right}.tasks-container{-webkit-box-flex:1;flex-grow:1;overflow-y:auto}.task{display:-webkit-box;display:flex}.task.cdk-drag-preview{opacity:.5}.task-selected{border-color:#2a7cff}.cdk-drag-placeholder{opacity:0}.cdk-drag-animating,.tasks-container.cdk-drop-list-dragging .task:not(.cdk-drag-placeholder){-webkit-transition:-webkit-transform 250ms cubic-bezier(0,0,.2,1);transition:transform 250ms cubic-bezier(0,0,.2,1);transition:transform 250ms cubic-bezier(0,0,.2,1),-webkit-transform 250ms cubic-bezier(0,0,.2,1)}"]
@@ -17120,9 +17190,12 @@ var CmacsKanbanComponent = /** @class */ (function () {
     CmacsKanbanComponent.propDecorators = {
         board: [{ type: Input }],
         itemTemplate: [{ type: Input }],
+        itemTemplates: [{ type: Input }],
         columnHeaderTemplate: [{ type: Input }],
         hasVerticalScroll: [{ type: Input }],
         heightContainer: [{ type: Input }],
+        actionPanelTemplates: [{ type: Input }],
+        descriptionPanelTemplates: [{ type: Input }],
         columnWidth: [{ type: Input }],
         draggedItem: [{ type: Output }],
         onclickItem: [{ type: Output }],
