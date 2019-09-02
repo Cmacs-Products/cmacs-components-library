@@ -16,6 +16,7 @@ export interface Field {
     button?: ButtonConfig;
     tag?: TagConfig;
     editTemplate?: TemplateType;
+    showSort?: boolean;
 }
 export interface SelectConfig {
     selectData: any[];

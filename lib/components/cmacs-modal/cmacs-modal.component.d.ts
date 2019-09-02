@@ -113,6 +113,7 @@ export declare class CmacsModalComponent<T = any, R = any> extends CmacsModalRef
     onClickMask($event: MouseEvent): void;
     isModalType(type: ModalType): boolean;
     onClickCloseBtn(): void;
+    onClickCloseInteraction(): void;
     onClickOkCancel(type: 'ok' | 'cancel'): void;
     isNonEmptyString(value: {}): boolean;
     isTemplateRef(value: {}): boolean;
