@@ -14462,10 +14462,9 @@ class CmacsKanbanComponent {
      * @return {?}
      */
     drop(event, columnId) {
-        event.item.data.columnId = columnId;
-        this.draggedItem.emit(event.item.data);
         if (event.previousContainer === event.container) {
             moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+            this.emitDroppedItem(event.item.data, columnId);
         }
         else {
             if (!this.dragStartedColumn.disabledDrop || !this.dragStartedColumn.disabledDrop.some((/**
@@ -14474,9 +14473,20 @@ class CmacsKanbanComponent {
              */
             id => id === columnId))) {
                 transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+                this.emitDroppedItem(event.item.data, columnId);
             }
         }
         this.dragStartedColumn = null;
+    }
+    /**
+     * @private
+     * @param {?} data
+     * @param {?} columnId
+     * @return {?}
+     */
+    emitDroppedItem(data, columnId) {
+        data.columnId = columnId;
+        this.draggedItem.emit(data);
     }
     /**
      * @param {?} item

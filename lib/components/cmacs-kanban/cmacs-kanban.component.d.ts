@@ -35,6 +35,7 @@ export declare class CmacsKanbanComponent implements OnInit {
     columnStyle(): any;
     setDragStartedColumn(col: KanbanColumn): void;
     drop(event: CdkDragDrop<string[]>, columnId: string): void;
+    private emitDroppedItem;
     clickItem(item: KanbanItem): void;
     dblclickItem(item: object): void;
     isItemSelected(id: string): boolean;

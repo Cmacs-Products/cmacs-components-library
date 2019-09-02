@@ -31,7 +31,7 @@ import { DateHelperService, NzI18nService, NzI18nModule } from 'ng-zorro-antd/i1
 import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription } from 'rxjs';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, TemplateRef, HostListener, ContentChild, ViewContainerRef, Injectable, SkipSelf, Pipe, ViewChildren, InjectionToken, defineInjectable, NgModule, inject, Injector, Type, ComponentFactoryResolver } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, TemplateRef, HostListener, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, defineInjectable, NgModule, inject, Type, Injector, ComponentFactoryResolver } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -17186,10 +17186,9 @@ var CmacsKanbanComponent = /** @class */ (function () {
      * @return {?}
      */
     function (event, columnId) {
-        event.item.data.columnId = columnId;
-        this.draggedItem.emit(event.item.data);
         if (event.previousContainer === event.container) {
             moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+            this.emitDroppedItem(event.item.data, columnId);
         }
         else {
             if (!this.dragStartedColumn.disabledDrop || !this.dragStartedColumn.disabledDrop.some((/**
@@ -17198,9 +17197,26 @@ var CmacsKanbanComponent = /** @class */ (function () {
              */
             function (id) { return id === columnId; }))) {
                 transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+                this.emitDroppedItem(event.item.data, columnId);
             }
         }
         this.dragStartedColumn = null;
+    };
+    /**
+     * @private
+     * @param {?} data
+     * @param {?} columnId
+     * @return {?}
+     */
+    CmacsKanbanComponent.prototype.emitDroppedItem = /**
+     * @private
+     * @param {?} data
+     * @param {?} columnId
+     * @return {?}
+     */
+    function (data, columnId) {
+        data.columnId = columnId;
+        this.draggedItem.emit(data);
     };
     /**
      * @param {?} item

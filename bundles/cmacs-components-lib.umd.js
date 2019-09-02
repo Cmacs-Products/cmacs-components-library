@@ -17057,10 +17057,9 @@
          * @return {?}
          */
             function (event, columnId) {
-                event.item.data.columnId = columnId;
-                this.draggedItem.emit(event.item.data);
                 if (event.previousContainer === event.container) {
                     dragDrop.moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+                    this.emitDroppedItem(event.item.data, columnId);
                 }
                 else {
                     if (!this.dragStartedColumn.disabledDrop || !this.dragStartedColumn.disabledDrop.some(( /**
@@ -17068,9 +17067,26 @@
                      * @return {?}
                      */function (id) { return id === columnId; }))) {
                         dragDrop.transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+                        this.emitDroppedItem(event.item.data, columnId);
                     }
                 }
                 this.dragStartedColumn = null;
+            };
+        /**
+         * @private
+         * @param {?} data
+         * @param {?} columnId
+         * @return {?}
+         */
+        CmacsKanbanComponent.prototype.emitDroppedItem = /**
+         * @private
+         * @param {?} data
+         * @param {?} columnId
+         * @return {?}
+         */
+            function (data, columnId) {
+                data.columnId = columnId;
+                this.draggedItem.emit(data);
             };
         /**
          * @param {?} item
