@@ -8,14 +8,15 @@
 import { AnimationEvent } from '@angular/animations';
 import { ElementRef, EventEmitter, OnChanges, OnInit, Renderer2 } from '@angular/core';
 import { NzUpdateHostClassService } from 'ng-zorro-antd/core';
+import { CmacsGridType, CmacsPriorityType } from "../core/interfaces/grid-config";
 export declare class CmacsTagComponent implements OnInit, OnChanges {
     private renderer;
     private elementRef;
     private nzUpdateHostClassService;
     presetColor: boolean;
     mode: 'default' | 'closeable' | 'checkable';
-    cmacsGridType: 'active' | 'created' | 'pre-bid' | 'archive' | 'inactive' | 'warranty';
-    cmacsPriorityType: 'high' | 'low' | 'medium';
+    cmacsGridType: CmacsGridType;
+    cmacsPriorityType: CmacsPriorityType;
     cmacsStatusType: boolean;
     disabled: boolean;
     color: string;

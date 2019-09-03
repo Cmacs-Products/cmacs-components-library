@@ -1,6 +1,7 @@
 import { CeldType } from '../enums/CeldType.enum';
 import { TemplateType } from '../enums/TemplateType.enum';
 import { ButtonStyle } from '../enums/ButtonStyle.enum';
+import { TemplateRef } from "@angular/core";
 export interface GridConfig {
     fields: Field[];
     fieldId: string;
@@ -29,4 +30,13 @@ export interface ButtonConfig {
 }
 export interface TagConfig {
     color?: string;
+    cmacsGridType?: string;
+    cmacsStatusType?: boolean;
+    cmacsPriorityType?: string;
+}
+export declare type CmacsGridType = 'active' | 'created' | 'pre-bid' | 'archive' | 'inactive' | 'warranty';
+export declare type CmacsPriorityType = 'high' | 'low' | 'medium';
+export interface CmacsGridTemplateRef {
+    ref: TemplateRef<any>;
+    context: {};
 }

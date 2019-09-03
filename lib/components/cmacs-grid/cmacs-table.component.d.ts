@@ -101,6 +101,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     isCeldTypeDefault(field: Field): boolean;
     isCeldTypeButton(field: Field): boolean;
     isCeldTypeTag(field: Field): boolean;
+    isCeldTypeTemplateRef(field: Field): boolean;
     isUndefined(value: any): boolean;
     isRowSelected(data: any): boolean;
     constructor(cdr: ChangeDetectorRef, i18n: NzI18nService, exportAsService: ExportAsService, excelService: ExcelService, datePipe: DatePipe);
