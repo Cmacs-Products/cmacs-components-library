@@ -1,6 +1,8 @@
 import { ChangeDetectorRef, ElementRef, EventEmitter, OnInit, Renderer2, TemplateRef } from '@angular/core';
 import { CmacsCardTabComponent } from './cmacs-card-tab.component';
-export declare type CmacsCardType = 'file' | 'selection' | 'action' | 'team' | 'project' | 'folder' | 'measure' | 'big-file' | 'none';
+import { VgAPI } from "videogular2/compiled/src/core/services/vg-api";
+import { Source } from "../cmacs-video-player/cmacs-video-player.component";
+export declare type CmacsCardType = 'file' | 'selection' | 'action' | 'team' | 'project' | 'folder' | 'measure' | 'big-file' | 'none' | 'video' | 'todo';
 export interface BigFile {
     title?: string;
     extension?: string;
@@ -17,6 +19,8 @@ export declare class CmacsCardComponent implements OnInit {
     loading: boolean;
     disabled: boolean;
     hoverable: boolean;
+    sources: Source[];
+    playerReady: EventEmitter<VgAPI>;
     bodyStyle: {
         [key: string]: string;
     };
@@ -26,6 +30,7 @@ export declare class CmacsCardComponent implements OnInit {
     team: any;
     file: BigFile;
     project: any;
+    todo: any;
     type: string;
     cmacsType: CmacsCardType;
     cmacsIcon: string;
@@ -33,6 +38,7 @@ export declare class CmacsCardComponent implements OnInit {
     titleChange: EventEmitter<string>;
     extra: string | TemplateRef<void>;
     tab: CmacsCardTabComponent;
+    ondlclickCard: EventEmitter<any>;
     open: EventEmitter<any>;
     close: EventEmitter<any>;
     selected: boolean;
@@ -40,6 +46,7 @@ export declare class CmacsCardComponent implements OnInit {
     selectedChange: EventEmitter<boolean>;
     constructor(cdr: ChangeDetectorRef, renderer: Renderer2, elementRef: ElementRef);
     ngOnInit(): void;
+    onPlayerReady(api: VgAPI): void;
     checkRadio(): void;
     onClick(event: Event): void;
     onDblClick(): void;
