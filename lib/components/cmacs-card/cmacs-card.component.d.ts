@@ -49,7 +49,7 @@ export declare class CmacsCardComponent implements OnInit {
     onPlayerReady(api: VgAPI): void;
     checkRadio(): void;
     onClick(event: Event): void;
-    onDblClick(): void;
+    onDblClick(event: Event): void;
     markForCheck(): void;
     select(event: Event): void;
     handleEnter(event: KeyboardEvent, titleContainer: any, titleSpan: any): void;
