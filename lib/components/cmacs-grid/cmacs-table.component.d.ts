@@ -64,6 +64,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     selectionChange: EventEmitter<T[]>;
     ondlclickRow: EventEmitter<any>;
     onclickRow: EventEmitter<any>;
+    onedit: EventEmitter<any>;
     rateCount: number;
     multiSelect: boolean;
     sortChange: EventEmitter<any>;
@@ -74,6 +75,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     allChecked: boolean;
     editId: string | null;
     property: string | null;
+    rowOnEdition: number;
     inputElement: ElementRef;
     inputNumberElement: ElementRef;
     datePickerElement: ElementRef;
@@ -83,6 +85,8 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     sort($event: any, fieldProperty: string): void;
     handleClick(e: Event): void;
     childOf(node: any, ancestor: any): boolean;
+    endEditMode($event: KeyboardEvent, index: number): void;
+    endEditModeNgModel(index: number): void;
     getIndex(id: any): number;
     updateCheckboxCache(): void;
     onButtonClick(field: any): void;
