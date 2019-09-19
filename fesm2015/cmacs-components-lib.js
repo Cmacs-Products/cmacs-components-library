@@ -15602,7 +15602,7 @@ CmacsSliderComponent.decorators = [
                         multi: true
                     }
                 ],
-                template: "<div #slider\r\n  class=\"ant-slider\"\r\n  [class.ant-slider-disabled]=\"disabled\"\r\n  [class.ant-slider-vertical]=\"vertical\"\r\n  [class.ant-slider-with-marks]=\"marksArray\">\r\n  <div class=\"ant-slider-rail\"></div>\r\n  <cmacs-slider-track\r\n    [nzVertical]=\"vertical\"\r\n    [nzIncluded]=\"included\"\r\n    [nzOffset]=\"track.offset\"\r\n    [nzLength]=\"track.length\"></cmacs-slider-track>\r\n  <cmacs-slider-step\r\n    *ngIf=\"marksArray\"\r\n    [nzVertical]=\"vertical\"\r\n    [nzLowerBound]=\"bounds.lower\"\r\n    [nzUpperBound]=\"bounds.upper\"\r\n    [nzMarksArray]=\"marksArray\"\r\n    [nzIncluded]=\"included\"></cmacs-slider-step>\r\n  <cmacs-slider-handle\r\n    *ngFor=\"let handle of handles\"\r\n    [nzVertical]=\"vertical\"\r\n    [nzOffset]=\"handle.offset\"\r\n    [nzValue]=\"handle.value\"\r\n    [nzActive]=\"handle.active\"\r\n    [nzTipFormatter]=\"tipFormatter\"\r\n    [nzTooltipVisible]=\"tooltipVisible\"></cmacs-slider-handle>\r\n  <cmacs-slider-marks\r\n    *ngIf=\"marksArray\"\r\n    [nzVertical]=\"vertical\"\r\n    [nzMin]=\"min\"\r\n    [nzMax]=\"max\"\r\n    [nzLowerBound]=\"bounds.lower\"\r\n    [nzUpperBound]=\"bounds.upper\"\r\n    [nzMarksArray]=\"marksArray\"\r\n    [nzIncluded]=\"included\"></cmacs-slider-marks>\r\n</div>\r\n",
+                template: "<div #slider\n  class=\"ant-slider\"\n  [class.ant-slider-disabled]=\"disabled\"\n  [class.ant-slider-vertical]=\"vertical\"\n  [class.ant-slider-with-marks]=\"marksArray\">\n  <div class=\"ant-slider-rail\"></div>\n  <cmacs-slider-track\n    [nzVertical]=\"vertical\"\n    [nzIncluded]=\"included\"\n    [nzOffset]=\"track.offset\"\n    [nzLength]=\"track.length\"></cmacs-slider-track>\n  <cmacs-slider-step\n    *ngIf=\"marksArray\"\n    [nzVertical]=\"vertical\"\n    [nzLowerBound]=\"bounds.lower\"\n    [nzUpperBound]=\"bounds.upper\"\n    [nzMarksArray]=\"marksArray\"\n    [nzIncluded]=\"included\"></cmacs-slider-step>\n  <cmacs-slider-handle\n    *ngFor=\"let handle of handles\"\n    [nzVertical]=\"vertical\"\n    [nzOffset]=\"handle.offset\"\n    [nzValue]=\"handle.value\"\n    [nzActive]=\"handle.active\"\n    [nzTipFormatter]=\"tipFormatter\"\n    [nzTooltipVisible]=\"tooltipVisible\"></cmacs-slider-handle>\n  <cmacs-slider-marks\n    *ngIf=\"marksArray\"\n    [nzVertical]=\"vertical\"\n    [nzMin]=\"min\"\n    [nzMax]=\"max\"\n    [nzLowerBound]=\"bounds.lower\"\n    [nzUpperBound]=\"bounds.upper\"\n    [nzMarksArray]=\"marksArray\"\n    [nzIncluded]=\"included\"></cmacs-slider-marks>\n</div>\n",
                 styles: [".ant-slider-rail{height:3px;border-radius:100px;background-color:#cfd3d9}"]
             }] }
 ];
@@ -15769,7 +15769,7 @@ CmacsSliderHandleComponent.decorators = [
                 selector: 'cmacs-slider-handle',
                 exportAs: 'cmacsSliderHandle',
                 preserveWhitespaces: false,
-                template: "<nz-tooltip\r\n  *ngIf=\"nzTipFormatter !== null && nzTooltipVisible !== 'never'\"\r\n  [nzTitle]=\"tooltipTitle\"\r\n  [nzTrigger]=\"null\">\r\n  <div nz-tooltip class=\"ant-slider-handle\" [ngStyle]=\"style\"></div>\r\n</nz-tooltip>\r\n<div *ngIf=\"nzTipFormatter === null || nzTooltipVisible === 'never'\" class=\"ant-slider-handle\" [ngStyle]=\"style\"></div>\r\n",
+                template: "<nz-tooltip\n  *ngIf=\"nzTipFormatter !== null && nzTooltipVisible !== 'never'\"\n  [nzTitle]=\"tooltipTitle\"\n  [nzTrigger]=\"null\">\n  <div nz-tooltip class=\"ant-slider-handle\" [ngStyle]=\"style\"></div>\n</nz-tooltip>\n<div *ngIf=\"nzTipFormatter === null || nzTooltipVisible === 'never'\" class=\"ant-slider-handle\" [ngStyle]=\"style\"></div>\n",
                 host: {
                     '(mouseenter)': 'enterHandle()',
                     '(mouseleave)': 'leaveHandle()'
@@ -15916,7 +15916,7 @@ CmacsSliderMarksComponent.decorators = [
                 preserveWhitespaces: false,
                 selector: 'cmacs-slider-marks',
                 exportAs: 'cmacsSliderMarks',
-                template: "<div class=\"ant-slider-mark\">\r\n  <span\r\n    class=\"ant-slider-mark-text\"\r\n    *ngFor=\"let attr of marks; trackBy: trackById\"\r\n    [class.ant-slider-mark-active]=\"attr.active\"\r\n    [ngStyle]=\"attr.style\"\r\n    [innerHTML]=\"attr.label\">\r\n  </span>\r\n</div>"
+                template: "<div class=\"ant-slider-mark\">\n  <span\n    class=\"ant-slider-mark-text\"\n    *ngFor=\"let attr of marks; trackBy: trackById\"\n    [class.ant-slider-mark-active]=\"attr.active\"\n    [ngStyle]=\"attr.style\"\n    [innerHTML]=\"attr.label\">\n  </span>\n</div>"
             }] }
 ];
 CmacsSliderMarksComponent.propDecorators = {
@@ -16020,7 +16020,7 @@ CmacsSliderStepComponent.decorators = [
                 selector: 'cmacs-slider-step',
                 exportAs: 'cmacsSliderStep',
                 preserveWhitespaces: false,
-                template: "<div class=\"ant-slider-step\">\r\n  <span\r\n    class=\"ant-slider-dot\"\r\n    *ngFor=\"let mark of steps; trackBy: trackById\"\r\n    [class.ant-slider-dot-active]=\"mark.active\"\r\n    [ngStyle]=\"mark.style\">\r\n  </span>\r\n</div>"
+                template: "<div class=\"ant-slider-step\">\n  <span\n    class=\"ant-slider-dot\"\n    *ngFor=\"let mark of steps; trackBy: trackById\"\n    [class.ant-slider-dot-active]=\"mark.active\"\n    [ngStyle]=\"mark.style\">\n  </span>\n</div>"
             }] }
 ];
 CmacsSliderStepComponent.propDecorators = {
