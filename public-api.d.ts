@@ -85,3 +85,5 @@ export * from './lib/components/cmacs-video-player/cmacs-video-player.component'
 export * from './lib/components/cmacs-phone-number/cmacs-phone-number.component';
 export * from './lib/components/cmacs-kanban/cmacs-kanban.component';
 export * from './lib/components/cmacs-kanban/cmacs-kanban-definitions';
+export * from './lib/components/cmacs-color-picker/cmacs-color-picker.component';
+export * from './lib/components/cmacs-switch/cmacs-switch.component';

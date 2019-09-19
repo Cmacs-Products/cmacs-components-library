@@ -100,6 +100,7 @@ export declare class CmacsModalComponent<T = any, R = any> extends CmacsModalRef
     ngOnChanges(changes: SimpleChanges): void;
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
+    destroyModal(): void;
     keydownListener(event: KeyboardEvent): void;
     open(): void;
     close(result?: R): void;
@@ -113,7 +114,7 @@ export declare class CmacsModalComponent<T = any, R = any> extends CmacsModalRef
     onClickMask($event: MouseEvent): void;
     isModalType(type: ModalType): boolean;
     onClickCloseBtn(): void;
-    onClickCloseInteraction(): void;
+    closeInteraction(): void;
     onClickOkCancel(type: 'ok' | 'cancel'): void;
     isNonEmptyString(value: {}): boolean;
     isTemplateRef(value: {}): boolean;
