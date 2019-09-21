@@ -19,6 +19,7 @@ export interface Field {
     sortOrder?: string;
     editTemplate?: TemplateType;
     showSort?: boolean;
+    dateFormat?: string;
 }
 export interface SelectConfig {
     selectData: any[];
