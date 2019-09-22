@@ -6134,10 +6134,10 @@
             this.data = [];
             this.paginationPosition = 'bottom';
             this.scroll = { x: null, y: null };
-            this.frontPagination = false;
+            this.frontPagination = true;
             this.templateMode = false;
             this.bordered = false;
-            this.showPagination = false;
+            this.showPagination = true;
             this.loading = false;
             this.showSizeChanger = false;
             this.hideOnSinglePage = false;
