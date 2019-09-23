@@ -97,6 +97,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     onCheckboxAllChange(status: boolean): void;
     getLabel(data: any, field: Field): string;
     isSelect(field: Field): boolean;
+    isReadOnly(field: Field): boolean;
     isNumber(value: any): boolean;
     isString(value: any): boolean;
     isBoolean(value: any): boolean;

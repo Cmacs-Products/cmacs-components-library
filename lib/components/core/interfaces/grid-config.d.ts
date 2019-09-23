@@ -20,6 +20,7 @@ export interface Field {
     editTemplate?: TemplateType;
     showSort?: boolean;
     dateFormat?: string;
+    readonly?: boolean;
 }
 export interface SelectConfig {
     selectData: any[];

@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/platform-browser/animations'), require('@angular/common/locales/en'), require('jspdf'), require('jspdf-autotable'), require('xlsx'), require('@angular/router'), require('@angular/cdk/coercion'), require('date-fns'), require('ng-zorro-antd/icon'), require('@angular/common'), require('ng-zorro-antd/time-picker'), require('ngx-export-as'), require('ng-zorro-antd/menu'), require('@angular/cdk/layout'), require('ng-zorro-antd/grid'), require('ng-zorro-antd'), require('ng-zorro-antd/tooltip'), require('@angular/cdk/platform'), require('videogular2/compiled/controls'), require('videogular2/compiled/overlay-play'), require('videogular2/compiled/buffering'), require('videogular2/compiled/core'), require('ng2-tel-input'), require('@angular/cdk/drag-drop'), require('rxjs/operators'), require('ng-zorro-antd/i18n'), require('rxjs'), require('@angular/cdk/a11y'), require('@angular/cdk/keycodes'), require('@angular/forms'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core'), require('ng-zorro-antd/core')) :
-    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/platform-browser/animations', '@angular/common/locales/en', 'jspdf', 'jspdf-autotable', 'xlsx', '@angular/router', '@angular/cdk/coercion', 'date-fns', 'ng-zorro-antd/icon', '@angular/common', 'ng-zorro-antd/time-picker', 'ngx-export-as', 'ng-zorro-antd/menu', '@angular/cdk/layout', 'ng-zorro-antd/grid', 'ng-zorro-antd', 'ng-zorro-antd/tooltip', '@angular/cdk/platform', 'videogular2/compiled/controls', 'videogular2/compiled/overlay-play', 'videogular2/compiled/buffering', 'videogular2/compiled/core', 'ng2-tel-input', '@angular/cdk/drag-drop', 'rxjs/operators', 'ng-zorro-antd/i18n', 'rxjs', '@angular/cdk/a11y', '@angular/cdk/keycodes', '@angular/forms', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core', 'ng-zorro-antd/core'], factory) :
-    (factory((global['cmacs-components-lib'] = {}),global.ng.platformBrowser.animations,global.ng.common.locales.en,global.jsPDF,null,global.XLSX,global.ng.router,global.ng.cdk.coercion,global.dateFns,global.icon,global.ng.common,global.timePicker,global.ngxExportAs,global.menu,global.ng.cdk.layout,global.grid,global.ngZorroAntd,global.tooltip,global.ng.cdk.platform,global.controls,global.overlayPlay,global.buffering,global.core,global.ng2TelInput,global.ng.cdk['drag-drop'],global.rxjs.operators,global.i18n,global.rxjs,global.ng.cdk.a11y,global.ng.cdk.keycodes,global.ng.forms,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core,global.i2));
-}(this, (function (exports,animations,en,jsPDF,jspdfAutotable,XLSX,router,coercion,dateFns,icon,common,timePicker,ngxExportAs,menu,layout,grid,ngZorroAntd,tooltip,platform,controls,overlayPlay,buffering,core,ng2TelInput,dragDrop,operators,i18n,rxjs,a11y,keycodes,forms,i1,portal,i0,i2) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/platform-browser/animations'), require('@angular/common/locales/en'), require('jspdf'), require('jspdf-autotable'), require('xlsx'), require('@angular/router'), require('@angular/cdk/coercion'), require('date-fns'), require('ng-zorro-antd/icon'), require('@angular/common'), require('ng-zorro-antd/time-picker'), require('ngx-export-as'), require('ng-zorro-antd/menu'), require('@angular/cdk/layout'), require('ng-zorro-antd/grid'), require('ng-zorro-antd'), require('ng-zorro-antd/tooltip'), require('@angular/cdk/platform'), require('videogular2/compiled/controls'), require('videogular2/compiled/overlay-play'), require('videogular2/compiled/buffering'), require('videogular2/compiled/core'), require('ng2-tel-input'), require('@angular/cdk/drag-drop'), require('ng-zorro-antd/i18n'), require('@angular/cdk/a11y'), require('@angular/cdk/keycodes'), require('@angular/forms'), require('@angular/cdk/observers'), require('@angular/cdk/bidi'), require('rxjs/operators'), require('rxjs'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core'), require('ng-zorro-antd/core')) :
+    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/platform-browser/animations', '@angular/common/locales/en', 'jspdf', 'jspdf-autotable', 'xlsx', '@angular/router', '@angular/cdk/coercion', 'date-fns', 'ng-zorro-antd/icon', '@angular/common', 'ng-zorro-antd/time-picker', 'ngx-export-as', 'ng-zorro-antd/menu', '@angular/cdk/layout', 'ng-zorro-antd/grid', 'ng-zorro-antd', 'ng-zorro-antd/tooltip', '@angular/cdk/platform', 'videogular2/compiled/controls', 'videogular2/compiled/overlay-play', 'videogular2/compiled/buffering', 'videogular2/compiled/core', 'ng2-tel-input', '@angular/cdk/drag-drop', 'ng-zorro-antd/i18n', '@angular/cdk/a11y', '@angular/cdk/keycodes', '@angular/forms', '@angular/cdk/observers', '@angular/cdk/bidi', 'rxjs/operators', 'rxjs', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core', 'ng-zorro-antd/core'], factory) :
+    (factory((global['cmacs-components-lib'] = {}),global.ng.platformBrowser.animations,global.ng.common.locales.en,global.jsPDF,null,global.XLSX,global.ng.router,global.ng.cdk.coercion,global.dateFns,global.icon,global.ng.common,global.timePicker,global.ngxExportAs,global.menu,global.ng.cdk.layout,global.grid,global.ngZorroAntd,global.tooltip,global.ng.cdk.platform,global.controls,global.overlayPlay,global.buffering,global.core,global.ng2TelInput,global.ng.cdk['drag-drop'],global.i18n,global.ng.cdk.a11y,global.ng.cdk.keycodes,global.ng.forms,global.ng.cdk.observers,global.ng.cdk.bidi,global.rxjs.operators,global.rxjs,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core,global.i2));
+}(this, (function (exports,animations,en,jsPDF,jspdfAutotable,XLSX,router,coercion,dateFns,icon,common,timePicker,ngxExportAs,menu,layout,grid,ngZorroAntd,tooltip,platform,controls,overlayPlay,buffering,core,ng2TelInput,dragDrop,i18n,a11y,keycodes,forms,observers,bidi,operators,rxjs,i1,portal,i0,i2) { 'use strict';
 
     en = en && en.hasOwnProperty('default') ? en['default'] : en;
     jsPDF = jsPDF && jsPDF.hasOwnProperty('default') ? jsPDF['default'] : jsPDF;
@@ -305,7 +305,7 @@
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
                         encapsulation: i0.ViewEncapsulation.None,
                         template: "<i nz-icon type=\"loading\" *ngIf=\"loading\"></i>\r\n<span (cdkObserveContent)=\"checkContent()\" #contentElement><ng-content></ng-content></span>\r\n",
-                        styles: [".ant-btn{font-size:14px;line-height:20px;font-weight:400;height:34px;box-shadow:none;border-radius:3px}.ant-btn-primary{background-color:#2a7cff;border-color:#2a7cff}.ant-btn-primary:focus,.ant-btn-primary:hover{background-color:#2164c9;border-color:#2164c9}.ant-btn-primary[disabled],.ant-btn-primary[disabled]:focus,.ant-btn-primary[disabled]:hover{border:none;color:#97a0ae}.ant-btn-default{border:1px solid #bec4cd;color:#2a7cff}.ant-btn-default[disabled],.ant-btn-default[disabled]:focus,.ant-btn-default[disabled]:hover{color:#97a0ae;background-color:#fff;border-color:#f3f3f4}.ant-btn-default:focus,.ant-btn-default:hover{background-color:#f6f7fb;color:#2164c9;border:1px solid #bec4cd}.ant-btn-background-ghost.ant-btn-default:enabled,.ant-btn-background-ghost.ant-btn-primary:enabled{color:#2a7cff;border:none}.ant-btn-background-ghost.ant-btn-default:enabled:focus,.ant-btn-background-ghost.ant-btn-default:enabled:hover,.ant-btn-background-ghost.ant-btn-primary:enabled:focus,.ant-btn-background-ghost.ant-btn-primary:enabled:hover{background-color:#f6f7fb!important;color:#2a7cff}.ant-btn-background-ghost:disabled{border:none}.ant-btn-icon-only{border:1px solid #dee0e5;color:#656c79;background-color:#fff!important}.ant-btn-icon-only:focus,.ant-btn-icon-only:hover{color:#2a7cff;background-color:#fff!important}.ant-btn-icon-only:disabled{background-color:#f3f3f4!important;color:#97a0ae!important}.cmacs-btn-action{height:30px}.ant-btn-danger{color:#fff;background-color:#ff4d4f;border-color:#ff4d4f}.ant-btn-danger:hover{opacity:.8}"]
+                        styles: [".ant-btn{font-size:14px;line-height:20px;font-weight:400;height:34px;box-shadow:none;border-radius:3px}.ant-btn-primary{background-color:#2a7cff;border-color:#2a7cff}.ant-btn-primary:focus,.ant-btn-primary:hover{background-color:#2164c9;border-color:#2164c9}.ant-btn-primary[disabled],.ant-btn-primary[disabled]:focus,.ant-btn-primary[disabled]:hover{border:none;color:#97a0ae}.ant-btn-default{border:1px solid #bec4cd;color:#2a7cff}.ant-btn-default[disabled],.ant-btn-default[disabled]:focus,.ant-btn-default[disabled]:hover{color:#97a0ae;background-color:#fff;border-color:#f3f3f4}.ant-btn-default:focus,.ant-btn-default:hover{background-color:#f6f7fb;color:#2164c9;border:1px solid #bec4cd}.ant-btn-background-ghost.ant-btn-default:enabled,.ant-btn-background-ghost.ant-btn-primary:enabled{color:#2a7cff;border:none}.ant-btn-background-ghost.ant-btn-default:enabled:focus,.ant-btn-background-ghost.ant-btn-default:enabled:hover,.ant-btn-background-ghost.ant-btn-primary:enabled:focus,.ant-btn-background-ghost.ant-btn-primary:enabled:hover{background-color:#f6f7fb!important;color:#2a7cff}.ant-btn-background-ghost:disabled{background-color:transparent!important;border:none}.ant-btn-icon-only{border:1px solid #dee0e5;color:#656c79;background-color:#fff}.ant-btn-icon-only:focus,.ant-btn-icon-only:hover{color:#2a7cff;background-color:#fff!important}.ant-btn-icon-only:disabled{background-color:#f3f3f4!important;color:#97a0ae!important}.cmacs-btn-action{height:30px}.ant-btn-danger{color:#fff;background-color:#ff4d4f;border-color:#ff4d4f}.ant-btn-danger:hover{opacity:.8}"]
                     }] }
         ];
         /** @nocollapse */
@@ -6444,6 +6444,17 @@
                 return field !== undefined && field.editTemplate === TemplateType.Select;
             };
         /**
+         * @param {?} field
+         * @return {?}
+         */
+        CmacsGridComponent.prototype.isReadOnly = /**
+         * @param {?} field
+         * @return {?}
+         */
+            function (field) {
+                return field !== undefined && field.readonly !== undefined && field.readonly;
+            };
+        /**
          * @param {?} value
          * @return {?}
          */
@@ -6832,7 +6843,7 @@
                         // tslint:disable-next-line: component-selector
                         selector: 'cmacs-grid',
                         exportAs: 'cmacsGrid',
-                        template: "<div id=\"tableGrid\">\r\n  <nz-table #gridComponent [nzData]=\"data\" [nzShowTotal]=\"showTotal\" [nzPageSizeOptions]=\"pageSizeOptions\"\r\n    [nzVirtualScroll]=\"virtualScroll\" [nzVirtualItemSize]=\"virtualItemSize\" [nzLoadingDelay]=\"loadingDelay\"\r\n    [nzLoadingIndicator]=\"loadingIndicator\" [nzTotal]=\"total\" [nzTitle]=\"title\" [nzFooter]=\"footer\"\r\n    [nzNoResult]=\"noResult\" [nzWidthConfig]=\"widthConfig\" [nzPageIndex]=\"pageIndex\" [nzPageSize]=\"pageSize\"\r\n    [nzPaginationPosition]=\"paginationPosition\" [nzScroll]=\"scroll\" [nzFrontPagination]=\"frontPagination\"\r\n    [nzTemplateMode]=\"templateMode\" [nzShowPagination]=\"showPagination\" [nzLoading]=\"loading\"\r\n    [nzShowSizeChanger]=\"showSizeChanger\" [nzHideOnSinglePage]=\"hideOnSinglePage\" [nzShowQuickJumper]=\"showQuickJumper\"\r\n    [nzSimple]=\"simple\">\r\n    <thead class=\"ant-table-thead\" *ngIf=\"!dataTable\">\r\n      <tr>\r\n        <th *ngIf=\"checkboxSelect\" nzWidth=\"2%\">\r\n          <label cmacs-checkbox [(ngModel)]=\"selected\" [indeterminate]=\"isIndeterminate\"\r\n            (checkedChange)=onCheckboxAllChange($event)></label>\r\n        </th>\r\n        <th *ngFor=\"let field of getFields()\" [nzShowSort]=\"field.showSort\"\r\n          [(nzSort)]=\"field.showSort ? field.sortOrder : defaultSortOrder\" (nzSortChange)=\"sort($event, field.property)\"\r\n          nzWidth=\"{{field.width}}\">{{field.display}}</th>\r\n        <th *ngIf=\"showRate\"></th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let data of gridComponent.data; index as i\" (click)=\"clickRow(data)\" (dblclick)=\"dblClickRow(data)\"\r\n        [class.ant-table-selected-row]=\"isRowSelected(data)\">\r\n        <td *ngIf=\"checkboxSelect\" nzWidth=\"2%\">\r\n          <label cmacs-checkbox [(ngModel)]=\"checkboxCache[getIndex(data[config.fieldId])].selected\"\r\n            (checkedChange)=onCheckboxChange($event)\r\n            *ngIf=\"data[config.fieldId] && checkboxCache[getIndex(data[config.fieldId])]\"></label>\r\n        </td>\r\n        <td *ngFor=\"let field of getFields()\" class=\"editable-row\">\r\n          <div *ngIf=\"isCeldTypeDefault(field) && inLineEdit; else componentTpl\">\r\n            <div class=\"editable-cell\"\r\n              *ngIf=\"(editId !== data[config.fieldId] || property !== field.property); else editTpl\">\r\n              <div class=\"editable-cell-value-wrap\" (click)=\"startEdit(data[config.fieldId], field.property, $event)\">\r\n                <ng-container *ngIf=\"!isDate(field) && !isSelect(field)\">{{ data[field.property] }}</ng-container>\r\n                <ng-container *ngIf=\"isDate(field)\">{{ data[field.property]  | date: field.dateFormat}}</ng-container>\r\n                <ng-container *ngIf=\"isSelect(field)\">{{ getLabel(data, field) }}</ng-container>\r\n              </div>\r\n            </div>\r\n            <ng-template #editTpl>\r\n              <input #fieldTypeInput *ngIf=\"isString(data[field.property]) && !isSelect(field)\" type=\"text\" cmacs-input\r\n                [(ngModel)]=\"data[field.property]\" (keyup)=\"endEditMode($event, i)\" />\r\n\r\n              <cmacs-input-number #fieldTypeInputNumber id=\"testing2\"\r\n                *ngIf=\"isNumber(data[field.property]) && !isSelect(field)\" [(ngModel)]=\"data[field.property]\"\r\n                [cmacsStep]=\"1\" (keyup)=\"endEditMode($event, i)\"></cmacs-input-number>\r\n\r\n              <label #fieldTypeBool cmacs-checkbox *ngIf=\"isBoolean(data[field.property])\"\r\n                [(ngModel)]=\"data[field.property]\" (ngModelChange)=\"endEditModeNgModel(i)\"></label>\r\n\r\n              <cmacs-date-picker #fieldTypeDatePicker *ngIf=\"isDate(field)\" [format]=\"'MM/dd/yyyy'\" [allowClear]=\"false\"\r\n                open [(ngModel)]=\"data[field.property]\" (ngModelChange)=\"endEditModeNgModel(i)\"></cmacs-date-picker>\r\n\r\n              <cmacs-select #fieldTypeSelect *ngIf=\"isSelect(field)\" style=\"width: 200px;\" showSearch\r\n                [(ngModel)]=\"data[field.property]\" (ngModelChange)=\"endEditModeNgModel(i)\">\r\n                <cmacs-option *ngFor=\"let sData of field.select.selectData\" label=\"{{sData[field.select.label]}}\"\r\n                  value=\"{{sData[field.select.value]}}\"></cmacs-option>\r\n              </cmacs-select>\r\n            </ng-template>\r\n          </div>\r\n          <ng-template #componentTpl>\r\n            <ng-container #templateRefCeld *ngIf=\"isCeldTypeTemplateRef(field)\">\r\n              <ng-container *ngTemplateOutlet=\"data[field.property].ref; context: data[field.property].context\">\r\n              </ng-container>\r\n            </ng-container>\r\n            <button *ngIf=\"isCeldTypeButton(field)\" cmacs-button type=\"{{field.button.style}}\"\r\n              (click)=onButtonClick(data)>\r\n              <i *ngIf=\"!isUndefined(field.button.icon); else titleTpl\" nz-icon type=\"{{field.button.icon}}\"></i>\r\n              <ng-template #titleTpl>{{field.display}}</ng-template>\r\n            </button>\r\n            <cmacs-tag *ngIf=\"isCeldTypeTag(field) && field.tag !== undefined\"\r\n              [color]=\"field.tag.color ? data[field.tag.color] : null\"\r\n              [cmacsGridType]=\"field.tag.cmacsGridType ? data[field.tag.cmacsGridType] : null\"\r\n              [cmacsStatusType]=\"field.tag.cmacsStatusType ? data[field.tag.cmacsStatusType] : null\"\r\n              [cmacsPriorityType]=\"field.tag.cmacsPriorityType ? data[field.tag.cmacsPriorityType] : null\">\r\n              {{  data[field.property] }}\r\n            </cmacs-tag>\r\n            <!--<cmacs-tag *ngIf=\"isCeldTypeTag(field) && (field.tag === undefined || field.tag.color === undefined)\">\r\n              {{ data[field.property] }}</cmacs-tag>\r\n            <cmacs-tag *ngIf=\"isCeldTypeTag(field) && field.tag !== undefined && field.tag.color !== undefined\"\r\n              [color]=data[field.tag.color]>{{  data[field.property] }}</cmacs-tag>-->\r\n            <ng-container\r\n              *ngIf=\"!inLineEdit && !isCeldTypeButton(field) && !isCeldTypeTag(field) && !isCeldTypeTemplateRef(field) && isDate(field)\">\r\n              {{ data[field.property]  | date: field.dateFormat}}</ng-container>\r\n            <ng-container\r\n              *ngIf=\"!inLineEdit && !isCeldTypeButton(field) && !isCeldTypeTag(field) && !isCeldTypeTemplateRef(field) && !isDate(field)\">\r\n              {{ data[field.property] }}</ng-container>\r\n          </ng-template>\r\n        </td>\r\n        <td *ngIf=\"showRate\">\r\n          <nz-rate [ngModel]=\"data[config.fieldRate]\" [nzCount]='rateCount' (ngModelChange)=\"onRateChange($event, data)\"\r\n            (click)=\"onRateClick($event)\"></nz-rate>\r\n        </td>\r\n      </tr>\r\n    </tbody>\r\n  </nz-table>\r\n</div>\r\n",
+                        template: "<div id=\"tableGrid\">\r\n  <nz-table #gridComponent [nzData]=\"data\" [nzShowTotal]=\"showTotal\" [nzPageSizeOptions]=\"pageSizeOptions\"\r\n    [nzVirtualScroll]=\"virtualScroll\" [nzVirtualItemSize]=\"virtualItemSize\" [nzLoadingDelay]=\"loadingDelay\"\r\n    [nzLoadingIndicator]=\"loadingIndicator\" [nzTotal]=\"total\" [nzTitle]=\"title\" [nzFooter]=\"footer\"\r\n    [nzNoResult]=\"noResult\" [nzWidthConfig]=\"widthConfig\" [nzPageIndex]=\"pageIndex\" [nzPageSize]=\"pageSize\"\r\n    [nzPaginationPosition]=\"paginationPosition\" [nzScroll]=\"scroll\" [nzFrontPagination]=\"frontPagination\"\r\n    [nzTemplateMode]=\"templateMode\" [nzShowPagination]=\"showPagination\" [nzLoading]=\"loading\"\r\n    [nzShowSizeChanger]=\"showSizeChanger\" [nzHideOnSinglePage]=\"hideOnSinglePage\" [nzShowQuickJumper]=\"showQuickJumper\"\r\n    [nzSimple]=\"simple\">\r\n    <thead class=\"ant-table-thead\" *ngIf=\"!dataTable\">\r\n      <tr>\r\n        <th *ngIf=\"checkboxSelect\" nzWidth=\"2%\">\r\n          <label cmacs-checkbox [(ngModel)]=\"selected\" [indeterminate]=\"isIndeterminate\"\r\n            (checkedChange)=onCheckboxAllChange($event)></label>\r\n        </th>\r\n        <th *ngFor=\"let field of getFields()\" [nzShowSort]=\"field.showSort\"\r\n          [(nzSort)]=\"field.showSort ? field.sortOrder : defaultSortOrder\" (nzSortChange)=\"sort($event, field.property)\"\r\n          nzWidth=\"{{field.width}}\">{{field.display}}</th>\r\n        <th *ngIf=\"showRate\"></th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let data of gridComponent.data; index as i\" (click)=\"clickRow(data)\" (dblclick)=\"dblClickRow(data)\"\r\n        [class.ant-table-selected-row]=\"isRowSelected(data)\">\r\n        <td *ngIf=\"checkboxSelect\" nzWidth=\"2%\">\r\n          <label cmacs-checkbox [(ngModel)]=\"checkboxCache[getIndex(data[config.fieldId])].selected\"\r\n            (checkedChange)=onCheckboxChange($event)\r\n            *ngIf=\"data[config.fieldId] && checkboxCache[getIndex(data[config.fieldId])]\"></label>\r\n        </td>\r\n        <td *ngFor=\"let field of getFields()\" class=\"editable-row\">\r\n          <div *ngIf=\"isCeldTypeDefault(field) && inLineEdit && !isReadOnly(field); else componentTpl\">\r\n            <div class=\"editable-cell\"\r\n              *ngIf=\"(editId !== data[config.fieldId] || property !== field.property); else editTpl\">\r\n              <div class=\"editable-cell-value-wrap\" (click)=\"startEdit(data[config.fieldId], field.property, $event)\">\r\n                <ng-container *ngIf=\"!isDate(field) && !isSelect(field)\">{{ data[field.property] }}</ng-container>\r\n                <ng-container *ngIf=\"isDate(field)\">{{ data[field.property]  | date: field.dateFormat}}</ng-container>\r\n                <ng-container *ngIf=\"isSelect(field)\">{{ getLabel(data, field) }}</ng-container>\r\n              </div>\r\n            </div>\r\n            <ng-template #editTpl>\r\n              <input #fieldTypeInput *ngIf=\"isString(data[field.property]) && !isSelect(field)\" type=\"text\" cmacs-input\r\n                [(ngModel)]=\"data[field.property]\" (keyup)=\"endEditMode($event, i)\" />\r\n\r\n              <cmacs-input-number #fieldTypeInputNumber id=\"testing2\"\r\n                *ngIf=\"isNumber(data[field.property]) && !isSelect(field)\" [(ngModel)]=\"data[field.property]\"\r\n                [cmacsStep]=\"1\" (keyup)=\"endEditMode($event, i)\"></cmacs-input-number>\r\n\r\n              <label #fieldTypeBool cmacs-checkbox *ngIf=\"isBoolean(data[field.property])\"\r\n                [(ngModel)]=\"data[field.property]\" (ngModelChange)=\"endEditModeNgModel(i)\"></label>\r\n\r\n              <cmacs-date-picker #fieldTypeDatePicker *ngIf=\"isDate(field)\" [format]=\"'MM/dd/yyyy'\" [allowClear]=\"false\"\r\n                open [(ngModel)]=\"data[field.property]\" (ngModelChange)=\"endEditModeNgModel(i)\"></cmacs-date-picker>\r\n\r\n              <cmacs-select #fieldTypeSelect *ngIf=\"isSelect(field)\" style=\"width: 200px;\" showSearch\r\n                [(ngModel)]=\"data[field.property]\" (ngModelChange)=\"endEditModeNgModel(i)\">\r\n                <cmacs-option *ngFor=\"let sData of field.select.selectData\" label=\"{{sData[field.select.label]}}\"\r\n                  value=\"{{sData[field.select.value]}}\"></cmacs-option>\r\n              </cmacs-select>\r\n            </ng-template>\r\n          </div>\r\n          <ng-template #componentTpl>\r\n            <ng-container #templateRefCeld *ngIf=\"isCeldTypeTemplateRef(field)\">\r\n              <ng-container *ngTemplateOutlet=\"data[field.property].ref; context: data[field.property].context\">\r\n              </ng-container>\r\n            </ng-container>\r\n            <button *ngIf=\"isCeldTypeButton(field)\" cmacs-button type=\"{{field.button.style}}\"\r\n              (click)=onButtonClick(data)>\r\n              <i *ngIf=\"!isUndefined(field.button.icon); else titleTpl\" nz-icon type=\"{{field.button.icon}}\"></i>\r\n              <ng-template #titleTpl>{{field.display}}</ng-template>\r\n            </button>\r\n            <cmacs-tag *ngIf=\"isCeldTypeTag(field) && field.tag !== undefined\"\r\n              [color]=\"field.tag.color ? data[field.tag.color] : null\"\r\n              [cmacsGridType]=\"field.tag.cmacsGridType ? data[field.tag.cmacsGridType] : null\"\r\n              [cmacsStatusType]=\"field.tag.cmacsStatusType ? data[field.tag.cmacsStatusType] : null\"\r\n              [cmacsPriorityType]=\"field.tag.cmacsPriorityType ? data[field.tag.cmacsPriorityType] : null\">\r\n              {{  data[field.property] }}\r\n            </cmacs-tag>\r\n            <!--<cmacs-tag *ngIf=\"isCeldTypeTag(field) && (field.tag === undefined || field.tag.color === undefined)\">\r\n              {{ data[field.property] }}</cmacs-tag>\r\n            <cmacs-tag *ngIf=\"isCeldTypeTag(field) && field.tag !== undefined && field.tag.color !== undefined\"\r\n              [color]=data[field.tag.color]>{{  data[field.property] }}</cmacs-tag>-->\r\n            <ng-container\r\n              *ngIf=\"(!inLineEdit ||  isReadOnly(field)) && !isCeldTypeButton(field) && !isCeldTypeTag(field) && !isCeldTypeTemplateRef(field) && isDate(field)\">\r\n              {{ data[field.property]  | date: field.dateFormat}}</ng-container>\r\n            <ng-container\r\n              *ngIf=\"(!inLineEdit ||  isReadOnly(field)) && !isCeldTypeButton(field) && !isCeldTypeTag(field) && !isCeldTypeTemplateRef(field) && !isDate(field)\">\r\n              {{ data[field.property] }}</ng-container>\r\n          </ng-template>\r\n        </td>\r\n        <td *ngIf=\"showRate\">\r\n          <nz-rate [ngModel]=\"data[config.fieldRate]\" [nzCount]='rateCount' (ngModelChange)=\"onRateChange($event, data)\"\r\n            (click)=\"onRateClick($event)\"></nz-rate>\r\n        </td>\r\n      </tr>\r\n    </tbody>\r\n  </nz-table>\r\n</div>\r\n",
                         styles: [".editable-cell{position:relative}.editable-cell-value-wrap{padding:5px 12px;cursor:pointer}.editable-row:hover .editable-cell-value-wrap{border:1px solid #2a7cff;border-radius:4px;padding:4px 11px}:host ::ng-deep .ant-rate-star{font-size:16px}.ant-table-thead>tr{box-shadow:0 3px 7px -3px rgba(5,6,6,.18)}.ant-table-thead>tr>th:first-child{border-left:3px solid transparent}.ant-table-thead>tr>th{padding:15px;color:#656c79}.ant-table-tbody>tr>td{padding:10px 15px}.ant-table-tbody>tr:hover{box-shadow:0 3px 7px -3px rgba(5,6,6,.18)}.ant-table-tbody>tr td:first-child{border-left:3px solid #fff}.ant-table-tbody>tr:hover td:first-child{border-left:3px solid #2a7cff}.ant-table-tbody>.ant-table-selected-row:hover td{border-bottom:1px solid #2a7cff;border-top:1px solid #2a7cff}.ant-table-thead{font-family:Roboto-Regular,Helvetica,Arial,sans-serif;font-size:12px;font-weight:500;font-style:normal;font-stretch:normal;line-height:1.25;letter-spacing:normal}.editable-row,.ng-star-inserted{font-family:Roboto-Regular,Helvetica,Arial,sans-serif;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal}cmacs-tag{padding:2px 5px!important;height:unset}.ant-table-tbody>tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-selected-row)>td,.ant-table-tbody>tr:hover:not(.ant-table-expanded-row):not(.ant-table-selected-row)>td,.ant-table-thead>tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-selected-row)>td,.ant-table-thead>tr:hover:not(.ant-table-expanded-row):not(.ant-table-selected-row)>td{background-color:#fff}.ant-table-tbody>tr.ant-table-selected-row>td{background-color:#f2f7ff}"]
                     }] }
         ];
@@ -7379,7 +7390,8 @@
                                  */function () { return CmacsTreeComponent; })),
                                 multi: true
                             }
-                        ]
+                        ],
+                        styles: [":host ::ng-deep .ant-tree li span.ant-tree-switcher.ant-tree-switcher_close .ant-select-switcher-icon,:host ::ng-deep .ant-tree li span.ant-tree-switcher.ant-tree-switcher_close .ant-tree-switcher-icon{color:#bec4cd}:host ::ng-deep .ant-tree li{font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.67;letter-spacing:normal;color:#656c79}:host ::ng-deep .ant-tree li .ant-tree-node-content-wrapper.ant-tree-node-selected{background-color:transparent}:host ::ng-deep .ant-tree li .ant-tree-node-content-wrapper:hover{background-color:#f6f7fb!important}.ant-tree .ant-tree-treenode-selected:hover,:host ::ng-deep .ant-tree .ant-tree-treenode-selected{background-color:#f2f7ff}:host ::ng-deep .ant-tree .ant-tree-treenode-selected .ant-tree-node-content-wrapper:hover{background-color:#f2f7ff!important}:host ::ng-deep .ant-tree li.ant-tree-treenode-selected span.ant-tree-switcher{border-left:2px solid #2a7cff}:host ::ng-deep .ant-tree li.ant-tree-treenode-selected .ant-tree-child-tree{background-color:#f6f7fb}:host ::ng-deep .ant-tree li.ant-tree-treenode-selected .ant-tree-child-tree nz-tree-node li span.ant-tree-switcher{border:none}:host ::ng-deep .ant-tree li.ant-tree-treenode-selected .ant-tree-child-tree cmacs-tree-node li span.ant-tree-switcher{border:none}"]
                     }] }
         ];
         /** @nocollapse */
@@ -11578,6 +11590,21 @@
                 this.titleChange.emit(text);
             };
         /**
+         * @param {?} event
+         * @param {?} titleSpan
+         * @return {?}
+         */
+        CmacsCardComponent.prototype.handleEdit = /**
+         * @param {?} event
+         * @param {?} titleSpan
+         * @return {?}
+         */
+            function (event, titleSpan) {
+                /** @type {?} */
+                var text = titleSpan.innerText.replace(/(\r\n|\n|\r)/gm, "");
+                this.titleChange.emit(text);
+            };
+        /**
          * @param {?} titleContainer
          * @return {?}
          */
@@ -11611,7 +11638,7 @@
                         exportAs: 'cmacsCard',
                         preserveWhitespaces: false,
                         encapsulation: i0.ViewEncapsulation.None,
-                        template: "<div class=\"ant-card-head\" *ngIf=\"(title || extra || tab ) && (cmacsType === 'none' || cmacsType === 'team' || cmacsType === 'project')\">\r\n  <div class=\"ant-card-head-wrapper\">\r\n    <div class=\"ant-card-head-title\" *ngIf=\"title\">\r\n      <ng-container *cmacsStringTemplateOutlet=\"title\">{{ title }}</ng-container>\r\n    </div>\r\n    <div class=\"ant-card-extra\" *ngIf=\"extra\">\r\n      <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n    </div>\r\n  </div>\r\n  <ng-container *ngIf=\"tab\">\r\n    <ng-template [ngTemplateOutlet]=\"tab.template\"></ng-template>\r\n  </ng-container>\r\n</div>\r\n\r\n<div class=\"ant-card-cover\" *ngIf=\"cover || cmacsType === 'selection' || cmacsType === 'action'\">\r\n  <ng-template [ngTemplateOutlet]=\"cover\"></ng-template>\r\n  <ng-container *ngIf=\"cmacsType === 'selection'\">\r\n    <label cmacs-radio [(ngModel)]=\"selected\" (ngModelChange)=\"checkRadio()\" [disabled]=\"disabled\"></label>\r\n    <ng-template [ngTemplateOutlet]=\"body\"></ng-template>\r\n  </ng-container>\r\n</div>\r\n<div class=\"ant-card-body\" [ngStyle]=\"bodyStyle\">\r\n  <ng-container *ngIf=\"!loading\">\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'todo'\">\r\n      <div *ngIf=\"todo.projectImage\" class=\"cmacs-todo-card-project-img\">\r\n        <img [src]=\"todo.projectImage\">\r\n      </div>\r\n      <div [style.backgroundColor]=\"todo.stateColor\" class=\"cmacs-todo-card-upper-line\"></div>\r\n      <div class=\"cmacs-todo-card-title\">\r\n        <span>{{todo.title}}</span>\r\n      </div>\r\n      <div *ngIf=\"todo.project\" class=\"cmacs-todo-card-project\">\r\n        <span>{{todo.project}}</span>\r\n      </div>\r\n      <div *ngIf=\"todo.date\" class=\"cmacs-todo-card-date\">\r\n        <span>{{todo.date}}</span>\r\n      </div>\r\n      <div class=\"cmacs-todo-card-action\">\r\n        <div *ngIf=\"todo.attachments\" class=\"cmacs-todo-card-attachments\">\r\n          <span>{{todo.attachments}}</span>\r\n          <a><i nz-icon [type]=\"'paper-clip'\"></i></a>\r\n        </div>\r\n\r\n        <div class=\"cmacs-todo-card-person\">\r\n          <a><i nz-icon [type]=\"'user'\"></i></a>\r\n        </div>\r\n\r\n        <div *ngIf=\"todo.comments\" class=\"cmacs-todo-card-comments\">\r\n          <span>{{todo.comments}}</span>\r\n          <a><i nz-icon [type]=\"'message'\"></i></a>\r\n        </div>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'big-file'\">\r\n      <div class=\"cmacs-card-big-file-meta\">\r\n        <div class=\"cmacs-card-big-file-icon-wrapper\">\r\n          <a><i nz-icon [type]=\"cmacsIcon\"></i></a>\r\n        </div>\r\n        <div class=\"cmacs-card-big-file-extension-wrapper\">\r\n          <span>{{file.extension}}</span>\r\n        </div>\r\n      </div>\r\n      <div class=\"cmacs-card-big-file-description\">\r\n        <div class=\"cmacs-card-big-file-description-left-panel\">\r\n          <div class=\"cmacs-card-big-file-title\">\r\n            <span>{{file.title}}</span>\r\n          </div>\r\n          <div class=\"cmacs-card-big-file-date\">\r\n            <span>{{file.created_at}}</span>\r\n          </div>\r\n        </div>\r\n        <div class=\"cmacs-card-big-file-description-right-panel\">\r\n          <div class=\"cmacs-card-big-file-extra\" *ngIf=\"extra\">\r\n            <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'video'\">\r\n      <div class=\"cmacs-card-video-player-wrapper\">\r\n        <cmacs-video-player [sources]=\"sources\" (playerReady)=\"onPlayerReady($event)\"></cmacs-video-player>\r\n      </div>\r\n      <div class=\"cmacs-card-video-description\">\r\n        <div class=\"cmacs-card-video-title\">\r\n          <span>{{title}}</span>\r\n        </div>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'file'\">\r\n      <div class=\"cmacs-card-files-icon-wrapper\">\r\n        <a><i nz-icon [type]=\"cmacsIcon\"></i></a>\r\n      </div>\r\n      <div class=\"cmacs-card-label\">\r\n        <span>{{title}}</span>\r\n      </div>\r\n      <div class=\"cmacs-card-file-extra\" *ngIf=\"extra\">\r\n        <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'measure'\">\r\n      <div class=\"cmacs-card-measure-icon-wrapper\">\r\n        <a><i nz-icon [type]=\"cmacsIcon\"></i></a>\r\n      </div>\r\n      <div class=\"cmacs-card-label\">\r\n        <span>{{title}}</span>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'none' || cmacsType === 'selection' || cmacsType === 'action'\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'team'\">\r\n      <div style=\"margin-bottom: 20px; display: inline-flex\">\r\n        <div class=\"team-person-card\"\r\n             *ngFor=\"let person of team; index as i\"\r\n             [style.backgroundColor]=\"!person.image ? '#ffa800' : '#c7f5ff'\"\r\n             [style.display]=\"(i >= 4 && team.length > 5) ? 'none' : 'inline-flex' \"\r\n        >\r\n          <img width=\"30px\" height=\"30px\" *ngIf=\"person.image\" [src]=\"person.image\">\r\n          <span *ngIf=\"!person.image\">{{getInitials(person.name)}}</span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"plus-team-card\" *ngIf=\"team.length > 5\">+{{team.length - 4}}</div>\r\n      <ng-content select=\"[cmacs-action-panel]\"></ng-content>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'project'\">\r\n      <img width=\"221px\" height=\"107px\" [src]=\"project.projectImage\">\r\n      <cmacs-tag class=\"project-status\" [cmacsGridType]=\"project.statusTag\">{{project.status}}</cmacs-tag>\r\n      <div class=\"project-dates-wrapper\">\r\n        <span class=\"project-dates-title\">Project Dates</span>\r\n        <span class=\"project-dates project-dates-date\">{{project.startDate}}</span>\r\n        <a><i nz-icon [type]=\"'arrow-right'\" class=\"project-dates\" style=\"font-size: 16px;\"></i></a>\r\n        <span class=\"project-dates project-dates-date\">{{project.endDate}}</span>\r\n      </div>\r\n\r\n      <div class=\"project-card-progress-bar\">\r\n        <div class=\"project-card-progress-bar-inner\" [style.width]=\"project.completion\"></div>\r\n      </div>\r\n      <div class=\"project-manager-details\">\r\n        <img class=\"manager-avatar\" width=\"30px\" height=\"30px\" [src]=\"project.teamLead.avatar\">\r\n        <div class=\"project-manager-metadata\">\r\n          <span class=\"manager-name\">{{project.teamLead.name}}</span><br>\r\n          <span class=\"manager-charge\">{{project.teamLead.charge}}</span>\r\n        </div>\r\n        <!-- <a><i nz-icon [type]=\"'mail'\"></i></a> -->\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'folder'\">\r\n      <div class=\"card-files-folders-icon-wrapper\">\r\n        <a><i nz-icon [type]=\"folderIcon\"></i></a>\r\n      </div>\r\n      <div #titleContainer (click)=\"toggleEdit(titleContainer)\" class=\"card-files-folders-label\">\r\n        <span #name (keydown.enter)=\"handleEnter($event, titleContainer, name)\" [attr.contentEditable]=\"isEditable\"\r\n        >{{title}}</span>\r\n      </div>\r\n      <div class=\"card-files-folder-extra\" *ngIf=\"extra\">\r\n        <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n      </div>\r\n    </ng-container>\r\n\r\n  </ng-container>\r\n  <cmacs-card-loading *ngIf=\"loading\"></cmacs-card-loading>\r\n</div>\r\n<ul class=\"ant-card-actions\" *ngIf=\"actions.length\">\r\n  <li *ngFor=\"let action of actions\" [style.width.%]=\"100 / actions.length\">\r\n    <span><ng-template [ngTemplateOutlet]=\"action\"></ng-template></span>\r\n  </li>\r\n</ul>\r\n\r\n",
+                        template: "<div class=\"ant-card-head\" *ngIf=\"(title || extra || tab ) && (cmacsType === 'none' || cmacsType === 'team' || cmacsType === 'project')\">\r\n  <div class=\"ant-card-head-wrapper\">\r\n    <div class=\"ant-card-head-title\" *ngIf=\"title\">\r\n      <ng-container *cmacsStringTemplateOutlet=\"title\">{{ title }}</ng-container>\r\n    </div>\r\n    <div class=\"ant-card-extra\" *ngIf=\"extra\">\r\n      <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n    </div>\r\n  </div>\r\n  <ng-container *ngIf=\"tab\">\r\n    <ng-template [ngTemplateOutlet]=\"tab.template\"></ng-template>\r\n  </ng-container>\r\n</div>\r\n\r\n<div class=\"ant-card-cover\" *ngIf=\"cover || cmacsType === 'selection' || cmacsType === 'action'\">\r\n  <ng-template [ngTemplateOutlet]=\"cover\"></ng-template>\r\n  <ng-container *ngIf=\"cmacsType === 'selection'\">\r\n    <label cmacs-radio [(ngModel)]=\"selected\" (ngModelChange)=\"checkRadio()\" [disabled]=\"disabled\"></label>\r\n    <ng-template [ngTemplateOutlet]=\"body\"></ng-template>\r\n  </ng-container>\r\n</div>\r\n<div class=\"ant-card-body\" [ngStyle]=\"bodyStyle\">\r\n  <ng-container *ngIf=\"!loading\">\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'todo'\">\r\n      <div *ngIf=\"todo.projectImage\" class=\"cmacs-todo-card-project-img\">\r\n        <img [src]=\"todo.projectImage\">\r\n      </div>\r\n      <div [style.backgroundColor]=\"todo.stateColor\" class=\"cmacs-todo-card-upper-line\"></div>\r\n      <div class=\"cmacs-todo-card-title\">\r\n        <span>{{todo.title}}</span>\r\n      </div>\r\n      <div *ngIf=\"todo.project\" class=\"cmacs-todo-card-project\">\r\n        <span>{{todo.project}}</span>\r\n      </div>\r\n      <div *ngIf=\"todo.date\" class=\"cmacs-todo-card-date\">\r\n        <span>{{todo.date}}</span>\r\n      </div>\r\n      <div class=\"cmacs-todo-card-action\">\r\n        <div *ngIf=\"todo.attachments\" class=\"cmacs-todo-card-attachments\">\r\n          <span>{{todo.attachments}}</span>\r\n          <a><i nz-icon [type]=\"'paper-clip'\"></i></a>\r\n        </div>\r\n\r\n        <div class=\"cmacs-todo-card-person\">\r\n          <a><i nz-icon [type]=\"'user'\"></i></a>\r\n        </div>\r\n\r\n        <div *ngIf=\"todo.comments\" class=\"cmacs-todo-card-comments\">\r\n          <span>{{todo.comments}}</span>\r\n          <a><i nz-icon [type]=\"'message'\"></i></a>\r\n        </div>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'big-file'\">\r\n      <div class=\"cmacs-card-big-file-meta\">\r\n        <div class=\"cmacs-card-big-file-icon-wrapper\">\r\n          <a><i nz-icon [type]=\"cmacsIcon\"></i></a>\r\n        </div>\r\n        <div class=\"cmacs-card-big-file-extension-wrapper\">\r\n          <span>{{file.extension}}</span>\r\n        </div>\r\n      </div>\r\n      <div class=\"cmacs-card-big-file-description\">\r\n        <div class=\"cmacs-card-big-file-description-left-panel\">\r\n          <div class=\"cmacs-card-big-file-title\">\r\n            <span>{{file.title}}</span>\r\n          </div>\r\n          <div class=\"cmacs-card-big-file-date\">\r\n            <span>{{file.created_at}}</span>\r\n          </div>\r\n        </div>\r\n        <div class=\"cmacs-card-big-file-description-right-panel\">\r\n          <div class=\"cmacs-card-big-file-extra\" *ngIf=\"extra\">\r\n            <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'video'\">\r\n      <div class=\"cmacs-card-video-player-wrapper\">\r\n        <cmacs-video-player [sources]=\"sources\" (playerReady)=\"onPlayerReady($event)\"></cmacs-video-player>\r\n      </div>\r\n      <div class=\"cmacs-card-video-description\">\r\n        <div class=\"cmacs-card-video-title\">\r\n          <span>{{title}}</span>\r\n        </div>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'file'\">\r\n      <div class=\"cmacs-card-files-icon-wrapper\">\r\n        <a><i nz-icon [type]=\"cmacsIcon\"></i></a>\r\n      </div>\r\n      <div class=\"cmacs-card-label\">\r\n        <span>{{title}}</span>\r\n      </div>\r\n      <div class=\"cmacs-card-file-extra\" *ngIf=\"extra\">\r\n        <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'measure'\">\r\n      <div class=\"cmacs-card-measure-icon-wrapper\">\r\n        <a><i nz-icon [type]=\"cmacsIcon\"></i></a>\r\n      </div>\r\n      <div class=\"cmacs-card-label\">\r\n        <span>{{title}}</span>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'none' || cmacsType === 'selection' || cmacsType === 'action'\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'team'\">\r\n      <div style=\"margin-bottom: 20px; display: inline-flex\">\r\n        <div class=\"team-person-card\"\r\n             *ngFor=\"let person of team; index as i\"\r\n             [style.backgroundColor]=\"!person.image ? '#ffa800' : '#c7f5ff'\"\r\n             [style.display]=\"(i >= 4 && team.length > 5) ? 'none' : 'inline-flex' \"\r\n        >\r\n          <img width=\"30px\" height=\"30px\" *ngIf=\"person.image\" [src]=\"person.image\">\r\n          <span *ngIf=\"!person.image\">{{getInitials(person.name)}}</span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"plus-team-card\" *ngIf=\"team.length > 5\">+{{team.length - 4}}</div>\r\n      <ng-content select=\"[cmacs-action-panel]\"></ng-content>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'project'\">\r\n      <img width=\"221px\" height=\"107px\" [src]=\"project.projectImage\">\r\n      <cmacs-tag class=\"project-status\" [cmacsGridType]=\"project.statusTag\">{{project.status}}</cmacs-tag>\r\n      <div class=\"project-dates-wrapper\">\r\n        <span class=\"project-dates-title\">Project Dates</span>\r\n        <span class=\"project-dates project-dates-date\">{{project.startDate}}</span>\r\n        <a><i nz-icon [type]=\"'arrow-right'\" class=\"project-dates\" style=\"font-size: 16px;\"></i></a>\r\n        <span class=\"project-dates project-dates-date\">{{project.endDate}}</span>\r\n      </div>\r\n\r\n      <div class=\"project-card-progress-bar\">\r\n        <div class=\"project-card-progress-bar-inner\" [style.width]=\"project.completion\"></div>\r\n      </div>\r\n      <div class=\"project-manager-details\">\r\n        <img class=\"manager-avatar\" width=\"30px\" height=\"30px\" [src]=\"project.teamLead.avatar\">\r\n        <div class=\"project-manager-metadata\">\r\n          <span class=\"manager-name\">{{project.teamLead.name}}</span><br>\r\n          <span class=\"manager-charge\">{{project.teamLead.charge}}</span>\r\n        </div>\r\n        <!-- <a><i nz-icon [type]=\"'mail'\"></i></a> -->\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'folder'\">\r\n      <div class=\"card-files-folders-icon-wrapper\">\r\n        <a><i nz-icon [type]=\"folderIcon\"></i></a>\r\n      </div>\r\n      <div #titleContainer (click)=\"toggleEdit(titleContainer)\" class=\"card-files-folders-label\">\r\n        <span #name (keydown.enter)=\"handleEnter($event, titleContainer, name)\" (keyup)=\"handleEdit($event, name)\"\r\n              [attr.contentEditable]=\"isEditable\"\r\n        >{{title}}</span>\r\n      </div>\r\n      <div class=\"card-files-folder-extra\" *ngIf=\"extra\">\r\n        <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n      </div>\r\n    </ng-container>\r\n\r\n  </ng-container>\r\n  <cmacs-card-loading *ngIf=\"loading\"></cmacs-card-loading>\r\n</div>\r\n<ul class=\"ant-card-actions\" *ngIf=\"actions.length\">\r\n  <li *ngFor=\"let action of actions\" [style.width.%]=\"100 / actions.length\">\r\n    <span><ng-template [ngTemplateOutlet]=\"action\"></ng-template></span>\r\n  </li>\r\n</ul>\r\n\r\n",
                         host: {
                             '[class.ant-card-loading]': 'loading',
                             '[class.ant-card-bordered]': 'bordered',
@@ -11637,7 +11664,7 @@
                             '[class.cmacs-card-files-folders-wrapper]': "cmacsType === 'folder'",
                             '[class.file-card-selected]': "cmacsType === 'folder' && selected"
                         },
-                        styles: ["\n      cmacs-card {\n        display: block;\n      }\n    ", ".ant-card,.ant-card-head{font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.ant-card-head{min-height:40px;padding:0 14px}.ant-card-extra{padding:8px 0}.ant-card-head-title{padding:12px 0}.ant-card-grid{font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.cmacs-card-files-wrapper{width:223px;height:36px;border:none}.cmacs-card-measure-wrapper{width:223px;height:36px;border:1px solid #dee0e5}.cmacs-card-measure-wrapper .cmacs-card-label{padding:9px 0;font-size:13px}.cmacs-card-measure-wrapper-selected,.cmacs-card-measure-wrapper:hover{border-color:#2a7cff;cursor:pointer;box-shadow:0 6px 10px 0 rgba(0,0,0,.15)}.cmacs-card-measure-wrapper-selected .cmacs-card-measure-icon-wrapper,.cmacs-card-measure-wrapper:hover .cmacs-card-measure-icon-wrapper{border-right-color:#2a7cff}.cmacs-card-measure-wrapper-selected .cmacs-card-measure-icon-wrapper i,.cmacs-card-measure-wrapper:hover .cmacs-card-measure-icon-wrapper i{color:#2a7cff}.cmacs-card-files-wrapper:hover{background-color:#f6f7fb;cursor:pointer}.cmacs-card-files-wrapper .ant-card-body,.cmacs-card-measure-wrapper .ant-card-body{padding:0;width:100%}.cmacs-card-files-wrapper div,.cmacs-card-measure-wrapper div{display:inline-block}.cmacs-card-files-icon-wrapper{width:36px;height:36px;border-radius:3px;box-shadow:0 6px 10px 0 rgba(0,0,0,.15);background-color:#fff;margin-right:16px;text-align:center;position:relative;top:-8px}.cmacs-card-measure-icon-wrapper{background-color:#fff;margin-right:16px;text-align:center;padding:7px 6px 6px;border-right:1px solid #dee0e5}.cmacs-card-measure-icon-wrapper i{font-size:18px;top:23%;position:relative;color:#dee0e5}.cmacs-card-files-icon-wrapper i{color:#fb3147!important;font-size:18px;top:23%;position:relative}.cmacs-card-file-extra{font-size:22px;float:right;margin-top:2px;margin-right:5px}.cmacs-card-file-extra i{color:#bec4cd!important}.cmacs-card-label{padding:10px 0}.cmacs-selection-card{width:137px}.cmacs-selection-card .ant-card-cover{padding:15px}.cmacs-selection-card .ant-card-body{padding:10px 10px 30px;text-align:center;font-size:12px}.cmacs-selection-card .ant-card-meta-description{color:#656c79}.cmacs-selection-card.ant-card-hoverable:hover{box-shadow:none;border:1px solid #bec4cd}.cmacs-selection-card.ant-card-hoverable:hover .ant-radio-inner{border-color:#bec4cd}.cmacs-card-selected,.cmacs-card-selected:hover,.cmacs-card-selected:hover .ant-radio-inner{border-color:#2a7cff!important}.cmacs-card-disabled:hover .ant-radio-inner{border-color:#d9d9d9!important}.cmacs-card-selected .ant-card-meta-description{color:#2a7cff!important}.cmacs-card-disabled,.cmacs-card-disabled:hover{border-color:#dee0e5!important;cursor:default}.cmacs-card-disabled .ant-card-meta-description{color:#97a0ae!important}.cmacs-action-card{border:none;width:165px}.cmacs-action-card:hover{cursor:pointer}.cmacs-action-card-disabled:hover{cursor:default}.cmacs-action-card:hover .ant-card-meta-title{color:#2164c9}.cmacs-action-card .ant-card-meta-description{text-align:center;color:#acb3bf}.cmacs-action-card .ant-card-body{padding:13px}.cmacs-action-card .ant-card-meta-title{color:#2a7cff;white-space:normal;text-align:center;font-size:12px;padding-top:18px}.cmacs-action-card-disabled .ant-card-meta-title,.cmacs-action-card-disabled:hover .ant-card-meta-title{color:#97a0ae}.cmacs-information-card.ant-card-bordered{border-color:#dee0e5}.cmacs-information-card .ant-card-head{min-height:30px}.cmacs-information-card .ant-card-head-title{padding:10px 0}.cmacs-information-card:hover .cmacs-btn-action{color:#2a7cff!important}.cmacs-information-card .ant-card-body{padding:25px 10px}.cmacs-information-card .team-person-card{width:30px;height:30px;border-radius:3px;display:-webkit-inline-box;display:inline-flex;margin-right:12px}.cmacs-information-card .team-person-card:last-child{margin-right:0}.cmacs-information-card .plus-team-card{width:30px;height:30px;border-radius:3px;display:-webkit-inline-box;display:inline-flex;background-color:#dae8ff;color:#2a7cff;position:relative;top:-10px;font-size:13px;padding:5px 7px}.cmacs-information-card .team-person-card span{padding:6px 8px;color:#fff}.cmacs-team-card.ant-card-bordered{border-color:#dee0e5}.cmacs-team-card-selected.ant-card-bordered{border-color:#2a7cff}.cmacs-team-card .ant-card-head{min-height:30px}.cmacs-team-card .ant-card-head-title{padding:10px 0}.cmacs-team-card .ant-card-body{padding:0}.project-card-progress-bar-inner{height:5px;background-color:#2a7cff;border-radius:5px}.project-card-progress-bar{height:5px;background-color:#dee0e5;border-radius:5px;width:83%;margin:0 auto}.project-dates{display:inline-block}.project-status{position:relative;top:-36px;left:18px}.project-dates-wrapper{padding:0 20px;margin-top:-10px;margin-bottom:10px}.project-dates-title{color:#97a0ae;display:block;margin-bottom:5px}.project-dates-date{color:#656c79}.project-dates-wrapper i{margin-left:10px;margin-right:10px}.project-manager-metadata{display:inline-block;top:10px;margin-left:11px;margin-right:38px}.manager-charge{color:#acb3bf}.manager-name{color:#97a0ae;font-weight:500}.project-manager-details{margin-left:20px;margin-bottom:20px;margin-top:20px}.manager-avatar{display:inline-block;position:relative;top:-9px}.project-manager-details i{font-size:20px;color:#bec4cd;top:-11px;position:relative}.cmacs-card-files-folders-wrapper{height:48px;background-color:#fff;border:1px solid #dee0e5;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer!important}.card-files-uploading-wrapper{width:170px;height:48px;background-color:#f3f3f4;border:1px solid #dee0e5}.cmacs-card-files-folders-wrapper:hover{background-color:#f6f7fb;cursor:pointer}.file-card-selected,.file-card-selected:hover{background-color:#f2f7ff}.cmacs-card-files-folders-wrapper:hover .card-files-folders-label{color:#2a7cff}.cmacs-card-files-folders-wrapper:hover .card-files-folder-extra{display:inline-block}.card-files-folder-extra{display:none;font-size:20px}.card-files-folders-label{width:100px;display:inline-block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.card-files-uploading-wrapper .ant-card-body,.cmacs-card-files-folders-wrapper .ant-card-body{padding:11px 5px 11px 11px}.card-files-folders-icon-wrapper{font-size:20px;margin-right:10px;display:inline-block}.card-files-uploading-wrapper i,.cmacs-card-files-folders-wrapper i{color:#656c79!important}.card-files-progress-bar-inner{height:5px;background-color:#2a7cff;border-radius:5px}.card-files-progress-bar{height:5px;background-color:#dee0e5;border-radius:5px;margin-top:7px}.cmacs-big-file-card{width:243px;border:none;overflow:hidden}.cmacs-big-file-card .ant-card-body{padding:0}.cmacs-card-big-file-meta{border:1px solid #dee0e5;-webkit-transition:.3s;transition:.3s}.cmacs-big-file-card::before{content:' ';width:40px;height:21px;background-color:#fff;position:absolute;left:calc(100% - 26px);-webkit-transform:rotate(45deg);transform:rotate(45deg);top:-4px;border-bottom:1px solid #dee0e5;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-icon-wrapper{font-size:22px;margin:0 auto;width:22px;padding-top:60px;padding-bottom:40px}.cmacs-card-big-file-extension-wrapper{text-align:right;padding:0 10px 10px 0}.cmacs-card-big-file-description{height:61px;margin-top:10px;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-title{padding:10px 10px 5px;font-size:12px;color:#3b3f46;font-weight:500;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-date{padding:0 10px 10px;font-size:12px;color:#acb3bf;font-weight:500}.cmacs-card-big-file-extra{font-size:21px;padding-top:3px;opacity:0;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-extra a{color:#656c79;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-description-left-panel{width:90%;float:left}.cmacs-card-big-file-description-right-panel{width:10%;float:right}.cmacs-big-file-card:hover{cursor:pointer}.cmacs-big-file-card:hover .cmacs-card-big-file-description{background-color:#f6f7fb}.cmacs-big-file-card:hover .cmacs-card-big-file-title{color:#2a7cff}.cmacs-big-file-card:hover .cmacs-card-big-file-extra{opacity:1}.cmacs-big-file-card-selected .cmacs-card-big-file-description,.cmacs-big-file-card-selected:hover .cmacs-card-big-file-description{background-color:#f2f7ff}.cmacs-big-file-card-selected .cmacs-card-big-file-meta,.cmacs-big-file-card-selected.cmacs-big-file-card::before{border-color:#2a7cff}.cmacs-card-video-description{color:#3b3f46;font-weight:600;font-size:12px;margin-top:17px}.cmacs-card-video-player-wrapper{width:337px;height:226px;border:1px solid #dee0e5}.cmacs-video-player-card{border:none;width:337px}.cmacs-video-player-card .ant-card-body{padding:0}.cmacs-todo-card-upper-line{width:95%;margin:5px;height:2px;border-radius:100px}.cmacs-todo-card{width:243px}.cmacs-todo-card .ant-card-body{padding:0}.cmacs-todo-card-title{color:#3b3f46;font-size:12px;margin:21px 14px 0}.cmacs-todo-card-project{color:#97a0ae;margin:10px 14px 0;font-size:12px}.cmacs-todo-card-date{color:#656c79;margin:14px 14px 0;background-color:#f6f7fb;padding:2px 5px;border-radius:3px;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}.cmacs-todo-card-action{padding:15px 14px 30px 15px;font-size:14px}.cmacs-todo-card-attachments,.cmacs-todo-card-person{float:left;margin-right:10px}.cmacs-todo-card-attachments span,.cmacs-todo-card-comments span{margin-right:3px;color:#2a7cff;font-size:12px}.cmacs-todo-card-comments{float:right}.cmacs-todo-card-attachments a,.cmacs-todo-card-comments a,.cmacs-todo-card-person a{color:#656c79}.cmacs-todo-card-project-img{width:241px;height:100px;overflow:hidden}.cmacs-todo-card-project-img img{width:241px}.cmacs-todo-card-selected{border-color:#2a7cff!important}"]
+                        styles: ["\n      cmacs-card {\n        display: block;\n      }\n    ", ".ant-card,.ant-card-head{font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.ant-card-head{min-height:40px;padding:0 14px}.ant-card-extra{padding:8px 0}.ant-card-head-title{padding:12px 0}.ant-card-grid{font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.cmacs-card-files-wrapper{width:223px;height:36px;border:none}.cmacs-card-measure-wrapper{width:223px;height:36px;border:1px solid #dee0e5}.cmacs-card-measure-wrapper .cmacs-card-label{padding:9px 0;font-size:13px}.cmacs-card-measure-wrapper-selected,.cmacs-card-measure-wrapper:hover{border-color:#2a7cff;cursor:pointer;box-shadow:0 6px 10px 0 rgba(0,0,0,.15)}.cmacs-card-measure-wrapper-selected .cmacs-card-measure-icon-wrapper,.cmacs-card-measure-wrapper:hover .cmacs-card-measure-icon-wrapper{border-right-color:#2a7cff}.cmacs-card-measure-wrapper-selected .cmacs-card-measure-icon-wrapper i,.cmacs-card-measure-wrapper:hover .cmacs-card-measure-icon-wrapper i{color:#2a7cff}.cmacs-card-files-wrapper:hover{background-color:#f6f7fb;cursor:pointer}.cmacs-card-files-wrapper .ant-card-body,.cmacs-card-measure-wrapper .ant-card-body{padding:0;width:100%}.cmacs-card-files-wrapper div,.cmacs-card-measure-wrapper div{display:inline-block}.cmacs-card-files-icon-wrapper{width:36px;height:36px;border-radius:3px;box-shadow:0 6px 10px 0 rgba(0,0,0,.15);background-color:#fff;margin-right:16px;text-align:center;position:relative;top:-8px}.cmacs-card-measure-icon-wrapper{background-color:#fff;margin-right:16px;text-align:center;padding:7px 6px 6px;border-right:1px solid #dee0e5}.cmacs-card-measure-icon-wrapper i{font-size:18px;top:23%;position:relative;color:#dee0e5}.cmacs-card-files-icon-wrapper i{color:#fb3147!important;font-size:18px;top:23%;position:relative}.cmacs-card-file-extra{font-size:22px;float:right;margin-top:2px;margin-right:5px}.cmacs-card-file-extra i{color:#bec4cd!important}.cmacs-card-label{padding:10px 0}.cmacs-selection-card{width:137px}.cmacs-selection-card .ant-card-cover{padding:15px}.cmacs-selection-card .ant-card-body{padding:10px 10px 30px;text-align:center;font-size:12px}.cmacs-selection-card .ant-card-meta-description{color:#656c79}.cmacs-selection-card.ant-card-hoverable:hover{border:1px solid #bec4cd}.cmacs-selection-card.ant-card-hoverable:hover .ant-radio-inner{border-color:#bec4cd}.cmacs-card-selected,.cmacs-card-selected:hover,.cmacs-card-selected:hover .ant-radio-inner{border-color:#2a7cff!important}.cmacs-card-disabled:hover .ant-radio-inner{border-color:#d9d9d9!important}.cmacs-card-selected .ant-card-meta-description{color:#2a7cff!important}.cmacs-card-disabled,.cmacs-card-disabled:hover{border-color:#dee0e5!important;cursor:default}.cmacs-card-disabled .ant-card-meta-description{color:#97a0ae!important}.cmacs-action-card{border:none;width:165px}.cmacs-action-card:hover{cursor:pointer}.cmacs-action-card-disabled:hover{cursor:default}.cmacs-action-card:hover .ant-card-meta-title{color:#2164c9}.cmacs-action-card .ant-card-meta-description{text-align:center;color:#acb3bf}.cmacs-action-card .ant-card-body{padding:13px}.cmacs-action-card .ant-card-meta-title{color:#2a7cff;white-space:normal;text-align:center;font-size:12px;padding-top:18px}.cmacs-action-card-disabled .ant-card-meta-title,.cmacs-action-card-disabled:hover .ant-card-meta-title{color:#97a0ae}.cmacs-information-card.ant-card-bordered{border-color:#dee0e5}.cmacs-information-card .ant-card-head{min-height:30px}.cmacs-information-card .ant-card-head-title{padding:10px 0}.cmacs-information-card:hover .cmacs-btn-action{color:#2a7cff!important}.cmacs-information-card .ant-card-body{padding:25px 10px}.cmacs-information-card .team-person-card{width:30px;height:30px;border-radius:3px;display:-webkit-inline-box;display:inline-flex;margin-right:12px}.cmacs-information-card .team-person-card:last-child{margin-right:0}.cmacs-information-card .plus-team-card{width:30px;height:30px;border-radius:3px;display:-webkit-inline-box;display:inline-flex;background-color:#dae8ff;color:#2a7cff;position:relative;top:-10px;font-size:13px;padding:5px 7px}.cmacs-information-card .team-person-card span{padding:6px 8px;color:#fff}.cmacs-team-card.ant-card-bordered{border-color:#dee0e5}.cmacs-team-card-selected.ant-card-bordered{border-color:#2a7cff}.cmacs-team-card .ant-card-head{min-height:30px}.cmacs-team-card .ant-card-head-title{padding:10px 0}.cmacs-team-card .ant-card-body{padding:0}.project-card-progress-bar-inner{height:5px;background-color:#2a7cff;border-radius:5px}.project-card-progress-bar{height:5px;background-color:#dee0e5;border-radius:5px;width:83%;margin:0 auto}.project-dates{display:inline-block}.project-status{position:relative;top:-36px;left:18px}.project-dates-wrapper{padding:0 20px;margin-top:-10px;margin-bottom:10px}.project-dates-title{color:#97a0ae;display:block;margin-bottom:5px}.project-dates-date{color:#656c79}.project-dates-wrapper i{margin-left:10px;margin-right:10px}.project-manager-metadata{display:inline-block;top:10px;margin-left:11px;margin-right:38px}.manager-charge{color:#acb3bf}.manager-name{color:#97a0ae;font-weight:500}.project-manager-details{margin-left:20px;margin-bottom:20px;margin-top:20px}.manager-avatar{display:inline-block;position:relative;top:-9px}.project-manager-details i{font-size:20px;color:#bec4cd;top:-11px;position:relative}.cmacs-card-files-folders-wrapper{height:48px;background-color:#fff;border:1px solid #dee0e5;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer!important}.card-files-uploading-wrapper{width:170px;height:48px;background-color:#f3f3f4;border:1px solid #dee0e5}.cmacs-card-files-folders-wrapper:hover{background-color:#f6f7fb;cursor:pointer}.file-card-selected,.file-card-selected:hover{background-color:#f2f7ff}.cmacs-card-files-folders-wrapper:hover .card-files-folders-label{color:#2a7cff}.cmacs-card-files-folders-wrapper:hover .card-files-folder-extra a{opacity:1}.card-files-folder-extra{display:inline-block;font-size:20px}.card-files-folder-extra a{opacity:0}.card-files-folders-label{width:100px;display:inline-block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.card-files-uploading-wrapper .ant-card-body,.cmacs-card-files-folders-wrapper .ant-card-body{padding:11px 5px 11px 11px}.card-files-folders-icon-wrapper{font-size:20px;margin-right:10px;display:inline-block}.card-files-uploading-wrapper i,.cmacs-card-files-folders-wrapper i{color:#656c79!important}.card-files-progress-bar-inner{height:5px;background-color:#2a7cff;border-radius:5px}.card-files-progress-bar{height:5px;background-color:#dee0e5;border-radius:5px;margin-top:7px}.cmacs-big-file-card{width:243px;border:none;overflow:hidden}.cmacs-big-file-card .ant-card-body{padding:0}.cmacs-card-big-file-meta{border:1px solid #dee0e5;-webkit-transition:.3s;transition:.3s}.cmacs-big-file-card::before{content:' ';width:40px;height:21px;background-color:#fff;position:absolute;left:calc(100% - 26px);-webkit-transform:rotate(45deg);transform:rotate(45deg);top:-4px;border-bottom:1px solid #dee0e5;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-icon-wrapper{font-size:22px;margin:0 auto;width:22px;padding-top:60px;padding-bottom:40px}.cmacs-card-big-file-extension-wrapper{text-align:right;padding:0 10px 10px 0;color:#acb3bf}.cmacs-card-big-file-description{height:61px;margin-top:10px;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-title{padding:10px 10px 5px;font-size:12px;color:#3b3f46;font-weight:500;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-date{padding:0 10px 10px;font-size:12px;color:#acb3bf;font-weight:500}.cmacs-card-big-file-extra{font-size:21px;padding-top:3px;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-extra a{color:#656c79;opacity:0;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-description-left-panel{width:90%;float:left}.cmacs-card-big-file-description-right-panel{width:10%;float:right}.cmacs-big-file-card:hover{cursor:pointer}.cmacs-big-file-card:hover .cmacs-card-big-file-description{background-color:#f6f7fb}.cmacs-big-file-card:hover .cmacs-card-big-file-title{color:#2a7cff}.cmacs-big-file-card:hover .cmacs-card-big-file-extra a{opacity:1}.cmacs-big-file-card-selected .cmacs-card-big-file-description,.cmacs-big-file-card-selected:hover .cmacs-card-big-file-description{background-color:#f2f7ff}.cmacs-big-file-card-selected .cmacs-card-big-file-meta,.cmacs-big-file-card-selected.cmacs-big-file-card::before{border-color:#2a7cff}.cmacs-card-video-description{color:#3b3f46;font-weight:600;font-size:12px;margin-top:17px}.cmacs-card-video-player-wrapper{width:337px;height:226px;border:1px solid #dee0e5}.cmacs-video-player-card{border:none;width:337px}.cmacs-video-player-card .ant-card-body{padding:0}.cmacs-todo-card-upper-line{width:95%;margin:5px;height:2px;border-radius:100px}.cmacs-todo-card{width:243px}.cmacs-todo-card .ant-card-body{padding:0}.cmacs-todo-card-title{color:#3b3f46;font-size:12px;margin:21px 14px 0}.cmacs-todo-card-project{color:#97a0ae;margin:10px 14px 0;font-size:12px}.cmacs-todo-card-date{color:#656c79;margin:14px 14px 0;background-color:#f6f7fb;padding:2px 5px;border-radius:3px;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}.cmacs-todo-card-action{padding:15px 14px 30px 15px;font-size:14px}.cmacs-todo-card-attachments,.cmacs-todo-card-person{float:left;margin-right:10px}.cmacs-todo-card-attachments span,.cmacs-todo-card-comments span{margin-right:3px;color:#2a7cff;font-size:12px}.cmacs-todo-card-comments{float:right}.cmacs-todo-card-attachments a,.cmacs-todo-card-comments a,.cmacs-todo-card-person a{color:#656c79}.cmacs-todo-card-project-img{width:241px;height:100px;overflow:hidden}.cmacs-todo-card-project-img img{width:241px}.cmacs-todo-card-selected{border-color:#2a7cff!important}"]
                     }] }
         ];
         /** @nocollapse */
@@ -15457,7 +15484,7 @@
                         encapsulation: i0.ViewEncapsulation.None,
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
                         template: "<ng-content select=\"[cmacs-dropdown]\"></ng-content>\r\n<ng-template\r\n  cdkConnectedOverlay\r\n  nzConnectedOverlay\r\n  [cdkConnectedOverlayHasBackdrop]=\"trigger === 'click'\"\r\n  [cdkConnectedOverlayPositions]=\"positions\"\r\n  [cdkConnectedOverlayOrigin]=\"cmacsDropdownDirective\"\r\n  [cdkConnectedOverlayMinWidth]=\"triggerWidth\"\r\n  [cdkConnectedOverlayOpen]=\"visible\"\r\n  (backdropClick)=\"setVisibleStateWhen(false)\"\r\n  (detach)=\"setVisibleStateWhen(false)\"\r\n  (positionChange)=\"onPositionChange($event)\">\r\n  <div #dropdown class=\"{{'cmacs-dropdown ant-dropdown ant-dropdown-placement-'+placement}}\"\r\n    [class.cmacs-dropdown-updated-position-bottom-top]=\"updatedPosition === 'top'\"\r\n    [class.cmacs-dropdown-updated-position-top-bottom]=\"updatedPosition === 'bottom'\"\r\n    [class.cmacs-dropdown-updated-overlay-end-start]=\"updatedOverLay === 'start'\"\r\n    [class.cmacs-dropdown-updated-origin-end-start]=\"updatedOrigin === 'start'\"\r\n    [ngClass]=\"overlayClassName\"\r\n    [ngStyle]=\"overlayStyle\"\r\n    [@slideMotion]=\"dropDownPosition\"\r\n    [nzNoAnimation]=\"noAnimation?.nzNoAnimation\"\r\n    [style.minWidth.px]=\"triggerWidth\"\r\n    (mouseenter)=\"setVisibleStateWhen(true,'hover')\"\r\n    (mouseleave)=\"setVisibleStateWhen(false,'hover')\">\r\n    <div [class.ant-table-filter-dropdown]=\"tableFilter\">\r\n      <ng-content select=\"[cmacs-menu]\"></ng-content>\r\n      <ng-content></ng-content>\r\n    </div>\r\n  </div>\r\n</ng-template>\r\n",
-                        styles: [":root{--bg-color:white}.cmacs-dropdown .ant-dropdown-menu-item{padding:8px 10px 8px 5px;border-top:1px solid #dee0e5}.cmacs-dropdown .ant-dropdown-menu-item:first-child{border-top:none}.cmacs-dropdown ul{padding:0;border:1px solid #dee0e5}.cmacs-dropdown.ant-dropdown-placement-bottomCenter ul{top:8px}.cmacs-dropdown.ant-dropdown-placement-topCenter ul{top:-8px}.cmacs-dropdown.ant-dropdown-placement-leftTop ul{left:-7px;top:-5px}.cmacs-dropdown.ant-dropdown-placement-rightTop ul{right:-6px;top:-5px}.cmacs-dropdown.ant-dropdown-placement-bottomCenter .ant-dropdown-menu-item:first-child::before{content:'';opacity:1;margin:0 auto;display:table;width:10px;position:absolute;border:1px solid #dee0e5;border-top:transparent;border-left:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);top:-6px;-webkit-transition:.3s;transition:.3s;left:calc(50% - 10px)}.cmacs-dropdown-updated-position-bottom-top.cmacs-dropdown.ant-dropdown-placement-bottomCenter .ant-dropdown-menu-item:last-child:hover::after,.cmacs-dropdown-updated-position-top-bottom.cmacs-dropdown.ant-dropdown-placement-topCenter .ant-dropdown-menu-item:first-child:hover::before,.cmacs-dropdown.ant-dropdown-placement-bottomCenter .ant-dropdown-menu-item:first-child:hover::before,.cmacs-dropdown.ant-dropdown-placement-leftTop .ant-dropdown-menu-item:first-child:hover::before,.cmacs-dropdown.ant-dropdown-placement-rightTop .ant-dropdown-menu-item:first-child:hover::before,.cmacs-dropdown.ant-dropdown-placement-topCenter .ant-dropdown-menu-item:last-child:hover::after{background-color:#f6f7fb;-webkit-transition:.3s;transition:.3s}.cmacs-dropdown-updated-position-bottom-top.cmacs-dropdown.ant-dropdown-placement-bottomCenter .ant-dropdown-menu-item:first-child::before,.cmacs-dropdown-updated-position-top-bottom.cmacs-dropdown.ant-dropdown-placement-topCenter .ant-dropdown-menu-item:last-child::after{display:none}.cmacs-dropdown-updated-position-bottom-top.cmacs-dropdown.ant-dropdown-placement-bottomCenter .ant-dropdown-menu-item:last-child::after{width:10px;border:1px solid #dee0e5;border-bottom:#dee0e5;border-right:#dee0e5;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);content:'';opacity:1;left:calc(50% - 5px);position:fixed;margin-top:4px;-webkit-transition:.3s;transition:.3s}.cmacs-dropdown-updated-position-top-bottom.cmacs-dropdown.ant-dropdown-placement-topCenter .ant-dropdown-menu-item:first-child::before{content:'';opacity:1;margin:0 auto;display:table;width:10px;position:absolute;border:1px solid #dee0e5;border-top:transparent;border-left:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);top:-6px;-webkit-transition:.3s;transition:.3s;left:calc(50% - 10px)}.cmacs-dropdown.ant-dropdown-placement-topCenter .ant-dropdown-menu-item:last-child::after{width:10px;border:1px solid #dee0e5;border-bottom:#dee0e5;border-right:#dee0e5;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);content:'';opacity:1;left:calc(50% - 5px);position:fixed;margin-top:4px;-webkit-transition:.3s;transition:.3s}.cmacs-dropdown.ant-dropdown-placement-leftTop .ant-dropdown-menu-item:first-child::before{content:'';opacity:1;margin:0 auto;display:table;width:10px;position:absolute;border:1px solid #dee0e5;border-top:transparent;border-right:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);top:10px;left:calc(100% - 4px);-webkit-transition:.3s;transition:.3s}.cmacs-dropdown.ant-dropdown-placement-rightTop .ant-dropdown-menu-item:first-child::before{content:'';opacity:1;margin:0 auto;display:table;width:10px;position:absolute;border:1px solid #dee0e5;border-left:transparent;border-bottom:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);top:10px;right:calc(100% - 5px);-webkit-transition:.3s;transition:.3s}.cmacs-dropdown-updated-overlay-end-start.cmacs-dropdown.ant-dropdown-placement-leftTop ul{left:calc(-100% - 8px);top:38px}.cmacs-dropdown-updated-origin-end-start.cmacs-dropdown.ant-dropdown-placement-rightTop ul{left:calc(80% - 5px);top:38px}.cmacs-dropdown-updated-origin-end-start.cmacs-dropdown.ant-dropdown-placement-rightTop .ant-dropdown-menu-item:first-child::before,.cmacs-dropdown-updated-overlay-end-start.cmacs-dropdown.ant-dropdown-placement-leftTop .ant-dropdown-menu-item:first-child::before{display:none}.cmacs-dropdown-updated-overlay-end-start.cmacs-dropdown.ant-dropdown-placement-leftTop .ant-dropdown-menu-item:last-child::after{content:'';opacity:1;display:table;width:10px;position:fixed;border:1px solid #dee0e5;border-top:transparent;border-right:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);left:calc(100% - 4px);-webkit-transition:.3s;transition:.3s;margin-top:-12px}.cmacs-dropdown-updated-origin-end-start.cmacs-dropdown.ant-dropdown-placement-rightTop .ant-dropdown-menu-item:last-child::after{content:'';opacity:1;display:table;width:10px;position:fixed;border:1px solid #dee0e5;border-left:transparent;border-bottom:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);right:calc(100% - 5px);-webkit-transition:.3s;transition:.3s;margin-top:-12px}.cmacs-dropdown-updated-origin-end-start.cmacs-dropdown.ant-dropdown-placement-rightTop .ant-dropdown-menu-item:last-child:hover::after,.cmacs-dropdown-updated-overlay-end-start.cmacs-dropdown.ant-dropdown-placement-leftTop .ant-dropdown-menu-item:last-child:hover::after{background-color:#f6f7fb;-webkit-transition:.3s;transition:.3s}", "\n      .ant-dropdown {\n        top: 100%;\n        left: 0;\n        position: relative;\n        width: 100%;\n        margin-top: 4px;\n        margin-bottom: 4px;\n      }\n    "]
+                        styles: [":root{--bg-color:white}.cmacs-dropdown .ant-dropdown-menu-item{padding:8px 10px 8px 5px;border-top:1px solid #dee0e5}.cmacs-dropdown .ant-dropdown-menu-item:first-child{border-top:none}.cmacs-dropdown ul{padding:0;border:1px solid #dee0e5}.cmacs-dropdown.ant-dropdown-placement-bottomCenter ul{top:8px}.cmacs-dropdown.ant-dropdown-placement-topCenter ul{top:-8px}.cmacs-dropdown.ant-dropdown-placement-leftTop ul{left:-7px;top:-5px}.cmacs-dropdown.ant-dropdown-placement-rightTop ul{right:-6px;top:-5px}.cmacs-dropdown.ant-dropdown-placement-bottomCenter .ant-dropdown-menu-item:first-child::before{content:'';opacity:1;margin:0 auto;display:table;width:10px;position:absolute;border:1px solid #dee0e5;border-top:transparent;border-left:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);top:-6px;-webkit-transition:.3s;transition:.3s;left:calc(50% - 10px)}.cmacs-dropdown-updated-position-bottom-top.cmacs-dropdown.ant-dropdown-placement-bottomCenter .ant-dropdown-menu-item:last-child:hover::after,.cmacs-dropdown-updated-position-top-bottom.cmacs-dropdown.ant-dropdown-placement-topCenter .ant-dropdown-menu-item:first-child:hover::before,.cmacs-dropdown.ant-dropdown-placement-bottomCenter .ant-dropdown-menu-item:first-child:hover::before,.cmacs-dropdown.ant-dropdown-placement-leftTop .ant-dropdown-menu-item:first-child:hover::before,.cmacs-dropdown.ant-dropdown-placement-rightTop .ant-dropdown-menu-item:first-child:hover::before,.cmacs-dropdown.ant-dropdown-placement-topCenter .ant-dropdown-menu-item:last-child:hover::after{background-color:#f6f7fb;-webkit-transition:.3s;transition:.3s}.cmacs-dropdown-updated-position-bottom-top.cmacs-dropdown.ant-dropdown-placement-bottomCenter .ant-dropdown-menu-item:first-child::before,.cmacs-dropdown-updated-position-top-bottom.cmacs-dropdown.ant-dropdown-placement-topCenter .ant-dropdown-menu-item:last-child::after{display:none}.cmacs-dropdown-updated-position-bottom-top.cmacs-dropdown.ant-dropdown-placement-bottomCenter .ant-dropdown-menu-item:last-child::after{width:10px;border:1px solid #dee0e5;border-bottom:#dee0e5;border-right:#dee0e5;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);content:'';opacity:1;left:calc(50% - 5px);position:fixed;margin-top:4px;-webkit-transition:.3s;transition:.3s}.cmacs-dropdown-updated-position-top-bottom.cmacs-dropdown.ant-dropdown-placement-topCenter .ant-dropdown-menu-item:first-child::before{content:'';opacity:1;margin:0 auto;display:table;width:10px;position:absolute;border:1px solid #dee0e5;border-top:transparent;border-left:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);top:-6px;-webkit-transition:.3s;transition:.3s;left:calc(50% - 10px)}.cmacs-dropdown.ant-dropdown-placement-topCenter .ant-dropdown-menu-item:last-child::after{width:10px;border:1px solid #dee0e5;border-bottom:#dee0e5;border-right:#dee0e5;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);content:'';opacity:1;left:calc(50% - 5px);position:fixed;margin-top:4px;-webkit-transition:.3s;transition:.3s}.cmacs-dropdown.ant-dropdown-placement-leftTop .ant-dropdown-menu-item:first-child::before{content:'';opacity:1;margin:0 auto;display:table;width:10px;position:absolute;border:1px solid #dee0e5;border-top:transparent;border-right:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);top:10px;left:calc(100% - 4px);-webkit-transition:.3s;transition:.3s}.cmacs-dropdown.ant-dropdown-placement-rightTop .ant-dropdown-menu-item:first-child::before{content:'';opacity:1;margin:0 auto;display:table;width:10px;position:absolute;border:1px solid #dee0e5;border-left:transparent;border-bottom:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);top:10px;right:calc(100% - 5px);-webkit-transition:.3s;transition:.3s}.cmacs-dropdown-updated-overlay-end-start.cmacs-dropdown.ant-dropdown-placement-leftTop ul{left:calc(-100% - 8px);top:38px}.cmacs-dropdown-updated-origin-end-start.cmacs-dropdown.ant-dropdown-placement-rightTop ul{left:calc(80% - 5px);top:38px}.cmacs-dropdown-updated-origin-end-start.cmacs-dropdown.ant-dropdown-placement-rightTop .ant-dropdown-menu-item:first-child::before,.cmacs-dropdown-updated-overlay-end-start.cmacs-dropdown.ant-dropdown-placement-leftTop .ant-dropdown-menu-item:first-child::before{display:none}.cmacs-dropdown-updated-overlay-end-start.cmacs-dropdown.ant-dropdown-placement-leftTop .ant-dropdown-menu-item:last-child::after{content:'';opacity:1;display:table;width:10px;position:fixed;border:1px solid #dee0e5;border-top:transparent;border-right:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);left:calc(100% - 4px);-webkit-transition:.3s;transition:.3s;margin-top:-12px}.cmacs-dropdown-updated-origin-end-start.cmacs-dropdown.ant-dropdown-placement-rightTop .ant-dropdown-menu-item:last-child::after{content:'';opacity:1;display:table;width:10px;position:fixed;border:1px solid #dee0e5;border-left:transparent;border-bottom:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);right:calc(100% - 5px);-webkit-transition:.3s;transition:.3s;margin-top:-12px}.cmacs-dropdown-updated-origin-end-start.cmacs-dropdown.ant-dropdown-placement-rightTop .ant-dropdown-menu-item:last-child:hover::after,.cmacs-dropdown-updated-overlay-end-start.cmacs-dropdown.ant-dropdown-placement-leftTop .ant-dropdown-menu-item:last-child:hover::after{background-color:#f6f7fb;-webkit-transition:.3s;transition:.3s}.ant-dropdown-menu-item:hover{background-color:#f6f7fb}", "\n      .ant-dropdown {\n        top: 100%;\n        left: 0;\n        position: relative;\n        width: 100%;\n        margin-top: 4px;\n        margin-bottom: 4px;\n      }\n    "]
                     }] }
         ];
         /** @nocollapse */
@@ -21257,6 +21284,1238 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    /**
+     * Decorates the `ng-template` tags and reads out the template from it.
+     */
+    var CmacsTabDirective = /** @class */ (function () {
+        function CmacsTabDirective() {
+        }
+        CmacsTabDirective.decorators = [
+            { type: i0.Directive, args: [{
+                        selector: '[cmacs-tab]',
+                        exportAs: 'cmacsTab'
+                    },] }
+        ];
+        return CmacsTabDirective;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsTabLabelDirective = /** @class */ (function () {
+        function CmacsTabLabelDirective(elementRef, renderer) {
+            this.elementRef = elementRef;
+            this.disabled = false;
+            renderer.addClass(elementRef.nativeElement, 'ant-tabs-tab');
+        }
+        /**
+         * @return {?}
+         */
+        CmacsTabLabelDirective.prototype.getOffsetLeft = /**
+         * @return {?}
+         */
+            function () {
+                return this.elementRef.nativeElement.offsetLeft;
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTabLabelDirective.prototype.getOffsetWidth = /**
+         * @return {?}
+         */
+            function () {
+                return this.elementRef.nativeElement.offsetWidth;
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTabLabelDirective.prototype.getOffsetTop = /**
+         * @return {?}
+         */
+            function () {
+                return this.elementRef.nativeElement.offsetTop;
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTabLabelDirective.prototype.getOffsetHeight = /**
+         * @return {?}
+         */
+            function () {
+                return this.elementRef.nativeElement.offsetHeight;
+            };
+        CmacsTabLabelDirective.decorators = [
+            { type: i0.Directive, args: [{
+                        selector: '[cmacs-tab-label]',
+                        exportAs: 'cmacsTabLabel',
+                        host: {
+                            '[class.ant-tabs-tab-disabled]': 'disabled'
+                        }
+                    },] }
+        ];
+        /** @nocollapse */
+        CmacsTabLabelDirective.ctorParameters = function () {
+            return [
+                { type: i0.ElementRef },
+                { type: i0.Renderer2 }
+            ];
+        };
+        CmacsTabLabelDirective.propDecorators = {
+            disabled: [{ type: i0.Input }]
+        };
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsTabLabelDirective.prototype, "disabled", void 0);
+        return CmacsTabLabelDirective;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsTabsInkBarDirective = /** @class */ (function () {
+        function CmacsTabsInkBarDirective(renderer, elementRef, ngZone) {
+            this.renderer = renderer;
+            this.elementRef = elementRef;
+            this.ngZone = ngZone;
+            this.animated = false;
+            this.positionMode = 'horizontal';
+            renderer.addClass(elementRef.nativeElement, 'ant-tabs-ink-bar');
+        }
+        /**
+         * @param {?} element
+         * @return {?}
+         */
+        CmacsTabsInkBarDirective.prototype.alignToElement = /**
+         * @param {?} element
+         * @return {?}
+         */
+            function (element) {
+                var _this = this;
+                if (typeof requestAnimationFrame !== 'undefined') {
+                    this.ngZone.runOutsideAngular(( /**
+                     * @return {?}
+                     */function () {
+                        requestAnimationFrame(( /**
+                         * @return {?}
+                         */function () { return _this.setStyles(element); }));
+                    }));
+                }
+                else {
+                    this.setStyles(element);
+                }
+            };
+        /**
+         * @param {?} element
+         * @return {?}
+         */
+        CmacsTabsInkBarDirective.prototype.setStyles = /**
+         * @param {?} element
+         * @return {?}
+         */
+            function (element) {
+                /** when horizontal remove height style and add transform left **/
+                if (this.positionMode === 'horizontal') {
+                    this.renderer.removeStyle(this.elementRef.nativeElement, 'height');
+                    this.renderer.setStyle(this.elementRef.nativeElement, 'transform', "translate3d(" + this.getLeftPosition(element) + ", 0px, 0px)");
+                    this.renderer.setStyle(this.elementRef.nativeElement, 'width', this.getElementWidth(element));
+                }
+                else {
+                    /** when vertical remove width style and add transform top **/
+                    this.renderer.removeStyle(this.elementRef.nativeElement, 'width');
+                    this.renderer.setStyle(this.elementRef.nativeElement, 'transform', "translate3d(0px, " + this.getTopPosition(element) + ", 0px)");
+                    this.renderer.setStyle(this.elementRef.nativeElement, 'height', this.getElementHeight(element));
+                }
+            };
+        /**
+         * @param {?} element
+         * @return {?}
+         */
+        CmacsTabsInkBarDirective.prototype.getLeftPosition = /**
+         * @param {?} element
+         * @return {?}
+         */
+            function (element) {
+                return element ? element.offsetLeft + 'px' : '0';
+            };
+        /**
+         * @param {?} element
+         * @return {?}
+         */
+        CmacsTabsInkBarDirective.prototype.getElementWidth = /**
+         * @param {?} element
+         * @return {?}
+         */
+            function (element) {
+                return element ? element.offsetWidth + 'px' : '0';
+            };
+        /**
+         * @param {?} element
+         * @return {?}
+         */
+        CmacsTabsInkBarDirective.prototype.getTopPosition = /**
+         * @param {?} element
+         * @return {?}
+         */
+            function (element) {
+                return element ? element.offsetTop + 'px' : '0';
+            };
+        /**
+         * @param {?} element
+         * @return {?}
+         */
+        CmacsTabsInkBarDirective.prototype.getElementHeight = /**
+         * @param {?} element
+         * @return {?}
+         */
+            function (element) {
+                return element ? element.offsetHeight + 'px' : '0';
+            };
+        CmacsTabsInkBarDirective.decorators = [
+            { type: i0.Directive, args: [{
+                        selector: '[cmacs-tabs-ink-bar]',
+                        exportAs: 'cmacsTabsInkBar',
+                        host: {
+                            '[class.ant-tabs-ink-bar-animated]': 'animated',
+                            '[class.ant-tabs-ink-bar-no-animated]': '!animated'
+                        },
+                    },] }
+        ];
+        /** @nocollapse */
+        CmacsTabsInkBarDirective.ctorParameters = function () {
+            return [
+                { type: i0.Renderer2 },
+                { type: i0.ElementRef },
+                { type: i0.NgZone }
+            ];
+        };
+        CmacsTabsInkBarDirective.propDecorators = {
+            animated: [{ type: i0.Input }],
+            positionMode: [{ type: i0.Input }]
+        };
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsTabsInkBarDirective.prototype, "animated", void 0);
+        return CmacsTabsInkBarDirective;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    /** @type {?} */
+    var EXAGGERATED_OVERSCROLL = 64;
+    var CmacsTabsNavComponent = /** @class */ (function () {
+        function CmacsTabsNavComponent(elementRef, ngZone, renderer, cdr, dir) {
+            this.elementRef = elementRef;
+            this.ngZone = ngZone;
+            this.renderer = renderer;
+            this.cdr = cdr;
+            this.dir = dir;
+            this._tabPositionMode = 'horizontal';
+            this._scrollDistance = 0;
+            this._selectedIndex = 0;
+            this.showPaginationControls = false;
+            this.disableScrollAfter = true;
+            this.disableScrollBefore = true;
+            this.selectedIndexChanged = false;
+            this.realignInkBar = null;
+            this.onNextClick = new i0.EventEmitter();
+            this.onPrevClick = new i0.EventEmitter();
+            this.animated = true;
+            this.hideBar = false;
+            this.showPagination = true;
+            this.type = 'line';
+            this.cmacsType = 'icon';
+        }
+        Object.defineProperty(CmacsTabsNavComponent.prototype, "positionMode", {
+            get: /**
+             * @return {?}
+             */ function () {
+                return this._tabPositionMode;
+            },
+            set: /**
+             * @param {?} value
+             * @return {?}
+             */ function (value) {
+                var _this = this;
+                this._tabPositionMode = value;
+                this.alignInkBarToSelectedTab();
+                if (this.showPagination) {
+                    Promise.resolve().then(( /**
+                     * @return {?}
+                     */function () {
+                        _this.updatePagination();
+                    }));
+                }
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(CmacsTabsNavComponent.prototype, "selectedIndex", {
+            get: /**
+             * @return {?}
+             */ function () {
+                return this._selectedIndex;
+            },
+            set: /**
+             * @param {?} value
+             * @return {?}
+             */ function (value) {
+                this.selectedIndexChanged = this._selectedIndex !== value;
+                this._selectedIndex = value;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        /**
+         * @return {?}
+         */
+        CmacsTabsNavComponent.prototype.onContentChanges = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                /** @type {?} */
+                var textContent = this.elementRef.nativeElement.textContent;
+                // We need to diff the text content of the header, because the MutationObserver callback
+                // will fire even if the text content didn't change which is inefficient and is prone
+                // to infinite loops if a poorly constructed expression is passed in (see #14249).
+                if (textContent !== this.currentTextContent) {
+                    this.ngZone.run(( /**
+                     * @return {?}
+                     */function () {
+                        if (_this.showPagination) {
+                            _this.updatePagination();
+                        }
+                        _this.alignInkBarToSelectedTab();
+                        _this.cdr.markForCheck();
+                    }));
+                }
+            };
+        /**
+         * @param {?} scrollDir
+         * @return {?}
+         */
+        CmacsTabsNavComponent.prototype.scrollHeader = /**
+         * @param {?} scrollDir
+         * @return {?}
+         */
+            function (scrollDir) {
+                if (scrollDir === 'before' && !this.disableScrollBefore) {
+                    this.onPrevClick.emit();
+                }
+                else if (scrollDir === 'after' && !this.disableScrollAfter) {
+                    this.onNextClick.emit();
+                }
+                // Move the scroll distance one-third the length of the tab list's viewport.
+                this.scrollDistance += ((scrollDir === 'before' ? -1 : 1) * this.viewWidthHeightPix) / 3;
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTabsNavComponent.prototype.ngAfterContentChecked = /**
+         * @return {?}
+         */
+            function () {
+                if (this.tabLabelCount !== this.listOfNzTabLabelDirective.length) {
+                    if (this.showPagination) {
+                        this.updatePagination();
+                    }
+                    this.tabLabelCount = this.listOfNzTabLabelDirective.length;
+                    this.cdr.markForCheck();
+                }
+                if (this.selectedIndexChanged) {
+                    this.scrollToLabel(this._selectedIndex);
+                    if (this.showPagination) {
+                        this.checkScrollingControls();
+                    }
+                    this.alignInkBarToSelectedTab();
+                    this.selectedIndexChanged = false;
+                    this.cdr.markForCheck();
+                }
+                if (this.scrollDistanceChanged) {
+                    if (this.showPagination) {
+                        this.updateTabScrollPosition();
+                    }
+                    this.scrollDistanceChanged = false;
+                    this.cdr.markForCheck();
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTabsNavComponent.prototype.ngAfterContentInit = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                this.realignInkBar = this.ngZone.runOutsideAngular(( /**
+                 * @return {?}
+                 */function () {
+                    /** @type {?} */
+                    var dirChange = _this.dir ? _this.dir.change : rxjs.of(null);
+                    /** @type {?} */
+                    var resize = typeof window !== 'undefined' ? rxjs.fromEvent(window, 'resize').pipe(operators.auditTime(10)) : rxjs.of(null);
+                    return rxjs.merge(dirChange, resize)
+                        .pipe(operators.startWith(null))
+                        .subscribe(( /**
+                 * @return {?}
+                 */function () {
+                        if (_this.showPagination) {
+                            _this.updatePagination();
+                        }
+                        _this.alignInkBarToSelectedTab();
+                    }));
+                }));
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTabsNavComponent.prototype.ngOnDestroy = /**
+         * @return {?}
+         */
+            function () {
+                if (this.realignInkBar) {
+                    this.realignInkBar.unsubscribe();
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTabsNavComponent.prototype.updateTabScrollPosition = /**
+         * @return {?}
+         */
+            function () {
+                /** @type {?} */
+                var scrollDistance = this.scrollDistance;
+                if (this.positionMode === 'horizontal') {
+                    /** @type {?} */
+                    var translateX = this.getLayoutDirection() === 'ltr' ? -scrollDistance : scrollDistance;
+                    this.renderer.setStyle(this.navListElement.nativeElement, 'transform', "translate3d(" + translateX + "px, 0, 0)");
+                }
+                else {
+                    this.renderer.setStyle(this.navListElement.nativeElement, 'transform', "translate3d(0," + -scrollDistance + "px, 0)");
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTabsNavComponent.prototype.updatePagination = /**
+         * @return {?}
+         */
+            function () {
+                this.checkPaginationEnabled();
+                this.checkScrollingControls();
+                this.updateTabScrollPosition();
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTabsNavComponent.prototype.checkPaginationEnabled = /**
+         * @return {?}
+         */
+            function () {
+                /** @type {?} */
+                var isEnabled = this.tabListScrollWidthHeightPix > this.tabListScrollOffSetWidthHeight;
+                if (!isEnabled) {
+                    this.scrollDistance = 0;
+                }
+                if (isEnabled !== this.showPaginationControls) {
+                    this.cdr.markForCheck();
+                }
+                this.showPaginationControls = isEnabled;
+            };
+        /**
+         * @param {?} labelIndex
+         * @return {?}
+         */
+        CmacsTabsNavComponent.prototype.scrollToLabel = /**
+         * @param {?} labelIndex
+         * @return {?}
+         */
+            function (labelIndex) {
+                /** @type {?} */
+                var selectedLabel = this.listOfNzTabLabelDirective ? this.listOfNzTabLabelDirective.toArray()[labelIndex] : null;
+                if (selectedLabel) {
+                    // The view length is the visible width of the tab labels.
+                    /** @type {?} */
+                    var labelBeforePos = void 0;
+                    /** @type {?} */
+                    var labelAfterPos = void 0;
+                    if (this.positionMode === 'horizontal') {
+                        if (this.getLayoutDirection() === 'ltr') {
+                            labelBeforePos = selectedLabel.getOffsetLeft();
+                            labelAfterPos = labelBeforePos + selectedLabel.getOffsetWidth();
+                        }
+                        else {
+                            labelAfterPos = this.navListElement.nativeElement.offsetWidth - selectedLabel.getOffsetLeft();
+                            labelBeforePos = labelAfterPos - selectedLabel.getOffsetWidth();
+                        }
+                    }
+                    else {
+                        labelBeforePos = selectedLabel.getOffsetTop();
+                        labelAfterPos = labelBeforePos + selectedLabel.getOffsetHeight();
+                    }
+                    /** @type {?} */
+                    var beforeVisiblePos = this.scrollDistance;
+                    /** @type {?} */
+                    var afterVisiblePos = this.scrollDistance + this.viewWidthHeightPix;
+                    if (labelBeforePos < beforeVisiblePos) {
+                        // Scroll header to move label to the before direction
+                        this.scrollDistance -= beforeVisiblePos - labelBeforePos + EXAGGERATED_OVERSCROLL;
+                    }
+                    else if (labelAfterPos > afterVisiblePos) {
+                        // Scroll header to move label to the after direction
+                        this.scrollDistance += labelAfterPos - afterVisiblePos + EXAGGERATED_OVERSCROLL;
+                    }
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTabsNavComponent.prototype.checkScrollingControls = /**
+         * @return {?}
+         */
+            function () {
+                // Check if the pagination arrows should be activated.
+                this.disableScrollBefore = this.scrollDistance === 0;
+                this.disableScrollAfter = this.scrollDistance === this.getMaxScrollDistance();
+                this.cdr.markForCheck();
+            };
+        /**
+         * Determines what is the maximum length in pixels that can be set for the scroll distance. This
+         * is equal to the difference in width between the tab list container and tab header container.
+         *
+         * This is an expensive call that forces a layout reflow to compute box and scroll metrics and
+         * should be called sparingly.
+         */
+        /**
+         * Determines what is the maximum length in pixels that can be set for the scroll distance. This
+         * is equal to the difference in width between the tab list container and tab header container.
+         *
+         * This is an expensive call that forces a layout reflow to compute box and scroll metrics and
+         * should be called sparingly.
+         * @return {?}
+         */
+        CmacsTabsNavComponent.prototype.getMaxScrollDistance = /**
+         * Determines what is the maximum length in pixels that can be set for the scroll distance. This
+         * is equal to the difference in width between the tab list container and tab header container.
+         *
+         * This is an expensive call that forces a layout reflow to compute box and scroll metrics and
+         * should be called sparingly.
+         * @return {?}
+         */
+            function () {
+                return this.tabListScrollWidthHeightPix - this.viewWidthHeightPix || 0;
+            };
+        Object.defineProperty(CmacsTabsNavComponent.prototype, "scrollDistance", {
+            get: /**
+             * @return {?}
+             */ function () {
+                return this._scrollDistance;
+            },
+            /** Sets the distance in pixels that the tab header should be transformed in the X-axis. */
+            set: /**
+             * Sets the distance in pixels that the tab header should be transformed in the X-axis.
+             * @param {?} v
+             * @return {?}
+             */ function (v) {
+                this._scrollDistance = Math.max(0, Math.min(this.getMaxScrollDistance(), v));
+                // Mark that the scroll distance has changed so that after the view is checked, the CSS
+                // transformation can move the header.
+                this.scrollDistanceChanged = true;
+                this.checkScrollingControls();
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(CmacsTabsNavComponent.prototype, "viewWidthHeightPix", {
+            get: /**
+             * @return {?}
+             */ function () {
+                /** @type {?} */
+                var PAGINATION_PIX = 0;
+                if (this.showPaginationControls) {
+                    PAGINATION_PIX = 64;
+                }
+                if (this.positionMode === 'horizontal') {
+                    return this.navContainerElement.nativeElement.offsetWidth - PAGINATION_PIX;
+                }
+                else {
+                    return this.navContainerElement.nativeElement.offsetHeight - PAGINATION_PIX;
+                }
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(CmacsTabsNavComponent.prototype, "tabListScrollWidthHeightPix", {
+            get: /**
+             * @return {?}
+             */ function () {
+                if (this.positionMode === 'horizontal') {
+                    return this.navListElement.nativeElement.scrollWidth;
+                }
+                else {
+                    return this.navListElement.nativeElement.scrollHeight;
+                }
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(CmacsTabsNavComponent.prototype, "tabListScrollOffSetWidthHeight", {
+            get: /**
+             * @return {?}
+             */ function () {
+                if (this.positionMode === 'horizontal') {
+                    return this.scrollListElement.nativeElement.offsetWidth;
+                }
+                else {
+                    return this.elementRef.nativeElement.offsetHeight;
+                }
+            },
+            enumerable: true,
+            configurable: true
+        });
+        /**
+         * @return {?}
+         */
+        CmacsTabsNavComponent.prototype.getLayoutDirection = /**
+         * @return {?}
+         */
+            function () {
+                return this.dir && this.dir.value === 'rtl' ? 'rtl' : 'ltr';
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTabsNavComponent.prototype.alignInkBarToSelectedTab = /**
+         * @return {?}
+         */
+            function () {
+                if (this.type === 'line') {
+                    /** @type {?} */
+                    var selectedLabelWrapper = this.listOfNzTabLabelDirective && this.listOfNzTabLabelDirective.length
+                        ? this.listOfNzTabLabelDirective.toArray()[this.selectedIndex].elementRef.nativeElement
+                        : null;
+                    if (this.tabsInkBarDirective) {
+                        this.tabsInkBarDirective.alignToElement(selectedLabelWrapper);
+                    }
+                }
+            };
+        /**
+         * @param {?} type
+         * @return {?}
+         */
+        CmacsTabsNavComponent.prototype.isCmacsType = /**
+         * @param {?} type
+         * @return {?}
+         */
+            function (type) {
+                return type === this.cmacsType;
+            };
+        CmacsTabsNavComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: '[cmacs-tabs-nav]',
+                        exportAs: 'cmacsTabsNav',
+                        preserveWhitespaces: false,
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        encapsulation: i0.ViewEncapsulation.None,
+                        template: "<div style=\"float:right;\" *ngIf=\"tabBarExtraContent\" class=\"ant-tabs-extra-content\">\r\n  <ng-template [ngTemplateOutlet]=\"tabBarExtraContent\"></ng-template>\r\n</div>\r\n<div class=\"ant-tabs-nav-container\"\r\n  [class.ant-tabs-nav-container-scrolling]=\"showPaginationControls\"\r\n  #navContainerElement>\r\n  <span class=\"ant-tabs-tab-prev\"\r\n    (click)=\"scrollHeader('before')\"\r\n    [class.ant-tabs-tab-btn-disabled]=\"disableScrollBefore\"\r\n    [class.ant-tabs-tab-arrow-show]=\"showPaginationControls\">\r\n    <span class=\"ant-tabs-tab-prev-icon\">\r\n      <i nz-icon [type]=\"positionMode === 'horizontal' ? 'left' : 'up'\" class=\"ant-tabs-tab-prev-icon-target\"></i>\r\n    </span>\r\n  </span>\r\n  <span class=\"ant-tabs-tab-next\"\r\n    (click)=\"scrollHeader('after')\"\r\n    [class.ant-tabs-tab-btn-disabled]=\"disableScrollAfter\"\r\n    [class.ant-tabs-tab-arrow-show]=\"showPaginationControls\">\r\n    <span class=\"ant-tabs-tab-next-icon\">\r\n      <i nz-icon [type]=\"positionMode === 'horizontal' ? 'right' : 'down'\" class=\"ant-tabs-tab-next-icon-target\"></i>\r\n    </span>\r\n  </span>\r\n  <div class=\"ant-tabs-nav-wrap\">\r\n    <div class=\"ant-tabs-nav-scroll\"\r\n         [class.cmacs-tabs-icon]=\"isCmacsType('icon')\"\r\n         [class.cmacs-tabs-ems]=\"isCmacsType('ems')\"\r\n         [class.cmacs-tabs-schedule]=\"isCmacsType('schedule')\"\r\n         [class.cmacs-tabs-property]=\"isCmacsType('property')\"\r\n         #scrollListElement>\r\n      <div class=\"ant-tabs-nav\"\r\n        [class.ant-tabs-nav-animated]=\"animated\"\r\n        #navListElement\r\n        (cdkObserveContent)=\"onContentChanges()\">\r\n        <div>\r\n          <ng-content></ng-content>\r\n        </div>\r\n        <div cmacs-tabs-ink-bar [hidden]=\"hideBar\" [animated]=\"animated\" [positionMode]=\"positionMode\" style=\"display: block;\"></div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n",
+                        styles: [".ant-tabs-ink-bar{height:1px;background-color:#2a7cff}.ant-tabs-nav{font-weight:500;font-size:14px}.ant-tabs-nav .ant-tabs-tab-active,.ant-tabs-nav .ant-tabs-tab:hover{color:#2a7cff}.ant-tabs-nav .ant-tabs-tab{line-height:2.86;padding:0 12px 2px;margin:unset}.ant-tabs-bar{border-color:#dee0e5}.cmacs-tabs-icon,.cmacs-tabs-property{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;margin:0 auto}.cmacs-tabs-icon .ant-tabs-nav .ant-tabs-tab .anticon{font-size:16px;margin:0 auto}.cmacs-tabs-icon .ant-tabs-nav .ant-tabs-tab-active{color:#2a7cff;border:1px solid #dee0e5;border-bottom-color:transparent}.cmacs-tabs-icon .ant-tabs-ink-bar{background-color:#fff}.cmacs-tabs-icon .ant-tabs-nav .ant-tabs-tab{padding:5px 8px;line-height:unset;margin-left:13px;margin-right:13px}.cmacs-tabs-ems .ant-tabs-nav .ant-tabs-tab .anticon,.cmacs-tabs-schedule .ant-tabs-nav .ant-tabs-tab .anticon{margin-right:0}.cmacs-tabs-ems .ant-tabs-nav .ant-tabs-tab{line-height:unset;padding:12px 26px;margin:unset}.cmacs-tabs-schedule .ant-tabs-nav .ant-tabs-tab{line-height:unset;padding:0 0 10px;margin-left:10px;margin-right:10px}.cmacs-tabs-schedule .ant-tabs-nav .ant-tabs-tab:first-child{margin-left:0}.cmacs-tabs-property .ant-tabs-nav .ant-tabs-tab{font-size:12px;line-height:unset;padding:0 4px 15px;margin-left:30px;margin-right:30px}"]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsTabsNavComponent.ctorParameters = function () {
+            return [
+                { type: i0.ElementRef },
+                { type: i0.NgZone },
+                { type: i0.Renderer2 },
+                { type: i0.ChangeDetectorRef },
+                { type: bidi.Directionality, decorators: [{ type: i0.Optional }] }
+            ];
+        };
+        CmacsTabsNavComponent.propDecorators = {
+            listOfNzTabLabelDirective: [{ type: i0.ContentChildren, args: [CmacsTabLabelDirective,] }],
+            tabsInkBarDirective: [{ type: i0.ViewChild, args: [CmacsTabsInkBarDirective,] }],
+            navContainerElement: [{ type: i0.ViewChild, args: ['navContainerElement',] }],
+            navListElement: [{ type: i0.ViewChild, args: ['navListElement',] }],
+            scrollListElement: [{ type: i0.ViewChild, args: ['scrollListElement',] }],
+            onNextClick: [{ type: i0.Output }],
+            onPrevClick: [{ type: i0.Output }],
+            tabBarExtraContent: [{ type: i0.Input }],
+            animated: [{ type: i0.Input }],
+            hideBar: [{ type: i0.Input }],
+            showPagination: [{ type: i0.Input }],
+            type: [{ type: i0.Input }],
+            cmacsType: [{ type: i0.Input }],
+            positionMode: [{ type: i0.Input }],
+            selectedIndex: [{ type: i0.Input }]
+        };
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsTabsNavComponent.prototype, "animated", void 0);
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsTabsNavComponent.prototype, "hideBar", void 0);
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsTabsNavComponent.prototype, "showPagination", void 0);
+        return CmacsTabsNavComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsTabBodyComponent = /** @class */ (function () {
+        function CmacsTabBodyComponent() {
+            this.active = false;
+            this.forceRender = false;
+        }
+        CmacsTabBodyComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: '[cmacs-tab-body]',
+                        exportAs: 'cmacsTabBody',
+                        preserveWhitespaces: false,
+                        encapsulation: i0.ViewEncapsulation.None,
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        template: "<ng-container *ngIf=\"active || forceRender\">\r\n  <ng-template [ngTemplateOutlet]=\"content\"></ng-template>\r\n</ng-container>",
+                        host: {
+                            '[class.ant-tabs-tabpane-active]': 'active',
+                            '[class.ant-tabs-tabpane-inactive]': '!active'
+                        }
+                    }] }
+        ];
+        CmacsTabBodyComponent.propDecorators = {
+            content: [{ type: i0.Input }],
+            active: [{ type: i0.Input }],
+            forceRender: [{ type: i0.Input }]
+        };
+        return CmacsTabBodyComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsTabComponent = /** @class */ (function () {
+        function CmacsTabComponent(elementRef, renderer) {
+            this.elementRef = elementRef;
+            this.renderer = renderer;
+            this.position = null;
+            this.origin = null;
+            this.isActive = false;
+            this.stateChanges = new rxjs.Subject();
+            this.forceRender = false;
+            this.disabled = false;
+            this.click = new i0.EventEmitter();
+            this.select = new i0.EventEmitter();
+            this.deselect = new i0.EventEmitter();
+            this.renderer.addClass(elementRef.nativeElement, 'ant-tabs-tabpane');
+        }
+        /**
+         * @param {?} changes
+         * @return {?}
+         */
+        CmacsTabComponent.prototype.ngOnChanges = /**
+         * @param {?} changes
+         * @return {?}
+         */
+            function (changes) {
+                if (changes.title || changes.forceRender || changes.disabled) {
+                    this.stateChanges.next();
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTabComponent.prototype.ngOnDestroy = /**
+         * @return {?}
+         */
+            function () {
+                this.stateChanges.complete();
+            };
+        CmacsTabComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-tab',
+                        exportAs: 'cmacsTab',
+                        preserveWhitespaces: false,
+                        encapsulation: i0.ViewEncapsulation.None,
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        template: "<ng-template>\r\n  <ng-content></ng-content>\r\n</ng-template>"
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsTabComponent.ctorParameters = function () {
+            return [
+                { type: i0.ElementRef },
+                { type: i0.Renderer2 }
+            ];
+        };
+        CmacsTabComponent.propDecorators = {
+            content: [{ type: i0.ViewChild, args: [i0.TemplateRef,] }],
+            template: [{ type: i0.ContentChild, args: [CmacsTabDirective, { read: i0.TemplateRef },] }],
+            title: [{ type: i0.Input }],
+            forceRender: [{ type: i0.Input }],
+            disabled: [{ type: i0.Input }],
+            click: [{ type: i0.Output }],
+            select: [{ type: i0.Output }],
+            deselect: [{ type: i0.Output }]
+        };
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsTabComponent.prototype, "forceRender", void 0);
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsTabComponent.prototype, "disabled", void 0);
+        return CmacsTabComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var TabChangeEvent = /** @class */ (function () {
+        function TabChangeEvent() {
+        }
+        return TabChangeEvent;
+    }());
+    var CmacsTabsetComponent = /** @class */ (function () {
+        function CmacsTabsetComponent(renderer, nzUpdateHostClassService, elementRef, cdr) {
+            this.renderer = renderer;
+            this.nzUpdateHostClassService = nzUpdateHostClassService;
+            this.elementRef = elementRef;
+            this.cdr = cdr;
+            this.indexToSelect = 0;
+            this.el = this.elementRef.nativeElement;
+            this._selectedIndex = null;
+            /**
+             * Subscription to tabs being added/removed.
+             */
+            this.tabsSubscription = rxjs.Subscription.EMPTY;
+            /**
+             * Subscription to changes in the tab labels.
+             */
+            this.tabLabelSubscription = rxjs.Subscription.EMPTY;
+            this.tabPositionMode = 'horizontal';
+            this.showPagination = true;
+            this.animated = true;
+            this.hideAll = false;
+            this.tabPosition = 'top';
+            this.size = 'default';
+            this.type = 'line';
+            this.cmacsType = 'text';
+            this.onNextClick = new i0.EventEmitter();
+            this.onPrevClick = new i0.EventEmitter();
+            this.selectChange = new i0.EventEmitter(true);
+            this.selectedIndexChange = new i0.EventEmitter();
+        }
+        Object.defineProperty(CmacsTabsetComponent.prototype, "selectedIndex", {
+            get: /**
+             * @return {?}
+             */ function () {
+                return this._selectedIndex;
+            },
+            set: /**
+             * @param {?} value
+             * @return {?}
+             */ function (value) {
+                this.indexToSelect = value ? i2.toNumber(value, null) : null;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(CmacsTabsetComponent.prototype, "inkBarAnimated", {
+            get: /**
+             * @return {?}
+             */ function () {
+                return this.animated === true || (( /** @type {?} */(this.animated))).inkBar === true;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(CmacsTabsetComponent.prototype, "tabPaneAnimated", {
+            get: /**
+             * @return {?}
+             */ function () {
+                return this.animated === true || (( /** @type {?} */(this.animated))).tabPane === true;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        CmacsTabsetComponent.prototype.setPosition = /**
+         * @param {?} value
+         * @return {?}
+         */
+            function (value) {
+                if (this.tabContent) {
+                    if (value === 'bottom') {
+                        this.renderer.insertBefore(this.el, this.tabContent.nativeElement, this.tabsNavComponent.elementRef.nativeElement);
+                    }
+                    else {
+                        this.renderer.insertBefore(this.el, this.tabsNavComponent.elementRef.nativeElement, this.tabContent.nativeElement);
+                    }
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTabsetComponent.prototype.setClassMap = /**
+         * @return {?}
+         */
+            function () {
+                var _a;
+                this.nzUpdateHostClassService.updateHostClass(this.el, (_a = {},
+                    _a["ant-tabs"] = true,
+                    _a["ant-tabs-vertical"] = this.tabPosition === 'left' || this.tabPosition === 'right',
+                    _a["ant-tabs-" + this.tabPosition] = this.tabPosition,
+                    _a["ant-tabs-no-animation"] = this.animated === false || (( /** @type {?} */(this.animated))).tabPane === false,
+                    _a["ant-tabs-" + this.type] = this.type,
+                    _a["ant-tabs-large"] = this.size === 'large',
+                    _a["ant-tabs-small"] = this.size === 'small',
+                    _a));
+            };
+        /**
+         * @param {?} index
+         * @param {?} disabled
+         * @return {?}
+         */
+        CmacsTabsetComponent.prototype.clickLabel = /**
+         * @param {?} index
+         * @param {?} disabled
+         * @return {?}
+         */
+            function (index, disabled) {
+                if (!disabled) {
+                    this.selectedIndex = index;
+                    this.listOfNzTabComponent.toArray()[index].click.emit();
+                }
+            };
+        /**
+         * @param {?} index
+         * @return {?}
+         */
+        CmacsTabsetComponent.prototype.createChangeEvent = /**
+         * @param {?} index
+         * @return {?}
+         */
+            function (index) {
+                /** @type {?} */
+                var event = new TabChangeEvent();
+                event.index = index;
+                if (this.listOfNzTabComponent && this.listOfNzTabComponent.length) {
+                    event.tab = this.listOfNzTabComponent.toArray()[index];
+                    this.listOfNzTabComponent.forEach(( /**
+                     * @param {?} item
+                     * @param {?} i
+                     * @return {?}
+                     */function (item, i) {
+                        if (i !== index) {
+                            item.deselect.emit();
+                        }
+                    }));
+                    event.tab.select.emit();
+                }
+                return event;
+            };
+        /** Clamps the given index to the bounds of 0 and the tabs length. */
+        /**
+         * Clamps the given index to the bounds of 0 and the tabs length.
+         * @private
+         * @param {?} index
+         * @return {?}
+         */
+        CmacsTabsetComponent.prototype.clampTabIndex = /**
+         * Clamps the given index to the bounds of 0 and the tabs length.
+         * @private
+         * @param {?} index
+         * @return {?}
+         */
+            function (index) {
+                // Note the `|| 0`, which ensures that values like NaN can't get through
+                // and which would otherwise throw the component into an infinite loop
+                // (since Math.max(NaN, 0) === NaN).
+                return Math.min(this.listOfNzTabComponent.length - 1, Math.max(index || 0, 0));
+            };
+        /**
+         * @private
+         * @return {?}
+         */
+        CmacsTabsetComponent.prototype.subscribeToTabLabels = /**
+         * @private
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                if (this.tabLabelSubscription) {
+                    this.tabLabelSubscription.unsubscribe();
+                }
+                this.tabLabelSubscription = rxjs.merge.apply(void 0, __spread(this.listOfNzTabComponent.map(( /**
+                 * @param {?} tab
+                 * @return {?}
+                 */function (tab) { return tab.stateChanges; })))).subscribe(( /**
+                 * @return {?}
+                 */function () {
+                    return _this.cdr.markForCheck();
+                }));
+            };
+        /**
+         * @param {?} changes
+         * @return {?}
+         */
+        CmacsTabsetComponent.prototype.ngOnChanges = /**
+         * @param {?} changes
+         * @return {?}
+         */
+            function (changes) {
+                if (changes.tabPosition) {
+                    if (this.tabPosition === 'top' || this.tabPosition === 'bottom') {
+                        this.tabPositionMode = 'horizontal';
+                    }
+                    else {
+                        this.tabPositionMode = 'vertical';
+                    }
+                    this.setPosition(this.tabPosition);
+                }
+                if (changes.type) {
+                    if (this.type === 'card') {
+                        this.animated = false;
+                    }
+                }
+                if (changes.size || changes.animated || changes.tabPosition || changes.type) {
+                    this.setClassMap();
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTabsetComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+                this.setClassMap();
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTabsetComponent.prototype.ngAfterContentChecked = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                if (this.listOfNzTabComponent && this.listOfNzTabComponent.length) {
+                    // Don't clamp the `indexToSelect` immediately in the setter because it can happen that
+                    // the amount of tabs changes before the actual change detection runs.
+                    /** @type {?} */
+                    var indexToSelect_1 = (this.indexToSelect = this.clampTabIndex(this.indexToSelect));
+                    // If there is a change in selected index, emit a change event. Should not trigger if
+                    // the selected index has not yet been initialized.
+                    if (this._selectedIndex !== indexToSelect_1) {
+                        /** @type {?} */
+                        var isFirstRun_1 = this._selectedIndex == null;
+                        if (!isFirstRun_1) {
+                            this.selectChange.emit(this.createChangeEvent(indexToSelect_1));
+                        }
+                        // Changing these values after change detection has run
+                        // since the checked content may contain references to them.
+                        Promise.resolve().then(( /**
+                         * @return {?}
+                         */function () {
+                            _this.listOfNzTabComponent.forEach(( /**
+                             * @param {?} tab
+                             * @param {?} index
+                             * @return {?}
+                             */function (tab, index) { return (tab.isActive = index === indexToSelect_1); }));
+                            if (!isFirstRun_1) {
+                                _this.selectedIndexChange.emit(indexToSelect_1);
+                            }
+                        }));
+                    }
+                    // Setup the position for each tab and optionally setup an origin on the next selected tab.
+                    this.listOfNzTabComponent.forEach(( /**
+                     * @param {?} tab
+                     * @param {?} index
+                     * @return {?}
+                     */function (tab, index) {
+                        tab.position = index - indexToSelect_1;
+                        // If there is already a selected tab, then set up an origin for the next selected tab
+                        // if it doesn't have one already.
+                        if (_this._selectedIndex != null && tab.position === 0 && !tab.origin) {
+                            tab.origin = indexToSelect_1 - _this._selectedIndex;
+                        }
+                    }));
+                    if (this._selectedIndex !== indexToSelect_1) {
+                        this._selectedIndex = indexToSelect_1;
+                        this.cdr.markForCheck();
+                    }
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTabsetComponent.prototype.ngAfterContentInit = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                this.subscribeToTabLabels();
+                // Subscribe to changes in the amount of tabs, in order to be
+                // able to re-render the content as new tabs are added or removed.
+                this.tabsSubscription = this.listOfNzTabComponent.changes.subscribe(( /**
+                 * @return {?}
+                 */function () {
+                    /** @type {?} */
+                    var indexToSelect = _this.clampTabIndex(_this.indexToSelect);
+                    // Maintain the previously-selected tab if a new tab is added or removed and there is no
+                    // explicit change that selects a different tab.
+                    if (indexToSelect === _this._selectedIndex) {
+                        /** @type {?} */
+                        var tabs = _this.listOfNzTabComponent.toArray();
+                        for (var i = 0; i < tabs.length; i++) {
+                            if (tabs[i].isActive) {
+                                // Assign both to the `_indexToSelect` and `_selectedIndex` so we don't fire a changed
+                                // event, otherwise the consumer may end up in an infinite loop in some edge cases like
+                                // adding a tab within the `selectedIndexChange` event.
+                                _this.indexToSelect = _this._selectedIndex = i;
+                                break;
+                            }
+                        }
+                    }
+                    _this.subscribeToTabLabels();
+                    _this.cdr.markForCheck();
+                }));
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTabsetComponent.prototype.ngOnDestroy = /**
+         * @return {?}
+         */
+            function () {
+                this.tabsSubscription.unsubscribe();
+                this.tabLabelSubscription.unsubscribe();
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTabsetComponent.prototype.ngAfterViewInit = /**
+         * @return {?}
+         */
+            function () {
+                this.setPosition(this.tabPosition);
+            };
+        CmacsTabsetComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-tabset',
+                        exportAs: 'cmacsTabset',
+                        preserveWhitespaces: false,
+                        encapsulation: i0.ViewEncapsulation.None,
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        providers: [i2.NzUpdateHostClassService],
+                        template: "<ng-container *ngIf=\"listOfNzTabComponent\">\r\n  <div cmacs-tabs-nav\r\n    role=\"tablist\"\r\n    tabindex=\"0\"\r\n    class=\"ant-tabs-bar\"\r\n    [class.ant-tabs-card-bar]=\"type === 'card'\"\r\n    [class.ant-tabs-top-bar]=\"tabPosition === 'top'\"\r\n    [class.ant-tabs-bottom-bar]=\"tabPosition === 'bottom'\"\r\n    [class.ant-tabs-left-bar]=\"tabPosition === 'left'\"\r\n    [class.ant-tabs-right-bar]=\"tabPosition === 'right'\"\r\n    [class.ant-tabs-small-bar]=\"size === 'small'\"\r\n    [class.ant-tabs-default-bar]=\"size === 'default'\"\r\n    [class.ant-tabs-large-bar]=\"size === 'large'\"\r\n    [type]=\"type\"\r\n    [cmacsType]=\"cmacsType\"\r\n    [showPagination]=\"showPagination\"\r\n    [positionMode]=\"tabPositionMode\"\r\n    [animated]=\"inkBarAnimated\"\r\n    [ngStyle]=\"tabBarStyle\"\r\n    [hideBar]=\"hideAll\"\r\n    [tabBarExtraContent]=\"tabBarExtraContent\"\r\n    [selectedIndex]=\"selectedIndex\"\r\n    (onNextClick)=\"onNextClick.emit()\"\r\n    (onPrevClick)=\"onPrevClick.emit()\">\r\n    <div cmacs-tab-label\r\n      role=\"tab\"\r\n      [style.margin-right.px]=\"tabBarGutter\"\r\n      [class.ant-tabs-tab-active]=\"(selectedIndex == i) && !hideAll\"\r\n      [disabled]=\"tab.disabled\"\r\n      (click)=\"clickLabel(i,tab.disabled)\"\r\n      *ngFor=\"let tab of listOfNzTabComponent; let i = index\">\r\n      <ng-container *cmacsStringTemplateOutlet=\"tab.title\">{{ tab.title }}</ng-container>\r\n    </div>\r\n  </div>\r\n  <div #tabContent\r\n    class=\"ant-tabs-content\"\r\n    [class.ant-tabs-top-content]=\"tabPosition === 'top'\"\r\n    [class.ant-tabs-bottom-content]=\"tabPosition === 'bottom'\"\r\n    [class.ant-tabs-left-content]=\"tabPosition === 'left'\"\r\n    [class.ant-tabs-right-content]=\"tabPosition === 'right'\"\r\n    [class.ant-tabs-content-animated]=\"tabPaneAnimated\"\r\n    [class.ant-tabs-content-no-animated]=\"!tabPaneAnimated\"\r\n    [style.margin-left.%]=\"(tabPositionMode === 'horizontal') && tabPaneAnimated && (-(selectedIndex || 0 ) * 100)\">\r\n    <div cmacs-tab-body\r\n      class=\"ant-tabs-tabpane\"\r\n      *ngFor=\"let tab of listOfNzTabComponent; let i = index\"\r\n      [active]=\"(selectedIndex == i) && !hideAll\"\r\n      [forceRender]=\"tab.forceRender\"\r\n      [content]=\"tab.template || tab.content\">\r\n    </div>\r\n  </div>\r\n</ng-container>\r\n",
+                        styles: ["\n      cmacs-tabset {\n        display: block;\n      }\n    "]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsTabsetComponent.ctorParameters = function () {
+            return [
+                { type: i0.Renderer2 },
+                { type: i2.NzUpdateHostClassService },
+                { type: i0.ElementRef },
+                { type: i0.ChangeDetectorRef }
+            ];
+        };
+        CmacsTabsetComponent.propDecorators = {
+            listOfNzTabComponent: [{ type: i0.ContentChildren, args: [CmacsTabComponent,] }],
+            tabsNavComponent: [{ type: i0.ViewChild, args: [CmacsTabsNavComponent,] }],
+            tabContent: [{ type: i0.ViewChild, args: ['tabContent',] }],
+            tabBarExtraContent: [{ type: i0.Input }],
+            showPagination: [{ type: i0.Input }],
+            animated: [{ type: i0.Input }],
+            hideAll: [{ type: i0.Input }],
+            tabPosition: [{ type: i0.Input }],
+            size: [{ type: i0.Input }],
+            tabBarGutter: [{ type: i0.Input }],
+            tabBarStyle: [{ type: i0.Input }],
+            type: [{ type: i0.Input }],
+            cmacsType: [{ type: i0.Input }],
+            onNextClick: [{ type: i0.Output }],
+            onPrevClick: [{ type: i0.Output }],
+            selectChange: [{ type: i0.Output }],
+            selectedIndexChange: [{ type: i0.Output }],
+            selectedIndex: [{ type: i0.Input }]
+        };
+        return CmacsTabsetComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsSidePanelComponent = /** @class */ (function () {
+        function CmacsSidePanelComponent() {
+            this.width = 370;
+            this.float = 'right';
+            this.visible = true;
+            this.collapsible = false;
+            this.visibleChange = new i0.EventEmitter();
+        }
+        /**
+         * @return {?}
+         */
+        CmacsSidePanelComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () { };
+        /**
+         * @param {?} changes
+         * @return {?}
+         */
+        CmacsSidePanelComponent.prototype.ngOnChanges = /**
+         * @param {?} changes
+         * @return {?}
+         */
+            function (changes) {
+                if (changes.visible !== undefined) {
+                    this.visibleChange.emit(this.visible);
+                }
+            };
+        CmacsSidePanelComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-side-panel',
+                        template: "<div\r\n  class=\"cmacs-side-panel-wrapper\"\r\n  [class.cmacs-side-panel-collapsible-wrapper]=\"collapsible\"\r\n  [style.width]=\"width | cmacsToCssUnit\"\r\n  [style.float]=\"float\"\r\n  *ngIf=\"visible\"\r\n>\r\n  <div></div>\r\n  <div class=\"cmacs-side-panel-content\">\r\n    <ng-content></ng-content>\r\n  </div>\r\n</div>\r\n",
+                        styles: [".cmacs-side-panel-wrapper{height:100%;box-shadow:0 2px 4px 0 rgba(0,0,0,.1);background-color:#fff;padding:24px;-webkit-transition:.3s;transition:.3s}.cmacs-side-panel-content{height:100%}.cmacs-side-panel-collapsible-wrapper{box-shadow:7px 0 7px 0 rgba(59,63,70,.2)}.cmacs-side-panel-collapsible-wrapper::before{content:''}"]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsSidePanelComponent.ctorParameters = function () { return []; };
+        CmacsSidePanelComponent.propDecorators = {
+            width: [{ type: i0.Input }],
+            float: [{ type: i0.Input }],
+            visible: [{ type: i0.Input }],
+            collapsible: [{ type: i0.Input }],
+            visibleChange: [{ type: i0.Output }]
+        };
+        return CmacsSidePanelComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
     /** @type {?} */
     var CMACS_COMMENT_CELLS = [
         CmacsCommentActionComponent,
@@ -21272,6 +22531,13 @@
         CmacsComponentsLibModule.decorators = [
             { type: i0.NgModule, args: [{
                         declarations: __spread([
+                            CmacsTabDirective,
+                            CmacsTabsNavComponent,
+                            CmacsTabBodyComponent,
+                            CmacsTabLabelDirective,
+                            CmacsTabComponent,
+                            CmacsTabsInkBarDirective,
+                            CmacsTabsetComponent,
                             CmacsButtonGroupComponent,
                             CmacsVideoPlayerComponent,
                             CmacsButtonComponent,
@@ -21364,7 +22630,8 @@
                             CmacsDatetimeValueAccessorDirective,
                             CmacsPhoneNumberComponent,
                             CmacsColorPickerComponent,
-                            CmacsSwitchComponent
+                            CmacsSwitchComponent,
+                            CmacsSidePanelComponent
                         ]),
                         imports: [
                             common.CommonModule,
@@ -21387,9 +22654,18 @@
                             overlayPlay.VgOverlayPlayModule,
                             buffering.VgBufferingModule,
                             ng2TelInput.Ng2TelInputModule,
-                            dragDrop.DragDropModule
+                            dragDrop.DragDropModule,
+                            observers.ObserversModule,
+                            i2.NzAddOnModule
                         ],
                         exports: __spread([
+                            CmacsTabDirective,
+                            CmacsTabsNavComponent,
+                            CmacsTabBodyComponent,
+                            CmacsTabLabelDirective,
+                            CmacsTabComponent,
+                            CmacsTabsInkBarDirective,
+                            CmacsTabsetComponent,
                             CmacsButtonGroupComponent,
                             CmacsButtonComponent,
                             CmacsInputDirective,
@@ -21482,7 +22758,8 @@
                             CmacsVideoPlayerComponent,
                             CmacsPhoneNumberComponent,
                             CmacsColorPickerComponent,
-                            CmacsSwitchComponent
+                            CmacsSwitchComponent,
+                            CmacsSidePanelComponent
                         ]),
                         providers: [{ provide: ngZorroAntd.NZ_I18N, useValue: ɵ0$2 }, common.DatePipe, CmacsDropdownService],
                         entryComponents: [
@@ -21920,6 +23197,15 @@
     exports.CmacsKanbanComponent = CmacsKanbanComponent;
     exports.CmacsColorPickerComponent = CmacsColorPickerComponent;
     exports.CmacsSwitchComponent = CmacsSwitchComponent;
+    exports.CmacsTabComponent = CmacsTabComponent;
+    exports.CmacsTabDirective = CmacsTabDirective;
+    exports.CmacsTabBodyComponent = CmacsTabBodyComponent;
+    exports.CmacsTabLabelDirective = CmacsTabLabelDirective;
+    exports.CmacsTabsInkBarDirective = CmacsTabsInkBarDirective;
+    exports.CmacsTabsNavComponent = CmacsTabsNavComponent;
+    exports.TabChangeEvent = TabChangeEvent;
+    exports.CmacsTabsetComponent = CmacsTabsetComponent;
+    exports.CmacsSidePanelComponent = CmacsSidePanelComponent;
     exports.ɵa = AbstractPickerComponent;
     exports.ɵba = CalendarFooterComponent;
     exports.ɵy = CalendarHeaderComponent;

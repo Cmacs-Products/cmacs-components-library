@@ -53,6 +53,7 @@ export declare class CmacsCardComponent implements OnInit {
     markForCheck(): void;
     select(event: Event): void;
     handleEnter(event: KeyboardEvent, titleContainer: any, titleSpan: any): void;
+    handleEdit(event: KeyboardEvent, titleSpan: any): void;
     toggleEdit(titleContainer: any): void;
     getInitials(name: any): any;
 }
