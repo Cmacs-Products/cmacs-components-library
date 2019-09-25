@@ -45,6 +45,7 @@ export declare class CmacsCardComponent implements OnInit {
     value: any;
     selectedChange: EventEmitter<boolean>;
     constructor(cdr: ChangeDetectorRef, renderer: Renderer2, elementRef: ElementRef);
+    openMail($event: Event): void;
     ngOnInit(): void;
     onPlayerReady(api: VgAPI): void;
     checkRadio(): void;
