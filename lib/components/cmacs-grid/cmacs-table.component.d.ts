@@ -36,6 +36,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     data: T[];
     config: GridConfig;
     fieldId: string;
+    gridID: string;
     paginationPosition: 'top' | 'bottom' | 'both';
     scroll: {
         x?: string | null;
