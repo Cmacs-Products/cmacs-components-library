@@ -16,7 +16,7 @@ export interface Field {
     select?: SelectConfig;
     button?: ButtonConfig;
     tag?: TagConfig;
-    sortOrder?: string;
+    sortOrder?: string | null;
     editTemplate?: TemplateType;
     showSort?: boolean;
     dateFormat?: string;
@@ -42,5 +42,10 @@ export declare type CmacsPriorityType = 'high' | 'low' | 'medium';
 export declare type SortOrder = 'ascend' | 'descend' | null;
 export interface CmacsGridTemplateRef {
     ref: TemplateRef<any>;
-    context: {};
+    context: CmacsGridTemplateRefContext;
+}
+export interface CmacsGridTemplateRefContext {
+    index: number;
+    title: string;
+    exportValue?: string;
 }
