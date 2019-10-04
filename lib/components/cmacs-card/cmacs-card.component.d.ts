@@ -2,6 +2,7 @@ import { ChangeDetectorRef, ElementRef, EventEmitter, OnInit, Renderer2, Templat
 import { CmacsCardTabComponent } from './cmacs-card-tab.component';
 import { VgAPI } from "videogular2/compiled/src/core/services/vg-api";
 import { Source } from "../cmacs-video-player/cmacs-video-player.component";
+import { DomSanitizer } from "@angular/platform-browser";
 export declare type CmacsCardType = 'file' | 'selection' | 'action' | 'team' | 'project' | 'folder' | 'measure' | 'big-file' | 'none' | 'video' | 'todo';
 export interface BigFile {
     title?: string;
@@ -10,6 +11,7 @@ export interface BigFile {
 }
 export declare class CmacsCardComponent implements OnInit {
     private cdr;
+    private sanitizer;
     folderIcon: string;
     isEditable: boolean;
     bordered: boolean;
@@ -44,7 +46,7 @@ export declare class CmacsCardComponent implements OnInit {
     selected: boolean;
     value: any;
     selectedChange: EventEmitter<boolean>;
-    constructor(cdr: ChangeDetectorRef, renderer: Renderer2, elementRef: ElementRef);
+    constructor(cdr: ChangeDetectorRef, renderer: Renderer2, sanitizer: DomSanitizer, elementRef: ElementRef);
     openMail($event: Event): void;
     ngOnInit(): void;
     onPlayerReady(api: VgAPI): void;
@@ -57,4 +59,5 @@ export declare class CmacsCardComponent implements OnInit {
     handleEdit(event: KeyboardEvent, titleSpan: any): void;
     toggleEdit(titleContainer: any): void;
     getInitials(name: any): any;
+    getBackgroundImage(): import("@angular/platform-browser").SafeStyle;
 }
