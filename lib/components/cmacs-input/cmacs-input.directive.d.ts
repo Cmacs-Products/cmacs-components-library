@@ -5,6 +5,7 @@ export declare class CmacsInputDirective {
     ngControl: NgControl;
     private _disabled;
     size: NzSizeLDSType;
+    opened: boolean;
     disabled: boolean;
     constructor(ngControl: NgControl, renderer: Renderer2, elementRef: ElementRef);
 }
