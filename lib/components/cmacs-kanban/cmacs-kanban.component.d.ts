@@ -22,7 +22,9 @@ export declare class CmacsKanbanComponent implements OnInit {
     actionPanelTemplates: KanbanColumnTemplate[];
     descriptionPanelTemplates: KanbanColumnTemplate[];
     columnWidth: string;
+    itemType: string;
     draggedItem: EventEmitter<object>;
+    noDraggedItem: EventEmitter<KanbanItem>;
     onclickItem: EventEmitter<object>;
     ondblclickItem: EventEmitter<object>;
     selectionChange: EventEmitter<KanbanItem[]>;
