@@ -95,4 +95,8 @@ export * from './lib/components/cmacs-tabs/cmacs-tabs-ink-bar.directive';
 export * from './lib/components/cmacs-tabs/cmacs-tabs-nav.component';
 export * from './lib/components/cmacs-tabs/cmacs-tabset.component';
 export * from './lib/components/cmacs-side-panel/cmacs-side-panel.component';
+export * from './lib/components/cmacs-open-textarea/cmacs-open-textarea.component';
 export * from './lib/components/cmacs-moveable-list/cmacs-moveable-list.component';
+export * from './lib/components/cmacs-grid-configuration-modal/cmacs-grid-configuration-modal.component';
+export * from './lib/components/cmacs-open-input/cmacs-open-input.component';
+export * from './lib/components/cmacs-kpi/cmacs-kpi.component';
