@@ -4,11 +4,14 @@ export declare class CmacsStepComponent {
     private cdr;
     processDotTemplate: TemplateRef<void>;
     title: string | TemplateRef<void>;
+    parent: ElementRef;
     secondary: boolean;
     description: string | TemplateRef<void>;
+    clickable: boolean;
     status: string;
     isCustomStatus: boolean;
     private _status;
+    onClick(event: Event): void;
     nzIcon: NgClassType | TemplateRef<void>;
     oldAPIIcon: boolean;
     isIconString: boolean;

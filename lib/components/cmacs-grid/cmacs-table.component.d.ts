@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { ChangeDetectorRef, ElementRef, EventEmitter, OnChanges, OnDestroy, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
+import { ChangeDetectorRef, ElementRef, EventEmitter, OnChanges, OnDestroy, OnInit, SimpleChanges, AfterViewInit, TemplateRef } from '@angular/core';
 import { NzSizeMDSType } from 'ng-zorro-antd/core';
 import { NzI18nService } from 'ng-zorro-antd/i18n';
 import { ExportAsService } from 'ngx-export-as';
@@ -7,12 +7,14 @@ import 'jspdf-autotable';
 import { GridConfig, Field } from '../core/interfaces/grid-config';
 import { GridExpConfig } from '../core/interfaces/grid-exp-config';
 import { ExcelService } from '../core/services/excel.service';
-export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, OnDestroy {
+import { CookieService } from "ngx-cookie-service";
+export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, OnDestroy, AfterViewInit {
     private cdr;
     private i18n;
     private exportAsService;
     private excelService;
     private datePipe;
+    private cookies;
     locale: any;
     headerBottomStyle: {};
     private destroy$;
@@ -35,7 +37,9 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     pageSize: number;
     data: T[];
     config: GridConfig;
+    configChange: EventEmitter<GridConfig>;
     fieldId: string;
+    gridID: string;
     paginationPosition: 'top' | 'bottom' | 'both';
     scroll: {
         x?: string | null;
@@ -97,6 +101,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     onCheckboxAllChange(status: boolean): void;
     getLabel(data: any, field: Field): string;
     isSelect(field: Field): boolean;
+    isReadOnly(field: Field): boolean;
     isNumber(value: any): boolean;
     isString(value: any): boolean;
     isBoolean(value: any): boolean;
@@ -108,7 +113,8 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     isCeldTypeTemplateRef(field: Field): boolean;
     isUndefined(value: any): boolean;
     isRowSelected(data: any): boolean;
-    constructor(cdr: ChangeDetectorRef, i18n: NzI18nService, exportAsService: ExportAsService, excelService: ExcelService, datePipe: DatePipe);
+    constructor(cdr: ChangeDetectorRef, i18n: NzI18nService, exportAsService: ExportAsService, excelService: ExcelService, datePipe: DatePipe, cookies: CookieService);
+    ngAfterViewInit(): void;
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
     exportToPng(fileName: string): void;
