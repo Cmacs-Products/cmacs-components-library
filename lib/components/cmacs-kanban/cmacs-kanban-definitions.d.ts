@@ -18,6 +18,7 @@ export interface KanbanColumn {
     class?: string[];
     disabledDrop?: string[];
     collapsed?: boolean;
+    isLocked?: boolean;
 }
 /**
  * Board
