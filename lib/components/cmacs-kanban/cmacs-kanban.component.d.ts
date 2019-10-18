@@ -16,6 +16,8 @@ export declare class CmacsKanbanComponent implements OnInit {
     columnHeaderTemplate: TemplateRef<any>;
     /** Template for column headers. Current groupName will be passed (see examples) */
     columnHeaderCollapsedTemplate: TemplateRef<any>;
+    /** Shrink columns */
+    showShrink: boolean;
     hasVerticalScroll: boolean;
     heightContainer: string;
     /** Templates for actions and description panels  */
@@ -38,6 +40,7 @@ export declare class CmacsKanbanComponent implements OnInit {
     verticalScrollStyle(): any;
     columnStyle(collapsed: boolean): any;
     columnExpand(column: KanbanColumn): any;
+    columnCollapse(column: KanbanColumn): void;
     setDragStartedColumn(col: KanbanColumn): void;
     drop(event: CdkDragDrop<string[]>, columnId: string): void;
     private emitDroppedItem;
