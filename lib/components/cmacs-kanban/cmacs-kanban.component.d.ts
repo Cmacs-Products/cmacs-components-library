@@ -38,6 +38,7 @@ export declare class CmacsKanbanComponent implements OnInit {
     getActionPanel(id: string): TemplateRef<any>;
     getDescriptionPanel(id: string): TemplateRef<any>;
     verticalScrollStyle(): any;
+    boardStyle(): any;
     columnStyle(collapsed: boolean): any;
     columnExpand(column: KanbanColumn): any;
     columnCollapse(column: KanbanColumn): void;
