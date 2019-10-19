@@ -8,7 +8,9 @@ export declare class CmacsKpiComponent {
     private sanitizer;
     data: KPI[];
     title: string;
+    showTotalCount: boolean;
     constructor(sanitizer: DomSanitizer);
     sanitizeStyle(style: string): import("@angular/platform-browser").SafeStyle;
+    getTotalCount(): number;
     getColoredData(): any;
 }
