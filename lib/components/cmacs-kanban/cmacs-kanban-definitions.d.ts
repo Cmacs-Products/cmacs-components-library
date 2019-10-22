@@ -15,9 +15,11 @@ export interface KanbanColumn {
     id: string;
     name: string;
     items: KanbanItem[];
+    data?: any;
     class?: string[];
     disabledDrop?: string[];
     collapsed?: boolean;
+    isLocked?: boolean;
 }
 /**
  * Board

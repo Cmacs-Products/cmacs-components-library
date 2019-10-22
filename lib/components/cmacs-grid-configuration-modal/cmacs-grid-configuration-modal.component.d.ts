@@ -1,7 +1,7 @@
-import { EventEmitter, AfterViewInit } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 import { MoveableListItem } from "../cmacs-moveable-list/cmacs-moveable-list.component";
 import { CookieService } from "ngx-cookie-service";
-export declare class CmacsGridConfigurationModalComponent implements AfterViewInit {
+export declare class CmacsGridConfigurationModalComponent {
     private cookies;
     visible: boolean;
     modalTitle: string;
@@ -13,7 +13,6 @@ export declare class CmacsGridConfigurationModalComponent implements AfterViewIn
     visibleChange: EventEmitter<boolean>;
     dataChange: EventEmitter<any>;
     constructor(cookies: CookieService);
-    ngAfterViewInit(): void;
     onDataChange($event: MoveableListItem[]): void;
     saveConfig(): void;
     onVisibleChange($event: any): void;

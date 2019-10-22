@@ -1,15 +1,11 @@
 import { ANIMATION_MODULE_TYPE } from '@angular/platform-browser/animations';
 import en from '@angular/common/locales/en';
-import jsPDF from 'jspdf';
-import 'jspdf-autotable';
 import { utils, writeFile } from 'xlsx';
 import { ActivatedRoute, PRIMARY_OUTLET, Router } from '@angular/router';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { addMonths, addYears, endOfMonth, setDay, setMonth, addDays, differenceInCalendarDays, differenceInCalendarMonths, differenceInCalendarWeeks, isSameDay, isSameMonth, isSameYear, isThisMonth, isThisYear, setYear, startOfMonth, startOfWeek, startOfYear } from 'date-fns';
 import { NzIconDirective, NzIconModule } from 'ng-zorro-antd/icon';
-import { DatePipe, DOCUMENT, CommonModule, registerLocaleData } from '@angular/common';
 import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
-import { ExportAsService, ExportAsModule } from 'ngx-export-as';
 import { NzMenuDirective, NzMenuModule } from 'ng-zorro-antd/menu';
 import { MediaMatcher, LayoutModule } from '@angular/cdk/layout';
 import { NzRowDirective, NzColDirective, NzGridModule } from 'ng-zorro-antd/grid';
@@ -20,24 +16,28 @@ import { VgOverlayPlayModule } from 'videogular2/compiled/overlay-play';
 import { VgBufferingModule } from 'videogular2/compiled/buffering';
 import { VgCoreModule } from 'videogular2/compiled/core';
 import { Ng2TelInputModule } from 'ng2-tel-input';
-import { DateHelperService, NzI18nService, NzI18nModule } from 'ng-zorro-antd/i18n';
 import { FocusMonitor, FocusTrapFactory } from '@angular/cdk/a11y';
 import { DOWN_ARROW, ENTER, UP_ARROW, BACKSPACE, SPACE, TAB, ESCAPE, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
 import { ObserversModule } from '@angular/cdk/observers';
 import { Directionality } from '@angular/cdk/bidi';
-import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
-import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { moveItemInArray, transferArrayItem, DragDropModule } from '@angular/cdk/drag-drop';
-import { __extends, __decorate, __metadata, __assign, __spread, __read, __values } from 'tslib';
-import { InputBoolean as InputBoolean$1, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
-import { CookieService } from 'ngx-cookie-service';
 import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName, NgModel, Validators, ReactiveFormsModule } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
+import { InputBoolean as InputBoolean$1, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
+import { __extends, __decorate, __metadata, __assign, __spread, __read, __values } from 'tslib';
+import { DatePipe, DOCUMENT, CommonModule, registerLocaleData } from '@angular/common';
+import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
+import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
+import { DateHelperService, NzI18nService, NzI18nModule } from 'ng-zorro-antd/i18n';
+import { ExportAsService, ExportAsModule } from 'ngx-export-as';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+import { CookieService } from 'ngx-cookie-service';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, Pipe, InjectionToken, ViewChildren, defineInjectable, inject, Injector, NgModule, ComponentFactoryResolver, Type } from '@angular/core';
-import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, defineInjectable, inject, Injector, NgModule, ComponentFactoryResolver, ApplicationRef, INJECTOR, Type } from '@angular/core';
+import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
  * @fileoverview added by tsickle
@@ -123,11 +123,14 @@ var CmacsButtonComponent = /** @class */ (function () {
         this.renderer.removeStyle(this.contentElement.nativeElement, 'display');
         if (isEmpty(this.contentElement.nativeElement)) {
             this.renderer.setStyle(this.contentElement.nativeElement, 'display', 'none');
-            this.iconOnly = !!hasIcon;
         }
         else {
             this.renderer.removeStyle(this.contentElement.nativeElement, 'display');
-            this.iconOnly = false;
+            if (this.contentElement.nativeElement.children.length === 1 &&
+                this.contentElement.nativeElement.children[0].tagName === "I" &&
+                this.contentElement.nativeElement.innerText === '') {
+                this.iconOnly = true;
+            }
         }
         this.setClassMap();
         this.updateIconDisplay(this.loading);
@@ -241,7 +244,7 @@ var CmacsButtonComponent = /** @class */ (function () {
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
                     template: "<i nz-icon type=\"loading\" *ngIf=\"loading\"></i>\r\n<span (cdkObserveContent)=\"checkContent()\" #contentElement><ng-content></ng-content></span>\r\n",
-                    styles: [".ant-btn{font-size:14px;line-height:20px;font-weight:400;height:34px;box-shadow:none;border-radius:3px}.ant-btn-primary{background-color:#2a7cff;border-color:#2a7cff}.ant-btn-primary:focus,.ant-btn-primary:hover{background-color:#2164c9;border-color:#2164c9}.ant-btn-primary[disabled],.ant-btn-primary[disabled]:focus,.ant-btn-primary[disabled]:hover{border:none;color:#97a0ae}.ant-btn-default{border:1px solid #bec4cd;color:#2a7cff}.ant-btn-default[disabled],.ant-btn-default[disabled]:focus,.ant-btn-default[disabled]:hover{color:#97a0ae;background-color:#fff;border-color:#f3f3f4}.ant-btn-default:focus,.ant-btn-default:hover{background-color:#f6f7fb;color:#2164c9;border:1px solid #bec4cd}.ant-btn-background-ghost.ant-btn-default:enabled,.ant-btn-background-ghost.ant-btn-primary:enabled{color:#2a7cff;border:none}.ant-btn-background-ghost.ant-btn-default:enabled:focus,.ant-btn-background-ghost.ant-btn-default:enabled:hover,.ant-btn-background-ghost.ant-btn-primary:enabled:focus,.ant-btn-background-ghost.ant-btn-primary:enabled:hover{background-color:#f6f7fb!important;color:#2a7cff}.ant-btn-background-ghost:disabled{background-color:transparent!important;border:none}.ant-btn-icon-only{border:1px solid #dee0e5;color:#656c79;background-color:#fff}.ant-btn-icon-only:focus,.ant-btn-icon-only:hover{color:#2a7cff;background-color:#fff!important}.ant-btn-icon-only:disabled{background-color:#f3f3f4!important;color:#97a0ae!important}.cmacs-btn-action{height:30px}.ant-btn-danger{color:#fff;background-color:#ff4d4f;border-color:#ff4d4f}.ant-btn-danger:hover{opacity:.8}"]
+                    styles: [".ant-btn{font-size:14px;line-height:20px;font-weight:400;height:34px;box-shadow:none;border-radius:3px}.ant-btn-primary{background-color:#2a7cff;border-color:#2a7cff}.ant-btn-primary:focus,.ant-btn-primary:hover{background-color:#2164c9;border-color:#2164c9}.ant-btn-primary[disabled],.ant-btn-primary[disabled]:focus,.ant-btn-primary[disabled]:hover{border:none;color:#97a0ae}.ant-btn-default{border:1px solid #bec4cd;color:#2a7cff}.ant-btn-default span i,.ant-btn-primary span i{font-size:16px;position:relative;top:2px}.ant-btn-default[disabled],.ant-btn-default[disabled]:focus,.ant-btn-default[disabled]:hover{color:#97a0ae;background-color:#fff;border-color:#f3f3f4}.ant-btn-default:focus,.ant-btn-default:hover{background-color:#f6f7fb;color:#2164c9;border:1px solid #bec4cd}.ant-btn-background-ghost.ant-btn-default:enabled,.ant-btn-background-ghost.ant-btn-primary:enabled{color:#2a7cff;border:none}.ant-btn-background-ghost.ant-btn-default:enabled:focus,.ant-btn-background-ghost.ant-btn-default:enabled:hover,.ant-btn-background-ghost.ant-btn-primary:enabled:focus,.ant-btn-background-ghost.ant-btn-primary:enabled:hover{background-color:#f6f7fb!important;color:#2a7cff}.ant-btn-background-ghost:disabled{background-color:transparent!important;border:none}.ant-btn-icon-only span i{color:#656c79}.ant-btn-icon-only:enabled:focus span i,.ant-btn-icon-only:enabled:hover span i{color:#2a7cff}.ant-btn-icon-only,.ant-btn-icon-only:focus,.ant-btn-icon-only:hover{background-color:#fff!important}.ant-btn-icon-only:disabled{background-color:#f3f3f4!important;color:#97a0ae!important}.cmacs-btn-action{height:30px}.ant-btn-danger{color:#fff;background-color:#ff4d4f;border-color:#ff4d4f}.ant-btn-danger:hover{opacity:.8}"]
                 }] }
     ];
     /** @nocollapse */
@@ -425,7 +428,7 @@ var CmacsButtonGroupComponent = /** @class */ (function () {
                     encapsulation: ViewEncapsulation.None,
                     preserveWhitespaces: false,
                     providers: [NzUpdateHostClassService],
-                    template: "<button cmacs-button [disabled]=\"isDisableLeft()\" *ngIf=\"overlap\" (click)=\"moveLeft()\">\r\n    <i nz-icon type=\"left\"></i>\r\n</button>\r\n\r\n<ng-content></ng-content>\r\n\r\n<button cmacs-button [disabled]=\"isDisableRight()\" *ngIf=\"overlap\" (click)=\"moveRight()\">\r\n    <i nz-icon type=\"right\"></i>\r\n</button>",
+                    template: "<button cmacs-button [disabled]=\"isDisableLeft()\" *ngIf=\"overlap\" (click)=\"moveLeft()\">\r\n    <i class=\"iconArrowLarge-Chevron-Left\"></i>\r\n</button>\r\n\r\n<ng-content></ng-content>\r\n\r\n<button cmacs-button [disabled]=\"isDisableRight()\" *ngIf=\"overlap\" (click)=\"moveRight()\">\r\n    <i class=\"iconArrowLarge-Chevron-Right\"></i>\r\n</button>\r\n",
                     styles: ["button.ant-btn{height:30px}"]
                 }] }
     ];
@@ -6137,12 +6140,13 @@ var ExportType = {
  * @template T
  */
 var CmacsGridComponent = /** @class */ (function () {
-    function CmacsGridComponent(cdr, i18n, exportAsService, excelService, datePipe) {
+    function CmacsGridComponent(cdr, i18n, exportAsService, excelService, datePipe, cookies) {
         this.cdr = cdr;
         this.i18n = i18n;
         this.exportAsService = exportAsService;
         this.excelService = excelService;
         this.datePipe = datePipe;
+        this.cookies = cookies;
         this.locale = {}; // tslint:disable-line:no-any
         // tslint:disable-line:no-any
         this.headerBottomStyle = {};
@@ -6159,6 +6163,7 @@ var CmacsGridComponent = /** @class */ (function () {
         this.pageSize = 10;
         // tslint:disable-next-line: no-input-rename
         this.data = [];
+        this.configChange = new EventEmitter();
         this.paginationPosition = 'bottom';
         this.scroll = { x: null, y: null };
         this.frontPagination = true;
@@ -6623,6 +6628,27 @@ var CmacsGridComponent = /** @class */ (function () {
     /**
      * @return {?}
      */
+    CmacsGridComponent.prototype.ngAfterViewInit = /**
+     * @return {?}
+     */
+    function () {
+        if (this.cookies.check(this.gridID)) {
+            /** @type {?} */
+            var savedConfigStr = this.cookies.get(this.gridID);
+            // reset expiration date
+            this.cookies.set(this.gridID, savedConfigStr, 365);
+            // parse cookie value to typescript const
+            /** @type {?} */
+            var savedConfig = (/** @type {?} */ (JSON.parse(this.cookies.get(this.gridID))));
+            if (typeof savedConfig === "object") {
+                this.config = savedConfig;
+                this.configChange.emit(this.config);
+            }
+        }
+    };
+    /**
+     * @return {?}
+     */
     CmacsGridComponent.prototype.ngOnInit = /**
      * @return {?}
      */
@@ -6940,7 +6966,8 @@ var CmacsGridComponent = /** @class */ (function () {
         { type: NzI18nService },
         { type: ExportAsService },
         { type: ExcelService },
-        { type: DatePipe }
+        { type: DatePipe },
+        { type: CookieService }
     ]; };
     CmacsGridComponent.propDecorators = {
         size: [{ type: Input }],
@@ -6959,6 +6986,7 @@ var CmacsGridComponent = /** @class */ (function () {
         pageSize: [{ type: Input }],
         data: [{ type: Input }],
         config: [{ type: Input }],
+        configChange: [{ type: Output }],
         fieldId: [{ type: Input }],
         gridID: [{ type: Input }],
         paginationPosition: [{ type: Input }],
@@ -7477,7 +7505,6 @@ var CmacsTreeComponent = /** @class */ (function (_super) {
                     selector: 'cmacs-tree',
                     exportAs: 'cmacsTree',
                     template: "<ul\r\n  role=\"tree\"\r\n  unselectable=\"on\"\r\n  [ngClass]=\"classMap\">\r\n  <ng-container *ngFor=\"let node of nzNodes\">\r\n    <cmacs-tree-node\r\n      [treeNode]=\"node\"\r\n      [selectMode]=\"selectMode\"\r\n      [showLine]=\"showLine\"\r\n      [expandedIcon]=\"expandedIcon\"\r\n      [draggable]=\"draggable\"\r\n      [checkable]=\"checkable\"\r\n      [showExpand]=\"showExpand\"\r\n      [asyncData]=\"asyncData\"\r\n      [searchValue]=\"searchValue\"\r\n      [hideUnMatched]=\"hideUnMatched\"\r\n      [beforeDrop]=\"beforeDrop\"\r\n      [expandAll]=\"expandAll\"\r\n      [defaultExpandAll]=\"defaultExpandAll\"\r\n      [showIcon]=\"showIcon\"\r\n      [treeTemplate]=\"treeTemplate\"\r\n      [noAnimation]=\"noAnimation?.nzNoAnimation\">\r\n    </cmacs-tree-node>\r\n  </ng-container>\r\n</ul>\r\n",
-                    changeDetection: ChangeDetectionStrategy.OnPush,
                     providers: [
                         NzTreeService,
                         {
@@ -11882,7 +11909,7 @@ var CmacsCardComponent = /** @class */ (function () {
                         '[class.cmacs-card-files-folders-wrapper]': "cmacsType === 'folder'",
                         '[class.file-card-selected]': "cmacsType === 'folder' && selected"
                     },
-                    styles: ["\n      cmacs-card {\n        display: block;\n      }\n    ", ".ant-card,.ant-card-head{font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.ant-card-head{min-height:40px;padding:0 14px}.ant-card-extra{padding:8px 0}.ant-card-head-title{padding:12px 0}.ant-card-grid{font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.cmacs-card-files-wrapper{width:223px;height:36px;border:none}.cmacs-card-measure-wrapper{width:223px;height:36px;border:1px solid #dee0e5}.cmacs-card-measure-wrapper .cmacs-card-label{padding:9px 0;font-size:13px}.cmacs-card-measure-wrapper-selected,.cmacs-card-measure-wrapper:hover{border-color:#2a7cff;cursor:pointer;box-shadow:0 6px 10px 0 rgba(0,0,0,.15)}.cmacs-card-measure-wrapper-selected .cmacs-card-measure-icon-wrapper,.cmacs-card-measure-wrapper:hover .cmacs-card-measure-icon-wrapper{border-right-color:#2a7cff}.cmacs-card-measure-wrapper-selected .cmacs-card-measure-icon-wrapper i,.cmacs-card-measure-wrapper:hover .cmacs-card-measure-icon-wrapper i{color:#2a7cff}.cmacs-card-files-wrapper:hover{background-color:#f6f7fb;cursor:pointer}.cmacs-card-files-wrapper .ant-card-body,.cmacs-card-measure-wrapper .ant-card-body{padding:0;width:100%}.cmacs-card-files-wrapper div,.cmacs-card-measure-wrapper div{display:inline-block}.cmacs-card-files-icon-wrapper{width:36px;height:36px;border-radius:3px;box-shadow:0 6px 10px 0 rgba(0,0,0,.15);background-color:#fff;margin-right:16px;text-align:center;position:relative;top:-8px}.cmacs-card-measure-icon-wrapper{background-color:#fff;margin-right:16px;text-align:center;padding:7px 6px 6px;border-right:1px solid #dee0e5}.cmacs-card-measure-icon-wrapper i{font-size:18px;top:23%;position:relative;color:#dee0e5}.cmacs-card-files-icon-wrapper i{color:#fb3147!important;font-size:18px;top:23%;position:relative}.cmacs-card-file-extra{font-size:22px;float:right;margin-top:2px;margin-right:5px}.cmacs-card-file-extra i{color:#bec4cd!important}.cmacs-card-label{padding:10px 0}.cmacs-selection-card{width:137px}.cmacs-selection-card .ant-card-cover{padding:15px}.cmacs-selection-card .ant-card-body{padding:10px 10px 30px;text-align:center;font-size:12px}.cmacs-selection-card .ant-card-meta-description{color:#656c79}.cmacs-selection-card.ant-card-hoverable:hover{border:1px solid #bec4cd}.cmacs-selection-card.ant-card-hoverable:hover .ant-radio-inner{border-color:#bec4cd}.cmacs-card-selected,.cmacs-card-selected:hover,.cmacs-card-selected:hover .ant-radio-inner{border-color:#2a7cff!important}.cmacs-card-disabled:hover .ant-radio-inner{border-color:#d9d9d9!important}.cmacs-card-selected .ant-card-meta-description{color:#2a7cff!important}.cmacs-card-disabled,.cmacs-card-disabled:hover{border-color:#dee0e5!important;cursor:default}.cmacs-card-disabled .ant-card-meta-description{color:#97a0ae!important}.cmacs-action-card{border:none;width:165px}.cmacs-action-card:hover{cursor:pointer}.cmacs-action-card-disabled:hover{cursor:default}.cmacs-action-card:hover .ant-card-meta-title{color:#2164c9}.cmacs-action-card .ant-card-meta-description{text-align:center;color:#acb3bf}.cmacs-action-card .ant-card-body{padding:13px}.cmacs-action-card .ant-card-meta-title{color:#2a7cff;white-space:normal;text-align:center;font-size:12px;padding-top:18px}.cmacs-action-card-disabled .ant-card-meta-title,.cmacs-action-card-disabled:hover .ant-card-meta-title{color:#97a0ae}.cmacs-information-card.ant-card-bordered{border-color:#dee0e5}.cmacs-information-card .ant-card-head{min-height:30px}.cmacs-information-card .ant-card-head-title{padding:10px 0}.cmacs-information-card:hover .cmacs-btn-action{color:#2a7cff!important}.cmacs-information-card .ant-card-body{padding:25px 10px}.cmacs-information-card .team-person-card{width:30px;height:30px;border-radius:3px;display:-webkit-inline-box;display:inline-flex;margin-right:12px}.cmacs-information-card .team-person-card:last-child{margin-right:0}.cmacs-information-card .plus-team-card{width:30px;height:30px;border-radius:3px;display:-webkit-inline-box;display:inline-flex;background-color:#dae8ff;color:#2a7cff;position:relative;top:-10px;font-size:13px;padding:5px 7px}.cmacs-information-card .team-person-card span{padding:6px 8px;color:#fff}.cmacs-team-card.ant-card-bordered{border-color:#dee0e5}.cmacs-team-card-selected.ant-card-bordered{border-color:#2a7cff}.cmacs-team-card .ant-card-head{min-height:30px}.cmacs-team-card .ant-card-head-title{padding:10px 0}.cmacs-team-card .ant-card-body{padding:0}.project-card-progress-bar-inner{height:5px;background-color:#2a7cff;border-radius:5px}.project-card-progress-bar{height:5px;background-color:#dee0e5;border-radius:5px;width:83%;margin:0 auto}.project-dates{display:inline-block}.project-status{position:relative;top:-36px;left:18px}.project-dates-wrapper{padding:0 20px;margin-top:-10px;margin-bottom:10px}.project-dates-title{color:#97a0ae;display:block;margin-bottom:5px}.project-dates-date{color:#656c79}.project-dates-wrapper i{margin-left:10px;margin-right:10px}.project-manager-metadata{display:inline-block;top:10px;margin-left:11px;margin-right:5px}.manager-charge{color:#acb3bf;max-width:120px;width:120px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;position:relative;top:5px}.manager-name{color:#97a0ae;font-weight:500;max-width:120px;width:120px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;position:relative;top:5px}.project-manager-details{margin-left:20px;margin-bottom:20px;margin-top:20px}.manager-avatar{display:inline-block;position:relative;top:-9px}.project-manager-details i{font-size:25px;color:#bec4cd;top:-11px;position:relative}.cmacs-card-files-folders-wrapper{height:48px;background-color:#fff;border:1px solid #dee0e5;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer!important}.card-files-uploading-wrapper{width:170px;height:48px;background-color:#f3f3f4;border:1px solid #dee0e5}.cmacs-card-files-folders-wrapper:hover{background-color:#f6f7fb;cursor:pointer}.file-card-selected,.file-card-selected:hover{background-color:#f2f7ff}.cmacs-card-files-folders-wrapper:hover .card-files-folders-label{color:#2a7cff}.cmacs-card-files-folders-wrapper:hover .card-files-folder-extra a{opacity:1}.card-files-folder-extra{display:inline-block;font-size:20px}.card-files-folder-extra a{opacity:0}.card-files-folders-label{width:100px;display:inline-block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.card-files-uploading-wrapper .ant-card-body,.cmacs-card-files-folders-wrapper .ant-card-body{padding:11px 5px 11px 11px}.card-files-folders-icon-wrapper{font-size:20px;margin-right:10px;display:inline-block}.card-files-uploading-wrapper i,.cmacs-card-files-folders-wrapper i{color:#656c79!important}.card-files-progress-bar-inner{height:5px;background-color:#2a7cff;border-radius:5px}.card-files-progress-bar{height:5px;background-color:#dee0e5;border-radius:5px;margin-top:7px}.cmacs-big-file-card{width:243px;border:none;overflow:hidden}.cmacs-big-file-card .ant-card-body{padding:0}.cmacs-card-big-file-meta{border:1px solid #dee0e5;-webkit-transition:.3s;transition:.3s}.cmacs-big-file-card::before{content:' ';width:40px;height:21px;background-color:#fff;position:absolute;left:calc(100% - 26px);-webkit-transform:rotate(45deg);transform:rotate(45deg);top:-4px;border-bottom:1px solid #dee0e5;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-icon-wrapper{font-size:22px;margin:0 auto;width:22px;padding-top:60px;padding-bottom:40px}.cmacs-card-big-file-extension-wrapper{text-align:right;padding:0 10px 10px 0;color:#acb3bf}.cmacs-card-big-file-description{height:61px;margin-top:10px;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-title{padding:10px 10px 5px;font-size:12px;color:#3b3f46;font-weight:500;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-date{padding:0 10px 10px;font-size:12px;color:#acb3bf;font-weight:500}.cmacs-card-big-file-extra{font-size:21px;padding-top:3px;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-extra a{color:#656c79;opacity:0;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-description-left-panel{width:90%;float:left}.cmacs-card-big-file-description-right-panel{width:10%;float:right}.cmacs-big-file-card:hover{cursor:pointer}.cmacs-big-file-card:hover .cmacs-card-big-file-description{background-color:#f6f7fb}.cmacs-big-file-card:hover .cmacs-card-big-file-title{color:#2a7cff}.cmacs-big-file-card:hover .cmacs-card-big-file-extra a{opacity:1}.cmacs-big-file-card-selected .cmacs-card-big-file-description,.cmacs-big-file-card-selected:hover .cmacs-card-big-file-description{background-color:#f2f7ff}.cmacs-big-file-card-selected .cmacs-card-big-file-meta,.cmacs-big-file-card-selected.cmacs-big-file-card::before{border-color:#2a7cff}.cmacs-card-video-description{color:#3b3f46;font-weight:600;font-size:12px;margin-top:17px}.cmacs-card-video-player-wrapper{width:337px;height:226px;border:1px solid #dee0e5}.cmacs-video-player-card{border:none;width:337px}.cmacs-video-player-card .ant-card-body{padding:0}.cmacs-todo-card-upper-line{width:95%;margin:5px;height:2px;border-radius:100px}.cmacs-todo-card{width:243px}.cmacs-todo-card .ant-card-body{padding:0}.cmacs-todo-card-title{color:#3b3f46;font-size:12px;margin:21px 14px 0}.cmacs-todo-card-project{color:#97a0ae;margin:10px 14px 0;font-size:12px}.cmacs-todo-card-date{color:#656c79;margin:14px 14px 0;background-color:#f6f7fb;padding:2px 5px;border-radius:3px;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}.cmacs-todo-card-action{padding:15px 14px 30px 15px;font-size:14px}.cmacs-todo-card-attachments,.cmacs-todo-card-comments,.cmacs-todo-card-person,.cmacs-todo-card-team{float:left;margin-right:10px}.cmacs-todo-card-attachments span,.cmacs-todo-card-comments span{margin-right:3px;color:#2a7cff;font-size:12px}.cmacs-todo-card-priority{float:right;margin-left:12px}.cmacs-todo-card-attachments a,.cmacs-todo-card-comments a,.cmacs-todo-card-person a,.cmacs-todo-card-team a{color:#656c79}.cmacs-todo-card-project-img{width:241px;height:100px;overflow:hidden}.cmacs-todo-card-project-img img{width:241px}.cmacs-todo-card-selected{border-color:#2a7cff!important}.cmacs-proj-card-text-Logo{font-size:50px;color:#fff;background-color:#ffa800}.cmacs-proj-card-div-Logo{background-color:#ffa800;width:221px;height:107px;text-align:center}.cmacs-proj-avatar-text{border-radius:3px;background:#512da8;color:#fff;text-align:center;line-height:1.33;cursor:pointer;padding:4px;font-size:20px;display:inline-block;position:relative;top:-7px}.project-image{background-repeat:no-repeat;background-position:center center;background-size:contain;text-align:center;height:107px;margin-top:5px}.cmacs-todo-card-attachments span,.cmacs-todo-card-comments span,.cmacs-todo-card-person a{vertical-align:middle}.cmacs-todo-card-person,.cmacs-todo-card-team{margin-left:4px}.cmacs-todo-card-attachments a,.cmacs-todo-card-comments a{vertical-align:sub;font-size:18px}.cmacs-todo-card-team a{font-size:19px;vertical-align:top}"]
+                    styles: ["\n      cmacs-card {\n        display: block;\n      }\n    ", ".ant-card,.ant-card-head{font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.ant-card-head{min-height:40px;padding:0 14px}.ant-card-extra{padding:8px 0}.ant-card-head-title{padding:12px 0}.ant-card-grid{font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.cmacs-card-files-wrapper{width:223px;height:36px;border:none}.cmacs-card-measure-wrapper{width:223px;height:36px;border:1px solid #dee0e5}.cmacs-card-measure-wrapper .cmacs-card-label{padding:9px 0;font-size:13px}.cmacs-card-measure-wrapper-selected,.cmacs-card-measure-wrapper:hover{border-color:#2a7cff;cursor:pointer;box-shadow:0 6px 10px 0 rgba(0,0,0,.15)}.cmacs-card-measure-wrapper-selected .cmacs-card-measure-icon-wrapper,.cmacs-card-measure-wrapper:hover .cmacs-card-measure-icon-wrapper{border-right-color:#2a7cff}.cmacs-card-measure-wrapper-selected .cmacs-card-measure-icon-wrapper i,.cmacs-card-measure-wrapper:hover .cmacs-card-measure-icon-wrapper i{color:#2a7cff}.cmacs-card-files-wrapper:hover{background-color:#f6f7fb;cursor:pointer}.cmacs-card-files-wrapper .ant-card-body,.cmacs-card-measure-wrapper .ant-card-body{padding:0;width:100%}.cmacs-card-files-wrapper div,.cmacs-card-measure-wrapper div{display:inline-block}.cmacs-card-files-icon-wrapper{width:36px;height:36px;border-radius:3px;box-shadow:0 6px 10px 0 rgba(0,0,0,.15);background-color:#fff;margin-right:16px;text-align:center;position:relative;top:-8px}.cmacs-card-measure-icon-wrapper{background-color:#fff;margin-right:16px;text-align:center;padding:7px 6px 6px;border-right:1px solid #dee0e5}.cmacs-card-measure-icon-wrapper i{font-size:18px;top:23%;position:relative;color:#dee0e5}.cmacs-card-files-icon-wrapper i{color:#fb3147!important;font-size:18px;top:23%;position:relative}.cmacs-card-file-extra{font-size:22px;float:right;margin-top:2px;margin-right:5px}.cmacs-card-file-extra i{color:#bec4cd!important}.cmacs-card-label{padding:10px 0}.cmacs-selection-card{width:137px}.cmacs-selection-card .ant-card-cover{padding:15px}.cmacs-selection-card .ant-card-body{padding:10px 10px 30px;text-align:center;font-size:12px}.cmacs-selection-card .ant-card-meta-description{color:#656c79}.cmacs-selection-card.ant-card-hoverable:hover{border:1px solid #bec4cd}.cmacs-selection-card.ant-card-hoverable:hover .ant-radio-inner{border-color:#bec4cd}.cmacs-card-selected,.cmacs-card-selected:hover,.cmacs-card-selected:hover .ant-radio-inner{border-color:#2a7cff!important}.cmacs-card-disabled:hover .ant-radio-inner{border-color:#d9d9d9!important}.cmacs-card-selected .ant-card-meta-description{color:#2a7cff!important}.cmacs-card-disabled,.cmacs-card-disabled:hover{border-color:#dee0e5!important;cursor:default}.cmacs-card-disabled .ant-card-meta-description{color:#97a0ae!important}.cmacs-action-card{border:none;width:165px}.cmacs-action-card:hover{cursor:pointer}.cmacs-action-card-disabled:hover{cursor:default}.cmacs-action-card:hover .ant-card-meta-title{color:#2164c9}.cmacs-action-card .ant-card-meta-description{text-align:center;color:#acb3bf}.cmacs-action-card .ant-card-body{padding:13px}.cmacs-action-card .ant-card-meta-title{color:#2a7cff;white-space:normal;text-align:center;font-size:12px;padding-top:18px}.cmacs-action-card-disabled .ant-card-meta-title,.cmacs-action-card-disabled:hover .ant-card-meta-title{color:#97a0ae}.cmacs-information-card.ant-card-bordered{border-color:#dee0e5}.cmacs-information-card .ant-card-head{min-height:30px}.cmacs-information-card .ant-card-head-title{padding:10px 0}.cmacs-information-card .cmacs-btn-action{border-color:#dee0e5}.cmacs-information-card:hover .cmacs-btn-action,.cmacs-information-card:hover .cmacs-btn-action span i{color:#2a7cff!important}.cmacs-information-card .ant-card-body{padding:25px 10px}.cmacs-information-card .team-person-card{width:30px;height:30px;border-radius:3px;display:-webkit-inline-box;display:inline-flex;margin-right:12px}.cmacs-information-card .team-person-card:last-child{margin-right:0}.cmacs-information-card .plus-team-card{width:30px;height:30px;border-radius:3px;display:-webkit-inline-box;display:inline-flex;background-color:#dae8ff;color:#2a7cff;position:relative;top:-10px;font-size:13px;padding:5px 7px}.cmacs-information-card .team-person-card span{padding:6px 8px;color:#fff}.cmacs-team-card.ant-card-bordered{border-color:#dee0e5}.cmacs-team-card-selected.ant-card-bordered{border-color:#2a7cff}.cmacs-team-card .ant-card-head{min-height:30px}.cmacs-team-card .ant-card-head-title{padding:10px 0}.cmacs-team-card .ant-card-body{padding:0}.project-card-progress-bar-inner{height:5px;background-color:#2a7cff;border-radius:5px}.project-card-progress-bar{height:5px;background-color:#dee0e5;border-radius:5px;width:83%;margin:0 auto}.project-dates{display:inline-block}.project-status{position:relative;top:-36px;left:18px}.project-dates-wrapper{padding:0 20px;margin-top:-10px;margin-bottom:10px}.project-dates-title{color:#97a0ae;display:block;margin-bottom:5px}.project-dates-date{color:#656c79}.project-dates-wrapper i{margin-left:10px;margin-right:10px}.project-manager-metadata{display:inline-block;top:10px;margin-left:11px;margin-right:5px}.manager-charge{color:#acb3bf;max-width:120px;width:120px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;position:relative;top:5px}.manager-name{color:#97a0ae;font-weight:500;max-width:120px;width:120px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;position:relative;top:5px}.project-manager-details{margin-left:20px;margin-bottom:20px;margin-top:20px}.manager-avatar{display:inline-block;position:relative;top:-9px}.project-manager-details i{font-size:25px;color:#bec4cd;top:-11px;position:relative}.cmacs-card-files-folders-wrapper{height:48px;background-color:#fff;border:1px solid #dee0e5;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer!important}.card-files-uploading-wrapper{width:170px;height:48px;background-color:#f3f3f4;border:1px solid #dee0e5}.cmacs-card-files-folders-wrapper:hover{background-color:#f6f7fb;cursor:pointer}.file-card-selected,.file-card-selected:hover{background-color:#f2f7ff}.cmacs-card-files-folders-wrapper:hover .card-files-folders-label{color:#2a7cff}.cmacs-card-files-folders-wrapper:hover .card-files-folder-extra a{opacity:1}.card-files-folder-extra{display:inline-block;font-size:20px}.card-files-folder-extra a{opacity:0}.card-files-folders-label{width:100px;display:inline-block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.card-files-uploading-wrapper .ant-card-body,.cmacs-card-files-folders-wrapper .ant-card-body{padding:11px 5px 11px 11px}.card-files-folders-icon-wrapper{font-size:20px;margin-right:10px;display:inline-block}.card-files-uploading-wrapper i,.cmacs-card-files-folders-wrapper i{color:#656c79!important}.card-files-progress-bar-inner{height:5px;background-color:#2a7cff;border-radius:5px}.card-files-progress-bar{height:5px;background-color:#dee0e5;border-radius:5px;margin-top:7px}.cmacs-big-file-card{width:243px;border:none;overflow:hidden}.cmacs-big-file-card .ant-card-body{padding:0}.cmacs-card-big-file-meta{border:1px solid #dee0e5;-webkit-transition:.3s;transition:.3s}.cmacs-big-file-card::before{content:' ';width:40px;height:21px;background-color:#fff;position:absolute;left:calc(100% - 26px);-webkit-transform:rotate(45deg);transform:rotate(45deg);top:-4px;border-bottom:1px solid #dee0e5;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-icon-wrapper{font-size:22px;margin:0 auto;width:22px;padding-top:60px;padding-bottom:40px}.cmacs-card-big-file-extension-wrapper{text-align:right;padding:0 10px 10px 0;color:#acb3bf}.cmacs-card-big-file-description{height:61px;margin-top:10px;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-title{padding:10px 10px 5px;font-size:12px;color:#3b3f46;font-weight:500;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-date{padding:0 10px 10px;font-size:12px;color:#acb3bf;font-weight:500}.cmacs-card-big-file-extra{font-size:21px;padding-top:3px;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-extra a{color:#656c79;opacity:0;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-description-left-panel{width:90%;float:left}.cmacs-card-big-file-description-right-panel{width:10%;float:right}.cmacs-big-file-card:hover{cursor:pointer}.cmacs-big-file-card:hover .cmacs-card-big-file-description{background-color:#f6f7fb}.cmacs-big-file-card:hover .cmacs-card-big-file-title{color:#2a7cff}.cmacs-big-file-card:hover .cmacs-card-big-file-extra a{opacity:1}.cmacs-big-file-card-selected .cmacs-card-big-file-description,.cmacs-big-file-card-selected:hover .cmacs-card-big-file-description{background-color:#f2f7ff}.cmacs-big-file-card-selected .cmacs-card-big-file-meta,.cmacs-big-file-card-selected.cmacs-big-file-card::before{border-color:#2a7cff}.cmacs-card-video-description{color:#3b3f46;font-weight:600;font-size:12px;margin-top:17px}.cmacs-card-video-player-wrapper{width:337px;height:226px;border:1px solid #dee0e5}.cmacs-video-player-card{border:none;width:337px}.cmacs-video-player-card .ant-card-body{padding:0}.cmacs-todo-card-upper-line{width:95%;margin:5px;height:2px;border-radius:100px}.cmacs-todo-card{width:243px}.cmacs-todo-card .ant-card-body{padding:0}.cmacs-todo-card-title{color:#3b3f46;font-size:12px;margin:21px 14px 0}.cmacs-todo-card-project{color:#97a0ae;margin:10px 14px 0;font-size:12px}.cmacs-todo-card-date{color:#656c79;margin:14px 14px 0;background-color:#f6f7fb;padding:2px 5px;border-radius:3px;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}.cmacs-todo-card-action{padding:15px 14px 30px 15px;font-size:14px}.cmacs-todo-card-attachments,.cmacs-todo-card-comments,.cmacs-todo-card-person,.cmacs-todo-card-team{float:left;margin-right:10px}.cmacs-todo-card-attachments span,.cmacs-todo-card-comments span{margin-right:3px;color:#2a7cff;font-size:12px}.cmacs-todo-card-priority{float:right;margin-left:12px}.cmacs-todo-card-attachments a,.cmacs-todo-card-comments a,.cmacs-todo-card-person a,.cmacs-todo-card-team a{color:#656c79}.cmacs-todo-card-project-img{width:241px;height:100px;overflow:hidden}.cmacs-todo-card-project-img img{width:241px}.cmacs-todo-card-selected{border-color:#2a7cff!important}.cmacs-proj-card-text-Logo{font-size:50px;color:#fff;background-color:#ffa800}.cmacs-proj-card-div-Logo{background-color:#ffa800;width:221px;height:107px;text-align:center}.cmacs-proj-avatar-text{border-radius:3px;background:#512da8;color:#fff;text-align:center;line-height:1.33;cursor:pointer;padding:4px;font-size:20px;display:inline-block;position:relative;top:-7px}.project-image{background-repeat:no-repeat;background-position:center center;background-size:contain;text-align:center;height:107px;margin-top:5px}.cmacs-todo-card-attachments span,.cmacs-todo-card-comments span,.cmacs-todo-card-person a{vertical-align:middle}.cmacs-todo-card-person,.cmacs-todo-card-team{margin-left:4px}.cmacs-todo-card-attachments a,.cmacs-todo-card-comments a{vertical-align:sub;font-size:18px}.cmacs-todo-card-team a{font-size:19px;vertical-align:top}"]
                 }] }
     ];
     /** @nocollapse */
@@ -17271,6 +17298,10 @@ var CmacsKanbanComponent = /** @class */ (function () {
          * Template for column headers. Current groupName will be passed (see examples)
          */
         this.columnHeaderCollapsedTemplate = null;
+        /**
+         * Shrink columns
+         */
+        this.showShrink = false;
         // scrolling
         this.hasVerticalScroll = false;
         this.heightContainer = '500px';
@@ -17367,6 +17398,15 @@ var CmacsKanbanComponent = /** @class */ (function () {
         return (this.hasVerticalScroll) ? { height: this.heightContainer } : {};
     };
     /**
+     * @return {?}
+     */
+    CmacsKanbanComponent.prototype.boardStyle = /**
+     * @return {?}
+     */
+    function () {
+        return (this.hasVerticalScroll) ? { 'min-height': this.heightContainer } : {};
+    };
+    /**
      * @param {?} collapsed
      * @return {?}
      */
@@ -17387,6 +17427,17 @@ var CmacsKanbanComponent = /** @class */ (function () {
      */
     function (column) {
         column.collapsed = false;
+    };
+    /**
+     * @param {?} column
+     * @return {?}
+     */
+    CmacsKanbanComponent.prototype.columnCollapse = /**
+     * @param {?} column
+     * @return {?}
+     */
+    function (column) {
+        column.collapsed = true;
     };
     /**
      * @param {?} col
@@ -17517,9 +17568,9 @@ var CmacsKanbanComponent = /** @class */ (function () {
         { type: Component, args: [{
                     selector: 'cmacs-kanban',
                     exportAs: 'cmacsKanban',
-                    template: "<div class=\"root\">\r\n    <div class=\"board\">\r\n      <div class=\"board-wrapper\">\r\n        <div class=\"board-columns\" cdkDropListGroup>\r\n          <div class=\"board-column\" *ngFor=\"let column of board.columns\" [ngStyle]=\"columnStyle(column.collapsed)\" [ngClass]=\"column.class\"\r\n            [class.collapsed]=\"column.collapsed\"\r\n          >\r\n            <!-- collapsed -->\r\n            <div *ngIf=\"column.collapsed\" class=\"column-header-collapsed\" (click)=\"columnExpand(column)\">\r\n              <button cmacs-button style=\"padding: 8px;\">\r\n                <i nz-icon type=\"arrows-alt\" style=\"font-size: 15px;\"></i>\r\n              </button>\r\n              <div class=\"column-header-collapsed-line column-header-collapsed-line-1\"></div>\r\n              <ng-container  [ngIf]=\"columnHeaderCollapsedTemplate\" *ngTemplateOutlet=\"columnHeaderCollapsedTemplate; context: { column: column}\"></ng-container>\r\n              <div *ngIf=\"!columnHeaderCollapsedTemplate\" class=\"column-header-collapsed-text\">\r\n                <span>{{ column.name }}</span>\r\n              </div>  \r\n              <div class=\"column-header-collapsed-line column-header-collapsed-line-2\"></div>\r\n            </div>\r\n            <!-- end collapsed -->\r\n            <ng-container class=\"column-header-template\" [ngIf]=\"columnHeaderTemplate\" *ngTemplateOutlet=\"columnHeaderTemplate; context: { column: column}\" ></ng-container>\r\n            <div class=\"column-header\" *ngIf=\"!columnHeaderTemplate\">\r\n              <span class=\"column-title\">{{column.name}}</span>\r\n              <span class=\"column-title-items\">{{column.items.length}} Items</span>\r\n            </div>\r\n            <ng-container class=\"column-action-panel\" [ngIf]=\"getActionPanel(column.id)\" *ngTemplateOutlet=\"getActionPanel(column.id); context: { column: column}\" ></ng-container>\r\n            <div class=\"tasks-container\" cdkDropList [cdkDropListData]=\"column.items\"\r\n            (cdkDropListDropped)=\"drop($event, column.id)\" [ngStyle]=\"verticalScrollStyle()\">\r\n              <div class=\"task\" *ngFor=\"let item of column.items\" \r\n                   cdkDrag \r\n                   [cdkDragData]=\"item\"\r\n                   [cdkDragDisabled]=\"item.disabled\"\r\n                   (cdkDragStarted)=\"setDragStartedColumn(column)\"\r\n                   (click)=\"clickItem(item, column.id)\"\r\n                   (dblclick)=\"dblclickItem(item, column.id)\"\r\n                   [class.task-selected]=\"isItemSelected(item.id)\"\r\n              >\r\n                <ng-container *ngTemplateOutlet=\"getItemTemplate(column.id); context: {item: item}\"></ng-container>\r\n              </div>\r\n            </div>\r\n            <ng-container class=\"column-description-panel\" [ngIf]=\"getDescriptionPanel(column.id)\" *ngTemplateOutlet=\"getDescriptionPanel(column.id); context: { column: column}\" ></ng-container>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>",
+                    template: "<div class=\"root\">\r\n    <div class=\"board\" [ngStyle]=\"boardStyle()\">\r\n      <div class=\"board-wrapper\">\r\n        <div class=\"board-columns\" cdkDropListGroup>\r\n          <div class=\"board-column\" *ngFor=\"let column of board.columns\" [ngStyle]=\"columnStyle(column.collapsed)\" [ngClass]=\"column.class\"\r\n            [class.collapsed]=\"column.collapsed\"\r\n          >\r\n            <!-- collapsed -->\r\n            <div *ngIf=\"column.collapsed\" class=\"column-header-collapsed\" (click)=\"columnExpand(column)\">\r\n              <button cmacs-button style=\"padding: 8px;\">\r\n                <i class=\"iconArrowSmall-Expand\" style=\"font-size: 15px;\"></i>\r\n              </button>\r\n              <div class=\"column-header-collapsed-line column-header-collapsed-line-1\"></div>\r\n              <ng-container  [ngIf]=\"columnHeaderCollapsedTemplate\" *ngTemplateOutlet=\"columnHeaderCollapsedTemplate; context: { column: column}\"></ng-container>\r\n              <div *ngIf=\"!columnHeaderCollapsedTemplate\" class=\"column-header-collapsed-text\">\r\n                <span>{{ column.name }}</span>\r\n              </div>  \r\n              <div class=\"column-header-collapsed-line column-header-collapsed-line-2\"></div>\r\n            </div>\r\n            <!-- end collapsed -->\r\n            <ng-container class=\"column-header-template\" [ngIf]=\"columnHeaderTemplate\" *ngTemplateOutlet=\"columnHeaderTemplate; context: { column: column}\" ></ng-container>\r\n            <div class=\"column-header\" *ngIf=\"!columnHeaderTemplate\">\r\n              <span class=\"column-title\">{{column.name}}</span>\r\n              <button *ngIf=\"showShrink\" cmacs-button class=\"column-shrink\" ghost (click)=\"columnCollapse(column)\">\r\n                <i class=\"iconArrowSmall-Collapse\"></i>\r\n              </button>\r\n              <span class=\"column-title-items\">{{column.items.length}} Items</span>\r\n            </div>\r\n            <ng-container class=\"column-action-panel\" [ngIf]=\"getActionPanel(column.id)\" *ngTemplateOutlet=\"getActionPanel(column.id); context: { column: column}\" ></ng-container>\r\n            <div class=\"tasks-container\" cdkDropList [cdkDropListData]=\"column.items\"\r\n            (cdkDropListDropped)=\"drop($event, column.id)\" [ngStyle]=\"verticalScrollStyle()\">\r\n              <div class=\"task\" *ngFor=\"let item of column.items\" \r\n                   cdkDrag \r\n                   [cdkDragData]=\"item\"\r\n                   [cdkDragDisabled]=\"item.disabled\"\r\n                   (cdkDragStarted)=\"setDragStartedColumn(column)\"\r\n                   (click)=\"clickItem(item, column.id)\"\r\n                   (dblclick)=\"dblclickItem(item, column.id)\"\r\n                   [class.task-selected]=\"isItemSelected(item.id)\"\r\n              >\r\n                <ng-container *ngTemplateOutlet=\"getItemTemplate(column.id); context: {item: item, columnId: column.id}\"></ng-container>\r\n              </div>\r\n            </div>\r\n            <ng-container class=\"column-description-panel\" [ngIf]=\"getDescriptionPanel(column.id)\" *ngTemplateOutlet=\"getDescriptionPanel(column.id); context: { column: column}\" ></ng-container>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>",
                     encapsulation: ViewEncapsulation.None,
-                    styles: [".root{display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;height:100%}.has-gradient-text{background:-webkit-linear-gradient(#13f7f4,#2af598);-webkit-text-fill-color:transparent}.board{display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;-webkit-box-flex:1;flex-grow:1;min-width:0;min-height:0}.board-bar{background-color:rgba(225,222,222,.52);padding:8px 15px}.board-name{font-size:20px;font-weight:700}.board-wrapper{display:-webkit-box;display:flex;-webkit-box-flex:1;flex-grow:1;overflow-x:auto}.board-columns{display:-webkit-box;display:flex;-webkit-box-flex:1;flex-grow:1}.board-column{display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;-webkit-box-flex:1;flex-grow:1;flex-basis:0;border-radius:4px}.board-column:not(:first-child){margin-left:0}.column-header{font-size:14px;font-weight:500;padding:10px 20px;font-family:Roboto;line-height:1.17;border-left:1px solid #dee0e5;box-shadow:0 3px 7px -3px rgba(5,6,6,.18);margin-bottom:10px}.column-title{text-transform:capitalize;color:#656c79}.column-title-items{line-height:1.67;font-size:12px;color:#acb3bf;float:right}.tasks-container{-webkit-box-flex:1;flex-grow:1;overflow-y:auto}.task{display:-webkit-box;display:flex}.task.cdk-drag-preview{opacity:.9}.task-selected{border-color:#2a7cff}.cdk-drag-placeholder{opacity:0}.cdk-drag-animating,.tasks-container.cdk-drop-list-dragging .task:not(.cdk-drag-placeholder){-webkit-transition:-webkit-transform 250ms cubic-bezier(0,0,.2,1);transition:transform 250ms cubic-bezier(0,0,.2,1);transition:transform 250ms cubic-bezier(0,0,.2,1),-webkit-transform 250ms cubic-bezier(0,0,.2,1)}.board-column.collapsed{min-width:37px!important;padding:0;margin:0 10px;flex-basis:0;-webkit-box-flex:0;flex-grow:0}.board-column.collapsed>.column-action-panel,.board-column.collapsed>.column-description-panel,.board-column.collapsed>.column-header,.board-column.collapsed>.column-header-template,.board-column.collapsed>.tasks-container{display:none}.column-header-collapsed{display:contents;height:100%}.column-header-collapsed-line{background-color:#acb3bf;width:1px;margin:0 auto}.column-header-collapsed-line-1{margin-top:8px;margin-bottom:8px;height:80px}.column-header-collapsed-line-2{margin-top:8px;height:100%}.column-header-collapsed-text{-webkit-transform:rotate(90deg);transform:rotate(90deg);margin:0 auto;text-transform:capitalize;color:#656c79;font-size:14px;font-weight:500;font-family:Roboto}"]
+                    styles: [".root{display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;height:100%}.has-gradient-text{background:-webkit-linear-gradient(#13f7f4,#2af598);-webkit-text-fill-color:transparent}.board{display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;-webkit-box-flex:1;flex-grow:1;min-width:0;min-height:0}.board-bar{background-color:rgba(225,222,222,.52);padding:8px 15px}.board-name{font-size:20px;font-weight:700}.board-wrapper{display:-webkit-box;display:flex;-webkit-box-flex:1;flex-grow:1;overflow-x:auto}.board-columns{display:-webkit-box;display:flex;-webkit-box-flex:1;flex-grow:1}.board-column{display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;-webkit-box-flex:1;flex-grow:1;flex-basis:0;border-radius:4px}.board-column:not(:first-child){margin-left:0}.column-header{font-size:14px;font-weight:500;padding:10px 15px;font-family:Roboto;line-height:1.17;border-left:1px solid #dee0e5;box-shadow:0 3px 7px -3px rgba(5,6,6,.18);margin-bottom:10px}.column-title{text-transform:capitalize;color:#656c79}.column-title-items{color:#acb3bf;font-size:12px;line-height:1.67}.column-shrink{height:20px!important;width:20px;padding-right:0!important;padding-left:0!important;margin-left:5px}.column-shrink,.column-title-items{float:right}.tasks-container{-webkit-box-flex:1;flex-grow:1;overflow-y:auto}.task{display:-webkit-box;display:flex}.task.cdk-drag-preview{opacity:.9}.task-selected{border-color:#2a7cff}.cdk-drag-placeholder{opacity:0}.cdk-drag-animating,.tasks-container.cdk-drop-list-dragging .task:not(.cdk-drag-placeholder){-webkit-transition:-webkit-transform 250ms cubic-bezier(0,0,.2,1);transition:transform 250ms cubic-bezier(0,0,.2,1);transition:transform 250ms cubic-bezier(0,0,.2,1),-webkit-transform 250ms cubic-bezier(0,0,.2,1)}.board-column.collapsed{min-width:37px!important;padding:0;margin:0 10px;flex-basis:0;-webkit-box-flex:0;flex-grow:0}.board-column.collapsed>.column-action-panel,.board-column.collapsed>.column-description-panel,.board-column.collapsed>.column-header,.board-column.collapsed>.column-header-template,.board-column.collapsed>.tasks-container{display:none}.column-header-collapsed{display:contents;height:100%}.column-header-collapsed-line{background-color:#acb3bf;width:1px;margin:0 auto}.column-header-collapsed-line-1{margin-top:8px;margin-bottom:8px;height:inherit}.column-header-collapsed-line-2{margin-top:8px;height:inherit}.column-header-collapsed-text{-webkit-transform:rotate(90deg);transform:rotate(90deg);margin:5px 0;text-transform:capitalize;color:#656c79;font-size:14px;font-weight:500;font-family:Roboto;width:-webkit-max-content;width:-moz-max-content;width:max-content}.column-header .column-shrink{display:none}.column-header:hover .column-shrink{display:block}"]
                 }] }
     ];
     /** @nocollapse */
@@ -17531,6 +17582,7 @@ var CmacsKanbanComponent = /** @class */ (function () {
         itemTemplates: [{ type: Input }],
         columnHeaderTemplate: [{ type: Input }],
         columnHeaderCollapsedTemplate: [{ type: Input }],
+        showShrink: [{ type: Input }],
         hasVerticalScroll: [{ type: Input }],
         heightContainer: [{ type: Input }],
         actionPanelTemplates: [{ type: Input }],
@@ -17547,6 +17599,10 @@ var CmacsKanbanComponent = /** @class */ (function () {
         InputBoolean$1(),
         __metadata("design:type", Object)
     ], CmacsKanbanComponent.prototype, "multiselect", void 0);
+    __decorate([
+        InputBoolean$1(),
+        __metadata("design:type", Object)
+    ], CmacsKanbanComponent.prototype, "showShrink", void 0);
     __decorate([
         InputBoolean$1(),
         __metadata("design:type", Object)
@@ -21277,7 +21333,7 @@ var CmacsPhoneNumberComponent = /** @class */ (function () {
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
                     preserveWhitespaces: false,
-                    styles: [".iti__country-list{position:fixed}.iti__selected-flag{border-right:1px solid #dee0e5}.iti--allow-dropdown input,.iti--allow-dropdown input[type=text]{padding-left:60px}"]
+                    styles: [".iti__country-list{position:absolute}.iti__selected-flag{border-right:1px solid #dee0e5}.iti--allow-dropdown input,.iti--allow-dropdown input[type=text]{padding-left:60px}"]
                 }] }
     ];
     /** @nocollapse */
@@ -23111,22 +23167,6 @@ var CmacsGridConfigurationModalComponent = /** @class */ (function () {
         this.dataChange = new EventEmitter();
     }
     /**
-     * @return {?}
-     */
-    CmacsGridConfigurationModalComponent.prototype.ngAfterViewInit = /**
-     * @return {?}
-     */
-    function () {
-        if (this.cookies.check(this.gridID)) {
-            /** @type {?} */
-            var savedConfig = JSON.parse(this.cookies.get(this.gridID));
-            if (typeof savedConfig === "object") {
-                this.data.fields = savedConfig.fields;
-            }
-            this.dataChange.emit(this.data);
-        }
-    };
-    /**
      * @param {?} $event
      * @return {?}
      */
@@ -23147,7 +23187,7 @@ var CmacsGridConfigurationModalComponent = /** @class */ (function () {
     function () {
         this.visible = false;
         this.visibleChange.emit(false);
-        this.cookies.set(this.gridID, JSON.stringify(this.data));
+        this.cookies.set(this.gridID, JSON.stringify(this.data), 365);
     };
     /**
      * @param {?} $event
@@ -23236,6 +23276,7 @@ var KPI_COLORS = [
 var CmacsKpiComponent = /** @class */ (function () {
     function CmacsKpiComponent(sanitizer) {
         this.sanitizer = sanitizer;
+        this.showTotalCount = false;
     }
     /**
      * @param {?} style
@@ -23247,6 +23288,24 @@ var CmacsKpiComponent = /** @class */ (function () {
      */
     function (style) {
         return this.sanitizer.bypassSecurityTrustStyle(style);
+    };
+    /**
+     * @return {?}
+     */
+    CmacsKpiComponent.prototype.getTotalCount = /**
+     * @return {?}
+     */
+    function () {
+        /** @type {?} */
+        var total = 0;
+        this.data.forEach((/**
+         * @param {?} item
+         * @return {?}
+         */
+        function (item) {
+            total += item.count;
+        }));
+        return total;
     };
     /**
      * @return {?}
@@ -23301,8 +23360,8 @@ var CmacsKpiComponent = /** @class */ (function () {
         { type: Component, args: [{
                     selector: 'cmacs-kpi',
                     exportAs: 'cmacsKpi',
-                    template: "<div class=\"cmacs-kpi-wrapper\">\r\n  <div class=\"cmacs-kpi-title\">{{title}}</div>\r\n  <div\r\n    *ngFor=\"let kpi of getColoredData(); index as i\"\r\n    class=\"cmacs-kpi-line\"\r\n    [class.border-radius-left]=\"i === 0\"\r\n    [class.border-radius-right]=\"i === getColoredData().lenght - 1\"\r\n    [style.width.%]=\"kpi.count\"\r\n    [style.background-color]=\"kpi.color\"\r\n    [style.opacity]=\"sanitizeStyle(kpi.opacity)\"\r\n    >\r\n  </div>\r\n  <div\r\n    class=\"cmacs-kpi-legend-wrapper\"\r\n    *ngFor=\"let kpi of getColoredData(); index as i\"\r\n  >\r\n    <div class=\"cmacs-kpi-divider\"\r\n         [style.background-color]=\"kpi.color\"\r\n         [style.opacity]=\"sanitizeStyle(kpi.opacity)\"\r\n    ></div>\r\n    <div class=\"cmacs-kpi-count\">{{kpi.count}}</div>\r\n    <div class=\"cmacs-kpi-description\">{{kpi.description}}</div>\r\n  </div>\r\n</div>\r\n",
-                    styles: [".cmacs-kpi-line{height:4px;margin-right:2px;display:inline-block}.border-radius-left{border-radius:100px 0 0 100px}.border-radius-right{border-radius:0 100px 100px 0}.cmacs-kpi-divider{display:inline-block;width:2px;height:9px;border-radius:100px;margin-right:8px}.cmacs-kpi-count{display:inline-block;font-family:Roboto-Regular;font-size:12px;font-weight:700;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#3b4043;margin-right:4px}.cmacs-kpi-description{display:inline-block;font-family:Roboto-Regular;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.cmacs-kpi-legend-wrapper{margin-bottom:11px}.cmacs-kpi-title{font-family:Roboto-Regular;font-size:14px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.29;letter-spacing:normal;color:#656c79}", "\n      cmacs-kpi {\n        display: block;\n      }\n    "]
+                    template: "<div class=\"cmacs-kpi-wrapper\">\r\n  <div class=\"cmacs-kpi-total-count\" *ngIf=\"showTotalCount\">{{getTotalCount()}}</div>\r\n  <div style=\"display: inline-block\">\r\n    <div class=\"cmacs-kpi-title\">{{title}}</div>\r\n    <div\r\n      *ngFor=\"let kpi of getColoredData(); index as i\"\r\n      class=\"cmacs-kpi-line\"\r\n      [class.border-radius-left]=\"i === 0\"\r\n      [class.border-radius-right]=\"i === getColoredData().lenght - 1\"\r\n      [style.width.%]=\"kpi.count\"\r\n      [style.background-color]=\"kpi.color\"\r\n      [style.opacity]=\"sanitizeStyle(kpi.opacity)\"\r\n      >\r\n    </div>\r\n    <div\r\n      class=\"cmacs-kpi-legend-wrapper\"\r\n      *ngFor=\"let kpi of getColoredData(); index as i\"\r\n    >\r\n      <div class=\"cmacs-kpi-divider\"\r\n           [style.background-color]=\"kpi.color\"\r\n           [style.opacity]=\"sanitizeStyle(kpi.opacity)\"\r\n      ></div>\r\n      <div class=\"cmacs-kpi-count\">{{kpi.count}}</div>\r\n      <div class=\"cmacs-kpi-description\">{{kpi.description}}</div>\r\n    </div>\r\n  </div>\r\n</div>\r\n",
+                    styles: [".cmacs-kpi-line{height:4px;margin-right:2px;display:inline-block}.cmacs-kpi-total-count{margin-right:10px;float:left;margin-top:-2px;display:inline-block}.border-radius-left{border-radius:100px 0 0 100px}.border-radius-right{border-radius:0 100px 100px 0}.cmacs-kpi-divider{display:inline-block;width:2px;height:9px;border-radius:100px;margin-right:8px}.cmacs-kpi-count{display:inline-block;font-family:Roboto-Regular;font-size:12px;font-weight:700;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#3b4043;margin-right:4px}.cmacs-kpi-description{display:inline-block;font-family:Roboto-Regular;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.cmacs-kpi-legend-wrapper{margin-bottom:11px}.cmacs-kpi-title{font-family:Roboto-Regular;font-size:14px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.29;letter-spacing:normal;color:#656c79}", "\n      cmacs-kpi {\n        display: block;\n      }\n    "]
                 }] }
     ];
     /** @nocollapse */
@@ -23311,9 +23370,1759 @@ var CmacsKpiComponent = /** @class */ (function () {
     ]; };
     CmacsKpiComponent.propDecorators = {
         data: [{ type: Input }],
-        title: [{ type: Input }]
+        title: [{ type: Input }],
+        showTotalCount: [{ type: Input }]
     };
+    __decorate([
+        InputBoolean$1(),
+        __metadata("design:type", Object)
+    ], CmacsKpiComponent.prototype, "showTotalCount", void 0);
     return CmacsKpiComponent;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var CmacsListComponent = /** @class */ (function () {
+    // #endregion
+    function CmacsListComponent(el, updateHostClassService) {
+        this.el = el;
+        this.updateHostClassService = updateHostClassService;
+        this.bordered = false;
+        this.itemLayout = 'horizontal';
+        this.loading = false;
+        this.classicGrid = false;
+        this.size = 'default';
+        this.split = true;
+        // #endregion
+        // #region styles
+        this.prefixCls = 'ant-list';
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    CmacsListComponent.prototype._setClassMap = /**
+     * @private
+     * @return {?}
+     */
+    function () {
+        var _a;
+        /** @type {?} */
+        var classMap = (_a = {},
+            _a[this.prefixCls] = true,
+            _a[this.prefixCls + "-vertical"] = this.itemLayout === 'vertical',
+            _a[this.prefixCls + "-lg"] = this.size === 'large',
+            _a[this.prefixCls + "-sm"] = this.size === 'small',
+            _a[this.prefixCls + "-split"] = this.split,
+            _a[this.prefixCls + "-bordered"] = this.bordered,
+            _a[this.prefixCls + "-loading"] = this.loading,
+            _a[this.prefixCls + "-grid"] = this.grid,
+            _a[this.prefixCls + "-something-after-last-item"] = !!(this.loadMore || this.pagination || this.footer),
+            _a);
+        this.updateHostClassService.updateHostClass(this.el.nativeElement, classMap);
+    };
+    /**
+     * @return {?}
+     */
+    CmacsListComponent.prototype.ngOnInit = /**
+     * @return {?}
+     */
+    function () {
+        this._setClassMap();
+    };
+    /**
+     * @return {?}
+     */
+    CmacsListComponent.prototype.ngOnChanges = /**
+     * @return {?}
+     */
+    function () {
+        this._setClassMap();
+    };
+    CmacsListComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'cmacs-list',
+                    exportAs: 'cmacsList',
+                    template: "<ng-template #itemsTpl>\r\n  <ng-container *ngFor=\"let item of dataSource; let index = index\">\r\n    <ng-template [ngTemplateOutlet]=\"renderItem\" [ngTemplateOutletContext]=\"{ $implicit: item, index: index }\"></ng-template>\r\n  </ng-container>\r\n</ng-template>\r\n<div *ngIf=\"header\" class=\"ant-list-header\">\r\n  <ng-container *cmacsStringTemplateOutlet=\"header\">{{ header }}</ng-container>\r\n</div>\r\n<nz-spin [nzSpinning]=\"loading\">\r\n  <ng-container *ngIf=\"dataSource\">\r\n    <div *ngIf=\"loading && dataSource.length === 0\" [style.min-height.px]=\"53\"></div>\r\n    <div *ngIf=\"grid; else itemsTpl\" nz-row [nzGutter]=\"grid.gutter\">\r\n      <div *ngIf=\"!classicGrid\">\r\n        <div nz-col [nzSpan]=\"grid.span\" [nzXs]=\"grid.xs\" [nzSm]=\"grid.sm\" [nzMd]=\"grid.md\" [nzLg]=\"grid.lg\" [nzXl]=\"grid.xl\"\r\n             [nzXXl]=\"grid.xxl\" *ngFor=\"let item of dataSource; let index = index\">\r\n          <ng-template [ngTemplateOutlet]=\"renderItem\" [ngTemplateOutletContext]=\"{ $implicit: item, index: index }\"></ng-template>\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"classicGrid\">\r\n        <div class=\"cmacs-classic-grid\"\r\n             [style.marginRight.px]=\"grid.gutter\"\r\n             *ngFor=\"let item of dataSource; let index = index\">\r\n          <ng-template [ngTemplateOutlet]=\"renderItem\" [ngTemplateOutletContext]=\"{ $implicit: item, index: index }\"></ng-template>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div *ngIf=\"!loading && dataSource.length === 0\" class=\"ant-list-empty-text\">\r\n      <nz-embed-empty [nzComponentName]=\"'list'\" [specificContent]=\"noResult\"></nz-embed-empty>\r\n    </div>\r\n  </ng-container>\r\n  <ng-content></ng-content>\r\n</nz-spin>\r\n<div *ngIf=\"footer\" class=\"ant-list-footer\">\r\n  <ng-container *cmacsStringTemplateOutlet=\"footer\">{{ footer }}</ng-container>\r\n</div>\r\n<ng-template [ngTemplateOutlet]=\"loadMore\"></ng-template>\r\n<div *ngIf=\"pagination\" class=\"ant-list-pagination\">\r\n  <ng-template [ngTemplateOutlet]=\"pagination\"></ng-template>\r\n</div>\r\n",
+                    providers: [NzUpdateHostClassService],
+                    preserveWhitespaces: false,
+                    encapsulation: ViewEncapsulation.None,
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    styles: [".cmacs-classic-grid{display:inline-block}", "\n      cmacs-list,\n      cmacs-list nz-spin {\n        display: block;\n      }\n    "]
+                }] }
+    ];
+    /** @nocollapse */
+    CmacsListComponent.ctorParameters = function () { return [
+        { type: ElementRef },
+        { type: NzUpdateHostClassService }
+    ]; };
+    CmacsListComponent.propDecorators = {
+        dataSource: [{ type: Input }],
+        bordered: [{ type: Input }],
+        grid: [{ type: Input }],
+        header: [{ type: Input }],
+        footer: [{ type: Input }],
+        itemLayout: [{ type: Input }],
+        renderItem: [{ type: Input }],
+        loading: [{ type: Input }],
+        classicGrid: [{ type: Input }],
+        loadMore: [{ type: Input }],
+        pagination: [{ type: Input }],
+        size: [{ type: Input }],
+        split: [{ type: Input }],
+        noResult: [{ type: Input }]
+    };
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsListComponent.prototype, "bordered", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsListComponent.prototype, "loading", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsListComponent.prototype, "classicGrid", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsListComponent.prototype, "split", void 0);
+    return CmacsListComponent;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var CmacsListItemMetaComponent = /** @class */ (function () {
+    function CmacsListItemMetaComponent(elementRef, renderer) {
+        this.elementRef = elementRef;
+        this.renderer = renderer;
+        this.avatarStr = '';
+        this.renderer.addClass(elementRef.nativeElement, 'ant-list-item-meta');
+    }
+    Object.defineProperty(CmacsListItemMetaComponent.prototype, "avatar", {
+        set: /**
+         * @param {?} value
+         * @return {?}
+         */
+        function (value) {
+            if (value instanceof TemplateRef) {
+                this.avatarStr = '';
+                this.avatarTpl = value;
+            }
+            else {
+                this.avatarStr = value;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    CmacsListItemMetaComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'cmacs-list-item-meta',
+                    exportAs: 'cmacsListItemMeta',
+                    template: "<div *ngIf=\"avatarStr || avatarTpl\" class=\"ant-list-item-meta-avatar\">\r\n  <ng-container *ngIf=\"avatarStr; else avatarTpl\">\r\n    <nz-avatar [nzSrc]=\"avatarStr\"></nz-avatar>\r\n  </ng-container>\r\n</div>\r\n<div *ngIf=\"title || description\" class=\"ant-list-item-meta-content\">\r\n  <h4 *ngIf=\"title\" class=\"ant-list-item-meta-title\">\r\n    <ng-container *cmacsStringTemplateOutlet=\"title\">{{ title }}</ng-container>\r\n  </h4>\r\n  <div *ngIf=\"description\" class=\"ant-list-item-meta-description\">\r\n    <ng-container *cmacsStringTemplateOutlet=\"description\">{{ description }}</ng-container>\r\n  </div>\r\n</div>\r\n",
+                    preserveWhitespaces: false,
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    encapsulation: ViewEncapsulation.None
+                }] }
+    ];
+    /** @nocollapse */
+    CmacsListItemMetaComponent.ctorParameters = function () { return [
+        { type: ElementRef },
+        { type: Renderer2 }
+    ]; };
+    CmacsListItemMetaComponent.propDecorators = {
+        avatar: [{ type: Input }],
+        title: [{ type: Input }],
+        description: [{ type: Input }]
+    };
+    return CmacsListItemMetaComponent;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var CmacsListItemComponent = /** @class */ (function () {
+    function CmacsListItemComponent(elementRef, renderer) {
+        this.elementRef = elementRef;
+        this.renderer = renderer;
+        this.actions = [];
+        this.renderer.addClass(this.elementRef.nativeElement, 'ant-list-item');
+    }
+    CmacsListItemComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'cmacs-list-item',
+                    exportAs: 'cmacsListItem',
+                    template: "<ng-template #contentTpl>\r\n  <div *ngIf=\"content\" class=\"ant-list-item-content\" [ngClass]=\"{'ant-list-item-content-single': metas.length < 1}\">\r\n    <ng-container *cmacsStringTemplateOutlet=\"content\">{{ content }}</ng-container>\r\n  </div>\r\n</ng-template>\r\n<ng-template #actionsTpl>\r\n  <ul *ngIf=\"actions?.length > 0\" class=\"ant-list-item-action\">\r\n    <li *ngFor=\"let i of actions; let last=last;\">\r\n      <ng-template [ngTemplateOutlet]=\"i\"></ng-template>\r\n      <em *ngIf=\"!last\" class=\"ant-list-item-action-split\"></em>\r\n    </li>\r\n  </ul>\r\n</ng-template>\r\n<ng-template #mainTpl>\r\n  <ng-content></ng-content>\r\n  <ng-template [ngTemplateOutlet]=\"contentTpl\"></ng-template>\r\n  <ng-template [ngTemplateOutlet]=\"actionsTpl\"></ng-template>\r\n</ng-template>\r\n<div *ngIf=\"extra; else mainTpl\" class=\"ant-list-item-extra-wrap\">\r\n  <div class=\"ant-list-item-main\">\r\n    <ng-template [ngTemplateOutlet]=\"mainTpl\"></ng-template>\r\n  </div>\r\n  <div class=\"ant-list-item-extra\">\r\n    <ng-template [ngTemplateOutlet]=\"extra\"></ng-template>\r\n  </div>\r\n</div>\r\n",
+                    preserveWhitespaces: false,
+                    encapsulation: ViewEncapsulation.None,
+                    changeDetection: ChangeDetectionStrategy.OnPush
+                }] }
+    ];
+    /** @nocollapse */
+    CmacsListItemComponent.ctorParameters = function () { return [
+        { type: ElementRef },
+        { type: Renderer2 }
+    ]; };
+    CmacsListItemComponent.propDecorators = {
+        metas: [{ type: ContentChildren, args: [CmacsListItemMetaComponent,] }],
+        actions: [{ type: Input }],
+        content: [{ type: Input }],
+        extra: [{ type: Input }]
+    };
+    return CmacsListItemComponent;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/** @type {?} */
+var CMACS_MESSAGE_DEFAULT_CONFIG = new InjectionToken('CMACS_MESSAGE_DEFAULT_CONFIG');
+/** @type {?} */
+var CMACS_MESSAGE_CONFIG = new InjectionToken('CMACS_MESSAGE_CONFIG');
+/** @type {?} */
+var CMACS_MESSAGE_DEFAULT_CONFIG_PROVIDER = {
+    provide: CMACS_MESSAGE_DEFAULT_CONFIG,
+    useValue: {
+        animate: true,
+        duration: 3000,
+        maxStack: 7,
+        pauseOnHover: true,
+        top: 24
+    }
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var CmacsMessageContainerComponent = /** @class */ (function () {
+    function CmacsMessageContainerComponent(cdr, defaultConfig, config) {
+        this.cdr = cdr;
+        this.messages = [];
+        this.setConfig(__assign({}, defaultConfig, config));
+    }
+    /**
+     * @param {?} config
+     * @return {?}
+     */
+    CmacsMessageContainerComponent.prototype.setConfig = /**
+     * @param {?} config
+     * @return {?}
+     */
+    function (config) {
+        this.config = __assign({}, this.config, config);
+        this.top = toCssPixel(this.config.top);
+        this.cdr.markForCheck();
+    };
+    /**
+     * Create a new message.
+     * @param message Parsed message configuration.
+     */
+    /**
+     * Create a new message.
+     * @param {?} message Parsed message configuration.
+     * @return {?}
+     */
+    CmacsMessageContainerComponent.prototype.createMessage = /**
+     * Create a new message.
+     * @param {?} message Parsed message configuration.
+     * @return {?}
+     */
+    function (message) {
+        if (this.messages.length >= this.config.maxStack) {
+            this.messages.splice(0, 1);
+        }
+        message.options = this._mergeMessageOptions(message.options);
+        message.onClose = new Subject();
+        this.messages.push(message);
+        this.cdr.detectChanges();
+    };
+    /**
+     * Remove a message by `messageId`.
+     * @param messageId Id of the message to be removed.
+     * @param userAction Whether this is closed by user interaction.
+     */
+    /**
+     * Remove a message by `messageId`.
+     * @param {?} messageId Id of the message to be removed.
+     * @param {?=} userAction Whether this is closed by user interaction.
+     * @return {?}
+     */
+    CmacsMessageContainerComponent.prototype.removeMessage = /**
+     * Remove a message by `messageId`.
+     * @param {?} messageId Id of the message to be removed.
+     * @param {?=} userAction Whether this is closed by user interaction.
+     * @return {?}
+     */
+    function (messageId, userAction) {
+        var _this = this;
+        if (userAction === void 0) { userAction = false; }
+        this.messages.some((/**
+         * @param {?} message
+         * @param {?} index
+         * @return {?}
+         */
+        function (message, index) {
+            if (message.messageId === messageId) {
+                _this.messages.splice(index, 1);
+                _this.cdr.detectChanges();
+                (/** @type {?} */ (message.onClose)).next(userAction);
+                (/** @type {?} */ (message.onClose)).complete();
+                return true;
+            }
+            return false;
+        }));
+    };
+    /**
+     * Remove all messages.
+     */
+    /**
+     * Remove all messages.
+     * @return {?}
+     */
+    CmacsMessageContainerComponent.prototype.removeMessageAll = /**
+     * Remove all messages.
+     * @return {?}
+     */
+    function () {
+        this.messages = [];
+        this.cdr.detectChanges();
+    };
+    /**
+     * Merge default options and custom message options
+     * @param options
+     */
+    /**
+     * Merge default options and custom message options
+     * @protected
+     * @param {?=} options
+     * @return {?}
+     */
+    CmacsMessageContainerComponent.prototype._mergeMessageOptions = /**
+     * Merge default options and custom message options
+     * @protected
+     * @param {?=} options
+     * @return {?}
+     */
+    function (options) {
+        /** @type {?} */
+        var defaultOptions = {
+            duration: this.config.duration,
+            animate: this.config.animate,
+            pauseOnHover: this.config.pauseOnHover
+        };
+        return __assign({}, defaultOptions, options);
+    };
+    CmacsMessageContainerComponent.decorators = [
+        { type: Component, args: [{
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    encapsulation: ViewEncapsulation.None,
+                    selector: 'cmacs-message-container',
+                    exportAs: 'cmacsMessageContainer',
+                    preserveWhitespaces: false,
+                    template: "<div class=\"ant-message\" [style.top]=\"top\">\r\n  <cmacs-message *ngFor=\"let message of messages; let i = index\" [message]=\"message\" [index]=\"i\"></cmacs-message>\r\n</div>\r\n"
+                }] }
+    ];
+    /** @nocollapse */
+    CmacsMessageContainerComponent.ctorParameters = function () { return [
+        { type: ChangeDetectorRef },
+        { type: undefined, decorators: [{ type: Optional }, { type: Inject, args: [CMACS_MESSAGE_DEFAULT_CONFIG,] }] },
+        { type: undefined, decorators: [{ type: Optional }, { type: Inject, args: [CMACS_MESSAGE_CONFIG,] }] }
+    ]; };
+    return CmacsMessageContainerComponent;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var CmacsMessageComponent = /** @class */ (function () {
+    function CmacsMessageComponent(_messageContainer, cdr) {
+        this._messageContainer = _messageContainer;
+        this.cdr = cdr;
+        // Whether to set a timeout to destroy itself.
+        this._eraseTimer = null;
+    }
+    /**
+     * @return {?}
+     */
+    CmacsMessageComponent.prototype.ngOnInit = /**
+     * @return {?}
+     */
+    function () {
+        // `CmacsMessageContainer` does its job so all properties cannot be undefined.
+        this._options = (/** @type {?} */ (this.message.options));
+        if (this._options.animate) {
+            this.message.state = 'enter';
+        }
+        this._autoErase = this._options.duration > 0;
+        if (this._autoErase) {
+            this._initErase();
+            this._startEraseTimeout();
+        }
+    };
+    /**
+     * @return {?}
+     */
+    CmacsMessageComponent.prototype.ngOnDestroy = /**
+     * @return {?}
+     */
+    function () {
+        if (this._autoErase) {
+            this._clearEraseTimeout();
+        }
+    };
+    /**
+     * @return {?}
+     */
+    CmacsMessageComponent.prototype.onEnter = /**
+     * @return {?}
+     */
+    function () {
+        if (this._autoErase && this._options.pauseOnHover) {
+            this._clearEraseTimeout();
+            this._updateTTL();
+        }
+    };
+    /**
+     * @return {?}
+     */
+    CmacsMessageComponent.prototype.onLeave = /**
+     * @return {?}
+     */
+    function () {
+        if (this._autoErase && this._options.pauseOnHover) {
+            this._startEraseTimeout();
+        }
+    };
+    // Remove self
+    // Remove self
+    /**
+     * @protected
+     * @param {?=} userAction
+     * @return {?}
+     */
+    CmacsMessageComponent.prototype._destroy = 
+    // Remove self
+    /**
+     * @protected
+     * @param {?=} userAction
+     * @return {?}
+     */
+    function (userAction) {
+        var _this = this;
+        if (userAction === void 0) { userAction = false; }
+        if (this._options.animate) {
+            this.message.state = 'leave';
+            this.cdr.detectChanges();
+            setTimeout((/**
+             * @return {?}
+             */
+            function () { return _this._messageContainer.removeMessage(_this.message.messageId, userAction); }), 200);
+        }
+        else {
+            this._messageContainer.removeMessage(this.message.messageId, userAction);
+        }
+    };
+    /**
+     * @return {?}
+     */
+    CmacsMessageComponent.prototype.closeMessage = /**
+     * @return {?}
+     */
+    function () {
+        this._destroy();
+    };
+    /**
+     * @private
+     * @return {?}
+     */
+    CmacsMessageComponent.prototype._initErase = /**
+     * @private
+     * @return {?}
+     */
+    function () {
+        this._eraseTTL = this._options.duration;
+        this._eraseTimingStart = Date.now();
+    };
+    /**
+     * @private
+     * @return {?}
+     */
+    CmacsMessageComponent.prototype._updateTTL = /**
+     * @private
+     * @return {?}
+     */
+    function () {
+        if (this._autoErase) {
+            this._eraseTTL -= Date.now() - this._eraseTimingStart;
+        }
+    };
+    /**
+     * @private
+     * @return {?}
+     */
+    CmacsMessageComponent.prototype._startEraseTimeout = /**
+     * @private
+     * @return {?}
+     */
+    function () {
+        var _this = this;
+        if (this._eraseTTL > 0) {
+            this._clearEraseTimeout();
+            this._eraseTimer = setTimeout((/**
+             * @return {?}
+             */
+            function () { return _this._destroy(); }), this._eraseTTL);
+            this._eraseTimingStart = Date.now();
+        }
+        else {
+            this._destroy();
+        }
+    };
+    /**
+     * @private
+     * @return {?}
+     */
+    CmacsMessageComponent.prototype._clearEraseTimeout = /**
+     * @private
+     * @return {?}
+     */
+    function () {
+        if (this._eraseTimer !== null) {
+            clearTimeout(this._eraseTimer);
+            this._eraseTimer = null;
+        }
+    };
+    CmacsMessageComponent.decorators = [
+        { type: Component, args: [{
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    encapsulation: ViewEncapsulation.None,
+                    selector: 'cmacs-message',
+                    exportAs: 'cmacsMessage',
+                    preserveWhitespaces: false,
+                    animations: [moveUpMotion],
+                    template: "<div class=\"ant-message-notice\"\r\n  [@moveUpMotion]=\"message.state\"\r\n  (mouseenter)=\"onEnter()\"\r\n  (mouseleave)=\"onLeave()\">\r\n  <div class=\"ant-message-notice-content\" [style.width.px]=\"message.options && message.options.width ? message.options.width : 'inherit'\" [ngClass]=\"'ant-message-' + message.type\">\r\n    <div class=\"ant-message-custom-content\">\r\n      <ng-container *cmacsStringTemplateOutlet=\"message.content\">\r\n        <span [innerHTML]=\"message.content\"></span>\r\n      </ng-container>\r\n      <i (click)=\"closeMessage()\" class=\"cmacs-closable-message\" *ngIf=\"message.options && message.options.closable\" nz-icon [type]=\"'close'\"></i>\r\n    </div>\r\n  </div>\r\n</div>\r\n",
+                    styles: [".ant-message-success{background-color:#00ce7d;border-color:#00ce7d}.ant-message-info{background-color:#009fe3;border-color:#009fe3}.ant-message-warning{background-color:#ffc634;border-color:#ffc634}.ant-message-error{background-color:#f6503c;border-color:#f6503c}.ant-message-custom-content{font-family:Roboto-Regular;font-size:12px;font-weight:500;font-style:normal;font-stretch:normal;line-height:1;letter-spacing:normal;color:#fff;text-align:left}.cmacs-closable-message{color:#fff!important;font-size:12px!important;float:right!important;margin-right:-5px!important}.cmacs-closable-message:hover{cursor:pointer}"]
+                }] }
+    ];
+    /** @nocollapse */
+    CmacsMessageComponent.ctorParameters = function () { return [
+        { type: CmacsMessageContainerComponent },
+        { type: ChangeDetectorRef }
+    ]; };
+    CmacsMessageComponent.propDecorators = {
+        message: [{ type: Input }],
+        index: [{ type: Input }]
+    };
+    return CmacsMessageComponent;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/** @type {?} */
+var globalCounter = 0;
+/**
+ * @template ContainerClass, MessageData, MessageConfig
+ */
+var  /**
+ * @template ContainerClass, MessageData, MessageConfig
+ */
+CmacsMessageBaseService = /** @class */ (function () {
+    function CmacsMessageBaseService(overlay, containerClass, injector, cfr, appRef, _idPrefix) {
+        if (_idPrefix === void 0) { _idPrefix = ''; }
+        this.overlay = overlay;
+        this.containerClass = containerClass;
+        this.injector = injector;
+        this.cfr = cfr;
+        this.appRef = appRef;
+        this._idPrefix = _idPrefix;
+        this._container = this.createContainer();
+    }
+    /**
+     * @param {?=} messageId
+     * @return {?}
+     */
+    CmacsMessageBaseService.prototype.remove = /**
+     * @param {?=} messageId
+     * @return {?}
+     */
+    function (messageId) {
+        if (messageId) {
+            this._container.removeMessage(messageId);
+        }
+        else {
+            this._container.removeMessageAll();
+        }
+    };
+    /**
+     * @param {?} message
+     * @param {?=} options
+     * @return {?}
+     */
+    CmacsMessageBaseService.prototype.createMessage = /**
+     * @param {?} message
+     * @param {?=} options
+     * @return {?}
+     */
+    function (message, options) {
+        /** @type {?} */
+        var resultMessage = __assign({}, ((/** @type {?} */ (message))), {
+            createdAt: new Date(),
+            messageId: this._generateMessageId(),
+            options: options
+        });
+        this._container.createMessage(resultMessage);
+        return resultMessage;
+    };
+    /**
+     * @param {?} config
+     * @return {?}
+     */
+    CmacsMessageBaseService.prototype.config = /**
+     * @param {?} config
+     * @return {?}
+     */
+    function (config) {
+        this._container.setConfig(config);
+    };
+    /**
+     * @protected
+     * @return {?}
+     */
+    CmacsMessageBaseService.prototype._generateMessageId = /**
+     * @protected
+     * @return {?}
+     */
+    function () {
+        return this._idPrefix + globalCounter++;
+    };
+    // Manually creating container for overlay to avoid multi-checking error, see: https://github.com/NG-ZORRO/ng-zorro-antd/issues/391
+    // NOTE: we never clean up the container component and it's overlay resources, if we should, we need to do it by our own codes.
+    // Manually creating container for overlay to avoid multi-checking error, see: https://github.com/NG-ZORRO/ng-zorro-antd/issues/391
+    // NOTE: we never clean up the container component and it's overlay resources, if we should, we need to do it by our own codes.
+    /**
+     * @private
+     * @return {?}
+     */
+    CmacsMessageBaseService.prototype.createContainer = 
+    // Manually creating container for overlay to avoid multi-checking error, see: https://github.com/NG-ZORRO/ng-zorro-antd/issues/391
+    // NOTE: we never clean up the container component and it's overlay resources, if we should, we need to do it by our own codes.
+    /**
+     * @private
+     * @return {?}
+     */
+    function () {
+        /** @type {?} */
+        var factory = this.cfr.resolveComponentFactory(this.containerClass);
+        /** @type {?} */
+        var componentRef = factory.create(this.injector);
+        componentRef.changeDetectorRef.detectChanges(); // Immediately change detection to avoid multi-checking error
+        this.appRef.attachView(componentRef.hostView); // Load view into app root
+        // Load view into app root
+        /** @type {?} */
+        var overlayPane = this.overlay.create().overlayElement;
+        overlayPane.style.zIndex = '1010'; // Patching: assign the same zIndex of ant-message to it's parent overlay panel, to the ant-message's zindex work.
+        overlayPane.appendChild((/** @type {?} */ (((/** @type {?} */ (componentRef.hostView))).rootNodes[0])));
+        return componentRef.instance;
+    };
+    return CmacsMessageBaseService;
+}());
+var CmacsMessageService = /** @class */ (function (_super) {
+    __extends(CmacsMessageService, _super);
+    function CmacsMessageService(overlay, injector, cfr, appRef) {
+        return _super.call(this, overlay, CmacsMessageContainerComponent, injector, cfr, appRef, 'message-') || this;
+    }
+    // Shortcut methods
+    // Shortcut methods
+    /**
+     * @param {?} content
+     * @param {?=} options
+     * @return {?}
+     */
+    CmacsMessageService.prototype.success = 
+    // Shortcut methods
+    /**
+     * @param {?} content
+     * @param {?=} options
+     * @return {?}
+     */
+    function (content, options) {
+        return this.createMessage({ type: 'success', content: content }, options);
+    };
+    /**
+     * @param {?} content
+     * @param {?=} options
+     * @return {?}
+     */
+    CmacsMessageService.prototype.error = /**
+     * @param {?} content
+     * @param {?=} options
+     * @return {?}
+     */
+    function (content, options) {
+        return this.createMessage({ type: 'error', content: content }, options);
+    };
+    /**
+     * @param {?} content
+     * @param {?=} options
+     * @return {?}
+     */
+    CmacsMessageService.prototype.info = /**
+     * @param {?} content
+     * @param {?=} options
+     * @return {?}
+     */
+    function (content, options) {
+        return this.createMessage({ type: 'info', content: content }, options);
+    };
+    /**
+     * @param {?} content
+     * @param {?=} options
+     * @return {?}
+     */
+    CmacsMessageService.prototype.warning = /**
+     * @param {?} content
+     * @param {?=} options
+     * @return {?}
+     */
+    function (content, options) {
+        return this.createMessage({ type: 'warning', content: content }, options);
+    };
+    /**
+     * @param {?} content
+     * @param {?=} options
+     * @return {?}
+     */
+    CmacsMessageService.prototype.loading = /**
+     * @param {?} content
+     * @param {?=} options
+     * @return {?}
+     */
+    function (content, options) {
+        return this.createMessage({ type: 'loading', content: content }, options);
+    };
+    /**
+     * @param {?} type
+     * @param {?} content
+     * @param {?=} options
+     * @return {?}
+     */
+    CmacsMessageService.prototype.create = /**
+     * @param {?} type
+     * @param {?} content
+     * @param {?=} options
+     * @return {?}
+     */
+    function (type, content, options) {
+        return this.createMessage({ type: type, content: content }, options);
+    };
+    CmacsMessageService.decorators = [
+        { type: Injectable, args: [{
+                    providedIn: 'root'
+                },] }
+    ];
+    /** @nocollapse */
+    CmacsMessageService.ctorParameters = function () { return [
+        { type: Overlay },
+        { type: Injector },
+        { type: ComponentFactoryResolver },
+        { type: ApplicationRef }
+    ]; };
+    /** @nocollapse */ CmacsMessageService.ngInjectableDef = defineInjectable({ factory: function CmacsMessageService_Factory() { return new CmacsMessageService(inject(Overlay), inject(INJECTOR), inject(ComponentFactoryResolver), inject(ApplicationRef)); }, token: CmacsMessageService, providedIn: "root" });
+    return CmacsMessageService;
+}(CmacsMessageBaseService));
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @template T
+ */
+var CmacsCompactTableComponent = /** @class */ (function () {
+    function CmacsCompactTableComponent(cdr, i18n, exportAsService, excelService, datePipe, cookies) {
+        this.cdr = cdr;
+        this.i18n = i18n;
+        this.exportAsService = exportAsService;
+        this.excelService = excelService;
+        this.datePipe = datePipe;
+        this.cookies = cookies;
+        this.locale = {}; // tslint:disable-line:no-any
+        // tslint:disable-line:no-any
+        this.headerBottomStyle = {};
+        this.destroy$ = new Subject();
+        // tslint:disable-next-line: no-input-rename
+        this.size = 'default';
+        this.pageSizeOptions = [10, 20, 30, 40, 50];
+        this.virtualScroll = false;
+        this.logs = false;
+        this.virtualItemSize = 0;
+        this.loadingDelay = 0;
+        this.total = 0;
+        this.widthConfig = [];
+        this.pageIndex = 1;
+        this.pageSize = 10;
+        // tslint:disable-next-line: no-input-rename
+        this.data = [];
+        this.configChange = new EventEmitter();
+        this.paginationPosition = 'bottom';
+        this.scroll = { x: null, y: null };
+        this.frontPagination = true;
+        this.templateMode = false;
+        this.bordered = false;
+        this.showPagination = true;
+        this.loading = false;
+        this.showSizeChanger = false;
+        this.hideOnSinglePage = false;
+        this.showQuickJumper = false;
+        this.simple = false;
+        this.checkboxSelect = false;
+        this.inLineEdit = false;
+        this.dataTable = false;
+        this.showRate = false;
+        this.exportEvent = new EventEmitter();
+        this.buttonClick = new EventEmitter();
+        this.rateChange = new EventEmitter();
+        this.selectionChange = new EventEmitter();
+        this.ondlclickRow = new EventEmitter();
+        this.onclickRow = new EventEmitter();
+        this.onedit = new EventEmitter();
+        this.rateCount = 5;
+        this.multiSelect = false;
+        this.sortChange = new EventEmitter();
+        this.selected = false;
+        this.defaultSortOrder = null;
+        this.checkboxCache = [];
+        this.isIndeterminate = false;
+        this.allChecked = false;
+        this.rowOnEdition = -1;
+        // renderer.addClass(elementRef.nativeElement, 'ant-table-wrapper');
+    }
+    /**
+     * @param {?} id
+     * @param {?} property
+     * @param {?} event
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.startEdit = /**
+     * @param {?} id
+     * @param {?} property
+     * @param {?} event
+     * @return {?}
+     */
+    function (id, property, event) {
+        if (this.inLineEdit) {
+            event.preventDefault();
+            event.stopPropagation();
+            this.editId = id;
+            this.property = property;
+        }
+    };
+    /**
+     * @param {?} $event
+     * @param {?} fieldProperty
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.sort = /**
+     * @param {?} $event
+     * @param {?} fieldProperty
+     * @return {?}
+     */
+    function ($event, fieldProperty) {
+        this.sortChange.emit({ sortName: fieldProperty, sortValue: $event });
+    };
+    /**
+     * @param {?} e
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.handleClick = /**
+     * @param {?} e
+     * @return {?}
+     */
+    function (e) {
+        /** @type {?} */
+        var element = (/** @type {?} */ (e.target));
+        if (this.editId && this.property) {
+            if ((this.inputElement && this.inputElement.nativeElement !== e.target) ||
+                (this.inputNumberElement && !this.childOf(element, this.inputNumberElement.nativeElement)) ||
+                (this.datePickerElement && this.datePickerElement.nativeElement !== e.target) ||
+                (this.selectElement && !this.childOf(element, this.selectElement.nativeElement) ||
+                    (this.boolElement && this.boolElement.nativeElement !== e.target))) {
+                this.editId = null;
+                this.property = null;
+                if (this.rowOnEdition >= 0) {
+                    this.onedit.emit(this.data[this.rowOnEdition]);
+                    this.rowOnEdition = -1;
+                }
+            }
+        }
+    };
+    /**
+     * @param {?} node
+     * @param {?} ancestor
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.childOf = /**
+     * @param {?} node
+     * @param {?} ancestor
+     * @return {?}
+     */
+    function (node, ancestor) {
+        /** @type {?} */
+        var child = node;
+        while (child !== null) {
+            if (child === ancestor)
+                return true;
+            if (child.classList && child.classList.length > 0 && child.className && typeof child.className === 'string' &&
+                child.className.indexOf('cdk-overlay-pane') >= 0)
+                return true;
+            child = child.parentNode;
+        }
+        return false;
+    };
+    /**
+     * @param {?} $event
+     * @param {?} index
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.endEditMode = /**
+     * @param {?} $event
+     * @param {?} index
+     * @return {?}
+     */
+    function ($event, index) {
+        if ($event.key === ('Enter')) {
+            this.editId = null;
+            this.property = null;
+            this.rowOnEdition = -1;
+            this.onedit.emit(this.data[index]);
+        }
+        else {
+            this.rowOnEdition = index;
+        }
+    };
+    /**
+     * @param {?} index
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.endEditModeNgModel = /**
+     * @param {?} index
+     * @return {?}
+     */
+    function (index) {
+        this.editId = null;
+        this.property = null;
+        this.rowOnEdition = -1;
+        this.onedit.emit(this.data[index]);
+    };
+    /**
+     * @param {?} id
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.getIndex = /**
+     * @param {?} id
+     * @return {?}
+     */
+    function (id) {
+        var _this = this;
+        /** @type {?} */
+        var i = -1;
+        i = this.checkboxCache.findIndex((/**
+         * @param {?} item
+         * @return {?}
+         */
+        function (item) { return item.data[_this.config.fieldId] === id; }));
+        return i;
+    };
+    /**
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.updateCheckboxCache = /**
+     * @return {?}
+     */
+    function () {
+        var _this = this;
+        this.checkboxCache.length = 0;
+        this.data.forEach((/**
+         * @param {?} item
+         * @return {?}
+         */
+        function (item) {
+            _this.checkboxCache.push({
+                selected: false,
+                data: __assign({}, item)
+            });
+        }));
+    };
+    /**
+     * @param {?} field
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.onButtonClick = /**
+     * @param {?} field
+     * @return {?}
+     */
+    function (field) {
+        this.buttonClick.emit(field);
+    };
+    /**
+     * @param {?} event
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.onCheckboxChange = /**
+     * @param {?} event
+     * @return {?}
+     */
+    function (event) {
+        /** @type {?} */
+        var dataSelectd = this.checkboxCache.filter((/**
+         * @param {?} item
+         * @return {?}
+         */
+        function (item) { return item.selected; }));
+        this.selected = this.allChecked = dataSelectd.length === this.checkboxCache.length;
+        this.isIndeterminate = dataSelectd.length > 0 && !this.allChecked;
+        this.selectionChange.emit(dataSelectd.map((/**
+         * @param {?} item
+         * @return {?}
+         */
+        function (item) { return item.data; })));
+    };
+    // tslint:disable-next-line: no-shadowed-variable
+    // tslint:disable-next-line: no-shadowed-variable
+    /**
+     * @param {?} count
+     * @param {?} data
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.onRateChange = 
+    // tslint:disable-next-line: no-shadowed-variable
+    /**
+     * @param {?} count
+     * @param {?} data
+     * @return {?}
+     */
+    function (count, data) {
+        data[this.config.fieldRate] = count;
+        this.rateChange.emit(data);
+    };
+    /**
+     * @param {?} event
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.onRateClick = /**
+     * @param {?} event
+     * @return {?}
+     */
+    function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    };
+    /**
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.getFields = /**
+     * @return {?}
+     */
+    function () {
+        return this.config.fields.filter((/**
+         * @param {?} item
+         * @return {?}
+         */
+        function (item) { return item.hidden === undefined || !item.hidden; }));
+    };
+    /**
+     * @param {?} status
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.onCheckboxAllChange = /**
+     * @param {?} status
+     * @return {?}
+     */
+    function (status) {
+        this.checkboxCache.forEach((/**
+         * @param {?} element
+         * @return {?}
+         */
+        function (element) {
+            element.selected = status;
+        }));
+        this.isIndeterminate = false;
+        this.selectionChange.emit((status) ? this.data : []);
+    };
+    /**
+     * @param {?} data
+     * @param {?} field
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.getLabel = /**
+     * @param {?} data
+     * @param {?} field
+     * @return {?}
+     */
+    function (data, field) {
+        /** @type {?} */
+        var result = '';
+        if (field.editTemplate === TemplateType.Select && field.select !== undefined) {
+            // tslint:disable-next-line: no-shadowed-variable
+            /** @type {?} */
+            var item = field.select.selectData.find((/**
+             * @param {?} item
+             * @return {?}
+             */
+            function (item) { return item !== undefined && item[field.select.value] === data[field.property]; }));
+            result = (item !== undefined) ? item[field.select.label] : '';
+        }
+        return result;
+    };
+    /**
+     * @param {?} field
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.isSelect = /**
+     * @param {?} field
+     * @return {?}
+     */
+    function (field) {
+        return field !== undefined && field.editTemplate === TemplateType.Select;
+    };
+    /**
+     * @param {?} field
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.isString = /**
+     * @param {?} field
+     * @return {?}
+     */
+    function (field) {
+        return field !== undefined && field.editTemplate === TemplateType.String;
+    };
+    /**
+     * @param {?} field
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.isReadOnly = /**
+     * @param {?} field
+     * @return {?}
+     */
+    function (field) {
+        return field !== undefined && field.readonly !== undefined && field.readonly;
+    };
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.isTypeNumber = /**
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
+        return value !== undefined && typeof (value) === 'number';
+    };
+    /**
+     * @param {?} field
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.isNumber = /**
+     * @param {?} field
+     * @return {?}
+     */
+    function (field) {
+        return field !== undefined && field.editTemplate === TemplateType.Number;
+    };
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.isBoolean = /**
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
+        return value !== undefined && typeof (value) === 'boolean';
+    };
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.isObject = /**
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
+        return value !== undefined && typeof (value) === 'object';
+    };
+    /**
+     * @param {?} field
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.isDate = /**
+     * @param {?} field
+     * @return {?}
+     */
+    function (field) {
+        return field !== undefined && field.celdType === CeldType.Default && field.editTemplate === TemplateType.Date;
+    };
+    /**
+     * @param {?} field
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.isCeldTypeDefault = /**
+     * @param {?} field
+     * @return {?}
+     */
+    function (field) {
+        return field !== undefined && field.celdType === CeldType.Default;
+    };
+    /**
+     * @param {?} field
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.isCeldTypeButton = /**
+     * @param {?} field
+     * @return {?}
+     */
+    function (field) {
+        return field !== undefined && field.celdType === CeldType.Button;
+    };
+    /**
+     * @param {?} field
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.isCeldTypeTag = /**
+     * @param {?} field
+     * @return {?}
+     */
+    function (field) {
+        return field !== undefined && field.celdType === CeldType.Tag;
+    };
+    /**
+     * @param {?} field
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.isCeldTypeTemplateRef = /**
+     * @param {?} field
+     * @return {?}
+     */
+    function (field) {
+        return field !== undefined && field.celdType === CeldType.TemplateRef;
+    };
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.isUndefined = /**
+     * @param {?} value
+     * @return {?}
+     */
+    function (value) {
+        return value === undefined;
+    };
+    /**
+     * @param {?} data
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.isRowSelected = /**
+     * @param {?} data
+     * @return {?}
+     */
+    function (data) {
+        var _this = this;
+        /** @type {?} */
+        var dataSelectd = this.checkboxCache.filter((/**
+         * @param {?} item
+         * @return {?}
+         */
+        function (item) { return item.selected; })).map((/**
+         * @param {?} item
+         * @return {?}
+         */
+        function (item) { return item.data[_this.config.fieldId]; }));
+        return dataSelectd.indexOf(data[this.config.fieldId]) !== -1;
+    };
+    /**
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.ngAfterViewInit = /**
+     * @return {?}
+     */
+    function () {
+        if (this.cookies.check(this.gridID)) {
+            /** @type {?} */
+            var savedConfigStr = this.cookies.get(this.gridID);
+            // reset expiration date
+            this.cookies.set(this.gridID, savedConfigStr, 365);
+            // parse cookie value to typescript const
+            /** @type {?} */
+            var savedConfig = (/** @type {?} */ (JSON.parse(this.cookies.get(this.gridID))));
+            if (typeof savedConfig === "object") {
+                this.config = savedConfig;
+                this.configChange.emit(this.config);
+            }
+        }
+    };
+    /**
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.ngOnInit = /**
+     * @return {?}
+     */
+    function () {
+        var _this = this;
+        console.log(this.extra);
+        this.i18n.localeChange.pipe(takeUntil(this.destroy$)).subscribe((/**
+         * @return {?}
+         */
+        function () {
+            _this.locale = _this.i18n.getLocaleData('Table');
+            _this.cdr.markForCheck();
+        }));
+        if (this.checkboxSelect) {
+            this.updateCheckboxCache();
+        }
+        if (this.dataTable && this.data.length > 1) {
+            while (this.data.length > 1) {
+                this.data.pop();
+            }
+            this.showPagination = false;
+        }
+        this.exportEvent.subscribe((/**
+         * @param {?} config
+         * @return {?}
+         */
+        function (config) {
+            switch (config.exportType) {
+                case ExportType.Pdf:
+                    _this.exportToPdf(config.fileName);
+                    break;
+                case ExportType.Xslx:
+                    _this.exportToExcel(config.fileName);
+                    break;
+                case ExportType.Png:
+                    _this.exportToPng(config.fileName);
+                    break;
+            }
+        }));
+    };
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.ngOnChanges = /**
+     * @param {?} changes
+     * @return {?}
+     */
+    function (changes) {
+        if (changes.data) {
+            this.updateCheckboxCache();
+        }
+    };
+    /**
+     * @param {?} fileName
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.exportToPng = /**
+     * @param {?} fileName
+     * @return {?}
+     */
+    function (fileName) {
+        var _this = this;
+        /** @type {?} */
+        var exportAsConfig = {
+            type: 'png',
+            // the type you want to download
+            elementId: this.gridID,
+        };
+        this.frontPagination = false;
+        this.showPagination = false;
+        /** @type {?} */
+        var interval = setInterval((/**
+         * @return {?}
+         */
+        function () {
+            // tslint:disable-next-line: max-line-length
+            _this.exportAsService.save(exportAsConfig, fileName + '_export_' + Date.now());
+            _this.frontPagination = true;
+            _this.showPagination = true;
+            clearInterval(interval);
+        }), 100);
+    };
+    /**
+     * @param {?} fileName
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.exportToExcel = /**
+     * @param {?} fileName
+     * @return {?}
+     */
+    function (fileName) {
+        var _this = this;
+        /** @type {?} */
+        var dataToExport = [];
+        this.data.forEach((/**
+         * @param {?} item
+         * @return {?}
+         */
+        function (item) {
+            /** @type {?} */
+            var itemToExport = {};
+            // tslint:disable-next-line: no-shadowed-variable
+            _this.config.fields.filter((/**
+             * @param {?} item
+             * @return {?}
+             */
+            function (item) { return item.celdType === CeldType.Default; })).forEach((/**
+             * @param {?} field
+             * @return {?}
+             */
+            function (field) {
+                if (field.editTemplate === TemplateType.Select) {
+                    /** @type {?} */
+                    var selectItem = field.select.selectData.find((/**
+                     * @param {?} option
+                     * @return {?}
+                     */
+                    function (option) { return option[field.select.value] === item[field.property]; }));
+                    if (selectItem !== undefined) {
+                        itemToExport[field.display] = selectItem[field.select.label];
+                    }
+                }
+                else {
+                    itemToExport[field.display] = item[field.property];
+                }
+            }));
+            _this.config.fields.filter((/**
+             * @param {?} item
+             * @return {?}
+             */
+            function (item) { return item.celdType === CeldType.TemplateRef; })).forEach((/**
+             * @param {?} field
+             * @return {?}
+             */
+            function (field) {
+                itemToExport[field.display] = item[field.property].context.exportValue;
+            }));
+            dataToExport.push(itemToExport);
+        }));
+        this.excelService.exportAsExcelFile(dataToExport, fileName);
+    };
+    /**
+     * @param {?} fileName
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.exportToPdf = /**
+     * @param {?} fileName
+     * @return {?}
+     */
+    function (fileName) {
+        var _this = this;
+        /** @type {?} */
+        var doc = new jsPDF();
+        /** @type {?} */
+        var columns = [];
+        /** @type {?} */
+        var rows = [];
+        this.config.fields.filter((/**
+         * @param {?} item
+         * @return {?}
+         */
+        function (item) { return item.celdType === CeldType.Default; })).forEach((/**
+         * @param {?} field
+         * @return {?}
+         */
+        function (field) {
+            columns.push(field.display);
+        }));
+        this.config.fields.filter((/**
+         * @param {?} item
+         * @return {?}
+         */
+        function (item) { return item.celdType === CeldType.TemplateRef; })).forEach((/**
+         * @param {?} field
+         * @return {?}
+         */
+        function (field) {
+            columns.push(field.display);
+        }));
+        this.data.forEach((/**
+         * @param {?} item
+         * @return {?}
+         */
+        function (item) {
+            /** @type {?} */
+            var itemToExport = [];
+            // tslint:disable-next-line: no-shadowed-variable
+            _this.config.fields.filter((/**
+             * @param {?} item
+             * @return {?}
+             */
+            function (item) { return item.celdType === CeldType.Default; })).forEach((/**
+             * @param {?} field
+             * @return {?}
+             */
+            function (field) {
+                switch (field.editTemplate) {
+                    case TemplateType.Select:
+                        /** @type {?} */
+                        var selectItem = field.select.selectData.find((/**
+                         * @param {?} option
+                         * @return {?}
+                         */
+                        function (option) { return option[field.select.value] === item[field.property]; }));
+                        if (selectItem !== undefined) {
+                            itemToExport.push(selectItem[field.select.label]);
+                        }
+                        break;
+                    case TemplateType.Date:
+                        itemToExport.push(_this.datePipe.transform(item[field.property], 'MMMM dd yyyy'));
+                        break;
+                    default:
+                        itemToExport.push(item[field.property]);
+                        break;
+                }
+            }));
+            _this.config.fields.filter((/**
+             * @param {?} item
+             * @return {?}
+             */
+            function (item) { return item.celdType === CeldType.TemplateRef; })).forEach((/**
+             * @param {?} field
+             * @return {?}
+             */
+            function (field) {
+                itemToExport.push(item[field.property].context.exportValue);
+            }));
+            rows.push(itemToExport);
+        }));
+        doc.autoTable({
+            theme: 'striped',
+            margin: { top: 5 },
+            body: rows,
+            columns: columns
+        });
+        doc.save(fileName + '_export_' + Date.now());
+    };
+    /**
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.ngOnDestroy = /**
+     * @return {?}
+     */
+    function () {
+        this.destroy$.next();
+        this.destroy$.complete();
+    };
+    /**
+     * @param {?} data
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.clickRow = /**
+     * @param {?} data
+     * @return {?}
+     */
+    function (data) {
+        var _this = this;
+        this.onclickRow.emit(data);
+        if (!this.checkboxSelect) {
+            if (!this.multiSelect) {
+                this.checkboxCache.filter((/**
+                 * @param {?} item
+                 * @return {?}
+                 */
+                function (item) { return item.selected && item.data[_this.config.fieldId] !== data[_this.config.fieldId]; }))
+                    .forEach((/**
+                 * @param {?} elem
+                 * @return {?}
+                 */
+                function (elem) { return elem.selected = false; }));
+            }
+            /** @type {?} */
+            var index = this.checkboxCache.findIndex((/**
+             * @param {?} item
+             * @return {?}
+             */
+            function (item) { return item.data[_this.config.fieldId] === data[_this.config.fieldId]; }));
+            if (index !== -1) {
+                this.checkboxCache[index].selected = !this.checkboxCache[index].selected;
+            }
+        }
+        this.selectionChange.emit(this.checkboxCache.filter((/**
+         * @param {?} item
+         * @return {?}
+         */
+        function (item) { return item.selected; })).map((/**
+         * @param {?} item
+         * @return {?}
+         */
+        function (item) { return item.data; })));
+    };
+    /**
+     * @param {?} data
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.dblClickRow = /**
+     * @param {?} data
+     * @return {?}
+     */
+    function (data) {
+        this.ondlclickRow.emit(data);
+    };
+    CmacsCompactTableComponent.decorators = [
+        { type: Component, args: [{
+                    // tslint:disable-next-line: component-selector
+                    selector: 'cmacs-compact-table',
+                    exportAs: 'cmacsCompactTable',
+                    template: "<div id=\"{{gridID}}\">\r\n  <nz-table #gridComponent [nzData]=\"data\" [nzShowTotal]=\"showTotal\" [nzPageSizeOptions]=\"pageSizeOptions\"\r\n    [nzVirtualScroll]=\"virtualScroll\" [nzVirtualItemSize]=\"virtualItemSize\" [nzLoadingDelay]=\"loadingDelay\"\r\n    [nzLoadingIndicator]=\"loadingIndicator\" [nzTotal]=\"total\" [nzTitle]=\"title\" [nzFooter]=\"footer\"\r\n    [nzNoResult]=\"noResult\" [nzWidthConfig]=\"widthConfig\" [nzPageIndex]=\"pageIndex\" [nzPageSize]=\"pageSize\"\r\n    [nzPaginationPosition]=\"paginationPosition\" [nzScroll]=\"scroll\" [nzFrontPagination]=\"frontPagination\"\r\n    [nzTemplateMode]=\"templateMode\" [nzShowPagination]=\"showPagination\" [nzLoading]=\"loading\"\r\n    [nzShowSizeChanger]=\"showSizeChanger\" [nzHideOnSinglePage]=\"hideOnSinglePage\" [nzShowQuickJumper]=\"showQuickJumper\"\r\n    [nzSimple]=\"simple\">\r\n    <thead class=\"ant-table-thead\" *ngIf=\"!dataTable\">\r\n      <tr>\r\n\r\n        <th *ngIf=\"checkboxSelect\" nzWidth=\"2%\">\r\n          <label cmacs-checkbox [(ngModel)]=\"selected\" [indeterminate]=\"isIndeterminate\"\r\n            (checkedChange)=onCheckboxAllChange($event)></label>\r\n        </th>\r\n\r\n        <th *ngFor=\"let field of getFields()\" [nzShowSort]=\"field.showSort\"\r\n          [(nzSort)]=\"field.showSort ? field.sortOrder : defaultSortOrder\" (nzSortChange)=\"sort($event, field.property)\"\r\n          nzWidth=\"{{field.width}}\">{{field.display}}</th>\r\n        <th *ngIf=\"showRate\"></th>\r\n\r\n        <th *ngIf=\"extra\">\r\n          <div class=\"cmacs-compact-table-extra\">\r\n            <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n          </div>\r\n        </th>\r\n\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let data of gridComponent.data; index as i\" (click)=\"clickRow(data)\" (dblclick)=\"dblClickRow(data)\"\r\n        [class.ant-table-selected-row]=\"isRowSelected(data)\" [class.cmacs-compact-table-editable-row]=\"inLineEdit\">\r\n\r\n        <td *ngIf=\"checkboxSelect\" nzWidth=\"2%\">\r\n          <label cmacs-checkbox [(ngModel)]=\"checkboxCache[getIndex(data[config.fieldId])].selected\"\r\n            (checkedChange)=onCheckboxChange($event)\r\n            *ngIf=\"data[config.fieldId] && checkboxCache[getIndex(data[config.fieldId])]\"></label>\r\n        </td>\r\n\r\n        <td *ngFor=\"let field of getFields()\"\r\n            [class.cmacs-compact-table-on-edit]=\"(editId === data[config.fieldId] || property === field.property) &&\r\n            (isString(field) || isDate(field) || isSelect(field))\"\r\n            [class.cmacs-compact-table-on-edit-no-padding]=\"isNumber(field)\">\r\n\r\n         <!-- <div *ngIf=\"isCeldTypeDefault(field) && inLineEdit && !isReadOnly(field); else componentTpl\">-->\r\n\r\n            <div\r\n              *ngIf=\"(editId !== data[config.fieldId] || property !== field.property); else editTpl\">\r\n\r\n                  <ng-container>\r\n\r\n                      <!--Editable String View Mode-->\r\n                      <ng-container *ngIf=\"isString(field)\">\r\n                        <div class=\"cmacs-compact-table-overflow-cell\">{{ data[field.property] }}</div>\r\n                        <i class=\"iconUISmall-Edit\"\r\n                           [class.cmacs-compact-table-edit-icon]=\"inLineEdit\"\r\n                           [class.cmacs-compact-table-edit-icon-view]=\"!inLineEdit\"\r\n                           (click)=\"startEdit(data[config.fieldId], field.property, $event)\">\r\n                        </i>\r\n                      </ng-container>\r\n\r\n                    <!--Editable DatePicker View Mode-->\r\n                    <ng-container *ngIf=\"isDate(field)\">\r\n                        <div class=\"cmacs-compact-table-overflow-cell cmacs-compact-table-date\">{{ data[field.property]  | date: field.dateFormat}}</div>\r\n                        <i class=\"iconUILarge-Calendar\"\r\n                           [class.cmacs-compact-table-calendar-icon]=\"inLineEdit\"\r\n                           [class.cmacs-compact-table-calendar-icon-view]=\"!inLineEdit\"\r\n                           (click)=\"startEdit(data[config.fieldId], field.property, $event)\"></i>\r\n                      </ng-container>\r\n\r\n                    <!--Editable Select View Mode-->\r\n                    <ng-container *ngIf=\"isSelect(field)\">\r\n                      <div class=\"cmacs-compact-table-overflow-cell cmacs-compact-table-select\">{{ getLabel(data, field) }}</div>\r\n                      <i class=\"iconArrowLarge-Chevron-Down\"\r\n                         [class.cmacs-compact-table-select-icon]=\"inLineEdit\"\r\n                         [class.cmacs-compact-table-select-icon-view]=\"!inLineEdit\"\r\n                         (click)=\"startEdit(data[config.fieldId], field.property, $event)\"></i>\r\n                    </ng-container>\r\n\r\n                    <!--Editable InputNumber View Mode-->\r\n                    <ng-container *ngIf=\"isNumber(field)\">\r\n                      <div class=\"cmacs-compact-table-overflow-cell cmacs-compact-table-input-number\">{{ data[field.property] }}</div>\r\n                      <i class=\"iconArrowLarge-Solid-UpDown\"\r\n                         [class.cmacs-compact-table-input-number-icon]=\"inLineEdit\"\r\n                         [class.cmacs-compact-table-input-number-icon-view]=\"!inLineEdit\"\r\n                         (click)=\"startEdit(data[config.fieldId], field.property, $event)\">\r\n                      </i>\r\n                    </ng-container>\r\n\r\n                  </ng-container>\r\n\r\n            </div>\r\n\r\n            <ng-template #editTpl>\r\n              <!--Editable String Edit Mode-->\r\n             <input #fieldTypeInput class=\"cmacs-compact-table-input\" *ngIf=\"isString(field)\" type=\"text\"\r\n                    cmacs-input [(ngModel)]=\"data[field.property]\" (keyup)=\"endEditMode($event, i)\" />\r\n\r\n              <!--Editable DatePicker Edit Mode-->\r\n              <cmacs-date-picker class=\"cmacs-compact-table-date\" #fieldTypeDatePicker *ngIf=\"isDate(field)\" [format]=\"'MM/dd/yyyy'\" [allowClear]=\"false\"\r\n                                 open [(ngModel)]=\"data[field.property]\" (ngModelChange)=\"endEditModeNgModel(i)\">\r\n              </cmacs-date-picker>\r\n\r\n              <!--Editable Select Edit Mode-->\r\n              <cmacs-select #fieldTypeSelect *ngIf=\"isSelect(field)\" showSearch\r\n                            [(ngModel)]=\"data[field.property]\" (ngModelChange)=\"endEditModeNgModel(i)\">\r\n                <cmacs-option *ngFor=\"let sData of field.select.selectData\" label=\"{{sData[field.select.label]}}\"\r\n                              value=\"{{sData[field.select.value]}}\"></cmacs-option>\r\n              </cmacs-select>\r\n\r\n              <!--Editable InpuNumber Edit Mode-->\r\n              <cmacs-input-number #fieldTypeInputNumber\r\n                                  *ngIf=\"isTypeNumber(data[field.property]) && !isSelect(field)\" [(ngModel)]=\"data[field.property]\"\r\n                                  [cmacsStep]=\"1\" (keyup)=\"endEditMode($event, i)\">\r\n              </cmacs-input-number>\r\n\r\n              <!--<cmacs-input-number #fieldTypeInputNumber id=\"testing2\"\r\n                *ngIf=\"isNumber(data[field.property]) && !isSelect(field)\" [(ngModel)]=\"data[field.property]\"\r\n                [cmacsStep]=\"1\" (keyup)=\"endEditMode($event, i)\"></cmacs-input-number>\r\n\r\n              <label #fieldTypeBool cmacs-checkbox *ngIf=\"isBoolean(data[field.property])\"\r\n                [(ngModel)]=\"data[field.property]\" (ngModelChange)=\"endEditModeNgModel(i)\"></label>\r\n\r\n              <cmacs-select #fieldTypeSelect *ngIf=\"isSelect(field)\" style=\"width: 200px;\" showSearch\r\n                [(ngModel)]=\"data[field.property]\" (ngModelChange)=\"endEditModeNgModel(i)\">\r\n                <cmacs-option *ngFor=\"let sData of field.select.selectData\" label=\"{{sData[field.select.label]}}\"\r\n                  value=\"{{sData[field.select.value]}}\"></cmacs-option>\r\n              </cmacs-select>-->\r\n            </ng-template>\r\n          <!--</div>-->\r\n\r\n          <ng-template #componentTpl>\r\n            <!--<ng-container #templateRefCeld *ngIf=\"isCeldTypeTemplateRef(field)\">\r\n              <ng-container *ngTemplateOutlet=\"data[field.property].ref; context: data[field.property].context\">\r\n              </ng-container>\r\n            </ng-container>\r\n            <button *ngIf=\"isCeldTypeButton(field)\" cmacs-button type=\"{{field.button.style}}\"\r\n              (click)=onButtonClick(data)>\r\n              <i *ngIf=\"!isUndefined(field.button.icon); else titleTpl\" nz-icon type=\"{{field.button.icon}}\"></i>\r\n              <ng-template #titleTpl>{{field.display}}</ng-template>\r\n            </button>\r\n            <cmacs-tag *ngIf=\"isCeldTypeTag(field) && field.tag !== undefined\"\r\n              [color]=\"field.tag.color ? data[field.tag.color] : null\"\r\n              [cmacsGridType]=\"field.tag.cmacsGridType ? data[field.tag.cmacsGridType] : null\"\r\n              [cmacsStatusType]=\"field.tag.cmacsStatusType ? data[field.tag.cmacsStatusType] : null\"\r\n              [cmacsPriorityType]=\"field.tag.cmacsPriorityType ? data[field.tag.cmacsPriorityType] : null\">\r\n              {{  data[field.property] }}\r\n            </cmacs-tag>\r\n            &lt;!&ndash;<cmacs-tag *ngIf=\"isCeldTypeTag(field) && (field.tag === undefined || field.tag.color === undefined)\">\r\n              {{ data[field.property] }}</cmacs-tag>\r\n            <cmacs-tag *ngIf=\"isCeldTypeTag(field) && field.tag !== undefined && field.tag.color !== undefined\"\r\n              [color]=data[field.tag.color]>{{  data[field.property] }}</cmacs-tag>&ndash;&gt;\r\n            <ng-container\r\n              *ngIf=\"(!inLineEdit ||  isReadOnly(field)) && !isCeldTypeButton(field) && !isCeldTypeTag(field) && !isCeldTypeTemplateRef(field) && isDate(field)\">\r\n              {{ data[field.property]  | date: field.dateFormat}}</ng-container>\r\n            <ng-container\r\n              *ngIf=\"(!inLineEdit ||  isReadOnly(field)) && !isCeldTypeButton(field) && !isCeldTypeTag(field) && !isCeldTypeTemplateRef(field) && !isDate(field)\">\r\n              {{ data[field.property] }}</ng-container>-->\r\n          </ng-template>\r\n        </td>\r\n\r\n        <td *ngIf=\"showRate\">\r\n          <nz-rate [ngModel]=\"data[config.fieldRate]\" [nzCount]='rateCount' (ngModelChange)=\"onRateChange($event, data)\"\r\n            (click)=\"onRateClick($event)\"></nz-rate>\r\n        </td>\r\n\r\n        <td *ngIf=\"extra\">\r\n        </td>\r\n      </tr>\r\n    </tbody>\r\n  </nz-table>\r\n</div>\r\n",
+                    host: {
+                        '[class.cmacs-compact-table-logs]': 'logs'
+                    },
+                    styles: [".ant-table-thead>tr>th{padding:6px;font-family:Roboto-Regular;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;color:#656c79;background:0 0!important}.ant-table-tbody>tr>td{padding:6px;font-family:Roboto-Regular;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;color:#97a0ae}.ant-table-tbody>tr:hover td:first-child{border-left:3px solid #2a7cff}.ant-table-tbody>.ant-table-selected-row:hover td{border-bottom:1px solid #2a7cff;border-top:1px solid #2a7cff}.editable-cell{position:relative}:host ::ng-deep .ant-rate-star{font-size:16px}.ant-table-thead>tr>th:first-child{border-left:3px solid transparent}.ant-table-tbody>tr:hover{box-shadow:0 3px 7px -3px rgba(5,6,6,.18)}.ant-table-tbody>tr td:first-child{border-left:3px solid #fff}.ant-table-tbody>tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-selected-row)>td,.ant-table-tbody>tr:hover:not(.ant-table-expanded-row):not(.ant-table-selected-row)>td,.ant-table-thead>tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-selected-row)>td,.ant-table-thead>tr:hover:not(.ant-table-expanded-row):not(.ant-table-selected-row)>td{background-color:#fff}.ant-table-tbody>tr.ant-table-selected-row>td{background-color:#f2f7ff;border-left-color:#f2f7ff}:host ::ng-deep .ant-spin-nested-loading{clear:both}.cmacs-compact-table-extra,.cmacs-compact-table-extra a,::ng-deep .cmacs-compact-table-extra a i,::ng-deep .cmacs-compact-table-extra i{font-size:16px;color:#656c79;display:-webkit-inline-box;display:inline-flex}.cmacs-compact-table-extra{position:relative;top:5px}.cmacs-compact-table-extra a,::ng-deep .cmacs-compact-table-extra a i,::ng-deep .cmacs-compact-table-extra i{margin-right:5px}.cmacs-compact-table-extra a i:hover,.cmacs-compact-table-extra a:hover,::ng-deep .cmacs-compact-table-extra i:hover{cursor:pointer}::ng-deep a,::ng-deep a:hover{color:#656c79}.cmacs-compact-table-edit-icon,.cmacs-compact-table-edit-icon-view{float:right;font-size:14px;position:relative;top:3px;opacity:0}.cmacs-compact-table-edit-icon:hover{color:#2a7cff;cursor:pointer}.cmacs-compact-table-editable-row:hover .cmacs-compact-table-edit-icon{opacity:1}.cmacs-compact-table-input,.cmacs-compact-table-input:focus,.cmacs-compact-table-input:hover,.cmacs-compact-table-select{max-width:100%;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;border-color:#2a7cff}.cmacs-compact-table-on-edit{padding:0 6px!important}.cmacs-compact-table-on-edit-no-padding{padding:0 0 0 6px!important}.cmacs-compact-table-calendar-icon,.cmacs-compact-table-calendar-icon-view,.cmacs-compact-table-input-number-icon,.cmacs-compact-table-input-number-icon-view,.cmacs-compact-table-select-icon,.cmacs-compact-table-select-icon-view{float:right;font-size:14px;position:relative;top:3px}.cmacs-compact-table-editable-row:hover .cmacs-compact-table-calendar-icon,.cmacs-compact-table-editable-row:hover .cmacs-compact-table-input-number-icon,.cmacs-compact-table-editable-row:hover .cmacs-compact-table-select-icon{color:#656c79}.cmacs-compact-table-calendar-icon:hover,.cmacs-compact-table-input-number-icon:hover,.cmacs-compact-table-select-icon:hover{cursor:pointer}.cmacs-compact-table-editable-row:hover .cmacs-compact-table-date,.cmacs-compact-table-editable-row:hover .cmacs-compact-table-input-number,.cmacs-compact-table-editable-row:hover .cmacs-compact-table-select{border-bottom:2px dotted #656c79}.cmacs-compact-table-date cmacs-picker span input,::ng-deep .ant-calendar-input{max-width:100%;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal}cmacs-select{width:100%;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal}:host ::ng-deep .ant-select-arrow{right:6px}cmacs-input-number,cmacs-input-number:focus,cmacs-input-number:focus-within,cmacs-input-number:hover{max-width:100%;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;border-color:#2a7cff!important}.cmacs-compact-table-overflow-cell{max-width:calc(100% - 20px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block}"]
+                }] }
+    ];
+    /** @nocollapse */
+    CmacsCompactTableComponent.ctorParameters = function () { return [
+        { type: ChangeDetectorRef },
+        { type: NzI18nService },
+        { type: ExportAsService },
+        { type: ExcelService },
+        { type: DatePipe },
+        { type: CookieService }
+    ]; };
+    CmacsCompactTableComponent.propDecorators = {
+        size: [{ type: Input }],
+        showTotal: [{ type: Input }],
+        pageSizeOptions: [{ type: Input }],
+        virtualScroll: [{ type: Input }],
+        logs: [{ type: Input }],
+        virtualItemSize: [{ type: Input }],
+        loadingDelay: [{ type: Input }],
+        loadingIndicator: [{ type: Input }],
+        total: [{ type: Input }],
+        title: [{ type: Input }],
+        footer: [{ type: Input }],
+        noResult: [{ type: Input }],
+        widthConfig: [{ type: Input }],
+        pageIndex: [{ type: Input }],
+        pageSize: [{ type: Input }],
+        data: [{ type: Input }],
+        config: [{ type: Input }],
+        configChange: [{ type: Output }],
+        fieldId: [{ type: Input }],
+        gridID: [{ type: Input }],
+        paginationPosition: [{ type: Input }],
+        scroll: [{ type: Input }],
+        nzItemRender: [{ type: Input }, { type: ViewChild, args: ['renderItemTemplate',] }],
+        frontPagination: [{ type: Input }],
+        templateMode: [{ type: Input }],
+        bordered: [{ type: Input }],
+        showPagination: [{ type: Input }],
+        loading: [{ type: Input }],
+        showSizeChanger: [{ type: Input }],
+        hideOnSinglePage: [{ type: Input }],
+        showQuickJumper: [{ type: Input }],
+        simple: [{ type: Input }],
+        checkboxSelect: [{ type: Input }],
+        inLineEdit: [{ type: Input }],
+        dataTable: [{ type: Input }],
+        showRate: [{ type: Input }],
+        exportEvent: [{ type: Input }],
+        buttonClick: [{ type: Output }],
+        rateChange: [{ type: Output }],
+        selectionChange: [{ type: Output }],
+        ondlclickRow: [{ type: Output }],
+        onclickRow: [{ type: Output }],
+        onedit: [{ type: Output }],
+        rateCount: [{ type: Input }],
+        multiSelect: [{ type: Input }],
+        sortChange: [{ type: Output }],
+        extra: [{ type: Input }],
+        inputElement: [{ type: ViewChild, args: ['fieldTypeInput', { read: ElementRef },] }],
+        inputNumberElement: [{ type: ViewChild, args: ['fieldTypeInputNumber', { read: ElementRef },] }],
+        datePickerElement: [{ type: ViewChild, args: ['fieldTypeDatePicker', { read: ElementRef },] }],
+        selectElement: [{ type: ViewChild, args: ['fieldTypeSelect', { read: ElementRef },] }],
+        boolElement: [{ type: ViewChild, args: ['fieldTypeBool', { read: ElementRef },] }],
+        handleClick: [{ type: HostListener, args: ['window:click', ['$event'],] }]
+    };
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsCompactTableComponent.prototype, "virtualScroll", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsCompactTableComponent.prototype, "logs", void 0);
+    __decorate([
+        InputNumber(),
+        __metadata("design:type", Object)
+    ], CmacsCompactTableComponent.prototype, "virtualItemSize", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsCompactTableComponent.prototype, "frontPagination", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsCompactTableComponent.prototype, "templateMode", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsCompactTableComponent.prototype, "bordered", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsCompactTableComponent.prototype, "showPagination", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsCompactTableComponent.prototype, "loading", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsCompactTableComponent.prototype, "showSizeChanger", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsCompactTableComponent.prototype, "hideOnSinglePage", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsCompactTableComponent.prototype, "showQuickJumper", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsCompactTableComponent.prototype, "simple", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsCompactTableComponent.prototype, "checkboxSelect", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsCompactTableComponent.prototype, "inLineEdit", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsCompactTableComponent.prototype, "dataTable", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsCompactTableComponent.prototype, "showRate", void 0);
+    __decorate([
+        InputBoolean(),
+        __metadata("design:type", Object)
+    ], CmacsCompactTableComponent.prototype, "multiSelect", void 0);
+    return CmacsCompactTableComponent;
 }());
 
 /**
@@ -23335,6 +25144,12 @@ var CmacsComponentsLibModule = /** @class */ (function () {
     CmacsComponentsLibModule.decorators = [
         { type: NgModule, args: [{
                     declarations: __spread([
+                        CmacsMessageContainerComponent,
+                        CmacsMessageComponent,
+                        CmacsListComponent,
+                        CmacsCompactTableComponent,
+                        CmacsListItemComponent,
+                        CmacsListItemMetaComponent,
                         CmacsKpiComponent,
                         CmacsOpenInputComponent,
                         CmacsGridConfigurationModalComponent,
@@ -23469,6 +25284,12 @@ var CmacsComponentsLibModule = /** @class */ (function () {
                         LazyLoadImageModule
                     ],
                     exports: __spread([
+                        CmacsMessageContainerComponent,
+                        CmacsCompactTableComponent,
+                        CmacsMessageComponent,
+                        CmacsListComponent,
+                        CmacsListItemComponent,
+                        CmacsListItemMetaComponent,
                         CmacsKpiComponent,
                         CmacsOpenInputComponent,
                         CmacsGridConfigurationModalComponent,
@@ -23576,10 +25397,11 @@ var CmacsComponentsLibModule = /** @class */ (function () {
                         CmacsSwitchComponent,
                         CmacsSidePanelComponent
                     ]),
-                    providers: [{ provide: NZ_I18N, useValue: ɵ0$2 }, DatePipe, CmacsDropdownService],
+                    providers: [{ provide: NZ_I18N, useValue: ɵ0$2 }, DatePipe, CmacsDropdownService, CMACS_MESSAGE_DEFAULT_CONFIG_PROVIDER, CmacsMessageService],
                     entryComponents: [
                         CmacsModalComponent,
-                        CmacsDropdownContextComponent
+                        CmacsDropdownContextComponent,
+                        CmacsMessageContainerComponent
                     ],
                 },] }
     ];
@@ -23917,6 +25739,11 @@ var ModeTabType = {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsDividerComponent, CmacsFloatingMenuComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, CmacsDateCellDirective, CmacsMonthCellDirective, CmacsDateFullCellDirective, CmacsMonthFullCellDirective, CmacsCalendarHeaderComponent, CmacsCalendarComponent, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, CmacsModalRef, CmacsDropdownADirective, CmacsProgressComponent, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, CmacsAlertComponent, CmacsCommentComponent, CmacsCommentAvatarDirective, CmacsCommentContentDirective, CmacsCommentActionHostDirective, CmacsCommentActionComponent, CmacsSliderComponent, CmacsSliderHandleComponent, CmacsSliderMarksComponent, CmacsSliderStepComponent, CmacsSliderTrackComponent, isValueARange, isConfigAObject, Marks, CmacsDatetimePickerPanelComponent, CmacsDateTimePickerComponent, CmacsDatetimeValueAccessorDirective, CmacsVideoPlayerComponent, CmacsPhoneNumberComponent, CmacsKanbanComponent, CmacsColorPickerComponent, CmacsSwitchComponent, CmacsTabComponent, CmacsTabDirective, CmacsTabBodyComponent, CmacsTabLabelDirective, CmacsTabsInkBarDirective, CmacsTabsNavComponent, TabChangeEvent, CmacsTabsetComponent, CmacsSidePanelComponent, CmacsOpenTextareaComponent, CmacsMoveableListComponent, CmacsGridConfigurationModalComponent, CmacsOpenInputComponent, KPI_COLORS, CmacsKpiComponent, AbstractPickerComponent as ɵa, CalendarFooterComponent as ɵba, CalendarHeaderComponent as ɵy, CalendarInputComponent as ɵz, OkButtonComponent as ɵbb, TimePickerButtonComponent as ɵbc, TodayButtonComponent as ɵbd, DateTableComponent as ɵbe, DecadePanelComponent as ɵbi, MonthPanelComponent as ɵbg, MonthTableComponent as ɵbh, DateRangePopupComponent as ɵbk, InnerPopupComponent as ɵbj, YearPanelComponent as ɵbf, CmacsDropdownService as ɵbl, CmacsMenuDropdownService as ɵk, CmacsFormControlComponent as ɵq, CmacsFormExplainComponent as ɵo, CmacsFormExtraComponent as ɵl, CmacsFormItemComponent as ɵn, CmacsFormLabelComponent as ɵm, CmacsFormSplitComponent as ɵs, CmacsFormTextComponent as ɵr, CmacsFormDirective as ɵp, CmacsMenuServiceFactory as ɵd, CmacsMenuService as ɵc, CmacsSubmenuService as ɵb, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵv, CmacsOptionGroupComponent as ɵh, CmacsOptionLiComponent as ɵw, NzFilterGroupOptionPipe as ɵu, NzFilterOptionPipe as ɵt, CmacsSelectUnselectableDirective as ɵx, CmacsSelectService as ɵg, NzTreeService as ɵf, ExcelService as ɵe };
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsDividerComponent, CmacsFloatingMenuComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, CmacsDateCellDirective, CmacsMonthCellDirective, CmacsDateFullCellDirective, CmacsMonthFullCellDirective, CmacsCalendarHeaderComponent, CmacsCalendarComponent, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, CmacsModalRef, CmacsDropdownADirective, CmacsProgressComponent, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, CmacsAlertComponent, CmacsCommentComponent, CmacsCommentAvatarDirective, CmacsCommentContentDirective, CmacsCommentActionHostDirective, CmacsCommentActionComponent, CmacsSliderComponent, CmacsSliderHandleComponent, CmacsSliderMarksComponent, CmacsSliderStepComponent, CmacsSliderTrackComponent, isValueARange, isConfigAObject, Marks, CmacsDatetimePickerPanelComponent, CmacsDateTimePickerComponent, CmacsDatetimeValueAccessorDirective, CmacsVideoPlayerComponent, CmacsPhoneNumberComponent, CmacsKanbanComponent, CmacsColorPickerComponent, CmacsSwitchComponent, CmacsTabComponent, CmacsTabDirective, CmacsTabBodyComponent, CmacsTabLabelDirective, CmacsTabsInkBarDirective, CmacsTabsNavComponent, TabChangeEvent, CmacsTabsetComponent, CmacsSidePanelComponent, CmacsOpenTextareaComponent, CmacsMoveableListComponent, CmacsGridConfigurationModalComponent, CmacsOpenInputComponent, KPI_COLORS, CmacsKpiComponent, CmacsListItemMetaComponent, CmacsListItemComponent, CmacsListComponent, CmacsMessageComponent, CmacsMessageBaseService, CmacsMessageService, CmacsMessageContainerComponent, CMACS_MESSAGE_DEFAULT_CONFIG, CMACS_MESSAGE_CONFIG, CMACS_MESSAGE_DEFAULT_CONFIG_PROVIDER, CmacsCompactTableComponent, AbstractPickerComponent as ɵb, CalendarFooterComponent as ɵba, CalendarHeaderComponent as ɵy, CalendarInputComponent as ɵz, OkButtonComponent as ɵbb, TimePickerButtonComponent as ɵbc, TodayButtonComponent as ɵbd, DateTableComponent as ɵbe, DecadePanelComponent as ɵbi, MonthPanelComponent as ɵbg, MonthTableComponent as ɵbh, DateRangePopupComponent as ɵbk, InnerPopupComponent as ɵbj, YearPanelComponent as ɵbf, CmacsDropdownService as ɵbl, CmacsMenuDropdownService as ɵk, CmacsFormControlComponent as ɵq, CmacsFormExplainComponent as ɵo, CmacsFormExtraComponent as ɵl, CmacsFormItemComponent as ɵn, CmacsFormLabelComponent as ɵm, CmacsFormSplitComponent as ɵs, CmacsFormTextComponent as ɵr, CmacsFormDirective as ɵp, CmacsMenuServiceFactory as ɵe, CmacsMenuService as ɵd, CmacsSubmenuService as ɵc, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵv, CmacsOptionGroupComponent as ɵh, CmacsOptionLiComponent as ɵw, NzFilterGroupOptionPipe as ɵu, NzFilterOptionPipe as ɵt, CmacsSelectUnselectableDirective as ɵx, CmacsSelectService as ɵg, NzTreeService as ɵf, ExcelService as ɵa };
 
 //# sourceMappingURL=cmacs-components-lib.js.map
