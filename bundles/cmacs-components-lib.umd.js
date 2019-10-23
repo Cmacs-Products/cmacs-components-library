@@ -23234,7 +23234,6 @@
                         providers: [i2.NzUpdateHostClassService],
                         preserveWhitespaces: false,
                         encapsulation: i0.ViewEncapsulation.None,
-                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
                         styles: [".cmacs-classic-grid{display:inline-block}", "\n      cmacs-list,\n      cmacs-list nz-spin {\n        display: block;\n      }\n    "]
                     }] }
         ];

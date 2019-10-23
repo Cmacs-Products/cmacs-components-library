@@ -19637,7 +19637,6 @@ CmacsListComponent.decorators = [
                 providers: [NzUpdateHostClassService],
                 preserveWhitespaces: false,
                 encapsulation: ViewEncapsulation.None,
-                changeDetection: ChangeDetectionStrategy.OnPush,
                 styles: [".cmacs-classic-grid{display:inline-block}", `
       cmacs-list,
       cmacs-list nz-spin {
