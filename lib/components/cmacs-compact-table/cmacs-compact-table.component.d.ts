@@ -27,6 +27,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     pageSizeOptions: number[];
     virtualScroll: boolean;
     logs: boolean;
+    expandable: boolean;
     virtualItemSize: number;
     loadingDelay: number;
     loadingIndicator: TemplateRef<void>;
@@ -75,6 +76,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     multiSelect: boolean;
     sortChange: EventEmitter<any>;
     extra: string | TemplateRef<void>;
+    indentSize: number;
     selected: boolean;
     defaultSortOrder: any;
     checkboxCache: CheckboxSelect[];
@@ -83,6 +85,9 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     editId: string | null;
     property: string | null;
     rowOnEdition: number;
+    mapOfExpandedData: {
+        [key: string]: any[];
+    };
     inputElement: ElementRef;
     inputNumberElement: ElementRef;
     datePickerElement: ElementRef;
@@ -91,6 +96,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     startEdit(id: string, property: string, event: MouseEvent): void;
     sort($event: any, fieldProperty: string): void;
     handleClick(e: Event): void;
+    getCustomPadding(item: any, i: number): number;
     childOf(node: any, ancestor: any): boolean;
     endEditMode($event: KeyboardEvent, index: number): void;
     endEditModeNgModel(index: number): void;
@@ -121,6 +127,11 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     ngAfterViewInit(): void;
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
+    convertTreeToList(root: object): any[];
+    visitNode(node: any, hashMap: {
+        [key: string]: any;
+    }, array: any[]): void;
+    collapse(array: any[], data: any, $event: boolean): void;
     exportToPng(fileName: string): void;
     exportToExcel(fileName: string): void;
     exportToPdf(fileName: string): void;
