@@ -102,8 +102,13 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     endEditModeNgModel(index: number): void;
     getIndex(id: any): number;
     updateCheckboxCache(): void;
+    checkChildrenState(item: any): void;
+    checkChildrenStateRec(item: any): boolean;
+    updateCheckboxCacheTreeData(): void;
+    convertExpandTreeToList(item: any, plainList: any[]): void;
     onButtonClick(field: any): void;
     onCheckboxChange(event: any): void;
+    checkCheckboxState(): CheckboxSelect[];
     onRateChange(count: number, data: any): void;
     onRateClick(event: any): void;
     getFields(): Field[];
@@ -132,6 +137,11 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
         [key: string]: any;
     }, array: any[]): void;
     collapse(array: any[], data: any, $event: boolean): void;
+    onCheckboxTreeChange($event: any, item: any): void;
+    updateTreeCheckboxes($event: boolean, array: any, key: any): void;
+    getNode(key: any): CheckboxSelect | {
+        selected: boolean;
+    };
     exportToPng(fileName: string): void;
     exportToExcel(fileName: string): void;
     exportToPdf(fileName: string): void;
