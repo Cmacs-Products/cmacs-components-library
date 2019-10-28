@@ -88,6 +88,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     mapOfExpandedData: {
         [key: string]: any[];
     };
+    fieldID: any;
     inputElement: ElementRef;
     inputNumberElement: ElementRef;
     datePickerElement: ElementRef;
@@ -133,9 +134,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
     convertTreeToList(root: object): any[];
-    visitNode(node: any, hashMap: {
-        [key: string]: any;
-    }, array: any[]): void;
+    visitNode(node: any, hashMap: any, array: any[]): void;
     collapse(array: any[], data: any, $event: boolean): void;
     onCheckboxTreeChange($event: any, item: any): void;
     updateTreeCheckboxes($event: boolean, array: any, key: any): void;
