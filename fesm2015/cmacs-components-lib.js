@@ -20462,7 +20462,6 @@ class CmacsCompactTableComponent {
      * @return {?}
      */
     updateCheckboxCacheTreeData() {
-        this.checkboxCache.length = 0;
         this.convertExpandTreeToList(this.data, this.checkboxCache);
     }
     /**
@@ -20477,20 +20476,36 @@ class CmacsCompactTableComponent {
              * @return {?}
              */
             elem => {
-                plainList.push({
-                    selected: false,
-                    data: Object.assign({}, elem)
-                });
+                /** @type {?} */
+                let elementInCache = plainList.findIndex((/**
+                 * @param {?} el
+                 * @return {?}
+                 */
+                el => el.data[this.config.fieldId] === elem[this.config.fieldId]));
+                if (elementInCache < 0) {
+                    plainList.push({
+                        selected: false,
+                        data: Object.assign({}, elem)
+                    });
+                }
                 if (elem.children && elem.children.length > 0) {
                     this.convertExpandTreeToList(elem.children, plainList);
                 }
             }));
         }
         else {
-            plainList.push({
-                selected: false,
-                data: Object.assign({}, item)
-            });
+            /** @type {?} */
+            let elementInCache = plainList.findIndex((/**
+             * @param {?} el
+             * @return {?}
+             */
+            el => el.data[this.config.fieldId] === item[this.config.fieldId]));
+            if (elementInCache < 0) {
+                plainList.push({
+                    selected: false,
+                    data: Object.assign({}, item)
+                });
+            }
         }
     }
     /**
@@ -20501,7 +20516,7 @@ class CmacsCompactTableComponent {
         this.buttonClick.emit(field);
     }
     /**
-     * @param {?} event
+     * @param {?=} event
      * @return {?}
      */
     onCheckboxChange(event) {
@@ -20777,7 +20792,29 @@ class CmacsCompactTableComponent {
      */
     ngOnChanges(changes) {
         if (changes.data) {
-            this.updateCheckboxCache();
+            if (this.expandable) {
+                if (!this.data.length) {
+                    this.checkboxCache = [];
+                    this.mapOfExpandedData = {};
+                }
+                this.updateCheckboxCacheTreeData();
+                this.fieldID = this.config.fieldId;
+                /** @type {?} */
+                const coerceData = (/** @type {?} */ (this.data));
+                coerceData.forEach((/**
+                 * @param {?} item
+                 * @return {?}
+                 */
+                item => {
+                    if (!this.mapOfExpandedData[item[this.fieldID]]) {
+                        this.mapOfExpandedData[item[this.fieldID]] = this.convertTreeToList(item);
+                    }
+                }));
+                this.onCheckboxChange();
+            }
+            else {
+                this.updateCheckboxCache();
+            }
         }
     }
     /* Expandable Rows */

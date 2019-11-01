@@ -24239,7 +24239,6 @@
          * @return {?}
          */
             function () {
-                this.checkboxCache.length = 0;
                 this.convertExpandTreeToList(this.data, this.checkboxCache);
             };
         /**
@@ -24259,20 +24258,34 @@
                      * @param {?} elem
                      * @return {?}
                      */function (elem) {
-                        plainList.push({
-                            selected: false,
-                            data: __assign({}, elem)
-                        });
+                        /** @type {?} */
+                        var elementInCache = plainList.findIndex(( /**
+                         * @param {?} el
+                         * @return {?}
+                         */function (el) { return el.data[_this.config.fieldId] === elem[_this.config.fieldId]; }));
+                        if (elementInCache < 0) {
+                            plainList.push({
+                                selected: false,
+                                data: __assign({}, elem)
+                            });
+                        }
                         if (elem.children && elem.children.length > 0) {
                             _this.convertExpandTreeToList(elem.children, plainList);
                         }
                     }));
                 }
                 else {
-                    plainList.push({
-                        selected: false,
-                        data: __assign({}, item)
-                    });
+                    /** @type {?} */
+                    var elementInCache = plainList.findIndex(( /**
+                     * @param {?} el
+                     * @return {?}
+                     */function (el) { return el.data[_this.config.fieldId] === item[_this.config.fieldId]; }));
+                    if (elementInCache < 0) {
+                        plainList.push({
+                            selected: false,
+                            data: __assign({}, item)
+                        });
+                    }
                 }
             };
         /**
@@ -24287,11 +24300,11 @@
                 this.buttonClick.emit(field);
             };
         /**
-         * @param {?} event
+         * @param {?=} event
          * @return {?}
          */
         CmacsCompactTableComponent.prototype.onCheckboxChange = /**
-         * @param {?} event
+         * @param {?=} event
          * @return {?}
          */
             function (event) {
@@ -24651,8 +24664,30 @@
          * @return {?}
          */
             function (changes) {
+                var _this = this;
                 if (changes.data) {
-                    this.updateCheckboxCache();
+                    if (this.expandable) {
+                        if (!this.data.length) {
+                            this.checkboxCache = [];
+                            this.mapOfExpandedData = {};
+                        }
+                        this.updateCheckboxCacheTreeData();
+                        this.fieldID = this.config.fieldId;
+                        /** @type {?} */
+                        var coerceData = ( /** @type {?} */(this.data));
+                        coerceData.forEach(( /**
+                         * @param {?} item
+                         * @return {?}
+                         */function (item) {
+                            if (!_this.mapOfExpandedData[item[_this.fieldID]]) {
+                                _this.mapOfExpandedData[item[_this.fieldID]] = _this.convertTreeToList(item);
+                            }
+                        }));
+                        this.onCheckboxChange();
+                    }
+                    else {
+                        this.updateCheckboxCache();
+                    }
                 }
             };
         /* Expandable Rows */
