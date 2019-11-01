@@ -108,7 +108,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     updateCheckboxCacheTreeData(): void;
     convertExpandTreeToList(item: any, plainList: any[]): void;
     onButtonClick(field: any): void;
-    onCheckboxChange(event: any): void;
+    onCheckboxChange(event?: any): void;
     checkCheckboxState(): CheckboxSelect[];
     onRateChange(count: number, data: any): void;
     onRateClick(event: any): void;
