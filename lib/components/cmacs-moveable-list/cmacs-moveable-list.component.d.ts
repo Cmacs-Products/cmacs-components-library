@@ -5,6 +5,7 @@ export interface MoveableListItem {
     display: string;
     hidden: boolean;
     editable: boolean;
+    draggable: boolean;
 }
 export declare class CmacsMoveableListComponent {
     header: string;
