@@ -133,6 +133,8 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     ngAfterViewInit(): void;
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
+    exportTreePdf(fileName: string): void;
+    exportTreeToPdfRec(rows: any, data: any, offSetMargin?: number): void;
     convertTreeToList(root: object): any[];
     visitNode(node: any, hashMap: any, array: any[]): void;
     collapse(array: any[], data: any, $event: boolean): void;
@@ -143,6 +145,8 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     };
     exportToPng(fileName: string): void;
     exportToExcel(fileName: string): void;
+    exportTreeExcel(fileName: string): void;
+    exportTreeExcelRec(data: any, dataToExport: any): void;
     exportToPdf(fileName: string): void;
     ngOnDestroy(): void;
     clickRow(data: any): void;

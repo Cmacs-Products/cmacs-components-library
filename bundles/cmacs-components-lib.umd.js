@@ -6153,6 +6153,8 @@
         Pdf: 'pdf',
         Xslx: 'xlsx',
         Png: 'png',
+        PdfTree: 'pdf-tree',
+        XslxTree: 'xslx-tree',
     };
 
     /**
@@ -24648,6 +24650,12 @@
                         case ExportType.Png:
                             _this.exportToPng(config.fileName);
                             break;
+                        case ExportType.PdfTree:
+                            _this.exportTreePdf(config.fileName);
+                            break;
+                        case ExportType.XslxTree:
+                            _this.exportTreeExcel(config.fileName);
+                            break;
                     }
                 }));
                 /* Convert tree to list if expandable */
@@ -24701,14 +24709,129 @@
         /* Expandable Rows */
         /* Expandable Rows */
         /**
+         * @param {?} fileName
+         * @return {?}
+         */
+        CmacsCompactTableComponent.prototype.exportTreePdf = /* Expandable Rows */
+            /**
+             * @param {?} fileName
+             * @return {?}
+             */
+            function (fileName) {
+                /** @type {?} */
+                var doc = new jsPDF();
+                /** @type {?} */
+                var columns = [];
+                /** @type {?} */
+                var rows = [];
+                this.config.fields.filter(( /**
+                 * @param {?} item
+                 * @return {?}
+                 */function (item) { return item.celdType === CeldType.Default; })).forEach(( /**
+                 * @param {?} field
+                 * @return {?}
+                 */function (field) {
+                    columns.push(field.display);
+                }));
+                this.config.fields.filter(( /**
+                 * @param {?} item
+                 * @return {?}
+                 */function (item) { return item.celdType === CeldType.TemplateRef; })).forEach(( /**
+                 * @param {?} field
+                 * @return {?}
+                 */function (field) {
+                    columns.push(field.display);
+                }));
+                this.exportTreeToPdfRec(rows, this.data, 0);
+                doc.autoTable({
+                    theme: 'striped',
+                    margin: { top: 5 },
+                    body: rows,
+                    columns: columns
+                });
+                doc.save(fileName + '_export_' + Date.now());
+            };
+        /**
+         * @param {?} rows
+         * @param {?} data
+         * @param {?=} offSetMargin
+         * @return {?}
+         */
+        CmacsCompactTableComponent.prototype.exportTreeToPdfRec = /**
+         * @param {?} rows
+         * @param {?} data
+         * @param {?=} offSetMargin
+         * @return {?}
+         */
+            function (rows, data, offSetMargin) {
+                var _this = this;
+                if (offSetMargin === void 0) {
+                    offSetMargin = 0;
+                }
+                data.forEach(( /**
+                 * @param {?} item
+                 * @return {?}
+                 */function (item) {
+                    /** @type {?} */
+                    var itemToExport = [];
+                    /** @type {?} */
+                    var coercedItem = ( /** @type {?} */(item));
+                    /** @type {?} */
+                    var parentStyles = { cellPadding: [2, 2, 2, 2] };
+                    // tslint:disable-next-line: no-shadowed-variable
+                    _this.config.fields.filter(( /**
+                     * @param {?} item
+                     * @return {?}
+                     */function (item) { return item.celdType === CeldType.Default || item.celdType === CeldType.TemplateRef; })).forEach(( /**
+                     * @param {?} field
+                     * @param {?} idx
+                     * @return {?}
+                     */function (field, idx) {
+                        parentStyles = { cellPadding: [2, 2, 2, 2] };
+                        if (!idx) {
+                            parentStyles.cellPadding = [2, 2, 2, 2 + offSetMargin];
+                        }
+                        if (coercedItem.children && coercedItem.children.length) {
+                            parentStyles.fillColor = [153, 204, 255];
+                        }
+                        if (item.celdType === CeldType.TemplateRef) {
+                            itemToExport.push({ content: item[field.property].context.exportValue, styles: parentStyles });
+                        }
+                        else {
+                            switch (field.editTemplate) {
+                                case TemplateType.Select:
+                                    /** @type {?} */
+                                    var selectItem = field.select.selectData.find(( /**
+                                     * @param {?} option
+                                     * @return {?}
+                                     */function (option) { return option[field.select.value] === item[field.property]; }));
+                                    if (selectItem !== undefined) {
+                                        itemToExport.push({ content: selectItem[field.select.label], styles: parentStyles });
+                                    }
+                                    break;
+                                case TemplateType.Date:
+                                    itemToExport.push({ content: _this.datePipe.transform(item[field.property], 'MMMM dd yyyy'), styles: parentStyles });
+                                    break;
+                                default:
+                                    itemToExport.push({ content: item[field.property], styles: parentStyles });
+                                    break;
+                            }
+                        }
+                    }));
+                    rows.push(itemToExport);
+                    if (coercedItem.children && coercedItem.children.length) {
+                        _this.exportTreeToPdfRec(rows, coercedItem.children, 5 + offSetMargin);
+                    }
+                }));
+            };
+        /**
          * @param {?} root
          * @return {?}
          */
-        CmacsCompactTableComponent.prototype.convertTreeToList = /* Expandable Rows */
-            /**
-             * @param {?} root
-             * @return {?}
-             */
+        CmacsCompactTableComponent.prototype.convertTreeToList = /**
+         * @param {?} root
+         * @return {?}
+         */
             function (root) {
                 /** @type {?} */
                 var stack = [];
@@ -24946,6 +25069,76 @@
                     dataToExport.push(itemToExport);
                 }));
                 this.excelService.exportAsExcelFile(dataToExport, fileName);
+            };
+        /* Expandable Rows */
+        /* Expandable Rows */
+        /**
+         * @param {?} fileName
+         * @return {?}
+         */
+        CmacsCompactTableComponent.prototype.exportTreeExcel = /* Expandable Rows */
+            /**
+             * @param {?} fileName
+             * @return {?}
+             */
+            function (fileName) {
+                /** @type {?} */
+                var dataToExport = [];
+                this.exportTreeExcelRec(this.data, dataToExport);
+                this.excelService.exportAsExcelFile(dataToExport, fileName);
+            };
+        /**
+         * @param {?} data
+         * @param {?} dataToExport
+         * @return {?}
+         */
+        CmacsCompactTableComponent.prototype.exportTreeExcelRec = /**
+         * @param {?} data
+         * @param {?} dataToExport
+         * @return {?}
+         */
+            function (data, dataToExport) {
+                var _this = this;
+                data.forEach(( /**
+                 * @param {?} item
+                 * @return {?}
+                 */function (item) {
+                    /** @type {?} */
+                    var itemToExport = {};
+                    // tslint:disable-next-line: no-shadowed-variable
+                    _this.config.fields.filter(( /**
+                     * @param {?} item
+                     * @return {?}
+                     */function (item) { return item.celdType === CeldType.Default || item.celdType === CeldType.TemplateRef; })).forEach(( /**
+                     * @param {?} field
+                     * @return {?}
+                     */function (field) {
+                        if (item.celdType === CeldType.TemplateRef) {
+                            itemToExport[field.display] = item[field.property].context.exportValue;
+                        }
+                        else {
+                            if (field.editTemplate === TemplateType.Select) {
+                                /** @type {?} */
+                                var selectItem = field.select.selectData.find(( /**
+                                 * @param {?} option
+                                 * @return {?}
+                                 */function (option) { return option[field.select.value] === item[field.property]; }));
+                                if (selectItem !== undefined) {
+                                    itemToExport[field.display] = selectItem[field.select.label];
+                                }
+                            }
+                            else {
+                                itemToExport[field.display] = item[field.property];
+                            }
+                        }
+                    }));
+                    dataToExport.push(itemToExport);
+                    /** @type {?} */
+                    var coercedItem = ( /** @type {?} */(item));
+                    if (coercedItem.children && coercedItem.children.length) {
+                        _this.exportTreeExcelRec(coercedItem.children, dataToExport);
+                    }
+                }));
             };
         /**
          * @param {?} fileName

@@ -5211,6 +5211,8 @@ const ExportType = {
     Pdf: 'pdf',
     Xslx: 'xlsx',
     Png: 'png',
+    PdfTree: 'pdf-tree',
+    XslxTree: 'xslx-tree',
 };
 
 /**
@@ -20778,6 +20780,12 @@ class CmacsCompactTableComponent {
                 case ExportType.Png:
                     this.exportToPng(config.fileName);
                     break;
+                case ExportType.PdfTree:
+                    this.exportTreePdf(config.fileName);
+                    break;
+                case ExportType.XslxTree:
+                    this.exportTreeExcel(config.fileName);
+                    break;
             }
         }));
         /* Convert tree to list if expandable */
@@ -20826,6 +20834,115 @@ class CmacsCompactTableComponent {
         }
     }
     /* Expandable Rows */
+    /**
+     * @param {?} fileName
+     * @return {?}
+     */
+    exportTreePdf(fileName) {
+        /** @type {?} */
+        const doc = new jsPDF();
+        /** @type {?} */
+        const columns = [];
+        /** @type {?} */
+        const rows = [];
+        this.config.fields.filter((/**
+         * @param {?} item
+         * @return {?}
+         */
+        item => item.celdType === CeldType.Default)).forEach((/**
+         * @param {?} field
+         * @return {?}
+         */
+        field => {
+            columns.push(field.display);
+        }));
+        this.config.fields.filter((/**
+         * @param {?} item
+         * @return {?}
+         */
+        item => item.celdType === CeldType.TemplateRef)).forEach((/**
+         * @param {?} field
+         * @return {?}
+         */
+        field => {
+            columns.push(field.display);
+        }));
+        this.exportTreeToPdfRec(rows, this.data, 0);
+        doc.autoTable({
+            theme: 'striped',
+            margin: { top: 5 },
+            body: rows,
+            columns
+        });
+        doc.save(fileName + '_export_' + Date.now());
+    }
+    /**
+     * @param {?} rows
+     * @param {?} data
+     * @param {?=} offSetMargin
+     * @return {?}
+     */
+    exportTreeToPdfRec(rows, data, offSetMargin = 0) {
+        data.forEach((/**
+         * @param {?} item
+         * @return {?}
+         */
+        item => {
+            /** @type {?} */
+            const itemToExport = [];
+            /** @type {?} */
+            const coercedItem = (/** @type {?} */ (item));
+            /** @type {?} */
+            let parentStyles = { cellPadding: [2, 2, 2, 2] };
+            // tslint:disable-next-line: no-shadowed-variable
+            this.config.fields.filter((/**
+             * @param {?} item
+             * @return {?}
+             */
+            item => item.celdType === CeldType.Default || item.celdType === CeldType.TemplateRef)).forEach((/**
+             * @param {?} field
+             * @param {?} idx
+             * @return {?}
+             */
+            (field, idx) => {
+                parentStyles = { cellPadding: [2, 2, 2, 2] };
+                if (!idx) {
+                    parentStyles.cellPadding = [2, 2, 2, 2 + offSetMargin];
+                }
+                if (coercedItem.children && coercedItem.children.length) {
+                    parentStyles.fillColor = [153, 204, 255];
+                }
+                if (item.celdType === CeldType.TemplateRef) {
+                    itemToExport.push({ content: item[field.property].context.exportValue, styles: parentStyles });
+                }
+                else {
+                    switch (field.editTemplate) {
+                        case TemplateType.Select:
+                            /** @type {?} */
+                            const selectItem = field.select.selectData.find((/**
+                             * @param {?} option
+                             * @return {?}
+                             */
+                            option => option[field.select.value] === item[field.property]));
+                            if (selectItem !== undefined) {
+                                itemToExport.push({ content: selectItem[field.select.label], styles: parentStyles });
+                            }
+                            break;
+                        case TemplateType.Date:
+                            itemToExport.push({ content: this.datePipe.transform(item[field.property], 'MMMM dd yyyy'), styles: parentStyles });
+                            break;
+                        default:
+                            itemToExport.push({ content: item[field.property], styles: parentStyles });
+                            break;
+                    }
+                }
+            }));
+            rows.push(itemToExport);
+            if (coercedItem.children && coercedItem.children.length) {
+                this.exportTreeToPdfRec(rows, coercedItem.children, 5 + offSetMargin);
+            }
+        }));
+    }
     /**
      * @param {?} root
      * @return {?}
@@ -21040,6 +21157,68 @@ class CmacsCompactTableComponent {
             dataToExport.push(itemToExport);
         }));
         this.excelService.exportAsExcelFile(dataToExport, fileName);
+    }
+    /* Expandable Rows */
+    /**
+     * @param {?} fileName
+     * @return {?}
+     */
+    exportTreeExcel(fileName) {
+        /** @type {?} */
+        const dataToExport = [];
+        this.exportTreeExcelRec(this.data, dataToExport);
+        this.excelService.exportAsExcelFile(dataToExport, fileName);
+    }
+    /**
+     * @param {?} data
+     * @param {?} dataToExport
+     * @return {?}
+     */
+    exportTreeExcelRec(data, dataToExport) {
+        data.forEach((/**
+         * @param {?} item
+         * @return {?}
+         */
+        item => {
+            /** @type {?} */
+            const itemToExport = {};
+            // tslint:disable-next-line: no-shadowed-variable
+            this.config.fields.filter((/**
+             * @param {?} item
+             * @return {?}
+             */
+            item => item.celdType === CeldType.Default || item.celdType === CeldType.TemplateRef)).forEach((/**
+             * @param {?} field
+             * @return {?}
+             */
+            field => {
+                if (item.celdType === CeldType.TemplateRef) {
+                    itemToExport[field.display] = item[field.property].context.exportValue;
+                }
+                else {
+                    if (field.editTemplate === TemplateType.Select) {
+                        /** @type {?} */
+                        const selectItem = field.select.selectData.find((/**
+                         * @param {?} option
+                         * @return {?}
+                         */
+                        option => option[field.select.value] === item[field.property]));
+                        if (selectItem !== undefined) {
+                            itemToExport[field.display] = selectItem[field.select.label];
+                        }
+                    }
+                    else {
+                        itemToExport[field.display] = item[field.property];
+                    }
+                }
+            }));
+            dataToExport.push(itemToExport);
+            /** @type {?} */
+            const coercedItem = (/** @type {?} */ (item));
+            if (coercedItem.children && coercedItem.children.length) {
+                this.exportTreeExcelRec(coercedItem.children, dataToExport);
+            }
+        }));
     }
     /**
      * @param {?} fileName
