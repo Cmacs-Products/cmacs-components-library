@@ -25445,6 +25445,28 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    var CmacsSignatureComponent = /** @class */ (function () {
+        function CmacsSignatureComponent() {
+        }
+        CmacsSignatureComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-signature',
+                        exportAs: 'cmacsSignature',
+                        template: "<p>cmacs-signature works!</p>\r\n",
+                        encapsulation: i0.ViewEncapsulation.None,
+                        preserveWhitespaces: false,
+                        styles: [""]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsSignatureComponent.ctorParameters = function () { return []; };
+        return CmacsSignatureComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
     /** @type {?} */
     var CMACS_COMMENT_CELLS = [
         CmacsCommentActionComponent,
@@ -25461,6 +25483,7 @@
             { type: i0.NgModule, args: [{
                         declarations: __spread([
                             CmacsMessageContainerComponent,
+                            CmacsSignatureComponent,
                             CmacsMessageComponent,
                             CmacsListComponent,
                             CmacsCompactTableComponent,
@@ -25601,6 +25624,7 @@
                         ],
                         exports: __spread([
                             CmacsMessageContainerComponent,
+                            CmacsSignatureComponent,
                             CmacsCompactTableComponent,
                             CmacsMessageComponent,
                             CmacsListComponent,
@@ -26176,6 +26200,7 @@
     exports.CMACS_MESSAGE_CONFIG = CMACS_MESSAGE_CONFIG;
     exports.CMACS_MESSAGE_DEFAULT_CONFIG_PROVIDER = CMACS_MESSAGE_DEFAULT_CONFIG_PROVIDER;
     exports.CmacsCompactTableComponent = CmacsCompactTableComponent;
+    exports.CmacsSignatureComponent = CmacsSignatureComponent;
     exports.ɵb = AbstractPickerComponent;
     exports.ɵba = CalendarFooterComponent;
     exports.ɵy = CalendarHeaderComponent;
