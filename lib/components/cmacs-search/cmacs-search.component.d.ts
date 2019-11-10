@@ -5,6 +5,7 @@ import { Option } from '../core/interfaces/options';
 export declare class CmacsSearchComponent implements ControlValueAccessor, OnInit {
     options: Option[];
     disabled: boolean;
+    maxTagCount: number;
     allowClear: boolean;
     showSearch: boolean;
     size: NzSizeLDSType;
