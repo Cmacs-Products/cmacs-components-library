@@ -25609,9 +25609,12 @@
             this.widgetSpan = '24';
             this.title = '';
             this.showCollapse = true;
-            // collapse
             this.collapsed = false;
-            this.collapsedIcon = 'iconArrowSmall-Chevron-Down';
+            this.validate = false;
+            this.onbeforecollapse = new i0.EventEmitter();
+            this.oncollapse = new i0.EventEmitter();
+            this.onbeforeexpand = new i0.EventEmitter();
+            this.onexpand = new i0.EventEmitter();
         }
         /**
          * @return {?}
@@ -25619,7 +25622,8 @@
         CmacsSectionComponent.prototype.ngOnInit = /**
          * @return {?}
          */
-            function () { };
+            function () {
+            };
         /**
          * @return {?}
          */
@@ -25627,13 +25631,55 @@
          * @return {?}
          */
             function () {
-                this.collapsed = !this.collapsed;
-                this.collapsedIcon = this.collapsed ? 'iconArrowSmall-Chevron-Right' : 'iconArrowSmall-Chevron-Down';
+                if (!this.validate) {
+                    this.collapsed = !this.collapsed;
+                    this.triggerCollapseEvents(false);
+                }
+                else {
+                    this.triggerCollapseEvents(true);
+                }
+            };
+        /**
+         * @param {?} changes
+         * @return {?}
+         */
+        CmacsSectionComponent.prototype.ngOnChanges = /**
+         * @param {?} changes
+         * @return {?}
+         */
+            function (changes) {
+                if (changes.collapsed && changes.collapsed.previousValue !== undefined) {
+                    this.triggerCollapseEvents(false);
+                }
+            };
+        /**
+         * @param {?} before
+         * @return {?}
+         */
+        CmacsSectionComponent.prototype.triggerCollapseEvents = /**
+         * @param {?} before
+         * @return {?}
+         */
+            function (before) {
+                if (before) {
+                    if (this.collapsed) {
+                        this.onbeforeexpand.emit();
+                    }
+                    else {
+                        this.onbeforecollapse.emit();
+                    }
+                }
+                else if (this.collapsed) {
+                    this.oncollapse.emit();
+                }
+                else {
+                    this.onexpand.emit();
+                }
             };
         CmacsSectionComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'cmacs-section',
-                        template: "<div nz-col [nzSpan]=\"widgetSpan\" class=\"widget-container\">\r\n    <div nz-row class=\"widget-container-bar\" nzType=\"flex\" nzJustify=\"space-between\">\r\n      <div nz-col>\r\n        <div nz-row class=\"widget-container-bar-title\">\r\n          <i *ngIf=\"titleIcon\" [ngClass]=\"titleIcon\"></i><span>{{title}}</span>\r\n        </div>\r\n      </div>\r\n      <div nz-col>\r\n        <div nz-row *ngIf=\"extra\" class=\"widget-container-bar-btns\">\r\n          <ng-container *ngTemplateOutlet=\"extra; context: { data: extraData}\">{{ extra }}</ng-container>\r\n          <button cmacs-button class=\"log-action-btn\"\r\n                  (click)=\"collapseSection()\"\r\n                  [action]=\"true\"\r\n                  ghost>\r\n            <i [ngClass]=\"collapsedIcon\"></i>\r\n          </button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div *ngIf=\"!collapsed\" class=\"widget-container-content\" >\r\n      <ng-content></ng-content>\r\n    </div>\r\n  </div>\r\n",
+                        template: "<div nz-col [nzSpan]=\"widgetSpan\" class=\"widget-container\">\r\n    <div nz-row class=\"widget-container-bar\" nzType=\"flex\" nzJustify=\"space-between\">\r\n      <div nz-col>\r\n        <div nz-row class=\"widget-container-bar-title\">\r\n          <i *ngIf=\"titleIcon\" [ngClass]=\"titleIcon\"></i><span>{{title}}</span>\r\n        </div>\r\n      </div>\r\n      <div nz-col>\r\n        <div nz-row *ngIf=\"extra\" class=\"widget-container-bar-btns\">\r\n          <ng-container *ngTemplateOutlet=\"extra; context: { data: extraData}\">{{ extra }}</ng-container>\r\n          <button cmacs-button class=\"log-action-btn\"\r\n                  (click)=\"collapseSection()\"\r\n                  [action]=\"true\"\r\n                  ghost>\r\n            <i [class.iconArrowSmall-Chevron-Right]=\"collapsed\"></i>\r\n            <i [class.iconArrowSmall-Chevron-Down]=\"!collapsed\"></i>\r\n          </button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div *ngIf=\"!collapsed\" class=\"widget-container-content\" >\r\n      <ng-content></ng-content>\r\n    </div>\r\n  </div>\r\n",
                         preserveWhitespaces: false,
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
                         styles: [".widget-container-bar-title i{margin-right:8px}.widget-container-bar-title span{color:#3b3f46;font-weight:600;line-height:1.67;letter-spacing:.03em}.widget-container{border-top:3px solid #00cda1;padding:23px 40px;margin-top:15px;margin-bottom:15px;background-color:#f6f7fb;box-shadow:0 3px 7px -3px rgba(5,6,6,.18)}.widget-container-content{overflow-x:auto;overflow-y:hidden}"]
@@ -25647,7 +25693,13 @@
             title: [{ type: i0.Input }],
             titleIcon: [{ type: i0.Input }],
             showCollapse: [{ type: i0.Input }],
-            extraData: [{ type: i0.Input }]
+            extraData: [{ type: i0.Input }],
+            collapsed: [{ type: i0.Input }],
+            validate: [{ type: i0.Input }],
+            onbeforecollapse: [{ type: i0.Output }],
+            oncollapse: [{ type: i0.Output }],
+            onbeforeexpand: [{ type: i0.Output }],
+            onexpand: [{ type: i0.Output }]
         };
         return CmacsSectionComponent;
     }());

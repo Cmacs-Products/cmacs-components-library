@@ -1,5 +1,5 @@
-import { OnInit, TemplateRef } from '@angular/core';
-export declare class CmacsSectionComponent implements OnInit {
+import { OnInit, EventEmitter, TemplateRef, OnChanges, SimpleChanges } from '@angular/core';
+export declare class CmacsSectionComponent implements OnInit, OnChanges {
     extra: string | TemplateRef<void>;
     widgetSpan: string;
     title: string;
@@ -7,8 +7,14 @@ export declare class CmacsSectionComponent implements OnInit {
     showCollapse: boolean;
     extraData: any;
     collapsed: boolean;
-    collapsedIcon: string;
+    validate: boolean;
+    onbeforecollapse: EventEmitter<any>;
+    oncollapse: EventEmitter<any>;
+    onbeforeexpand: EventEmitter<any>;
+    onexpand: EventEmitter<any>;
     constructor();
     ngOnInit(): void;
     collapseSection(): void;
+    ngOnChanges(changes: SimpleChanges): void;
+    triggerCollapseEvents(before: boolean): void;
 }
