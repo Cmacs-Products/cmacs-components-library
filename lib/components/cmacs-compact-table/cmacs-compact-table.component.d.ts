@@ -99,7 +99,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     boolElement: ElementRef;
     addRow(idx: number): void;
     deleteRow(idx: number): void;
-    calcPadding(): 0 | 6;
+    calcPadding(field: Field): 0 | 6;
     startEdit(id: string, property: string, event: MouseEvent): void;
     sort($event: any, fieldProperty: string): void;
     handleClick(e: Event): void;
