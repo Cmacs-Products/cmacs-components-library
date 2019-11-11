@@ -25,7 +25,7 @@ import { moveItemInArray, transferArrayItem, DragDropModule } from '@angular/cdk
 import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName, NgModel, Validators, ReactiveFormsModule } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { InputBoolean as InputBoolean$1, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
-import { __extends, __decorate, __metadata, __assign, __spread, __read, __values } from 'tslib';
+import { __assign, __decorate, __metadata, __extends, __spread, __read, __values } from 'tslib';
 import { DatePipe, DOCUMENT, CommonModule, registerLocaleData } from '@angular/common';
 import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
 import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
@@ -37,7 +37,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { isArray } from 'util';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, defineInjectable, inject, NgModule, Injector, ComponentFactoryResolver, ApplicationRef, INJECTOR, Type } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, defineInjectable, NgModule, Type, Injector, ComponentFactoryResolver, inject, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -25879,7 +25879,7 @@ var CmacsSectionComponent = /** @class */ (function () {
     CmacsSectionComponent.decorators = [
         { type: Component, args: [{
                     selector: 'cmacs-section',
-                    template: "<div nz-col [nzSpan]=\"widgetSpan\" class=\"widget-container\">\r\n    <div nz-row class=\"widget-container-bar\" nzType=\"flex\" nzJustify=\"space-between\">\r\n      <div nz-col>\r\n        <div nz-row class=\"widget-container-bar-title\">\r\n          <i *ngIf=\"titleIcon\" [ngClass]=\"titleIcon\"></i><span>{{title}}</span>\r\n        </div>\r\n      </div>\r\n      <div nz-col>\r\n        <div nz-row *ngIf=\"extra\" class=\"widget-container-bar-btns\">\r\n          <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n          <button cmacs-button class=\"log-action-btn\"\r\n                  (click)=\"collapseSection()\"\r\n                  [action]=\"true\"\r\n                  ghost>\r\n            <i [ngClass]=\"collapsedIcon\"></i>\r\n          </button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div *ngIf=\"!collapsed\" class=\"widget-container-content\" >\r\n      <ng-content></ng-content>\r\n    </div>\r\n  </div>\r\n",
+                    template: "<div nz-col [nzSpan]=\"widgetSpan\" class=\"widget-container\">\r\n    <div nz-row class=\"widget-container-bar\" nzType=\"flex\" nzJustify=\"space-between\">\r\n      <div nz-col>\r\n        <div nz-row class=\"widget-container-bar-title\">\r\n          <i *ngIf=\"titleIcon\" [ngClass]=\"titleIcon\"></i><span>{{title}}</span>\r\n        </div>\r\n      </div>\r\n      <div nz-col>\r\n        <div nz-row *ngIf=\"extra\" class=\"widget-container-bar-btns\">\r\n          <ng-container *ngTemplateOutlet=\"extra; context: { data: extraData}\">{{ extra }}</ng-container>\r\n          <button cmacs-button class=\"log-action-btn\"\r\n                  (click)=\"collapseSection()\"\r\n                  [action]=\"true\"\r\n                  ghost>\r\n            <i [ngClass]=\"collapsedIcon\"></i>\r\n          </button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div *ngIf=\"!collapsed\" class=\"widget-container-content\" >\r\n      <ng-content></ng-content>\r\n    </div>\r\n  </div>\r\n",
                     preserveWhitespaces: false,
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     styles: [".widget-container-bar-title i{margin-right:8px}.widget-container-bar-title span{color:#3b3f46;font-weight:600;line-height:1.67;letter-spacing:.03em}.widget-container{border-top:3px solid #00cda1;padding:23px 40px;margin-top:15px;margin-bottom:15px;background-color:#f6f7fb;box-shadow:0 3px 7px -3px rgba(5,6,6,.18)}.widget-container-content{overflow-x:auto;overflow-y:hidden}"]
@@ -25892,7 +25892,8 @@ var CmacsSectionComponent = /** @class */ (function () {
         widgetSpan: [{ type: Input }],
         title: [{ type: Input }],
         titleIcon: [{ type: Input }],
-        showCollapse: [{ type: Input }]
+        showCollapse: [{ type: Input }],
+        extraData: [{ type: Input }]
     };
     return CmacsSectionComponent;
 }());

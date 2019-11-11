@@ -5,6 +5,7 @@ export declare class CmacsSectionComponent implements OnInit {
     title: string;
     titleIcon: string;
     showCollapse: boolean;
+    extraData: any;
     collapsed: boolean;
     collapsedIcon: string;
     constructor();
