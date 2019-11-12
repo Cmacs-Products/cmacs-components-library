@@ -37,6 +37,7 @@ export declare class CmacsCardComponent implements OnInit {
     cmacsType: CmacsCardType;
     cmacsIcon: string;
     title: string | TemplateRef<void>;
+    labelTitle: string;
     titleChange: EventEmitter<string>;
     extra: string | TemplateRef<void>;
     tab: CmacsCardTabComponent;
