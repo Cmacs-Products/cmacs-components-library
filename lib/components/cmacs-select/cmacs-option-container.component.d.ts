@@ -32,5 +32,7 @@ export declare class CmacsOptionContainerComponent implements OnDestroy, OnInit 
     trackValue(_index: number, option: CmacsOptionComponent): any;
     constructor(nzSelectService: CmacsSelectService, cdr: ChangeDetectorRef, ngZone: NgZone);
     ngOnInit(): void;
+    isAllChecked(): 1 | -1 | 0;
+    updateCheckboxCache(): void;
     ngOnDestroy(): void;
 }

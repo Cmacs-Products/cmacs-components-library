@@ -28,6 +28,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     virtualScroll: boolean;
     logs: boolean;
     expandable: boolean;
+    smartTable: boolean;
     virtualItemSize: number;
     loadingDelay: number;
     loadingIndicator: TemplateRef<void>;
@@ -75,6 +76,8 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     rateCount: number;
     multiSelect: boolean;
     sortChange: EventEmitter<any>;
+    onrowdeleted: EventEmitter<any>;
+    onrowadded: EventEmitter<any>;
     extra: string | TemplateRef<void>;
     indentSize: number;
     selected: boolean;
@@ -94,6 +97,9 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     datePickerElement: ElementRef;
     selectElement: ElementRef;
     boolElement: ElementRef;
+    addRow(idx: number): void;
+    deleteRow(idx: number): void;
+    calcPadding(field: Field): 0 | 6;
     startEdit(id: string, property: string, event: MouseEvent): void;
     sort($event: any, fieldProperty: string): void;
     handleClick(e: Event): void;
@@ -133,6 +139,8 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     ngAfterViewInit(): void;
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
+    exportTreePdf(fileName: string): void;
+    exportTreeToPdfRec(rows: any, data: any, offSetMargin?: number): void;
     convertTreeToList(root: object): any[];
     visitNode(node: any, hashMap: any, array: any[]): void;
     collapse(array: any[], data: any, $event: boolean): void;
@@ -143,6 +151,8 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     };
     exportToPng(fileName: string): void;
     exportToExcel(fileName: string): void;
+    exportTreeExcel(fileName: string): void;
+    exportTreeExcelRec(data: any, dataToExport: any): void;
     exportToPdf(fileName: string): void;
     ngOnDestroy(): void;
     clickRow(data: any): void;

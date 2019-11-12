@@ -109,3 +109,5 @@ export * from './lib/components/cmacs-message/cmacs-message-container.component'
 export * from './lib/components/cmacs-message/cmacs-message-config';
 export * from './lib/components/cmacs-message/cmacs-message.definitions';
 export * from './lib/components/cmacs-compact-table/cmacs-compact-table.component';
+export * from './lib/components/cmacs-signature/cmacs-signature.component';
+export * from './lib/components/cmacs-section/cmacs-section.component';

@@ -21,6 +21,7 @@ export interface Field {
     showSort?: boolean;
     dateFormat?: string;
     readonly?: boolean;
+    default?: any;
 }
 export interface SelectConfig {
     selectData: any[];
