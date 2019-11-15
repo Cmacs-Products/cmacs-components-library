@@ -1,0 +1,41 @@
+import { AnimationEvent } from '@angular/animations';
+import { CdkConnectedOverlay, CdkOverlayOrigin, ConnectedOverlayPositionChange, ConnectionPositionPair } from '@angular/cdk/overlay';
+import { ChangeDetectorRef, EventEmitter, OnChanges, TemplateRef } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { NzNoAnimationDirective } from 'ng-zorro-antd/core';
+export declare class CmacsTooltipComponent implements OnChanges {
+    cdr: ChangeDetectorRef;
+    noAnimation?: NzNoAnimationDirective;
+    _hasBackdrop: boolean;
+    _prefix: string;
+    _positions: ConnectionPositionPair[];
+    _classMap: {};
+    _placement: string;
+    _trigger: string;
+    overlayOrigin: CdkOverlayOrigin;
+    visibleSource: BehaviorSubject<boolean>;
+    visible$: Observable<boolean>;
+    overlay: CdkConnectedOverlay;
+    title: string | TemplateRef<void> | null;
+    overlayClassName: string;
+    overlayStyle: {
+        [key: string]: string;
+    };
+    mouseEnterDelay: number;
+    mouseLeaveDelay: number;
+    cmacsVisible: boolean;
+    trigger: string;
+    placement: string;
+    readonly cmacsVisibleChange: EventEmitter<boolean>;
+    [property: string]: any;
+    constructor(cdr: ChangeDetectorRef, noAnimation?: NzNoAnimationDirective);
+    ngOnChanges(): void;
+    updatePosition(): void;
+    onPositionChange(position: ConnectedOverlayPositionChange): void;
+    show(): void;
+    hide(): void;
+    _afterVisibilityAnimation(e: AnimationEvent): void;
+    setClassMap(): void;
+    setOverlayOrigin(origin: CdkOverlayOrigin): void;
+    protected isContentEmpty(): boolean;
+}
