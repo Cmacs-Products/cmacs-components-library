@@ -8,6 +8,7 @@ export declare class CmacsSearchComponent implements ControlValueAccessor, OnIni
     maxTagCount: number;
     allowClear: boolean;
     showSearch: boolean;
+    cmacsOpen: boolean;
     size: NzSizeLDSType;
     placeholder: string;
     selected: any;

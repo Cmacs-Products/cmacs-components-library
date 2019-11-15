@@ -46,6 +46,7 @@ export declare class CmacsSelectComponent implements ControlValueAccessor, OnIni
     };
     notFoundContent: string;
     allowClear: boolean;
+    open: boolean;
     showSearch: boolean;
     showCmacsSearch: boolean;
     showCustomSearch: boolean;
