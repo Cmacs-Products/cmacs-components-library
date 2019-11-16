@@ -91,10 +91,12 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     mapOfExpandedData: {
         [key: string]: any[];
     };
+    defaultTimeValue: Date;
     fieldID: any;
     inputElement: ElementRef;
     inputNumberElement: ElementRef;
     datePickerElement: ElementRef;
+    dateTimePickerElement: ElementRef;
     selectElement: ElementRef;
     boolElement: ElementRef;
     addRow(idx: number): void;
@@ -129,6 +131,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     isBoolean(value: any): boolean;
     isObject(value: any): boolean;
     isDate(field: Field): boolean;
+    isTime(field: Field): boolean;
     isCeldTypeDefault(field: Field): boolean;
     isCeldTypeButton(field: Field): boolean;
     isCeldTypeTag(field: Field): boolean;
