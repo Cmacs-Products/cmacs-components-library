@@ -19901,27 +19901,8 @@
                 if (i2.isNotNil(use12Hours)) {
                     ( /** @type {?} */(this))._use12Hours = ( /** @type {?} */(use12Hours));
                 }
-                if (typeof value === 'string') {
-                    if (( /** @type {?} */(this)).isValidDate(value)) {
-                        value = new Date(value);
-                    }
-                    else {
-                        value = null;
-                    }
-                }
-                ( /** @type {?} */(this)).value = ( /** @type {?} */(value));
+                ( /** @type {?} */(this)).value = value;
                 return ( /** @type {?} */(this));
-            };
-        /**
-         * @param {?} date
-         * @return {?}
-         */
-        TimeHolder.prototype.isValidDate = /**
-         * @param {?} date
-         * @return {?}
-         */
-            function (date) {
-                return date && Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date);
             };
         /**
          * @return {?}

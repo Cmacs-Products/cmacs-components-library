@@ -22,8 +22,7 @@ export declare class TimeHolder {
     setUse12Hours(value: boolean): this;
     readonly changes: Observable<Date>;
     value: Date | undefined;
-    setValue(value: Date | string | undefined, use12Hours?: boolean): this;
-    isValidDate(date: any): boolean;
+    setValue(value: Date | undefined, use12Hours?: boolean): this;
     clear(): void;
     readonly isEmpty: boolean;
     private _clear;
