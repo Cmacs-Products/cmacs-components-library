@@ -128,7 +128,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     isReadOnly(field: Field): boolean;
     isTypeNumber(value: any): boolean;
     isNumber(field: Field): boolean;
-    isBoolean(value: any): boolean;
+    isBoolean(field: any): boolean;
     isObject(value: any): boolean;
     isDate(field: Field): boolean;
     isTime(field: Field): boolean;
@@ -160,4 +160,5 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     ngOnDestroy(): void;
     clickRow(data: any): void;
     dblClickRow(data: any): void;
+    clickBooleanCell(data: any, id: string, property: string, event: MouseEvent): void;
 }
