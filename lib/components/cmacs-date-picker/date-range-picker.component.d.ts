@@ -14,6 +14,10 @@ export declare class CmacsDateRangePickerComponent extends AbstractPickerCompone
     ranges: PresetRanges;
     readonly cmacsOnPanelChange: EventEmitter<"time" | "month" | "year" | "decade" | "date" | PanelMode[]>;
     readonly cmacsOnCalendarChange: EventEmitter<Date[]>;
+    openPickerTitle: string;
+    openPickerSubtitle: string;
+    openPickerLeftRangeSub: string;
+    openPickerRightRangeSub: string;
     private _showTime;
     showTime: object | boolean;
     readonly cmacsOnOk: EventEmitter<Date | Date[]>;
@@ -28,4 +32,6 @@ export declare class CmacsDateRangePickerComponent extends AbstractPickerCompone
     onResultOk(): void;
     onOpenChange(open: boolean): void;
     private setFixedPickerStyle;
+    parseDate(): string | any[];
+    getMonth(idx: any): string;
 }

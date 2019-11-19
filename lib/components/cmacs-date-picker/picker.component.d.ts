@@ -2,8 +2,10 @@ import { CdkConnectedOverlay, CdkOverlayOrigin, ConnectedOverlayPositionChange, 
 import { AfterViewInit, ChangeDetectorRef, ElementRef, EventEmitter, OnInit } from '@angular/core';
 import { DateHelperService } from 'ng-zorro-antd/i18n';
 import { CandyDate } from './lib/candy-date/candy-date';
+import { DomSanitizer } from "@angular/platform-browser";
 export declare class CmacsPickerComponent implements OnInit, AfterViewInit {
     private dateHelper;
+    private sanitizer;
     private changeDetector;
     noAnimation: boolean;
     isRange: boolean;
@@ -15,7 +17,9 @@ export declare class CmacsPickerComponent implements OnInit, AfterViewInit {
     className: string;
     format: string;
     size: 'large' | 'small';
-    style: object;
+    cmacsStyle: object;
+    cmacsOpen: boolean;
+    width: any;
     value: CandyDate | CandyDate[] | null;
     readonly valueChange: EventEmitter<CandyDate | CandyDate[]>;
     readonly openChange: EventEmitter<boolean>;
@@ -32,7 +36,7 @@ export declare class CmacsPickerComponent implements OnInit, AfterViewInit {
     currentPositionX: 'start' | 'end';
     currentPositionY: 'top' | 'bottom';
     readonly realOpenState: boolean;
-    constructor(dateHelper: DateHelperService, changeDetector: ChangeDetectorRef);
+    constructor(dateHelper: DateHelperService, sanitizer: DomSanitizer, changeDetector: ChangeDetectorRef);
     ngOnInit(): void;
     ngAfterViewInit(): void;
     showOverlay(): void;

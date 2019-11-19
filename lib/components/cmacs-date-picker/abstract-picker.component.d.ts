@@ -26,9 +26,11 @@ export declare abstract class AbstractPickerComponent implements OnInit, OnChang
     popupStyle: object;
     dropdownClassName: string;
     size: 'large' | 'small';
-    style: object;
+    cmacsStyle: object;
     format: string;
-    value: CompatibleValue | null;
+    cmacsOpen: boolean;
+    value: any;
+    width: any;
     readonly cmacsOnOpenChange: EventEmitter<boolean>;
     protected picker: CmacsPickerComponent;
     isRange: boolean;

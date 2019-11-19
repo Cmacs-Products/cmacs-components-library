@@ -32,6 +32,7 @@ export declare class CmacsDropdownComponent implements OnDestroy, AfterContentIn
     clickHide: boolean;
     disabled: boolean;
     visible: boolean;
+    cmacsOpen: boolean;
     tableFilter: boolean;
     readonly visibleChange: EventEmitter<boolean>;
     setVisibleStateWhen(visible: boolean, trigger?: 'click' | 'hover' | 'all'): void;

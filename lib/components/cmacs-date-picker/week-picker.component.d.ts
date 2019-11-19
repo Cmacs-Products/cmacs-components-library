@@ -5,5 +5,9 @@ import { CmacsDateRangePickerComponent } from './date-range-picker.component';
 export declare class CmacsWeekPickerComponent extends CmacsDateRangePickerComponent {
     noAnimation?: NzNoAnimationDirective;
     showWeek: boolean;
+    openPickerTitle: string;
+    openPickerSubtitle: string;
+    openPickerLeftRangeSub: string;
+    openPickerRightRangeSub: string;
     constructor(i18n: NzI18nService, cdr: ChangeDetectorRef, dateHelper: DateHelperService, renderer: Renderer2, elementRef: ElementRef, noAnimation?: NzNoAnimationDirective);
 }

@@ -112,7 +112,7 @@ CmacsTimelineComponent.decorators = [
                 selector: 'cmacs-timeline',
                 exportAs: 'cmacsTimeline',
                 template: "<ul \r\n    class=\"ant-timeline\" \r\n    [class.ant-timeline-right]=\"mode === 'right'\"\r\n    [class.ant-timeline-alternate]=\"mode === 'alternate'\" \r\n    [class.ant-timeline-pending]=\"!!pending\"\r\n    [class.ant-timeline-reverse]=\"reverse\" \r\n    #timeline>\r\n    <!-- User inserted timeline dots. -->\r\n    <ng-content></ng-content>\r\n    <!-- Pending dot. -->\r\n    <li *ngIf=\"pending\" class=\"ant-timeline-item ant-timeline-item-pending\">\r\n        <div class=\"ant-timeline-item-tail\"></div>\r\n        <div class=\"ant-timeline-item-head ant-timeline-item-head-custom ant-timeline-item-head-blue\">\r\n          <ng-container *cmacsStringTemplateOutlet=\"pendingDot\">\r\n            {{ pendingDot }}<i *ngIf=\"!pendingDot\" nz-icon type=\"loading\"></i>\r\n          </ng-container>\r\n        </div>\r\n        <div class=\"ant-timeline-item-content\">\r\n          <ng-container *cmacsStringTemplateOutlet=\"pending\">\r\n            {{ isPendingBoolean ? '' : pending }}\r\n          </ng-container>\r\n        </div>\r\n    </li>\r\n</ul>",
-                styles: [""]
+                styles: [".ant-timeline-item{font-family:Roboto;font-size:12px!important;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;color:#acb3bf}.ant-timeline-item-content{top:-5px}"]
             }] }
 ];
 /** @nocollapse */
