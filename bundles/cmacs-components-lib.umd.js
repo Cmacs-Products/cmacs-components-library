@@ -11736,6 +11736,7 @@
             this.close = new i0.EventEmitter();
             this.selected = false;
             this.selectedChange = new i0.EventEmitter();
+            this.dblclick = false;
             renderer.addClass(elementRef.nativeElement, 'ant-card');
         }
         /**
@@ -11794,7 +11795,16 @@
          * @return {?}
          */
             function (event) {
-                this.select(event);
+                var _this = this;
+                event.preventDefault();
+                event.stopPropagation();
+                setTimeout(( /**
+                 * @return {?}
+                 */function () {
+                    if (!_this.dblclick) {
+                        _this.select(event);
+                    }
+                }), 500);
             };
         /**
          * @param {?} event
@@ -11805,6 +11815,7 @@
          * @return {?}
          */
             function (event) {
+                var _this = this;
                 if (this.cmacsType === 'folder') {
                     this.folderIcon = this.folderIcon === 'folder' ? 'folder-open' : 'folder';
                     this.opened = !this.opened;
@@ -11818,6 +11829,12 @@
                 if (this.cmacsType === 'project') {
                     this.ondlclickCard.emit(this.project);
                 }
+                this.dblclick = true;
+                setTimeout(( /**
+                 * @return {?}
+                 */function () {
+                    _this.dblclick = false;
+                }), 1000);
             };
         /**
          * @return {?}
@@ -27245,7 +27262,7 @@
                             '[class.ant-select-open]': 'open',
                             '(click)': 'trigger()'
                         },
-                        styles: [".cmacs-tree-select-dropdown{box-shadow:none;border-bottom:1px solid #dee0e5;border-right:1px solid #dee0e5;border-left:1px solid #dee0e5;border-radius:0 0 3px 3px}:host ::ng-deep .ant-select-selection,:host ::ng-deep .ant-select-selection:focus,:host ::ng-deep .ant-select-selection:hover{border:1px solid #dee0e5;border-radius:3px 3px 0 0}.cmacs-tree-select-search-icon{left:11px;right:unset;z-index:unset;opacity:1!important;font-size:16px;top:14px}:host ::ng-deep .ant-select-selection--multiple .ant-select-selection__placeholder{margin-left:29px}.ant-select-selection__clear{right:14px}.cmacs-tree-select-arrow{z-index:unset;opacity:1!important;font-size:29px;top:7px;right:30px}.cmacs-tree-select-arrow:hover{cursor:pointer}.cmacs-tree-select-arrow i{border-left:1px solid #dee0e5;padding:0 5px}.ant-select-selection--multiple .ant-select-search--inline .ant-select-search__field{padding-left:10px}.ant-select-selection:hover .cmacs-selected-nodes.iconArrowLarge-Arrow-Right:before{opacity:0}", "\n      .ant-select-dropdown {\n        top: 100%;\n        left: 0;\n        position: relative;\n        width: 100%;\n        margin-top: 4px;\n        margin-bottom: 4px;\n        overflow: auto;\n      }\n    "]
+                        styles: [".cmacs-tree-select-dropdown{box-shadow:none;border-bottom:1px solid #dee0e5;border-right:1px solid #dee0e5;border-left:1px solid #dee0e5;border-radius:0 0 3px 3px}:host ::ng-deep .ant-select-selection,:host ::ng-deep .ant-select-selection:focus,:host ::ng-deep .ant-select-selection:hover{border:1px solid #dee0e5;border-radius:3px 3px 0 0}.cmacs-tree-select-search-icon{left:11px;right:unset;z-index:unset;opacity:1!important;font-size:16px;top:14px}:host ::ng-deep .ant-select-selection--multiple .ant-select-selection__placeholder{margin-left:29px}.ant-select-selection__clear{right:14px}.cmacs-tree-select-arrow{z-index:unset;opacity:1!important;font-size:29px;top:7px;right:30px}.cmacs-tree-select-arrow:hover{cursor:pointer}.cmacs-tree-select-arrow i{border-left:1px solid #dee0e5;padding:0 5px}.ant-select-selection--multiple .ant-select-search--inline .ant-select-search__field{padding-left:10px}.ant-select-selection:hover .cmacs-selected-nodes.iconArrowLarge-Arrow-Right:before{opacity:0}", "\n      .ant-select-dropdown {\n        top: 100%;\n        left: 0;\n        position: relative;\n        width: 100%;\n        margin-top: 4px;\n        margin-bottom: 4px;\n        overflow: auto;\n      }\n      \n      cmacs-tree-select {\n        overflow: hidden;\n      }\n    "]
                     }] }
         ];
         /** @nocollapse */

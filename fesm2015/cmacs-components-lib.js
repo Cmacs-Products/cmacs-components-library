@@ -38,7 +38,7 @@ import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMa
 import 'ng-zorro-antd/tree';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, ComponentFactoryResolver, Injector, NgModule, defineInjectable, inject, ApplicationRef, INJECTOR, Type } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, Injector, ComponentFactoryResolver, NgModule, defineInjectable, inject, ApplicationRef, INJECTOR, Type } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -9931,6 +9931,7 @@ class CmacsCardComponent {
         this.close = new EventEmitter();
         this.selected = false;
         this.selectedChange = new EventEmitter();
+        this.dblclick = false;
         renderer.addClass(elementRef.nativeElement, 'ant-card');
     }
     /**
@@ -9971,7 +9972,16 @@ class CmacsCardComponent {
      * @return {?}
      */
     onClick(event) {
-        this.select(event);
+        event.preventDefault();
+        event.stopPropagation();
+        setTimeout((/**
+         * @return {?}
+         */
+        () => {
+            if (!this.dblclick) {
+                this.select(event);
+            }
+        }), 500);
     }
     /**
      * @param {?} event
@@ -9991,6 +10001,13 @@ class CmacsCardComponent {
         if (this.cmacsType === 'project') {
             this.ondlclickCard.emit(this.project);
         }
+        this.dblclick = true;
+        setTimeout((/**
+         * @return {?}
+         */
+        () => {
+            this.dblclick = false;
+        }), 1000);
     }
     /**
      * @return {?}
@@ -23018,6 +23035,10 @@ CmacsTreeSelectComponent.decorators = [
         margin-top: 4px;
         margin-bottom: 4px;
         overflow: auto;
+      }
+      
+      cmacs-tree-select {
+        overflow: hidden;
       }
     `]
             }] }
