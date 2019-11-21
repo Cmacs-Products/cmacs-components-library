@@ -3,8 +3,8 @@ import { ChangeDetectorRef, ElementRef, EventEmitter, Injector, OnChanges, OnDes
 import { ControlValueAccessor } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { NzFormatEmitEvent, NzNoAnimationDirective, NzSizeLDSType, NzTreeBase, NzTreeBaseService, NzTreeNode, NzTreeNodeOptions } from 'ng-zorro-antd/core';
-import { NzTreeComponent } from 'ng-zorro-antd/tree';
 import { CmacsTreeSelectService } from './cmacs-tree-select.service';
+import { CmacsTreeComponent } from "../cmacs-tree/cmacs-tree.component";
 export declare function higherOrderServiceFactory(injector: Injector): NzTreeBaseService;
 export declare class CmacsTreeSelectComponent extends NzTreeBase implements ControlValueAccessor, OnInit, OnDestroy, OnChanges {
     private renderer;
@@ -25,6 +25,7 @@ export declare class CmacsTreeSelectComponent extends NzTreeBase implements Cont
     multiple: boolean;
     defaultExpandAll: boolean;
     cmacsOpen: boolean;
+    inlineEdit: boolean;
     notFoundContent: string;
     nodes: Array<NzTreeNode | NzTreeNodeOptions>;
     open: boolean;
@@ -45,8 +46,10 @@ export declare class CmacsTreeSelectComponent extends NzTreeBase implements Cont
     readonly expandChange: EventEmitter<NzFormatEmitEvent>;
     readonly treeClick: EventEmitter<NzFormatEmitEvent>;
     readonly treeCheckBoxChange: EventEmitter<NzFormatEmitEvent>;
+    onaddchild: EventEmitter<NzTreeNode>;
+    onaddparent: EventEmitter<any>;
     inputElement: ElementRef;
-    treeRef: NzTreeComponent;
+    treeRef: CmacsTreeComponent;
     cdkOverlayOrigin: CdkOverlayOrigin;
     cdkConnectedOverlay: CdkConnectedOverlay;
     triggerWidth: number;
@@ -60,6 +63,8 @@ export declare class CmacsTreeSelectComponent extends NzTreeBase implements Cont
     value: string[];
     onChange: (value: string[] | string | null) => void;
     onTouched: () => void;
+    onaddparentevt($event: Event): void;
+    addParent(node: any): void;
     readonly placeHolderDisplay: string;
     readonly searchDisplay: string;
     readonly isMultiple: boolean;
@@ -68,6 +73,7 @@ export declare class CmacsTreeSelectComponent extends NzTreeBase implements Cont
     };
     constructor(nzTreeService: CmacsTreeSelectService, renderer: Renderer2, cdr: ChangeDetectorRef, elementRef: ElementRef, noAnimation?: NzNoAnimationDirective);
     ngOnInit(): void;
+    onaddchildevt($event: NzTreeNode): void;
     ngOnDestroy(): void;
     setDisabledState(isDisabled: boolean): void;
     ngOnChanges(changes: SimpleChanges): void;

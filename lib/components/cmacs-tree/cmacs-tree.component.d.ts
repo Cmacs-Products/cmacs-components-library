@@ -21,6 +21,8 @@ export declare class CmacsTreeComponent extends NzTreeBase implements OnInit, On
     selectMode: boolean;
     nzCheckStrictly: boolean;
     nzBlockNode: boolean;
+    inlineEdit: boolean;
+    onaddchild: EventEmitter<NzTreeNode>;
     /**
      * @deprecated use
      * expandAll instead
@@ -52,6 +54,7 @@ export declare class CmacsTreeComponent extends NzTreeBase implements OnInit, On
      * To render nodes if root is changed
      */
     readonly nzNodes: NzTreeNode[];
+    onaddchildevt($event: NzTreeNode): void;
     readonly nzExpandedKeysChange: EventEmitter<string[]>;
     readonly nzSelectedKeysChange: EventEmitter<string[]>;
     readonly nzCheckedKeysChange: EventEmitter<string[]>;
@@ -94,5 +97,6 @@ export declare class CmacsTreeComponent extends NzTreeBase implements OnInit, On
     ngOnChanges(changes: {
         [propertyName: string]: SimpleChange;
     }): void;
+    addParent(node: any): void;
     ngOnDestroy(): void;
 }

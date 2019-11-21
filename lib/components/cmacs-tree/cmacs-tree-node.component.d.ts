@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, ElementRef, NgZone, OnChanges, OnDestroy, OnInit, Renderer2, TemplateRef } from '@angular/core';
+import { ChangeDetectorRef, ElementRef, EventEmitter, NgZone, OnChanges, OnDestroy, OnInit, Renderer2, TemplateRef } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { NzFormatBeforeDropEvent, NzNoAnimationDirective, NzTreeBaseService, NzTreeNode } from 'ng-zorro-antd/core';
 export declare class CmacsTreeNodeComponent implements OnInit, OnChanges, OnDestroy {
@@ -21,9 +21,11 @@ export declare class CmacsTreeNodeComponent implements OnInit, OnChanges, OnDest
     noAnimation: boolean;
     selectMode: boolean;
     showIcon: boolean;
+    inlineEdit: boolean;
     index: number;
     treeTemplate: TemplateRef<void>;
     beforeDrop: (confirm: NzFormatBeforeDropEvent) => Observable<boolean>;
+    onaddchild: EventEmitter<NzTreeNode>;
     draggable: boolean;
     /**
      * @deprecated use
@@ -90,6 +92,7 @@ export declare class CmacsTreeNodeComponent implements OnInit, OnChanges, OnDest
      * @param e
      */
     clearDragClass(): void;
+    onaddchildevt($event: Event): void;
     handleDragStart(e: DragEvent): void;
     handleDragEnter(e: DragEvent): void;
     handleDragOver(e: DragEvent): void;
