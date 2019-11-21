@@ -34,7 +34,7 @@ import { DOWN_ARROW, ENTER, UP_ARROW, BACKSPACE, SPACE, TAB, ESCAPE, LEFT_ARROW,
 import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName, NgModel, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
 import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
-import { __extends, __decorate, __metadata, __assign, __spread, __read, __values } from 'tslib';
+import { __extends, __decorate, __metadata, __assign, __read, __values, __spread } from 'tslib';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, ComponentFactoryResolver, defineInjectable, inject, NgModule, Injector, ApplicationRef, INJECTOR, Type } from '@angular/core';
@@ -11915,7 +11915,6 @@ var CmacsCardComponent = /** @class */ (function () {
         this.close = new EventEmitter();
         this.selected = false;
         this.selectedChange = new EventEmitter();
-        this.dblclick = false;
         renderer.addClass(elementRef.nativeElement, 'ant-card');
     }
     /**
@@ -11974,17 +11973,7 @@ var CmacsCardComponent = /** @class */ (function () {
      * @return {?}
      */
     function (event) {
-        var _this = this;
-        event.preventDefault();
-        event.stopPropagation();
-        setTimeout((/**
-         * @return {?}
-         */
-        function () {
-            if (!_this.dblclick) {
-                _this.select(event);
-            }
-        }), 500);
+        this.select(event);
     };
     /**
      * @param {?} event
@@ -11995,7 +11984,6 @@ var CmacsCardComponent = /** @class */ (function () {
      * @return {?}
      */
     function (event) {
-        var _this = this;
         if (this.cmacsType === 'folder') {
             this.folderIcon = this.folderIcon === 'folder' ? 'folder-open' : 'folder';
             this.opened = !this.opened;
@@ -12009,13 +11997,6 @@ var CmacsCardComponent = /** @class */ (function () {
         if (this.cmacsType === 'project') {
             this.ondlclickCard.emit(this.project);
         }
-        this.dblclick = true;
-        setTimeout((/**
-         * @return {?}
-         */
-        function () {
-            _this.dblclick = false;
-        }), 1000);
     };
     /**
      * @return {?}

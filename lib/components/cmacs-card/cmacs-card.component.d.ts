@@ -47,7 +47,6 @@ export declare class CmacsCardComponent implements OnInit {
     selected: boolean;
     value: any;
     selectedChange: EventEmitter<boolean>;
-    dblclick: boolean;
     constructor(cdr: ChangeDetectorRef, renderer: Renderer2, sanitizer: DomSanitizer, elementRef: ElementRef);
     openMail($event: Event): void;
     ngOnInit(): void;

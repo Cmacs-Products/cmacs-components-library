@@ -9986,7 +9986,6 @@ class CmacsCardComponent {
         this.close = new EventEmitter();
         this.selected = false;
         this.selectedChange = new EventEmitter();
-        this.dblclick = false;
         renderer.addClass(elementRef.nativeElement, 'ant-card');
     }
     /**
@@ -10027,16 +10026,7 @@ class CmacsCardComponent {
      * @return {?}
      */
     onClick(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        setTimeout((/**
-         * @return {?}
-         */
-        () => {
-            if (!this.dblclick) {
-                this.select(event);
-            }
-        }), 500);
+        this.select(event);
     }
     /**
      * @param {?} event
@@ -10056,13 +10046,6 @@ class CmacsCardComponent {
         if (this.cmacsType === 'project') {
             this.ondlclickCard.emit(this.project);
         }
-        this.dblclick = true;
-        setTimeout((/**
-         * @return {?}
-         */
-        () => {
-            this.dblclick = false;
-        }), 1000);
     }
     /**
      * @return {?}

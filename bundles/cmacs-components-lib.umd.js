@@ -11804,7 +11804,6 @@
             this.close = new i0.EventEmitter();
             this.selected = false;
             this.selectedChange = new i0.EventEmitter();
-            this.dblclick = false;
             renderer.addClass(elementRef.nativeElement, 'ant-card');
         }
         /**
@@ -11863,16 +11862,7 @@
          * @return {?}
          */
             function (event) {
-                var _this = this;
-                event.preventDefault();
-                event.stopPropagation();
-                setTimeout(( /**
-                 * @return {?}
-                 */function () {
-                    if (!_this.dblclick) {
-                        _this.select(event);
-                    }
-                }), 500);
+                this.select(event);
             };
         /**
          * @param {?} event
@@ -11883,7 +11873,6 @@
          * @return {?}
          */
             function (event) {
-                var _this = this;
                 if (this.cmacsType === 'folder') {
                     this.folderIcon = this.folderIcon === 'folder' ? 'folder-open' : 'folder';
                     this.opened = !this.opened;
@@ -11897,12 +11886,6 @@
                 if (this.cmacsType === 'project') {
                     this.ondlclickCard.emit(this.project);
                 }
-                this.dblclick = true;
-                setTimeout(( /**
-                 * @return {?}
-                 */function () {
-                    _this.dblclick = false;
-                }), 1000);
             };
         /**
          * @return {?}
