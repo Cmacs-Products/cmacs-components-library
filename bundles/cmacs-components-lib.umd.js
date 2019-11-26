@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/platform-browser/animations'), require('@angular/common/locales/en'), require('xlsx'), require('@angular/router'), require('@angular/cdk/coercion'), require('date-fns'), require('ng-zorro-antd/icon'), require('ng-zorro-antd/time-picker'), require('ng-zorro-antd/menu'), require('@angular/cdk/layout'), require('ng-zorro-antd/grid'), require('ng-zorro-antd/tooltip'), require('@angular/cdk/platform'), require('videogular2/compiled/controls'), require('videogular2/compiled/overlay-play'), require('videogular2/compiled/buffering'), require('videogular2/compiled/core'), require('ng2-tel-input'), require('@angular/cdk/a11y'), require('@angular/cdk/observers'), require('@angular/cdk/bidi'), require('ng-lazyload-image'), require('@angular/cdk/drag-drop'), require('@angular/platform-browser'), require('ng-zorro-antd'), require('@angular/common'), require('ng-zorro-antd/i18n'), require('ngx-export-as'), require('jspdf'), require('jspdf-autotable'), require('ngx-cookie-service'), require('util'), require('@angular/cdk/keycodes'), require('@angular/forms'), require('rxjs'), require('rxjs/operators'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core'), require('ng-zorro-antd/core')) :
-    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/platform-browser/animations', '@angular/common/locales/en', 'xlsx', '@angular/router', '@angular/cdk/coercion', 'date-fns', 'ng-zorro-antd/icon', 'ng-zorro-antd/time-picker', 'ng-zorro-antd/menu', '@angular/cdk/layout', 'ng-zorro-antd/grid', 'ng-zorro-antd/tooltip', '@angular/cdk/platform', 'videogular2/compiled/controls', 'videogular2/compiled/overlay-play', 'videogular2/compiled/buffering', 'videogular2/compiled/core', 'ng2-tel-input', '@angular/cdk/a11y', '@angular/cdk/observers', '@angular/cdk/bidi', 'ng-lazyload-image', '@angular/cdk/drag-drop', '@angular/platform-browser', 'ng-zorro-antd', '@angular/common', 'ng-zorro-antd/i18n', 'ngx-export-as', 'jspdf', 'jspdf-autotable', 'ngx-cookie-service', 'util', '@angular/cdk/keycodes', '@angular/forms', 'rxjs', 'rxjs/operators', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core', 'ng-zorro-antd/core'], factory) :
-    (factory((global['cmacs-components-lib'] = {}),global.ng.platformBrowser.animations,global.ng.common.locales.en,global.XLSX,global.ng.router,global.ng.cdk.coercion,global.dateFns,global.icon,global.timePicker,global.menu,global.ng.cdk.layout,global.grid,global.tooltip,global.ng.cdk.platform,global.controls,global.overlayPlay,global.buffering,global.core,global.ng2TelInput,global.ng.cdk.a11y,global.ng.cdk.observers,global.ng.cdk.bidi,global.ngLazyloadImage,global.ng.cdk['drag-drop'],global.ng.platformBrowser,global.ngZorroAntd,global.ng.common,global.i18n,global.ngxExportAs,global.jsPDF,null,global.ngxCookieService,global.util,global.ng.cdk.keycodes,global.ng.forms,global.rxjs,global.rxjs.operators,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core,global.i2));
-}(this, (function (exports,animations,en,XLSX,router,coercion,dateFns,icon,timePicker,menu,layout,grid,tooltip,platform,controls,overlayPlay,buffering,core,ng2TelInput,a11y,observers,bidi,ngLazyloadImage,dragDrop,platformBrowser,ngZorroAntd,common,i18n,ngxExportAs,jsPDF,jspdfAutotable,ngxCookieService,util,keycodes,forms,rxjs,operators,i1,portal,i0,i2) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/platform-browser/animations'), require('@angular/common/locales/en'), require('xlsx'), require('@angular/router'), require('@angular/cdk/coercion'), require('ng-zorro-antd/icon'), require('ng-zorro-antd/time-picker'), require('ng-zorro-antd/menu'), require('@angular/cdk/layout'), require('ng-zorro-antd/grid'), require('ng-zorro-antd/tooltip'), require('@angular/cdk/platform'), require('videogular2/compiled/controls'), require('videogular2/compiled/overlay-play'), require('videogular2/compiled/buffering'), require('videogular2/compiled/core'), require('ng2-tel-input'), require('@angular/cdk/a11y'), require('@angular/cdk/observers'), require('@angular/cdk/bidi'), require('ng-lazyload-image'), require('@angular/cdk/drag-drop'), require('@angular/platform-browser'), require('ng-zorro-antd'), require('@angular/common'), require('ng-zorro-antd/i18n'), require('ngx-export-as'), require('jspdf'), require('jspdf-autotable'), require('ngx-cookie-service'), require('util'), require('@angular/cdk/keycodes'), require('@angular/forms'), require('rxjs'), require('rxjs/operators'), require('date-fns'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core'), require('ng-zorro-antd/core')) :
+    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/platform-browser/animations', '@angular/common/locales/en', 'xlsx', '@angular/router', '@angular/cdk/coercion', 'ng-zorro-antd/icon', 'ng-zorro-antd/time-picker', 'ng-zorro-antd/menu', '@angular/cdk/layout', 'ng-zorro-antd/grid', 'ng-zorro-antd/tooltip', '@angular/cdk/platform', 'videogular2/compiled/controls', 'videogular2/compiled/overlay-play', 'videogular2/compiled/buffering', 'videogular2/compiled/core', 'ng2-tel-input', '@angular/cdk/a11y', '@angular/cdk/observers', '@angular/cdk/bidi', 'ng-lazyload-image', '@angular/cdk/drag-drop', '@angular/platform-browser', 'ng-zorro-antd', '@angular/common', 'ng-zorro-antd/i18n', 'ngx-export-as', 'jspdf', 'jspdf-autotable', 'ngx-cookie-service', 'util', '@angular/cdk/keycodes', '@angular/forms', 'rxjs', 'rxjs/operators', 'date-fns', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core', 'ng-zorro-antd/core'], factory) :
+    (factory((global['cmacs-components-lib'] = {}),global.ng.platformBrowser.animations,global.ng.common.locales.en,global.XLSX,global.ng.router,global.ng.cdk.coercion,global.icon,global.timePicker,global.menu,global.ng.cdk.layout,global.grid,global.tooltip,global.ng.cdk.platform,global.controls,global.overlayPlay,global.buffering,global.core,global.ng2TelInput,global.ng.cdk.a11y,global.ng.cdk.observers,global.ng.cdk.bidi,global.ngLazyloadImage,global.ng.cdk['drag-drop'],global.ng.platformBrowser,global.ngZorroAntd,global.ng.common,global.i18n,global.ngxExportAs,global.jsPDF,null,global.ngxCookieService,global.util,global.ng.cdk.keycodes,global.ng.forms,global.rxjs,global.rxjs.operators,global.dateFns,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core,global.i2));
+}(this, (function (exports,animations,en,XLSX,router,coercion,icon,timePicker,menu,layout,grid,tooltip,platform,controls,overlayPlay,buffering,core,ng2TelInput,a11y,observers,bidi,ngLazyloadImage,dragDrop,platformBrowser,ngZorroAntd,common,i18n,ngxExportAs,jsPDF,jspdfAutotable,ngxCookieService,util,keycodes,forms,rxjs,operators,dateFns,i1,portal,i0,i2) { 'use strict';
 
     en = en && en.hasOwnProperty('default') ? en['default'] : en;
     jsPDF = jsPDF && jsPDF.hasOwnProperty('default') ? jsPDF['default'] : jsPDF;
@@ -11791,6 +11791,7 @@
             this.loading = false;
             this.disabled = false;
             this.hoverable = false;
+            this.useDefaultContent = false;
             this.playerReady = new i0.EventEmitter();
             this.actions = [];
             this.team = [];
@@ -11862,7 +11863,9 @@
          * @return {?}
          */
             function (event) {
-                this.select(event);
+                if (!this.useDefaultContent) {
+                    this.select(event);
+                }
             };
         /**
          * @param {?} event
@@ -11873,7 +11876,7 @@
          * @return {?}
          */
             function (event) {
-                if (this.cmacsType === 'folder') {
+                if (this.cmacsType === 'folder' && !this.useDefaultContent) {
                     this.folderIcon = this.folderIcon === 'folder' ? 'folder-open' : 'folder';
                     this.opened = !this.opened;
                     if (this.opened) {
@@ -11997,7 +12000,7 @@
                         exportAs: 'cmacsCard',
                         preserveWhitespaces: false,
                         encapsulation: i0.ViewEncapsulation.None,
-                        template: "<div class=\"ant-card-head\" *ngIf=\"(title || extra || tab ) && (cmacsType === 'none' || cmacsType === 'team' || cmacsType === 'project')\">\r\n  <div class=\"ant-card-head-wrapper\">\r\n    <div class=\"ant-card-head-title\" *ngIf=\"title\">\r\n      <ng-container *cmacsStringTemplateOutlet=\"title\">{{ title }}</ng-container>\r\n    </div>\r\n    <div class=\"ant-card-extra\" *ngIf=\"extra\">\r\n      <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n    </div>\r\n  </div>\r\n  <ng-container *ngIf=\"tab\">\r\n    <ng-template [ngTemplateOutlet]=\"tab.template\"></ng-template>\r\n  </ng-container>\r\n</div>\r\n\r\n<div class=\"ant-card-cover\" *ngIf=\"cover || cmacsType === 'selection' || cmacsType === 'action'\">\r\n  <ng-template [ngTemplateOutlet]=\"cover\"></ng-template>\r\n  <ng-container *ngIf=\"cmacsType === 'selection'\">\r\n    <label cmacs-radio [(ngModel)]=\"selected\" (ngModelChange)=\"checkRadio()\" [disabled]=\"disabled\">{{labelTitle}}</label>\r\n    <ng-template [ngTemplateOutlet]=\"body\"></ng-template>\r\n  </ng-container>\r\n</div>\r\n<div class=\"ant-card-body\" [ngStyle]=\"bodyStyle\">\r\n  <ng-container *ngIf=\"!loading\">\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'todo'\">\r\n      <div *ngIf=\"todo.projectImage\" class=\"cmacs-todo-card-project-img\">\r\n        <img [src]=\"todo.projectImage\">\r\n      </div>\r\n      <!-- <div [style.backgroundColor]=\"todo.stateColor\" class=\"cmacs-todo-card-upper-line\"></div> -->\r\n      <div class=\"cmacs-todo-card-title\">\r\n        <span>{{todo.title}}</span>\r\n      </div>\r\n      <div *ngIf=\"todo.project\" class=\"cmacs-todo-card-project\">\r\n        <span>{{todo.project}}</span>\r\n      </div>\r\n      <div *ngIf=\"todo.date\" class=\"cmacs-todo-card-date\">\r\n        <span>{{todo.date}}</span>\r\n      </div>\r\n      <div class=\"cmacs-todo-card-action\">\r\n        <div *ngIf=\"todo.attachments\" class=\"cmacs-todo-card-attachments\">\r\n          <span>{{todo.attachments}}</span>\r\n          <a><i class=\"iconUILarge-Attached\"></i></a>\r\n        </div>\r\n        <div *ngIf=\"todo.comments\" class=\"cmacs-todo-card-comments\">\r\n          <span>{{todo.comments}}</span>\r\n          <a><i class=\"iconUILarge-Comments\"></i></a>\r\n        </div>\r\n\r\n        <div *ngIf=\"!todo.isTeam\" class=\"cmacs-todo-card-person\">\r\n          <a><i class=\"iconCreation-User\"></i></a>\r\n        </div>\r\n\r\n        <div *ngIf=\"todo.isTeam\" class=\"cmacs-todo-card-team\">\r\n          <a><i class=\"iconUILarge-Team\"></i></a>\r\n        </div>\r\n\r\n        <div *ngIf=\"todo.hasPriorityFlag\" class=\"cmacs-todo-card-priority\">\r\n          <a [style.color]=\"todo.stateColor\"><i nz-icon [type]=\"'flag'\"></i></a>\r\n        </div>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'big-file'\">\r\n      <div class=\"cmacs-card-big-file-meta\">\r\n        <div class=\"cmacs-card-big-file-icon-wrapper\">\r\n          <a><i class=\"{{cmacsIcon}}\"></i></a>\r\n        </div>\r\n        <div class=\"cmacs-card-big-file-extension-wrapper\">\r\n          <span>{{file.extension}}</span>\r\n        </div>\r\n      </div>\r\n      <div class=\"cmacs-card-big-file-description\">\r\n        <div class=\"cmacs-card-big-file-description-left-panel\">\r\n          <div class=\"cmacs-card-big-file-title\">\r\n            <span>{{file.title}}</span>\r\n          </div>\r\n          <div class=\"cmacs-card-big-file-date\">\r\n            <span>{{file.created_at}}</span>\r\n          </div>\r\n        </div>\r\n        <div class=\"cmacs-card-big-file-description-right-panel\">\r\n          <div class=\"cmacs-card-big-file-extra\" *ngIf=\"extra\">\r\n            <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'video'\">\r\n      <div class=\"cmacs-card-video-player-wrapper\">\r\n        <cmacs-video-player [sources]=\"sources\" (playerReady)=\"onPlayerReady($event)\"></cmacs-video-player>\r\n      </div>\r\n      <div class=\"cmacs-card-video-description\">\r\n        <div class=\"cmacs-card-video-title\">\r\n          <span>{{title}}</span>\r\n        </div>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'file'\">\r\n      <div class=\"cmacs-card-files-icon-wrapper\">\r\n        <a><i class=\"{{cmacsIcon}}\"></i></a>\r\n      </div>\r\n      <div class=\"cmacs-card-label\">\r\n        <span>{{title}}</span>\r\n      </div>\r\n      <div class=\"cmacs-card-file-extra\" *ngIf=\"extra\">\r\n        <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'measure'\">\r\n      <div class=\"cmacs-card-measure-icon-wrapper\">\r\n        <a><i nz-icon [type]=\"cmacsIcon\"></i></a>\r\n      </div>\r\n      <div class=\"cmacs-card-label\">\r\n        <span>{{title}}</span>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'none' || cmacsType === 'selection' || cmacsType === 'action'\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'team'\">\r\n      <div style=\"margin-bottom: 20px; display: inline-flex\">\r\n        <div class=\"team-person-card\"\r\n             *ngFor=\"let person of team; index as i\"\r\n             [style.backgroundColor]=\"!person.image ? '#ffa800' : '#c7f5ff'\"\r\n             [style.display]=\"(i >= 4 && team.length > 5) ? 'none' : 'inline-flex' \"\r\n        >\r\n          <img width=\"30px\" height=\"30px\" *ngIf=\"person.image\" [src]=\"person.image\">\r\n          <span *ngIf=\"!person.image\">{{getInitials(person.name)}}</span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"plus-team-card\" *ngIf=\"team.length > 5\">+{{team.length - 4}}</div>\r\n      <ng-content select=\"[cmacs-action-panel]\"></ng-content>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'project'\">\r\n      <div class=\"project-image\"\r\n        *ngIf=\"project.projectImage !== ''\"\r\n        [style.background-image]=\"getBackgroundImage()\"\r\n      ></div>\r\n      <div *ngIf=\"project.projectImage === ''\" class=\"cmacs-proj-card-div-Logo\">\r\n        <span class=\"cmacs-proj-card-text-Logo\">{{getInitials(project.name)}}</span>\r\n      </div>\r\n      <cmacs-tag class=\"project-status\" [cmacsGridType]=\"project.statusTag\">{{project.status}}</cmacs-tag>\r\n      <div class=\"project-dates-wrapper\">\r\n        <span class=\"project-dates-title\">Project Dates</span>\r\n        <span class=\"project-dates project-dates-date\">{{project.startDate}}</span>\r\n        <a><i nz-icon [type]=\"'arrow-right'\" class=\"project-dates\" style=\"font-size: 16px;\"></i></a>\r\n        <span class=\"project-dates project-dates-date\">{{project.endDate}}</span>\r\n      </div>\r\n\r\n      <div class=\"project-card-progress-bar\">\r\n        <div class=\"project-card-progress-bar-inner\" [style.width]=\"project.completion\"></div>\r\n      </div>\r\n      <div class=\"project-manager-details\">\r\n        <img *ngIf=\"project.teamLead.avatar\"  class=\"manager-avatar\" width=\"30px\" height=\"30px\" [src]=\"project.teamLead.avatar\">\r\n        <span *ngIf=\"!project.teamLead.avatar || project.teamLead.avatar === ''\" class=\"cmacs-proj-avatar-text\">{{getInitials(project.teamLead.name)}}</span>\r\n        <div class=\"project-manager-metadata\">\r\n          <div class=\"manager-name\"> {{ (project.teamLead.name.length > 20)? (project.teamLead.name | slice:0:20)+'...':(project.teamLead.name) }}</div>\r\n          <div class=\"manager-charge\">{{ (project.teamLead.charge.length > 20)? (project.teamLead.charge | slice:0:20)+'...':(project.teamLead.charge) }}</div>\r\n        </div>\r\n        <a (click)=\"openMail($event)\" style=\"float: right;\"><i class=\"iconUISmall-Message project-email-icon\"></i></a>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'folder'\">\r\n      <div class=\"card-files-folders-icon-wrapper\">\r\n        <a><i nz-icon [type]=\"folderIcon\"></i></a>\r\n      </div>\r\n      <div #titleContainer (click)=\"toggleEdit(titleContainer)\" class=\"card-files-folders-label\">\r\n        <span #name (keydown.enter)=\"handleEnter($event, titleContainer, name)\" (keyup)=\"handleEdit($event, name)\"\r\n              [attr.contentEditable]=\"isEditable\"\r\n        >{{title}}</span>\r\n      </div>\r\n      <div class=\"card-files-folder-extra\" *ngIf=\"extra\">\r\n        <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n      </div>\r\n    </ng-container>\r\n\r\n  </ng-container>\r\n  <cmacs-card-loading *ngIf=\"loading\"></cmacs-card-loading>\r\n</div>\r\n<ul class=\"ant-card-actions\" *ngIf=\"actions.length\">\r\n  <li *ngFor=\"let action of actions\" [style.width.%]=\"100 / actions.length\">\r\n    <span><ng-template [ngTemplateOutlet]=\"action\"></ng-template></span>\r\n  </li>\r\n</ul>\r\n\r\n",
+                        template: "<ng-template #content><ng-content></ng-content></ng-template>\r\n\r\n<div class=\"ant-card-head\" *ngIf=\"(title || extra || tab ) && (cmacsType === 'none' || cmacsType === 'team' || cmacsType === 'project')\">\r\n  <div class=\"ant-card-head-wrapper\">\r\n    <div class=\"ant-card-head-title\" *ngIf=\"title\">\r\n      <ng-container *cmacsStringTemplateOutlet=\"title\">{{ title }}</ng-container>\r\n    </div>\r\n    <div class=\"ant-card-extra\" *ngIf=\"extra\">\r\n      <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n    </div>\r\n  </div>\r\n  <ng-container *ngIf=\"tab\">\r\n    <ng-template [ngTemplateOutlet]=\"tab.template\"></ng-template>\r\n  </ng-container>\r\n</div>\r\n\r\n<div class=\"ant-card-cover\" *ngIf=\"cover || cmacsType === 'selection' || cmacsType === 'action'\">\r\n  <ng-template [ngTemplateOutlet]=\"cover\"></ng-template>\r\n  <ng-container *ngIf=\"cmacsType === 'selection'\">\r\n    <label cmacs-radio [(ngModel)]=\"selected\" (ngModelChange)=\"checkRadio()\" [disabled]=\"disabled\">{{labelTitle}}</label>\r\n    <ng-template [ngTemplateOutlet]=\"body\"></ng-template>\r\n  </ng-container>\r\n</div>\r\n<div class=\"ant-card-body\" [ngStyle]=\"bodyStyle\">\r\n  <ng-container *ngIf=\"!loading\">\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'todo'\">\r\n      <div *ngIf=\"todo.projectImage\" class=\"cmacs-todo-card-project-img\">\r\n        <img [src]=\"todo.projectImage\">\r\n      </div>\r\n      <!-- <div [style.backgroundColor]=\"todo.stateColor\" class=\"cmacs-todo-card-upper-line\"></div> -->\r\n      <div class=\"cmacs-todo-card-title\">\r\n        <span>{{todo.title}}</span>\r\n      </div>\r\n      <div *ngIf=\"todo.project\" class=\"cmacs-todo-card-project\">\r\n        <span>{{todo.project}}</span>\r\n      </div>\r\n      <div *ngIf=\"todo.date\" class=\"cmacs-todo-card-date\">\r\n        <span>{{todo.date}}</span>\r\n      </div>\r\n      <div class=\"cmacs-todo-card-action\">\r\n        <div *ngIf=\"todo.attachments\" class=\"cmacs-todo-card-attachments\">\r\n          <span>{{todo.attachments}}</span>\r\n          <a><i class=\"iconUILarge-Attached\"></i></a>\r\n        </div>\r\n        <div *ngIf=\"todo.comments\" class=\"cmacs-todo-card-comments\">\r\n          <span>{{todo.comments}}</span>\r\n          <a><i class=\"iconUILarge-Comments\"></i></a>\r\n        </div>\r\n\r\n        <div *ngIf=\"!todo.isTeam\" class=\"cmacs-todo-card-person\">\r\n          <a><i class=\"iconCreation-User\"></i></a>\r\n        </div>\r\n\r\n        <div *ngIf=\"todo.isTeam\" class=\"cmacs-todo-card-team\">\r\n          <a><i class=\"iconUILarge-Team\"></i></a>\r\n        </div>\r\n\r\n        <div *ngIf=\"todo.hasPriorityFlag\" class=\"cmacs-todo-card-priority\">\r\n          <a [style.color]=\"todo.stateColor\"><i nz-icon [type]=\"'flag'\"></i></a>\r\n        </div>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'big-file'\">\r\n      <div class=\"cmacs-card-big-file-meta\">\r\n        <div class=\"cmacs-card-big-file-icon-wrapper\">\r\n          <a><i class=\"{{cmacsIcon}}\"></i></a>\r\n        </div>\r\n        <div class=\"cmacs-card-big-file-extension-wrapper\">\r\n          <span>{{file.extension}}</span>\r\n        </div>\r\n      </div>\r\n      <div class=\"cmacs-card-big-file-description\">\r\n        <div class=\"cmacs-card-big-file-description-left-panel\">\r\n          <div class=\"cmacs-card-big-file-title\">\r\n            <span>{{file.title}}</span>\r\n          </div>\r\n          <div class=\"cmacs-card-big-file-date\">\r\n            <span>{{file.created_at}}</span>\r\n          </div>\r\n        </div>\r\n        <div class=\"cmacs-card-big-file-description-right-panel\">\r\n          <div class=\"cmacs-card-big-file-extra\" *ngIf=\"extra\">\r\n            <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'video'\">\r\n      <div class=\"cmacs-card-video-player-wrapper\">\r\n        <cmacs-video-player [sources]=\"sources\" (playerReady)=\"onPlayerReady($event)\"></cmacs-video-player>\r\n      </div>\r\n      <div class=\"cmacs-card-video-description\">\r\n        <div class=\"cmacs-card-video-title\">\r\n          <span>{{title}}</span>\r\n        </div>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'file'\">\r\n      <div class=\"cmacs-card-files-icon-wrapper\">\r\n        <a><i class=\"{{cmacsIcon}}\"></i></a>\r\n      </div>\r\n      <div class=\"cmacs-card-label\">\r\n        <span>{{title}}</span>\r\n      </div>\r\n      <div class=\"cmacs-card-file-extra\" *ngIf=\"extra\">\r\n        <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'measure'\">\r\n      <div class=\"cmacs-card-measure-icon-wrapper\">\r\n        <a><i nz-icon [type]=\"cmacsIcon\"></i></a>\r\n      </div>\r\n      <div class=\"cmacs-card-label\">\r\n        <span>{{title}}</span>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'none' || cmacsType === 'selection' || cmacsType === 'action'\">\r\n      <ng-template [ngTemplateOutlet]=\"content\"></ng-template>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'team'\">\r\n      <ng-container *ngIf=\"useDefaultContent\">\r\n        <ng-template [ngTemplateOutlet]=\"content\"></ng-template>\r\n      </ng-container>\r\n      <ng-container *ngIf=\"!useDefaultContent\">\r\n        <div style=\"margin-bottom: 20px; display: inline-flex\">\r\n          <div class=\"team-person-card\"\r\n               *ngFor=\"let person of team; index as i\"\r\n               [style.backgroundColor]=\"!person.image ? '#ffa800' : '#c7f5ff'\"\r\n               [style.display]=\"(i >= 4 && team.length > 5) ? 'none' : 'inline-flex' \"\r\n          >\r\n            <img width=\"30px\" height=\"30px\" *ngIf=\"person.image\" [src]=\"person.image\">\r\n            <span *ngIf=\"!person.image\">{{getInitials(person.name)}}</span>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"plus-team-card\" *ngIf=\"team.length > 5\">+{{team.length - 4}}</div>\r\n        <ng-content select=\"[cmacs-action-panel]\"></ng-content>\r\n      </ng-container>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'project'\">\r\n      <div class=\"project-image\"\r\n        *ngIf=\"project.projectImage !== ''\"\r\n        [style.background-image]=\"getBackgroundImage()\"\r\n      ></div>\r\n      <div *ngIf=\"project.projectImage === ''\" class=\"cmacs-proj-card-div-Logo\">\r\n        <span class=\"cmacs-proj-card-text-Logo\">{{getInitials(project.name)}}</span>\r\n      </div>\r\n      <cmacs-tag class=\"project-status\" [cmacsGridType]=\"project.statusTag\">{{project.status}}</cmacs-tag>\r\n      <div class=\"project-dates-wrapper\">\r\n        <span class=\"project-dates-title\">Project Dates</span>\r\n        <span class=\"project-dates project-dates-date\">{{project.startDate}}</span>\r\n        <a><i nz-icon [type]=\"'arrow-right'\" class=\"project-dates\" style=\"font-size: 16px;\"></i></a>\r\n        <span class=\"project-dates project-dates-date\">{{project.endDate}}</span>\r\n      </div>\r\n\r\n      <div class=\"project-card-progress-bar\">\r\n        <div class=\"project-card-progress-bar-inner\" [style.width]=\"project.completion\"></div>\r\n      </div>\r\n      <div class=\"project-manager-details\">\r\n        <img *ngIf=\"project.teamLead.avatar\"  class=\"manager-avatar\" width=\"30px\" height=\"30px\" [src]=\"project.teamLead.avatar\">\r\n        <span *ngIf=\"!project.teamLead.avatar || project.teamLead.avatar === ''\" class=\"cmacs-proj-avatar-text\">{{getInitials(project.teamLead.name)}}</span>\r\n        <div class=\"project-manager-metadata\">\r\n          <div class=\"manager-name\"> {{ (project.teamLead.name.length > 20)? (project.teamLead.name | slice:0:20)+'...':(project.teamLead.name) }}</div>\r\n          <div class=\"manager-charge\">{{ (project.teamLead.charge.length > 20)? (project.teamLead.charge | slice:0:20)+'...':(project.teamLead.charge) }}</div>\r\n        </div>\r\n        <a (click)=\"openMail($event)\" style=\"float: right;\"><i class=\"iconUISmall-Message project-email-icon\"></i></a>\r\n      </div>\r\n    </ng-container>\r\n\r\n    <ng-container *ngIf=\"cmacsType === 'folder'\">\r\n      <ng-container *ngIf=\"useDefaultContent\">\r\n        <ng-template [ngTemplateOutlet]=\"content\"></ng-template>\r\n      </ng-container>\r\n      <ng-container *ngIf=\"!useDefaultContent\">\r\n        <div class=\"card-files-folders-icon-wrapper\">\r\n          <a><i nz-icon [type]=\"folderIcon\"></i></a>\r\n        </div>\r\n        <div #titleContainer (click)=\"toggleEdit(titleContainer)\" class=\"card-files-folders-label\">\r\n          <span #name (keydown.enter)=\"handleEnter($event, titleContainer, name)\" (keyup)=\"handleEdit($event, name)\"\r\n                [attr.contentEditable]=\"isEditable\"\r\n          >{{title}}</span>\r\n        </div>\r\n        <div class=\"card-files-folder-extra\" *ngIf=\"extra\">\r\n          <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n        </div>\r\n      </ng-container>\r\n    </ng-container>\r\n\r\n  </ng-container>\r\n  <cmacs-card-loading *ngIf=\"loading\"></cmacs-card-loading>\r\n</div>\r\n<ul class=\"ant-card-actions\" *ngIf=\"actions.length\">\r\n  <li *ngFor=\"let action of actions\" [style.width.%]=\"100 / actions.length\">\r\n    <span><ng-template [ngTemplateOutlet]=\"action\"></ng-template></span>\r\n  </li>\r\n</ul>\r\n\r\n",
                         host: {
                             '[class.ant-card-loading]': 'loading',
                             '[class.ant-card-bordered]': 'bordered',
@@ -12043,6 +12046,7 @@
             loading: [{ type: i0.Input }],
             disabled: [{ type: i0.Input }],
             hoverable: [{ type: i0.Input }],
+            useDefaultContent: [{ type: i0.Input }],
             sources: [{ type: i0.Input }],
             playerReady: [{ type: i0.Output }],
             bodyStyle: [{ type: i0.Input }],
@@ -12098,6 +12102,10 @@
             i2.InputBoolean(),
             __metadata("design:type", Object)
         ], CmacsCardComponent.prototype, "hoverable", void 0);
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsCardComponent.prototype, "useDefaultContent", void 0);
         return CmacsCardComponent;
     }());
 
@@ -27460,6 +27468,311 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    var CmacsTimelineDatepickerComponent = /** @class */ (function () {
+        function CmacsTimelineDatepickerComponent(renderer, nzUpdateHostClassService, elementRef, cdr) {
+            this.renderer = renderer;
+            this.nzUpdateHostClassService = nzUpdateHostClassService;
+            this.elementRef = elementRef;
+            this.cdr = cdr;
+            this.indexToSelect = 0;
+            this.el = this.elementRef.nativeElement;
+            this._selectedIndex = null;
+            this._date = new Date();
+            this.gutter = 2;
+            this.mode = 'week';
+            this.onNextClick = new i0.EventEmitter();
+            this.onPrevClick = new i0.EventEmitter();
+            this.selectChange = new i0.EventEmitter(true);
+            this.selectedIndexChange = new i0.EventEmitter();
+            this.dateChange = new i0.EventEmitter();
+            this.modeOptions = [{ title: 'Week', selected: true }, { title: 'Month', selected: false }, { title: 'Quarter', selected: false }];
+        }
+        Object.defineProperty(CmacsTimelineDatepickerComponent.prototype, "selectedIndex", {
+            get: /**
+             * @return {?}
+             */ function () {
+                return this._selectedIndex;
+            },
+            set: /**
+             * @param {?} value
+             * @return {?}
+             */ function (value) {
+                this.indexToSelect = value ? i2.toNumber(value, null) : null;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(CmacsTimelineDatepickerComponent.prototype, "date", {
+            get: /**
+             * @return {?}
+             */ function () {
+                return this._date;
+            },
+            set: /**
+             * @param {?} value
+             * @return {?}
+             */ function (value) {
+                this._date = value;
+                this.selectedIndex = dateFns.getISOWeek(value) - 1;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        /**
+         * @param {?} result
+         * @return {?}
+         */
+        CmacsTimelineDatepickerComponent.prototype.getWeek = /**
+         * @param {?} result
+         * @return {?}
+         */
+            function (result) {
+                this.date = result;
+                this.dateChange.emit(result);
+                console.log('weeks:  ', dateFns.getISOWeek(result));
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTimelineDatepickerComponent.prototype.setClassMap = /**
+         * @return {?}
+         */
+            function () {
+                var _a;
+                this.nzUpdateHostClassService.updateHostClass(this.el, (_a = {},
+                    _a["ant-tabs"] = true,
+                    _a["ant-tabs-line"] = true,
+                    _a));
+            };
+        /**
+         * @param {?} index
+         * @param {?} disabled
+         * @return {?}
+         */
+        CmacsTimelineDatepickerComponent.prototype.clickLabel = /**
+         * @param {?} index
+         * @param {?} disabled
+         * @return {?}
+         */
+            function (index, disabled) {
+                if (!disabled) {
+                    this.selectedIndex = index;
+                    //this.listOfNzTabComponent[index].click.emit();
+                }
+            };
+        /**
+         * @param {?} index
+         * @return {?}
+         */
+        CmacsTimelineDatepickerComponent.prototype.createChangeEvent = /**
+         * @param {?} index
+         * @return {?}
+         */
+            function (index) {
+                /** @type {?} */
+                var event = new TabChangeEvent();
+                event.index = index;
+                if (this.listOfNzTabComponent && this.listOfNzTabComponent.length) {
+                    event.tab = this.listOfNzTabComponent[index];
+                    this.listOfNzTabComponent.forEach(( /**
+                     * @param {?} item
+                     * @param {?} i
+                     * @return {?}
+                     */function (item, i) {
+                        if (i !== index) {
+                            item.deselect.emit();
+                        }
+                    }));
+                    event.tab.select.emit();
+                }
+                return event;
+            };
+        /** Clamps the given index to the bounds of 0 and the tabs length. */
+        /**
+         * Clamps the given index to the bounds of 0 and the tabs length.
+         * @private
+         * @param {?} index
+         * @return {?}
+         */
+        CmacsTimelineDatepickerComponent.prototype.clampTabIndex = /**
+         * Clamps the given index to the bounds of 0 and the tabs length.
+         * @private
+         * @param {?} index
+         * @return {?}
+         */
+            function (index) {
+                // Note the `|| 0`, which ensures that values like NaN can't get through
+                // and which would otherwise throw the component into an infinite loop
+                // (since Math.max(NaN, 0) === NaN).
+                return Math.min(this.listOfNzTabComponent.length - 1, Math.max(index || 0, 0));
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTimelineDatepickerComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+                this.setClassMap();
+                this.listOfNzTabComponent = this.getValuesSlider();
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTimelineDatepickerComponent.prototype.getValuesSlider = /**
+         * @return {?}
+         */
+            function () {
+                /** @type {?} */
+                var temp = [];
+                if (this.mode === 'week') {
+                    /** @type {?} */
+                    var length_1 = dateFns.getISOWeeksInYear(this.date);
+                    for (var i = 0; i <= length_1; i++) {
+                        temp.push({ title: this.formatWeekNumber(i + 1) });
+                    }
+                    return temp;
+                }
+                else if (this.mode === 'month') {
+                    return [{ title: 'Jan' }, { title: 'Feb' }, { title: 'Mar' }, { title: 'Apr' }, { title: 'May' }, { title: 'Jun' },
+                        { title: 'Jul' }, { title: 'Aug' }, { title: 'Sep' }, { title: 'Oct' }, { title: 'Nov' }, { title: 'Dec' }];
+                }
+            };
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        CmacsTimelineDatepickerComponent.prototype.formatWeekNumber = /**
+         * @param {?} value
+         * @return {?}
+         */
+            function (value) {
+                return ("0" + value).slice(-2);
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTimelineDatepickerComponent.prototype.ngAfterContentChecked = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                //this.updateSlider();
+                if (this.listOfNzTabComponent && this.listOfNzTabComponent.length) {
+                    // Don't clamp the `indexToSelect` immediately in the setter because it can happen that
+                    // the amount of tabs changes before the actual change detection runs.
+                    /** @type {?} */
+                    var indexToSelect_1 = (this.indexToSelect = this.clampTabIndex(this.indexToSelect));
+                    // If there is a change in selected index, emit a change event. Should not trigger if
+                    // the selected index has not yet been initialized.
+                    if (this._selectedIndex !== indexToSelect_1) {
+                        /** @type {?} */
+                        var isFirstRun_1 = this._selectedIndex == null;
+                        /*if (!isFirstRun) {
+                          this.selectChange.emit(this.createChangeEvent(indexToSelect));
+                        }*/
+                        // Changing these values after change detection has run
+                        // since the checked content may contain references to them.
+                        Promise.resolve().then(( /**
+                         * @return {?}
+                         */function () {
+                            _this.listOfNzTabComponent.forEach(( /**
+                             * @param {?} tab
+                             * @param {?} index
+                             * @return {?}
+                             */function (tab, index) { return (tab.isActive = index === indexToSelect_1); }));
+                            if (!isFirstRun_1) {
+                                _this.selectedIndexChange.emit(indexToSelect_1);
+                            }
+                        }));
+                    }
+                    // Setup the position for each tab and optionally setup an origin on the next selected tab.
+                    this.listOfNzTabComponent.forEach(( /**
+                     * @param {?} tab
+                     * @param {?} index
+                     * @return {?}
+                     */function (tab, index) {
+                        tab.position = index - indexToSelect_1;
+                        // If there is already a selected tab, then set up an origin for the next selected tab
+                        // if it doesn't have one already.
+                        if (_this._selectedIndex != null && tab.position === 0 && !tab.origin) {
+                            tab.origin = indexToSelect_1 - _this._selectedIndex;
+                        }
+                    }));
+                    if (this._selectedIndex !== indexToSelect_1) {
+                        this._selectedIndex = indexToSelect_1;
+                        this.cdr.markForCheck();
+                    }
+                }
+            };
+        /**
+         * @param {?} index
+         * @return {?}
+         */
+        CmacsTimelineDatepickerComponent.prototype.customSelect = /**
+         * @param {?} index
+         * @return {?}
+         */
+            function (index) {
+                this.modeOptions.forEach(( /**
+                 * @param {?} option
+                 * @return {?}
+                 */function (option) {
+                    option.selected = false;
+                }));
+                this.modeOptions[index].selected = true;
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTimelineDatepickerComponent.prototype.getSelected = /**
+         * @return {?}
+         */
+            function () {
+                return this.modeOptions.filter(( /**
+                 * @param {?} item
+                 * @return {?}
+                 */function (item) { return item.selected; }));
+            };
+        CmacsTimelineDatepickerComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-timeline-datepicker',
+                        exportAs: 'cmacsTimelineDatepicker',
+                        template: "<div class=\"cmacs-timeline-item cmacs-timeline-item-dropdown\">\r\n  <cmacs-dropdown [trigger]=\"'click'\" [cmacsOpen]=\"true\" style=\"display: inline-flex\">\r\n    <a cmacs-dropdown>\r\n      <div class=\"cmacs-open-dropdown-wrapper\" style=\"width: 80px;\">\r\n        {{getSelected().length ? getSelected()[0].title : 'Select'}} <i class=\"iconArrowLarge-Solid-Down\"></i>\r\n      </div>\r\n    </a>\r\n\r\n    <ul cmacs-menu style=\"min-width: 125px\">\r\n      <li *ngFor=\"let option of modeOptions; index as i\" cmacs-menu-item (click)=\"customSelect(i)\">\r\n        <i [style.opacity]=\"option.selected ? 1 : 0\" nz-icon type=\"check\"></i>\r\n        <span>{{option.title}}</span>\r\n      </li>\r\n    </ul>\r\n  </cmacs-dropdown>\r\n</div>\r\n\r\n<div class=\"cmacs-timeline-item\" style=\"margin-right: 10px; max-width: calc(100% - 160px - 16px);\">\r\n  <div nz-tabs-nav\r\n       role=\"tablist\"\r\n       tabindex=\"0\"\r\n       class=\"ant-tabs-bar ant-tabs-top-bar cmacs-timeline-datepicker-slider\"\r\n       [nzType]=\"'line'\"\r\n       [nzShowPagination]=\"true\"\r\n       [nzPositionMode]=\"'horizontal'\"\r\n       [nzAnimated]=\"true\"\r\n       [nzHideBar]=\"true\"\r\n       [selectedIndex]=\"selectedIndex\"\r\n       (nzOnNextClick)=\"onNextClick.emit()\"\r\n       (nzOnPrevClick)=\"onPrevClick.emit()\">\r\n    <div nz-tab-label\r\n         role=\"tab\"\r\n         [style.margin-right.px]=\"gutter\"\r\n         class=\"cmacs-timeline-datepicker-label\"\r\n         [class.ant-tabs-tab-active]=\"(selectedIndex == i)\"\r\n         [disabled]=\"tab.disabled\"\r\n         (click)=\"clickLabel(i,tab.disabled)\"\r\n         *ngFor=\"let tab of listOfNzTabComponent; let i = index\">\r\n      <ng-container *cmacsStringTemplateOutlet=\"tab.title\">{{ tab.title }}</ng-container>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"cmacs-timeline-item\">\r\n  <cmacs-week-picker [(ngModel)]=\"date\" (ngModelChange)=\"getWeek($event)\" placeHolder=\"\"></cmacs-week-picker>\r\n</div>\r\n",
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        encapsulation: i0.ViewEncapsulation.None,
+                        preserveWhitespaces: false,
+                        providers: [i2.NzUpdateHostClassService],
+                        styles: [".ant-tabs-tab{padding:5px 9px!important;border-radius:3px;font-family:Roboto;font-size:14px;font-weight:500;font-stretch:normal;font-style:normal;line-height:1.29;letter-spacing:normal;color:#656c79}.cmacs-timeline-datepicker-label.ant-tabs-tab-active{background-color:#2a7cff;color:#fff}.ant-tabs-bar{border-bottom:none;margin-bottom:0}.cmacs-timeline-item{display:inline-block}.cmacs-timeline-item-dropdown{position:relative;top:-7px;margin:0 20px}.cmacs-timeline-item-dropdown cmacs-dropdown{font-family:Roboto;font-size:14px;font-weight:500;font-stretch:normal;font-style:normal;line-height:1.29;letter-spacing:normal;color:#3b3f46}.cmacs-timeline-datepicker-label.ant-tabs-tab-active:hover{color:#fff}.cmacs-timeline-item cmacs-picker .ant-calendar-picker-input{width:0;display:inline-block;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;border:none;height:0}.cmacs-timeline-item cmacs-picker .ant-calendar-picker-input:focus,.cmacs-timeline-item cmacs-picker .ant-calendar-picker-input:hover{border:none;box-shadow:none}.cmacs-timeline-item cmacs-picker .ant-calendar-picker:hover .ant-calendar-picker-clear{opacity:0}.cmacs-timeline-item cmacs-picker .ant-calendar-picker-icon{font-size:16px;position:relative;top:-7px}.cmacs-timeline-item cmacs-picker .ant-calendar-picker-icon:hover{cursor:pointer}.cmacs-timeline-item-dropdown cmacs-dropdown .cmacs-open-dropdown-wrapper{border:none;width:auto!important;color:#3b3f46}.cmacs-timeline-item-dropdown cmacs-dropdown .cmacs-open-dropdown-wrapper i{margin-left:10px;color:#3b3f46}.cmacs-timeline-item cmacs-picker .ant-calendar-picker:focus .ant-calendar-picker-input:not(.ant-input-disabled){box-shadow:none}", "\n      cmacs-timeline-datepicker {\n        display: block;\n        border-radius: 3px;\n        box-shadow: 0 3px 7px 0 rgba(59, 63, 70, 0.15);\n        background-color: #ffffff;\n        padding: 7px 0 4px 0 !important;\n      }\n    "]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsTimelineDatepickerComponent.ctorParameters = function () {
+            return [
+                { type: i0.Renderer2 },
+                { type: i2.NzUpdateHostClassService },
+                { type: i0.ElementRef },
+                { type: i0.ChangeDetectorRef }
+            ];
+        };
+        CmacsTimelineDatepickerComponent.propDecorators = {
+            gutter: [{ type: i0.Input }],
+            mode: [{ type: i0.Input }],
+            onNextClick: [{ type: i0.Output }],
+            onPrevClick: [{ type: i0.Output }],
+            selectChange: [{ type: i0.Output }],
+            selectedIndexChange: [{ type: i0.Output }],
+            dateChange: [{ type: i0.Output }],
+            selectedIndex: [{ type: i0.Input }],
+            date: [{ type: i0.Input }]
+        };
+        return CmacsTimelineDatepickerComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
     /** @type {?} */
     var CMACS_COMMENT_CELLS = [
         CmacsCommentActionComponent,
@@ -27475,6 +27788,7 @@
         CmacsComponentsLibModule.decorators = [
             { type: i0.NgModule, args: [{
                         declarations: __spread([
+                            CmacsTimelineDatepickerComponent,
                             CmacsTreeSelectComponent,
                             CmacsPopoverComponent,
                             CmacsPopoverDirective,
@@ -27622,6 +27936,7 @@
                             ngLazyloadImage.LazyLoadImageModule
                         ],
                         exports: __spread([
+                            CmacsTimelineDatepickerComponent,
                             CmacsTooltipDirective,
                             CmacsTreeSelectComponent,
                             CmacsPopoverComponent,
@@ -28216,6 +28531,7 @@
     exports.higherOrderServiceFactory = higherOrderServiceFactory;
     exports.CmacsTreeSelectComponent = CmacsTreeSelectComponent;
     exports.CmacsTreeSelectService = CmacsTreeSelectService;
+    exports.CmacsTimelineDatepickerComponent = CmacsTimelineDatepickerComponent;
     exports.ɵb = AbstractPickerComponent;
     exports.ɵba = CalendarFooterComponent;
     exports.ɵy = CalendarHeaderComponent;

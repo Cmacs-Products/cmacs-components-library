@@ -21,6 +21,7 @@ export declare class CmacsCardComponent implements OnInit {
     loading: boolean;
     disabled: boolean;
     hoverable: boolean;
+    useDefaultContent: boolean;
     sources: Source[];
     playerReady: EventEmitter<VgAPI>;
     bodyStyle: {

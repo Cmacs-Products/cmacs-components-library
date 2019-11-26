@@ -117,3 +117,4 @@ export * from './lib/components/cmacs-popover/cmacs-popover.component';
 export * from './lib/components/cmacs-popover/cmacs-popover.directive';
 export * from './lib/components/cmacs-tree-select/cmacs-tree-select.component';
 export * from './lib/components/cmacs-tree-select/cmacs-tree-select.service';
+export * from './lib/components/cmacs-timeline-datepicker/cmacs-timeline-datepicker.component';
