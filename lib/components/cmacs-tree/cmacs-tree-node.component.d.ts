@@ -1,8 +1,9 @@
 import { ChangeDetectorRef, ElementRef, EventEmitter, NgZone, OnChanges, OnDestroy, OnInit, Renderer2, TemplateRef } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { NzFormatBeforeDropEvent, NzNoAnimationDirective, NzTreeBaseService, NzTreeNode } from 'ng-zorro-antd/core';
+import { NzFormatBeforeDropEvent, NzNoAnimationDirective, NzTreeNode } from 'ng-zorro-antd/core';
+import { CmacsTreeService } from './cmacs-tree.service';
 export declare class CmacsTreeNodeComponent implements OnInit, OnChanges, OnDestroy {
-    nzTreeService: NzTreeBaseService;
+    nzTreeService: CmacsTreeService;
     private ngZone;
     private renderer;
     private elRef;
@@ -106,7 +107,7 @@ export declare class CmacsTreeNodeComponent implements OnInit, OnChanges, OnDest
     handDragEvent(): void;
     isTemplateRef(value: {}): boolean;
     markForCheck(): void;
-    constructor(nzTreeService: NzTreeBaseService, ngZone: NgZone, renderer: Renderer2, elRef: ElementRef, cdr: ChangeDetectorRef, nzNoAnimation?: NzNoAnimationDirective);
+    constructor(nzTreeService: CmacsTreeService, ngZone: NgZone, renderer: Renderer2, elRef: ElementRef, cdr: ChangeDetectorRef, nzNoAnimation?: NzNoAnimationDirective);
     ngOnInit(): void;
     ngOnChanges(): void;
     ngOnDestroy(): void;

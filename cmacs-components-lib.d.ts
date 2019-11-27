@@ -37,5 +37,5 @@ export { CmacsOptionLiComponent as ɵw } from './lib/components/cmacs-select/cma
 export { NzFilterGroupOptionPipe as ɵu, NzFilterOptionPipe as ɵt } from './lib/components/cmacs-select/cmacs-option.pipe';
 export { CmacsSelectUnselectableDirective as ɵx } from './lib/components/cmacs-select/cmacs-select-unselectable.directive';
 export { CmacsSelectService as ɵg } from './lib/components/cmacs-select/cmacs-select.service';
-export { NzTreeService as ɵf } from './lib/components/cmacs-tree/cmacs-tree.service';
+export { CmacsTreeService as ɵf } from './lib/components/cmacs-tree/cmacs-tree.service';
 export { ExcelService as ɵa } from './lib/components/core/services/excel.service';

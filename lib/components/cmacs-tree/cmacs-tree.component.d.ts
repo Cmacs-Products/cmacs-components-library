@@ -2,8 +2,8 @@ import { ChangeDetectorRef, EventEmitter, OnChanges, OnDestroy, OnInit, SimpleCh
 import { ControlValueAccessor } from '@angular/forms';
 import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { NzFormatBeforeDropEvent, NzFormatEmitEvent, NzNoAnimationDirective, NzTreeBase, NzTreeBaseService, NzTreeNode } from 'ng-zorro-antd/core';
-import { NzTreeService } from './cmacs-tree.service';
-export declare function NzTreeServiceFactory(higherOrderService: NzTreeBaseService, treeService: NzTreeService): NzTreeBaseService;
+import { CmacsTreeService } from './cmacs-tree.service';
+export declare function NzTreeServiceFactory(higherOrderService: NzTreeBaseService, treeService: CmacsTreeService): NzTreeBaseService;
 export declare class CmacsTreeComponent extends NzTreeBase implements OnInit, OnDestroy, ControlValueAccessor, OnChanges {
     private cdr;
     noAnimation?: NzNoAnimationDirective;
@@ -92,11 +92,14 @@ export declare class CmacsTreeComponent extends NzTreeBase implements OnInit, On
     registerOnChange(fn: (_: NzTreeNode[]) => void): void;
     registerOnTouched(fn: () => void): void;
     initNzData(value: any[]): void;
-    constructor(nzTreeService: NzTreeBaseService, cdr: ChangeDetectorRef, noAnimation?: NzNoAnimationDirective);
+    constructor(nzTreeService: CmacsTreeService, cdr: ChangeDetectorRef, noAnimation?: NzNoAnimationDirective);
     ngOnInit(): void;
+    onSelectionMultiple(selectedNode: any): void;
     ngOnChanges(changes: {
         [propertyName: string]: SimpleChange;
     }): void;
-    addParent(node: any): void;
+    addParent(node: any, index?: any): void;
     ngOnDestroy(): void;
+    convertTreeToList(root: any, endNode: any, startNode: any, idxs: any): any[];
+    visitNode(node: any, hashMap: any, array: any): void;
 }

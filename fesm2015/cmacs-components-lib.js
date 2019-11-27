@@ -37,7 +37,7 @@ import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMa
 import { addMonths, addYears, endOfMonth, setDay, setMonth, addDays, differenceInCalendarDays, differenceInCalendarMonths, differenceInCalendarWeeks, isSameDay, isSameMonth, isSameYear, isThisMonth, isThisYear, setYear, startOfMonth, startOfWeek, startOfYear, getISOWeeksInYear, getISOWeek } from 'date-fns';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, ComponentFactoryResolver, Injector, NgModule, defineInjectable, inject, ApplicationRef, INJECTOR, Type } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, Pipe, InjectionToken, ViewChildren, ComponentFactoryResolver, Injector, NgModule, defineInjectable, inject, ApplicationRef, INJECTOR, Type } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -974,7 +974,7 @@ CmacsInputNumberComponent.decorators = [
                     '[class.ant-input-number-sm]': `size === 'small'`,
                     '[class.ant-input-number-disabled]': 'disabled'
                 },
-                styles: [".ant-input-number-handler-wrap{opacity:1!important;border:none}.ant-input-number-handler-down{border:none}.ant-input-number-handler-down-inner svg,.ant-input-number-handler-up-inner svg{font-size:18px;color:#bec4cd}.ant-input-number-handler-down-inner{margin-top:-10px}.ant-input-number{height:34px;border:1px solid #dee0e5;color:#acb3bf;box-shadow:none;outline:0;border-radius:3px;width:100%}.ant-input-number:focus-within{color:#656c79;border:1px solid #dee0e5;box-shadow:none}.ant-input-number:hover{border:1px solid #bec4cd;box-shadow:none}.ant-input-number:hover .ant-input-number-handler-down-inner svg,.ant-input-number:hover .ant-input-number-handler-up-inner svg{color:#656c79;box-shadow:none}.ant-input-number:focus-within .ant-input-number-handler-down-inner svg,.ant-input-number:focus-within .ant-input-number-handler-up-inner svg{color:#656c79;box-shadow:none}.ant-input-number-handler-down-inner svg:hover,.ant-input-number-handler-up-inner svg:hover{color:#2a7cff!important}.ant-input-number-disabled{background-color:#f6f7fb!important;border-color:#dee0e5;cursor:not-allowed}.ant-input-number-disabled:hover{border-color:#dee0e5}.ant-input-number-disabled .ant-input-number-handler-wrap{display:inherit;background-color:#f6f7fb}.ant-input-number-handler-wrap:hover .ant-input-number-handler{height:50%}.ant-input-number-handler-down:hover,.ant-input-number-handler-up:hover{height:50%!important}.ant-input-number-disabled .ant-input-number-handler-wrap .ant-input-number-handler-down svg,.ant-input-number-disabled .ant-input-number-handler-wrap .ant-input-number-handler-up svg{color:#bec4cd!important}.ant-input-number-disabled .ant-input-number-handler-wrap .ant-input-number-handler:hover{cursor:not-allowed!important}"]
+                styles: [".ant-input-number-handler-wrap{opacity:1!important;border:none}.ant-input-number-handler-down{border:none}.ant-input-number-handler-down-inner svg,.ant-input-number-handler-up-inner svg{font-size:18px;color:#bec4cd}.ant-input-number-handler-down-inner{margin-top:-10px}.ant-input-number:not(.cmacs-datetime-picker-input-number){height:34px;border:1px solid #dee0e5;color:#acb3bf;box-shadow:none;outline:0;border-radius:3px;width:100%}.ant-input-number:focus-within{color:#656c79;border:1px solid #dee0e5;box-shadow:none}.ant-input-number:hover{border:1px solid #bec4cd;box-shadow:none}.ant-input-number:hover .ant-input-number-handler-down-inner svg,.ant-input-number:hover .ant-input-number-handler-up-inner svg{color:#656c79;box-shadow:none}.ant-input-number:focus-within .ant-input-number-handler-down-inner svg,.ant-input-number:focus-within .ant-input-number-handler-up-inner svg{color:#656c79;box-shadow:none}.ant-input-number-handler-down-inner svg:hover,.ant-input-number-handler-up-inner svg:hover{color:#2a7cff!important}.ant-input-number-disabled{background-color:#f6f7fb!important;border-color:#dee0e5;cursor:not-allowed}.ant-input-number-disabled:hover{border-color:#dee0e5}.ant-input-number-disabled .ant-input-number-handler-wrap{display:inherit;background-color:#f6f7fb}.ant-input-number-handler-wrap:hover .ant-input-number-handler{height:50%}.ant-input-number-handler-down:hover,.ant-input-number-handler-up:hover{height:50%!important}.ant-input-number-disabled .ant-input-number-handler-wrap .ant-input-number-handler-down svg,.ant-input-number-disabled .ant-input-number-handler-wrap .ant-input-number-handler-up svg{color:#bec4cd!important}.ant-input-number-disabled .ant-input-number-handler-wrap .ant-input-number-handler:hover{cursor:not-allowed!important}"]
             }] }
 ];
 /** @nocollapse */
@@ -6133,9 +6133,13 @@ __decorate([
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
-class NzTreeService extends NzTreeBaseService {
+class CmacsTreeService extends NzTreeBaseService {
+    constructor() {
+        super(...arguments);
+        this.nzMultiple = false;
+    }
 }
-NzTreeService.decorators = [
+CmacsTreeService.decorators = [
     { type: Injectable }
 ];
 
@@ -6221,7 +6225,7 @@ class CmacsTreeComponent extends NzTreeBase {
      */
     set nzMultiple(value) {
         this._nzMultiple = toBoolean(value);
-        this.nzTreeService.isMultiple = toBoolean(value);
+        ((/** @type {?} */ (this.nzTreeService))).nzMultiple = toBoolean(value);
     }
     /**
      * @return {?}
@@ -6445,8 +6449,41 @@ class CmacsTreeComponent extends NzTreeBase {
                 case 'dragend':
                     this.nzOnDragEnd.emit(data);
                     break;
+                case 'selectedMultiple':
+                    this.onSelectionMultiple(data);
+                    break;
             }
         }));
+    }
+    /**
+     * @param {?} selectedNode
+     * @return {?}
+     */
+    onSelectionMultiple(selectedNode) {
+        /** @type {?} */
+        let flatNodesList = [];
+        /** @type {?} */
+        let idxs = [];
+        /** @type {?} */
+        const nodesSelected = this.nzTreeService.getSelectedNodeList();
+        /** @type {?} */
+        const nodesSelectedCount = nodesSelected.length;
+        this.nzNodes.forEach((/**
+         * @param {?} node
+         * @return {?}
+         */
+        node => {
+            /** @type {?} */
+            let array = this.convertTreeToList(node, selectedNode.node, nodesSelected[nodesSelectedCount - 1], idxs);
+            flatNodesList = flatNodesList.concat(array);
+        }));
+        /** @type {?} */
+        let i = idxs[0];
+        for (i; i <= idxs[1]; i++) {
+            if (flatNodesList[i].isSelectable && !flatNodesList[i].isDisabled) {
+                flatNodesList[i].isSelected = true;
+            }
+        }
     }
     /**
      * @param {?} changes
@@ -6457,17 +6494,24 @@ class CmacsTreeComponent extends NzTreeBase {
             this.nzTreeService.isCheckStrictly = toBoolean(changes.nzCheckStrictly.currentValue);
         }
         if (changes.nzMultiple) {
-            this.nzTreeService.isMultiple = toBoolean(changes.nzMultiple.currentValue);
+            this._nzMultiple = toBoolean(changes.nzMultiple.currentValue);
+            ((/** @type {?} */ (this.nzTreeService))).nzMultiple = toBoolean(changes.nzMultiple.currentValue);
         }
     }
     /**
      * @param {?} node
+     * @param {?=} index
      * @return {?}
      */
-    addParent(node) {
+    addParent(node, index = null) {
         /** @type {?} */
         let parent = this.coerceTreeNodes(node);
-        this.nzTreeService.rootNodes.push(...parent);
+        if (index) {
+            this.nzTreeService.rootNodes.splice(index, 0, ...parent);
+        }
+        else {
+            this.nzTreeService.rootNodes.push(...parent);
+        }
         this.cdr.detectChanges();
     }
     /**
@@ -6476,6 +6520,48 @@ class CmacsTreeComponent extends NzTreeBase {
     ngOnDestroy() {
         this.destroy$.next();
         this.destroy$.complete();
+    }
+    /**
+     * @param {?} root
+     * @param {?} endNode
+     * @param {?} startNode
+     * @param {?} idxs
+     * @return {?}
+     */
+    convertTreeToList(root, endNode, startNode, idxs) {
+        /** @type {?} */
+        let stack = [];
+        /** @type {?} */
+        let array = [];
+        /** @type {?} */
+        let hashMap = {};
+        stack.push(root);
+        while (stack.length !== 0) {
+            /** @type {?} */
+            let node = stack.pop();
+            this.visitNode(node, hashMap, array);
+            if (endNode.key === node.key || startNode.key === node.key) {
+                idxs.push(array.length - 1);
+            }
+            if (node.children.length) {
+                for (let i = node.children.length - 1; i >= 0; i--) {
+                    stack.push(node.children[i]);
+                }
+            }
+        }
+        return array;
+    }
+    /**
+     * @param {?} node
+     * @param {?} hashMap
+     * @param {?} array
+     * @return {?}
+     */
+    visitNode(node, hashMap, array) {
+        if (!hashMap[node.key]) {
+            hashMap[node.key] = true;
+            array.push(node);
+        }
     }
 }
 CmacsTreeComponent.decorators = [
@@ -6486,11 +6572,11 @@ CmacsTreeComponent.decorators = [
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 template: "<ul\r\n  role=\"tree\"\r\n  unselectable=\"on\"\r\n  [ngClass]=\"classMap\">\r\n  <ng-container *ngFor=\"let node of nzNodes; index as i\">\r\n    <cmacs-tree-node\r\n      [treeNode]=\"node\"\r\n      [index]=\"i\"\r\n      [selectMode]=\"selectMode\"\r\n      [showLine]=\"showLine\"\r\n      [expandedIcon]=\"expandedIcon\"\r\n      [inlineEdit]=\"inlineEdit\"\r\n      [draggable]=\"draggable\"\r\n      [checkable]=\"checkable\"\r\n      [showExpand]=\"showExpand\"\r\n      [asyncData]=\"asyncData\"\r\n      [searchValue]=\"searchValue\"\r\n      [hideUnMatched]=\"hideUnMatched\"\r\n      [beforeDrop]=\"beforeDrop\"\r\n      [expandAll]=\"expandAll\"\r\n      [defaultExpandAll]=\"defaultExpandAll\"\r\n      [showIcon]=\"showIcon\"\r\n      [treeTemplate]=\"treeTemplate\"\r\n      (onaddchild)=\"onaddchildevt($event)\"\r\n      [noAnimation]=\"noAnimation?.nzNoAnimation\">\r\n    </cmacs-tree-node>\r\n  </ng-container>\r\n</ul>\r\n",
                 providers: [
-                    NzTreeService,
+                    CmacsTreeService,
                     {
                         provide: NzTreeBaseService,
                         useFactory: NzTreeServiceFactory,
-                        deps: [[new SkipSelf(), new Optional(), NzTreeHigherOrderServiceToken], NzTreeService]
+                        deps: [[new SkipSelf(), new Optional(), NzTreeHigherOrderServiceToken], CmacsTreeService]
                     },
                     {
                         provide: NG_VALUE_ACCESSOR,
@@ -6506,7 +6592,7 @@ CmacsTreeComponent.decorators = [
 ];
 /** @nocollapse */
 CmacsTreeComponent.ctorParameters = () => [
-    { type: NzTreeBaseService },
+    { type: CmacsTreeService },
     { type: ChangeDetectorRef },
     { type: NzNoAnimationDirective, decorators: [{ type: Host }, { type: Optional }] }
 ];
@@ -6843,7 +6929,20 @@ class CmacsTreeNodeComponent {
     nzClick(event) {
         event.preventDefault();
         event.stopPropagation();
-        if (this.treeNode.isSelectable && !this.treeNode.isDisabled) {
+        if (this.nzTreeService.nzMultiple) {
+            this.nzTreeService.isMultiple = toBoolean(event.ctrlKey) || toBoolean(event.shiftKey);
+            /** @type {?} */
+            const selectedNodes = this.nzTreeService.getSelectedNodeList();
+            /** @type {?} */
+            const selectedNodesCount = selectedNodes.length;
+            if (toBoolean(event.shiftKey) && selectedNodesCount > 0) {
+                /** @type {?} */
+                const eventNext = this.nzTreeService.formatEvent('selectedMultiple', this.treeNode, event);
+                // tslint:disable-next-line: no-non-null-assertion
+                (/** @type {?} */ ((/** @type {?} */ (this.nzTreeService)).triggerEventChange$)).next(eventNext);
+            }
+        }
+        if (this.treeNode.isSelectable && !this.treeNode.isDisabled && !(this.nzTreeService.nzMultiple && toBoolean(event.shiftKey))) {
             this.treeNode.isSelected = !this.treeNode.isSelected;
         }
         /** @type {?} */
@@ -7235,12 +7334,12 @@ CmacsTreeNodeComponent.decorators = [
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 preserveWhitespaces: false,
                 animations: [collapseMotion],
-                styles: [".cmacs-tree-new-icon{color:#acb3bf;font-size:16px;float:right;top:2px;position:relative}"]
+                styles: [".cmacs-tree-new-icon{color:#acb3bf;font-size:16px;float:right;top:2px;position:relative}.ant-tree-title{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}"]
             }] }
 ];
 /** @nocollapse */
 CmacsTreeNodeComponent.ctorParameters = () => [
-    { type: NzTreeBaseService },
+    { type: CmacsTreeService },
     { type: NgZone },
     { type: Renderer2 },
     { type: ElementRef },
@@ -8645,7 +8744,7 @@ CmacsSelectComponent.decorators = [
         margin-top: 4px;
         margin-bottom: 4px;
       }
-    `, ".ant-select{width:100%}.cmacs-custom-scrollbar::-webkit-scrollbar{width:7px}.cmacs-custom-scrollbar::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.3);border-radius:10px}.cmacs-custom-scrollbar::-webkit-scrollbar-thumb{background-color:#c9c9c9;border-radius:10px}.cmacs-custom-scrollbar::-webkit-scrollbar-thumb:hover{background-color:#a1a1a1;border-radius:10px}.ant-select-dropdown-menu-item-disabled{color:rgba(0,0,0,.25)!important}.cmacs-select-dropdown{box-shadow:none;border-bottom:1px solid #dee0e5;border-right:1px solid #dee0e5;border-left:1px solid #dee0e5;border-radius:0 0 3px 3px;z-index:unset}.cmacs-select-selection .ant-select-open .ant-select-arrow-icon svg{-webkit-transform:unset!important;transform:unset!important}.cmacs-select-selection,.cmacs-select-selection:focus,.cmacs-select-selection:hover{border:1px solid #dee0e5!important;border-radius:3px 3px 0 0!important}.cmacs-select-selection .ant-select-arrow{top:15px}.ant-select-selection{border:1px solid #dee0e5;border-radius:3px}.ant-select-selection:focus-within,.ant-select-selection:hover{border:1px solid #bec4cd;text-shadow:none}.ant-select-open .ant-select-selection{border-color:#bec4cd;box-shadow:none}.ant-select-search--inline .ant-select-search__field{margin-left:21px!important}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item:hover .ant-select-selected-icon{color:transparent}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item-selected .ant-select-selected-icon,.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item-selected:hover .ant-select-selected-icon{color:#2a7cff!important;padding:2px;border:1px solid #dee0e5}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item-selected:hover .ant-select-selected-icon{border-color:#2a7cff}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item .ant-select-selected-icon{padding:2px;border:1px solid #dee0e5;left:12px;right:unset}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item .ant-select-selected-icon:hover{color:transparent}.ant-select-dropdown-menu-item-active,.ant-select-dropdown-menu-item:hover{background-color:#f6f7fb}.ant-select-dropdown{margin-top:0!important;margin-bottom:0!important}.ant-select-dropdown-menu-item{border-top:1px solid #dee0e5;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.ant-select-dropdown-menu-item:first-child{border-top:none}.ant-select-selection--multiple .ant-select-selection__rendered>ul>li{font-size:14px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.ant-select-selection:focus{box-shadow:none;border:1px solid #bec4cd}.ant-select-selection--multiple .ant-select-selection__choice__remove>*{line-height:2.2}.ant-select-selection__placeholder{margin-left:0}.ant-select-selection--multiple .ant-select-selection__placeholder{margin-left:5px}.ant-select-selection-selected-value{padding-left:0}.ant-select-dropdown-menu-item-selected{color:#2a7cff!important}.ant-select-dropdown-menu-item-selected,.ant-select-dropdown-menu-item-selected:hover{color:#2a7cff}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item{padding-right:12px;padding-left:42px}.cmacs-select-search-input{width:100%;border:none;outline:0;padding:0 10px 0 6px}.cmacs-select-search-input::-webkit-input-placeholder{color:#acb3bf}.cmacs-select-search-input::-moz-placeholder{color:#acb3bf}.cmacs-select-search-input:-ms-input-placeholder{color:#acb3bf}.cmacs-select-search-input::-ms-input-placeholder{color:#acb3bf}.cmacs-select-search-input::placeholder{color:#acb3bf}.cmacs-select-search,.cmacs-select-search:hover{background-color:#fff}.cmacs-select-search-icon{color:#dee0e5}"]
+    `, ".ant-select{width:inherit}.cmacs-custom-scrollbar::-webkit-scrollbar{width:7px}.cmacs-custom-scrollbar::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.3);border-radius:10px}.cmacs-custom-scrollbar::-webkit-scrollbar-thumb{background-color:#c9c9c9;border-radius:10px}.cmacs-custom-scrollbar::-webkit-scrollbar-thumb:hover{background-color:#a1a1a1;border-radius:10px}.ant-select-dropdown-menu-item-disabled{color:rgba(0,0,0,.25)!important}.cmacs-select-dropdown{box-shadow:none;border-bottom:1px solid #dee0e5;border-right:1px solid #dee0e5;border-left:1px solid #dee0e5;border-radius:0 0 3px 3px;z-index:unset}.cmacs-select-selection .ant-select-open .ant-select-arrow-icon svg{-webkit-transform:unset!important;transform:unset!important}.cmacs-select-selection,.cmacs-select-selection:focus,.cmacs-select-selection:hover{border:1px solid #dee0e5!important;border-radius:3px 3px 0 0!important}.cmacs-select-selection .ant-select-arrow{top:15px}.ant-select-selection{border:1px solid #dee0e5;border-radius:3px}.ant-select-selection:focus-within,.ant-select-selection:hover{border:1px solid #bec4cd;text-shadow:none}.ant-select-open .ant-select-selection{border-color:#bec4cd;box-shadow:none}.ant-select-search--inline .ant-select-search__field{margin-left:21px!important}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item:hover .ant-select-selected-icon{color:transparent}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item-selected .ant-select-selected-icon,.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item-selected:hover .ant-select-selected-icon{color:#2a7cff!important;padding:2px;border:1px solid #dee0e5}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item-selected:hover .ant-select-selected-icon{border-color:#2a7cff}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item .ant-select-selected-icon{padding:2px;border:1px solid #dee0e5;left:12px;right:unset}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item .ant-select-selected-icon:hover{color:transparent}.ant-select-dropdown-menu-item-active,.ant-select-dropdown-menu-item:hover{background-color:#f6f7fb}.ant-select-dropdown{margin-top:0!important;margin-bottom:0!important}.ant-select-dropdown-menu-item{border-top:1px solid #dee0e5;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.ant-select-dropdown-menu-item:first-child{border-top:none}.ant-select-selection--multiple .ant-select-selection__rendered>ul>li{font-size:14px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.ant-select-selection:focus{box-shadow:none;border:1px solid #bec4cd}.ant-select-selection--multiple .ant-select-selection__choice__remove>*{line-height:2.2}.ant-select-selection__placeholder{margin-left:0}.ant-select-selection--multiple .ant-select-selection__placeholder{margin-left:5px}.ant-select-selection-selected-value{padding-left:0}.ant-select-dropdown-menu-item-selected{color:#2a7cff!important}.ant-select-dropdown-menu-item-selected,.ant-select-dropdown-menu-item-selected:hover{color:#2a7cff}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item{padding-right:12px;padding-left:42px}.cmacs-select-search-input{width:100%;border:none;outline:0;padding:0 10px 0 6px}.cmacs-select-search-input::-webkit-input-placeholder{color:#acb3bf}.cmacs-select-search-input::-moz-placeholder{color:#acb3bf}.cmacs-select-search-input:-ms-input-placeholder{color:#acb3bf}.cmacs-select-search-input::-ms-input-placeholder{color:#acb3bf}.cmacs-select-search-input::placeholder{color:#acb3bf}.cmacs-select-search,.cmacs-select-search:hover{background-color:#fff}.cmacs-select-search-icon{color:#dee0e5}"]
             }] }
 ];
 /** @nocollapse */
@@ -21529,7 +21628,7 @@ class CmacsCompactTableComponent {
              * @param {?} item
              * @return {?}
              */
-            item => item.celdType === CeldType.Default)).forEach((/**
+            item => item.celdType === CeldType.Default || item.celdType === CeldType.TemplateRef)).forEach((/**
              * @param {?} field
              * @return {?}
              */
@@ -21545,20 +21644,12 @@ class CmacsCompactTableComponent {
                         itemToExport[field.display] = selectItem[field.select.label];
                     }
                 }
+                else if (field.celdType === CeldType.TemplateRef) {
+                    itemToExport[field.display] = item[field.property].context.exportValue;
+                }
                 else {
                     itemToExport[field.display] = item[field.property];
                 }
-            }));
-            this.config.fields.filter((/**
-             * @param {?} item
-             * @return {?}
-             */
-            item => item.celdType === CeldType.TemplateRef)).forEach((/**
-             * @param {?} field
-             * @return {?}
-             */
-            field => {
-                itemToExport[field.display] = item[field.property].context.exportValue;
             }));
             dataToExport.push(itemToExport);
         }));
@@ -21641,18 +21732,7 @@ class CmacsCompactTableComponent {
          * @param {?} item
          * @return {?}
          */
-        item => item.celdType === CeldType.Default)).forEach((/**
-         * @param {?} field
-         * @return {?}
-         */
-        field => {
-            columns.push(field.display);
-        }));
-        this.config.fields.filter((/**
-         * @param {?} item
-         * @return {?}
-         */
-        item => item.celdType === CeldType.TemplateRef)).forEach((/**
+        item => item.celdType === CeldType.Default || item.celdType === CeldType.TemplateRef)).forEach((/**
          * @param {?} field
          * @return {?}
          */
@@ -21671,44 +21751,38 @@ class CmacsCompactTableComponent {
              * @param {?} item
              * @return {?}
              */
-            item => item.celdType === CeldType.Default)).forEach((/**
+            item => item.celdType === CeldType.Default || item.celdType === CeldType.TemplateRef)).forEach((/**
              * @param {?} field
              * @return {?}
              */
             field => {
-                switch (field.editTemplate) {
-                    case TemplateType.Select:
-                        /** @type {?} */
-                        const selectItem = field.select.selectData.find((/**
-                         * @param {?} option
-                         * @return {?}
-                         */
-                        option => option[field.select.value] === item[field.property]));
-                        if (selectItem !== undefined) {
-                            itemToExport.push(selectItem[field.select.label]);
-                        }
-                        break;
-                    case TemplateType.Date:
-                        itemToExport.push(this.datePipe.transform(item[field.property], 'MMMM dd yyyy'));
-                        break;
-                    case TemplateType.Time:
-                        itemToExport.push(this.datePipe.transform(item[field.property], 'h:mm a'));
-                        break;
-                    default:
-                        itemToExport.push(item[field.property]);
-                        break;
+                if (field.celdType === CeldType.TemplateRef) {
+                    itemToExport.push(item[field.property].context.exportValue);
                 }
-            }));
-            this.config.fields.filter((/**
-             * @param {?} item
-             * @return {?}
-             */
-            item => item.celdType === CeldType.TemplateRef)).forEach((/**
-             * @param {?} field
-             * @return {?}
-             */
-            field => {
-                itemToExport.push(item[field.property].context.exportValue);
+                else {
+                    switch (field.editTemplate) {
+                        case TemplateType.Select:
+                            /** @type {?} */
+                            const selectItem = field.select.selectData.find((/**
+                             * @param {?} option
+                             * @return {?}
+                             */
+                            option => option[field.select.value] === item[field.property]));
+                            if (selectItem !== undefined) {
+                                itemToExport.push(selectItem[field.select.label]);
+                            }
+                            break;
+                        case TemplateType.Date:
+                            itemToExport.push(this.datePipe.transform(item[field.property], 'MMMM dd yyyy'));
+                            break;
+                        case TemplateType.Time:
+                            itemToExport.push(this.datePipe.transform(item[field.property], 'h:mm a'));
+                            break;
+                        default:
+                            itemToExport.push(item[field.property]);
+                            break;
+                    }
+                }
             }));
             rows.push(itemToExport);
         }));
@@ -21790,7 +21864,7 @@ CmacsCompactTableComponent.decorators = [
                 // tslint:disable-next-line: component-selector
                 selector: 'cmacs-compact-table',
                 exportAs: 'cmacsCompactTable',
-                template: "<div id=\"{{gridID}}\">\r\n  <nz-table #gridComponent [nzData]=\"data\" [nzShowTotal]=\"showTotal\" [nzPageSizeOptions]=\"pageSizeOptions\"\r\n    [nzVirtualScroll]=\"virtualScroll\" [nzVirtualItemSize]=\"virtualItemSize\" [nzLoadingDelay]=\"loadingDelay\"\r\n    [nzLoadingIndicator]=\"loadingIndicator\" [nzTotal]=\"total\" [nzTitle]=\"title\" [nzFooter]=\"footer\"\r\n    [nzNoResult]=\"noResult\" [nzWidthConfig]=\"widthConfig\" [nzPageIndex]=\"pageIndex\" [nzPageSize]=\"pageSize\"\r\n    [nzPaginationPosition]=\"paginationPosition\" [nzScroll]=\"scroll\" [nzFrontPagination]=\"frontPagination\"\r\n    [nzTemplateMode]=\"templateMode\" [nzShowPagination]=\"showPagination\" [nzLoading]=\"loading\"\r\n    [nzShowSizeChanger]=\"showSizeChanger\" [nzHideOnSinglePage]=\"hideOnSinglePage\" [nzShowQuickJumper]=\"showQuickJumper\"\r\n    [nzSimple]=\"simple\">\r\n    <thead *ngIf=\"!dataTable\">\r\n      <tr [class.cmacs-compact-table-header-logs]=\"logs\">\r\n\r\n        <th *ngIf=\"smartTable && inLineEdit\" class=\"cmacs-compact-table-smart-table-hot-spot-row-add\">\r\n          <i class=\"cmacs-compact-table-smart-table-hot-spot-row-add-icon iconUILarge-New\"\r\n             (click)=\"addRow(-1)\"></i>\r\n        </th>\r\n\r\n        <th [class.cmacs-compact-table-logs-header-th]=\"logs\"\r\n            [class.cmacs-compact-table-logs-header-th-font]=\"logs\"\r\n            *ngIf=\"checkboxSelect\" nzWidth=\"2%\">\r\n          <label cmacs-checkbox [(ngModel)]=\"selected\" [indeterminate]=\"isIndeterminate\"\r\n            (checkedChange)=onCheckboxAllChange($event)></label>\r\n        </th>\r\n\r\n        <th\r\n          [class.cmacs-compact-table-logs-header-th]=\"logs\"\r\n          [class.cmacs-compact-table-logs-header-th-font]=\"logs\"\r\n          *ngFor=\"let field of getFields()\" [nzShowSort]=\"field.showSort\"\r\n          [(nzSort)]=\"field.showSort ? field.sortOrder : defaultSortOrder\" (nzSortChange)=\"sort($event, field.property)\"\r\n          nzWidth=\"{{field.width}}\">{{field.display}}</th>\r\n        <th *ngIf=\"showRate\"></th>\r\n\r\n        <th\r\n          [class.cmacs-compact-table-logs-header-th]=\"logs\"\r\n          [class.cmacs-compact-table-logs-header-th-font]=\"logs\"\r\n            *ngIf=\"extra\">\r\n          <div class=\"cmacs-compact-table-extra\">\r\n            <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n          </div>\r\n        </th>\r\n\r\n        <td *ngIf=\"smartTable && inLineEdit\" class=\"cmacs-compact-table-smart-table-hot-spot-row-delete\">\r\n        </td>\r\n\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n        <ng-container *ngIf=\"expandable; else defaultTpl;\">\r\n          <ng-container *ngFor=\"let data of gridComponent.data;\">\r\n            <ng-container *ngFor=\"let item of mapOfExpandedData[data[fieldID]]\">\r\n              <tr *ngIf=\"(item.parent && item.parent.expand) || !item.parent\"\r\n                  [class.cmacs-compact-table-header-logs]=\"logs && item.children && item.children.length\">\r\n                <td *ngIf=\"checkboxSelect\" nzWidth=\"2%\"\r\n                    [class.cmacs-compact-table-logs-header-th-font]=\"logs && item.children && item.children.length\"\r\n                >\r\n                  <label cmacs-checkbox [(ngModel)]=\"getNode(item[fieldID]).selected\" [indeterminate]=\"checkChildrenState(item)\"\r\n                         (checkedChange)=\"onCheckboxTreeChange($event, item)\"\r\n                  ></label>\r\n                </td>\r\n\r\n                <td *ngFor=\"let field of getFields(); index as i\"\r\n                    [class.cmacs-compact-table-on-edit]=\"(editId === data[config.fieldId] && property === field.property) &&\r\n                (isString(field) || isDate(field) || isTime(field) || isSelect(field))\"\r\n                    [class.cmacs-compact-table-on-edit-no-padding]=\"(editId === data[config.fieldId] || property === field.property) &&\r\n                isNumber(field)\"\r\n                    [style.paddingBottom.px]=\"calcPadding(field)\"\r\n                    [class.cmacs-compact-table-logs-header-th-font]=\"logs && item.children && item.children.length\"\r\n                    [class.cmacs-compact-table-expandable-td]=\"!i\"\r\n                    [style.paddingLeft.px]=\"getCustomPadding(item, i)\"\r\n                    [nzShowExpand]=\"!!item.children && !i\"\r\n                    [(nzExpand)]=\"item.expand\"\r\n                    (nzExpandChange)=\"collapse(mapOfExpandedData[data[fieldID]], item, $event)\"\r\n                >\r\n\r\n                  <div [style.display]=\"isNumber(field) ? 'block' : 'inline-flex'\"\r\n                       [class.cmacs-compact-table-overflow-cell-container-logs]=\"expandable && isString(field) && !i\"\r\n                    *ngIf=\"(editId !== item[config.fieldId] || property !== field.property)\">\r\n                    <ng-container *ngTemplateOutlet=\"viewModeTpl;context: {field: field, data: item}\"></ng-container>\r\n                  </div>\r\n\r\n                  <div [style.display]=\"isNumber(field) ? 'block' : 'inline-flex'\"\r\n                    *ngIf=\"(editId === item[config.fieldId] && property === field.property)\">\r\n                    <ng-container *ngTemplateOutlet=\"editTpl;context: {field: field, data: item, i: i}\"></ng-container>\r\n                  </div>\r\n\r\n                </td>\r\n\r\n                <td  [class.cmacs-compact-table-logs-header-th-font]=\"logs && item.children && item.children.length\"\r\n                     *ngIf=\"showRate\">\r\n                  <nz-rate [ngModel]=\"data[config.fieldRate]\" [nzCount]='rateCount' (ngModelChange)=\"onRateChange($event, data)\"\r\n                           (click)=\"onRateClick($event)\"></nz-rate>\r\n                </td>\r\n\r\n                <td  [class.cmacs-compact-table-logs-header-th-font]=\"logs && item.children && item.children.length\"\r\n                      *ngIf=\"extra\">\r\n                </td>\r\n\r\n            </ng-container>\r\n          </ng-container>\r\n        </ng-container>\r\n\r\n        <ng-template #defaultTpl>\r\n\r\n          <tr *ngFor=\"let data of gridComponent.data; index as i\" (click)=\"clickRow(data)\" (dblclick)=\"dblClickRow(data)\"\r\n              [class.ant-table-selected-row]=\"isRowSelected(data)\" [class.cmacs-compact-table-editable-row]=\"inLineEdit\"\r\n              [class.cmacs-compact-table-smart-table-row]=\"smartTable && inLineEdit\"\r\n          >\r\n\r\n            <td *ngIf=\"smartTable && inLineEdit\" class=\"cmacs-compact-table-smart-table-hot-spot-row-add\">\r\n              <i class=\"cmacs-compact-table-smart-table-hot-spot-row-add-icon iconUILarge-New\"\r\n              (click)=\"addRow(i)\"></i>\r\n            </td>\r\n\r\n            <td *ngIf=\"checkboxSelect\" nzWidth=\"2%\">\r\n              <label cmacs-checkbox [(ngModel)]=\"checkboxCache[getIndex(data[config.fieldId])].selected\"\r\n                     (checkedChange)=onCheckboxChange($event)\r\n                     *ngIf=\"data[config.fieldId] && checkboxCache[getIndex(data[config.fieldId])]\"></label>\r\n            </td>\r\n\r\n            <td *ngFor=\"let field of getFields(); index as j\"\r\n                [class.cmacs-compact-table-on-edit]=\"(editId === data[config.fieldId] && property === field.property) &&\r\n                (isString(field) || isDate(field) || isSelect(field))\"\r\n                [class.cmacs-compact-table-on-edit-no-padding]=\"editId === data[config.fieldId] && property === field.property &&\r\n                isNumber(field)\"\r\n                [style.paddingBottom.px]=\"calcPadding(field)\"\r\n            >\r\n\r\n              <div\r\n                *ngIf=\"(editId !== data[config.fieldId] || property !== field.property)\">\r\n                <ng-container *ngTemplateOutlet=\"viewModeTpl;context: {field: field, data: data}\"></ng-container>\r\n              </div>\r\n\r\n              <div\r\n                *ngIf=\"(editId === data[config.fieldId] && property === field.property)\">\r\n                <ng-container *ngTemplateOutlet=\"editTpl;context: {field: field, data: data, i: i}\"></ng-container>\r\n              </div>\r\n\r\n            </td>\r\n\r\n            <td *ngIf=\"showRate\">\r\n              <nz-rate [ngModel]=\"data[config.fieldRate]\" [nzCount]='rateCount' (ngModelChange)=\"onRateChange($event, data)\"\r\n                       (click)=\"onRateClick($event)\"></nz-rate>\r\n            </td>\r\n\r\n            <td *ngIf=\"extra\">\r\n            </td>\r\n\r\n            <td *ngIf=\"smartTable && inLineEdit\" class=\"cmacs-compact-table-smart-table-hot-spot-row-delete\">\r\n              <i class=\"cmacs-compact-table-smart-table-hot-spot-row-delete-icon iconUISmall-Close1\"\r\n              (click)=\"deleteRow(i)\"></i>\r\n            </td>\r\n          </tr>\r\n        </ng-template>\r\n\r\n        <ng-template #editTpl let-field=\"field\" let-data=\"data\" let-i=\"i\">\r\n          <!--Editable String Edit Mode-->\r\n          <input #fieldTypeInput class=\"cmacs-compact-table-input\" *ngIf=\"isString(field)\" type=\"text\"\r\n                 cmacs-input [(ngModel)]=\"data[field.property]\" (keyup)=\"endEditMode($event, i)\" />\r\n\r\n          <!--Editable DatePicker Edit Mode-->\r\n          <cmacs-date-picker class=\"cmacs-compact-table-date\" #fieldTypeDatePicker *ngIf=\"isDate(field)\" [format]=\"'MM/dd/yyyy'\" [allowClear]=\"false\"\r\n                             open [(ngModel)]=\"data[field.property]\" (ngModelChange)=\"endEditModeNgModel(i)\">\r\n          </cmacs-date-picker>\r\n\r\n          <!--Editable DateTimePicker Edit Mode-->\r\n          <cmacs-datetime-picker #fieldTypeDateTimePicker *ngIf=\"isTime(field)\" [use12Hours]=\"true\" format=\"h:mm a\" \r\n                                 [defaultOpenValue]=\"defaultTimeValue\" [(ngModel)]=\"data[field.property]\" \r\n                                 [cmacsOpen]=\"true\" (openChange)=\"endEditModeNgModel(i)\">\r\n          </cmacs-datetime-picker>\r\n\r\n          <!--Editable Select Edit Mode-->\r\n          <cmacs-select #fieldTypeSelect *ngIf=\"isSelect(field)\" showSearch\r\n                        [(ngModel)]=\"data[field.property]\" (ngModelChange)=\"endEditModeNgModel(i)\">\r\n            <cmacs-option *ngFor=\"let sData of field.select.selectData\" label=\"{{sData[field.select.label]}}\"\r\n                          value=\"{{sData[field.select.value]}}\"></cmacs-option>\r\n          </cmacs-select>\r\n\r\n          <!--Editable InpuNumber Edit Mode-->\r\n          <cmacs-input-number #fieldTypeInputNumber\r\n                              *ngIf=\"isTypeNumber(data[field.property]) && !isSelect(field)\" [(ngModel)]=\"data[field.property]\"\r\n                              [cmacsStep]=\"1\" (keyup)=\"endEditMode($event, i)\">\r\n          </cmacs-input-number>\r\n          \r\n          <!--Editable Boolean Edit Mode-->\r\n          <label #fieldTypeBool cmacs-checkbox *ngIf=\"isBoolean(field)\"\r\n          [(ngModel)]=\"data[field.property]\" (ngModelChange)=\"endEditModeNgModel(i)\"></label>\r\n\r\n          <!--<cmacs-input-number #fieldTypeInputNumber id=\"testing2\"\r\n            *ngIf=\"isNumber(data[field.property]) && !isSelect(field)\" [(ngModel)]=\"data[field.property]\"\r\n            [cmacsStep]=\"1\" (keyup)=\"endEditMode($event, i)\"></cmacs-input-number>\r\n\r\n          \r\n\r\n          <cmacs-select #fieldTypeSelect *ngIf=\"isSelect(field)\" style=\"width: 200px;\" showSearch\r\n            [(ngModel)]=\"data[field.property]\" (ngModelChange)=\"endEditModeNgModel(i)\">\r\n            <cmacs-option *ngFor=\"let sData of field.select.selectData\" label=\"{{sData[field.select.label]}}\"\r\n              value=\"{{sData[field.select.value]}}\"></cmacs-option>\r\n          </cmacs-select>-->\r\n        </ng-template>\r\n\r\n        <ng-template #viewModeTpl let-field=\"field\" let-data=\"data\">\r\n          <ng-container>\r\n\r\n            <!--Editable String View Mode-->\r\n            <ng-container *ngIf=\"isString(field)\">\r\n              <div class=\"cmacs-compact-table-overflow-cell\"\r\n              [class.cmacs-table-overflow-cell-logs]=\"expandable\">{{ data[field.property] }}</div>\r\n              <i class=\"iconUISmall-Edit\"\r\n                 [class.cmacs-compact-table-edit-icon]=\"inLineEdit\"\r\n                 [class.cmacs-compact-table-edit-icon-view]=\"!inLineEdit\"\r\n                 (click)=\"startEdit(data[config.fieldId], field.property, $event)\">\r\n              </i>\r\n            </ng-container>\r\n\r\n            <!--Editable DatePicker View Mode-->\r\n            <ng-container *ngIf=\"isDate(field)\">\r\n              <div class=\"cmacs-compact-table-overflow-cell cmacs-compact-table-date\">{{ data[field.property]  | date: field.dateFormat}}</div>\r\n              <i class=\"iconUILarge-Calendar\"\r\n                 [class.cmacs-compact-table-calendar-icon]=\"inLineEdit\"\r\n                 [class.cmacs-compact-table-calendar-icon-view]=\"!inLineEdit\"\r\n                 (click)=\"startEdit(data[config.fieldId], field.property, $event)\"></i>\r\n            </ng-container>\r\n\r\n            <!--Editable DateTimePicker View Mode-->\r\n            <ng-container *ngIf=\"isTime(field)\">\r\n              <div class=\"cmacs-compact-table-overflow-cell cmacs-compact-table-date\">{{ data[field.property]  | date: \"h:mm a\"}}</div>\r\n              <i class=\"iconUILarge-Time\"\r\n                 [class.cmacs-compact-table-calendar-icon]=\"inLineEdit\"\r\n                 [class.cmacs-compact-table-calendar-icon-view]=\"!inLineEdit\"\r\n                 (click)=\"startEdit(data[config.fieldId], field.property, $event)\"></i>\r\n            </ng-container>\r\n\r\n            <!--Editable Select View Mode-->\r\n            <ng-container *ngIf=\"isSelect(field)\">\r\n              <div class=\"cmacs-compact-table-overflow-cell cmacs-compact-table-select\">{{ getLabel(data, field) }}</div>\r\n              <i class=\"iconArrowLarge-Chevron-Down\"\r\n                 [class.cmacs-compact-table-select-icon]=\"inLineEdit\"\r\n                 [class.cmacs-compact-table-select-icon-view]=\"!inLineEdit\"\r\n                 (click)=\"startEdit(data[config.fieldId], field.property, $event)\"></i>\r\n            </ng-container>\r\n\r\n            <!--Editable InputNumber View Mode-->\r\n            <ng-container *ngIf=\"isNumber(field)\">\r\n              <div class=\"cmacs-compact-table-overflow-cell cmacs-compact-table-input-number\">{{ data[field.property] }}</div>\r\n              <i class=\"iconArrowLarge-Solid-UpDown\"\r\n                 [class.cmacs-compact-table-input-number-icon]=\"inLineEdit\"\r\n                 [class.cmacs-compact-table-input-number-icon-view]=\"!inLineEdit\"\r\n                 (click)=\"startEdit(data[config.fieldId], field.property, $event)\">\r\n              </i>\r\n            </ng-container>\r\n\r\n            <!--Boolean View Mode-->\r\n            <ng-container *ngIf=\"isBoolean(field)\">\r\n              <span *ngIf=\"data[field.property] == false || data[field.property] == 'false'\" \r\n                    class=\"cmacs-compact-table-boolean-false-icon\"\r\n                    [class.cmacs-compact-table-boolean-icon]=\"inLineEdit\"\r\n                    (click)=\"clickBooleanCell(data, data[config.fieldId], field.property, $event)\"></span>\r\n              <i *ngIf=\"data[field.property] === true || data[field.property] === 'true'\" \r\n                  class=\"iconUILarge-Select-All\"\r\n                  [class.cmacs-compact-table-boolean-icon]=\"inLineEdit\"\r\n                  (click)=\"clickBooleanCell(data, data[config.fieldId], field.property, $event)\"></i>\r\n            </ng-container>\r\n\r\n          </ng-container>\r\n        </ng-template>\r\n\r\n        <ng-template #componentTpl>\r\n          <!--<ng-container #templateRefCeld *ngIf=\"isCeldTypeTemplateRef(field)\">\r\n            <ng-container *ngTemplateOutlet=\"data[field.property].ref; context: data[field.property].context\">\r\n            </ng-container>\r\n          </ng-container>\r\n          <button *ngIf=\"isCeldTypeButton(field)\" cmacs-button type=\"{{field.button.style}}\"\r\n            (click)=onButtonClick(data)>\r\n            <i *ngIf=\"!isUndefined(field.button.icon); else titleTpl\" nz-icon type=\"{{field.button.icon}}\"></i>\r\n            <ng-template #titleTpl>{{field.display}}</ng-template>\r\n          </button>\r\n          <cmacs-tag *ngIf=\"isCeldTypeTag(field) && field.tag !== undefined\"\r\n            [color]=\"field.tag.color ? data[field.tag.color] : null\"\r\n            [cmacsGridType]=\"field.tag.cmacsGridType ? data[field.tag.cmacsGridType] : null\"\r\n            [cmacsStatusType]=\"field.tag.cmacsStatusType ? data[field.tag.cmacsStatusType] : null\"\r\n            [cmacsPriorityType]=\"field.tag.cmacsPriorityType ? data[field.tag.cmacsPriorityType] : null\">\r\n            {{  data[field.property] }}\r\n          </cmacs-tag>\r\n          &lt;!&ndash;<cmacs-tag *ngIf=\"isCeldTypeTag(field) && (field.tag === undefined || field.tag.color === undefined)\">\r\n            {{ data[field.property] }}</cmacs-tag>\r\n          <cmacs-tag *ngIf=\"isCeldTypeTag(field) && field.tag !== undefined && field.tag.color !== undefined\"\r\n            [color]=data[field.tag.color]>{{  data[field.property] }}</cmacs-tag>&ndash;&gt;\r\n          <ng-container\r\n            *ngIf=\"(!inLineEdit ||  isReadOnly(field)) && !isCeldTypeButton(field) && !isCeldTypeTag(field) && !isCeldTypeTemplateRef(field) && isDate(field)\">\r\n            {{ data[field.property]  | date: field.dateFormat}}</ng-container>\r\n          <ng-container\r\n            *ngIf=\"(!inLineEdit ||  isReadOnly(field)) && !isCeldTypeButton(field) && !isCeldTypeTag(field) && !isCeldTypeTemplateRef(field) && !isDate(field)\">\r\n            {{ data[field.property] }}</ng-container>-->\r\n        </ng-template>\r\n\r\n    </tbody>\r\n  </nz-table>\r\n</div>\r\n",
+                template: "<div id=\"{{gridID}}\">\r\n  <nz-table #gridComponent [nzData]=\"data\" [nzShowTotal]=\"showTotal\" [nzPageSizeOptions]=\"pageSizeOptions\"\r\n    [nzVirtualScroll]=\"virtualScroll\" [nzVirtualItemSize]=\"virtualItemSize\" [nzLoadingDelay]=\"loadingDelay\"\r\n    [nzLoadingIndicator]=\"loadingIndicator\" [nzTotal]=\"total\" [nzTitle]=\"title\" [nzFooter]=\"footer\"\r\n    [nzNoResult]=\"noResult\" [nzWidthConfig]=\"widthConfig\" [nzPageIndex]=\"pageIndex\" [nzPageSize]=\"pageSize\"\r\n    [nzPaginationPosition]=\"paginationPosition\" [nzScroll]=\"scroll\" [nzFrontPagination]=\"frontPagination\"\r\n    [nzTemplateMode]=\"templateMode\" [nzShowPagination]=\"showPagination\" [nzLoading]=\"loading\"\r\n    [nzShowSizeChanger]=\"showSizeChanger\" [nzHideOnSinglePage]=\"hideOnSinglePage\" [nzShowQuickJumper]=\"showQuickJumper\"\r\n    [nzSimple]=\"simple\">\r\n    <thead *ngIf=\"!dataTable\">\r\n      <tr [class.cmacs-compact-table-header-logs]=\"logs\">\r\n\r\n        <th *ngIf=\"smartTable && inLineEdit\" class=\"cmacs-compact-table-smart-table-hot-spot-row-add\">\r\n          <i class=\"cmacs-compact-table-smart-table-hot-spot-row-add-icon iconUILarge-New\"\r\n             (click)=\"addRow(-1)\"></i>\r\n        </th>\r\n\r\n        <th [class.cmacs-compact-table-logs-header-th]=\"logs\"\r\n            [class.cmacs-compact-table-logs-header-th-font]=\"logs\"\r\n            *ngIf=\"checkboxSelect\" nzWidth=\"2%\">\r\n          <label cmacs-checkbox [(ngModel)]=\"selected\" [indeterminate]=\"isIndeterminate\"\r\n            (checkedChange)=onCheckboxAllChange($event)></label>\r\n        </th>\r\n\r\n        <th\r\n          [class.cmacs-compact-table-logs-header-th]=\"logs\"\r\n          [class.cmacs-compact-table-logs-header-th-font]=\"logs\"\r\n          *ngFor=\"let field of getFields()\" [nzShowSort]=\"field.showSort\"\r\n          [(nzSort)]=\"field.showSort ? field.sortOrder : defaultSortOrder\" (nzSortChange)=\"sort($event, field.property)\"\r\n          nzWidth=\"{{field.width}}\">{{field.display}}</th>\r\n        <th *ngIf=\"showRate\"></th>\r\n\r\n        <th\r\n          [class.cmacs-compact-table-logs-header-th]=\"logs\"\r\n          [class.cmacs-compact-table-logs-header-th-font]=\"logs\"\r\n            *ngIf=\"extra\">\r\n          <div class=\"cmacs-compact-table-extra\">\r\n            <ng-container *cmacsStringTemplateOutlet=\"extra\">{{ extra }}</ng-container>\r\n          </div>\r\n        </th>\r\n\r\n        <td *ngIf=\"smartTable && inLineEdit\" class=\"cmacs-compact-table-smart-table-hot-spot-row-delete\">\r\n        </td>\r\n\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n        <ng-container *ngIf=\"expandable; else defaultTpl;\">\r\n          <ng-container *ngFor=\"let data of gridComponent.data;\">\r\n            <ng-container *ngFor=\"let item of mapOfExpandedData[data[fieldID]]\">\r\n              <tr *ngIf=\"(item.parent && item.parent.expand) || !item.parent\"\r\n                  [class.cmacs-compact-table-header-logs]=\"logs && item.children && item.children.length\">\r\n                <td *ngIf=\"checkboxSelect\" nzWidth=\"2%\"\r\n                    [class.cmacs-compact-table-logs-header-th-font]=\"logs && item.children && item.children.length\"\r\n                >\r\n                  <label cmacs-checkbox [(ngModel)]=\"getNode(item[fieldID]).selected\" [indeterminate]=\"checkChildrenState(item)\"\r\n                         (checkedChange)=\"onCheckboxTreeChange($event, item)\"\r\n                  ></label>\r\n                </td>\r\n\r\n                <td *ngFor=\"let field of getFields(); index as i\"\r\n                    [class.cmacs-compact-table-on-edit]=\"(editId === data[config.fieldId] && property === field.property) &&\r\n                (isString(field) || isDate(field) || isTime(field) || isSelect(field))\"\r\n                    [class.cmacs-compact-table-on-edit-no-padding]=\"(editId === data[config.fieldId] || property === field.property) &&\r\n                isNumber(field)\"\r\n                    [style.paddingBottom.px]=\"calcPadding(field)\"\r\n                    [class.cmacs-compact-table-logs-header-th-font]=\"logs && item.children && item.children.length\"\r\n                    [class.cmacs-compact-table-expandable-td]=\"!i\"\r\n                    [style.paddingLeft.px]=\"getCustomPadding(item, i)\"\r\n                    [nzShowExpand]=\"!!item.children && !i\"\r\n                    [(nzExpand)]=\"item.expand\"\r\n                    (nzExpandChange)=\"collapse(mapOfExpandedData[data[fieldID]], item, $event)\"\r\n                >\r\n\r\n                  <div [style.display]=\"isNumber(field) ? 'block' : 'inline-flex'\"\r\n                       [class.cmacs-compact-table-overflow-cell-container-logs]=\"expandable && isString(field) && !i\"\r\n                    *ngIf=\"(editId !== item[config.fieldId] || property !== field.property)\">\r\n                    <ng-container *ngTemplateOutlet=\"viewModeTpl;context: {field: field, data: item}\"></ng-container>\r\n                  </div>\r\n\r\n                  <div [style.display]=\"isNumber(field) ? 'block' : 'inline-flex'\"\r\n                    *ngIf=\"(editId === item[config.fieldId] && property === field.property)\">\r\n                    <ng-container *ngTemplateOutlet=\"editTpl;context: {field: field, data: item, i: i}\"></ng-container>\r\n                  </div>\r\n\r\n                </td>\r\n\r\n                <td  [class.cmacs-compact-table-logs-header-th-font]=\"logs && item.children && item.children.length\"\r\n                     *ngIf=\"showRate\">\r\n                  <nz-rate [ngModel]=\"data[config.fieldRate]\" [nzCount]='rateCount' (ngModelChange)=\"onRateChange($event, data)\"\r\n                           (click)=\"onRateClick($event)\"></nz-rate>\r\n                </td>\r\n\r\n                <td  [class.cmacs-compact-table-logs-header-th-font]=\"logs && item.children && item.children.length\"\r\n                      *ngIf=\"extra\">\r\n                </td>\r\n\r\n            </ng-container>\r\n          </ng-container>\r\n        </ng-container>\r\n\r\n        <ng-template #defaultTpl>\r\n\r\n          <tr *ngFor=\"let data of gridComponent.data; index as i\" (click)=\"clickRow(data)\" (dblclick)=\"dblClickRow(data)\"\r\n              [class.ant-table-selected-row]=\"isRowSelected(data)\" [class.cmacs-compact-table-editable-row]=\"inLineEdit\"\r\n              [class.cmacs-compact-table-smart-table-row]=\"smartTable && inLineEdit\"\r\n          >\r\n\r\n            <td *ngIf=\"smartTable && inLineEdit\" class=\"cmacs-compact-table-smart-table-hot-spot-row-add\">\r\n              <i class=\"cmacs-compact-table-smart-table-hot-spot-row-add-icon iconUILarge-New\"\r\n              (click)=\"addRow(i)\"></i>\r\n            </td>\r\n\r\n            <td *ngIf=\"checkboxSelect\" nzWidth=\"2%\">\r\n              <label cmacs-checkbox [(ngModel)]=\"checkboxCache[getIndex(data[config.fieldId])].selected\"\r\n                     (checkedChange)=onCheckboxChange($event)\r\n                     *ngIf=\"data[config.fieldId] && checkboxCache[getIndex(data[config.fieldId])]\"></label>\r\n            </td>\r\n\r\n            <td *ngFor=\"let field of getFields(); index as j\"\r\n                [class.cmacs-compact-table-on-edit]=\"(editId === data[config.fieldId] && property === field.property) &&\r\n                (isString(field) || isDate(field) || isSelect(field))\"\r\n                [class.cmacs-compact-table-on-edit-no-padding]=\"editId === data[config.fieldId] && property === field.property &&\r\n                isNumber(field)\"\r\n                [style.paddingBottom.px]=\"calcPadding(field)\"\r\n            >\r\n\r\n              <div\r\n                *ngIf=\"(editId !== data[config.fieldId] || property !== field.property)\">\r\n                <ng-container *ngTemplateOutlet=\"viewModeTpl;context: {field: field, data: data}\"></ng-container>\r\n              </div>\r\n\r\n              <div\r\n                *ngIf=\"(editId === data[config.fieldId] && property === field.property)\">\r\n                <ng-container *ngTemplateOutlet=\"editTpl;context: {field: field, data: data, i: i}\"></ng-container>\r\n              </div>\r\n\r\n            </td>\r\n\r\n            <td *ngIf=\"showRate\">\r\n              <nz-rate [ngModel]=\"data[config.fieldRate]\" [nzCount]='rateCount' (ngModelChange)=\"onRateChange($event, data)\"\r\n                       (click)=\"onRateClick($event)\"></nz-rate>\r\n            </td>\r\n\r\n            <td *ngIf=\"extra\">\r\n            </td>\r\n\r\n            <td *ngIf=\"smartTable && inLineEdit\" class=\"cmacs-compact-table-smart-table-hot-spot-row-delete\">\r\n              <i class=\"cmacs-compact-table-smart-table-hot-spot-row-delete-icon iconUISmall-Close1\"\r\n              (click)=\"deleteRow(i)\"></i>\r\n            </td>\r\n          </tr>\r\n        </ng-template>\r\n\r\n        <ng-template #editTpl let-field=\"field\" let-data=\"data\" let-i=\"i\">\r\n          <!--Editable String Edit Mode-->\r\n          <input #fieldTypeInput class=\"cmacs-compact-table-input\" *ngIf=\"isString(field)\" type=\"text\"\r\n                 cmacs-input [(ngModel)]=\"data[field.property]\" (keyup)=\"endEditMode($event, i)\" />\r\n\r\n          <!--Editable DatePicker Edit Mode-->\r\n          <cmacs-date-picker class=\"cmacs-compact-table-date\" #fieldTypeDatePicker *ngIf=\"isDate(field)\" [format]=\"'MM/dd/yyyy'\" [allowClear]=\"false\"\r\n                             open [(ngModel)]=\"data[field.property]\" (ngModelChange)=\"endEditModeNgModel(i)\">\r\n          </cmacs-date-picker>\r\n\r\n          <!--Editable DateTimePicker Edit Mode-->\r\n          <cmacs-datetime-picker #fieldTypeDateTimePicker *ngIf=\"isTime(field)\" [use12Hours]=\"true\" format=\"h:mm a\"\r\n                                 [defaultOpenValue]=\"defaultTimeValue\" [(ngModel)]=\"data[field.property]\"\r\n                                 [cmacsOpen]=\"true\" (openChange)=\"endEditModeNgModel(i)\">\r\n          </cmacs-datetime-picker>\r\n\r\n          <!--Editable Select Edit Mode-->\r\n          <cmacs-select #fieldTypeSelect *ngIf=\"isSelect(field)\" showSearch\r\n                        [(ngModel)]=\"data[field.property]\" (ngModelChange)=\"endEditModeNgModel(i)\">\r\n            <cmacs-option *ngFor=\"let sData of field.select.selectData\" label=\"{{sData[field.select.label]}}\"\r\n                          value=\"{{sData[field.select.value]}}\"></cmacs-option>\r\n          </cmacs-select>\r\n\r\n          <!--Editable InpuNumber Edit Mode-->\r\n          <cmacs-input-number #fieldTypeInputNumber\r\n                              *ngIf=\"isTypeNumber(data[field.property]) && !isSelect(field)\" [(ngModel)]=\"data[field.property]\"\r\n                              [cmacsStep]=\"1\" (keyup)=\"endEditMode($event, i)\">\r\n          </cmacs-input-number>\r\n\r\n          <!--Editable Boolean Edit Mode-->\r\n          <label #fieldTypeBool cmacs-checkbox *ngIf=\"isBoolean(field)\"\r\n          [(ngModel)]=\"data[field.property]\" (ngModelChange)=\"endEditModeNgModel(i)\"></label>\r\n\r\n          <!--<cmacs-input-number #fieldTypeInputNumber id=\"testing2\"\r\n            *ngIf=\"isNumber(data[field.property]) && !isSelect(field)\" [(ngModel)]=\"data[field.property]\"\r\n            [cmacsStep]=\"1\" (keyup)=\"endEditMode($event, i)\"></cmacs-input-number>\r\n\r\n\r\n\r\n          <cmacs-select #fieldTypeSelect *ngIf=\"isSelect(field)\" style=\"width: 200px;\" showSearch\r\n            [(ngModel)]=\"data[field.property]\" (ngModelChange)=\"endEditModeNgModel(i)\">\r\n            <cmacs-option *ngFor=\"let sData of field.select.selectData\" label=\"{{sData[field.select.label]}}\"\r\n              value=\"{{sData[field.select.value]}}\"></cmacs-option>\r\n          </cmacs-select>-->\r\n        </ng-template>\r\n\r\n        <ng-template #viewModeTpl let-field=\"field\" let-data=\"data\">\r\n          <ng-container>\r\n\r\n            <!--Editable String View Mode-->\r\n            <ng-container *ngIf=\"isString(field)\">\r\n              <div class=\"cmacs-compact-table-overflow-cell\"\r\n              [class.cmacs-table-overflow-cell-logs]=\"expandable\">{{ data[field.property] }}</div>\r\n              <i class=\"iconUISmall-Edit\"\r\n                 [class.cmacs-compact-table-edit-icon]=\"inLineEdit\"\r\n                 [class.cmacs-compact-table-edit-icon-view]=\"!inLineEdit\"\r\n                 (click)=\"startEdit(data[config.fieldId], field.property, $event)\">\r\n              </i>\r\n            </ng-container>\r\n\r\n            <!--Editable DatePicker View Mode-->\r\n            <ng-container *ngIf=\"isDate(field)\">\r\n              <div class=\"cmacs-compact-table-overflow-cell cmacs-compact-table-date\">{{ data[field.property]  | date: field.dateFormat}}</div>\r\n              <i class=\"iconUILarge-Calendar\"\r\n                 [class.cmacs-compact-table-calendar-icon]=\"inLineEdit\"\r\n                 [class.cmacs-compact-table-calendar-icon-view]=\"!inLineEdit\"\r\n                 (click)=\"startEdit(data[config.fieldId], field.property, $event)\"></i>\r\n            </ng-container>\r\n\r\n            <!--Editable DateTimePicker View Mode-->\r\n            <ng-container *ngIf=\"isTime(field)\">\r\n              <div class=\"cmacs-compact-table-overflow-cell cmacs-compact-table-date\">{{ data[field.property]  | date: \"h:mm a\"}}</div>\r\n              <i class=\"iconUILarge-Time\"\r\n                 [class.cmacs-compact-table-calendar-icon]=\"inLineEdit\"\r\n                 [class.cmacs-compact-table-calendar-icon-view]=\"!inLineEdit\"\r\n                 (click)=\"startEdit(data[config.fieldId], field.property, $event)\"></i>\r\n            </ng-container>\r\n\r\n            <!--Editable Select View Mode-->\r\n            <ng-container *ngIf=\"isSelect(field)\">\r\n              <div class=\"cmacs-compact-table-overflow-cell cmacs-compact-table-select\">{{ getLabel(data, field) }}</div>\r\n              <i class=\"iconArrowLarge-Chevron-Down\"\r\n                 [class.cmacs-compact-table-select-icon]=\"inLineEdit\"\r\n                 [class.cmacs-compact-table-select-icon-view]=\"!inLineEdit\"\r\n                 (click)=\"startEdit(data[config.fieldId], field.property, $event)\"></i>\r\n            </ng-container>\r\n\r\n            <!--Editable InputNumber View Mode-->\r\n            <ng-container *ngIf=\"isNumber(field)\">\r\n              <div class=\"cmacs-compact-table-overflow-cell cmacs-compact-table-input-number\">{{ data[field.property] }}</div>\r\n              <i class=\"iconArrowLarge-Solid-UpDown\"\r\n                 [class.cmacs-compact-table-input-number-icon]=\"inLineEdit\"\r\n                 [class.cmacs-compact-table-input-number-icon-view]=\"!inLineEdit\"\r\n                 (click)=\"startEdit(data[config.fieldId], field.property, $event)\">\r\n              </i>\r\n            </ng-container>\r\n\r\n            <!--Boolean View Mode-->\r\n            <ng-container *ngIf=\"isBoolean(field)\">\r\n              <span *ngIf=\"data[field.property] == false || data[field.property] == 'false'\"\r\n                    class=\"cmacs-compact-table-boolean-false-icon\"\r\n                    [class.cmacs-compact-table-boolean-icon]=\"inLineEdit\"\r\n                    (click)=\"clickBooleanCell(data, data[config.fieldId], field.property, $event)\"></span>\r\n              <i *ngIf=\"data[field.property] === true || data[field.property] === 'true'\"\r\n                  class=\"iconUILarge-Select-All\"\r\n                  [class.cmacs-compact-table-boolean-icon]=\"inLineEdit\"\r\n                  (click)=\"clickBooleanCell(data, data[config.fieldId], field.property, $event)\"></i>\r\n            </ng-container>\r\n\r\n            <!-- Template View Mode  -->\r\n            <ng-container #templateRefCeld *ngIf=\"isCeldTypeTemplateRef(field)\">\r\n              <ng-container *ngTemplateOutlet=\"data[field.property].ref; context: data[field.property].context\"></ng-container>\r\n            </ng-container>\r\n\r\n          </ng-container>\r\n        </ng-template>\r\n\r\n        <ng-template #componentTpl>\r\n          <!--<ng-container #templateRefCeld *ngIf=\"isCeldTypeTemplateRef(field)\">\r\n            <ng-container *ngTemplateOutlet=\"data[field.property].ref; context: data[field.property].context\">\r\n            </ng-container>\r\n          </ng-container>\r\n          <button *ngIf=\"isCeldTypeButton(field)\" cmacs-button type=\"{{field.button.style}}\"\r\n            (click)=onButtonClick(data)>\r\n            <i *ngIf=\"!isUndefined(field.button.icon); else titleTpl\" nz-icon type=\"{{field.button.icon}}\"></i>\r\n            <ng-template #titleTpl>{{field.display}}</ng-template>\r\n          </button>\r\n          <cmacs-tag *ngIf=\"isCeldTypeTag(field) && field.tag !== undefined\"\r\n            [color]=\"field.tag.color ? data[field.tag.color] : null\"\r\n            [cmacsGridType]=\"field.tag.cmacsGridType ? data[field.tag.cmacsGridType] : null\"\r\n            [cmacsStatusType]=\"field.tag.cmacsStatusType ? data[field.tag.cmacsStatusType] : null\"\r\n            [cmacsPriorityType]=\"field.tag.cmacsPriorityType ? data[field.tag.cmacsPriorityType] : null\">\r\n            {{  data[field.property] }}\r\n          </cmacs-tag>\r\n          &lt;!&ndash;<cmacs-tag *ngIf=\"isCeldTypeTag(field) && (field.tag === undefined || field.tag.color === undefined)\">\r\n            {{ data[field.property] }}</cmacs-tag>\r\n          <cmacs-tag *ngIf=\"isCeldTypeTag(field) && field.tag !== undefined && field.tag.color !== undefined\"\r\n            [color]=data[field.tag.color]>{{  data[field.property] }}</cmacs-tag>&ndash;&gt;\r\n          <ng-container\r\n            *ngIf=\"(!inLineEdit ||  isReadOnly(field)) && !isCeldTypeButton(field) && !isCeldTypeTag(field) && !isCeldTypeTemplateRef(field) && isDate(field)\">\r\n            {{ data[field.property]  | date: field.dateFormat}}</ng-container>\r\n          <ng-container\r\n            *ngIf=\"(!inLineEdit ||  isReadOnly(field)) && !isCeldTypeButton(field) && !isCeldTypeTag(field) && !isCeldTypeTemplateRef(field) && !isDate(field)\">\r\n            {{ data[field.property] }}</ng-container>-->\r\n        </ng-template>\r\n\r\n    </tbody>\r\n  </nz-table>\r\n</div>\r\n",
                 host: {
                     '[class.cmacs-compact-table-logs]': 'logs'
                 },
@@ -24043,6 +24117,6 @@ const ModeTabType = {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsDividerComponent, CmacsFloatingMenuComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, CmacsDateCellDirective, CmacsMonthCellDirective, CmacsDateFullCellDirective, CmacsMonthFullCellDirective, CmacsCalendarHeaderComponent, CmacsCalendarComponent, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, CmacsModalRef, CmacsDropdownADirective, CmacsProgressComponent, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, CmacsAlertComponent, CmacsCommentComponent, CmacsCommentAvatarDirective, CmacsCommentContentDirective, CmacsCommentActionHostDirective, CmacsCommentActionComponent, CmacsSliderComponent, CmacsSliderHandleComponent, CmacsSliderMarksComponent, CmacsSliderStepComponent, CmacsSliderTrackComponent, isValueARange, isConfigAObject, Marks, CmacsDatetimePickerPanelComponent, CmacsDateTimePickerComponent, CmacsDatetimeValueAccessorDirective, CmacsVideoPlayerComponent, CmacsPhoneNumberComponent, CmacsKanbanComponent, CmacsColorPickerComponent, CmacsSwitchComponent, CmacsTabComponent, CmacsTabDirective, CmacsTabBodyComponent, CmacsTabLabelDirective, CmacsTabsInkBarDirective, CmacsTabsNavComponent, TabChangeEvent, CmacsTabsetComponent, CmacsSidePanelComponent, CmacsOpenTextareaComponent, CmacsMoveableListComponent, CmacsGridConfigurationModalComponent, CmacsOpenInputComponent, KPI_COLORS, CmacsKpiComponent, CmacsListItemMetaComponent, CmacsListItemComponent, CmacsListComponent, CmacsMessageComponent, CmacsMessageBaseService, CmacsMessageService, CmacsMessageContainerComponent, CMACS_MESSAGE_DEFAULT_CONFIG, CMACS_MESSAGE_CONFIG, CMACS_MESSAGE_DEFAULT_CONFIG_PROVIDER, CmacsCompactTableComponent, CmacsSignatureComponent, CmacsSectionComponent, CmacsTooltipComponent, CmacsTooltipDirective, CmacsPopoverComponent, CmacsPopoverDirective, higherOrderServiceFactory, CmacsTreeSelectComponent, CmacsTreeSelectService, CmacsTimelineDatepickerComponent, AbstractPickerComponent as ɵb, CalendarFooterComponent as ɵba, CalendarHeaderComponent as ɵy, CalendarInputComponent as ɵz, OkButtonComponent as ɵbb, TimePickerButtonComponent as ɵbc, TodayButtonComponent as ɵbd, DateTableComponent as ɵbe, DecadePanelComponent as ɵbi, MonthPanelComponent as ɵbg, MonthTableComponent as ɵbh, DateRangePopupComponent as ɵbk, InnerPopupComponent as ɵbj, YearPanelComponent as ɵbf, CmacsDropdownService as ɵbl, CmacsMenuDropdownService as ɵk, CmacsFormControlComponent as ɵq, CmacsFormExplainComponent as ɵo, CmacsFormExtraComponent as ɵl, CmacsFormItemComponent as ɵn, CmacsFormLabelComponent as ɵm, CmacsFormSplitComponent as ɵs, CmacsFormTextComponent as ɵr, CmacsFormDirective as ɵp, CmacsMenuServiceFactory as ɵe, CmacsMenuService as ɵd, CmacsSubmenuService as ɵc, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵv, CmacsOptionGroupComponent as ɵh, CmacsOptionLiComponent as ɵw, NzFilterGroupOptionPipe as ɵu, NzFilterOptionPipe as ɵt, CmacsSelectUnselectableDirective as ɵx, CmacsSelectService as ɵg, NzTreeService as ɵf, ExcelService as ɵa };
+export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsDividerComponent, CmacsFloatingMenuComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, CmacsDateCellDirective, CmacsMonthCellDirective, CmacsDateFullCellDirective, CmacsMonthFullCellDirective, CmacsCalendarHeaderComponent, CmacsCalendarComponent, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, CmacsModalRef, CmacsDropdownADirective, CmacsProgressComponent, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, CmacsAlertComponent, CmacsCommentComponent, CmacsCommentAvatarDirective, CmacsCommentContentDirective, CmacsCommentActionHostDirective, CmacsCommentActionComponent, CmacsSliderComponent, CmacsSliderHandleComponent, CmacsSliderMarksComponent, CmacsSliderStepComponent, CmacsSliderTrackComponent, isValueARange, isConfigAObject, Marks, CmacsDatetimePickerPanelComponent, CmacsDateTimePickerComponent, CmacsDatetimeValueAccessorDirective, CmacsVideoPlayerComponent, CmacsPhoneNumberComponent, CmacsKanbanComponent, CmacsColorPickerComponent, CmacsSwitchComponent, CmacsTabComponent, CmacsTabDirective, CmacsTabBodyComponent, CmacsTabLabelDirective, CmacsTabsInkBarDirective, CmacsTabsNavComponent, TabChangeEvent, CmacsTabsetComponent, CmacsSidePanelComponent, CmacsOpenTextareaComponent, CmacsMoveableListComponent, CmacsGridConfigurationModalComponent, CmacsOpenInputComponent, KPI_COLORS, CmacsKpiComponent, CmacsListItemMetaComponent, CmacsListItemComponent, CmacsListComponent, CmacsMessageComponent, CmacsMessageBaseService, CmacsMessageService, CmacsMessageContainerComponent, CMACS_MESSAGE_DEFAULT_CONFIG, CMACS_MESSAGE_CONFIG, CMACS_MESSAGE_DEFAULT_CONFIG_PROVIDER, CmacsCompactTableComponent, CmacsSignatureComponent, CmacsSectionComponent, CmacsTooltipComponent, CmacsTooltipDirective, CmacsPopoverComponent, CmacsPopoverDirective, higherOrderServiceFactory, CmacsTreeSelectComponent, CmacsTreeSelectService, CmacsTimelineDatepickerComponent, AbstractPickerComponent as ɵb, CalendarFooterComponent as ɵba, CalendarHeaderComponent as ɵy, CalendarInputComponent as ɵz, OkButtonComponent as ɵbb, TimePickerButtonComponent as ɵbc, TodayButtonComponent as ɵbd, DateTableComponent as ɵbe, DecadePanelComponent as ɵbi, MonthPanelComponent as ɵbg, MonthTableComponent as ɵbh, DateRangePopupComponent as ɵbk, InnerPopupComponent as ɵbj, YearPanelComponent as ɵbf, CmacsDropdownService as ɵbl, CmacsMenuDropdownService as ɵk, CmacsFormControlComponent as ɵq, CmacsFormExplainComponent as ɵo, CmacsFormExtraComponent as ɵl, CmacsFormItemComponent as ɵn, CmacsFormLabelComponent as ɵm, CmacsFormSplitComponent as ɵs, CmacsFormTextComponent as ɵr, CmacsFormDirective as ɵp, CmacsMenuServiceFactory as ɵe, CmacsMenuService as ɵd, CmacsSubmenuService as ɵc, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵv, CmacsOptionGroupComponent as ɵh, CmacsOptionLiComponent as ɵw, NzFilterGroupOptionPipe as ɵu, NzFilterOptionPipe as ɵt, CmacsSelectUnselectableDirective as ɵx, CmacsSelectService as ɵg, CmacsTreeService as ɵf, ExcelService as ɵa };
 
 //# sourceMappingURL=cmacs-components-lib.js.map

@@ -1,3 +1,4 @@
 import { NzTreeBaseService } from 'ng-zorro-antd/core';
-export declare class NzTreeService extends NzTreeBaseService {
+export declare class CmacsTreeService extends NzTreeBaseService {
+    nzMultiple?: boolean;
 }
