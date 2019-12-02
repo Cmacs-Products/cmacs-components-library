@@ -31,6 +31,7 @@ export declare class CmacsButtonComponent implements AfterContentInit, OnInit, O
     constructor(elementRef: ElementRef, cdr: ChangeDetectorRef, renderer: Renderer2, updateHostClassService: NzUpdateHostClassService, zone: NgZone, waveConfig: NzWaveConfig, animationType: string);
     ngAfterContentInit(): void;
     ngOnInit(): void;
+    imageWrapper(): void;
     ngOnDestroy(): void;
     ngOnChanges(changes: SimpleChanges): void;
     hideBtn(): void;

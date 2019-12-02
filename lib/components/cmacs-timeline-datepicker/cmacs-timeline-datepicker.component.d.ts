@@ -1,7 +1,8 @@
-import { AfterContentChecked, ChangeDetectorRef, ElementRef, EventEmitter, OnInit, Renderer2 } from '@angular/core';
+import { AfterContentChecked, ChangeDetectorRef, ElementRef, EventEmitter, OnChanges, OnInit, Renderer2, SimpleChanges } from '@angular/core';
 import { NzUpdateHostClassService } from 'ng-zorro-antd/core';
 import { TabChangeEvent } from "../cmacs-tabs/cmacs-tabset.component";
-export declare class CmacsTimelineDatepickerComponent implements AfterContentChecked, OnInit {
+export declare type CmacsTimelineDatePickerMode = 'week' | 'quarter' | 'month';
+export declare class CmacsTimelineDatepickerComponent implements AfterContentChecked, OnInit, OnChanges {
     private renderer;
     private nzUpdateHostClassService;
     private elementRef;
@@ -12,7 +13,7 @@ export declare class CmacsTimelineDatepickerComponent implements AfterContentChe
     private _date;
     listOfNzTabComponent: any[];
     gutter: number;
-    mode: 'week' | 'quarter' | 'month';
+    mode: CmacsTimelineDatePickerMode;
     readonly onNextClick: EventEmitter<void>;
     readonly onPrevClick: EventEmitter<void>;
     readonly selectChange: EventEmitter<TabChangeEvent>;
@@ -20,24 +21,30 @@ export declare class CmacsTimelineDatepickerComponent implements AfterContentChe
     readonly dateChange: EventEmitter<Date>;
     modeOptions: {
         title: string;
+        value: string;
         selected: boolean;
     }[];
     selectedIndex: number | null;
     date: Date | null;
     getWeek(result: Date): void;
     setClassMap(): void;
+    getWeekNumber(date: any): number;
     clickLabel(index: number, disabled: boolean): void;
     createChangeEvent(index: number): TabChangeEvent;
     /** Clamps the given index to the bounds of 0 and the tabs length. */
     private clampTabIndex;
     constructor(renderer: Renderer2, nzUpdateHostClassService: NzUpdateHostClassService, elementRef: ElementRef, cdr: ChangeDetectorRef);
     ngOnInit(): void;
+    ngOnChanges(changes: SimpleChanges): void;
+    updateSelectedMode(): void;
     getValuesSlider(): any[];
     formatWeekNumber(value: number): string;
     ngAfterContentChecked(): void;
     customSelect(index: number): void;
     getSelected(): {
         title: string;
+        value: string;
         selected: boolean;
     }[];
+    getMonth(result: Date): void;
 }

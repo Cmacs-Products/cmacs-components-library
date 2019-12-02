@@ -106,7 +106,7 @@ CmacsButtonGroupComponent.decorators = [
                 preserveWhitespaces: false,
                 providers: [NzUpdateHostClassService],
                 template: "<button cmacs-button [disabled]=\"isDisableLeft()\" *ngIf=\"overlap\" (click)=\"moveLeft()\">\r\n    <i class=\"iconArrowLarge-Chevron-Left\"></i>\r\n</button>\r\n\r\n<ng-content></ng-content>\r\n\r\n<button cmacs-button [disabled]=\"isDisableRight()\" *ngIf=\"overlap\" (click)=\"moveRight()\">\r\n    <i class=\"iconArrowLarge-Chevron-Right\"></i>\r\n</button>\r\n",
-                styles: ["button.ant-btn{height:30px}"]
+                styles: [""]
             }] }
 ];
 /** @nocollapse */

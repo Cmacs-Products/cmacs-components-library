@@ -30,6 +30,7 @@ export declare class CmacsModalComponent<T = any, R = any> extends CmacsModalRef
     cmacsMask: boolean;
     cmacsMaskClosable: boolean;
     showHelpfulTips: boolean;
+    useCmacsDefaultSizes: boolean;
     content: string | TemplateRef<{}> | Type<T>;
     componentParams: T;
     footer: string | TemplateRef<{}> | Array<ModalButtonOptions<T>> | null;
@@ -98,6 +99,7 @@ export declare class CmacsModalComponent<T = any, R = any> extends CmacsModalRef
     constructor(overlay: Overlay, i18n: NzI18nService, cfr: ComponentFactoryResolver, elementRef: ElementRef, viewContainer: ViewContainerRef, modalControl: ModalControlService, focusTrapFactory: FocusTrapFactory, cdr: ChangeDetectorRef, modalGlobalConfig: ModalConfig, document: any);
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
+    transformToDefaultSizes(): void;
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
     destroyModal(): void;

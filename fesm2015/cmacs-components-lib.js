@@ -34,10 +34,10 @@ import { DOWN_ARROW, ENTER, UP_ARROW, BACKSPACE, SPACE, TAB, ESCAPE, LEFT_ARROW,
 import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName, NgModel, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
 import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
-import { addMonths, addYears, endOfMonth, setDay, setMonth, addDays, differenceInCalendarDays, differenceInCalendarMonths, differenceInCalendarWeeks, isSameDay, isSameMonth, isSameYear, isThisMonth, isThisYear, setYear, startOfMonth, startOfWeek, startOfYear, getISOWeeksInYear, getISOWeek } from 'date-fns';
+import { addMonths, addYears, endOfMonth, setDay, setMonth, addDays, differenceInCalendarDays, differenceInCalendarMonths, differenceInCalendarWeeks, isSameDay, isSameMonth, isSameYear, isThisMonth, isThisYear, setYear, startOfMonth, startOfWeek, startOfYear, getISOWeeksInYear } from 'date-fns';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, Pipe, InjectionToken, ViewChildren, ComponentFactoryResolver, Injector, NgModule, defineInjectable, inject, ApplicationRef, INJECTOR, Type } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, ComponentFactoryResolver, Injector, NgModule, defineInjectable, inject, ApplicationRef, INJECTOR, Type } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -165,6 +165,37 @@ class CmacsButtonComponent {
     ngOnInit() {
         this.setClassMap();
         this.nzWave.ngOnInit();
+        this.imageWrapper();
+    }
+    /**
+     * @return {?}
+     */
+    imageWrapper() {
+        //this.contentElement.nativeElement.firstChild
+        //this.contentElement.nativeElement.firstChild
+        // element that will be wrapped
+        /** @type {?} */
+        const el = this.contentElement.nativeElement.firstChild;
+        // create wrapper container
+        /** @type {?} */
+        const wrapper = document.createElement('span');
+        wrapper.classList.add('iconspan');
+        // //wrapper for the buttons with the icons
+        // if(el === document.querySelector('i')){
+        //   // insert wrapper before el in the DOM tree
+        //   el.parentNode.insertBefore(wrapper, el);
+        //   // move el into wrapper
+        //   wrapper.appendChild(el);
+        // }
+        //trying to loop through all buttons for the icons within them
+        //button
+        // const buttonicon = document.getElementsByName('.ant-btn');
+        // forEach(buttonicon that contains (el == document.querySelector('i'))){
+        //      // insert wrapper before el in the DOM tree
+        //   el.parentNode.insertBefore(wrapper, el);
+        //   // move el into wrapper
+        //   wrapper.appendChild(el);
+        // }
     }
     /**
      * @return {?}
@@ -219,7 +250,7 @@ CmacsButtonComponent.decorators = [
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 encapsulation: ViewEncapsulation.None,
                 template: "<i nz-icon type=\"loading\" *ngIf=\"loading\"></i>\r\n<span (cdkObserveContent)=\"checkContent()\" #contentElement><ng-content></ng-content></span>\r\n",
-                styles: [".ant-btn{font-size:14px;line-height:20px;font-weight:400;height:34px;box-shadow:none;border-radius:3px}.ant-btn-primary{background-color:#2a7cff;border-color:#2a7cff}.ant-btn-primary:focus,.ant-btn-primary:hover{background-color:#2164c9;border-color:#2164c9}.ant-btn-primary[disabled],.ant-btn-primary[disabled]:focus,.ant-btn-primary[disabled]:hover{border:none;color:#97a0ae}.ant-btn-default{border:1px solid #bec4cd;color:#2a7cff}.ant-btn-default span i,.ant-btn-primary span i{font-size:16px;position:relative;top:2px}.ant-btn-default[disabled],.ant-btn-default[disabled]:focus,.ant-btn-default[disabled]:hover{color:#97a0ae;background-color:#fff;border-color:#f3f3f4}.ant-btn-default:focus,.ant-btn-default:hover{background-color:#f6f7fb;color:#2164c9;border:1px solid #bec4cd}.ant-btn-background-ghost.ant-btn-default:enabled,.ant-btn-background-ghost.ant-btn-primary:enabled{color:#2a7cff;border:none}.ant-btn-background-ghost.ant-btn-default:enabled:focus,.ant-btn-background-ghost.ant-btn-default:enabled:hover,.ant-btn-background-ghost.ant-btn-primary:enabled:focus,.ant-btn-background-ghost.ant-btn-primary:enabled:hover{background-color:#f6f7fb!important;color:#2a7cff}.ant-btn-background-ghost:disabled{background-color:transparent!important;border:none}.ant-btn-icon-only span i{color:#656c79}.ant-btn-icon-only:enabled:focus span i,.ant-btn-icon-only:enabled:hover span i{color:#2a7cff}.ant-btn-icon-only:not(.ant-btn-background-ghost),.ant-btn-icon-only:not(.ant-btn-background-ghost):focus,.ant-btn-icon-only:not(.ant-btn-background-ghost):hover{background-color:#fff!important}.ant-btn-icon-only:disabled{background-color:#f3f3f4!important;color:#97a0ae!important}.cmacs-btn-action{height:30px}.ant-btn-danger{color:#fff;background-color:#ff4d4f;border-color:#ff4d4f}.ant-btn-danger:hover{opacity:.8}"]
+                styles: [".ant-btn{font-size:14px;line-height:20px;font-weight:400;height:34px;box-shadow:none;border-radius:3px;padding:0 14px}.ant-btn-primary{background-color:#2a7cff;border-color:#2a7cff}.ant-btn-primary:focus,.ant-btn-primary:hover{background-color:#2164c9;border-color:#2164c9}.ant-btn-primary[disabled],.ant-btn-primary[disabled]:focus,.ant-btn-primary[disabled]:hover{border:none;color:#97a0ae}.ant-btn-default{border:1px solid #bec4cd;color:#2a7cff}.ant-btn-default span i,.ant-btn-primary span i{font-size:16px;position:relative;height:16px;width:16px;display:inline-block;vertical-align:text-top}.ant-btn-default[disabled],.ant-btn-default[disabled]:focus,.ant-btn-default[disabled]:hover{color:#97a0ae;background-color:#fff;border-color:#f3f3f4}.ant-btn-default:focus,.ant-btn-default:hover{background-color:#f6f7fb;color:#2164c9;border:1px solid #bec4cd}.ant-btn-background-ghost.ant-btn-default:enabled,.ant-btn-background-ghost.ant-btn-primary:enabled{color:#2a7cff;border:none}.ant-btn-background-ghost.ant-btn-default:enabled:focus,.ant-btn-background-ghost.ant-btn-default:enabled:hover,.ant-btn-background-ghost.ant-btn-primary:enabled:focus,.ant-btn-background-ghost.ant-btn-primary:enabled:hover{background-color:#f6f7fb!important;color:#2a7cff}.ant-btn-background-ghost:disabled{background-color:transparent!important;border:none}.ant-btn span{vertical-align:middle}.ant-btn-icon-only span i{color:#656c79}.iconspan{height:20px;width:20px;text-align:center;vertical-align:middle;display:inline-block}.ant-btn-icon-only:enabled:focus span i,.ant-btn-icon-only:enabled:hover span i{color:#2a7cff}.ant-btn-icon-only:not(.ant-btn-background-ghost),.ant-btn-icon-only:not(.ant-btn-background-ghost):focus,.ant-btn-icon-only:not(.ant-btn-background-ghost):hover{background-color:#fff!important}.ant-btn-icon-only:disabled{background-color:#f3f3f4!important;color:#97a0ae!important}.cmacs-btn-action{height:30px}.ant-btn:not(.ant-btn-circle):not(.ant-btn-circle-outline).ant-btn-icon-only.cmacs-btn-action{padding-right:4px;padding-left:4px}.ant-btn:not(.ant-btn-circle):not(.ant-btn-circle-outline).ant-btn-icon-only{padding-right:6px;padding-left:6px}.ant-btn-danger{color:#fff;background-color:#ff4d4f;border-color:#ff4d4f}.ant-btn-danger:hover{opacity:.8}"]
             }] }
 ];
 /** @nocollapse */
@@ -370,7 +401,7 @@ CmacsButtonGroupComponent.decorators = [
                 preserveWhitespaces: false,
                 providers: [NzUpdateHostClassService],
                 template: "<button cmacs-button [disabled]=\"isDisableLeft()\" *ngIf=\"overlap\" (click)=\"moveLeft()\">\r\n    <i class=\"iconArrowLarge-Chevron-Left\"></i>\r\n</button>\r\n\r\n<ng-content></ng-content>\r\n\r\n<button cmacs-button [disabled]=\"isDisableRight()\" *ngIf=\"overlap\" (click)=\"moveRight()\">\r\n    <i class=\"iconArrowLarge-Chevron-Right\"></i>\r\n</button>\r\n",
-                styles: ["button.ant-btn{height:30px}"]
+                styles: [""]
             }] }
 ];
 /** @nocollapse */
@@ -9125,6 +9156,7 @@ class CmacsModalComponent extends CmacsModalRef {
         this.keyboard = true;
         this.noAnimation = false;
         this.showHelpfulTips = true;
+        this.useCmacsDefaultSizes = false;
         // [STATIC] Default Modal ONLY
         this.getContainer = (/**
          * @return {?}
@@ -9132,7 +9164,6 @@ class CmacsModalComponent extends CmacsModalRef {
         () => this.overlay.create()); // [STATIC]
         // [STATIC]
         this.zIndex = 1000;
-        this.width = 520;
         this.okType = 'primary';
         this.iconType = 'question-circle'; // Confirm Modal ONLY
         // Confirm Modal ONLY
@@ -9258,6 +9289,9 @@ class CmacsModalComponent extends CmacsModalRef {
             this.cmacsCancelText = null;
             this.cmacsOkText = null;
         }
+        if (this.useCmacsDefaultSizes) {
+            this.transformToDefaultSizes();
+        }
         // Register modal when afterOpen/afterClose is stable
         this.modalControl.registerModal(this);
     }
@@ -9272,6 +9306,21 @@ class CmacsModalComponent extends CmacsModalRef {
     ngOnChanges(changes) {
         if (changes.visible) {
             this.handleVisibleStateChange(this.visible, !changes.visible.firstChange); // Do not trigger animation while initializing
+        }
+        if (changes.showHelpfulTips !== undefined || changes.useCmacsDefaultSizes !== undefined) {
+            if (this.useCmacsDefaultSizes) {
+                this.transformToDefaultSizes();
+            }
+        }
+    }
+    /**
+     * @return {?}
+     */
+    transformToDefaultSizes() {
+        switch (this.modalType) {
+            case 'creation':
+                this.width = this.showHelpfulTips ? 1100 : 835;
+                break;
         }
     }
     /**
@@ -9745,6 +9794,7 @@ CmacsModalComponent.propDecorators = {
     cmacsMask: [{ type: Input }],
     cmacsMaskClosable: [{ type: Input }],
     showHelpfulTips: [{ type: Input }],
+    useCmacsDefaultSizes: [{ type: Input }],
     content: [{ type: Input }],
     componentParams: [{ type: Input }],
     footer: [{ type: Input }],
@@ -9819,6 +9869,10 @@ __decorate([
     InputBoolean(),
     __metadata("design:type", Object)
 ], CmacsModalComponent.prototype, "showHelpfulTips", void 0);
+__decorate([
+    InputBoolean(),
+    __metadata("design:type", Object)
+], CmacsModalComponent.prototype, "useCmacsDefaultSizes", void 0);
 
 /**
  * @fileoverview added by tsickle
@@ -23306,7 +23360,6 @@ class CmacsTimelineDatepickerComponent {
         this.indexToSelect = 0;
         this.el = this.elementRef.nativeElement;
         this._selectedIndex = null;
-        this._date = new Date();
         this.gutter = 2;
         this.mode = 'week';
         this.onNextClick = new EventEmitter();
@@ -23314,14 +23367,15 @@ class CmacsTimelineDatepickerComponent {
         this.selectChange = new EventEmitter(true);
         this.selectedIndexChange = new EventEmitter();
         this.dateChange = new EventEmitter();
-        this.modeOptions = [{ title: 'Week', selected: true }, { title: 'Month', selected: false }, { title: 'Quarter', selected: false }];
+        this.modeOptions = [{ title: 'Week', value: 'week', selected: true },
+            { title: 'Month', value: 'month', selected: false }];
     }
     /**
      * @param {?} value
      * @return {?}
      */
     set selectedIndex(value) {
-        this.indexToSelect = value ? toNumber(value, null) : null;
+        this.indexToSelect = value;
     }
     /**
      * @return {?}
@@ -23334,8 +23388,15 @@ class CmacsTimelineDatepickerComponent {
      * @return {?}
      */
     set date(value) {
-        this._date = value;
-        this.selectedIndex = getISOWeek(value) - 1;
+        if (value !== null) {
+            this._date = value;
+            if (this.mode === 'week') {
+                this.selectedIndex = this.getWeekNumber(value) - 1;
+            }
+            else if (this.mode === 'month') {
+                this.selectedIndex = value.getMonth();
+            }
+        }
     }
     /**
      * @return {?}
@@ -23348,9 +23409,9 @@ class CmacsTimelineDatepickerComponent {
      * @return {?}
      */
     getWeek(result) {
-        this.date = result;
-        this.dateChange.emit(result);
-        console.log('weeks:  ', getISOWeek(result));
+        if (result !== null) {
+            this.dateChange.emit(result);
+        }
     }
     /**
      * @return {?}
@@ -23362,6 +23423,19 @@ class CmacsTimelineDatepickerComponent {
         });
     }
     /**
+     * @param {?} date
+     * @return {?}
+     */
+    getWeekNumber(date) {
+        /** @type {?} */
+        let now = date;
+        /** @type {?} */
+        let onejan = (/** @type {?} */ (new Date(now.getFullYear(), 0, 1)));
+        /** @type {?} */
+        let day = (/** @type {?} */ (onejan.getDay()));
+        return Math.ceil((((now - onejan) / 86400000) + day + 1) / 7);
+    }
+    /**
      * @param {?} index
      * @param {?} disabled
      * @return {?}
@@ -23369,7 +23443,19 @@ class CmacsTimelineDatepickerComponent {
     clickLabel(index, disabled) {
         if (!disabled) {
             this.selectedIndex = index;
-            //this.listOfNzTabComponent[index].click.emit();
+            if (this.mode === 'week') {
+                /** @type {?} */
+                let d = new Date(this._date.getFullYear(), 0, 1);
+                d.setDate(d.getDate() + (index * 7));
+                this.date = d;
+                this.dateChange.emit(this.date);
+            }
+            if (this.mode === 'month') {
+                /** @type {?} */
+                let d = new Date(this._date.getFullYear(), index, 1);
+                this.date = d;
+                this.dateChange.emit(this.date);
+            }
         }
     }
     /**
@@ -23413,6 +23499,28 @@ class CmacsTimelineDatepickerComponent {
      */
     ngOnInit() {
         this.setClassMap();
+        this.updateSelectedMode();
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    ngOnChanges(changes) {
+        if (changes.mode) {
+            this.updateSelectedMode();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    updateSelectedMode() {
+        this.modeOptions.forEach((/**
+         * @param {?} mode
+         * @return {?}
+         */
+        mode => {
+            mode.selected = mode.value === this.mode;
+        }));
         this.listOfNzTabComponent = this.getValuesSlider();
     }
     /**
@@ -23421,6 +23529,7 @@ class CmacsTimelineDatepickerComponent {
     getValuesSlider() {
         /** @type {?} */
         let temp = [];
+        this.date = this.date;
         if (this.mode === 'week') {
             /** @type {?} */
             const length = getISOWeeksInYear(this.date);
@@ -23509,6 +23618,8 @@ class CmacsTimelineDatepickerComponent {
             option.selected = false;
         }));
         this.modeOptions[index].selected = true;
+        this.mode = (/** @type {?} */ (this.modeOptions[index].value));
+        this.listOfNzTabComponent = this.getValuesSlider();
     }
     /**
      * @return {?}
@@ -23520,17 +23631,24 @@ class CmacsTimelineDatepickerComponent {
          */
         item => item.selected));
     }
+    /**
+     * @param {?} result
+     * @return {?}
+     */
+    getMonth(result) {
+        this.dateChange.emit(result);
+    }
 }
 CmacsTimelineDatepickerComponent.decorators = [
     { type: Component, args: [{
                 selector: 'cmacs-timeline-datepicker',
                 exportAs: 'cmacsTimelineDatepicker',
-                template: "<div class=\"cmacs-timeline-item cmacs-timeline-item-dropdown\">\r\n  <cmacs-dropdown [trigger]=\"'click'\" [cmacsOpen]=\"true\" style=\"display: inline-flex\">\r\n    <a cmacs-dropdown>\r\n      <div class=\"cmacs-open-dropdown-wrapper\" style=\"width: 80px;\">\r\n        {{getSelected().length ? getSelected()[0].title : 'Select'}} <i class=\"iconArrowLarge-Solid-Down\"></i>\r\n      </div>\r\n    </a>\r\n\r\n    <ul cmacs-menu style=\"min-width: 125px\">\r\n      <li *ngFor=\"let option of modeOptions; index as i\" cmacs-menu-item (click)=\"customSelect(i)\">\r\n        <i [style.opacity]=\"option.selected ? 1 : 0\" nz-icon type=\"check\"></i>\r\n        <span>{{option.title}}</span>\r\n      </li>\r\n    </ul>\r\n  </cmacs-dropdown>\r\n</div>\r\n\r\n<div class=\"cmacs-timeline-item\" style=\"margin-right: 10px; max-width: calc(100% - 160px - 16px);\">\r\n  <div nz-tabs-nav\r\n       role=\"tablist\"\r\n       tabindex=\"0\"\r\n       class=\"ant-tabs-bar ant-tabs-top-bar cmacs-timeline-datepicker-slider\"\r\n       [nzType]=\"'line'\"\r\n       [nzShowPagination]=\"true\"\r\n       [nzPositionMode]=\"'horizontal'\"\r\n       [nzAnimated]=\"true\"\r\n       [nzHideBar]=\"true\"\r\n       [selectedIndex]=\"selectedIndex\"\r\n       (nzOnNextClick)=\"onNextClick.emit()\"\r\n       (nzOnPrevClick)=\"onPrevClick.emit()\">\r\n    <div nz-tab-label\r\n         role=\"tab\"\r\n         [style.margin-right.px]=\"gutter\"\r\n         class=\"cmacs-timeline-datepicker-label\"\r\n         [class.ant-tabs-tab-active]=\"(selectedIndex == i)\"\r\n         [disabled]=\"tab.disabled\"\r\n         (click)=\"clickLabel(i,tab.disabled)\"\r\n         *ngFor=\"let tab of listOfNzTabComponent; let i = index\">\r\n      <ng-container *cmacsStringTemplateOutlet=\"tab.title\">{{ tab.title }}</ng-container>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"cmacs-timeline-item\">\r\n  <cmacs-week-picker [(ngModel)]=\"date\" (ngModelChange)=\"getWeek($event)\" placeHolder=\"\"></cmacs-week-picker>\r\n</div>\r\n",
+                template: "<div class=\"cmacs-timeline-item cmacs-timeline-item-dropdown\">\r\n  <cmacs-dropdown [trigger]=\"'click'\" [cmacsOpen]=\"true\" style=\"display: inline-flex\">\r\n    <a cmacs-dropdown>\r\n      <div class=\"cmacs-open-dropdown-wrapper\" style=\"width: 80px;\">\r\n        {{getSelected().length ? getSelected()[0].title : 'Select'}} <i class=\"iconArrowLarge-Solid-Down\"></i>\r\n      </div>\r\n    </a>\r\n\r\n    <ul cmacs-menu style=\"min-width: 125px\">\r\n      <li *ngFor=\"let option of modeOptions; index as i\" cmacs-menu-item (click)=\"customSelect(i)\">\r\n        <i [style.opacity]=\"option.selected ? 1 : 0\" nz-icon type=\"check\"></i>\r\n        <span>{{option.title}}</span>\r\n      </li>\r\n    </ul>\r\n  </cmacs-dropdown>\r\n</div>\r\n\r\n<div class=\"cmacs-timeline-item\" style=\"margin-right: 10px; max-width: calc(100% - 160px - 16px);\">\r\n  <div nz-tabs-nav\r\n       role=\"tablist\"\r\n       tabindex=\"0\"\r\n       class=\"ant-tabs-bar ant-tabs-top-bar cmacs-timeline-datepicker-slider\"\r\n       [nzType]=\"'line'\"\r\n       [nzShowPagination]=\"true\"\r\n       [nzPositionMode]=\"'horizontal'\"\r\n       [nzAnimated]=\"true\"\r\n       [nzHideBar]=\"true\"\r\n       [selectedIndex]=\"selectedIndex\"\r\n       (nzOnNextClick)=\"onNextClick.emit()\"\r\n       (nzOnPrevClick)=\"onPrevClick.emit()\">\r\n    <div nz-tab-label\r\n         role=\"tab\"\r\n         [style.margin-right.px]=\"gutter\"\r\n         class=\"cmacs-timeline-datepicker-label\"\r\n         [class.ant-tabs-tab-active]=\"(selectedIndex === i)\"\r\n         [disabled]=\"tab.disabled\"\r\n         (click)=\"clickLabel(i,tab.disabled)\"\r\n         *ngFor=\"let tab of listOfNzTabComponent; let i = index\">\r\n      <ng-container *cmacsStringTemplateOutlet=\"tab.title\">{{ tab.title }}</ng-container>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"cmacs-timeline-item\">\r\n  <ng-container *ngIf=\"mode === 'week'\">\r\n    <cmacs-week-picker [(ngModel)]=\"date\" (ngModelChange)=\"getWeek($event)\" placeHolder=\"\"></cmacs-week-picker>\r\n  </ng-container>\r\n  <ng-container *ngIf=\"mode === 'month'\">\r\n    <cmacs-month-picker\r\n      [(ngModel)]=\"date\"\r\n      (ngModelChange)=\"getMonth($event)\"\r\n      placeHolder=\"\"\r\n    ></cmacs-month-picker>\r\n  </ng-container>\r\n</div>\r\n",
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 encapsulation: ViewEncapsulation.None,
                 preserveWhitespaces: false,
                 providers: [NzUpdateHostClassService],
-                styles: [".ant-tabs-tab{padding:5px 9px!important;border-radius:3px;font-family:Roboto;font-size:14px;font-weight:500;font-stretch:normal;font-style:normal;line-height:1.29;letter-spacing:normal;color:#656c79}.cmacs-timeline-datepicker-label.ant-tabs-tab-active{background-color:#2a7cff;color:#fff}.ant-tabs-bar{border-bottom:none;margin-bottom:0}.cmacs-timeline-item{display:inline-block}.cmacs-timeline-item-dropdown{position:relative;top:-7px;margin:0 20px}.cmacs-timeline-item-dropdown cmacs-dropdown{font-family:Roboto;font-size:14px;font-weight:500;font-stretch:normal;font-style:normal;line-height:1.29;letter-spacing:normal;color:#3b3f46}.cmacs-timeline-datepicker-label.ant-tabs-tab-active:hover{color:#fff}.cmacs-timeline-item cmacs-picker .ant-calendar-picker-input{width:0;display:inline-block;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;border:none;height:0}.cmacs-timeline-item cmacs-picker .ant-calendar-picker-input:focus,.cmacs-timeline-item cmacs-picker .ant-calendar-picker-input:hover{border:none;box-shadow:none}.cmacs-timeline-item cmacs-picker .ant-calendar-picker:hover .ant-calendar-picker-clear{opacity:0}.cmacs-timeline-item cmacs-picker .ant-calendar-picker-icon{font-size:16px;position:relative;top:-7px}.cmacs-timeline-item cmacs-picker .ant-calendar-picker-icon:hover{cursor:pointer}.cmacs-timeline-item-dropdown cmacs-dropdown .cmacs-open-dropdown-wrapper{border:none;width:auto!important;color:#3b3f46}.cmacs-timeline-item-dropdown cmacs-dropdown .cmacs-open-dropdown-wrapper i{margin-left:10px;color:#3b3f46}.cmacs-timeline-item cmacs-picker .ant-calendar-picker:focus .ant-calendar-picker-input:not(.ant-input-disabled){box-shadow:none}", `
+                styles: [".ant-tabs-tab{padding:5px 9px!important;border-radius:3px;font-family:Roboto;font-size:14px;font-weight:500;font-stretch:normal;font-style:normal;line-height:1.29;letter-spacing:normal;color:#656c79}.cmacs-timeline-datepicker-label.ant-tabs-tab-active{background-color:#2a7cff;color:#fff}.ant-tabs-bar{border-bottom:none;margin-bottom:0}.cmacs-timeline-item{display:inline-block}.cmacs-timeline-item-dropdown{position:relative;top:-7px;margin:0 20px}.cmacs-timeline-item-dropdown cmacs-dropdown{font-family:Roboto;font-size:14px;font-weight:500;font-stretch:normal;font-style:normal;line-height:1.29;letter-spacing:normal;color:#3b3f46}.cmacs-timeline-datepicker-label.ant-tabs-tab-active:hover{color:#fff}.cmacs-timeline-item cmacs-picker .ant-calendar-picker-input{width:0;display:inline-block;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;border:none;height:0}.cmacs-timeline-item cmacs-picker .ant-calendar-picker-input:focus,.cmacs-timeline-item cmacs-picker .ant-calendar-picker-input:hover{border:none;box-shadow:none}.cmacs-timeline-item cmacs-picker .ant-calendar-picker:hover .ant-calendar-picker-clear{opacity:0;display:none}.cmacs-timeline-item cmacs-picker .ant-calendar-picker-icon{font-size:16px;position:relative;top:-7px}.cmacs-timeline-item cmacs-picker .ant-calendar-picker-icon:hover{cursor:pointer}.cmacs-timeline-item-dropdown cmacs-dropdown .cmacs-open-dropdown-wrapper{border:none;width:auto!important;color:#3b3f46;font-size:14px;font-weight:500}.cmacs-timeline-item-dropdown cmacs-dropdown .cmacs-open-dropdown-wrapper i{margin-left:10px;color:#3b3f46}.cmacs-timeline-item cmacs-picker .ant-calendar-picker:focus .ant-calendar-picker-input:not(.ant-input-disabled){box-shadow:none}", `
       cmacs-timeline-datepicker {
         display: block;
         border-radius: 3px;
