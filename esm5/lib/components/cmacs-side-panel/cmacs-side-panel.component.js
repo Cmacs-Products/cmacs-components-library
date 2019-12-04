@@ -35,7 +35,7 @@ var CmacsSidePanelComponent = /** @class */ (function () {
         { type: Component, args: [{
                     selector: 'cmacs-side-panel',
                     template: "<div\r\n  class=\"cmacs-side-panel-wrapper\"\r\n  [class.cmacs-side-panel-collapsible-wrapper]=\"collapsible\"\r\n  [style.width]=\"width | cmacsToCssUnit\"\r\n  [style.float]=\"float\"\r\n  *ngIf=\"visible\"\r\n>\r\n  <div></div>\r\n  <div class=\"cmacs-side-panel-content\">\r\n    <ng-content></ng-content>\r\n  </div>\r\n</div>\r\n",
-                    styles: [".cmacs-side-panel-wrapper{height:100%;box-shadow:0 2px 4px 0 rgba(0,0,0,.1);background-color:#fff;padding:24px;-webkit-transition:.3s;transition:.3s}.cmacs-side-panel-content{height:100%}.cmacs-side-panel-collapsible-wrapper{box-shadow:7px 0 7px 0 rgba(59,63,70,.2)}.cmacs-side-panel-collapsible-wrapper::before{content:''}"]
+                    styles: [".cmacs-side-panel-wrapper{height:100%;box-shadow:0 2px 4px 0 rgba(0,0,0,.1);background-color:#fff;padding:24px 0 0 30px;-webkit-transition:.3s;transition:.3s}.cmacs-side-panel-content{height:100%}.cmacs-side-panel-collapsible-wrapper{box-shadow:7px 0 7px 0 rgba(59,63,70,.2)}.cmacs-side-panel-collapsible-wrapper::before{content:''}"]
                 }] }
     ];
     /** @nocollapse */
