@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/platform-browser/animations'), require('@angular/common/locales/en'), require('xlsx'), require('@angular/router'), require('@angular/cdk/coercion'), require('ng-zorro-antd/icon'), require('ng-zorro-antd/time-picker'), require('ng-zorro-antd/menu'), require('@angular/cdk/layout'), require('ng-zorro-antd/grid'), require('ng-zorro-antd/tooltip'), require('@angular/cdk/platform'), require('videogular2/compiled/controls'), require('videogular2/compiled/overlay-play'), require('videogular2/compiled/buffering'), require('videogular2/compiled/core'), require('ng2-tel-input'), require('@angular/cdk/a11y'), require('@angular/cdk/observers'), require('@angular/cdk/bidi'), require('ng-lazyload-image'), require('@angular/cdk/drag-drop'), require('@angular/platform-browser'), require('ng-zorro-antd'), require('@angular/common'), require('ng-zorro-antd/i18n'), require('ngx-export-as'), require('jspdf'), require('jspdf-autotable'), require('ngx-cookie-service'), require('util'), require('@angular/cdk/keycodes'), require('@angular/forms'), require('rxjs'), require('rxjs/operators'), require('date-fns'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core'), require('ng-zorro-antd/core')) :
-    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/platform-browser/animations', '@angular/common/locales/en', 'xlsx', '@angular/router', '@angular/cdk/coercion', 'ng-zorro-antd/icon', 'ng-zorro-antd/time-picker', 'ng-zorro-antd/menu', '@angular/cdk/layout', 'ng-zorro-antd/grid', 'ng-zorro-antd/tooltip', '@angular/cdk/platform', 'videogular2/compiled/controls', 'videogular2/compiled/overlay-play', 'videogular2/compiled/buffering', 'videogular2/compiled/core', 'ng2-tel-input', '@angular/cdk/a11y', '@angular/cdk/observers', '@angular/cdk/bidi', 'ng-lazyload-image', '@angular/cdk/drag-drop', '@angular/platform-browser', 'ng-zorro-antd', '@angular/common', 'ng-zorro-antd/i18n', 'ngx-export-as', 'jspdf', 'jspdf-autotable', 'ngx-cookie-service', 'util', '@angular/cdk/keycodes', '@angular/forms', 'rxjs', 'rxjs/operators', 'date-fns', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core', 'ng-zorro-antd/core'], factory) :
-    (factory((global['cmacs-components-lib'] = {}),global.ng.platformBrowser.animations,global.ng.common.locales.en,global.XLSX,global.ng.router,global.ng.cdk.coercion,global.icon,global.timePicker,global.menu,global.ng.cdk.layout,global.grid,global.tooltip,global.ng.cdk.platform,global.controls,global.overlayPlay,global.buffering,global.core,global.ng2TelInput,global.ng.cdk.a11y,global.ng.cdk.observers,global.ng.cdk.bidi,global.ngLazyloadImage,global.ng.cdk['drag-drop'],global.ng.platformBrowser,global.ngZorroAntd,global.ng.common,global.i18n,global.ngxExportAs,global.jsPDF,null,global.ngxCookieService,global.util,global.ng.cdk.keycodes,global.ng.forms,global.rxjs,global.rxjs.operators,global.dateFns,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core,global.i2));
-}(this, (function (exports,animations,en,XLSX,router,coercion,icon,timePicker,menu,layout,grid,tooltip,platform,controls,overlayPlay,buffering,core,ng2TelInput,a11y,observers,bidi,ngLazyloadImage,dragDrop,platformBrowser,ngZorroAntd,common,i18n,ngxExportAs,jsPDF,jspdfAutotable,ngxCookieService,util,keycodes,forms,rxjs,operators,dateFns,i1,portal,i0,i2) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/platform-browser/animations'), require('@angular/common/locales/en'), require('@angular/router'), require('@angular/cdk/coercion'), require('ng-zorro-antd/icon'), require('ng-zorro-antd/time-picker'), require('ng-zorro-antd/menu'), require('@angular/cdk/layout'), require('ng-zorro-antd/grid'), require('ng-zorro-antd/tooltip'), require('@angular/cdk/platform'), require('videogular2/compiled/controls'), require('videogular2/compiled/overlay-play'), require('videogular2/compiled/buffering'), require('videogular2/compiled/core'), require('ng2-tel-input'), require('@angular/cdk/a11y'), require('@angular/cdk/observers'), require('@angular/cdk/bidi'), require('ng-lazyload-image'), require('@angular/cdk/drag-drop'), require('@angular/platform-browser'), require('@angular/common'), require('ng-zorro-antd/i18n'), require('ngx-export-as'), require('jspdf'), require('jspdf-autotable'), require('ngx-cookie-service'), require('util'), require('@angular/cdk/keycodes'), require('@angular/forms'), require('rxjs'), require('rxjs/operators'), require('date-fns'), require('ng-zorro-antd'), require('xlsx'), require('tslint/lib/error'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core'), require('ng-zorro-antd/core')) :
+    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/platform-browser/animations', '@angular/common/locales/en', '@angular/router', '@angular/cdk/coercion', 'ng-zorro-antd/icon', 'ng-zorro-antd/time-picker', 'ng-zorro-antd/menu', '@angular/cdk/layout', 'ng-zorro-antd/grid', 'ng-zorro-antd/tooltip', '@angular/cdk/platform', 'videogular2/compiled/controls', 'videogular2/compiled/overlay-play', 'videogular2/compiled/buffering', 'videogular2/compiled/core', 'ng2-tel-input', '@angular/cdk/a11y', '@angular/cdk/observers', '@angular/cdk/bidi', 'ng-lazyload-image', '@angular/cdk/drag-drop', '@angular/platform-browser', '@angular/common', 'ng-zorro-antd/i18n', 'ngx-export-as', 'jspdf', 'jspdf-autotable', 'ngx-cookie-service', 'util', '@angular/cdk/keycodes', '@angular/forms', 'rxjs', 'rxjs/operators', 'date-fns', 'ng-zorro-antd', 'xlsx', 'tslint/lib/error', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core', 'ng-zorro-antd/core'], factory) :
+    (factory((global['cmacs-components-lib'] = {}),global.ng.platformBrowser.animations,global.ng.common.locales.en,global.ng.router,global.ng.cdk.coercion,global.icon,global.timePicker,global.menu,global.ng.cdk.layout,global.grid,global.tooltip,global.ng.cdk.platform,global.controls,global.overlayPlay,global.buffering,global.core,global.ng2TelInput,global.ng.cdk.a11y,global.ng.cdk.observers,global.ng.cdk.bidi,global.ngLazyloadImage,global.ng.cdk['drag-drop'],global.ng.platformBrowser,global.ng.common,global.i18n,global.ngxExportAs,global.jsPDF,null,global.ngxCookieService,global.util,global.ng.cdk.keycodes,global.ng.forms,global.rxjs,global.rxjs.operators,global.dateFns,global.ngZorroAntd,global.XLSX,global.error,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core,global.i2));
+}(this, (function (exports,animations,en,router,coercion,icon,timePicker,menu,layout,grid,tooltip,platform,controls,overlayPlay,buffering,core,ng2TelInput,a11y,observers,bidi,ngLazyloadImage,dragDrop,platformBrowser,common,i18n,ngxExportAs,jsPDF,jspdfAutotable,ngxCookieService,util,keycodes,forms,rxjs,operators,dateFns,ngZorroAntd,XLSX,error,i1,portal,i0,i2) { 'use strict';
 
     en = en && en.hasOwnProperty('default') ? en['default'] : en;
     jsPDF = jsPDF && jsPDF.hasOwnProperty('default') ? jsPDF['default'] : jsPDF;
@@ -82,8 +82,8 @@
             while ((n === void 0 || n-- > 0) && !(r = i.next()).done)
                 ar.push(r.value);
         }
-        catch (error) {
-            e = { error: error };
+        catch (error$$1) {
+            e = { error: error$$1 };
         }
         finally {
             try {
@@ -8368,7 +8368,7 @@
                     // tslint:disable-next-line: no-non-null-assertion
                     ( /** @type {?} */(e.dataTransfer)).setData('text/plain', ( /** @type {?} */(this.treeNode.key)));
                 }
-                catch (error) {
+                catch (error$$1) {
                     // empty
                 }
                 this.nzTreeService.setSelectedNode(this.treeNode);
@@ -28009,6 +28009,238 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    var CmacsXlsxLoaderComponent = /** @class */ (function () {
+        function CmacsXlsxLoaderComponent() {
+            this.headers = [];
+            this.data = [];
+            this.visible = false;
+            this.modalTitle = '';
+            this.saveBtnLabel = '';
+            this.cmacsStyle = {};
+            this.visibleChange = new i0.EventEmitter();
+            this.configurationChange = new i0.EventEmitter();
+            this.onsave = new i0.EventEmitter();
+        }
+        /**
+         * @param {?} changes
+         * @return {?}
+         */
+        CmacsXlsxLoaderComponent.prototype.ngOnChanges = /**
+         * @param {?} changes
+         * @return {?}
+         */
+            function (changes) {
+                if (changes.files && this.files) {
+                    this.parseXlsx();
+                }
+            };
+        /**
+         * @param {?} $event
+         * @return {?}
+         */
+        CmacsXlsxLoaderComponent.prototype.onVisibleChange = /**
+         * @param {?} $event
+         * @return {?}
+         */
+            function ($event) {
+                this.visibleChange.emit($event);
+            };
+        /**
+         * @return {?}
+         */
+        CmacsXlsxLoaderComponent.prototype.saveConfig = /**
+         * @return {?}
+         */
+            function () {
+                /** @type {?} */
+                var originalHeaders = [];
+                /** @type {?} */
+                var matchedHeaders = [];
+                this.headers.forEach(( /**
+                 * @param {?} header
+                 * @return {?}
+                 */function (header) {
+                    originalHeaders.push(header.display);
+                    matchedHeaders.push(header.matchedColumn);
+                }));
+                /** @type {?} */
+                var matchedData = __spread(this.data);
+                matchedData.unshift(matchedHeaders);
+                matchedData.unshift(originalHeaders);
+                this.configurationChange.emit(this.configuration);
+                this.onsave.emit(matchedData);
+                this.visible = false;
+                this.visibleChange.emit(false);
+            };
+        /**
+         * @return {?}
+         */
+        CmacsXlsxLoaderComponent.prototype.parseXlsx = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                this.data = [];
+                this.headers = [];
+                this.configuration.forEach(( /**
+                 * @param {?} config
+                 * @return {?}
+                 */function (config) {
+                    config.MatchedColumn = null;
+                }));
+                if (this.files.length !== 1)
+                    throw new error.Error('Cannot use multiple files');
+                /** @type {?} */
+                var reader = new FileReader();
+                reader.onload = ( /**
+                 * @param {?} e
+                 * @return {?}
+                 */function (e) {
+                    /* read workbook */
+                    /** @type {?} */
+                    var bstr = e.target.result;
+                    /** @type {?} */
+                    var wb = XLSX.read(bstr, { type: 'binary' });
+                    /* grab first sheet */
+                    /** @type {?} */
+                    var wsname = wb.SheetNames[0];
+                    /** @type {?} */
+                    var ws = wb.Sheets[wsname];
+                    /* save data */
+                    _this.data = XLSX.utils.sheet_to_json(ws, { header: 1, blankrows: false, dateNF: 'MM/dd/yyyy' });
+                    if (_this.data && _this.data.length) {
+                        _this.createHeaders(_this.data[0]);
+                        _this.data = _this.data.slice(1);
+                    }
+                });
+                reader.readAsBinaryString(this.files[0]);
+            };
+        /**
+         * @param {?} data
+         * @return {?}
+         */
+        CmacsXlsxLoaderComponent.prototype.createHeaders = /**
+         * @param {?} data
+         * @return {?}
+         */
+            function (data) {
+                var _this = this;
+                data.forEach(( /**
+                 * @param {?} header
+                 * @return {?}
+                 */function (header) {
+                    /** @type {?} */
+                    var matchedColumn = _this.configuration.filter(( /**
+                     * @param {?} item
+                     * @return {?}
+                     */function (item) { return item.DisplayName === header; }));
+                    if (matchedColumn.length) {
+                        matchedColumn[0].MatchedColumn = header;
+                    }
+                    /** @type {?} */
+                    var temp = {
+                        display: header,
+                        matchedColumn: matchedColumn.length ? matchedColumn[0].PropertyId : null
+                    };
+                    _this.headers.push(temp);
+                }));
+            };
+        /**
+         * @param {?} $event
+         * @param {?} header
+         * @return {?}
+         */
+        CmacsXlsxLoaderComponent.prototype.onSelectionChange = /**
+         * @param {?} $event
+         * @param {?} header
+         * @return {?}
+         */
+            function ($event, header) {
+                /** @type {?} */
+                var previousSelected = this.configuration.filter(( /**
+                 * @param {?} item
+                 * @return {?}
+                 */function (item) { return item.MatchedColumn === header.display; }));
+                if (previousSelected.length) {
+                    previousSelected[0].MatchedColumn = null;
+                }
+                /** @type {?} */
+                var config = this.configuration.filter(( /**
+                 * @param {?} item
+                 * @return {?}
+                 */function (item) { return item.PropertyId === $event; }))[0];
+                config.MatchedColumn = header.display;
+            };
+        /**
+         * @return {?}
+         */
+        CmacsXlsxLoaderComponent.prototype.disableSaveBtn = /**
+         * @return {?}
+         */
+            function () {
+                /** @type {?} */
+                var requiredNotMatched = this.configuration.filter(( /**
+                 * @param {?} item
+                 * @return {?}
+                 */function (item) { return item.Required && !item.MatchedColumn; })).length;
+                if (requiredNotMatched) {
+                    return true;
+                }
+                /** @type {?} */
+                var matched = this.configuration.filter(( /**
+                 * @param {?} item
+                 * @return {?}
+                 */function (item) { return item.MatchedColumn !== null; })).length;
+                if (matched !== this.headers.length) {
+                    return true;
+                }
+            };
+        /**
+         * @param {?} config
+         * @return {?}
+         */
+        CmacsXlsxLoaderComponent.prototype.getLabel = /**
+         * @param {?} config
+         * @return {?}
+         */
+            function (config) {
+                return config.Required ? config.DisplayName + ' *' : config.DisplayName;
+            };
+        CmacsXlsxLoaderComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-xlsx-loader',
+                        exportAs: 'cmacsXlsxLoader',
+                        template: "<cmacs-modal\r\n  [(visible)]=\"visible\"\r\n  [title]=\"modalTitle\"\r\n  modalType=\"interaction\"\r\n  [width]=\"width\"\r\n  [zIndex]=\"10000\"\r\n  [cmacsStyle]=\"cmacsStyle\"\r\n  (visibleChange)=\"onVisibleChange($event)\"\r\n>\r\n  <div class=\"cmacs-xlsx-loader-body\">\r\n    <table class=\"cmacs-xlsx-loader-table cmacs-custom-scrollbar\">\r\n      <tr>\r\n        <th *ngFor=\"let header of headers\">{{header.display}}</th>\r\n      </tr>\r\n      <tr>\r\n        <td class=\"cmacs-xslx-loader\" *ngFor=\"let header of headers\">\r\n          <cmacs-select style=\"width: 100%\" [(ngModel)]=\"header.matchedColumn\"\r\n                        (ngModelChange)=\"onSelectionChange($event, header)\" placeHolder=\"\">\r\n            <ng-container *ngFor=\"let config of configuration\">\r\n              <cmacs-option [style.color]=\"config.Required ? 'darkred' : 'inherit'\"\r\n                *ngIf=\"!config.MatchedColumn || config.MatchedColumn === header.display\"\r\n                [value]=\"config.PropertyId\" [label]=\"getLabel(config)\"></cmacs-option>\r\n            </ng-container>\r\n          </cmacs-select>\r\n        </td>\r\n      </tr>\r\n      <tr *ngFor=\"let row of data\">\r\n        <td *ngFor=\"let cell of row\">{{cell}}</td>\r\n      </tr>\r\n    </table>\r\n  </div>\r\n  <div class=\"cmacs-xlsx-loader-footer\">\r\n    <button style=\"margin-top: 20px; float: right\" cmacs-button [type]=\"'primary'\" (click)=\"saveConfig()\"\r\n            [disabled]=\"disableSaveBtn()\">{{saveBtnLabel}}</button>\r\n  </div>\r\n</cmacs-modal>\r\n",
+                        encapsulation: i0.ViewEncapsulation.None,
+                        preserveWhitespaces: false,
+                        styles: ["th{text-align:center}td{border:1px solid #d3d3d3;border-collapse:collapse;padding:6px}.cmacs-xslx-loader{padding:2px}.cmacs-xlsx-loader-body{padding:10px;max-height:calc(80vh - 80px);overflow:auto}.cmacs-xlsx-loader-table{width:100%}.cmacs-xlsx-loader-footer{padding:10px 10px 60px}"]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsXlsxLoaderComponent.ctorParameters = function () { return []; };
+        CmacsXlsxLoaderComponent.propDecorators = {
+            configuration: [{ type: i0.Input }],
+            visible: [{ type: i0.Input }],
+            modalTitle: [{ type: i0.Input }],
+            saveBtnLabel: [{ type: i0.Input }],
+            cmacsStyle: [{ type: i0.Input }],
+            width: [{ type: i0.Input }],
+            files: [{ type: i0.Input }],
+            visibleChange: [{ type: i0.Output }],
+            configurationChange: [{ type: i0.Output }],
+            onsave: [{ type: i0.Output }]
+        };
+        __decorate([
+            ngZorroAntd.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsXlsxLoaderComponent.prototype, "visible", void 0);
+        return CmacsXlsxLoaderComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
     /** @type {?} */
     var CMACS_COMMENT_CELLS = [
         CmacsCommentActionComponent,
@@ -28025,6 +28257,7 @@
             { type: i0.NgModule, args: [{
                         declarations: __spread([
                             CmacsTimelineDatepickerComponent,
+                            CmacsXlsxLoaderComponent,
                             CmacsTreeSelectComponent,
                             CmacsPopoverComponent,
                             CmacsPopoverDirective,
@@ -28173,6 +28406,7 @@
                         ],
                         exports: __spread([
                             CmacsTimelineDatepickerComponent,
+                            CmacsXlsxLoaderComponent,
                             CmacsTooltipDirective,
                             CmacsTreeSelectComponent,
                             CmacsPopoverComponent,
@@ -28768,6 +29002,7 @@
     exports.CmacsTreeSelectComponent = CmacsTreeSelectComponent;
     exports.CmacsTreeSelectService = CmacsTreeSelectService;
     exports.CmacsTimelineDatepickerComponent = CmacsTimelineDatepickerComponent;
+    exports.CmacsXlsxLoaderComponent = CmacsXlsxLoaderComponent;
     exports.ɵb = AbstractPickerComponent;
     exports.ɵba = CalendarFooterComponent;
     exports.ɵy = CalendarHeaderComponent;
