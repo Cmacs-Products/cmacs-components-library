@@ -13,7 +13,7 @@ export declare class CmacsSelectService {
     autoClearSearchValue: boolean;
     serverSearch: boolean;
     filterOption: TFilterOption;
-    mode: 'default' | 'multiple' | 'tags' | 'tagsSingleSelect';
+    mode: 'default' | 'multiple' | 'tags';
     maxMultipleCount: number;
     disabled: boolean;
     compareWith: (o1: any, o2: any) => boolean;
@@ -70,7 +70,6 @@ export declare class CmacsSelectService {
     check(): void;
     readonly isSingleMode: boolean;
     readonly isTagsMode: boolean;
-    readonly isTagsSingleSelectMode: boolean;
     readonly isMultipleMode: boolean;
     readonly isMultipleOrTags: boolean;
 }
