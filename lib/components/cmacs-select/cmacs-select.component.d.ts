@@ -66,7 +66,7 @@ export declare class CmacsSelectComponent implements ControlValueAccessor, OnIni
     autoClearSearchValue: boolean;
     maxMultipleCount: number;
     serverSearch: boolean;
-    mode: 'default' | 'multiple' | 'tags';
+    mode: 'default' | 'multiple' | 'tags' | 'tagsSingleSelect';
     filterOption: TFilterOption;
     compareWith: (o1: any, o2: any) => boolean;
     autoFocus: boolean;
