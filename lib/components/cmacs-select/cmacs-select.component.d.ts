@@ -48,6 +48,7 @@ export declare class CmacsSelectComponent implements ControlValueAccessor, OnIni
     allowClear: boolean;
     open: boolean;
     showSearch: boolean;
+    tagsOut: boolean;
     showCmacsSearch: boolean;
     showCustomSearch: boolean;
     loading: boolean;
@@ -74,7 +75,9 @@ export declare class CmacsSelectComponent implements ControlValueAccessor, OnIni
     disabled: boolean;
     updateAutoFocus(): void;
     focus(): void;
+    trackValue(_index: number, option: CmacsOptionComponent): any;
     blur(): void;
+    removeSelectedValue(option: CmacsOptionComponent, e: MouseEvent): void;
     onKeyDown(event: KeyboardEvent): void;
     toggleDropDown(): void;
     closeDropDown(): void;

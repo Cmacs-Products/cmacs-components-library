@@ -16,6 +16,7 @@ export declare class CmacsSelectTopControlComponent implements OnInit, OnDestroy
     showCustomSearch: boolean;
     showCmacsSearch: boolean;
     nzPlaceHolder: string;
+    tagsOut: boolean;
     nzOpen: boolean;
     action: boolean;
     nzMaxTagCount: number;
@@ -30,6 +31,7 @@ export declare class CmacsSelectTopControlComponent implements OnInit, OnDestroy
     }>;
     nzTokenSeparators: string[];
     onClearSelection(e: MouseEvent): void;
+    getSelectedValues(): any[];
     setInputValue(value: string): void;
     readonly placeHolderDisplay: string;
     readonly selectedValueStyle: {

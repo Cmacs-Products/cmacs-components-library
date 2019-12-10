@@ -9,11 +9,12 @@ export declare class CmacsSearchComponent implements ControlValueAccessor, OnIni
     allowClear: boolean;
     showSearch: boolean;
     cmacsOpen: boolean;
+    tagsOut: boolean;
     size: NzSizeLDSType;
     placeholder: string;
     selected: any;
     selectedChange: EventEmitter<any>;
-    mode: 'default' | 'multiple';
+    mode: 'default' | 'multiple' | 'tags';
     onChange: (value: string | string[]) => void;
     onTouched: () => void;
     onSelectedChange(): void;
