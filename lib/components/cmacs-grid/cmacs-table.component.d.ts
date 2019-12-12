@@ -35,7 +35,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     widthConfig: string[];
     pageIndex: number;
     pageSize: number;
-    data: T[];
+    data: any[];
     config: GridConfig;
     configChange: EventEmitter<GridConfig>;
     fieldId: string;
@@ -94,7 +94,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     getIndex(id: any): number;
     updateCheckboxCache(): void;
     onButtonClick(field: any): void;
-    onCheckboxChange(event: any): void;
+    onCheckboxChange(oninit?: boolean): void;
     onRateChange(count: number, data: any): void;
     onRateClick(event: any): void;
     getFields(): Field[];

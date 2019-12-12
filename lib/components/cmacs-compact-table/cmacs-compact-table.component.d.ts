@@ -41,7 +41,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     widthConfig: string[];
     pageIndex: number;
     pageSize: number;
-    data: T[];
+    data: any[];
     config: GridConfig;
     configChange: EventEmitter<GridConfig>;
     fieldId: string;
@@ -119,7 +119,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     updateCheckboxCacheTreeData(): void;
     convertExpandTreeToList(item: any, plainList: any[]): void;
     onButtonClick(field: any): void;
-    onCheckboxChange(event?: any): void;
+    onCheckboxChange(oninit?: boolean): void;
     checkCheckboxState(): CheckboxSelect[];
     onRateChange(count: number, data: any): void;
     onRateClick(event: any): void;
