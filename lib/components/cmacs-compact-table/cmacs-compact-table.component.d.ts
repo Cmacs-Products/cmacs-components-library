@@ -9,6 +9,7 @@ import { GridExpConfig } from '../core/interfaces/grid-exp-config';
 import { ExcelService } from '../core/services/excel.service';
 import { CookieService } from "ngx-cookie-service";
 import { CheckboxSelect } from "../cmacs-grid/cmacs-table.component";
+import { CdkDragDrop } from "@angular/cdk/drag-drop";
 export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnChanges, OnDestroy, AfterViewInit {
     private cdr;
     private i18n;
@@ -29,6 +30,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     logs: boolean;
     expandable: boolean;
     smartTable: boolean;
+    draggable: boolean;
     virtualItemSize: number;
     loadingDelay: number;
     loadingIndicator: TemplateRef<void>;
@@ -100,6 +102,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     selectElement: ElementRef;
     boolElement: ElementRef;
     addRow(idx: number): void;
+    drop(event: CdkDragDrop<string[]>): void;
     deleteRow(idx: number): void;
     calcPadding(field: Field): 0 | 6;
     startEdit(id: string, property: string, event: MouseEvent): void;
