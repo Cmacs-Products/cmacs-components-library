@@ -1,12 +1,12 @@
 import { CdkConnectedOverlay, CdkOverlayOrigin, ConnectedOverlayPositionChange } from '@angular/cdk/overlay';
-import { ChangeDetectorRef, ElementRef, EventEmitter, Injector, OnChanges, OnDestroy, OnInit, Renderer2, SimpleChanges, TemplateRef } from '@angular/core';
+import { ChangeDetectorRef, ElementRef, EventEmitter, Injector, OnChanges, OnDestroy, OnInit, Renderer2, SimpleChanges, TemplateRef, AfterViewInit } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { NzFormatEmitEvent, NzNoAnimationDirective, NzSizeLDSType, NzTreeBase, NzTreeBaseService, NzTreeNode, NzTreeNodeOptions } from 'ng-zorro-antd/core';
 import { CmacsTreeSelectService } from './cmacs-tree-select.service';
 import { CmacsTreeComponent } from "../cmacs-tree/cmacs-tree.component";
 export declare function higherOrderServiceFactory(injector: Injector): NzTreeBaseService;
-export declare class CmacsTreeSelectComponent extends NzTreeBase implements ControlValueAccessor, OnInit, OnDestroy, OnChanges {
+export declare class CmacsTreeSelectComponent extends NzTreeBase implements ControlValueAccessor, OnInit, OnDestroy, OnChanges, AfterViewInit {
     private renderer;
     private cdr;
     private elementRef;
@@ -26,6 +26,7 @@ export declare class CmacsTreeSelectComponent extends NzTreeBase implements Cont
     defaultExpandAll: boolean;
     cmacsOpen: boolean;
     inlineEdit: boolean;
+    radio: boolean;
     notFoundContent: string;
     nodes: Array<NzTreeNode | NzTreeNodeOptions>;
     open: boolean;
@@ -73,6 +74,7 @@ export declare class CmacsTreeSelectComponent extends NzTreeBase implements Cont
     };
     constructor(nzTreeService: CmacsTreeSelectService, renderer: Renderer2, cdr: ChangeDetectorRef, elementRef: ElementRef, noAnimation?: NzNoAnimationDirective);
     ngOnInit(): void;
+    ngAfterViewInit(): void;
     onaddchildevt($event: NzTreeNode): void;
     ngOnDestroy(): void;
     setDisabledState(isDisabled: boolean): void;

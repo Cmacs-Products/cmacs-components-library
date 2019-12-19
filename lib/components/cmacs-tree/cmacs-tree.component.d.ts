@@ -22,6 +22,7 @@ export declare class CmacsTreeComponent extends NzTreeBase implements OnInit, On
     nzCheckStrictly: boolean;
     nzBlockNode: boolean;
     inlineEdit: boolean;
+    radio: boolean;
     onaddchild: EventEmitter<NzTreeNode>;
     /**
      * @deprecated use

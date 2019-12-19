@@ -23,6 +23,7 @@ export declare class CmacsTreeNodeComponent implements OnInit, OnChanges, OnDest
     selectMode: boolean;
     showIcon: boolean;
     inlineEdit: boolean;
+    radio: boolean;
     index: number;
     treeTemplate: TemplateRef<void>;
     beforeDrop: (confirm: NzFormatBeforeDropEvent) => Observable<boolean>;
