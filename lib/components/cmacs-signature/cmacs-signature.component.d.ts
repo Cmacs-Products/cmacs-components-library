@@ -1,3 +1,57 @@
+import { EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { SignaturePad } from 'angular2-signaturepad/signature-pad';
+import { UploadChangeParam } from "ng-zorro-antd";
+import { CmacsMessageService } from "../cmacs-message/cmacs-message.service";
+export declare const SIGNATURE_LOCALIZATION: {
+    'Click here to sign': string;
+    'Sign to Complete': string;
+    'Cancel': string;
+    'Verify': string;
+    'Enter Your Name': string;
+    'Text Here': string;
+    'Type': string;
+    'Draw': string;
+    'Image': string;
+    'I, User Full Name, have reviewed and completed this report.': string;
+    'Select here to save your signature for future use.': string;
+    'Signature': string;
+    'Drag & Drop File Here or': string;
+    'Browse Computer': string;
+};
 export declare class CmacsSignatureComponent {
-    constructor();
+    private fb;
+    private msg;
+    _isVisible: boolean;
+    formGroup: FormGroup;
+    saveSignature: boolean;
+    _i18n: {
+        'Click here to sign': string;
+        'Sign to Complete': string;
+        'Cancel': string;
+        'Verify': string;
+        'Enter Your Name': string;
+        'Text Here': string;
+        'Type': string;
+        'Draw': string;
+        'Image': string;
+        'I, User Full Name, have reviewed and completed this report.': string;
+        'Select here to save your signature for future use.': string;
+        'Signature': string;
+        'Drag & Drop File Here or': string;
+        'Browse Computer': string;
+    };
+    signaturePadOptions: Object;
+    i18n: any;
+    oncancel: EventEmitter<boolean>;
+    onsubmit: EventEmitter<any>;
+    signaturePad: SignaturePad;
+    constructor(fb: FormBuilder, msg: CmacsMessageService);
+    ngAfterViewInit(): void;
+    drawComplete(): void;
+    openModal(): void;
+    handleCancel(): void;
+    handleOk(): void;
+    checkPressedKeys($event: any): void;
+    handleChange({ file, fileList }: UploadChangeParam): void;
 }

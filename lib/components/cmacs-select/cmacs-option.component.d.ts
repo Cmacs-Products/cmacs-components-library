@@ -4,6 +4,7 @@ export declare class CmacsOptionComponent implements OnChanges {
     changes: Subject<{}>;
     template: TemplateRef<void>;
     nzLabel: string;
+    divider: string;
     nzValue: any;
     nzDisabled: boolean;
     nzCustomContent: boolean;

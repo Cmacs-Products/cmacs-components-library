@@ -22,6 +22,7 @@ export interface Field {
     dateFormat?: string;
     readonly?: boolean;
     default?: any;
+    template?: CmacsGridTemplateRef;
 }
 export interface SelectConfig {
     selectData: any[];
