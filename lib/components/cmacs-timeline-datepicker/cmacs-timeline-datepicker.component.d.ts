@@ -10,23 +10,30 @@ export declare class CmacsTimelineDatepickerComponent implements AfterContentChe
     private indexToSelect;
     private el;
     private _selectedIndex;
+    private _selectedRangeIdxs;
     private _date;
+    private _range;
     listOfNzTabComponent: any[];
     gutter: number;
     mode: CmacsTimelineDatePickerMode;
     restrictMode: boolean;
+    ranged: boolean;
     readonly onNextClick: EventEmitter<void>;
     readonly onPrevClick: EventEmitter<void>;
     readonly selectChange: EventEmitter<TabChangeEvent>;
     readonly selectedIndexChange: EventEmitter<number>;
     readonly dateChange: EventEmitter<Date>;
+    readonly rangeChange: EventEmitter<Date[]>;
     modeOptions: {
         title: string;
         value: string;
         selected: boolean;
     }[];
     selectedIndex: number | null;
+    selectedRangeIdxs: number[];
     date: Date | null;
+    range: Date[];
+    onChange(range: Date[]): void;
     getWeek(result: Date): void;
     setClassMap(): void;
     getWeekNumber(date: any): number;
@@ -39,6 +46,7 @@ export declare class CmacsTimelineDatepickerComponent implements AfterContentChe
     ngOnChanges(changes: SimpleChanges): void;
     updateSelectedMode(): void;
     getValuesSlider(): any[];
+    getWeeksInYear(date: Date): any[];
     formatWeekNumber(value: number): string;
     ngAfterContentChecked(): void;
     customSelect(index: number): void;

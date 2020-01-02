@@ -32,4 +32,4 @@ export interface SupportTimeOptions {
 export interface PresetRanges {
     [key: string]: Date[] | (() => Date[]);
 }
-export declare type PanelMode = 'decade' | 'year' | 'month' | 'date' | 'time';
+export declare type PanelMode = 'decade' | 'year' | 'month' | 'date' | 'time' | 'week';

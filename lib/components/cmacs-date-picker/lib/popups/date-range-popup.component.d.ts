@@ -26,7 +26,7 @@ export declare class DateRangePopupComponent implements OnInit, OnChanges {
     popupStyle: object;
     dropdownClassName: string;
     panelMode: PanelMode | PanelMode[];
-    readonly panelModeChange: EventEmitter<"time" | "month" | "year" | "decade" | "date" | PanelMode[]>;
+    readonly panelModeChange: EventEmitter<"time" | "month" | "year" | "decade" | "date" | "week" | PanelMode[]>;
     readonly calendarChange: EventEmitter<CandyDate | CandyDate[]>;
     value: CandyDate | CandyDate[] | null;
     readonly valueChange: EventEmitter<CandyDate | CandyDate[]>;

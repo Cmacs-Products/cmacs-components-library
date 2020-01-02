@@ -18,6 +18,8 @@ export declare class CmacsTagComponent implements OnInit, OnChanges {
     cmacsGridType: CmacsGridType;
     cmacsPriorityType: CmacsPriorityType;
     cmacsStatusType: boolean;
+    cmacsMoneyType: boolean;
+    cmacsTemplateType: boolean;
     disabled: boolean;
     color: string;
     checked: boolean;

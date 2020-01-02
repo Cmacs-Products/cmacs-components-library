@@ -15,6 +15,7 @@ export declare class CmacsXlsxLoaderComponent {
     modalTitle: string;
     saveBtnLabel: string;
     uploadBtnLabel: string;
+    placeholder: string;
     cmacsStyle: {};
     width: number | string;
     configurationChange: EventEmitter<any>;

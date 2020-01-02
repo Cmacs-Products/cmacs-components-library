@@ -12,7 +12,7 @@ export declare class CmacsDateRangePickerComponent extends AbstractPickerCompone
     showToday: boolean;
     mode: PanelMode | PanelMode[];
     ranges: PresetRanges;
-    readonly cmacsOnPanelChange: EventEmitter<"time" | "month" | "year" | "decade" | "date" | PanelMode[]>;
+    readonly cmacsOnPanelChange: EventEmitter<"time" | "month" | "year" | "decade" | "date" | "week" | PanelMode[]>;
     readonly cmacsOnCalendarChange: EventEmitter<Date[]>;
     openPickerTitle: string;
     openPickerSubtitle: string;
