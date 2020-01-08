@@ -112,6 +112,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     childOf(node: any, ancestor: any): boolean;
     endEditMode($event: KeyboardEvent, index: number): void;
     endEditModeNgModel(index: number): void;
+    ngModelChange(index: number): void;
     getIndex(id: any): number;
     updateCheckboxCache(): void;
     checkChildrenState(item: any): void;
@@ -145,6 +146,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     ngAfterViewInit(): void;
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
+    getTreeNodeByKey(node: any, key: string): any;
     exportTreePdf(fileName: string): void;
     exportTreeToPdfRec(rows: any, data: any, offSetMargin?: number): void;
     convertTreeToList(root: object): any[];

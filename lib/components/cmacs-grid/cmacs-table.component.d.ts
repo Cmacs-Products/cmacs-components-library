@@ -95,6 +95,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     updateCheckboxCache(): void;
     onButtonClick(field: any): void;
     onCheckboxChange(oninit?: boolean): void;
+    ngModelChange(index: number): void;
     onRateChange(count: number, data: any): void;
     onRateClick(event: any): void;
     getFields(): Field[];
