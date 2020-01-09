@@ -90,6 +90,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     editId: string | null;
     property: string | null;
     rowOnEdition: number;
+    nodeOnEdition: any;
     mapOfExpandedData: {
         [key: string]: any[];
     };
@@ -110,9 +111,9 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     handleClick(e: Event): void;
     getCustomPadding(item: any, i: number): number;
     childOf(node: any, ancestor: any): boolean;
-    endEditMode($event: KeyboardEvent, index: number): void;
-    endEditModeNgModel(index: number): void;
-    ngModelChange(index: number): void;
+    endEditMode($event: KeyboardEvent, index: number, data?: any): void;
+    endEditModeNgModel(index: number, data?: any): void;
+    ngModelChange(index: number, data?: any): void;
     getIndex(id: any): number;
     updateCheckboxCache(): void;
     checkChildrenState(item: any): void;
@@ -146,7 +147,6 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     ngAfterViewInit(): void;
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
-    getTreeNodeByKey(node: any, key: string): any;
     exportTreePdf(fileName: string): void;
     exportTreeToPdfRec(rows: any, data: any, offSetMargin?: number): void;
     convertTreeToList(root: object): any[];
