@@ -25,6 +25,7 @@ export interface Field {
     left?: string;
     right?: string;
     template?: CmacsGridTemplateRef;
+    editable?: boolean;
 }
 export interface SelectConfig {
     selectData: any[];
