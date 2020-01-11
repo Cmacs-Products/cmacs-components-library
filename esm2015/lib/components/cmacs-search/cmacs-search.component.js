@@ -93,7 +93,7 @@ CmacsSearchComponent.decorators = [
                         multi: true
                     }
                 ],
-                styles: [":host ::ng-deep .ant-select-selection__placeholder{margin-left:21px}:host ::ng-deep .ant-select-selection--multiple .ant-select-selection__placeholder{margin-left:30px}:host ::ng-deep .anticon-search{margin-left:8px}:host ::ng-deep .ant-select-selection-selected-value{padding-left:10px}:host ::ng-deep .ant-select-arrow{top:44%}"]
+                styles: [":host ::ng-deep .cmacs-search .ant-select-selection__placeholder{margin-left:21px}:host ::ng-deep .cmacs-search .ant-select-selection--multiple .ant-select-selection__placeholder{margin-left:26px}:host ::ng-deep .cmacs-search .anticon-search{margin-left:8px}:host ::ng-deep .cmacs-search .ant-select-selection-selected-value{padding-left:10px}:host ::ng-deep .cmacs-search .ant-select-arrow{top:14px}::ng-deep .cmacs-search .ant-select-search--inline .ant-select-search__field{max-width:77%;margin-left:21px!important}::ng-deep .cmacs-search .cmacs-select-selection--multiple .ant-select-search--inline .ant-select-search__field{margin-left:26px!important;padding-right:36px;min-width:38px;max-width:94%}::ng-deep .cmacs-search .cmacs-select-selection--multiple .ant-select-search--inline .ant-select-search__field.cmacs-select-selection-not-empty{margin-left:0!important}"]
             }] }
 ];
 /** @nocollapse */
