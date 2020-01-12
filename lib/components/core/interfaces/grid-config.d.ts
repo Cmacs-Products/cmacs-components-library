@@ -26,6 +26,8 @@ export interface Field {
     right?: string;
     template?: CmacsGridTemplateRef;
     editable?: boolean;
+    validators?: any[];
+    placeholder?: string;
 }
 export interface SelectConfig {
     selectData: any[];

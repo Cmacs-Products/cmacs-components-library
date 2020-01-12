@@ -102,6 +102,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     dateTimePickerElement: ElementRef;
     selectElement: ElementRef;
     boolElement: ElementRef;
+    validateString(data: any, field: Field): boolean;
     addRow(idx: number): void;
     drop(event: CdkDragDrop<string[]>): void;
     deleteRow(idx: number): void;
@@ -166,4 +167,5 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     clickRow(data: any): void;
     dblClickRow(data: any): void;
     clickBooleanCell(data: any, id: string, property: string, event: MouseEvent): void;
+    emitOnEditEvent(): void;
 }
