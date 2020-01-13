@@ -119,3 +119,4 @@ export * from './lib/components/cmacs-tree-select/cmacs-tree-select.component';
 export * from './lib/components/cmacs-tree-select/cmacs-tree-select.service';
 export * from './lib/components/cmacs-timeline-datepicker/cmacs-timeline-datepicker.component';
 export * from './lib/components/cmacs-xlsx-loader/cmacs-xlsx-loader.component';
+export * from './lib/components/cmacs-compact-side-panel/cmacs-compact-side-panel.component';
