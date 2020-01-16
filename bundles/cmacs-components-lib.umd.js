@@ -5474,6 +5474,7 @@
         function CmacsMenuService() {
             var _this = _super !== null && _super.apply(this, arguments) || this;
             _this.isInDropDown = false;
+            _this.cmacsMode = null;
             return _this;
         }
         CmacsMenuService.decorators = [
@@ -5983,10 +5984,10 @@
          * @return {?}
          */
             function (changes) {
-                if (changes.nzOpen) {
+                if (changes.open) {
                     this.submenuService.setOpenState(this.open);
                 }
-                if (changes.nzDisabled) {
+                if (changes.disabled) {
                     this.submenuService.disabled = this.disabled;
                     this.setClassMap();
                 }
@@ -6064,6 +6065,7 @@
             this.inlineIndent = 24;
             this.theme = 'light';
             this.mode = 'vertical';
+            this.cmacsMode = null;
             this.inDropDown = false;
             this.inlineCollapsed = false;
             this.selectable = !this.menuService.isInDropDown;
@@ -6115,6 +6117,7 @@
                     _a[prefixName + "-" + this.theme] = true,
                     _a[prefixName + "-" + this.mode] = true,
                     _a[prefixName + "-inline-collapsed"] = this.inlineCollapsed,
+                    _a["cmacs-menu-side-bar"] = this.cmacsMode === 'side-bar',
                     _a));
             };
         /**
@@ -6158,28 +6161,28 @@
          * @return {?}
          */
             function (changes) {
-                if (changes.nzInlineCollapsed) {
+                if (changes.inlineCollapsed) {
                     this.updateInlineCollapse();
                 }
-                if (changes.nzInlineIndent) {
+                if (changes.inlineIndent) {
                     this.menuService.setInlineIndent(this.inlineIndent);
                 }
-                if (changes.nzInDropDown) {
+                if (changes.inDropDown) {
                     this.menuService.isInDropDown = this.inDropDown;
                 }
-                if (changes.nzTheme) {
+                if (changes.theme) {
                     this.menuService.setTheme(this.theme);
                 }
-                if (changes.nzMode) {
+                if (changes.mode) {
                     this.menuService.setMode(this.mode);
-                    if (!changes.nzMode.isFirstChange() && this.listOfCmacsSubMenuComponent) {
+                    if (!changes.mode.isFirstChange() && this.listOfCmacsSubMenuComponent) {
                         this.listOfCmacsSubMenuComponent.forEach(( /**
                          * @param {?} submenu
                          * @return {?}
                          */function (submenu) { return submenu.setOpenState(false); }));
                     }
                 }
-                if (changes.nzTheme || changes.nzMode || changes.nzInlineCollapsed) {
+                if (changes.theme || changes.mode || changes.inlineCollapsed) {
                     this.setClassMap();
                 }
             };
@@ -6223,6 +6226,7 @@
             inlineIndent: [{ type: i0.Input }],
             theme: [{ type: i0.Input }],
             mode: [{ type: i0.Input }],
+            cmacsMode: [{ type: i0.Input }],
             inDropDown: [{ type: i0.Input }],
             inlineCollapsed: [{ type: i0.Input }],
             selectable: [{ type: i0.Input }],
@@ -28815,32 +28819,6 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
-    var CmacsCompactSidePanelComponent = /** @class */ (function () {
-        function CmacsCompactSidePanelComponent() {
-        }
-        /**
-         * @return {?}
-         */
-        CmacsCompactSidePanelComponent.prototype.ngOnInit = /**
-         * @return {?}
-         */
-            function () { };
-        CmacsCompactSidePanelComponent.decorators = [
-            { type: i0.Component, args: [{
-                        selector: 'cmacs-compact-side-panel',
-                        template: "<!-- right menu -->\r\n<div [style.height.px] =\"400\" style=\"width: 40px; background-color: #f6f7fb; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1)\">\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i nz-icon nzType=\"download\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <!-- <br> -->\r\n      <hr [ngClass]=\"['vertical-divider']\">\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Square\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Circle\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Line\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Cloud\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Custom-Shape\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <!-- <br> -->\r\n      <hr>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Free-Draw\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Highlight\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <!-- <br> -->\r\n      <hr [ngClass]=\"['vertical-divider']\">\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Text-Box\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Stamp\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Callout\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <!-- <br> -->\r\n      <hr [ngClass]=\"['vertical-divider']\">\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Upload-Image\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Ruler\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <!-- <br> -->\r\n      <hr [ngClass]=\"['vertical-divider']\">\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i class=\"iconUILarge-Circle\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i nz-icon nzType=\"schedule\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i nz-icon nzType=\"setting\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n    </div>\r\n",
-                        styles: [".bar-button{text-align:center;margin-top:9px;margin-bottom:9px}.top-menu>div{margin-top:15px}.bottom-menu,.top-menu{text-align:center}.bottom-menu-center{height:40px;background-color:#0d1e3b;position:relative;border-radius:5px}.bottom-menu-center>div{height:100%}.bottom-menu-item{color:#fff}.left-expandable{box-shadow:0 2px 4px rgba(0,0,0,.1);width:200px;background-color:#f6f7fb;font-size:12px}.divider{width:5px;height:auto;display:inline-block}.left-expandable>div{padding-top:16px;padding-left:12px;padding-right:10px}.right-expandable>div{padding-top:16px;padding-left:12px}.right-expandable{box-shadow:0 2px 4px rgba(0,0,0,.1);width:200px;background-color:#f6f7fb;font-size:12px}.right-expandable>div>a,.right-expandable>div>a:active,.right-expandable>div>a:link,.right-expandable>div>a:visited,a{color:#3b3f46}.bottom-menu-item>a{color:#fff}.vertical-divider{width:20px;background-color:#dee0e5}.viewer{width:calc(100% - 40px)}"]
-                    }] }
-        ];
-        /** @nocollapse */
-        CmacsCompactSidePanelComponent.ctorParameters = function () { return []; };
-        return CmacsCompactSidePanelComponent;
-    }());
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
     /** @type {?} */
     var CMACS_COMMENT_CELLS = [
         CmacsCommentActionComponent,
@@ -28856,7 +28834,6 @@
         CmacsComponentsLibModule.decorators = [
             { type: i0.NgModule, args: [{
                         declarations: __spread([
-                            CmacsCompactSidePanelComponent,
                             CmacsTimelineDatepickerComponent,
                             CmacsXlsxLoaderComponent,
                             CmacsTreeSelectComponent,
@@ -29007,7 +28984,6 @@
                             angular2Signaturepad.SignaturePadModule
                         ],
                         exports: __spread([
-                            CmacsCompactSidePanelComponent,
                             CmacsTimelineDatepickerComponent,
                             CmacsXlsxLoaderComponent,
                             CmacsTooltipDirective,
@@ -29607,7 +29583,6 @@
     exports.CmacsTreeSelectService = CmacsTreeSelectService;
     exports.CmacsTimelineDatepickerComponent = CmacsTimelineDatepickerComponent;
     exports.CmacsXlsxLoaderComponent = CmacsXlsxLoaderComponent;
-    exports.CmacsCompactSidePanelComponent = CmacsCompactSidePanelComponent;
     exports.ɵb = AbstractPickerComponent;
     exports.ɵba = CalendarFooterComponent;
     exports.ɵy = CalendarHeaderComponent;

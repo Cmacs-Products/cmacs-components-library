@@ -39,7 +39,7 @@ import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, InjectionToken, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, Type, inject, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -4571,6 +4571,7 @@ class CmacsMenuService extends NzMenuBaseService {
     constructor() {
         super(...arguments);
         this.isInDropDown = false;
+        this.cmacsMode = null;
     }
 }
 CmacsMenuService.decorators = [
@@ -5026,10 +5027,10 @@ class CmacsSubMenuComponent {
      * @return {?}
      */
     ngOnChanges(changes) {
-        if (changes.nzOpen) {
+        if (changes.open) {
             this.submenuService.setOpenState(this.open);
         }
-        if (changes.nzDisabled) {
+        if (changes.disabled) {
             this.submenuService.disabled = this.disabled;
             this.setClassMap();
         }
@@ -5121,6 +5122,7 @@ class CmacsMenuDirective {
         this.inlineIndent = 24;
         this.theme = 'light';
         this.mode = 'vertical';
+        this.cmacsMode = null;
         this.inDropDown = false;
         this.inlineCollapsed = false;
         this.selectable = !this.menuService.isInDropDown;
@@ -5167,7 +5169,8 @@ class CmacsMenuDirective {
             [`${prefixName}-root`]: true,
             [`${prefixName}-${this.theme}`]: true,
             [`${prefixName}-${this.mode}`]: true,
-            [`${prefixName}-inline-collapsed`]: this.inlineCollapsed
+            [`${prefixName}-inline-collapsed`]: this.inlineCollapsed,
+            [`cmacs-menu-side-bar`]: this.cmacsMode === 'side-bar'
         });
     }
     /**
@@ -5202,21 +5205,21 @@ class CmacsMenuDirective {
      * @return {?}
      */
     ngOnChanges(changes) {
-        if (changes.nzInlineCollapsed) {
+        if (changes.inlineCollapsed) {
             this.updateInlineCollapse();
         }
-        if (changes.nzInlineIndent) {
+        if (changes.inlineIndent) {
             this.menuService.setInlineIndent(this.inlineIndent);
         }
-        if (changes.nzInDropDown) {
+        if (changes.inDropDown) {
             this.menuService.isInDropDown = this.inDropDown;
         }
-        if (changes.nzTheme) {
+        if (changes.theme) {
             this.menuService.setTheme(this.theme);
         }
-        if (changes.nzMode) {
+        if (changes.mode) {
             this.menuService.setMode(this.mode);
-            if (!changes.nzMode.isFirstChange() && this.listOfCmacsSubMenuComponent) {
+            if (!changes.mode.isFirstChange() && this.listOfCmacsSubMenuComponent) {
                 this.listOfCmacsSubMenuComponent.forEach((/**
                  * @param {?} submenu
                  * @return {?}
@@ -5224,7 +5227,7 @@ class CmacsMenuDirective {
                 submenu => submenu.setOpenState(false)));
             }
         }
-        if (changes.nzTheme || changes.nzMode || changes.nzInlineCollapsed) {
+        if (changes.theme || changes.mode || changes.inlineCollapsed) {
             this.setClassMap();
         }
     }
@@ -5264,6 +5267,7 @@ CmacsMenuDirective.propDecorators = {
     inlineIndent: [{ type: Input }],
     theme: [{ type: Input }],
     mode: [{ type: Input }],
+    cmacsMode: [{ type: Input }],
     inDropDown: [{ type: Input }],
     inlineCollapsed: [{ type: Input }],
     selectable: [{ type: Input }],
@@ -24337,27 +24341,6 @@ CmacsXlsxLoaderComponent.propDecorators = {
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
-class CmacsCompactSidePanelComponent {
-    constructor() { }
-    /**
-     * @return {?}
-     */
-    ngOnInit() { }
-}
-CmacsCompactSidePanelComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'cmacs-compact-side-panel',
-                template: "<!-- right menu -->\r\n<div [style.height.px] =\"400\" style=\"width: 40px; background-color: #f6f7fb; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1)\">\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i nz-icon nzType=\"download\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <!-- <br> -->\r\n      <hr [ngClass]=\"['vertical-divider']\">\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Square\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Circle\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Line\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Cloud\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Custom-Shape\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <!-- <br> -->\r\n      <hr>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Free-Draw\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Highlight\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <!-- <br> -->\r\n      <hr [ngClass]=\"['vertical-divider']\">\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Text-Box\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Stamp\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Callout\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <!-- <br> -->\r\n      <hr [ngClass]=\"['vertical-divider']\">\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Upload-Image\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i style=\"font-size:16px\" class=\"iconUILarge-Ruler\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <!-- <br> -->\r\n      <hr [ngClass]=\"['vertical-divider']\">\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i class=\"iconUILarge-Circle\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i nz-icon nzType=\"schedule\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n      <div [ngClass]=\"['bar-button']\">\r\n        <a><i nz-icon nzType=\"setting\" nzTheme=\"outline\"></i></a>\r\n      </div>\r\n    </div>\r\n",
-                styles: [".bar-button{text-align:center;margin-top:9px;margin-bottom:9px}.top-menu>div{margin-top:15px}.bottom-menu,.top-menu{text-align:center}.bottom-menu-center{height:40px;background-color:#0d1e3b;position:relative;border-radius:5px}.bottom-menu-center>div{height:100%}.bottom-menu-item{color:#fff}.left-expandable{box-shadow:0 2px 4px rgba(0,0,0,.1);width:200px;background-color:#f6f7fb;font-size:12px}.divider{width:5px;height:auto;display:inline-block}.left-expandable>div{padding-top:16px;padding-left:12px;padding-right:10px}.right-expandable>div{padding-top:16px;padding-left:12px}.right-expandable{box-shadow:0 2px 4px rgba(0,0,0,.1);width:200px;background-color:#f6f7fb;font-size:12px}.right-expandable>div>a,.right-expandable>div>a:active,.right-expandable>div>a:link,.right-expandable>div>a:visited,a{color:#3b3f46}.bottom-menu-item>a{color:#fff}.vertical-divider{width:20px;background-color:#dee0e5}.viewer{width:calc(100% - 40px)}"]
-            }] }
-];
-/** @nocollapse */
-CmacsCompactSidePanelComponent.ctorParameters = () => [];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 /** @type {?} */
 const CMACS_COMMENT_CELLS = [
     CmacsCommentActionComponent,
@@ -24372,7 +24355,6 @@ class CmacsComponentsLibModule {
 CmacsComponentsLibModule.decorators = [
     { type: NgModule, args: [{
                 declarations: [
-                    CmacsCompactSidePanelComponent,
                     CmacsTimelineDatepickerComponent,
                     CmacsXlsxLoaderComponent,
                     CmacsTreeSelectComponent,
@@ -24523,7 +24505,6 @@ CmacsComponentsLibModule.decorators = [
                     SignaturePadModule
                 ],
                 exports: [
-                    CmacsCompactSidePanelComponent,
                     CmacsTimelineDatepickerComponent,
                     CmacsXlsxLoaderComponent,
                     CmacsTooltipDirective,
@@ -24916,6 +24897,6 @@ const ModeTabType = {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsDividerComponent, CmacsFloatingMenuComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, CmacsDateCellDirective, CmacsMonthCellDirective, CmacsDateFullCellDirective, CmacsMonthFullCellDirective, CmacsCalendarHeaderComponent, CmacsCalendarComponent, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, CmacsModalRef, CmacsDropdownADirective, CmacsProgressComponent, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, CmacsAlertComponent, CmacsCommentComponent, CmacsCommentAvatarDirective, CmacsCommentContentDirective, CmacsCommentActionHostDirective, CmacsCommentActionComponent, CmacsSliderComponent, CmacsSliderHandleComponent, CmacsSliderMarksComponent, CmacsSliderStepComponent, CmacsSliderTrackComponent, isValueARange, isConfigAObject, Marks, CmacsDatetimePickerPanelComponent, CmacsDateTimePickerComponent, CmacsDatetimeValueAccessorDirective, CmacsVideoPlayerComponent, CmacsPhoneNumberComponent, CmacsKanbanComponent, CmacsColorPickerComponent, CmacsSwitchComponent, CmacsTabComponent, CmacsTabDirective, CmacsTabBodyComponent, CmacsTabLabelDirective, CmacsTabsInkBarDirective, CmacsTabsNavComponent, TabChangeEvent, CmacsTabsetComponent, CmacsSidePanelComponent, CmacsOpenTextareaComponent, CmacsMoveableListComponent, CmacsGridConfigurationModalComponent, CmacsOpenInputComponent, KPI_COLORS, CmacsKpiComponent, CmacsListItemMetaComponent, CmacsListItemComponent, CmacsListComponent, CmacsMessageComponent, CmacsMessageBaseService, CmacsMessageService, CmacsMessageContainerComponent, CMACS_MESSAGE_DEFAULT_CONFIG, CMACS_MESSAGE_CONFIG, CMACS_MESSAGE_DEFAULT_CONFIG_PROVIDER, CmacsCompactTableComponent, SIGNATURE_LOCALIZATION, CmacsSignatureComponent, CmacsSectionComponent, CmacsTooltipComponent, CmacsTooltipDirective, CmacsPopoverComponent, CmacsPopoverDirective, higherOrderServiceFactory, CmacsTreeSelectComponent, CmacsTreeSelectService, CmacsTimelineDatepickerComponent, CmacsXlsxLoaderComponent, CmacsCompactSidePanelComponent, AbstractPickerComponent as ɵb, CalendarFooterComponent as ɵba, CalendarHeaderComponent as ɵy, CalendarInputComponent as ɵz, OkButtonComponent as ɵbb, TimePickerButtonComponent as ɵbc, TodayButtonComponent as ɵbd, DateTableComponent as ɵbe, DecadePanelComponent as ɵbi, MonthPanelComponent as ɵbg, MonthTableComponent as ɵbh, DateRangePopupComponent as ɵbk, InnerPopupComponent as ɵbj, YearPanelComponent as ɵbf, CmacsDropdownService as ɵbl, CmacsMenuDropdownService as ɵk, CmacsFormControlComponent as ɵq, CmacsFormExplainComponent as ɵo, CmacsFormExtraComponent as ɵl, CmacsFormItemComponent as ɵn, CmacsFormLabelComponent as ɵm, CmacsFormSplitComponent as ɵs, CmacsFormTextComponent as ɵr, CmacsFormDirective as ɵp, CmacsMenuServiceFactory as ɵe, CmacsMenuService as ɵd, CmacsSubmenuService as ɵc, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵv, CmacsOptionGroupComponent as ɵh, CmacsOptionLiComponent as ɵw, NzFilterGroupOptionPipe as ɵu, NzFilterOptionPipe as ɵt, CmacsSelectUnselectableDirective as ɵx, CmacsSelectService as ɵg, CmacsTreeService as ɵf, ExcelService as ɵa };
+export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsDividerComponent, CmacsFloatingMenuComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, CmacsDateCellDirective, CmacsMonthCellDirective, CmacsDateFullCellDirective, CmacsMonthFullCellDirective, CmacsCalendarHeaderComponent, CmacsCalendarComponent, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, CmacsModalRef, CmacsDropdownADirective, CmacsProgressComponent, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, CmacsAlertComponent, CmacsCommentComponent, CmacsCommentAvatarDirective, CmacsCommentContentDirective, CmacsCommentActionHostDirective, CmacsCommentActionComponent, CmacsSliderComponent, CmacsSliderHandleComponent, CmacsSliderMarksComponent, CmacsSliderStepComponent, CmacsSliderTrackComponent, isValueARange, isConfigAObject, Marks, CmacsDatetimePickerPanelComponent, CmacsDateTimePickerComponent, CmacsDatetimeValueAccessorDirective, CmacsVideoPlayerComponent, CmacsPhoneNumberComponent, CmacsKanbanComponent, CmacsColorPickerComponent, CmacsSwitchComponent, CmacsTabComponent, CmacsTabDirective, CmacsTabBodyComponent, CmacsTabLabelDirective, CmacsTabsInkBarDirective, CmacsTabsNavComponent, TabChangeEvent, CmacsTabsetComponent, CmacsSidePanelComponent, CmacsOpenTextareaComponent, CmacsMoveableListComponent, CmacsGridConfigurationModalComponent, CmacsOpenInputComponent, KPI_COLORS, CmacsKpiComponent, CmacsListItemMetaComponent, CmacsListItemComponent, CmacsListComponent, CmacsMessageComponent, CmacsMessageBaseService, CmacsMessageService, CmacsMessageContainerComponent, CMACS_MESSAGE_DEFAULT_CONFIG, CMACS_MESSAGE_CONFIG, CMACS_MESSAGE_DEFAULT_CONFIG_PROVIDER, CmacsCompactTableComponent, SIGNATURE_LOCALIZATION, CmacsSignatureComponent, CmacsSectionComponent, CmacsTooltipComponent, CmacsTooltipDirective, CmacsPopoverComponent, CmacsPopoverDirective, higherOrderServiceFactory, CmacsTreeSelectComponent, CmacsTreeSelectService, CmacsTimelineDatepickerComponent, CmacsXlsxLoaderComponent, AbstractPickerComponent as ɵb, CalendarFooterComponent as ɵba, CalendarHeaderComponent as ɵy, CalendarInputComponent as ɵz, OkButtonComponent as ɵbb, TimePickerButtonComponent as ɵbc, TodayButtonComponent as ɵbd, DateTableComponent as ɵbe, DecadePanelComponent as ɵbi, MonthPanelComponent as ɵbg, MonthTableComponent as ɵbh, DateRangePopupComponent as ɵbk, InnerPopupComponent as ɵbj, YearPanelComponent as ɵbf, CmacsDropdownService as ɵbl, CmacsMenuDropdownService as ɵk, CmacsFormControlComponent as ɵq, CmacsFormExplainComponent as ɵo, CmacsFormExtraComponent as ɵl, CmacsFormItemComponent as ɵn, CmacsFormLabelComponent as ɵm, CmacsFormSplitComponent as ɵs, CmacsFormTextComponent as ɵr, CmacsFormDirective as ɵp, CmacsMenuServiceFactory as ɵe, CmacsMenuService as ɵd, CmacsSubmenuService as ɵc, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵv, CmacsOptionGroupComponent as ɵh, CmacsOptionLiComponent as ɵw, NzFilterGroupOptionPipe as ɵu, NzFilterOptionPipe as ɵt, CmacsSelectUnselectableDirective as ɵx, CmacsSelectService as ɵg, CmacsTreeService as ɵf, ExcelService as ɵa };
 
 //# sourceMappingURL=cmacs-components-lib.js.map

@@ -2,6 +2,7 @@ import { AfterContentInit, ElementRef, EventEmitter, OnChanges, OnDestroy, OnIni
 import { NzDirectionVHIType, NzMenuBaseService, NzUpdateHostClassService } from 'ng-zorro-antd/core';
 import { CmacsMenuItemDirective } from './cmacs-menu-item.directive';
 import { CmacsSubMenuComponent } from './cmacs-submenu.component';
+export declare type CmacsMenuModeType = 'side-bar';
 export declare class CmacsMenuDirective implements AfterContentInit, OnInit, OnChanges, OnDestroy {
     elementRef: ElementRef;
     private menuService;
@@ -14,6 +15,7 @@ export declare class CmacsMenuDirective implements AfterContentInit, OnInit, OnC
     inlineIndent: number;
     theme: 'light' | 'dark';
     mode: NzDirectionVHIType;
+    cmacsMode: CmacsMenuModeType | null;
     inDropDown: boolean;
     inlineCollapsed: boolean;
     selectable: boolean;
