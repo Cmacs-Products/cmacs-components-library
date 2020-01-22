@@ -106,7 +106,6 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     addRow(idx: number): void;
     drop(event: CdkDragDrop<string[]>): void;
     deleteRow(idx: number): void;
-    calcPadding(field: Field): 0 | 6;
     startEdit(id: string, property: string, event: MouseEvent): void;
     sort($event: any, fieldProperty: string): void;
     handleClick(e: Event): void;
