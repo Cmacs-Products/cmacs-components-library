@@ -1,3 +1,18 @@
+.cmacs-input-fix{
+  height: 34px;
+  border: solid 1px #dee0e5;
+  background-color: #ffffff;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  color: #acb3bf;
+  font-family: Roboto;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
 .ant-dropdown-menu nz-divider {
   margin: 0 !important;
 }
@@ -19,6 +34,15 @@
 .ant-dropdown-menu-item i, .ant-dropdown-menu-submenu-title i{
   font-size: 16px;
   margin-right: 10px;
+}
+
+.ant-dropdown-menu-item .ant-rate-star i{
+  font-size: 16px;
+  margin-right: 0px;
+}
+
+.ant-dropdown-menu-item .ant-rate-star{
+  margin-right:0px;
 }
 
 .ant-dropdown-menu-item:hover, .ant-dropdown-menu-submenu-title:hover {

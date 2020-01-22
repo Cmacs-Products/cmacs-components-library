@@ -32,6 +32,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     smartTable: boolean;
     draggable: boolean;
     virtualItemSize: number;
+    expandAll: boolean;
     loadingDelay: number;
     loadingIndicator: TemplateRef<void>;
     total: number;
@@ -149,7 +150,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     ngOnChanges(changes: SimpleChanges): void;
     exportTreePdf(fileName: string): void;
     exportTreeToPdfRec(rows: any, data: any, offSetMargin?: number): void;
-    convertTreeToList(root: object): any[];
+    convertTreeToList(root: any): any[];
     visitNode(node: any, hashMap: any, array: any[]): void;
     collapse(array: any[], data: any, $event: boolean): void;
     onCheckboxTreeChange($event: any, item: any): void;
@@ -167,4 +168,9 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     dblClickRow(data: any): void;
     clickBooleanCell(data: any, id: any, property: string, event: MouseEvent): void;
     emitOnEditEvent(): void;
+    getClassMap(field: Field): {
+        [x: string]: number | boolean;
+        [`cmacs-compact-table-logs-header-th`]: boolean;
+        [`cmacs-compact-table-logs-header-th-font`]: boolean;
+    };
 }

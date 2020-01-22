@@ -12,6 +12,7 @@ export interface Field {
     display: string;
     property?: string;
     width?: string;
+    ngClass?: string;
     hidden?: boolean;
     select?: SelectConfig;
     button?: ButtonConfig;
