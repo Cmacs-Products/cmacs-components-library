@@ -10,12 +10,14 @@ import { ExcelService } from '../core/services/excel.service';
 import { CookieService } from "ngx-cookie-service";
 import { CheckboxSelect } from "../cmacs-grid/cmacs-table.component";
 import { CdkDragDrop } from "@angular/cdk/drag-drop";
+import { NzDropdownContextComponent, NzDropdownService } from "ng-zorro-antd";
 export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnChanges, OnDestroy, AfterViewInit {
     private cdr;
     private i18n;
     private exportAsService;
     private excelService;
     private datePipe;
+    private nzDropdownService;
     private cookies;
     locale: any;
     headerBottomStyle: {};
@@ -76,13 +78,16 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     ondlclickRow: EventEmitter<any>;
     onclickRow: EventEmitter<any>;
     onedit: EventEmitter<any>;
+    ondrop: EventEmitter<any>;
     rateCount: number;
     multiSelect: boolean;
     sortChange: EventEmitter<any>;
     onrowdeleted: EventEmitter<any>;
     onrowadded: EventEmitter<any>;
     extra: string | TemplateRef<void>;
+    contextmenu: string | TemplateRef<void>;
     indentSize: number;
+    dropdown: NzDropdownContextComponent;
     selected: boolean;
     defaultSortOrder: any;
     checkboxCache: CheckboxSelect[];
@@ -103,6 +108,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     dateTimePickerElement: ElementRef;
     selectElement: ElementRef;
     boolElement: ElementRef;
+    contextMenu($event: MouseEvent, template: TemplateRef<void>): void;
     validate(data: any, field: Field): boolean;
     addRow(idx: number): void;
     drop(event: CdkDragDrop<string[]>): void;
@@ -144,7 +150,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     isCeldTypeTemplateRef(field: Field): boolean;
     isUndefined(value: any): boolean;
     isRowSelected(data: any): boolean;
-    constructor(cdr: ChangeDetectorRef, i18n: NzI18nService, exportAsService: ExportAsService, excelService: ExcelService, datePipe: DatePipe, cookies: CookieService);
+    constructor(cdr: ChangeDetectorRef, i18n: NzI18nService, exportAsService: ExportAsService, excelService: ExcelService, datePipe: DatePipe, nzDropdownService: NzDropdownService, cookies: CookieService);
     ngAfterViewInit(): void;
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;

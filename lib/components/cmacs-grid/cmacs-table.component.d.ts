@@ -8,10 +8,12 @@ import { GridConfig, Field } from '../core/interfaces/grid-config';
 import { GridExpConfig } from '../core/interfaces/grid-exp-config';
 import { ExcelService } from '../core/services/excel.service';
 import { CookieService } from "ngx-cookie-service";
+import { NzDropdownContextComponent, NzDropdownService } from "ng-zorro-antd";
 export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, OnDestroy, AfterViewInit {
     private cdr;
     private i18n;
     private exportAsService;
+    private nzDropdownService;
     private excelService;
     private datePipe;
     private cookies;
@@ -72,6 +74,8 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     rateCount: number;
     multiSelect: boolean;
     sortChange: EventEmitter<any>;
+    contextmenu: string | TemplateRef<void>;
+    dropdown: NzDropdownContextComponent;
     selected: boolean;
     defaultSortOrder: any;
     checkboxCache: CheckboxSelect[];
@@ -85,6 +89,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     datePickerElement: ElementRef;
     selectElement: ElementRef;
     boolElement: ElementRef;
+    contextMenu($event: MouseEvent, template: TemplateRef<void>): void;
     startEdit(id: string, property: string, event: MouseEvent): void;
     sort($event: any, fieldProperty: string): void;
     handleClick(e: Event): void;
@@ -114,7 +119,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     isCeldTypeTemplateRef(field: Field): boolean;
     isUndefined(value: any): boolean;
     isRowSelected(data: any): boolean;
-    constructor(cdr: ChangeDetectorRef, i18n: NzI18nService, exportAsService: ExportAsService, excelService: ExcelService, datePipe: DatePipe, cookies: CookieService);
+    constructor(cdr: ChangeDetectorRef, i18n: NzI18nService, exportAsService: ExportAsService, nzDropdownService: NzDropdownService, excelService: ExcelService, datePipe: DatePipe, cookies: CookieService);
     ngAfterViewInit(): void;
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
