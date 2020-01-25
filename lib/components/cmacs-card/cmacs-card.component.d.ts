@@ -3,11 +3,21 @@ import { CmacsCardTabComponent } from './cmacs-card-tab.component';
 import { VgAPI } from "videogular2/compiled/src/core/services/vg-api";
 import { Source } from "../cmacs-video-player/cmacs-video-player.component";
 import { DomSanitizer } from "@angular/platform-browser";
-export declare type CmacsCardType = 'file' | 'selection' | 'action' | 'team' | 'project' | 'folder' | 'measure' | 'big-file' | 'none' | 'video' | 'todo';
+export declare type CmacsCardType = 'file' | 'selection' | 'action' | 'team' | 'project' | 'folder' | 'measure' | 'weather' | 'big-file' | 'none' | 'video' | 'todo';
 export interface BigFile {
     title?: string;
     extension?: string;
     created_at?: string;
+}
+export interface Weather {
+    temp?: number;
+    temp_min?: number;
+    temp_max?: number;
+    humidity?: number;
+    description?: string;
+    icon?: string;
+    clouds_all?: number;
+    wind_speed?: number;
 }
 export declare class CmacsCardComponent implements OnInit {
     private cdr;
@@ -34,6 +44,7 @@ export declare class CmacsCardComponent implements OnInit {
     file: BigFile;
     project: any;
     todo: any;
+    weather: Weather;
     type: string;
     cmacsType: CmacsCardType;
     cmacsIcon: string;

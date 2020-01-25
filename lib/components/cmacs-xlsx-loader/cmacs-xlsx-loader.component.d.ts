@@ -1,27 +1,27 @@
-import { EventEmitter } from '@angular/core';
-import { UploadFile } from "ng-zorro-antd";
+import { EventEmitter, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 export interface CmacsConfigItemLoader {
     PropertyId: string;
     DisplayName: string;
     Required: boolean;
     MatchedColumn: string;
 }
-export declare class CmacsXlsxLoaderComponent {
+export declare class CmacsXlsxLoaderComponent implements OnInit, OnChanges {
     headers: any[];
     data: any[];
-    files: UploadFile[];
-    visible: boolean;
     configuration: CmacsConfigItemLoader[];
     modalTitle: string;
+    visible: boolean;
     saveBtnLabel: string;
-    uploadBtnLabel: string;
     placeholder: string;
     cmacsStyle: {};
+    files: any[];
     width: number | string;
     configurationChange: EventEmitter<any>;
     onsave: EventEmitter<any>;
+    visibleChange: EventEmitter<any>;
     constructor();
-    beforeUpload: (file: UploadFile) => boolean;
+    ngOnInit(): void;
+    ngOnChanges(changes: SimpleChanges): void;
     onVisibleChange($event: any): void;
     saveConfig(): void;
     parseXlsx(): void;

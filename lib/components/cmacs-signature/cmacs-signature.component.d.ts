@@ -1,7 +1,7 @@
 import { EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
-import { UploadChangeParam } from "ng-zorro-antd";
+import { UploadChangeParam, UploadFile } from "ng-zorro-antd";
 import { CmacsMessageService } from "../cmacs-message/cmacs-message.service";
 export declare const SIGNATURE_LOCALIZATION: {
     'Click here to sign': string;
@@ -41,13 +41,26 @@ export declare class CmacsSignatureComponent {
         'Drag & Drop File Here or': string;
         'Browse Computer': string;
     };
+    current: number;
     signaturePadOptions: Object;
+    files: any[];
     i18n: any;
     oncancel: EventEmitter<boolean>;
     onsubmit: EventEmitter<any>;
     signaturePad: SignaturePad;
     constructor(fb: FormBuilder, msg: CmacsMessageService);
     ngAfterViewInit(): void;
+    beforeUpload: (file: UploadFile) => boolean;
+    showUploadList: {
+        showPreviewIcon: boolean;
+        showRemoveIcon: boolean;
+        hidePreviewIconInNonImage: boolean;
+    };
+    previewImage: string | undefined;
+    previewVisible: boolean;
+    handlePreview: (file: UploadFile) => void;
+    isValid(): boolean;
+    updateCurrent(idx: any): void;
     drawComplete(): void;
     openModal(): void;
     handleCancel(): void;
