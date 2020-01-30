@@ -165,3 +165,12 @@ nz-divider {
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
+
+.cmacs-menu-side-bar.ant-menu-vertical.ant-menu-inline-collapsed .ant-menu-item,
+.cmacs-menu-side-bar.ant-menu-vertical.ant-menu-inline-collapsed .ant-menu-submenu-title {
+  text-overflow: unset !important;
+}
+
+.cmacs-menu-side-bar.ant-menu-inline-collapsed .ant-menu-submenu>.ant-menu-submenu-title .ant-menu-submenu-arrow {
+  display: none;
+}

@@ -115,7 +115,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     deleteRow(idx: number): void;
     startEdit(id: string, property: string, event: MouseEvent): void;
     sort($event: any, fieldProperty: string): void;
-    handleClick(e: Event): void;
+    handleMouseDown(e: Event): void;
     getCustomPadding(item: any, i: number): number;
     childOf(node: any, ancestor: any): boolean;
     endEditMode($event: KeyboardEvent, index: number, data?: any): void;

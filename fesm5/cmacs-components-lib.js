@@ -33,7 +33,7 @@ import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName
 import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
 import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
 import { addMonths, addYears, endOfMonth, setDay, setMonth, addDays, differenceInCalendarDays, differenceInCalendarMonths, differenceInCalendarWeeks, isSameDay, isSameMonth, isSameYear, isThisMonth, isThisYear, setYear, startOfMonth, startOfWeek, startOfYear, getISOWeek, getISOWeeksInYear, getISOYear } from 'date-fns';
-import { __assign, __decorate, __metadata, __extends, __spread, __read, __values } from 'tslib';
+import { __extends, __decorate, __metadata, __assign, __spread, __read, __values } from 'tslib';
 import { InputBoolean as InputBoolean$1, NzDropdownService, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
 import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
@@ -25120,7 +25120,7 @@ var CmacsCompactTableComponent = /** @class */ (function () {
      * @param {?} e
      * @return {?}
      */
-    CmacsCompactTableComponent.prototype.handleClick = /**
+    CmacsCompactTableComponent.prototype.handleMouseDown = /**
      * @param {?} e
      * @return {?}
      */
@@ -26635,7 +26635,7 @@ var CmacsCompactTableComponent = /** @class */ (function () {
         dateTimePickerElement: [{ type: ViewChild, args: ['fieldTypeDateTimePicker', { read: ElementRef },] }],
         selectElement: [{ type: ViewChild, args: ['fieldTypeSelect', { read: ElementRef },] }],
         boolElement: [{ type: ViewChild, args: ['fieldTypeBool', { read: ElementRef },] }],
-        handleClick: [{ type: HostListener, args: ['window:click', ['$event'],] }]
+        handleMouseDown: [{ type: HostListener, args: ['document:mousedown', ['$event'],] }]
     };
     __decorate([
         InputBoolean(),

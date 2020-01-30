@@ -24924,7 +24924,7 @@
          * @param {?} e
          * @return {?}
          */
-        CmacsCompactTableComponent.prototype.handleClick = /**
+        CmacsCompactTableComponent.prototype.handleMouseDown = /**
          * @param {?} e
          * @return {?}
          */
@@ -26402,7 +26402,7 @@
             dateTimePickerElement: [{ type: i0.ViewChild, args: ['fieldTypeDateTimePicker', { read: i0.ElementRef },] }],
             selectElement: [{ type: i0.ViewChild, args: ['fieldTypeSelect', { read: i0.ElementRef },] }],
             boolElement: [{ type: i0.ViewChild, args: ['fieldTypeBool', { read: i0.ElementRef },] }],
-            handleClick: [{ type: i0.HostListener, args: ['window:click', ['$event'],] }]
+            handleMouseDown: [{ type: i0.HostListener, args: ['document:mousedown', ['$event'],] }]
         };
         __decorate([
             i2.InputBoolean(),
