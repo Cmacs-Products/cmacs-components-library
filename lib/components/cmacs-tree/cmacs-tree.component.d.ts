@@ -94,6 +94,7 @@ export declare class CmacsTreeComponent extends NzTreeBase implements OnInit, On
     registerOnTouched(fn: () => void): void;
     initNzData(value: any[]): void;
     constructor(nzTreeService: CmacsTreeService, cdr: ChangeDetectorRef, noAnimation?: NzNoAnimationDirective);
+    onKeydownHandler(event: any): void;
     ngOnInit(): void;
     onSelectionMultiple(selectedNode: any): void;
     ngOnChanges(changes: {
