@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/platform-browser/animations'), require('@angular/common/locales/en'), require('@angular/router'), require('@angular/cdk/coercion'), require('ng-zorro-antd/icon'), require('ng-zorro-antd/time-picker'), require('ng-zorro-antd/menu'), require('@angular/cdk/layout'), require('ng-zorro-antd/grid'), require('ng-zorro-antd/tooltip'), require('@angular/cdk/platform'), require('videogular2/compiled/controls'), require('videogular2/compiled/overlay-play'), require('videogular2/compiled/buffering'), require('videogular2/compiled/core'), require('ng2-tel-input'), require('@angular/cdk/a11y'), require('@angular/cdk/observers'), require('@angular/cdk/bidi'), require('ng-lazyload-image'), require('@angular/platform-browser'), require('@angular/common'), require('ng-zorro-antd/i18n'), require('ngx-export-as'), require('jspdf'), require('jspdf-autotable'), require('ngx-cookie-service'), require('util'), require('@angular/cdk/drag-drop'), require('angular2-signaturepad/signature-pad'), require('@angular/cdk/keycodes'), require('@angular/forms'), require('rxjs'), require('rxjs/operators'), require('date-fns'), require('ng-zorro-antd'), require('xlsx'), require('angular2-signaturepad'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core'), require('ng-zorro-antd/core')) :
-    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/platform-browser/animations', '@angular/common/locales/en', '@angular/router', '@angular/cdk/coercion', 'ng-zorro-antd/icon', 'ng-zorro-antd/time-picker', 'ng-zorro-antd/menu', '@angular/cdk/layout', 'ng-zorro-antd/grid', 'ng-zorro-antd/tooltip', '@angular/cdk/platform', 'videogular2/compiled/controls', 'videogular2/compiled/overlay-play', 'videogular2/compiled/buffering', 'videogular2/compiled/core', 'ng2-tel-input', '@angular/cdk/a11y', '@angular/cdk/observers', '@angular/cdk/bidi', 'ng-lazyload-image', '@angular/platform-browser', '@angular/common', 'ng-zorro-antd/i18n', 'ngx-export-as', 'jspdf', 'jspdf-autotable', 'ngx-cookie-service', 'util', '@angular/cdk/drag-drop', 'angular2-signaturepad/signature-pad', '@angular/cdk/keycodes', '@angular/forms', 'rxjs', 'rxjs/operators', 'date-fns', 'ng-zorro-antd', 'xlsx', 'angular2-signaturepad', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core', 'ng-zorro-antd/core'], factory) :
-    (factory((global['cmacs-components-lib'] = {}),global.ng.platformBrowser.animations,global.ng.common.locales.en,global.ng.router,global.ng.cdk.coercion,global.icon,global.timePicker,global.menu,global.ng.cdk.layout,global.grid,global.tooltip,global.ng.cdk.platform,global.controls,global.overlayPlay,global.buffering,global.core,global.ng2TelInput,global.ng.cdk.a11y,global.ng.cdk.observers,global.ng.cdk.bidi,global.ngLazyloadImage,global.ng.platformBrowser,global.ng.common,global.i18n,global.ngxExportAs,global.jsPDF,null,global.ngxCookieService,global.util,global.ng.cdk['drag-drop'],global.signaturePad,global.ng.cdk.keycodes,global.ng.forms,global.rxjs,global.rxjs.operators,global.dateFns,global.ngZorroAntd,global.XLSX,global.angular2Signaturepad,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core,global.i2));
-}(this, (function (exports,animations,en,router,coercion,icon,timePicker,menu,layout,grid,tooltip,platform,controls,overlayPlay,buffering,core,ng2TelInput,a11y,observers,bidi,ngLazyloadImage,platformBrowser,common,i18n,ngxExportAs,jsPDF,jspdfAutotable,ngxCookieService,util,dragDrop,signaturePad,keycodes,forms,rxjs,operators,dateFns,ngZorroAntd,XLSX,angular2Signaturepad,i1,portal,i0,i2) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/platform-browser/animations'), require('@angular/common/locales/en'), require('@angular/router'), require('@angular/cdk/coercion'), require('ng-zorro-antd/icon'), require('ng-zorro-antd/time-picker'), require('@swimlane/ngx-charts'), require('@angular/platform-browser'), require('ng-zorro-antd/menu'), require('@angular/cdk/layout'), require('ng-zorro-antd/grid'), require('ng-zorro-antd/tooltip'), require('@angular/cdk/platform'), require('videogular2/compiled/controls'), require('videogular2/compiled/overlay-play'), require('videogular2/compiled/buffering'), require('videogular2/compiled/core'), require('ng2-tel-input'), require('@angular/cdk/a11y'), require('@angular/cdk/observers'), require('@angular/cdk/bidi'), require('ng-lazyload-image'), require('@angular/common'), require('ng-zorro-antd/i18n'), require('ngx-export-as'), require('jspdf'), require('jspdf-autotable'), require('ngx-cookie-service'), require('util'), require('@angular/cdk/drag-drop'), require('angular2-signaturepad/signature-pad'), require('@angular/cdk/keycodes'), require('@angular/forms'), require('rxjs'), require('rxjs/operators'), require('date-fns'), require('ng-zorro-antd'), require('xlsx'), require('angular2-signaturepad'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core'), require('ng-zorro-antd/core')) :
+    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/platform-browser/animations', '@angular/common/locales/en', '@angular/router', '@angular/cdk/coercion', 'ng-zorro-antd/icon', 'ng-zorro-antd/time-picker', '@swimlane/ngx-charts', '@angular/platform-browser', 'ng-zorro-antd/menu', '@angular/cdk/layout', 'ng-zorro-antd/grid', 'ng-zorro-antd/tooltip', '@angular/cdk/platform', 'videogular2/compiled/controls', 'videogular2/compiled/overlay-play', 'videogular2/compiled/buffering', 'videogular2/compiled/core', 'ng2-tel-input', '@angular/cdk/a11y', '@angular/cdk/observers', '@angular/cdk/bidi', 'ng-lazyload-image', '@angular/common', 'ng-zorro-antd/i18n', 'ngx-export-as', 'jspdf', 'jspdf-autotable', 'ngx-cookie-service', 'util', '@angular/cdk/drag-drop', 'angular2-signaturepad/signature-pad', '@angular/cdk/keycodes', '@angular/forms', 'rxjs', 'rxjs/operators', 'date-fns', 'ng-zorro-antd', 'xlsx', 'angular2-signaturepad', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core', 'ng-zorro-antd/core'], factory) :
+    (factory((global['cmacs-components-lib'] = {}),global.ng.platformBrowser.animations,global.ng.common.locales.en,global.ng.router,global.ng.cdk.coercion,global.icon,global.timePicker,global.ngxCharts,global.ng.platformBrowser,global.menu,global.ng.cdk.layout,global.grid,global.tooltip,global.ng.cdk.platform,global.controls,global.overlayPlay,global.buffering,global.core,global.ng2TelInput,global.ng.cdk.a11y,global.ng.cdk.observers,global.ng.cdk.bidi,global.ngLazyloadImage,global.ng.common,global.i18n,global.ngxExportAs,global.jsPDF,null,global.ngxCookieService,global.util,global.ng.cdk['drag-drop'],global.signaturePad,global.ng.cdk.keycodes,global.ng.forms,global.rxjs,global.rxjs.operators,global.dateFns,global.ngZorroAntd,global.XLSX,global.angular2Signaturepad,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core,global.i2));
+}(this, (function (exports,animations,en,router,coercion,icon,timePicker,ngxCharts,platformBrowser,menu,layout,grid,tooltip,platform,controls,overlayPlay,buffering,core,ng2TelInput,a11y,observers,bidi,ngLazyloadImage,common,i18n,ngxExportAs,jsPDF,jspdfAutotable,ngxCookieService,util,dragDrop,signaturePad,keycodes,forms,rxjs,operators,dateFns,ngZorroAntd,XLSX,angular2Signaturepad,i1,portal,i0,i2) { 'use strict';
 
     en = en && en.hasOwnProperty('default') ? en['default'] : en;
     jsPDF = jsPDF && jsPDF.hasOwnProperty('default') ? jsPDF['default'] : jsPDF;
@@ -15980,6 +15980,1102 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    var CmacsDashboardSwitchPanelComponent = /** @class */ (function () {
+        function CmacsDashboardSwitchPanelComponent() {
+        }
+        /**
+         * @return {?}
+         */
+        CmacsDashboardSwitchPanelComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+            };
+        CmacsDashboardSwitchPanelComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-dashboard-switch-panel',
+                        template: "<p>\r\n  cmacs-dashboard-switch-panel works!\r\n</p>\r\n",
+                        styles: [""]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsDashboardSwitchPanelComponent.ctorParameters = function () { return []; };
+        return CmacsDashboardSwitchPanelComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    /** @enum {string} */
+    var WidgetType = {
+        general: 'general',
+        resourcesOverview: 'resourcesOverview',
+        defects: 'defects',
+        burnDown: 'toDosBurndown',
+        priorityDistribution: 'priorityDistribution',
+        employeeHours: 'employeeHours',
+        locationDistribution: 'locationDistribution',
+        emsGroups: 'emsGroups',
+        projectProgress: 'projectProgress',
+    };
+    /** @enum {string} */
+    var WidgetDataType = {
+        single: 'single',
+        multi: 'multi',
+    };
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    /** @enum {number} */
+    var WidgetActionType = {
+        edit: 0,
+        remove: 1,
+        openNewWindow: 2,
+        verticalBarChart: 3,
+        horizontalBarChart: 4,
+        pieChart: 5,
+        lineChart: 6,
+        gauge: 7,
+        fitToData: 8,
+        distributeEvenly: 9,
+    };
+    WidgetActionType[WidgetActionType.edit] = 'edit';
+    WidgetActionType[WidgetActionType.remove] = 'remove';
+    WidgetActionType[WidgetActionType.openNewWindow] = 'openNewWindow';
+    WidgetActionType[WidgetActionType.verticalBarChart] = 'verticalBarChart';
+    WidgetActionType[WidgetActionType.horizontalBarChart] = 'horizontalBarChart';
+    WidgetActionType[WidgetActionType.pieChart] = 'pieChart';
+    WidgetActionType[WidgetActionType.lineChart] = 'lineChart';
+    WidgetActionType[WidgetActionType.gauge] = 'gauge';
+    WidgetActionType[WidgetActionType.fitToData] = 'fitToData';
+    WidgetActionType[WidgetActionType.distributeEvenly] = 'distributeEvenly';
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsDashboardWidgetContainerComponent = /** @class */ (function () {
+        function CmacsDashboardWidgetContainerComponent() {
+            this.headerText = '';
+            this.footerText = '';
+            this.footerValue = '';
+            this.type = WidgetType.general;
+            this.dataType = WidgetDataType.single;
+            this.WidgetTypeEnum = WidgetActionType;
+            this.WidgetDataTypeEnum = WidgetDataType;
+            this.chartSelected = WidgetActionType.verticalBarChart;
+            this.menuClick = new i0.EventEmitter();
+        }
+        /**
+         * @return {?}
+         */
+        CmacsDashboardWidgetContainerComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+            };
+        /**
+         * @param {?} type
+         * @return {?}
+         */
+        CmacsDashboardWidgetContainerComponent.prototype.onMenuClick = /**
+         * @param {?} type
+         * @return {?}
+         */
+            function (type) {
+                if (this.isChartTypeMenu(type)) {
+                    this.chartSelected = type;
+                }
+                this.menuClick.emit(type);
+            };
+        /**
+         * @param {?} type
+         * @return {?}
+         */
+        CmacsDashboardWidgetContainerComponent.prototype.isChartTypeMenu = /**
+         * @param {?} type
+         * @return {?}
+         */
+            function (type) {
+                return type === WidgetActionType.verticalBarChart || type === WidgetActionType.horizontalBarChart
+                    || type === WidgetActionType.pieChart || type === WidgetActionType.lineChart || type === WidgetActionType.gauge;
+            };
+        CmacsDashboardWidgetContainerComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-dashboard-widget-container',
+                        template: "<div nz-row class=\"widget-header\">\r\n  <div nz-col nzSpan=\"17\" class=\"widget-header-title\">{{headerText}}</div>\r\n  <div nz-col class=\"widget-header-actions\">\r\n    <button cmacs-button ghost><span class=\"iconUILarge-Calendar\"></span></button>\r\n    <cmacs-dropdown  [placement]=\"'bottomCenter'\" trigger=\"click\">\r\n      <button cmacs-button cmacs-dropdown ghost [action]=\"true\">\r\n        <i class=\"iconUILarge-More-horizontal\"></i>\r\n      </button>\r\n      <ul cmacs-menu>\r\n        <li cmacs-menu-item>\r\n          <a>\r\n            <i class=\"iconUISmall-Edit\"></i>\r\n            Edit\r\n          </a>\r\n        </li>\r\n        <li cmacs-submenu>\r\n          <span title>\r\n              <i class=\"iconUILarge-Reports\"></i>\r\n              Chart Type\r\n          </span>\r\n          <ul>\r\n            <li cmacs-menu-item>\r\n              <a (click)=\"onMenuClick(WidgetTypeEnum.verticalBarChart)\">\r\n                <i [class.iconUILarge-Check_Mark_Icon]=\"chartSelected === WidgetTypeEnum.verticalBarChart\"></i> Vertical Bar\r\n                Chart\r\n              </a>\r\n            </li>\r\n            <li cmacs-menu-item>\r\n              <a (click)=\"onMenuClick(WidgetTypeEnum.horizontalBarChart)\">\r\n                <i [class.iconUILarge-Check_Mark_Icon]=\"chartSelected === WidgetTypeEnum.horizontalBarChart\"></i>Horizontal Bar Chart\r\n              </a>\r\n            </li>\r\n            <li cmacs-menu-item *ngIf=\"dataType === WidgetDataTypeEnum.single\">\r\n              <a (click)=\"onMenuClick(WidgetTypeEnum.pieChart)\">\r\n                <i [class.iconUILarge-Check_Mark_Icon]=\"chartSelected === WidgetTypeEnum.pieChart\"></i>Pie Chart\r\n              </a>\r\n            </li>\r\n            <li cmacs-menu-item *ngIf=\"dataType === WidgetDataTypeEnum.multi\">\r\n              <a (click)=\"onMenuClick(WidgetTypeEnum.lineChart)\">\r\n                <i [class.iconUILarge-Check_Mark_Icon]=\"chartSelected === WidgetTypeEnum.lineChart\"></i>Line Chart\r\n              </a>\r\n            </li>\r\n            <li cmacs-menu-item *ngIf=\"dataType === WidgetDataTypeEnum.single\">\r\n              <a (click)=\"onMenuClick(WidgetTypeEnum.gauge)\">\r\n                <i [class.iconUILarge-Check_Mark_Icon]=\"chartSelected === WidgetTypeEnum.gauge\"></i>Gauge\r\n              </a>\r\n            </li>\r\n          </ul>\r\n        </li>\r\n        <li cmacs-submenu>\r\n          <span title>\r\n              <i class=\"iconArrowLarge-Export\"></i>\r\n              Export\r\n          </span>\r\n          <ul>\r\n            <li cmacs-menu-item>Option 1</li>\r\n          </ul>\r\n        </li>\r\n        <li cmacs-menu-item>\r\n          <a>\r\n            <i class=\"iconArrowLarge-Open\"></i>\r\n            Open in New Window\r\n          </a>\r\n        </li>\r\n        <li cmacs-menu-item>\r\n          <a>\r\n            <i class=\"iconUILarge-Trash\"></i>\r\n            Remove\r\n          </a>\r\n        </li>\r\n      </ul>\r\n    </cmacs-dropdown>\r\n  </div>\r\n</div>\r\n<div nz-row class=\"widget-content\">\r\n  <ng-content></ng-content>\r\n</div>\r\n<div nz-row class=\"widget-footer\">\r\n  <span>{{footerText}}: <b>{{footerValue}}</b></span>\r\n</div>",
+                        styles: [":host{width:310px;height:280px;background-color:#fff;display:block;border-radius:3px;border:1px solid #dee0e5}.widget-header{height:44px;border-bottom:1px solid #dee0e5;padding:12px 20px}.widget-header-title{font-size:14px}.widget-header-actions{text-align:end;margin-top:-7px}.widget-header-actions>*{font-size:16px}.widget-footer{height:54px;border-top:1px solid #dee0e5;padding:15px;text-align:end}.widget-content{height:170px;overflow-y:auto;overflow:overlay;margin-top:15px}.widget-content::-webkit-scrollbar{height:5px;width:5px}.widget-content::-webkit-scrollbar-thumb{background-color:#a1a1a1;border-radius:10px}.widget-content::-webkit-scrollbar-thumb:hover{background-color:#a1a1a1;border-radius:10px}"]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsDashboardWidgetContainerComponent.ctorParameters = function () { return []; };
+        CmacsDashboardWidgetContainerComponent.propDecorators = {
+            headerText: [{ type: i0.Input }],
+            footerText: [{ type: i0.Input }],
+            footerValue: [{ type: i0.Input }],
+            type: [{ type: i0.Input }],
+            dataType: [{ type: i0.Input }],
+            menuClick: [{ type: i0.Output }]
+        };
+        return CmacsDashboardWidgetContainerComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var UtilService = /** @class */ (function () {
+        function UtilService() {
+        }
+        /**
+         * @return {?}
+         */
+        UtilService.prototype.uuidv4 = /**
+         * @return {?}
+         */
+            function () {
+                return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, ( /**
+                 * @param {?} c
+                 * @return {?}
+                 */function (c) {
+                    // tslint:disable-next-line: no-bitwise
+                    /** @type {?} */
+                    var r = Math.random() * 16 | 0;
+                    // tslint:disable-next-line: triple-equals
+                    /** @type {?} */
+                    var v = c == 'x' ?
+                        // tslint:disable-next-line: no-bitwise
+                        r : (r & 0x3 | 0x8);
+                    return v.toString(16);
+                }));
+            };
+        UtilService.decorators = [
+            { type: i0.Injectable, args: [{ providedIn: 'root' },] }
+        ];
+        /** @nocollapse */
+        UtilService.ctorParameters = function () { return []; };
+        /** @nocollapse */ UtilService.ngInjectableDef = i0.defineInjectable({ factory: function UtilService_Factory() { return new UtilService(); }, token: UtilService, providedIn: "root" });
+        return UtilService;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsNormalizedHorizontalBarGroupedComponent = /** @class */ (function () {
+        function CmacsNormalizedHorizontalBarGroupedComponent(util$$1) {
+            this.util = util$$1;
+            this.clickMenu = new i0.EventEmitter();
+            // container
+            this.headerText = '';
+            this.footerText = '';
+            this.footerValue = '';
+            // otpions
+            this.colorScheme = {
+                domain: ['#5AA454', '#C7B42C', '#AAAAAA']
+            };
+            this.id = util$$1.uuidv4();
+        }
+        /**
+         * @return {?}
+         */
+        CmacsNormalizedHorizontalBarGroupedComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+                // set legend values
+                /** @type {?} */
+                var temp = [];
+                this.data.map(( /**
+                 * @param {?} d
+                 * @return {?}
+                 */function (d) {
+                    return d.series.map(( /**
+                     * @param {?} x
+                     * @return {?}
+                     */function (x) { return x.name; }));
+                })).forEach(( /**
+                 * @param {?} x
+                 * @return {?}
+                 */function (x) { return temp = __spread(temp, x); }));
+                this.legend = Array.from(new Set(__spread(temp)));
+                // set select data
+                this.selectList = this.data.map(( /**
+                 * @param {?} x
+                 * @return {?}
+                 */function (x) { return x.name; }));
+                if (this.selectList.length > 0) {
+                    this.selectedValue = this.selectList[0];
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsNormalizedHorizontalBarGroupedComponent.prototype.ngAfterViewInit = /**
+         * @return {?}
+         */
+            function () {
+                this.drawCanvas();
+            };
+        /**
+         * @param {?} type
+         * @return {?}
+         */
+        CmacsNormalizedHorizontalBarGroupedComponent.prototype.menuClick = /**
+         * @param {?} type
+         * @return {?}
+         */
+            function (type) {
+                this.clickMenu.emit(type);
+            };
+        /**
+         * @return {?}
+         */
+        CmacsNormalizedHorizontalBarGroupedComponent.prototype.drawCanvas = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                /** @type {?} */
+                var canvas = ( /** @type {?} */(document.getElementById('canvas-' + this.id)));
+                if (canvas.getContext) {
+                    /** @type {?} */
+                    var context = canvas.getContext('2d');
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+                    if (this.selectedValue) {
+                        /** @type {?} */
+                        var elems = this.data.find(( /**
+                         * @param {?} x
+                         * @return {?}
+                         */function (x) { return x.name === _this.selectedValue; })).series.sort(( /**
+                         * @param {?} a
+                         * @param {?} b
+                         * @return {?}
+                         */function (a, b) {
+                            return _this.legend.findIndex(( /**
+                             * @param {?} y
+                             * @return {?}
+                             */function (y) { return y === a.name; })) - _this.legend.findIndex(( /**
+                             * @param {?} y
+                             * @return {?}
+                             */function (y) { return y === b.name; }));
+                        }));
+                        /** @type {?} */
+                        var total = elems.map(( /**
+                         * @param {?} x
+                         * @return {?}
+                         */function (x) { return x.value; })).reduce(( /**
+                         * @param {?} a
+                         * @param {?} b
+                         * @return {?}
+                         */function (a, b) { return a + b; }), 0);
+                        /** @type {?} */
+                        var move = 0;
+                        for (var i = 0; i < elems.length; i++) {
+                            context.beginPath();
+                            context.moveTo(move, 1);
+                            context.lineWidth = 10;
+                            /** @type {?} */
+                            var val = elems[i].value;
+                            move += val / total * canvas.width;
+                            context.strokeStyle = this.colorScheme.domain[i];
+                            context.lineTo(move - 5, 1);
+                            context.stroke();
+                        }
+                    }
+                }
+            };
+        CmacsNormalizedHorizontalBarGroupedComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-normalized-horizontal-bar-grouped',
+                        template: "<cmacs-dashboard-widget-container \r\n  [headerText]=\"headerText\"\r\n  [footerText]=\"footerText\"\r\n  [footerValue]=\"footerValue\"\r\n  (menuClick)=\"menuClick($event)\">\r\n  <!-- Legend -->\r\n  <div nz-row class=\"legend-row\">\r\n    <div class=\"legend-column\" *ngFor=\"let l of legend; let i = index;\">\r\n      <span [style.background-color]=\"colorScheme.domain[i]\" class=\"legend-bar\"> </span>\r\n      <span class=\"legend-text\">{{l}}</span>\r\n    </div>\r\n  </div>\r\n  <!-- Chart -->\r\n  <div nz-row class=\"chart-content\">\r\n    <div nz-row class=\"chart-content-canvas\">\r\n      <canvas id=\"canvas-{{id}}\" class=\"chart-canvas\"></canvas>\r\n    </div>\r\n    <div nz-row class=\"chart-select\">\r\n      <cmacs-select style=\"width: 120px;\" [(ngModel)]=\"selectedValue\" (ngModelChange)=\"drawCanvas()\">\r\n        <cmacs-option *ngFor=\"let item of selectList\" value=\"{{ item }}\" label=\"{{ item }}\"></cmacs-option>\r\n      </cmacs-select>\r\n    </div>\r\n  </div>\r\n</cmacs-dashboard-widget-container>",
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        styles: [".legend-bar{width:4px;height:10px;border-radius:5px;display:inline-block}.legend-row{width:100%}.legend-column{display:table-cell;float:right;font-family:Roboto;font-size:12px;color:#656c79}.legend-text{padding-left:6px;padding-right:20px}.chart-canvas{width:88%;margin-top:18%}.chart-content-canvas{text-align:center;height:80%;overflow:hidden}.chart-content{height:85%}.chart-select{height:15%}::ng-deep .chart-select .ant-select-selection,::ng-deep .chart-select .ant-select-selection:focus,::ng-deep .chart-select .ant-select-selection:hover{border:0}"]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsNormalizedHorizontalBarGroupedComponent.ctorParameters = function () {
+            return [
+                { type: UtilService }
+            ];
+        };
+        CmacsNormalizedHorizontalBarGroupedComponent.propDecorators = {
+            clickMenu: [{ type: i0.Output }],
+            headerText: [{ type: i0.Input }],
+            footerText: [{ type: i0.Input }],
+            footerValue: [{ type: i0.Input }],
+            data: [{ type: i0.Input }],
+            colorScheme: [{ type: i0.Input }]
+        };
+        return CmacsNormalizedHorizontalBarGroupedComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsNormalizedHorizontalBarChartComponent = /** @class */ (function () {
+        function CmacsNormalizedHorizontalBarChartComponent(util$$1) {
+            this.util = util$$1;
+            this.clickMenu = new i0.EventEmitter();
+            // container
+            this.headerText = '';
+            this.footerText = '';
+            this.footerValue = '';
+            // otpions
+            this.colorScheme = {
+                domain: ['#5AA454', '#C7B42C', '#AAAAAA']
+            };
+            this.id = util$$1.uuidv4();
+        }
+        /**
+         * @return {?}
+         */
+        CmacsNormalizedHorizontalBarChartComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+                /** @type {?} */
+                var temp = [];
+                this.data.map(( /**
+                 * @param {?} d
+                 * @return {?}
+                 */function (d) {
+                    return d.series.map(( /**
+                     * @param {?} x
+                     * @return {?}
+                     */function (x) { return x.name; }));
+                })).forEach(( /**
+                 * @param {?} x
+                 * @return {?}
+                 */function (x) { return temp = __spread(temp, x); }));
+                this.legend = Array.from(new Set(__spread(temp)));
+            };
+        /**
+         * @return {?}
+         */
+        CmacsNormalizedHorizontalBarChartComponent.prototype.ngAfterViewInit = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                for (var index = 0; index < this.data.length; index++) {
+                    /** @type {?} */
+                    var canvas = ( /** @type {?} */(document.getElementById('canvas-' + this.id + '-' + index)));
+                    if (canvas.getContext) {
+                        //
+                        /** @type {?} */
+                        var context = canvas.getContext('2d');
+                        /** @type {?} */
+                        var total = this.data[index].series.map(( /**
+                         * @param {?} s
+                         * @return {?}
+                         */function (s) { return s.value; })).reduce(( /**
+                         * @param {?} a
+                         * @param {?} b
+                         * @return {?}
+                         */function (a, b) { return a + b; }), 0);
+                        /** @type {?} */
+                        var move = 0;
+                        //
+                        /** @type {?} */
+                        var elems = this.data[index].series.sort(( /**
+                         * @param {?} a
+                         * @param {?} b
+                         * @return {?}
+                         */function (a, b) {
+                            return _this.legend.findIndex(( /**
+                             * @param {?} y
+                             * @return {?}
+                             */function (y) { return y === a.name; })) - _this.legend.findIndex(( /**
+                             * @param {?} y
+                             * @return {?}
+                             */function (y) { return y === b.name; }));
+                        }));
+                        for (var j = 0; j < elems.length; j++) {
+                            // Reset the current path
+                            context.beginPath();
+                            context.moveTo(move, 1);
+                            context.lineWidth = 15;
+                            /** @type {?} */
+                            var val = elems[j].value;
+                            move += val / total * canvas.width;
+                            context.strokeStyle = this.colorScheme.domain[j];
+                            context.lineTo(move - 5, 1);
+                            context.stroke();
+                        }
+                    }
+                }
+            };
+        /**
+         * @param {?} type
+         * @return {?}
+         */
+        CmacsNormalizedHorizontalBarChartComponent.prototype.menuClick = /**
+         * @param {?} type
+         * @return {?}
+         */
+            function (type) {
+                this.clickMenu.emit(type);
+            };
+        CmacsNormalizedHorizontalBarChartComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-normalized-horizontal-bar-chart',
+                        template: "<cmacs-dashboard-widget-container [headerText]=\"headerText\"\r\n[footerText]=\"footerText\"\r\n[footerValue]=\"footerValue\"\r\n(menuClick)=\"menuClick($event)\">\r\n  <!-- Legend -->\r\n  <div nz-row class=\"legend-row\">\r\n    <div class=\"legend-column\" *ngFor=\"let l of legend; let i = index;\">\r\n      <span [style.background-color]=\"colorScheme.domain[i]\" class=\"legend-bar\"> </span>\r\n      <span class=\"legend-text\">{{l}}</span>\r\n    </div>\r\n  </div>\r\n  <!-- Chart -->\r\n  <div nz-row class=\"chart-content\">\r\n    <div *ngFor=\"let item of data; let i = index\" nz-row class=\"chart-content-row\">\r\n      <div nz-col nzSpan=\"8\">{{item.name}}</div>\r\n      <div nz-col nzSpan=\"16\" style=\"height: 8px; margin-top: 7px;\">\r\n        <canvas id=\"canvas-{{id}}-{{i}}\" class=\"chart-content-canvas\"></canvas>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</cmacs-dashboard-widget-container>",
+                        styles: [".legend-bar{width:4px;height:10px;border-radius:5px;display:inline-block}.legend-row{width:100%}.legend-column{display:table-cell;float:right;font-family:Roboto;font-size:12px;color:#656c79}.legend-text{padding-left:6px;padding-right:20px}.chart-content{margin-top:15px;padding-left:20px;padding-right:20px;overflow:auto;height:68%;margin-right:20px}.chart-content-row{margin-bottom:15px;font-family:Roboto;font-size:12px;letter-spacing:.12px;color:#656c79}.chart-content::-webkit-scrollbar{width:7px}.chart-content::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.3);border-radius:10px}.chart-content::-webkit-scrollbar-thumb{background-color:#c9c9c9;border-radius:10px}.chart-content::-webkit-scrollbar-thumb:hover{background-color:#a1a1a1;border-radius:10px}.chart-content-canvas{width:100%}"]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsNormalizedHorizontalBarChartComponent.ctorParameters = function () {
+            return [
+                { type: UtilService }
+            ];
+        };
+        CmacsNormalizedHorizontalBarChartComponent.propDecorators = {
+            clickMenu: [{ type: i0.Output }],
+            headerText: [{ type: i0.Input }],
+            footerText: [{ type: i0.Input }],
+            footerValue: [{ type: i0.Input }],
+            data: [{ type: i0.Input }],
+            colorScheme: [{ type: i0.Input }]
+        };
+        return CmacsNormalizedHorizontalBarChartComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsGeneralChartComponent = /** @class */ (function () {
+        function CmacsGeneralChartComponent() {
+            // container
+            this.headerText = '';
+            this.footerText = '';
+            this.footerValue = '';
+            // content
+            this.data = [];
+            // options
+            this.dataType = WidgetDataType.single;
+            this.showXAxis = true;
+            this.showXAxisLabel = false;
+            this.xAxisLabel = '';
+            this.showYAxis = true;
+            this.showYAxisLabel = false;
+            this.yAxisLabel = '';
+            this.showLegend = true;
+            this.legendTitle = '';
+            this.colorScheme = {
+                domain: ['#5AA454', '#C7B42C', '#AAAAAA']
+            };
+            this.chartSelected = WidgetActionType.verticalBarChart;
+            this.WidgetActionTypeEnum = WidgetActionType;
+            this.WidgetDataTypeEnum = WidgetDataType;
+        }
+        /**
+         * @return {?}
+         */
+        CmacsGeneralChartComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+            };
+        /**
+         * @param {?} type
+         * @return {?}
+         */
+        CmacsGeneralChartComponent.prototype.menuClick = /**
+         * @param {?} type
+         * @return {?}
+         */
+            function (type) {
+                if (this.isChartTypeMenu(type)) {
+                    this.chartSelected = type;
+                }
+            };
+        /**
+         * @param {?} type
+         * @return {?}
+         */
+        CmacsGeneralChartComponent.prototype.isChartTypeMenu = /**
+         * @param {?} type
+         * @return {?}
+         */
+            function (type) {
+                return type === WidgetActionType.verticalBarChart || type === WidgetActionType.horizontalBarChart
+                    || type === WidgetActionType.pieChart || type === WidgetActionType.lineChart || type === WidgetActionType.gauge;
+            };
+        CmacsGeneralChartComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-general-chart',
+                        template: "<cmacs-dashboard-widget-container \r\n  [headerText]=\"headerText\"\r\n  [footerText]=\"footerText\"\r\n  [footerValue]=\"footerValue\"\r\n  (menuClick)=\"menuClick($event)\"\r\n  [dataType]=\"dataType\">\r\n  <!-- Grouped Chart -->\r\n  <!-- ngx-charts-bar-vertical-2d -->\r\n  <ngx-charts-bar-vertical-2d *ngIf=\"chartSelected === WidgetActionTypeEnum.verticalBarChart && dataType === WidgetDataTypeEnum.multi\" [view]=\"view\"\r\n    [scheme]=\"colorScheme\" [results]=\"data\" [xAxis]=\"showXAxis\" [yAxis]=\"showYAxis\" [legend]=\"showLegend\"\r\n    [showXAxisLabel]=\"showXAxisLabel\" [showYAxisLabel]=\"showYAxisLabel\" [xAxisLabel]=\"xAxisLabel\"\r\n    [yAxisLabel]=\"yAxisLabel\" [legendTitle]=\"legendTitle\" [roundEdges]=\"false\" [trimXAxisTicks]=\"true\" [roundDomains]=\"true\">\r\n  </ngx-charts-bar-vertical-2d>\r\n  <!-- ngx-charts-bar-horizontal-2d -->\r\n  <ngx-charts-bar-horizontal-2d *ngIf=\"chartSelected === WidgetActionTypeEnum.horizontalBarChart  && dataType === WidgetDataTypeEnum.multi\" [view]=\"view\"\r\n    [scheme]=\"colorScheme\" [results]=\"data\" [xAxis]=\"showXAxis\" [yAxis]=\"showYAxis\" [legend]=\"showLegend\"\r\n    [showXAxisLabel]=\"showXAxisLabel\" [showYAxisLabel]=\"showYAxisLabel\" [xAxisLabel]=\"xAxisLabel\"\r\n    [yAxisLabel]=\"yAxisLabel\" [legendTitle]=\"legendTitle\" [roundEdges]=\"false\" [trimXAxisTicks]=\"true\" [roundDomains]=\"true\">\r\n  </ngx-charts-bar-horizontal-2d>\r\n  <!-- ngx-charts-line-chart -->\r\n  <ngx-charts-line-chart *ngIf=\"chartSelected === WidgetActionTypeEnum.lineChart && dataType === WidgetDataTypeEnum.multi\" [view]=\"view\"\r\n  [scheme]=\"colorScheme\" [results]=\"data\" [xAxis]=\"showXAxis\" [yAxis]=\"showYAxis\" [legend]=\"showLegend\"\r\n  [showXAxisLabel]=\"showXAxisLabel\" [showYAxisLabel]=\"showYAxisLabel\" [xAxisLabel]=\"xAxisLabel\"\r\n  [yAxisLabel]=\"yAxisLabel\" [legendTitle]=\"legendTitle\" [trimXAxisTicks]=\"true\"  [roundDomains]=\"true\">\r\n  </ngx-charts-line-chart>\r\n  <!-- Single Chart -->\r\n  <!-- ngx-charts-bar-vertical -->\r\n  <ngx-charts-bar-vertical *ngIf=\"chartSelected === WidgetActionTypeEnum.verticalBarChart && dataType === WidgetDataTypeEnum.single\" [view]=\"view\"\r\n    [scheme]=\"colorScheme\" [results]=\"data\" [xAxis]=\"showXAxis\" [yAxis]=\"showYAxis\" [legend]=\"showLegend\"\r\n    [showXAxisLabel]=\"showXAxisLabel\" [showYAxisLabel]=\"showYAxisLabel\" [xAxisLabel]=\"xAxisLabel\"\r\n    [yAxisLabel]=\"yAxisLabel\" [legendTitle]=\"legendTitle\" [roundEdges]=\"false\" [trimXAxisTicks]=\"true\" [roundDomains]=\"true\">\r\n  </ngx-charts-bar-vertical>\r\n  <!-- ngx-charts-bar-horizontal -->\r\n  <ngx-charts-bar-horizontal *ngIf=\"chartSelected === WidgetActionTypeEnum.horizontalBarChart  && dataType === WidgetDataTypeEnum.single\" [view]=\"view\"\r\n    [scheme]=\"colorScheme\" [results]=\"data\" [xAxis]=\"showXAxis\" [yAxis]=\"showYAxis\" [legend]=\"showLegend\"\r\n    [showXAxisLabel]=\"showXAxisLabel\" [showYAxisLabel]=\"showYAxisLabel\" [xAxisLabel]=\"xAxisLabel\"\r\n    [yAxisLabel]=\"yAxisLabel\" [legendTitle]=\"legendTitle\" [roundEdges]=\"false\" [trimXAxisTicks]=\"true\" [roundDomains]=\"true\">\r\n  </ngx-charts-bar-horizontal>\r\n  <!-- ngx-charts-pie-chart -->\r\n  <ngx-charts-pie-chart *ngIf=\"chartSelected === WidgetActionTypeEnum.pieChart  && dataType === WidgetDataTypeEnum.single\" [view]=\"view\" [scheme]=\"colorScheme\"\r\n    [results]=\"data\" [legend]=\"showLegend\" [legendTitle]=\"legendTitle\" [doughnut]=\"'true'\" [labels]=\"'true'\">\r\n  </ngx-charts-pie-chart>\r\n  <!-- ngx-charts-gauge -->\r\n  <ngx-charts-gauge *ngIf=\"chartSelected === WidgetActionTypeEnum.gauge && dataType === WidgetDataTypeEnum.single\" [view]=\"view\" [scheme]=\"colorScheme\"\r\n  [results]=\"data\" [legend]=\"showLegend\" [legendTitle]=\"legendTitle\"></ngx-charts-gauge>\r\n</cmacs-dashboard-widget-container>",
+                        styles: [""]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsGeneralChartComponent.ctorParameters = function () { return []; };
+        CmacsGeneralChartComponent.propDecorators = {
+            headerText: [{ type: i0.Input }],
+            footerText: [{ type: i0.Input }],
+            footerValue: [{ type: i0.Input }],
+            data: [{ type: i0.Input }],
+            dataType: [{ type: i0.Input }],
+            showXAxis: [{ type: i0.Input }],
+            showXAxisLabel: [{ type: i0.Input }],
+            xAxisLabel: [{ type: i0.Input }],
+            showYAxis: [{ type: i0.Input }],
+            showYAxisLabel: [{ type: i0.Input }],
+            yAxisLabel: [{ type: i0.Input }],
+            showLegend: [{ type: i0.Input }],
+            legendTitle: [{ type: i0.Input }],
+            view: [{ type: i0.Input }],
+            colorScheme: [{ type: i0.Input }]
+        };
+        return CmacsGeneralChartComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    /** @type {?} */
+    var KPI_COLORS = [
+        '#2a7cff',
+        '#00cda1',
+        '#ffa234',
+        '#a100cd',
+        '#cc2229',
+        '#009fe3',
+        '#688cda',
+        '#bec4cd'
+    ];
+    var CmacsKpiComponent = /** @class */ (function () {
+        function CmacsKpiComponent(sanitizer) {
+            this.sanitizer = sanitizer;
+            this.type = 'line';
+            this.width = 84;
+            this.showTotalCount = false;
+        }
+        /**
+         * @return {?}
+         */
+        CmacsKpiComponent.prototype.ngAfterViewInit = /**
+         * @return {?}
+         */
+            function () {
+                var e_1, _a;
+                if (this.canvasRef) {
+                    /** @type {?} */
+                    var canvas = ( /** @type {?} */(this.canvasRef.nativeElement));
+                    canvas.width = this.width;
+                    canvas.height = this.width;
+                    /** @type {?} */
+                    var ctx = canvas.getContext("2d");
+                    /** @type {?} */
+                    var start_angle = 0;
+                    /** @type {?} */
+                    var data = this.getColoredData();
+                    if (this.getTotalCount() > 0) {
+                        try {
+                            for (var data_1 = __values(data), data_1_1 = data_1.next(); !data_1_1.done; data_1_1 = data_1.next()) {
+                                var categ = data_1_1.value;
+                                /** @type {?} */
+                                var val = categ.count;
+                                /** @type {?} */
+                                var slice_angle = 2 * Math.PI * val / this.getTotalCount();
+                                this.drawPieSlice(ctx, canvas.width / 2, canvas.height / 2, Math.min(canvas.width / 2, canvas.height / 2), start_angle, start_angle + slice_angle, categ.color);
+                                start_angle += slice_angle;
+                            }
+                        }
+                        catch (e_1_1) {
+                            e_1 = { error: e_1_1 };
+                        }
+                        finally {
+                            try {
+                                if (data_1_1 && !data_1_1.done && (_a = data_1.return))
+                                    _a.call(data_1);
+                            }
+                            finally {
+                                if (e_1)
+                                    throw e_1.error;
+                            }
+                        }
+                    }
+                    else {
+                        this.drawPieSlice(ctx, canvas.width / 2, canvas.height / 2, Math.min(canvas.width / 2, canvas.height / 2), start_angle, start_angle + 2 * Math.PI, '#dee0e5');
+                    }
+                    //drawing a white circle over the chart
+                    //to create the doughnut chart
+                    this.drawPieSlice(ctx, canvas.width / 2, canvas.height / 2, 0.8 * Math.min(canvas.width / 2, canvas.height / 2), 0, 2 * Math.PI, "#ffffff");
+                }
+            };
+        /**
+         * @param {?} ctx
+         * @param {?} centerX
+         * @param {?} centerY
+         * @param {?} radius
+         * @param {?} startAngle
+         * @param {?} endAngle
+         * @param {?} color
+         * @return {?}
+         */
+        CmacsKpiComponent.prototype.drawPieSlice = /**
+         * @param {?} ctx
+         * @param {?} centerX
+         * @param {?} centerY
+         * @param {?} radius
+         * @param {?} startAngle
+         * @param {?} endAngle
+         * @param {?} color
+         * @return {?}
+         */
+            function (ctx, centerX, centerY, radius, startAngle, endAngle, color) {
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+                ctx.closePath();
+                ctx.fill();
+            };
+        /**
+         * @param {?} ctx
+         * @param {?} startX
+         * @param {?} startY
+         * @param {?} endX
+         * @param {?} endY
+         * @return {?}
+         */
+        CmacsKpiComponent.prototype.drawLine = /**
+         * @param {?} ctx
+         * @param {?} startX
+         * @param {?} startY
+         * @param {?} endX
+         * @param {?} endY
+         * @return {?}
+         */
+            function (ctx, startX, startY, endX, endY) {
+                ctx.beginPath();
+                ctx.moveTo(startX, startY);
+                ctx.lineTo(endX, endY);
+                ctx.stroke();
+            };
+        /**
+         * @param {?} ctx
+         * @param {?} centerX
+         * @param {?} centerY
+         * @param {?} radius
+         * @param {?} startAngle
+         * @param {?} endAngle
+         * @return {?}
+         */
+        CmacsKpiComponent.prototype.drawArc = /**
+         * @param {?} ctx
+         * @param {?} centerX
+         * @param {?} centerY
+         * @param {?} radius
+         * @param {?} startAngle
+         * @param {?} endAngle
+         * @return {?}
+         */
+            function (ctx, centerX, centerY, radius, startAngle, endAngle) {
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+                ctx.stroke();
+            };
+        /**
+         * @param {?} style
+         * @return {?}
+         */
+        CmacsKpiComponent.prototype.sanitizeStyle = /**
+         * @param {?} style
+         * @return {?}
+         */
+            function (style) {
+                return this.sanitizer.bypassSecurityTrustStyle(style);
+            };
+        /**
+         * @return {?}
+         */
+        CmacsKpiComponent.prototype.getTotalCount = /**
+         * @return {?}
+         */
+            function () {
+                /** @type {?} */
+                var total = 0;
+                this.data.forEach(( /**
+                 * @param {?} item
+                 * @return {?}
+                 */function (item) {
+                    total += item.count;
+                }));
+                return total;
+            };
+        /**
+         * @param {?} count
+         * @return {?}
+         */
+        CmacsKpiComponent.prototype.getWidth = /**
+         * @param {?} count
+         * @return {?}
+         */
+            function (count) {
+                return count !== 0 ? Math.trunc(count * 100 / this.getTotalCount()) - 2 : 0;
+            };
+        /**
+         * @return {?}
+         */
+        CmacsKpiComponent.prototype.getColoredData = /**
+         * @return {?}
+         */
+            function () {
+                /** @type {?} */
+                var coloredData = [];
+                /** @type {?} */
+                var remaining = this.data.length % KPI_COLORS.length;
+                /** @type {?} */
+                var rate = this.data.length / KPI_COLORS.length;
+                if (remaining > 0) {
+                    rate = Math.trunc(rate) + 1;
+                }
+                /** @type {?} */
+                var tempRate = rate;
+                /** @type {?} */
+                var opacity = 1;
+                /** @type {?} */
+                var colorIndex = 0;
+                this.data.forEach(( /**
+                 * @param {?} item
+                 * @return {?}
+                 */function (item) {
+                    if (tempRate === 0) {
+                        tempRate = rate;
+                        colorIndex += 1;
+                        opacity = 1;
+                    }
+                    if (colorIndex >= KPI_COLORS.length) {
+                        colorIndex = 0;
+                    }
+                    if (opacity === 0.4) {
+                        opacity = 1;
+                    }
+                    coloredData.push({
+                        count: item.count,
+                        description: item.description,
+                        color: KPI_COLORS[colorIndex],
+                        opacity: opacity
+                    });
+                    opacity = opacity - 0.2;
+                    tempRate--;
+                }));
+                return coloredData;
+            };
+        CmacsKpiComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-kpi',
+                        exportAs: 'cmacsKpi',
+                        template: "<div class=\"cmacs-kpi-wrapper\" *ngIf=\"type === 'line'\">\r\n  <div class=\"cmacs-kpi-total-count\" *ngIf=\"showTotalCount\">{{getTotalCount()}}</div>\r\n  <div style=\"flex: 1 0 auto;\">\r\n    <div class=\"cmacs-kpi-title\">{{title}}</div>\r\n    <div\r\n      *ngFor=\"let kpi of getColoredData(); index as i\"\r\n      class=\"cmacs-kpi-line\"\r\n      [class.border-radius-left]=\"i === 0\"\r\n      [class.border-radius-right]=\"i === getColoredData().lenght - 1\"\r\n      [style.width.%]=\"getWidth(kpi.count)\"\r\n      [style.background-color]=\"kpi.color\"\r\n      [style.opacity]=\"sanitizeStyle(kpi.opacity)\"\r\n      >\r\n    </div>\r\n    <ng-container *ngTemplateOutlet=\"legend\"></ng-container>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"cmacs-kpi-doughnut-container\" *ngIf=\"type === 'doughnut'\">\r\n  <div class=\"cmacs-kpi-doughnut-title\">{{title}}</div>\r\n  <div class=\"cmacs-kpi-doughnut-wrapper\" [style.width.px]=\"width\">\r\n    <div class=\"cmacs-kpi-total-count-wrapper\">\r\n      <div class=\"cmacs-kpi-doughnut-total-count\">{{getTotalCount()}}</div>\r\n    </div>\r\n    <canvas #canvas></canvas>\r\n  </div>\r\n  <div class=\"cmacs-kpi-doughnut-legend-wrapper\">\r\n    <ng-container *ngTemplateOutlet=\"legend\"></ng-container>\r\n  </div>\r\n</div>\r\n\r\n<ng-template #legend>\r\n  <div\r\n    class=\"cmacs-kpi-legend-wrapper\"\r\n    *ngFor=\"let kpi of getColoredData(); index as i\"\r\n  >\r\n    <div class=\"cmacs-kpi-divider\"\r\n         [style.background-color]=\"kpi.color\"\r\n         [style.opacity]=\"sanitizeStyle(kpi.opacity)\"\r\n    ></div>\r\n    <div class=\"cmacs-kpi-count\">{{kpi.count}}</div>\r\n    <div class=\"cmacs-kpi-description\">{{kpi.description}}</div>\r\n  </div>\r\n</ng-template>\r\n",
+                        styles: [".cmacs-kpi-line{height:6px;margin-right:4px;display:inline-block}.cmacs-kpi-total-count{margin-right:10px;margin-top:-2px;-webkit-box-flex:0;flex:0 0 auto;font-weight:600;color:#3b4043}.border-radius-left{border-radius:100px 0 0 100px}.border-radius-right{border-radius:0 100px 100px 0}.cmacs-kpi-divider{display:inline-block;width:3px;height:9px;border-radius:10px;margin-right:8px}.cmacs-kpi-count{display:inline-block;font-family:Roboto-Regular;font-size:12px;font-weight:600;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#3b4043;margin-right:4px}.cmacs-kpi-description{display:inline-block;font-family:Roboto-Regular;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.cmacs-kpi-legend-wrapper{margin-bottom:11px}.cmacs-kpi-wrapper{display:-webkit-box;display:flex}.cmacs-kpi-title{font-family:Roboto-Regular;font-size:14px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.29;letter-spacing:normal;color:#656c79}.cmacs-kpi-doughnut-wrapper{position:absolute;margin-top:24px;margin-left:30px;float:left;display:inline-block}.cmacs-kpi-doughnut-total-count{position:relative;left:-50%;font-size:20px;font-weight:600;color:#3b4043}.cmacs-kpi-total-count-wrapper{top:calc(50% - 17px);left:50%;position:absolute}.cmacs-kpi-doughnut-legend-wrapper{float:right;display:inline-block;margin-top:24px}", "\n      cmacs-kpi {\n        display: block;\n      }\n    "]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsKpiComponent.ctorParameters = function () {
+            return [
+                { type: platformBrowser.DomSanitizer }
+            ];
+        };
+        CmacsKpiComponent.propDecorators = {
+            data: [{ type: i0.Input }],
+            title: [{ type: i0.Input }],
+            type: [{ type: i0.Input }],
+            width: [{ type: i0.Input }],
+            showTotalCount: [{ type: i0.Input }],
+            canvasRef: [{ type: i0.ViewChild, args: ['canvas', { read: i0.ElementRef },] }]
+        };
+        __decorate([
+            ngZorroAntd.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsKpiComponent.prototype, "showTotalCount", void 0);
+        return CmacsKpiComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsKPIOverviewComponent = /** @class */ (function () {
+        function CmacsKPIOverviewComponent(sanitizer) {
+            this.sanitizer = sanitizer;
+            this.width = 84;
+            this.type = 'doughnut';
+            this.colors = KPI_COLORS;
+        }
+        /**
+         * @return {?}
+         */
+        CmacsKPIOverviewComponent.prototype.ngAfterViewInit = /**
+         * @return {?}
+         */
+            function () {
+                var e_1, _a;
+                if (this.canvasRef) {
+                    /** @type {?} */
+                    var canvas = ( /** @type {?} */(this.canvasRef.nativeElement));
+                    canvas.width = this.width;
+                    canvas.height = this.width;
+                    /** @type {?} */
+                    var ctx = canvas.getContext('2d');
+                    /** @type {?} */
+                    var start_angle = 0;
+                    /** @type {?} */
+                    var data = this.getColoredData();
+                    if (this.getTotalCount() > 0) {
+                        try {
+                            for (var data_1 = __values(data), data_1_1 = data_1.next(); !data_1_1.done; data_1_1 = data_1.next()) {
+                                var categ = data_1_1.value;
+                                /** @type {?} */
+                                var val = categ.count;
+                                /** @type {?} */
+                                var slice_angle = 2 * Math.PI * val / this.getTotalCount();
+                                this.drawPieSlice(ctx, canvas.width / 2, canvas.height / 2, Math.min(canvas.width / 2, canvas.height / 2), start_angle, start_angle + slice_angle - 0.05, categ.color);
+                                start_angle += slice_angle;
+                            }
+                        }
+                        catch (e_1_1) {
+                            e_1 = { error: e_1_1 };
+                        }
+                        finally {
+                            try {
+                                if (data_1_1 && !data_1_1.done && (_a = data_1.return))
+                                    _a.call(data_1);
+                            }
+                            finally {
+                                if (e_1)
+                                    throw e_1.error;
+                            }
+                        }
+                    }
+                    else {
+                        this.drawPieSlice(ctx, canvas.width / 2, canvas.height / 2, Math.min(canvas.width / 2, canvas.height / 2), start_angle, start_angle + 2 * Math.PI, '#dee0e5');
+                    }
+                    // drawing a white circle over the chart
+                    // to create the doughnut chart
+                    this.drawPieSlice(ctx, canvas.width / 2, canvas.height / 2, 0.8 * Math.min(canvas.width / 2, canvas.height / 2), 0, 2 * Math.PI, '#ffffff');
+                }
+            };
+        /**
+         * @param {?} ctx
+         * @param {?} centerX
+         * @param {?} centerY
+         * @param {?} radius
+         * @param {?} startAngle
+         * @param {?} endAngle
+         * @param {?} color
+         * @return {?}
+         */
+        CmacsKPIOverviewComponent.prototype.drawPieSlice = /**
+         * @param {?} ctx
+         * @param {?} centerX
+         * @param {?} centerY
+         * @param {?} radius
+         * @param {?} startAngle
+         * @param {?} endAngle
+         * @param {?} color
+         * @return {?}
+         */
+            function (ctx, centerX, centerY, radius, startAngle, endAngle, color) {
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+                ctx.closePath();
+                ctx.fill();
+            };
+        /**
+         * @param {?} ctx
+         * @param {?} centerX
+         * @param {?} centerY
+         * @param {?} radius
+         * @param {?} startAngle
+         * @param {?} endAngle
+         * @return {?}
+         */
+        CmacsKPIOverviewComponent.prototype.drawArc = /**
+         * @param {?} ctx
+         * @param {?} centerX
+         * @param {?} centerY
+         * @param {?} radius
+         * @param {?} startAngle
+         * @param {?} endAngle
+         * @return {?}
+         */
+            function (ctx, centerX, centerY, radius, startAngle, endAngle) {
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+                ctx.stroke();
+            };
+        /**
+         * @param {?} style
+         * @return {?}
+         */
+        CmacsKPIOverviewComponent.prototype.sanitizeStyle = /**
+         * @param {?} style
+         * @return {?}
+         */
+            function (style) {
+                return this.sanitizer.bypassSecurityTrustStyle(style);
+            };
+        /**
+         * @return {?}
+         */
+        CmacsKPIOverviewComponent.prototype.getTotalCount = /**
+         * @return {?}
+         */
+            function () {
+                /** @type {?} */
+                var total = 0;
+                this.data.forEach(( /**
+                 * @param {?} item
+                 * @return {?}
+                 */function (item) {
+                    total += item.count;
+                }));
+                return total;
+            };
+        /**
+         * @param {?} count
+         * @return {?}
+         */
+        CmacsKPIOverviewComponent.prototype.getWidth = /**
+         * @param {?} count
+         * @return {?}
+         */
+            function (count) {
+                return count !== 0 ? Math.trunc(count * 100 / this.getTotalCount()) - 2 : 0;
+            };
+        /**
+         * @return {?}
+         */
+        CmacsKPIOverviewComponent.prototype.getColoredData = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                /** @type {?} */
+                var coloredData = [];
+                /** @type {?} */
+                var remaining = this.data.length % this.colors.length;
+                /** @type {?} */
+                var rate = this.data.length / this.colors.length;
+                if (remaining > 0) {
+                    rate = Math.trunc(rate) + 1;
+                }
+                /** @type {?} */
+                var tempRate = rate;
+                /** @type {?} */
+                var opacity = 1;
+                /** @type {?} */
+                var colorIndex = 0;
+                this.data.forEach(( /**
+                 * @param {?} item
+                 * @return {?}
+                 */function (item) {
+                    if (tempRate === 0) {
+                        tempRate = rate;
+                        colorIndex += 1;
+                        opacity = 1;
+                    }
+                    if (colorIndex >= _this.colors.length) {
+                        colorIndex = 0;
+                    }
+                    if (opacity === 0.4) {
+                        opacity = 1;
+                    }
+                    coloredData.push({
+                        count: item.count,
+                        description: item.description,
+                        color: _this.colors[colorIndex],
+                        opacity: opacity
+                    });
+                    opacity = opacity - 0.2;
+                    tempRate--;
+                }));
+                return coloredData;
+            };
+        CmacsKPIOverviewComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-kpi-overview',
+                        template: "<div class=\"cmacs-kpi-overview-row\">\r\n  <div nz-col class=\"cmacs-kpi-overview-container\">\r\n    <div class=\"cmacs-kpi-overview-wrapper\">\r\n      <div class=\"cmacs-kpi-overview-count-wrapper\">\r\n        <div class=\"cmacs-kpi-overview-total-count\">{{getTotalCount()}}</div>\r\n      </div>\r\n      <canvas #canvas class=\"cmacs-kpi-overview-chart\"></canvas>\r\n    </div>\r\n  </div>\r\n  <div nz-col class=\"cmacs-kpi-overview-legend-wrapper\">\r\n     <ng-container *ngTemplateOutlet=\"legend\"></ng-container>\r\n  </div>\r\n</div>\r\n<ng-template #legend>\r\n  <div class=\"cmacs-kpi-overview-title\">{{title}}</div>\r\n  <div\r\n    class=\"cmacs-kpi-legend-wrapper\"\r\n    *ngFor=\"let kpi of getColoredData(); index as i\"\r\n  >\r\n    <div class=\"cmacs-kpi-count\" [style.color]=\"kpi.color\"\r\n    [style.opacity]=\"sanitizeStyle(kpi.opacity)\">{{kpi.count}}</div>\r\n    <div class=\"cmacs-kpi-description\">{{kpi.description}}</div>\r\n  </div>\r\n</ng-template>",
+                        styles: [":host{display:block;min-width:223px;min-height:120px;border-radius:3px;border:1px solid #dee0e5;background-color:#fff;padding:15px}.cmacs-kpi-overview-container{margin-right:25px}.cmacs-kpi-total-count{margin-right:10px;margin-top:-2px;-webkit-box-flex:0;flex:0 0 auto;font-weight:600;color:#3b4043}.border-radius-left{border-radius:100px 0 0 100px}.border-radius-right{border-radius:0 100px 100px 0}.cmacs-kpi-overview-row{display:-webkit-box;display:flex}.cmacs-kpi-overview-chart{position:relative;top:-31px}.cmacs-kpi-divider{display:inline-block;width:2px;height:9px;border-radius:100px;margin-right:8px}.cmacs-kpi-count{display:inline-block;font-family:Roboto-Regular;font-size:12px;font-weight:600;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#3b4043;margin-right:4px}.cmacs-kpi-description{display:inline-block;font-family:Roboto-Regular;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.cmacs-kpi-wrapper{display:-webkit-box;display:flex}.cmacs-kpi-overview-title{font-family:Roboto;font-size:14px;line-height:1.29;letter-spacing:normal;color:#3b3f46;margin-bottom:10px}.cmacs-kpi-overview-wrapper{margin-top:3px;margin-left:5px;height:30px}.cmacs-kpi-overview-total-count{position:relative;font-size:20px;font-weight:600;color:#3b4043;text-align:center;top:28px;z-index:100}.cmacs-kpi-overview-legend-wrapper{float:right;display:inline-block;margin:4px}"]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsKPIOverviewComponent.ctorParameters = function () {
+            return [
+                { type: platformBrowser.DomSanitizer }
+            ];
+        };
+        CmacsKPIOverviewComponent.propDecorators = {
+            data: [{ type: i0.Input }],
+            title: [{ type: i0.Input }],
+            colors: [{ type: i0.Input }],
+            canvasRef: [{ type: i0.ViewChild, args: ['canvas', { read: i0.ElementRef },] }]
+        };
+        return CmacsKPIOverviewComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var CmacsDashboardWidgetPanelComponent = /** @class */ (function () {
+        function CmacsDashboardWidgetPanelComponent() {
+            this.backgroundColor = '#f6f7fb';
+            this.widgetList = [];
+            this.widgetListChange = new i0.EventEmitter();
+        }
+        /**
+         * @return {?}
+         */
+        CmacsDashboardWidgetPanelComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+            };
+        /**
+         * @param {?} event
+         * @return {?}
+         */
+        CmacsDashboardWidgetPanelComponent.prototype.drop = /**
+         * @param {?} event
+         * @return {?}
+         */
+            function (event) {
+                dragDrop.moveItemInArray(this.widgetList, event.previousIndex, event.currentIndex);
+                this.widgetListChange.emit(this.widgetList);
+            };
+        CmacsDashboardWidgetPanelComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'cmacs-dashboard-widget-panel',
+                        template: "<div class=\"dashboard-panel\" [style.background]=\"backgroundColor\" cdkDropList cdkDropListOrientation=\"horizontal\"  (cdkDropListDropped)=\"drop($event)\">\r\n  <ng-content></ng-content>\r\n</div>\r\n",
+                        styles: [".dashboard-panel{width:100%;min-height:200px;height:auto;padding:40px 31px;display:-webkit-inline-box;display:inline-flex}:host{display:block;width:-webkit-max-content;width:-moz-max-content;width:max-content;min-width:100%}"]
+                    }] }
+        ];
+        /** @nocollapse */
+        CmacsDashboardWidgetPanelComponent.ctorParameters = function () { return []; };
+        CmacsDashboardWidgetPanelComponent.propDecorators = {
+            backgroundColor: [{ type: i0.Input }],
+            widgetList: [{ type: i0.Input }],
+            widgetListChange: [{ type: i0.Output }]
+        };
+        return CmacsDashboardWidgetPanelComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
     var CmacsDropdownADirective = /** @class */ (function () {
         function CmacsDropdownADirective(elementRef, renderer) {
             this.elementRef = elementRef;
@@ -23741,270 +24837,6 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
-    /** @type {?} */
-    var KPI_COLORS = [
-        '#2a7cff',
-        '#00cda1',
-        '#ffa234',
-        '#a100cd',
-        '#cc2229',
-        '#009fe3',
-        '#688cda',
-        '#bec4cd'
-    ];
-    var CmacsKpiComponent = /** @class */ (function () {
-        function CmacsKpiComponent(sanitizer) {
-            this.sanitizer = sanitizer;
-            this.type = 'line';
-            this.width = 84;
-            this.showTotalCount = false;
-        }
-        /**
-         * @return {?}
-         */
-        CmacsKpiComponent.prototype.ngAfterViewInit = /**
-         * @return {?}
-         */
-            function () {
-                var e_1, _a;
-                if (this.canvasRef) {
-                    /** @type {?} */
-                    var canvas = ( /** @type {?} */(this.canvasRef.nativeElement));
-                    canvas.width = this.width;
-                    canvas.height = this.width;
-                    /** @type {?} */
-                    var ctx = canvas.getContext("2d");
-                    /** @type {?} */
-                    var start_angle = 0;
-                    /** @type {?} */
-                    var data = this.getColoredData();
-                    if (this.getTotalCount() > 0) {
-                        try {
-                            for (var data_1 = __values(data), data_1_1 = data_1.next(); !data_1_1.done; data_1_1 = data_1.next()) {
-                                var categ = data_1_1.value;
-                                /** @type {?} */
-                                var val = categ.count;
-                                /** @type {?} */
-                                var slice_angle = 2 * Math.PI * val / this.getTotalCount();
-                                this.drawPieSlice(ctx, canvas.width / 2, canvas.height / 2, Math.min(canvas.width / 2, canvas.height / 2), start_angle, start_angle + slice_angle, categ.color);
-                                start_angle += slice_angle;
-                            }
-                        }
-                        catch (e_1_1) {
-                            e_1 = { error: e_1_1 };
-                        }
-                        finally {
-                            try {
-                                if (data_1_1 && !data_1_1.done && (_a = data_1.return))
-                                    _a.call(data_1);
-                            }
-                            finally {
-                                if (e_1)
-                                    throw e_1.error;
-                            }
-                        }
-                    }
-                    else {
-                        this.drawPieSlice(ctx, canvas.width / 2, canvas.height / 2, Math.min(canvas.width / 2, canvas.height / 2), start_angle, start_angle + 2 * Math.PI, '#dee0e5');
-                    }
-                    //drawing a white circle over the chart
-                    //to create the doughnut chart
-                    this.drawPieSlice(ctx, canvas.width / 2, canvas.height / 2, 0.8 * Math.min(canvas.width / 2, canvas.height / 2), 0, 2 * Math.PI, "#ffffff");
-                }
-            };
-        /**
-         * @param {?} ctx
-         * @param {?} centerX
-         * @param {?} centerY
-         * @param {?} radius
-         * @param {?} startAngle
-         * @param {?} endAngle
-         * @param {?} color
-         * @return {?}
-         */
-        CmacsKpiComponent.prototype.drawPieSlice = /**
-         * @param {?} ctx
-         * @param {?} centerX
-         * @param {?} centerY
-         * @param {?} radius
-         * @param {?} startAngle
-         * @param {?} endAngle
-         * @param {?} color
-         * @return {?}
-         */
-            function (ctx, centerX, centerY, radius, startAngle, endAngle, color) {
-                ctx.fillStyle = color;
-                ctx.beginPath();
-                ctx.moveTo(centerX, centerY);
-                ctx.arc(centerX, centerY, radius, startAngle, endAngle);
-                ctx.closePath();
-                ctx.fill();
-            };
-        /**
-         * @param {?} ctx
-         * @param {?} startX
-         * @param {?} startY
-         * @param {?} endX
-         * @param {?} endY
-         * @return {?}
-         */
-        CmacsKpiComponent.prototype.drawLine = /**
-         * @param {?} ctx
-         * @param {?} startX
-         * @param {?} startY
-         * @param {?} endX
-         * @param {?} endY
-         * @return {?}
-         */
-            function (ctx, startX, startY, endX, endY) {
-                ctx.beginPath();
-                ctx.moveTo(startX, startY);
-                ctx.lineTo(endX, endY);
-                ctx.stroke();
-            };
-        /**
-         * @param {?} ctx
-         * @param {?} centerX
-         * @param {?} centerY
-         * @param {?} radius
-         * @param {?} startAngle
-         * @param {?} endAngle
-         * @return {?}
-         */
-        CmacsKpiComponent.prototype.drawArc = /**
-         * @param {?} ctx
-         * @param {?} centerX
-         * @param {?} centerY
-         * @param {?} radius
-         * @param {?} startAngle
-         * @param {?} endAngle
-         * @return {?}
-         */
-            function (ctx, centerX, centerY, radius, startAngle, endAngle) {
-                ctx.beginPath();
-                ctx.arc(centerX, centerY, radius, startAngle, endAngle);
-                ctx.stroke();
-            };
-        /**
-         * @param {?} style
-         * @return {?}
-         */
-        CmacsKpiComponent.prototype.sanitizeStyle = /**
-         * @param {?} style
-         * @return {?}
-         */
-            function (style) {
-                return this.sanitizer.bypassSecurityTrustStyle(style);
-            };
-        /**
-         * @return {?}
-         */
-        CmacsKpiComponent.prototype.getTotalCount = /**
-         * @return {?}
-         */
-            function () {
-                /** @type {?} */
-                var total = 0;
-                this.data.forEach(( /**
-                 * @param {?} item
-                 * @return {?}
-                 */function (item) {
-                    total += item.count;
-                }));
-                return total;
-            };
-        /**
-         * @param {?} count
-         * @return {?}
-         */
-        CmacsKpiComponent.prototype.getWidth = /**
-         * @param {?} count
-         * @return {?}
-         */
-            function (count) {
-                return count !== 0 ? Math.trunc(count * 100 / this.getTotalCount()) - 2 : 0;
-            };
-        /**
-         * @return {?}
-         */
-        CmacsKpiComponent.prototype.getColoredData = /**
-         * @return {?}
-         */
-            function () {
-                /** @type {?} */
-                var coloredData = [];
-                /** @type {?} */
-                var remaining = this.data.length % KPI_COLORS.length;
-                /** @type {?} */
-                var rate = this.data.length / KPI_COLORS.length;
-                if (remaining > 0) {
-                    rate = Math.trunc(rate) + 1;
-                }
-                /** @type {?} */
-                var tempRate = rate;
-                /** @type {?} */
-                var opacity = 1;
-                /** @type {?} */
-                var colorIndex = 0;
-                this.data.forEach(( /**
-                 * @param {?} item
-                 * @return {?}
-                 */function (item) {
-                    if (tempRate === 0) {
-                        tempRate = rate;
-                        colorIndex += 1;
-                        opacity = 1;
-                    }
-                    if (colorIndex >= KPI_COLORS.length) {
-                        colorIndex = 0;
-                    }
-                    if (opacity === 0.4) {
-                        opacity = 1;
-                    }
-                    coloredData.push({
-                        count: item.count,
-                        description: item.description,
-                        color: KPI_COLORS[colorIndex],
-                        opacity: opacity
-                    });
-                    opacity = opacity - 0.2;
-                    tempRate--;
-                }));
-                return coloredData;
-            };
-        CmacsKpiComponent.decorators = [
-            { type: i0.Component, args: [{
-                        selector: 'cmacs-kpi',
-                        exportAs: 'cmacsKpi',
-                        template: "<div class=\"cmacs-kpi-wrapper\" *ngIf=\"type === 'line'\">\r\n  <div class=\"cmacs-kpi-total-count\" *ngIf=\"showTotalCount\">{{getTotalCount()}}</div>\r\n  <div style=\"flex: 1 0 auto;\">\r\n    <div class=\"cmacs-kpi-title\">{{title}}</div>\r\n    <div\r\n      *ngFor=\"let kpi of getColoredData(); index as i\"\r\n      class=\"cmacs-kpi-line\"\r\n      [class.border-radius-left]=\"i === 0\"\r\n      [class.border-radius-right]=\"i === getColoredData().lenght - 1\"\r\n      [style.width.%]=\"getWidth(kpi.count)\"\r\n      [style.background-color]=\"kpi.color\"\r\n      [style.opacity]=\"sanitizeStyle(kpi.opacity)\"\r\n      >\r\n    </div>\r\n    <ng-container *ngTemplateOutlet=\"legend\"></ng-container>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"cmacs-kpi-doughnut-container\" *ngIf=\"type === 'doughnut'\">\r\n  <div class=\"cmacs-kpi-doughnut-title\">{{title}}</div>\r\n  <div class=\"cmacs-kpi-doughnut-wrapper\" [style.width.px]=\"width\">\r\n    <div class=\"cmacs-kpi-total-count-wrapper\">\r\n      <div class=\"cmacs-kpi-doughnut-total-count\">{{getTotalCount()}}</div>\r\n    </div>\r\n    <canvas #canvas></canvas>\r\n  </div>\r\n  <div class=\"cmacs-kpi-doughnut-legend-wrapper\">\r\n    <ng-container *ngTemplateOutlet=\"legend\"></ng-container>\r\n  </div>\r\n</div>\r\n\r\n<ng-template #legend>\r\n  <div\r\n    class=\"cmacs-kpi-legend-wrapper\"\r\n    *ngFor=\"let kpi of getColoredData(); index as i\"\r\n  >\r\n    <div class=\"cmacs-kpi-divider\"\r\n         [style.background-color]=\"kpi.color\"\r\n         [style.opacity]=\"sanitizeStyle(kpi.opacity)\"\r\n    ></div>\r\n    <div class=\"cmacs-kpi-count\">{{kpi.count}}</div>\r\n    <div class=\"cmacs-kpi-description\">{{kpi.description}}</div>\r\n  </div>\r\n</ng-template>\r\n",
-                        styles: [".cmacs-kpi-line{height:6px;margin-right:4px;display:inline-block}.cmacs-kpi-total-count{margin-right:10px;margin-top:-2px;-webkit-box-flex:0;flex:0 0 auto;font-weight:600;color:#3b4043}.border-radius-left{border-radius:100px 0 0 100px}.border-radius-right{border-radius:0 100px 100px 0}.cmacs-kpi-divider{display:inline-block;width:3px;height:9px;border-radius:10px;margin-right:8px}.cmacs-kpi-count{display:inline-block;font-family:Roboto-Regular;font-size:12px;font-weight:600;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#3b4043;margin-right:4px}.cmacs-kpi-description{display:inline-block;font-family:Roboto-Regular;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.cmacs-kpi-legend-wrapper{margin-bottom:11px}.cmacs-kpi-wrapper{display:-webkit-box;display:flex}.cmacs-kpi-title{font-family:Roboto-Regular;font-size:14px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.29;letter-spacing:normal;color:#656c79}.cmacs-kpi-doughnut-wrapper{position:absolute;margin-top:24px;margin-left:30px;float:left;display:inline-block}.cmacs-kpi-doughnut-total-count{position:relative;left:-50%;font-size:20px;font-weight:600;color:#3b4043}.cmacs-kpi-total-count-wrapper{top:calc(50% - 17px);left:50%;position:absolute}.cmacs-kpi-doughnut-legend-wrapper{float:right;display:inline-block;margin-top:24px}", "\n      cmacs-kpi {\n        display: block;\n      }\n    "]
-                    }] }
-        ];
-        /** @nocollapse */
-        CmacsKpiComponent.ctorParameters = function () {
-            return [
-                { type: platformBrowser.DomSanitizer }
-            ];
-        };
-        CmacsKpiComponent.propDecorators = {
-            data: [{ type: i0.Input }],
-            title: [{ type: i0.Input }],
-            type: [{ type: i0.Input }],
-            width: [{ type: i0.Input }],
-            showTotalCount: [{ type: i0.Input }],
-            canvasRef: [{ type: i0.ViewChild, args: ['canvas', { read: i0.ElementRef },] }]
-        };
-        __decorate([
-            ngZorroAntd.InputBoolean(),
-            __metadata("design:type", Object)
-        ], CmacsKpiComponent.prototype, "showTotalCount", void 0);
-        return CmacsKpiComponent;
-    }());
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
     var CmacsListComponent = /** @class */ (function () {
         // #endregion
         function CmacsListComponent(el, updateHostClassService) {
@@ -29055,6 +29887,13 @@
                             CmacsDateFullCellDirective,
                             CmacsMonthCellDirective,
                             CmacsMonthFullCellDirective,
+                            CmacsGeneralChartComponent,
+                            CmacsKPIOverviewComponent,
+                            CmacsNormalizedHorizontalBarChartComponent,
+                            CmacsNormalizedHorizontalBarGroupedComponent,
+                            CmacsDashboardSwitchPanelComponent,
+                            CmacsDashboardWidgetContainerComponent,
+                            CmacsDashboardWidgetPanelComponent,
                             CmacsDividerComponent,
                             CmacsDropdownComponent,
                             CmacsDropdownButtonComponent,
@@ -29104,6 +29943,7 @@
                             i18n.NzI18nModule,
                             ngZorroAntd.NzOverlayModule,
                             ngZorroAntd.NzNoAnimationModule,
+                            ngxCharts.NgxChartsModule,
                             ngxExportAs.ExportAsModule,
                             menu.NzMenuModule,
                             grid.NzGridModule,
@@ -29137,6 +29977,7 @@
                             CmacsListComponent,
                             CmacsListItemComponent,
                             CmacsListItemMetaComponent,
+                            CmacsGeneralChartComponent,
                             CmacsKpiComponent,
                             CmacsOpenInputComponent,
                             CmacsGridConfigurationModalComponent,
@@ -29203,6 +30044,12 @@
                             CmacsMonthFullCellDirective,
                             LibPackerModule,
                             menu.NzMenuModule,
+                            CmacsKPIOverviewComponent,
+                            CmacsNormalizedHorizontalBarChartComponent,
+                            CmacsNormalizedHorizontalBarGroupedComponent,
+                            CmacsDashboardSwitchPanelComponent,
+                            CmacsDashboardWidgetContainerComponent,
+                            CmacsDashboardWidgetPanelComponent,
                             CmacsDropdownComponent,
                             CmacsDropdownButtonComponent,
                             CmacsDropdownDirective,
@@ -29652,6 +30499,9 @@
     exports.ExportType = ExportType;
     exports.ModeTabType = ModeTabType;
     exports.TemplateType = TemplateType;
+    exports.WidgetActionType = WidgetActionType;
+    exports.WidgetType = WidgetType;
+    exports.WidgetDataType = WidgetDataType;
     exports.CmacsModalRef = CmacsModalRef;
     exports.CmacsDropdownADirective = CmacsDropdownADirective;
     exports.CmacsProgressComponent = CmacsProgressComponent;
@@ -29661,6 +30511,12 @@
     exports.CMACS_DROPDOWN_POSITIONS = CMACS_DROPDOWN_POSITIONS;
     exports.CmacsDropdownComponent = CmacsDropdownComponent;
     exports.CmacsDropdownDirective = CmacsDropdownDirective;
+    exports.CmacsDashboardSwitchPanelComponent = CmacsDashboardSwitchPanelComponent;
+    exports.CmacsDashboardWidgetPanelComponent = CmacsDashboardWidgetPanelComponent;
+    exports.CmacsKPIOverviewComponent = CmacsKPIOverviewComponent;
+    exports.CmacsGeneralChartComponent = CmacsGeneralChartComponent;
+    exports.CmacsNormalizedHorizontalBarGroupedComponent = CmacsNormalizedHorizontalBarGroupedComponent;
+    exports.CmacsNormalizedHorizontalBarChartComponent = CmacsNormalizedHorizontalBarChartComponent;
     exports.CmacsAlertComponent = CmacsAlertComponent;
     exports.CmacsCommentComponent = CmacsCommentComponent;
     exports.CmacsCommentAvatarDirective = CmacsCommentAvatarDirective;
@@ -29721,43 +30577,45 @@
     exports.CmacsTreeSelectService = CmacsTreeSelectService;
     exports.CmacsTimelineDatepickerComponent = CmacsTimelineDatepickerComponent;
     exports.CmacsXlsxLoaderComponent = CmacsXlsxLoaderComponent;
+    exports.ɵl = CmacsDashboardWidgetContainerComponent;
     exports.ɵb = AbstractPickerComponent;
-    exports.ɵba = CalendarFooterComponent;
-    exports.ɵy = CalendarHeaderComponent;
-    exports.ɵz = CalendarInputComponent;
-    exports.ɵbb = OkButtonComponent;
-    exports.ɵbc = TimePickerButtonComponent;
-    exports.ɵbd = TodayButtonComponent;
-    exports.ɵbe = DateTableComponent;
-    exports.ɵbi = DecadePanelComponent;
-    exports.ɵbg = MonthPanelComponent;
-    exports.ɵbh = MonthTableComponent;
-    exports.ɵbk = DateRangePopupComponent;
-    exports.ɵbj = InnerPopupComponent;
-    exports.ɵbf = YearPanelComponent;
-    exports.ɵbl = CmacsDropdownService;
-    exports.ɵk = CmacsMenuDropdownService;
-    exports.ɵq = CmacsFormControlComponent;
-    exports.ɵo = CmacsFormExplainComponent;
-    exports.ɵl = CmacsFormExtraComponent;
-    exports.ɵn = CmacsFormItemComponent;
-    exports.ɵm = CmacsFormLabelComponent;
-    exports.ɵs = CmacsFormSplitComponent;
-    exports.ɵr = CmacsFormTextComponent;
-    exports.ɵp = CmacsFormDirective;
+    exports.ɵbc = CalendarFooterComponent;
+    exports.ɵba = CalendarHeaderComponent;
+    exports.ɵbb = CalendarInputComponent;
+    exports.ɵbd = OkButtonComponent;
+    exports.ɵbe = TimePickerButtonComponent;
+    exports.ɵbf = TodayButtonComponent;
+    exports.ɵbg = DateTableComponent;
+    exports.ɵbk = DecadePanelComponent;
+    exports.ɵbi = MonthPanelComponent;
+    exports.ɵbj = MonthTableComponent;
+    exports.ɵbm = DateRangePopupComponent;
+    exports.ɵbl = InnerPopupComponent;
+    exports.ɵbh = YearPanelComponent;
+    exports.ɵbn = CmacsDropdownService;
+    exports.ɵm = CmacsMenuDropdownService;
+    exports.ɵs = CmacsFormControlComponent;
+    exports.ɵq = CmacsFormExplainComponent;
+    exports.ɵn = CmacsFormExtraComponent;
+    exports.ɵp = CmacsFormItemComponent;
+    exports.ɵo = CmacsFormLabelComponent;
+    exports.ɵu = CmacsFormSplitComponent;
+    exports.ɵt = CmacsFormTextComponent;
+    exports.ɵr = CmacsFormDirective;
     exports.ɵe = CmacsMenuServiceFactory;
     exports.ɵd = CmacsMenuService;
     exports.ɵc = CmacsSubmenuService;
     exports.ɵj = MODAL_CONFIG;
-    exports.ɵv = CmacsOptionContainerComponent;
+    exports.ɵx = CmacsOptionContainerComponent;
     exports.ɵh = CmacsOptionGroupComponent;
-    exports.ɵw = CmacsOptionLiComponent;
-    exports.ɵu = NzFilterGroupOptionPipe;
-    exports.ɵt = NzFilterOptionPipe;
-    exports.ɵx = CmacsSelectUnselectableDirective;
+    exports.ɵy = CmacsOptionLiComponent;
+    exports.ɵw = NzFilterGroupOptionPipe;
+    exports.ɵv = NzFilterOptionPipe;
+    exports.ɵz = CmacsSelectUnselectableDirective;
     exports.ɵg = CmacsSelectService;
     exports.ɵf = CmacsTreeService;
     exports.ɵa = ExcelService;
+    exports.ɵk = UtilService;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
