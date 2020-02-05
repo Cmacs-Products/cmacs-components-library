@@ -24,6 +24,7 @@ export declare class CmacsTimelineDatepickerComponent implements AfterContentChe
     readonly selectedIndexChange: EventEmitter<number>;
     readonly dateChange: EventEmitter<Date>;
     readonly rangeChange: EventEmitter<Date[]>;
+    modeChange: EventEmitter<any>;
     modeOptions: {
         title: string;
         value: string;
