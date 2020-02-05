@@ -19,6 +19,7 @@ export declare class CmacsGeneralChartComponent implements OnInit {
     colorScheme: {
         domain: string[];
     };
+    legendPosition: string;
     chartSelected: WidgetActionType;
     WidgetActionTypeEnum: typeof WidgetActionType;
     WidgetDataTypeEnum: typeof WidgetDataType;
