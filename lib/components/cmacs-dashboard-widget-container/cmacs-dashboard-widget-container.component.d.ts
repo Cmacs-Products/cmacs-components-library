@@ -7,6 +7,7 @@ export declare class CmacsDashboardWidgetContainerComponent implements OnInit {
     footerValue: string;
     type: WidgetType;
     dataType: WidgetDataType;
+    showChartTypeOption: boolean;
     WidgetTypeEnum: typeof WidgetActionType;
     WidgetDataTypeEnum: typeof WidgetDataType;
     chartSelected: WidgetActionType;
