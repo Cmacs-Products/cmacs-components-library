@@ -76,6 +76,7 @@ export * from './lib/components/cmacs-dashboard-switch-panel/cmacs-dashboard-swi
 export * from './lib/components/cmacs-dashboard-widget-panel/cmacs-dashboard-widget-panel.component';
 export * from './lib/components/cmacs-kpioverview/cmacs-kpioverview.component';
 export * from './lib/components/cmacs-general-chart/cmacs-general-chart.component';
+export * from './lib/components/cmacs-status-distribution/cmacs-status-distribution.component';
 export * from './lib/components/cmacs-normalized-horizontal-bar-grouped/cmacs-normalized-horizontal-bar-grouped.component';
 export * from './lib/components/cmacs-normalized-horizontal-bar-chart/cmacs-normalized-horizontal-bar-chart.component';
 export * from './lib/components/cmacs-alert/cmacs-alert.component';

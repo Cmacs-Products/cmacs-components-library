@@ -40,7 +40,7 @@ import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, Type, inject, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -13523,8 +13523,8 @@ class CmacsDashboardWidgetContainerComponent {
 CmacsDashboardWidgetContainerComponent.decorators = [
     { type: Component, args: [{
                 selector: 'cmacs-dashboard-widget-container',
-                template: "<div nz-row class=\"widget-header\">\r\n  <div nz-col nzSpan=\"17\" class=\"widget-header-title\">{{headerText}}</div>\r\n  <div nz-col class=\"widget-header-actions\">\r\n    <button cmacs-button ghost><span class=\"iconUILarge-Calendar\"></span></button>\r\n    <cmacs-dropdown  [placement]=\"'bottomCenter'\" trigger=\"click\">\r\n      <button cmacs-button cmacs-dropdown ghost [action]=\"true\">\r\n        <i class=\"iconUILarge-More-horizontal\"></i>\r\n      </button>\r\n      <ul cmacs-menu>\r\n        <li cmacs-menu-item>\r\n          <a>\r\n            <i class=\"iconUISmall-Edit\"></i>\r\n            Edit\r\n          </a>\r\n        </li>\r\n        <li *ngIf=\"showChartTypeOption\" cmacs-submenu>\r\n          <span title>\r\n              <i class=\"iconUILarge-Reports\"></i>\r\n              Chart Type\r\n          </span>\r\n          <ul>\r\n            <li cmacs-menu-item>\r\n              <a (click)=\"onMenuClick(WidgetTypeEnum.verticalBarChart)\">\r\n                <i [class.iconUILarge-Check_Mark_Icon]=\"chartSelected === WidgetTypeEnum.verticalBarChart\"></i> Vertical Bar\r\n                Chart\r\n              </a>\r\n            </li>\r\n            <li cmacs-menu-item>\r\n              <a (click)=\"onMenuClick(WidgetTypeEnum.horizontalBarChart)\">\r\n                <i [class.iconUILarge-Check_Mark_Icon]=\"chartSelected === WidgetTypeEnum.horizontalBarChart\"></i>Horizontal Bar Chart\r\n              </a>\r\n            </li>\r\n            <li cmacs-menu-item *ngIf=\"dataType === WidgetDataTypeEnum.single\">\r\n              <a (click)=\"onMenuClick(WidgetTypeEnum.pieChart)\">\r\n                <i [class.iconUILarge-Check_Mark_Icon]=\"chartSelected === WidgetTypeEnum.pieChart\"></i>Pie Chart\r\n              </a>\r\n            </li>\r\n            <li cmacs-menu-item *ngIf=\"dataType === WidgetDataTypeEnum.multi\">\r\n              <a (click)=\"onMenuClick(WidgetTypeEnum.lineChart)\">\r\n                <i [class.iconUILarge-Check_Mark_Icon]=\"chartSelected === WidgetTypeEnum.lineChart\"></i>Line Chart\r\n              </a>\r\n            </li>\r\n            <li cmacs-menu-item *ngIf=\"dataType === WidgetDataTypeEnum.single\">\r\n              <a (click)=\"onMenuClick(WidgetTypeEnum.gauge)\">\r\n                <i [class.iconUILarge-Check_Mark_Icon]=\"chartSelected === WidgetTypeEnum.gauge\"></i>Gauge\r\n              </a>\r\n            </li>\r\n          </ul>\r\n        </li>\r\n        <li cmacs-submenu>\r\n          <span title>\r\n              <i class=\"iconArrowLarge-Export\"></i>\r\n              Export\r\n          </span>\r\n          <ul>\r\n            <li cmacs-menu-item>Option 1</li>\r\n          </ul>\r\n        </li>\r\n        <li cmacs-menu-item>\r\n          <a>\r\n            <i class=\"iconArrowLarge-Open\"></i>\r\n            Open in New Window\r\n          </a>\r\n        </li>\r\n        <li cmacs-menu-item>\r\n          <a>\r\n            <i class=\"iconUILarge-Trash\"></i>\r\n            Remove\r\n          </a>\r\n        </li>\r\n      </ul>\r\n    </cmacs-dropdown>\r\n  </div>\r\n</div>\r\n<div nz-row class=\"widget-content\">\r\n  <ng-content></ng-content>\r\n</div>\r\n<div nz-row class=\"widget-footer\">\r\n  <span>{{footerText}}: <b>{{footerValue}}</b></span>\r\n</div>",
-                styles: [":host{width:310px;height:280px;background-color:#fff;display:block;border-radius:3px;border:1px solid #dee0e5}.widget-header{height:44px;border-bottom:1px solid #dee0e5;padding:12px 20px}.widget-header-title{font-size:14px}.widget-header-actions{text-align:end;margin-top:-7px}.widget-header-actions>*{font-size:16px}.widget-footer{height:54px;border-top:1px solid #dee0e5;padding:15px;text-align:end}.widget-content{height:170px;overflow-y:auto;overflow:overlay;margin-top:15px}.widget-content::-webkit-scrollbar{height:5px;width:5px}.widget-content::-webkit-scrollbar-thumb{background-color:#a1a1a1;border-radius:10px}.widget-content::-webkit-scrollbar-thumb:hover{background-color:#a1a1a1;border-radius:10px}"]
+                template: "<div nz-row class=\"widget-header\">\r\n  <div nz-col nzSpan=\"17\" class=\"widget-header-title\"><span>{{headerText}}</span></div>\r\n  <div nz-col class=\"widget-header-actions\">\r\n    <button cmacs-button ghost><span class=\"iconUILarge-Calendar\"></span></button>\r\n    <cmacs-dropdown  [placement]=\"'bottomCenter'\" trigger=\"click\">\r\n      <button cmacs-button cmacs-dropdown ghost [action]=\"true\">\r\n        <i class=\"iconUILarge-More-horizontal\"></i>\r\n      </button>\r\n      <ul cmacs-menu>\r\n        <li cmacs-menu-item>\r\n          <a (click)=\"onMenuClick(WidgetTypeEnum.edit)\">\r\n            <i class=\"iconUISmall-Edit\"></i>\r\n            Edit\r\n          </a>\r\n        </li>\r\n        <li *ngIf=\"showChartTypeOption\" cmacs-submenu>\r\n          <span title>\r\n              <i class=\"iconUILarge-Reports\"></i>\r\n              Chart Type\r\n          </span>\r\n          <ul>\r\n            <li cmacs-menu-item>\r\n              <a (click)=\"onMenuClick(WidgetTypeEnum.verticalBarChart)\">\r\n                <i [class.iconUILarge-Check_Mark_Icon]=\"chartSelected === WidgetTypeEnum.verticalBarChart\"></i> Vertical Bar\r\n                Chart\r\n              </a>\r\n            </li>\r\n            <li cmacs-menu-item>\r\n              <a (click)=\"onMenuClick(WidgetTypeEnum.horizontalBarChart)\">\r\n                <i [class.iconUILarge-Check_Mark_Icon]=\"chartSelected === WidgetTypeEnum.horizontalBarChart\"></i>Horizontal Bar Chart\r\n              </a>\r\n            </li>\r\n            <li cmacs-menu-item *ngIf=\"dataType === WidgetDataTypeEnum.single\">\r\n              <a (click)=\"onMenuClick(WidgetTypeEnum.pieChart)\">\r\n                <i [class.iconUILarge-Check_Mark_Icon]=\"chartSelected === WidgetTypeEnum.pieChart\"></i>Pie Chart\r\n              </a>\r\n            </li>\r\n            <li cmacs-menu-item *ngIf=\"dataType === WidgetDataTypeEnum.multi\">\r\n              <a (click)=\"onMenuClick(WidgetTypeEnum.lineChart)\">\r\n                <i [class.iconUILarge-Check_Mark_Icon]=\"chartSelected === WidgetTypeEnum.lineChart\"></i>Line Chart\r\n              </a>\r\n            </li>\r\n            <li cmacs-menu-item *ngIf=\"dataType === WidgetDataTypeEnum.single\">\r\n              <a (click)=\"onMenuClick(WidgetTypeEnum.gauge)\">\r\n                <i [class.iconUILarge-Check_Mark_Icon]=\"chartSelected === WidgetTypeEnum.gauge\"></i>Gauge\r\n              </a>\r\n            </li>\r\n          </ul>\r\n        </li>\r\n        <li cmacs-submenu>\r\n          <span title>\r\n              <i class=\"iconArrowLarge-Export\"></i>\r\n              Export\r\n          </span>\r\n          <ul>\r\n            <li cmacs-menu-item>Option 1</li>\r\n          </ul>\r\n        </li>\r\n        <li cmacs-menu-item>\r\n          <a>\r\n            <i class=\"iconArrowLarge-Open\"></i>\r\n            Open in New Window\r\n          </a>\r\n        </li>\r\n        <li cmacs-menu-item>\r\n          <a>\r\n            <i class=\"iconUILarge-Trash\"></i>\r\n            Remove\r\n          </a>\r\n        </li>\r\n      </ul>\r\n    </cmacs-dropdown>\r\n  </div>\r\n</div>\r\n<div nz-row class=\"widget-content\">\r\n  <ng-content></ng-content>\r\n</div>\r\n<div nz-row class=\"widget-footer\">\r\n  <span>{{footerText}}: <b>{{footerValue}}</b></span>\r\n</div>",
+                styles: [":host{width:310px;background-color:#fff;display:block;border-radius:3px;border:1px solid #dee0e5}.widget-header{height:44px;border-bottom:1px solid #dee0e5;padding:12px 20px}.widget-header-title{font-size:14px;font-family:Roboto;line-height:1.29;letter-spacing:normal;color:#3b3f46;max-width:calc(100% - 10px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block}.widget-header-actions{text-align:end;margin-top:-7px}.widget-header-actions>*{font-size:16px}.widget-footer{height:54px;border-top:1px solid #dee0e5;padding:15px;text-align:end}.widget-content{overflow-y:auto;overflow:overlay;margin-top:15px}.widget-content::-webkit-scrollbar{height:5px;width:5px}.widget-content::-webkit-scrollbar-thumb{background-color:#a1a1a1;border-radius:10px}.widget-content::-webkit-scrollbar-thumb:hover{background-color:#a1a1a1;border-radius:10px}"]
             }] }
 ];
 /** @nocollapse */
@@ -13701,7 +13701,7 @@ CmacsNormalizedHorizontalBarGroupedComponent.decorators = [
                 selector: 'cmacs-normalized-horizontal-bar-grouped',
                 template: "<cmacs-dashboard-widget-container \r\n  [headerText]=\"headerText\"\r\n  [footerText]=\"footerText\"\r\n  [footerValue]=\"footerValue\"\r\n  (menuClick)=\"menuClick($event)\"\r\n  [showChartTypeOption]=\"false\">\r\n  <!-- Legend -->\r\n  <div nz-row class=\"legend-row\">\r\n    <div class=\"legend-column\" *ngFor=\"let l of legend; let i = index;\">\r\n      <span [style.background-color]=\"colorScheme.domain[i]\" class=\"legend-bar\"> </span>\r\n      <span class=\"legend-text\">{{l}}</span>\r\n    </div>\r\n  </div>\r\n  <!-- Chart -->\r\n  <div nz-row class=\"chart-content\">\r\n    <div nz-row class=\"chart-content-canvas\">\r\n      <canvas id=\"canvas-{{id}}\" class=\"chart-canvas\"></canvas>\r\n    </div>\r\n    <div nz-row class=\"chart-select\">\r\n      <cmacs-select style=\"width: 120px;\" [(ngModel)]=\"selectedValue\" (ngModelChange)=\"drawCanvas()\">\r\n        <cmacs-option *ngFor=\"let item of selectList\" value=\"{{ item }}\" label=\"{{ item }}\"></cmacs-option>\r\n      </cmacs-select>\r\n    </div>\r\n  </div>\r\n</cmacs-dashboard-widget-container>",
                 changeDetection: ChangeDetectionStrategy.OnPush,
-                styles: [".legend-bar{width:4px;height:10px;border-radius:5px;display:inline-block}.legend-row{width:100%}.legend-column{display:table-cell;float:right;font-family:Roboto;font-size:12px;color:#656c79}.legend-text{padding-left:6px;padding-right:20px}.chart-canvas{width:88%;margin-top:18%}.chart-content-canvas{text-align:center;height:80%;overflow:hidden}.chart-content{height:85%}.chart-select{height:15%}::ng-deep .chart-select .ant-select-selection,::ng-deep .chart-select .ant-select-selection:focus,::ng-deep .chart-select .ant-select-selection:hover{border:0}"]
+                styles: [".legend-bar{width:4px;height:10px;border-radius:5px;display:inline-block}.legend-row{width:100%}.legend-column{display:table-cell;float:right;font-family:Roboto;font-size:12px;color:#656c79}.legend-text{padding-left:6px;padding-right:20px}.chart-canvas{width:88%;margin-top:18%}.chart-content-canvas{text-align:center;height:138px;overflow:hidden}.chart-content{height:85%}.chart-select{height:15%}::ng-deep .chart-select .ant-select-selection,::ng-deep .chart-select .ant-select-selection:focus,::ng-deep .chart-select .ant-select-selection:hover{border:0}"]
             }] }
 ];
 /** @nocollapse */
@@ -13826,7 +13826,7 @@ CmacsNormalizedHorizontalBarChartComponent.decorators = [
     { type: Component, args: [{
                 selector: 'cmacs-normalized-horizontal-bar-chart',
                 template: "<cmacs-dashboard-widget-container [headerText]=\"headerText\"\r\n[footerText]=\"footerText\"\r\n[footerValue]=\"footerValue\"\r\n(menuClick)=\"menuClick($event)\"\r\n[showChartTypeOption]=\"false\">\r\n  <!-- Legend -->\r\n  <div nz-row class=\"legend-row\">\r\n    <div class=\"legend-column\" *ngFor=\"let l of legend; let i = index;\">\r\n      <span [style.background-color]=\"colorScheme.domain[i]\" class=\"legend-bar\"> </span>\r\n      <span class=\"legend-text\">{{l}}</span>\r\n    </div>\r\n  </div>\r\n  <!-- Chart -->\r\n  <div nz-row class=\"chart-content\">\r\n    <div *ngFor=\"let item of data; let i = index\" nz-row class=\"chart-content-row\">\r\n      <div nz-col nzSpan=\"8\">{{item.name}}</div>\r\n      <div nz-col nzSpan=\"16\" style=\"height: 8px; margin-top: 7px;\">\r\n        <canvas id=\"canvas-{{id}}-{{i}}\" class=\"chart-content-canvas\"></canvas>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</cmacs-dashboard-widget-container>",
-                styles: [".legend-bar{width:4px;height:10px;border-radius:5px;display:inline-block}.legend-row{width:100%}.legend-column{display:table-cell;float:right;font-family:Roboto;font-size:12px;color:#656c79}.legend-text{padding-left:6px;padding-right:20px}.chart-content{margin-top:15px;padding-left:20px;padding-right:20px;overflow:auto;height:68%;margin-right:20px}.chart-content-row{margin-bottom:15px;font-family:Roboto;font-size:12px;letter-spacing:.12px;color:#656c79}.chart-content::-webkit-scrollbar{width:7px}.chart-content::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.3);border-radius:10px}.chart-content::-webkit-scrollbar-thumb{background-color:#c9c9c9;border-radius:10px}.chart-content::-webkit-scrollbar-thumb:hover{background-color:#a1a1a1;border-radius:10px}.chart-content-canvas{width:100%}"]
+                styles: [".legend-bar{width:4px;height:10px;border-radius:5px;display:inline-block}.legend-row{width:100%}.legend-column{display:table-cell;float:right;font-family:Roboto;font-size:12px;color:#656c79}.legend-text{padding-left:6px;padding-right:20px}.chart-content{margin-top:15px;padding-left:20px;padding-right:20px;overflow:auto;height:160px;margin-right:20px}.chart-content-row{margin-bottom:15px;font-family:Roboto;font-size:12px;letter-spacing:.12px;color:#656c79}.chart-content::-webkit-scrollbar{width:7px}.chart-content::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.3);border-radius:10px}.chart-content::-webkit-scrollbar-thumb{background-color:#c9c9c9;border-radius:10px}.chart-content::-webkit-scrollbar-thumb:hover{background-color:#a1a1a1;border-radius:10px}.chart-content-canvas{width:100%}"]
             }] }
 ];
 /** @nocollapse */
@@ -14302,6 +14302,414 @@ CmacsKPIOverviewComponent.propDecorators = {
     title: [{ type: Input }],
     colors: [{ type: Input }],
     canvasRef: [{ type: ViewChild, args: ['canvas', { read: ElementRef },] }]
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class CmacsKpiGroupComponent {
+    constructor() {
+        this.clickMenu = new EventEmitter();
+        // container
+        this.headerText = '';
+        this.footerText = '';
+        this.footerValue = '';
+        this.columnsHeader = [];
+        this.width = 104;
+        this.loading = true;
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+    }
+    /**
+     * @return {?}
+     */
+    ngAfterViewInit() {
+        if (this.data.length > 0) {
+            this.selectedItem = this.data[0].key;
+        }
+        this.drawCanvas();
+        this.setConfiguration();
+        this.setData();
+    }
+    /**
+     * @return {?}
+     */
+    drawCanvas() {
+        /** @type {?} */
+        const item = this.data.find((/**
+         * @param {?} x
+         * @return {?}
+         */
+        x => x.key === this.selectedItem));
+        if (this.canvasRef && item) {
+            /** @type {?} */
+            const canvas = (/** @type {?} */ (this.canvasRef.nativeElement));
+            canvas.width = this.width;
+            canvas.height = this.width;
+            //
+            /** @type {?} */
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // totals
+            /** @type {?} */
+            const totalShow = this.getTotalCateg(item.data);
+            /** @type {?} */
+            const total = this.data.map((/**
+             * @param {?} x
+             * @return {?}
+             */
+            x => this.getTotalCateg(x.data))).reduce((/**
+             * @param {?} a
+             * @param {?} b
+             * @return {?}
+             */
+            (a, b) => a + b), 0);
+            /** @type {?} */
+            let startAngle = 4;
+            // draw data
+            for (const categ of this.data) {
+                /** @type {?} */
+                const totalG = this.getTotalCateg(categ.data);
+                /** @type {?} */
+                const sliceAngle = 2 * Math.PI * totalG / total;
+                this.drawPieSlice(ctx, canvas.width / 2, canvas.height / 2, Math.min(canvas.width / 2, canvas.height / 2) - ((this.selectedItem === categ.key) ? 10 : 6), startAngle, startAngle + sliceAngle - 0.05, categ.color, (this.selectedItem === categ.key) ? 15 : 7);
+                startAngle += sliceAngle;
+            }
+            // draw value
+            ctx.font = '20px Roboto';
+            ctx.fillStyle = '#3b3f46';
+            ctx.textAlign = 'center';
+            ctx.fillText('' + totalShow, canvas.width / 2, canvas.width / 2 + 5);
+        }
+    }
+    /**
+     * @param {?} ctx
+     * @param {?} centerX
+     * @param {?} centerY
+     * @param {?} radius
+     * @param {?} startAngle
+     * @param {?} endAngle
+     * @param {?} color
+     * @param {?} lineWidth
+     * @return {?}
+     */
+    drawPieSlice(ctx, centerX, centerY, radius, startAngle, endAngle, color, lineWidth) {
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+        ctx.lineWidth = lineWidth;
+        ctx.strokeStyle = color;
+        ctx.stroke();
+    }
+    /**
+     * @param {?} data
+     * @return {?}
+     */
+    getTotalCateg(data) {
+        return data.map((/**
+         * @param {?} x
+         * @return {?}
+         */
+        x => x.value)).reduce((/**
+         * @param {?} a
+         * @param {?} b
+         * @return {?}
+         */
+        (a, b) => a + b), 0);
+    }
+    /**
+     * @return {?}
+     */
+    setConfiguration() {
+        this.configurationExpandableRows = {
+            fields: [
+                {
+                    celdType: 3,
+                    display: '',
+                    property: 'color',
+                    width: '20%',
+                },
+                {
+                    celdType: 0,
+                    display: this.columnsHeader[0],
+                    property: 'name',
+                    editTemplate: 3,
+                    width: '60%',
+                },
+                {
+                    celdType: 0,
+                    display: this.columnsHeader[1],
+                    property: 'value',
+                    width: '20%',
+                    editTemplate: 2,
+                    editable: false
+                }
+            ],
+            fieldId: 'key',
+            fieldRate: 'fav'
+        };
+    }
+    /**
+     * @return {?}
+     */
+    setData() {
+        this.loading = true;
+        /** @type {?} */
+        const temp = [];
+        if (this.selectedItem) {
+            /** @type {?} */
+            const data = this.data.find((/**
+             * @param {?} x
+             * @return {?}
+             */
+            x => x.key === this.selectedItem));
+            for (const item of data.data) {
+                /** @type {?} */
+                const newItem = {
+                    key: item.key,
+                    name: item.name,
+                    color: {
+                        ref: this.columnTemplate,
+                        context: {
+                            color: data.color
+                        }
+                    },
+                    value: item.value,
+                    children: this.getChildren(item.rows)
+                };
+                temp.push(newItem);
+            }
+            this.dataTable = temp;
+        }
+        setTimeout((/**
+         * @return {?}
+         */
+        () => {
+            this.loading = false;
+        }), 0);
+    }
+    /**
+     * @param {?} items
+     * @return {?}
+     */
+    getChildren(items) {
+        /** @type {?} */
+        const output = [];
+        for (const item of items) {
+            output.push({
+                key: item.key,
+                name: item.name,
+                color: {},
+                value: ''
+            });
+        }
+        return output;
+    }
+    /**
+     * @param {?} type
+     * @return {?}
+     */
+    menuClick(type) {
+        this.clickMenu.emit(type);
+    }
+    /**
+     * @param {?} key
+     * @return {?}
+     */
+    changeData(key) {
+        this.selectedItem = key;
+        this.setData();
+        this.drawCanvas();
+    }
+}
+CmacsKpiGroupComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'cmacs-kpi-group',
+                template: "<cmacs-dashboard-widget-container \r\n  [headerText]=\"headerText\"\r\n  [footerText]=\"footerText\"\r\n  [footerValue]=\"footerValue\"\r\n  (menuClick)=\"menuClick($event)\"\r\n  [showChartTypeOption]=\"false\">\r\n  <div class=\"sd-content\">\r\n    <!-- Legend -->\r\n    <div nz-row class=\"legend-row\">\r\n      <span class=\"legend-column\" *ngFor=\"let item of data\" (click)=\"changeData(item.key)\">\r\n        <span [style.background-color]=\"item.color\" class=\"legend-bar\"></span>\r\n        <span class=\"legend-text\">{{item.name}}</span>\r\n      </span>\r\n    </div>\r\n    <!-- Chart -->\r\n    <div nz-row class=\"chart-content\">\r\n      <canvas #chartcanvas class=\"chart-canvas\"></canvas>\r\n    </div>\r\n    <div nz-row>\r\n      <cmacs-compact-table *ngIf=\"!loading && dataTable; else elseBlock\"\r\n        [data]=\"dataTable\"\r\n        [(config)]=\"configurationExpandableRows\"\r\n        [indentSize]=\"40\"\r\n        [logs]=\"true\"\r\n        [expandable]=\"true\"\r\n        [scroll]=\"{ y: '200px' }\"\r\n        [frontPagination]=\"false\"\r\n        [showPagination]=\"false\"\r\n      ></cmacs-compact-table>\r\n    </div>\r\n  </div>\r\n</cmacs-dashboard-widget-container>\r\n<ng-template #columnTemplate let-color=\"color\">\r\n  <div class=\"chart-dot\" [style.background-color]=\"color\"></div>\r\n</ng-template>\r\n\r\n<ng-template #elseBlock>\r\n  <nz-skeleton [nzActive]=\"true\" [nzParagraph]=\"{ rows: 8 }\"></nz-skeleton>\r\n</ng-template>",
+                styles: [".legend-bar{width:4px;height:10px;border-radius:5px;display:inline-block}.legend-row{width:100%;margin-bottom:30px;display:-webkit-box;display:flex;place-content:flex-end}.legend-column{display:table-cell;float:left;font-family:Roboto;font-size:12px;color:#656c79;cursor:pointer}.legend-text{padding-left:6px;padding-right:20px}.sd-content{margin:0 12px}.chart-dot{width:9px;height:9px;border-radius:5px;display:inline-block}.chart-content{text-align:center;margin-bottom:15px}"]
+            }] }
+];
+/** @nocollapse */
+CmacsKpiGroupComponent.ctorParameters = () => [];
+CmacsKpiGroupComponent.propDecorators = {
+    columnTemplate: [{ type: ViewChild, args: ['columnTemplate', { read: TemplateRef },] }],
+    canvasRef: [{ type: ViewChild, args: ['chartcanvas', { read: ElementRef },] }],
+    clickMenu: [{ type: Output }],
+    headerText: [{ type: Input }],
+    footerText: [{ type: Input }],
+    footerValue: [{ type: Input }],
+    data: [{ type: Input }],
+    columnsHeader: [{ type: Input }],
+    width: [{ type: Input }]
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class CmacsStatusDistributionComponent {
+    /**
+     * @param {?} util
+     */
+    constructor(util) {
+        this.util = util;
+        this.clickMenu = new EventEmitter();
+        // container
+        this.headerText = '';
+        this.footerText = '';
+        this.footerValue = '';
+        this.columnsHeader = [];
+        this.id = util.uuidv4();
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+    }
+    /**
+     * @return {?}
+     */
+    ngAfterViewInit() {
+        this.drawCanvas();
+        this.setConfiguration();
+        setTimeout((/**
+         * @return {?}
+         */
+        () => {
+            this.setData();
+        }), 0);
+    }
+    /**
+     * @param {?} type
+     * @return {?}
+     */
+    menuClick(type) {
+        this.clickMenu.emit(type);
+    }
+    /**
+     * @return {?}
+     */
+    setConfiguration() {
+        this.configurationExpandableRows = {
+            fields: [
+                {
+                    celdType: 3,
+                    display: '',
+                    property: 'color',
+                    width: '20%',
+                },
+                {
+                    celdType: 0,
+                    display: this.columnsHeader[0],
+                    property: 'name',
+                    editTemplate: 3,
+                    width: '60%',
+                },
+                {
+                    celdType: 0,
+                    display: this.columnsHeader[1],
+                    property: 'value',
+                    width: '20%',
+                    editTemplate: 2,
+                    editable: false
+                }
+            ],
+            fieldId: 'key',
+            fieldRate: 'fav'
+        };
+    }
+    /**
+     * @return {?}
+     */
+    setData() {
+        /** @type {?} */
+        const temp = [];
+        for (const item of this.data) {
+            /** @type {?} */
+            const newItem = {
+                key: item.key,
+                name: item.name,
+                color: {
+                    ref: this.columnTemplate,
+                    context: {
+                        color: item.color
+                    }
+                },
+                value: item.value,
+                children: []
+            };
+            for (let i = 0; i < item.rows.length; i++) {
+                newItem.children.push({
+                    key: item.key + '-' + i,
+                    name: item.rows[i],
+                    color: {},
+                    value: ''
+                });
+            }
+            temp.push(newItem);
+        }
+        this.dataTable = temp;
+    }
+    /**
+     * @return {?}
+     */
+    drawCanvas() {
+        /** @type {?} */
+        const canvas = (/** @type {?} */ (document.getElementById('canvas-' + this.id)));
+        canvas.height = 40;
+        canvas.width -= 7;
+        if (canvas.getContext) {
+            /** @type {?} */
+            const context = canvas.getContext('2d');
+            /** @type {?} */
+            const total = this.data.map((/**
+             * @param {?} x
+             * @return {?}
+             */
+            x => x.value)).reduce((/**
+             * @param {?} a
+             * @param {?} b
+             * @return {?}
+             */
+            (a, b) => a + b), 0);
+            /** @type {?} */
+            let move = 0;
+            for (const item of this.data) {
+                context.beginPath();
+                context.moveTo(move, 1);
+                context.lineWidth = 10;
+                /** @type {?} */
+                const val = item.value;
+                move += val / total * canvas.width;
+                context.strokeStyle = item.color;
+                context.lineTo(move - 5, 1);
+                context.stroke();
+            }
+        }
+    }
+}
+CmacsStatusDistributionComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'cmacs-status-distribution',
+                template: "<cmacs-dashboard-widget-container  \r\n[headerText]=\"headerText\"\r\n[footerText]=\"footerText\"\r\n[footerValue]=\"footerValue\"\r\n(menuClick)=\"menuClick($event)\"\r\n[showChartTypeOption]=\"false\">\r\n  <div class=\"sd-content\">\r\n    <!-- Legend -->\r\n    <div nz-row class=\"legend-row\">\r\n      <span class=\"legend-column\" *ngFor=\"let item of data\">\r\n        <span [style.background-color]=\"item.color\" class=\"legend-bar\"></span>\r\n        <span class=\"legend-text\">{{item.name}}</span>\r\n      </span>\r\n    </div>\r\n    <!-- Chart -->\r\n    <div nz-row class=\"char-content\">\r\n      <canvas id=\"canvas-{{id}}\" class=\"chart-canvas\"></canvas>\r\n    </div>\r\n    <div nz-row>\r\n      <cmacs-compact-table *ngIf=\"dataTable\" [data]=\"dataTable\"\r\n                     [(config)]=\"configurationExpandableRows\"\r\n                     [indentSize]=\"40\"\r\n                     [logs]=\"true\"\r\n                     [expandable]=\"true\"\r\n                     [scroll]=\"{ y: '200px' }\"\r\n                     [frontPagination]=\"false\"\r\n                     [showPagination]=\"false\"\r\n      ></cmacs-compact-table>\r\n    </div>\r\n  </div>\r\n</cmacs-dashboard-widget-container>\r\n<ng-template #columnTemplate let-color=\"color\">\r\n  <div class=\"chart-dot\" [style.background-color]=\"color\"></div>\r\n</ng-template>",
+                styles: [".legend-bar{width:4px;height:10px;border-radius:5px;display:inline-block}.legend-row{width:100%;margin-bottom:30px}.legend-column{display:table-cell;float:left;font-family:Roboto;font-size:12px;color:#656c79}.legend-text{padding-left:6px;padding-right:20px}.chart-content{text-align:center}.sd-content{margin:0 12px}.chart-dot{width:9px;height:9px;border-radius:5px;display:inline-block}"]
+            }] }
+];
+/** @nocollapse */
+CmacsStatusDistributionComponent.ctorParameters = () => [
+    { type: UtilService }
+];
+CmacsStatusDistributionComponent.propDecorators = {
+    columnTemplate: [{ type: ViewChild, args: ['columnTemplate', { read: TemplateRef },] }],
+    clickMenu: [{ type: Output }],
+    headerText: [{ type: Input }],
+    footerText: [{ type: Input }],
+    footerValue: [{ type: Input }],
+    data: [{ type: Input }],
+    columnsHeader: [{ type: Input }]
 };
 
 /**
@@ -25291,9 +25699,11 @@ CmacsComponentsLibModule.decorators = [
                     CmacsMonthCellDirective,
                     CmacsMonthFullCellDirective,
                     CmacsGeneralChartComponent,
+                    CmacsKpiGroupComponent,
                     CmacsKPIOverviewComponent,
                     CmacsNormalizedHorizontalBarChartComponent,
                     CmacsNormalizedHorizontalBarGroupedComponent,
+                    CmacsStatusDistributionComponent,
                     CmacsDashboardSwitchPanelComponent,
                     CmacsDashboardWidgetContainerComponent,
                     CmacsDashboardWidgetPanelComponent,
@@ -25447,9 +25857,11 @@ CmacsComponentsLibModule.decorators = [
                     CmacsMonthFullCellDirective,
                     LibPackerModule,
                     NzMenuModule,
+                    CmacsKpiGroupComponent,
                     CmacsKPIOverviewComponent,
                     CmacsNormalizedHorizontalBarChartComponent,
                     CmacsNormalizedHorizontalBarGroupedComponent,
+                    CmacsStatusDistributionComponent,
                     CmacsDashboardSwitchPanelComponent,
                     CmacsDashboardWidgetContainerComponent,
                     CmacsDashboardWidgetPanelComponent,
@@ -25770,6 +26182,6 @@ const ModeTabType = {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsDividerComponent, CmacsFloatingMenuComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, CmacsDateCellDirective, CmacsMonthCellDirective, CmacsDateFullCellDirective, CmacsMonthFullCellDirective, CmacsCalendarHeaderComponent, CmacsCalendarComponent, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, WidgetActionType, WidgetType, WidgetDataType, CmacsModalRef, CmacsDropdownADirective, CmacsProgressComponent, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, CmacsDashboardSwitchPanelComponent, CmacsDashboardWidgetPanelComponent, CmacsKPIOverviewComponent, CmacsGeneralChartComponent, CmacsNormalizedHorizontalBarGroupedComponent, CmacsNormalizedHorizontalBarChartComponent, CmacsAlertComponent, CmacsCommentComponent, CmacsCommentAvatarDirective, CmacsCommentContentDirective, CmacsCommentActionHostDirective, CmacsCommentActionComponent, CmacsSliderComponent, CmacsSliderHandleComponent, CmacsSliderMarksComponent, CmacsSliderStepComponent, CmacsSliderTrackComponent, isValueARange, isConfigAObject, Marks, CmacsDatetimePickerPanelComponent, CmacsDateTimePickerComponent, CmacsDatetimeValueAccessorDirective, CmacsVideoPlayerComponent, CmacsPhoneNumberComponent, CmacsKanbanComponent, CmacsColorPickerComponent, CmacsSwitchComponent, CmacsTabComponent, CmacsTabDirective, CmacsTabBodyComponent, CmacsTabLabelDirective, CmacsTabsInkBarDirective, CmacsTabsNavComponent, TabChangeEvent, CmacsTabsetComponent, CmacsSidePanelComponent, CmacsOpenTextareaComponent, CmacsMoveableListComponent, CmacsGridConfigurationModalComponent, CmacsOpenInputComponent, KPI_COLORS, CmacsKpiComponent, CmacsListItemMetaComponent, CmacsListItemComponent, CmacsListComponent, CmacsMessageComponent, CmacsMessageBaseService, CmacsMessageService, CmacsMessageContainerComponent, CMACS_MESSAGE_DEFAULT_CONFIG, CMACS_MESSAGE_CONFIG, CMACS_MESSAGE_DEFAULT_CONFIG_PROVIDER, CmacsCompactTableComponent, SIGNATURE_LOCALIZATION, CmacsSignatureComponent, CmacsSectionComponent, CmacsTooltipComponent, CmacsTooltipDirective, CmacsPopoverComponent, CmacsPopoverDirective, higherOrderServiceFactory, CmacsTreeSelectComponent, CmacsTreeSelectService, CmacsTimelineDatepickerComponent, CmacsXlsxLoaderComponent, CmacsDashboardWidgetContainerComponent as ɵl, AbstractPickerComponent as ɵb, CalendarFooterComponent as ɵbc, CalendarHeaderComponent as ɵba, CalendarInputComponent as ɵbb, OkButtonComponent as ɵbd, TimePickerButtonComponent as ɵbe, TodayButtonComponent as ɵbf, DateTableComponent as ɵbg, DecadePanelComponent as ɵbk, MonthPanelComponent as ɵbi, MonthTableComponent as ɵbj, DateRangePopupComponent as ɵbm, InnerPopupComponent as ɵbl, YearPanelComponent as ɵbh, CmacsDropdownService as ɵbn, CmacsMenuDropdownService as ɵm, CmacsFormControlComponent as ɵs, CmacsFormExplainComponent as ɵq, CmacsFormExtraComponent as ɵn, CmacsFormItemComponent as ɵp, CmacsFormLabelComponent as ɵo, CmacsFormSplitComponent as ɵu, CmacsFormTextComponent as ɵt, CmacsFormDirective as ɵr, CmacsMenuServiceFactory as ɵe, CmacsMenuService as ɵd, CmacsSubmenuService as ɵc, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵx, CmacsOptionGroupComponent as ɵh, CmacsOptionLiComponent as ɵy, NzFilterGroupOptionPipe as ɵw, NzFilterOptionPipe as ɵv, CmacsSelectUnselectableDirective as ɵz, CmacsSelectService as ɵg, CmacsTreeService as ɵf, ExcelService as ɵa, UtilService as ɵk };
+export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsDividerComponent, CmacsFloatingMenuComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, CmacsDateCellDirective, CmacsMonthCellDirective, CmacsDateFullCellDirective, CmacsMonthFullCellDirective, CmacsCalendarHeaderComponent, CmacsCalendarComponent, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, WidgetActionType, WidgetType, WidgetDataType, CmacsModalRef, CmacsDropdownADirective, CmacsProgressComponent, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, CmacsDashboardSwitchPanelComponent, CmacsDashboardWidgetPanelComponent, CmacsKPIOverviewComponent, CmacsGeneralChartComponent, CmacsStatusDistributionComponent, CmacsNormalizedHorizontalBarGroupedComponent, CmacsNormalizedHorizontalBarChartComponent, CmacsAlertComponent, CmacsCommentComponent, CmacsCommentAvatarDirective, CmacsCommentContentDirective, CmacsCommentActionHostDirective, CmacsCommentActionComponent, CmacsSliderComponent, CmacsSliderHandleComponent, CmacsSliderMarksComponent, CmacsSliderStepComponent, CmacsSliderTrackComponent, isValueARange, isConfigAObject, Marks, CmacsDatetimePickerPanelComponent, CmacsDateTimePickerComponent, CmacsDatetimeValueAccessorDirective, CmacsVideoPlayerComponent, CmacsPhoneNumberComponent, CmacsKanbanComponent, CmacsColorPickerComponent, CmacsSwitchComponent, CmacsTabComponent, CmacsTabDirective, CmacsTabBodyComponent, CmacsTabLabelDirective, CmacsTabsInkBarDirective, CmacsTabsNavComponent, TabChangeEvent, CmacsTabsetComponent, CmacsSidePanelComponent, CmacsOpenTextareaComponent, CmacsMoveableListComponent, CmacsGridConfigurationModalComponent, CmacsOpenInputComponent, KPI_COLORS, CmacsKpiComponent, CmacsListItemMetaComponent, CmacsListItemComponent, CmacsListComponent, CmacsMessageComponent, CmacsMessageBaseService, CmacsMessageService, CmacsMessageContainerComponent, CMACS_MESSAGE_DEFAULT_CONFIG, CMACS_MESSAGE_CONFIG, CMACS_MESSAGE_DEFAULT_CONFIG_PROVIDER, CmacsCompactTableComponent, SIGNATURE_LOCALIZATION, CmacsSignatureComponent, CmacsSectionComponent, CmacsTooltipComponent, CmacsTooltipDirective, CmacsPopoverComponent, CmacsPopoverDirective, higherOrderServiceFactory, CmacsTreeSelectComponent, CmacsTreeSelectService, CmacsTimelineDatepickerComponent, CmacsXlsxLoaderComponent, CmacsDashboardWidgetContainerComponent as ɵm, AbstractPickerComponent as ɵb, CalendarFooterComponent as ɵbd, CalendarHeaderComponent as ɵbb, CalendarInputComponent as ɵbc, OkButtonComponent as ɵbe, TimePickerButtonComponent as ɵbf, TodayButtonComponent as ɵbg, DateTableComponent as ɵbh, DecadePanelComponent as ɵbl, MonthPanelComponent as ɵbj, MonthTableComponent as ɵbk, DateRangePopupComponent as ɵbn, InnerPopupComponent as ɵbm, YearPanelComponent as ɵbi, CmacsDropdownService as ɵbo, CmacsMenuDropdownService as ɵn, CmacsFormControlComponent as ɵt, CmacsFormExplainComponent as ɵr, CmacsFormExtraComponent as ɵo, CmacsFormItemComponent as ɵq, CmacsFormLabelComponent as ɵp, CmacsFormSplitComponent as ɵv, CmacsFormTextComponent as ɵu, CmacsFormDirective as ɵs, CmacsKpiGroupComponent as ɵk, CmacsMenuServiceFactory as ɵe, CmacsMenuService as ɵd, CmacsSubmenuService as ɵc, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵy, CmacsOptionGroupComponent as ɵh, CmacsOptionLiComponent as ɵz, NzFilterGroupOptionPipe as ɵx, NzFilterOptionPipe as ɵw, CmacsSelectUnselectableDirective as ɵba, CmacsSelectService as ɵg, CmacsTreeService as ɵf, ExcelService as ɵa, UtilService as ɵl };
 
 //# sourceMappingURL=cmacs-components-lib.js.map
