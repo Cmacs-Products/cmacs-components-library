@@ -6,6 +6,7 @@ export declare class CmacsGeneralChartComponent implements OnInit {
     footerText: string;
     footerValue: string;
     data: any[];
+    chartSelected: WidgetActionType;
     dataType: WidgetDataType;
     showXAxis: boolean;
     showXAxisLabel: boolean;
@@ -20,7 +21,6 @@ export declare class CmacsGeneralChartComponent implements OnInit {
         domain: string[];
     };
     legendPosition: string;
-    chartSelected: WidgetActionType;
     WidgetActionTypeEnum: typeof WidgetActionType;
     WidgetDataTypeEnum: typeof WidgetDataType;
     constructor();
