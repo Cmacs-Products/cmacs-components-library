@@ -5,6 +5,8 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { NzIconDirective, NzIconModule } from 'ng-zorro-antd/icon';
 import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { trigger, style, animate, transition } from '@angular/animations';
+import { formatLabel } from '@swimlane/ngx-charts/release/common/label.helper';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NzMenuDirective, NzMenuModule } from 'ng-zorro-antd/menu';
 import { MediaMatcher, LayoutModule } from '@angular/cdk/layout';
@@ -34,13 +36,13 @@ import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName
 import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
 import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
 import { addMonths, addYears, endOfMonth, setDay, setMonth, addDays, differenceInCalendarDays, differenceInCalendarMonths, differenceInCalendarWeeks, isSameDay, isSameMonth, isSameYear, isThisMonth, isThisYear, setYear, startOfMonth, startOfWeek, startOfYear, getISOWeek, getISOWeeksInYear, getISOYear } from 'date-fns';
-import { __assign, __decorate, __metadata, __extends, __values, __spread, __read } from 'tslib';
+import { __extends, __assign, __decorate, __metadata, __values, __spread, __read } from 'tslib';
 import { InputBoolean as InputBoolean$1, NzDropdownService, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
 import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, inject, Type, Injector, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, Pipe, InjectionToken, ComponentFactoryResolver, defineInjectable, NgModule, Type, Injector, inject, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -4592,7 +4594,7 @@ var CmacsRadioComponent = /** @class */ (function () {
                         '[class.ant-radio-wrapper-checked]': 'checked',
                         '[class.ant-radio-wrapper-disabled]': 'disabled'
                     },
-                    styles: [".ant-radio-inner::after{top:1px;left:1px;width:12px;height:12px;background-color:#2a7cff}.ant-radio-checked .ant-radio-inner,.ant-radio-checked .ant-radio-inner:focus,.ant-radio-input:focus+.ant-radio-inner,.ant-radio-wrapper:hover .ant-radio,.ant-radio:hover .ant-radio-inner{border-color:#bec4cd}.ant-radio-input:focus+.ant-radio-inner{box-shadow:0 0 0 3px rgba(190,196,205,.08)}.ant-radio-checked:hover .ant-radio-inner{border-color:#2a7cff}.ant-radio-wrapper{font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#97a0ae}"]
+                    styles: [".ant-radio-inner::after{top:1px;left:1px;width:12px;height:12px;background-color:#2a7cff}.ant-radio-checked .ant-radio-inner,.ant-radio-checked .ant-radio-inner:focus,.ant-radio-input:focus+.ant-radio-inner,.ant-radio-wrapper:hover .ant-radio,.ant-radio:hover .ant-radio-inner{border-color:#bec4cd}.ant-radio-input:focus+.ant-radio-inner{box-shadow:0 0 0 3px rgba(190,196,205,.08)}.ant-radio-checked:hover .ant-radio-inner{border-color:#2a7cff}.ant-radio-wrapper{font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#97a0ae}.ant-radio-wrapper.ant-radio-wrapper-disabled{cursor:default}"]
                 }] }
     ];
     /** @nocollapse */
@@ -8316,7 +8318,9 @@ var CmacsTreeNodeComponent = /** @class */ (function () {
         this.nzNodeContentLoadingClass = (_f = {},
             _f[this.prefixCls + "-iconEle"] = true,
             _f);
-        this.cdr.detectChanges();
+        if (!this.cdr['destroyed']) {
+            this.cdr.detectChanges();
+        }
     };
     /**
      * @param {?} event
@@ -8819,7 +8823,7 @@ var CmacsTreeNodeComponent = /** @class */ (function () {
          * @return {?}
          */
         function () {
-            _this.setClassMap();
+            //this.setClassMap();
             _this.markForCheck();
         }));
         this.setClassMap();
@@ -9836,7 +9840,7 @@ var CmacsSelectTopControlComponent = /** @class */ (function () {
                 if (this.nzOpen) {
                     showSelectedValue = !(this.inputValue || this.isComposing);
                     if (showSelectedValue) {
-                        opacity = 0.4;
+                        opacity = 1;
                     }
                 }
                 else {
@@ -9847,7 +9851,7 @@ var CmacsSelectTopControlComponent = /** @class */ (function () {
                 showSelectedValue = false;
             }
             if (this.nzSelectService.isTagsSingleSelectMode && !this.inputValue) {
-                opacity = 0.4;
+                opacity = 1;
             }
             return {
                 display: showSelectedValue ? 'block' : 'none',
@@ -10602,7 +10606,7 @@ var CmacsSelectComponent = /** @class */ (function () {
                         '[class.ant-select-open]': 'nzOpen',
                         '(click)': 'toggleDropDown()'
                     },
-                    styles: ["\n      .ant-select-dropdown {\n        top: 100%;\n        left: 0;\n        position: relative;\n        width: 100%;\n        margin-top: 4px;\n        margin-bottom: 4px;\n      }\n    ", ".cmacs-tags-out{padding-top:15px;font-size:12px;font-family:Roboto-Regular}.ant-select{width:inherit}.ant-select-dropdown-menu-item-disabled{color:rgba(0,0,0,.25)!important}.cmacs-select-dropdown{box-shadow:none;border-bottom:1px solid #dee0e5;border-right:1px solid #dee0e5;border-left:1px solid #dee0e5;border-radius:0 0 3px 3px;z-index:unset}.cmacs-select-selection .ant-select-open .ant-select-arrow-icon svg{-webkit-transform:unset!important;transform:unset!important}.cmacs-select-selection,.cmacs-select-selection:focus,.cmacs-select-selection:hover{border:1px solid #dee0e5!important;border-radius:3px 3px 0 0!important}.cmacs-select-selection .ant-select-arrow{top:15px}.ant-select-selection{border:1px solid #dee0e5;border-radius:3px}.ant-select-selection:focus-within,.ant-select-selection:hover{border:1px solid #bec4cd;text-shadow:none}.ant-select-open .ant-select-selection{border-color:#bec4cd;box-shadow:none}.cmacs-select-selection--multiple .ant-select-search--inline .ant-select-search__field{margin-left:6px!important;max-width:94%}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item:hover .ant-select-selected-icon{color:transparent}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item-selected .ant-select-selected-icon,.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item-selected:hover .ant-select-selected-icon{color:#2a7cff!important;padding:2px;border:1px solid #dee0e5}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item-selected:hover .ant-select-selected-icon{border-color:#2a7cff}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item .ant-select-selected-icon{padding:2px;border:1px solid #dee0e5;left:12px;right:unset}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item .ant-select-selected-icon:hover{color:transparent}.ant-select-dropdown-menu-item-active,.ant-select-dropdown-menu-item:hover{background-color:#f6f7fb}.ant-select-dropdown{margin-top:0!important;margin-bottom:0!important}.ant-select-dropdown-menu-item{border-top:1px solid #dee0e5;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.ant-select-dropdown-menu-item:first-child{border-top:none}.ant-select-selection--multiple .ant-select-selection__rendered>ul>li{font-size:14px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.ant-select-selection:focus{box-shadow:none;border:1px solid #bec4cd}.ant-select-selection--multiple .ant-select-selection__choice__remove>*{line-height:2.2}.ant-select-selection__placeholder{margin-left:0}.ant-select-selection-selected-value{padding-left:0}.ant-select-dropdown-menu-item-selected{color:#2a7cff!important}.ant-select-dropdown-menu-item-selected,.ant-select-dropdown-menu-item-selected:hover{color:#2a7cff}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item{padding-right:12px;padding-left:42px}.cmacs-select-search-input{width:100%;border:none;outline:0;padding:0 10px 0 6px}.cmacs-select-search-input::-webkit-input-placeholder{color:#acb3bf}.cmacs-select-search-input::-moz-placeholder{color:#acb3bf}.cmacs-select-search-input:-ms-input-placeholder{color:#acb3bf}.cmacs-select-search-input::-ms-input-placeholder{color:#acb3bf}.cmacs-select-search-input::placeholder{color:#acb3bf}.cmacs-select-search,.cmacs-select-search:hover{background-color:#fff}.cmacs-select-search-icon{color:#dee0e5}.cmacs-select-selection--action .ant-select-search--inline .ant-select-search__field{max-width:87%}"]
+                    styles: ["\n      .ant-select-dropdown {\n        top: 100%;\n        left: 0;\n        position: relative;\n        width: 100%;\n        margin-top: 4px;\n        margin-bottom: 4px;\n      }\n    ", ".cmacs-tags-out{padding-top:15px;font-size:12px;font-family:Roboto-Regular}.ant-select{width:inherit}.ant-select-dropdown-menu-item-disabled{color:rgba(0,0,0,.25)!important}.cmacs-select-dropdown{box-shadow:none;border-bottom:1px solid #dee0e5;border-right:1px solid #dee0e5;border-left:1px solid #dee0e5;border-radius:0 0 3px 3px;z-index:unset}.cmacs-select-selection .ant-select-open .ant-select-arrow-icon svg{-webkit-transform:unset!important;transform:unset!important}.cmacs-select-selection,.cmacs-select-selection:focus,.cmacs-select-selection:hover{border:1px solid #dee0e5!important;border-radius:3px 3px 0 0!important}.cmacs-select-selection .ant-select-arrow{top:15px}.ant-select-selection{border:1px solid #dee0e5;border-radius:3px}.ant-select-selection:focus-within,.ant-select-selection:hover{border:1px solid #bec4cd;text-shadow:none}.ant-select-open .ant-select-selection,.ant-select-open .ant-select-selection:focus,.ant-select-open .ant-select-selection:focus-within,.ant-select-open .ant-select-selection:hover{border-color:#dee0e5;box-shadow:0 3px 7px rgba(59,63,70,.2);border-radius:3px 3px 0 0}.cmacs-select-selection--multiple .ant-select-search--inline .ant-select-search__field{margin-left:6px!important;max-width:94%}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item:hover .ant-select-selected-icon{color:transparent}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item-selected .ant-select-selected-icon,.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item-selected:hover .ant-select-selected-icon{color:#2a7cff!important;padding:2px;border:1px solid #dee0e5}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item-selected:hover .ant-select-selected-icon{border-color:#2a7cff}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item .ant-select-selected-icon{padding:2px;border:1px solid #dee0e5;left:12px;right:unset}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item .ant-select-selected-icon:hover{color:transparent}.ant-select-dropdown-menu-item-active,.ant-select-dropdown-menu-item:hover{background-color:#f6f7fb}.ant-select-dropdown{margin-bottom:0;border:1px solid #dee0e5;margin-top:-1px;box-shadow:0 3px 7px rgba(59,63,70,.2);border-radius:0 0 3px 3px}.ant-select-dropdown-menu-item:first-child{border-top:none}.ant-select-dropdown-menu-item{font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79;border-top:1px solid #dee0e5;padding:7px 14px}.ant-select-selection--multiple .ant-select-selection__rendered>ul>li{font-size:14px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.ant-select-selection:focus{box-shadow:none;border:1px solid #bec4cd}.ant-select-selection--multiple .ant-select-selection__choice__remove>*{line-height:2.2}.ant-select-selection__placeholder{margin-left:0}.ant-select-selection-selected-value{padding-left:0}.ant-select-dropdown-menu-item-selected{color:#2a7cff!important}.ant-select-dropdown-menu-item-selected,.ant-select-dropdown-menu-item-selected:hover{color:#2a7cff}.ant-select-dropdown.ant-select-dropdown--multiple .ant-select-dropdown-menu-item{padding-right:12px;padding-left:42px}.cmacs-select-search-input{width:100%;border:none;outline:0;padding:0 10px 0 6px}.cmacs-select-search-input::-webkit-input-placeholder{color:#acb3bf}.cmacs-select-search-input::-moz-placeholder{color:#acb3bf}.cmacs-select-search-input:-ms-input-placeholder{color:#acb3bf}.cmacs-select-search-input::-ms-input-placeholder{color:#acb3bf}.cmacs-select-search-input::placeholder{color:#acb3bf}.cmacs-select-search,.cmacs-select-search:hover{background-color:#fff}.cmacs-select-search-icon{color:#dee0e5}.cmacs-select-selection--action .ant-select-search--inline .ant-select-search__field{max-width:87%}"]
                 }] }
     ];
     /** @nocollapse */
@@ -11518,15 +11522,15 @@ var CmacsModalComponent = /** @class */ (function (_super) {
     function (type) {
         var _this = this;
         /** @type {?} */
-        var trigger = { ok: this.onOk, cancel: this.onCancel }[type];
+        var trigger$$1 = { ok: this.onOk, cancel: this.onCancel }[type];
         /** @type {?} */
         var loadingKey = { ok: 'okLoading', cancel: 'cancelLoading' }[type];
-        if (trigger instanceof EventEmitter) {
-            trigger.emit(this.getContentComponent());
+        if (trigger$$1 instanceof EventEmitter) {
+            trigger$$1.emit(this.getContentComponent());
         }
-        else if (typeof trigger === 'function') {
+        else if (typeof trigger$$1 === 'function') {
             /** @type {?} */
-            var result = trigger(this.getContentComponent());
+            var result = trigger$$1(this.getContentComponent());
             /** @type {?} */
             var caseClose_1 = (/**
              * @param {?} doClose
@@ -12199,7 +12203,7 @@ var CmacsBreadcrumbComponent = /** @class */ (function () {
                     exportAs: 'cmacsBreadcrumb',
                     preserveWhitespaces: false,
                     template: "<ng-content></ng-content>\r\n<ng-container *ngIf=\"cmacsAutoGenerate\">\r\n  <cmacs-breadcrumb-item *ngFor=\"let breadcrumb of breadcrumbs\">\r\n    <a [attr.href]=\"breadcrumb.url\" (click)=\"navigate(breadcrumb.url, $event)\">{{ breadcrumb.label }}</a>\r\n  </cmacs-breadcrumb-item>\r\n</ng-container>\r\n",
-                    styles: ["\n      cmacs-breadcrumb {\n        display: block;\n      }\n\n      cmacs-breadcrumb-item {\n        font-size: 12px;\n        font-weight: normal;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 1.5;\n        letter-spacing: normal;\n        color: #acb3bf;\n      }\n    "]
+                    styles: ["\n      cmacs-breadcrumb {\n        display: block;\n      }\n\n      cmacs-breadcrumb-item {\n        font-size: 12px;\n        font-weight: normal;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 1.5;\n        letter-spacing: normal;\n        color: #acb3bf;\n        white-space: nowrap;\n        overflow: hidden;\n        text-overflow: ellipsis;\n        Display: inline-block;\n        cursor: default;\n\n      }\n    "]
                 }] }
     ];
     /** @nocollapse */
@@ -12236,8 +12240,8 @@ var CmacsBreadcrumbItemComponent = /** @class */ (function () {
                     selector: 'cmacs-breadcrumb-item',
                     exportAs: 'cmacsBreadcrumbItem',
                     preserveWhitespaces: false,
-                    template: "<span class=\"ant-breadcrumb-link\">\r\n  <ng-content></ng-content>\r\n</span>\r\n<span class=\"ant-breadcrumb-separator\">\r\n  <ng-container *cmacsStringTemplateOutlet=\"cmacsBreadcrumbComponent.cmacsSeparator\">\r\n    {{ cmacsBreadcrumbComponent.cmacsSeparator }}\r\n  </ng-container>\r\n</span>\r\n",
-                    styles: [".ant-breadcrumb-link a:hover{text-decoration:underline!important}", "\n      cmacs-breadcrumb-item:last-child {\n        color: #656c79;\n      }\n\n      cmacs-breadcrumb-item:last-child .ant-breadcrumb-separator {\n        display: none;\n      }\n    "]
+                    template: "<div class=\"ant-breadcrumb-link\">\r\n  <ng-content></ng-content>\r\n</div>\r\n<span class=\"ant-breadcrumb-separator\">\r\n  <ng-container *cmacsStringTemplateOutlet=\"cmacsBreadcrumbComponent.cmacsSeparator\">\r\n    {{ cmacsBreadcrumbComponent.cmacsSeparator }}\r\n  </ng-container>\r\n</span>\r\n",
+                    styles: [".ant-breadcrumb-link a{color:#acb3bf}.ant-breadcrumb-link a:hover{text-decoration:underline;color:#2a7cff}.ant-breadcrumb-link{display:-ms-inline-grid;display:inline-grid;max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ant-breadcrumb a{max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}cmacs-breadcrumb-item:last-child,cmacs-breadcrumb-item:last-child .ant-breadcrumb-link{max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:inline-block;line-height:initial}", "\n      cmacs-breadcrumb-item:last-child {\n        color: #656c79;\n      }\n\n      cmacs-breadcrumb-item:last-child .ant-breadcrumb-separator {\n        display: none;\n      }\n    "]
                 }] }
     ];
     /** @nocollapse */
@@ -12524,7 +12528,7 @@ var CmacsCardComponent = /** @class */ (function () {
                         '[class.cmacs-card-files-folders-wrapper]': "cmacsType === 'folder'",
                         '[class.file-card-selected]': "cmacsType === 'folder' && selected"
                     },
-                    styles: ["cmacs-card {\n        display: block;\n      }\n    ", ".cmacs-weather-card{width:318px;height:218px;border-radius:10px;background-color:#f2f7ff;border-color:transparent}.cmacs-weather-card .ant-card-body{padding-top:35px}.cmacs-weather-card-cloud-img{width:75px;height:auto;float:right}.cmacs-weather-card-temp-min-max{font-family:Roboto,Roboto-Regular;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;color:#97a0ae;margin-left:10px}.cmacs-weather-card-description-wrapper{margin-top:14px;margin-bottom:28px}.cmacs-weather-card-description{font-family:Roboto,Roboto-Regular;font-size:14px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.43;letter-spacing:normal;color:#656c79}.cmacs-weather-col-1-3 i{font-size:22px}.cmacs-weather-col-1-3{width:33.3333%;display:inline-block;text-align:center;font-family:Roboto,Roboto-Regular;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;color:#3b3f46}.cmacs-weather-card-temp{font-family:Roboto,Roboto-Regular;font-size:24px;font-weight:500;font-stretch:normal;font-style:normal;line-height:2.08;letter-spacing:normal;color:#3b3f46}.ant-card,.ant-card-head{font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.ant-card-extra,.ant-card-head-title{padding:0}.ant-card-head{min-height:40px;padding:12px}.ant-card-grid{font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.card-list-row .ant-card-grid>*{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}.cmacs-card-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cmacs-card-shared-I .cmacs-card-title{width:100%}.cmacs-card-left-panel label.cmacs-checkbox-card{float:left}.cmacs-card-shared-II .cmacs-card-title{width:calc(100% - 40px);left:80px}.cmacs-card-person-info-II{display:-webkit-box;display:flex}.cmacs-card-shared-III .cmacs-card-title{width:calc(100% - 60px)}.cmacs-card-files-wrapper{width:223px;height:36px;border:none}.cmacs-card-measure-wrapper{width:223px;height:36px;border:1px solid #dee0e5}.cmacs-card-label-measure{padding:6px 20px;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;vertical-align:middle;width:calc(100% - 35px)}.cmacs-card-measure-wrapper-selected,.cmacs-card-measure-wrapper:hover{border-color:#2a7cff;cursor:pointer;box-shadow:0 6px 10px 0 rgba(0,0,0,.15)}.cmacs-card-measure-wrapper-selected .cmacs-card-measure-icon-wrapper,.cmacs-card-measure-wrapper:hover .cmacs-card-measure-icon-wrapper{border-right-color:#2a7cff}.cmacs-card-measure-wrapper-selected .cmacs-card-measure-icon-wrapper i,.cmacs-card-measure-wrapper:hover .cmacs-card-measure-icon-wrapper i{color:#2a7cff}.cmacs-card-files-wrapper:hover{background-color:#f6f7fb;cursor:pointer}.cmacs-card-files-wrapper .ant-card-body,.cmacs-card-measure-wrapper .ant-card-body{padding:0;width:100%}.cmacs-card-files-wrapper div,.cmacs-card-measure-wrapper div{display:inline-block}.cmacs-card-files-icon-wrapper{width:36px;height:36px;border-radius:3px;box-shadow:0 6px 10px 0 rgba(0,0,0,.15);background-color:#fff;margin-right:16px;text-align:center;position:relative;top:-8px}.cmacs-card-measure-icon-wrapper{background-color:#fff;text-align:center;padding:7px;border-right:1px solid #dee0e5}.cmacs-card-measure-icon-wrapper i{color:#dee0e5}.cmacs-card-files-icon-wrapper i{color:#fb3147!important;font-size:18px;top:23%;position:relative}.cmacs-card-file-extra{font-size:22px;float:right;margin-top:2px;margin-right:5px}.cmacs-card-file-extra i{color:#bec4cd!important}.cmacs-card-label-recent{padding:10px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:calc(100% - 96px);vertical-align:middle}.cmacs-selection-card{width:137px}.cmacs-selection-card .ant-card-cover{padding:15px}.cmacs-selection-card .ant-card-body{padding:10px 10px 30px;text-align:center;font-size:12px}.cmacs-selection-card .ant-card-meta-description{color:#656c79}.cmacs-selection-card.ant-card-hoverable:hover{border:1px solid #bec4cd}.cmacs-selection-card.ant-card-hoverable:hover .ant-radio-inner{border-color:#bec4cd}.cmacs-card-selected,.cmacs-card-selected:hover,.cmacs-card-selected:hover .ant-radio-inner{border-color:#2a7cff!important}.cmacs-card-disabled:hover .ant-radio-inner{border-color:#d9d9d9!important}.cmacs-card-selected .ant-card-meta-description{color:#2a7cff!important}.cmacs-card-disabled,.cmacs-card-disabled:hover{border-color:#dee0e5!important;cursor:default}.cmacs-card-disabled .ant-card-meta-description{color:#97a0ae!important}.cmacs-action-card{border:none;margin-left:auto;margin-right:auto;min-width:131px}.cmacs-action-card:hover{cursor:pointer}.cmacs-action-card-disabled:hover{cursor:default}.cmacs-action-card:hover .ant-card-meta-title{color:#2164c9}.cmacs-action-card .ant-card-meta-description{text-align:center;color:#acb3bf}.cmacs-action-card .ant-card-body{padding:13px}.cmacs-action-card .ant-card-meta-title{color:#2a7cff;white-space:normal;text-align:center;font-size:12px;padding-top:18px}.cmacs-action-card-disabled .ant-card-meta-title,.cmacs-action-card-disabled:hover .ant-card-meta-title{color:#97a0ae}.cmacs-information-card.ant-card-bordered{border-color:#dee0e5}.cmacs-information-card .ant-card-head{min-height:30px}.cmacs-information-card .cmacs-btn-action{border-color:#dee0e5}.cmacs-information-card:hover .cmacs-btn-action,.cmacs-information-card:hover .cmacs-btn-action span i{color:#2a7cff!important}.cmacs-information-card .ant-card-body{padding:20px 10px}.cmacs-information-card .team-person-card{width:30px;height:30px;border-radius:3px;display:-webkit-inline-box;display:inline-flex;margin-right:12px}.cmacs-information-card .team-person-card:last-child{margin-right:0}.cmacs-information-card .plus-team-card{width:30px;height:30px;border-radius:3px;display:-webkit-inline-box;display:inline-flex;background-color:#dae8ff;color:#2a7cff;position:relative;top:-10px;font-size:13px;padding:5px 7px}.cmacs-information-card .team-person-card span{width:30px;height:30px;padding:6px 8px;color:#fff}.iconspan i{font-size:16px;position:relative;height:16px;width:16px;display:inline-block;vertical-align:text-top}.iconspan{height:20px;width:20px;text-align:center;vertical-align:middle;display:inline-block}.cmacs-team-card.ant-card-bordered{border-color:#dee0e5}.cmacs-team-card-selected.ant-card-bordered{border-color:#2a7cff}.cmacs-team-card .ant-card-head{min-height:30px}.cmacs-team-card .ant-card-body{padding:0}.project-card-progress-bar-inner{height:5px;background-color:#2a7cff;border-radius:5px}.project-card-progress-bar{height:5px;background-color:#dee0e5;border-radius:5px;width:83%;margin:0 auto}.project-dates{display:inline-block}.project-status{position:relative;top:-36px;left:18px}.project-dates-wrapper{padding:0 20px;margin-top:-10px;margin-bottom:10px}.project-dates-title{color:#97a0ae;display:block;margin-bottom:5px}.project-dates-date{color:#656c79}.project-dates-wrapper a{margin-left:10px;margin-right:10px}.project-manager-metadata{display:inline-block;margin-left:10px;margin-right:10px}.manager-name{font-family:Roboto-Medium;font-size:12px;font-weight:500;font-style:normal;font-stretch:normal;line-height:1.33;letter-spacing:normal;color:#97a0ae;max-width:111px;width:111px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;position:relative}.manager-charge{color:#acb3bf;max-width:111px;width:111px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;position:relative}.project-manager-details{margin:20px}.manager-avatar{display:inline-block;border-radius:3px;font-size:12px;color:#fff;text-align:center;line-height:1.33;float:left}.project-manager-details i{color:#656c79}.project-email-icon{float:right}.cmacs-card-files-folders-wrapper{height:48px;background-color:#fff;border:1px solid #dee0e5;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer!important}.card-files-uploading-wrapper{width:170px;height:48px;background-color:#f3f3f4;border:1px solid #dee0e5}.cmacs-card-files-folders-wrapper:hover{background-color:#f6f7fb;cursor:pointer}.file-card-selected,.file-card-selected:hover{background-color:#f2f7ff}.cmacs-card-files-folders-wrapper:hover .card-files-folders-label{color:#2a7cff}.cmacs-card-files-folders-wrapper:hover .card-files-folder-extra a{opacity:1}.card-files-folder-extra{display:inline-block;font-size:20px}.card-files-folder-extra a{opacity:0}.card-files-folders-label{width:calc(100% - 50px);display:inline-block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;vertical-align:middle}.card-files-uploading-wrapper .ant-card-body,.cmacs-card-files-folders-wrapper .ant-card-body{padding:14px 10px}.card-files-folders-icon-wrapper{margin-right:10px;display:inline-block;vertical-align:middle}.card-files-uploading-wrapper i,.cmacs-card-files-folders-wrapper i{color:#656c79!important}.card-files-progress-bar-inner{height:5px;background-color:#2a7cff;border-radius:5px}.card-files-progress-bar{height:5px;background-color:#dee0e5;border-radius:5px;margin-top:7px}.cmacs-big-file-card{width:243px;border:none;overflow:hidden}.cmacs-big-file-card .ant-card-body{padding:0}.cmacs-card-big-file-meta{border:1px solid #dee0e5;-webkit-transition:.3s;transition:.3s}.cmacs-big-file-card::before{content:' ';width:40px;height:21px;background-color:#fff;position:absolute;left:calc(100% - 26px);-webkit-transform:rotate(45deg);transform:rotate(45deg);top:-4px;border-bottom:1px solid #dee0e5;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-icon-wrapper{font-size:22px;margin:0 auto;width:22px;padding-top:60px;padding-bottom:40px}.cmacs-card-big-file-extension-wrapper{text-align:right;padding:0 10px 10px 0;color:#acb3bf}.cmacs-card-big-file-description{height:61px;margin-top:10px;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-title{padding:10px 10px 5px;font-size:12px;color:#3b3f46;font-weight:500;-webkit-transition:.3s;transition:.3s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cmacs-card-big-file-date{padding:0 10px 10px;font-size:12px;color:#acb3bf;font-weight:500}.cmacs-card-big-file-extra{font-size:21px;padding-top:3px;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-extra a{color:#656c79;opacity:0;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-description-left-panel{width:90%;float:left}.cmacs-card-big-file-description-right-panel{width:10%;float:right}.cmacs-big-file-card:hover{cursor:pointer}.cmacs-big-file-card:hover .cmacs-card-big-file-description{background-color:#f6f7fb}.cmacs-big-file-card:hover .cmacs-card-big-file-title{color:#2a7cff}.cmacs-big-file-card:hover .cmacs-card-big-file-extra a{opacity:1}.cmacs-big-file-card-selected .cmacs-card-big-file-description,.cmacs-big-file-card-selected:hover .cmacs-card-big-file-description{background-color:#f2f7ff}.cmacs-big-file-card-selected .cmacs-card-big-file-meta,.cmacs-big-file-card-selected.cmacs-big-file-card::before{border-color:#2a7cff}.cmacs-card-video-description{color:#3b3f46;font-weight:600;font-size:12px;margin-top:17px}.cmacs-card-video-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cmacs-card-video-player-wrapper{width:337px;height:226px;border:1px solid #dee0e5}.cmacs-video-player-card{border:none;width:337px}.cmacs-video-player-card .ant-card-body{padding:0}.cmacs-todo-card-upper-line{width:95%;margin:5px;height:2px;border-radius:100px}.cmacs-todo-card{width:243px}.cmacs-todo-card .ant-card-body{padding:0}.cmacs-todo-card-title{color:#3b3f46;font-size:12px;margin:21px 14px 0;white-space:pre-line;display:-moz-box;display:-webkit-box;-webkit-line-clamp:2;-moz-line-clamp:2;-moz-box-orient:vertical;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis}.cmacs-todo-card-project{color:#97a0ae;margin:10px 14px 0;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cmacs-todo-card-date{color:#656c79;margin:14px 14px 0;background-color:#f6f7fb;padding:2px 5px;border-radius:3px;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}.cmacs-todo-card-action{padding:15px 14px 30px 15px;font-size:14px}.cmacs-todo-card-attachments,.cmacs-todo-card-comments,.cmacs-todo-card-person,.cmacs-todo-card-team{float:left;margin-right:10px}.cmacs-todo-card-attachments span,.cmacs-todo-card-comments span{margin-right:3px;color:#2a7cff;font-size:12px}.cmacs-todo-card-priority{float:right;margin-left:12px}.cmacs-todo-card-attachments a,.cmacs-todo-card-comments a,.cmacs-todo-card-person a,.cmacs-todo-card-team a{color:#656c79}.cmacs-todo-card-project-img{width:241px;height:100px;overflow:hidden}.cmacs-todo-card-project-img img{width:241px}.cmacs-todo-card-selected{border-color:#2a7cff!important}.cmacs-proj-card-text-Logo{font-size:50px;color:#fff;background-color:#ffa800}.cmacs-proj-card-div-Logo{background-color:#ffa800;width:221px;height:107px;text-align:center}.cmacs-proj-avatar-text{height:30px;width:30px;line-height:22px;font-size:11px;border-radius:3px;background:#512da8;color:#fff;text-align:center;cursor:pointer;padding:4px;display:inline-block;float:left}.projectimagecontainer{height:107px}.project-image{background-repeat:no-repeat;background-position:center center;background-size:contain;height:100%;width:auto}.cmacs-todo-card-attachments span,.cmacs-todo-card-comments span,.cmacs-todo-card-person a{vertical-align:middle}.cmacs-todo-card-person,.cmacs-todo-card-team{margin-left:4px}.cmacs-todo-card-attachments a,.cmacs-todo-card-comments a{vertical-align:sub;font-size:18px}.cmacs-todo-card-team a{font-size:19px;vertical-align:top}"]
+                    styles: ["cmacs-card {\n        display: block;\n      }\n    ", ".cmacs-weather-card{width:318px;height:218px;border-radius:10px;background-color:#fff;border-color:transparent;box-shadow:0 2px 4px rgba(0,0,0,.1)}.cmacs-weather-card .ant-card-body{padding-top:35px}.cmacs-weather-card-cloud-img{width:75px;height:auto;float:right}.cmacs-weather-card-temp-min-max{font-family:Roboto-Regular;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;color:#97a0ae;margin-left:10px}.cmacs-weather-card-description-wrapper{margin-top:14px;margin-bottom:28px}.cmacs-weather-card-description{font-family:Roboto-Regular;font-size:14px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.43;letter-spacing:normal;color:#656c79}.cmacs-weather-col-1-3 i{font-size:22px}.cmacs-weather-col-1-3{width:33.3333%;display:inline-block;text-align:center;font-family:Roboto-Regular;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;color:#3b3f46}.cmacs-weather-card-temp{font-family:Roboto-Regular;font-size:24px;font-weight:500;font-stretch:normal;font-style:normal;line-height:2.08;letter-spacing:normal;color:#3b3f46}.ant-card,.ant-card-head{font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79}.ant-card-extra,.ant-card-head-title{padding:0;font-size:12px;font-weight:500;font-family:Roboto-Medium}.ant-card-head{min-height:40px;padding:12px}.ant-card-grid{font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#656c79;cursor:pointer}.card-list-row .ant-card-grid>*{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}.cmacs-card-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cmacs-card-shared-I .cmacs-card-title{width:100%}.cmacs-card-left-panel label.cmacs-checkbox-card{float:left}.cmacs-card-shared-II .cmacs-card-title{width:calc(100% - 40px);left:80px}.cmacs-card-person-info-II{display:-webkit-box;display:flex}.cmacs-card-shared-III .cmacs-card-title{width:calc(100% - 60px)}.cmacs-card-files-wrapper{width:223px;height:36px;border:none}.cmacs-card-measure-wrapper{width:223px;height:36px;border:1px solid #dee0e5}.cmacs-card-label-measure{padding:6px 20px;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;vertical-align:middle;width:calc(100% - 35px)}.cmacs-card-measure-wrapper-selected,.cmacs-card-measure-wrapper:hover{border-color:#2a7cff;cursor:pointer;box-shadow:0 6px 10px 0 rgba(0,0,0,.15)}.cmacs-card-measure-wrapper-selected .cmacs-card-measure-icon-wrapper,.cmacs-card-measure-wrapper:hover .cmacs-card-measure-icon-wrapper{border-right-color:#2a7cff}.cmacs-card-measure-wrapper-selected .cmacs-card-measure-icon-wrapper i,.cmacs-card-measure-wrapper:hover .cmacs-card-measure-icon-wrapper i{color:#2a7cff}.cmacs-card-files-wrapper:hover{background-color:#f6f7fb;cursor:pointer}.cmacs-card-files-wrapper .ant-card-body,.cmacs-card-measure-wrapper .ant-card-body{padding:0;width:100%}.cmacs-card-files-wrapper div,.cmacs-card-measure-wrapper div{display:inline-block}.cmacs-card-files-icon-wrapper{width:36px;height:36px;border-radius:3px;box-shadow:0 6px 10px 0 rgba(0,0,0,.15);background-color:#fff;margin-right:16px;text-align:center;position:relative;top:-8px}.cmacs-card-measure-icon-wrapper{background-color:#fff;text-align:center;padding:7px;border-right:1px solid #dee0e5}.cmacs-card-measure-icon-wrapper i{color:#dee0e5}.cmacs-card-files-icon-wrapper i{color:#fb3147!important;font-size:18px;top:23%;position:relative}.cmacs-card-file-extra{font-size:22px;float:right;margin-top:2px;margin-right:5px}.cmacs-card-file-extra i{color:#bec4cd!important}.cmacs-card-label-recent{padding:10px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:calc(100% - 96px);vertical-align:middle}.cmacs-selection-card{width:137px}.cmacs-selection-card .ant-card-cover{padding:15px}.cmacs-selection-card .ant-card-body{padding:10px 10px 30px;text-align:center;font-size:12px}.cmacs-selection-card .ant-card-meta-description{color:#656c79}.cmacs-selection-card.ant-card-hoverable:hover:not(.cmacs-card-disabled){border:1px solid #bec4cd;box-shadow:0 6px 10px rgba(59,63,70,.15)}.cmacs-selection-card.ant-card-hoverable:hover:not(.cmacs-card-disabled) .ant-radio-inner{border-color:#bec4cd}.cmacs-card-selected,.cmacs-card-selected:hover,.cmacs-card-selected:hover .ant-radio-inner{border-color:#2a7cff!important}.ant-radio-disabled .ant-radio-inner,.ant-radio-disabled .ant-radio-input,.ant-radio-disabled+span,.ant-radio.ant-radio-disabled,input[type=radio][disabled]{cursor:default}.cmacs-card-disabled:hover .ant-radio-inner{border-color:#dee0e5!important;cursor:default;background-color:#f3f3f4}.cmacs-card-selected .ant-card-meta-description{color:#2a7cff!important}.cmacs-card-disabled,.cmacs-card-disabled:hover{border-color:#dee0e5;cursor:default;box-shadow:none}.cmacs-card-disabled .ant-card-meta-description{color:#97a0ae!important}.cmacs-action-card{border:none;margin-left:auto;margin-right:auto;min-width:131px}.cmacs-action-card:hover{cursor:pointer}.cmacs-action-card-disabled:hover{cursor:default}.cmacs-action-card:hover .ant-card-meta-title{color:#2164c9}.cmacs-action-card .ant-card-meta-description{text-align:center;color:#acb3bf}.cmacs-action-card .ant-card-body{padding:13px}.cmacs-action-card .ant-card-meta-title{color:#2a7cff;white-space:normal;text-align:center;font-size:12px;padding-top:18px}.cmacs-action-card-disabled .ant-card-meta-title,.cmacs-action-card-disabled:hover .ant-card-meta-title{color:#97a0ae}.cmacs-information-card.ant-card-bordered{border-color:#dee0e5}.cmacs-information-card .ant-card-head{min-height:30px}.cmacs-information-card .cmacs-btn-action{border-color:#dee0e5}.cmacs-information-card:hover .cmacs-btn-action,.cmacs-information-card:hover .cmacs-btn-action span i{color:#2a7cff!important}.cmacs-information-card .ant-card-body{padding:20px 10px}.cmacs-information-card .team-person-card{width:30px;height:30px;border-radius:3px;display:-webkit-inline-box;display:inline-flex;margin-right:12px}.cmacs-information-card .team-person-card:last-child{margin-right:0}.cmacs-information-card .plus-team-card{width:30px;height:30px;border-radius:3px;display:-webkit-inline-box;display:inline-flex;background-color:#dae8ff;color:#2a7cff;position:relative;top:-10px;font-size:13px;padding:5px 7px}.cmacs-information-card .team-person-card span{width:30px;height:30px;padding:6px 8px;color:#fff}.iconspan i{font-size:16px;position:relative;height:16px;width:16px;display:inline-block;vertical-align:text-top}.iconspan{height:20px;width:20px;text-align:center;vertical-align:middle;display:inline-block}.cmacs-team-card.ant-card-bordered{border-color:#dee0e5}.cmacs-team-card.ant-card-bordered:hover{box-shadow:0 6px 10px rgba(59,63,70,.15)}.cmacs-team-card-selected.ant-card-bordered{border-color:#2a7cff}.cmacs-team-card .ant-card-head{min-height:30px}.cmacs-team-card .ant-card-body{padding:0}.project-card-progress-bar-inner{height:5px;background-color:#2a7cff;border-radius:5px}.project-card-progress-bar{height:5px;background-color:#dee0e5;border-radius:5px;width:83%;margin:0 auto}.project-dates{display:inline-block}.project-status{position:relative;top:-36px;left:18px}.project-dates-wrapper{padding:0 20px;margin-top:-10px;margin-bottom:10px}.project-dates-title{color:#97a0ae;display:block;margin-bottom:5px}.project-dates-date{color:#656c79}.project-dates-wrapper a{margin-left:10px;margin-right:10px}.project-manager-metadata{display:inline-block;margin-left:10px;margin-right:10px}.manager-name{font-family:Roboto-Medium;font-size:12px;font-weight:500;font-style:normal;font-stretch:normal;line-height:1.33;letter-spacing:normal;color:#97a0ae;max-width:111px;width:111px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;position:relative}.manager-charge{color:#acb3bf;max-width:111px;width:111px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;position:relative}.project-manager-details{margin:20px}.manager-avatar{display:inline-block;border-radius:3px;font-size:12px;color:#fff;text-align:center;line-height:1.33;float:left}.project-manager-details i{color:#656c79}.project-email-icon{float:right}.cmacs-card-files-folders-wrapper{height:48px;background-color:#fff;border:1px solid #dee0e5;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer!important}.card-files-uploading-wrapper{width:170px;height:48px;background-color:#f3f3f4;border:1px solid #dee0e5}.cmacs-card-files-folders-wrapper:hover{background-color:#f6f7fb;cursor:pointer}.file-card-selected,.file-card-selected:hover{background-color:#f2f7ff;border-color:#2a7cff}.cmacs-card-files-folders-wrapper:hover .card-files-folders-label{color:#2a7cff}.cmacs-card-files-folders-wrapper:hover .card-files-folder-extra a{opacity:1}.card-files-folder-extra{display:inline-block;font-size:20px}.card-files-folder-extra a{opacity:0}.card-files-folders-label{width:calc(100% - 50px);display:inline-block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;vertical-align:middle}.card-files-uploading-wrapper .ant-card-body,.cmacs-card-files-folders-wrapper .ant-card-body{padding:14px 10px}.card-files-folders-icon-wrapper{margin-right:10px;display:inline-block;vertical-align:middle}.card-files-uploading-wrapper i,.cmacs-card-files-folders-wrapper i{color:#656c79!important}.card-files-progress-bar-inner{height:5px;background-color:#2a7cff;border-radius:5px}.card-files-progress-bar{height:5px;background-color:#dee0e5;border-radius:5px;margin-top:7px}.cmacs-big-file-card{width:243px;border:none;overflow:hidden}.cmacs-big-file-card .ant-card-body{padding:0}.cmacs-card-big-file-meta{border:1px solid #dee0e5;-webkit-transition:.3s;transition:.3s}.cmacs-big-file-card::before{content:' ';width:40px;height:21px;background-color:#fff;position:absolute;left:calc(100% - 26px);-webkit-transform:rotate(45deg);transform:rotate(45deg);top:-4px;border-bottom:1px solid #dee0e5;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-icon-wrapper{font-size:22px;margin:0 auto;width:22px;padding-top:60px;padding-bottom:40px}.cmacs-card-big-file-extension-wrapper{text-align:right;padding:0 10px 10px 0;color:#acb3bf}.cmacs-card-big-file-description{height:61px;margin-top:10px;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-title{padding:10px 10px 5px;font-size:12px;color:#3b3f46;font-weight:500;-webkit-transition:.3s;transition:.3s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cmacs-card-big-file-date{padding:0 10px 10px;font-size:12px;color:#acb3bf;font-weight:500}.cmacs-card-big-file-extra{font-size:21px;padding-top:3px;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-extra a{color:#656c79;opacity:0;-webkit-transition:.3s;transition:.3s}.cmacs-card-big-file-description-left-panel{width:90%;float:left}.cmacs-card-big-file-description-right-panel{width:10%;float:right}.cmacs-big-file-card:hover{cursor:pointer}.cmacs-big-file-card:hover .cmacs-card-big-file-description{background-color:#f6f7fb}.cmacs-big-file-card:hover .cmacs-card-big-file-title{color:#2a7cff}.cmacs-big-file-card:hover .cmacs-card-big-file-extra a{opacity:1}.cmacs-big-file-card-selected .cmacs-card-big-file-description,.cmacs-big-file-card-selected:hover .cmacs-card-big-file-description{background-color:#f2f7ff}.cmacs-big-file-card-selected .cmacs-card-big-file-meta,.cmacs-big-file-card-selected.cmacs-big-file-card::before{border-color:#2a7cff}.cmacs-card-video-description{color:#3b3f46;font-weight:600;font-size:12px;margin-top:17px}.cmacs-card-video-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cmacs-card-video-player-wrapper{width:337px;height:226px;border:1px solid #dee0e5}.cmacs-video-player-card{border:none;width:337px}.cmacs-video-player-card .ant-card-body{padding:0}.cmacs-todo-card-upper-line{width:95%;margin:5px;height:2px;border-radius:100px}.cmacs-todo-card{width:243px}.cmacs-todo-card.ant-card-hoverable:hover{box-shadow:0 6px 10px rgba(59,63,70,.15)}.cmacs-todo-card .ant-card-body{padding:0}.cmacs-todo-card-title{color:#3b3f46;font-size:12px;margin:21px 14px 0;white-space:pre-line;display:-moz-box;display:-webkit-box;-webkit-line-clamp:2;-moz-line-clamp:2;-moz-box-orient:vertical;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis}.cmacs-todo-card-project{color:#97a0ae;margin:10px 14px 0;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cmacs-todo-card-date{color:#656c79;margin:14px 14px 0;background-color:#f6f7fb;padding:2px 5px;border-radius:3px;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}.cmacs-todo-card-action{padding:15px 14px 30px 15px;font-size:14px}.cmacs-todo-card-attachments,.cmacs-todo-card-comments,.cmacs-todo-card-person,.cmacs-todo-card-team{float:left;margin-right:10px}.cmacs-todo-card-attachments span,.cmacs-todo-card-comments span{margin-right:3px;color:#2a7cff;font-size:12px}.cmacs-todo-card-priority{float:right;margin-left:12px}.cmacs-todo-card-attachments a,.cmacs-todo-card-comments a,.cmacs-todo-card-person a,.cmacs-todo-card-team a{color:#656c79}.cmacs-todo-card-project-img{width:241px;height:100px;overflow:hidden}.cmacs-todo-card-project-img img{width:241px}.cmacs-todo-card-selected{border-color:#2a7cff!important}.cmacs-proj-card-text-Logo{font-size:50px;color:#fff;background-color:#ffa800}.cmacs-proj-card-div-Logo{background-color:#ffa800;width:221px;height:107px;text-align:center}.cmacs-proj-avatar-text{height:30px;width:30px;line-height:22px;font-size:11px;border-radius:3px;background:#512da8;color:#fff;text-align:center;cursor:pointer;padding:4px;display:inline-block;float:left}.projectimagecontainer{height:107px}.project-image{background-repeat:no-repeat;background-position:center center;background-size:contain;height:100%;width:auto}.cmacs-todo-card-attachments span,.cmacs-todo-card-comments span,.cmacs-todo-card-person a{vertical-align:middle}.cmacs-todo-card-person,.cmacs-todo-card-team{margin-left:4px}.cmacs-todo-card-attachments a,.cmacs-todo-card-comments a{vertical-align:sub;font-size:18px}.cmacs-todo-card-team a{font-size:19px;vertical-align:top}"]
                 }] }
     ];
     /** @nocollapse */
@@ -16692,6 +16696,632 @@ var CmacsGeneralChartComponent = /** @class */ (function () {
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+// import { curveLinear } from 'd3-shape';
+// import { scaleBand, scaleLinear, scalePoint, scaleTime } from 'd3-scale';
+// import {
+//   BaseChartComponent,
+//   LineSeriesComponent,
+//   ViewDimensions,
+//   ColorHelper,
+//   calculateViewDimensions
+// } from '@swimlane/ngx-charts';
+var CmacsComboChartComponent = /** @class */ (function () {
+    function CmacsComboChartComponent() {
+        // = curveLinear;
+        this.legend = false;
+        this.legendTitle = 'Legend';
+        this.legendPosition = 'right';
+        this.tooltipDisabled = false;
+        this.showGridLines = true;
+        this.activeEntries = [];
+        this.roundDomains = false;
+        this.animations = true;
+        this.noBarWhenZero = true;
+        //   @Output() activate: EventEmitter<any> = new EventEmitter();
+        //   @Output() deactivate: EventEmitter<any> = new EventEmitter();
+        //   @ContentChild('tooltipTemplate') tooltipTemplate: TemplateRef<any>;
+        //   @ContentChild('seriesTooltipTemplate') seriesTooltipTemplate: TemplateRef<any>;
+        //   @ViewChild(LineSeriesComponent) lineSeriesComponent: LineSeriesComponent;
+        //   dims: ViewDimensions;
+        //   xScale: any;
+        //   yScale: any;
+        //   xDomain: any;
+        //   yDomain: any;
+        //   transform: string;
+        //   colors: ColorHelper;
+        //   colorsLine: ColorHelper;
+        //   margin: any[] = [10, 20, 10, 20];
+        //   xAxisHeight = 0;
+        //   yAxisWidth = 0;
+        //   legendOptions: any;
+        //   scaleType = 'linear';
+        //   xScaleLine;
+        //   yScaleLine;
+        //   xDomainLine;
+        //   yDomainLine;
+        //   seriesDomain;
+        //   scaledAxis;
+        //   combinedSeries;
+        //   xSet;
+        //   filteredDomain;
+        //   hoveredVertical;
+        //   yOrientLeft = 'left';
+        //   yOrientRight = 'right';
+        //   legendSpacing = 0;
+        //   bandwidth;
+        //   barPadding = 8;
+        //   trackBy(index, item): string {
+        //     return item.name;
+        //   }
+        //   update(): void {
+        //     super.update();
+        //     this.dims = calculateViewDimensions({
+        //       width: this.width,
+        //       height: this.height,
+        //       margins: this.margin,
+        //       showXAxis: this.xAxis,
+        //       showYAxis: this.yAxis,
+        //       xAxisHeight: this.xAxisHeight,
+        //       yAxisWidth: this.yAxisWidth,
+        //       showXLabel: this.showXAxisLabel,
+        //       showYLabel: this.showYAxisLabel,
+        //       showLegend: this.legend,
+        //       legendType: this.schemeType,
+        //       legendPosition: this.legendPosition
+        //     });
+        //     if (!this.yAxis) {
+        //       this.legendSpacing = 0;
+        //     } else if (this.showYAxisLabel && this.yAxis) {
+        //       this.legendSpacing = 100;
+        //     } else {
+        //       this.legendSpacing = 40;
+        //     }
+        //     this.xScale = this.getXScale();
+        //     this.yScale = this.getYScale();
+        //     // line chart
+        //     this.xDomainLine = this.getXDomainLine();
+        //     if (this.filteredDomain) {
+        //       this.xDomainLine = this.filteredDomain;
+        //     }
+        //     this.yDomainLine = this.getYDomainLine();
+        //     this.seriesDomain = this.getSeriesDomain();
+        //     this.scaleLines();
+        //     this.setColors();
+        //     this.legendOptions = this.getLegendOptions();
+        //     this.transform = `translate(${this.dims.xOffset} , ${this.margin[0]})`;
+        //   }
+        //   deactivateAll() {
+        //     this.activeEntries = [...this.activeEntries];
+        //     for (const entry of this.activeEntries) {
+        //       this.deactivate.emit({ value: entry, entries: [] });
+        //     }
+        //     this.activeEntries = [];
+        //   }
+        //   @HostListener('mouseleave')
+        //   hideCircles(): void {
+        //     this.hoveredVertical = null;
+        //     this.deactivateAll();
+        //   }
+        //   updateHoveredVertical(item): void {
+        //     this.hoveredVertical = item.value;
+        //     this.deactivateAll();
+        //   }
+        //   updateDomain(domain): void {
+        //     this.filteredDomain = domain;
+        //     this.xDomainLine = this.filteredDomain;
+        //     this.xScaleLine = this.getXScaleLine(this.xDomainLine, this.dims.width);
+        //   }
+        //   scaleLines() {
+        //     this.xScaleLine = this.getXScaleLine(this.xDomainLine, this.dims.width);
+        //     this.yScaleLine = this.getYScaleLine(this.yDomainLine, this.dims.height);
+        //   }
+        //   getSeriesDomain(): any[] {
+        //     this.combinedSeries = this.lineChart.slice(0);
+        //     this.combinedSeries.push({
+        //       name: this.yAxisLabel,
+        //       series: this.results
+        //     });
+        //     return this.combinedSeries.map(d => d.name);
+        //   }
+        //   isDate(value): boolean {
+        //     if (value instanceof Date) {
+        //       return true;
+        //     }
+        //     return false;
+        //   }
+        //   getScaleType(values): string {
+        //     let date = true;
+        //     let num = true;
+        //     for (const value of values) {
+        //       if (!this.isDate(value)) {
+        //         date = false;
+        //       }
+        //       if (typeof value !== 'number') {
+        //         num = false;
+        //       }
+        //     }
+        //     if (date) { return 'time'; }
+        //     if (num) { return 'linear'; }
+        //     return 'ordinal';
+        //   }
+        //   getXDomainLine(): any[] {
+        //     let values = [];
+        //     for (const results of this.lineChart) {
+        //       for (const d of results.series) {
+        //         if (!values.includes(d.name)) {
+        //           values.push(d.name);
+        //         }
+        //       }
+        //     }
+        //     this.scaleType = this.getScaleType(values);
+        //     let domain = [];
+        //     if (this.scaleType === 'time') {
+        //       const min = Math.min(...values);
+        //       const max = Math.max(...values);
+        //       domain = [min, max];
+        //     } else if (this.scaleType === 'linear') {
+        //       values = values.map(v => Number(v));
+        //       const min = Math.min(...values);
+        //       const max = Math.max(...values);
+        //       domain = [min, max];
+        //     } else {
+        //       domain = values;
+        //     }
+        //     this.xSet = values;
+        //     return domain;
+        //   }
+        //   getYDomainLine(): any[] {
+        //     const domain = [];
+        //     for (const results of this.lineChart) {
+        //       for (const d of results.series) {
+        //         if (domain.indexOf(d.value) < 0) {
+        //           domain.push(d.value);
+        //         }
+        //         if (d.min !== undefined) {
+        //           if (domain.indexOf(d.min) < 0) {
+        //             domain.push(d.min);
+        //           }
+        //         }
+        //         if (d.max !== undefined) {
+        //           if (domain.indexOf(d.max) < 0) {
+        //             domain.push(d.max);
+        //           }
+        //         }
+        //       }
+        //     }
+        //     let min = Math.min(...domain);
+        //     const max = Math.max(...domain);
+        //     if (this.yRightAxisScaleFactor) {
+        //       const minMax = this.yRightAxisScaleFactor(min, max);
+        //       return [Math.min(0, minMax.min), minMax.max];
+        //     } else {
+        //       min = Math.min(0, min);
+        //       return [min, max];
+        //     }
+        //   }
+        //   getXScaleLine(domain, width): any {
+        //     let scale;
+        //     if (this.bandwidth === undefined) {
+        //       this.bandwidth = width - this.barPadding;
+        //     }
+        //     const offset = Math.floor((width + this.barPadding - (this.bandwidth + this.barPadding) * domain.length) / 2);
+        //     if (this.scaleType === 'time') {
+        //       scale = scaleTime()
+        //         .range([0, width])
+        //         .domain(domain);
+        //     } else if (this.scaleType === 'linear') {
+        //       scale = scaleLinear()
+        //         .range([0, width])
+        //         .domain(domain);
+        //       if (this.roundDomains) {
+        //         scale = scale.nice();
+        //       }
+        //     } else if (this.scaleType === 'ordinal') {
+        //       scale = scalePoint()
+        //         .range([offset + this.bandwidth / 2, width - offset - this.bandwidth / 2])
+        //         .domain(domain);
+        //     }
+        //     return scale;
+        //   }
+        //   getYScaleLine(domain, height): any {
+        //     const scale = scaleLinear()
+        //       .range([height, 0])
+        //       .domain(domain);
+        //     return this.roundDomains ? scale.nice() : scale;
+        //   }
+        //   getXScale(): any {
+        //     this.xDomain = this.getXDomain();
+        //     const spacing = this.xDomain.length / (this.dims.width / this.barPadding + 1);
+        //     return scaleBand()
+        //       .range([0, this.dims.width])
+        //       .paddingInner(spacing)
+        //       .domain(this.xDomain);
+        //   }
+        //   getYScale(): any {
+        //     this.yDomain = this.getYDomain();
+        //     const scale = scaleLinear()
+        //       .range([this.dims.height, 0])
+        //       .domain(this.yDomain);
+        //     return this.roundDomains ? scale.nice() : scale;
+        //   }
+        //   getXDomain(): any[] {
+        //     return this.results.map(d => d.name);
+        //   }
+        //   getYDomain() {
+        //     const values = this.results.map(d => d.value);
+        //     const min = Math.min(0, ...values);
+        //     const max = Math.max(...values);
+        //     if (this.yLeftAxisScaleFactor) {
+        //       const minMax = this.yLeftAxisScaleFactor(min, max);
+        //       return [Math.min(0, minMax.min), minMax.max];
+        //     } else {
+        //       return [min, max];
+        //     }
+        //   }
+        //   onClick(data) {
+        //     this.select.emit(data);
+        //   }
+        //   setColors(): void {
+        //     let domain;
+        //     if (this.schemeType === 'ordinal') {
+        //       domain = this.xDomain;
+        //     } else {
+        //       domain = this.yDomain;
+        //     }
+        //     this.colors = new ColorHelper(this.scheme, this.schemeType, domain, this.customColors);
+        //     this.colorsLine = new ColorHelper(this.colorSchemeLine, this.schemeType, domain, this.customColors);
+        //   }
+        //   getLegendOptions() {
+        //     const opts = {
+        //       scaleType: this.schemeType,
+        //       colors: undefined,
+        //       domain: [],
+        //       title: undefined,
+        //       position: this.legendPosition
+        //     };
+        //     if (opts.scaleType === 'ordinal') {
+        //       opts.domain = this.seriesDomain;
+        //       opts.colors = this.colorsLine;
+        //       opts.title = this.legendTitle;
+        //     } else {
+        //       opts.domain = this.seriesDomain;
+        //       opts.colors = this.colors.scale;
+        //     }
+        //     return opts;
+        //   }
+        //   updateLineWidth(width): void {
+        //     this.bandwidth = width;
+        //     this.scaleLines();
+        //   }
+        //   updateYAxisWidth({ width }): void {
+        //     this.yAxisWidth = width + 20;
+        //     this.update();
+        //   }
+        //   updateXAxisHeight({ height }): void {
+        //     this.xAxisHeight = height;
+        //     this.update();
+        //   }
+        //   onActivate(item) {
+        //     const idx = this.activeEntries.findIndex(d => {
+        //       return d.name === item.name && d.value === item.value && d.series === item.series;
+        //     });
+        //     if (idx > -1) {
+        //       return;
+        //     }
+        //     this.activeEntries = [item, ...this.activeEntries];
+        //     this.activate.emit({ value: item, entries: this.activeEntries });
+        //   }
+        //   onDeactivate(item) {
+        //     const idx = this.activeEntries.findIndex(d => {
+        //       return d.name === item.name && d.value === item.value && d.series === item.series;
+        //     });
+        //     this.activeEntries.splice(idx, 1);
+        //     this.activeEntries = [...this.activeEntries];
+        //     this.deactivate.emit({ value: item, entries: this.activeEntries });
+        //   }
+    }
+    CmacsComboChartComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'cmacs-combo-chart',
+                    template: "<!-- <cmacs-dashboard-widget-container>\r\n  <ngx-charts-chart\r\n    [view]=\"[width + legendSpacing, height]\"\r\n    [showLegend]=\"legend\"\r\n    [legendOptions]=\"legendOptions\"\r\n    [activeEntries]=\"activeEntries\"\r\n    [animations]=\"animations\"\r\n    (legendLabelClick)=\"onClick($event)\"\r\n    (legendLabelActivate)=\"onActivate($event)\"\r\n    (legendLabelDeactivate)=\"onDeactivate($event)\"\r\n  >\r\n    <svg:g [attr.transform]=\"transform\" class=\"bar-chart chart\">\r\n      <svg:g\r\n        ngx-charts-x-axis\r\n        *ngIf=\"xAxis\"\r\n        [xScale]=\"xScale\"\r\n        [dims]=\"dims\"\r\n        [showLabel]=\"showXAxisLabel\"\r\n        [labelText]=\"xAxisLabel\"\r\n        [tickFormatting]=\"xAxisTickFormatting\"\r\n        (dimensionsChanged)=\"updateXAxisHeight($event)\"\r\n      ></svg:g>\r\n      <svg:g\r\n        ngx-charts-y-axis\r\n        *ngIf=\"yAxis\"\r\n        [yScale]=\"yScale\"\r\n        [dims]=\"dims\"\r\n        [yOrient]=\"yOrientLeft\"\r\n        [showGridLines]=\"showGridLines\"\r\n        [showLabel]=\"showYAxisLabel\"\r\n        [labelText]=\"yAxisLabel\"\r\n        [tickFormatting]=\"yAxisTickFormatting\"\r\n        (dimensionsChanged)=\"updateYAxisWidth($event)\"\r\n      ></svg:g>\r\n      <svg:g\r\n        ngx-charts-y-axis\r\n        *ngIf=\"yAxis\"\r\n        [yScale]=\"yScaleLine\"\r\n        [dims]=\"dims\"\r\n        [yOrient]=\"yOrientRight\"\r\n        [showGridLines]=\"showGridLines\"\r\n        [showLabel]=\"showRightYAxisLabel\"\r\n        [labelText]=\"yAxisLabelRight\"\r\n        [tickFormatting]=\"yRightAxisTickFormatting\"\r\n        (dimensionsChanged)=\"updateYAxisWidth($event)\"\r\n      ></svg:g>\r\n      <svg:g\r\n        ngx-combo-charts-series-vertical\r\n        [xScale]=\"xScale\"\r\n        [yScale]=\"yScale\"\r\n        [colors]=\"colors\"\r\n        [series]=\"results\"\r\n        [seriesLine]=\"lineChart\"\r\n        [dims]=\"dims\"\r\n        [gradient]=\"gradient\"\r\n        tooltipDisabled=\"true\"\r\n        [activeEntries]=\"activeEntries\"\r\n        [animations]=\"animations\"\r\n        [noBarWhenZero]=\"noBarWhenZero\"\r\n        (activate)=\"onActivate($event)\"\r\n        (deactivate)=\"onDeactivate($event)\"\r\n        (bandwidth)=\"updateLineWidth($event)\"\r\n        (select)=\"onClick($event)\"\r\n      ></svg:g>\r\n    </svg:g>\r\n    <svg:g [attr.transform]=\"transform\" class=\"line-chart chart\">\r\n      <svg:g>\r\n        <svg:g *ngFor=\"let series of lineChart; trackBy: trackBy\">\r\n          <svg:g\r\n            ngx-charts-line-series\r\n            [xScale]=\"xScaleLine\"\r\n            [yScale]=\"yScaleLine\"\r\n            [colors]=\"colorsLine\"\r\n            [data]=\"series\"\r\n            [activeEntries]=\"activeEntries\"\r\n            [scaleType]=\"scaleType\"\r\n            [curve]=\"curve\"\r\n            [rangeFillOpacity]=\"rangeFillOpacity\"\r\n            [animations]=\"animations\"\r\n          />\r\n        </svg:g>\r\n\r\n        <svg:g\r\n          ngx-charts-tooltip-area\r\n          *ngIf=\"!tooltipDisabled\"\r\n          [dims]=\"dims\"\r\n          [xSet]=\"xSet\"\r\n          [xScale]=\"xScaleLine\"\r\n          [yScale]=\"yScaleLine\"\r\n          [results]=\"combinedSeries\"\r\n          [colors]=\"colorsLine\"\r\n          [tooltipDisabled]=\"tooltipDisabled\"\r\n          (hover)=\"updateHoveredVertical($event)\"\r\n        />\r\n\r\n        <svg:g *ngFor=\"let series of lineChart\">\r\n          <svg:g\r\n            ngx-charts-circle-series\r\n            [xScale]=\"xScaleLine\"\r\n            [yScale]=\"yScaleLine\"\r\n            [colors]=\"colorsLine\"\r\n            [data]=\"series\"\r\n            [scaleType]=\"scaleType\"\r\n            [visibleValue]=\"hoveredVertical\"\r\n            [activeEntries]=\"activeEntries\"\r\n            [tooltipDisabled]=\"tooltipDisabled\"\r\n            (select)=\"onClick($event)\"\r\n            (activate)=\"onActivate($event)\"\r\n            (deactivate)=\"onDeactivate($event)\"\r\n          />\r\n        </svg:g>\r\n      </svg:g>\r\n    </svg:g>\r\n  </ngx-charts-chart>\r\n</cmacs-dashboard-widget-container> -->",
+                    encapsulation: ViewEncapsulation.None,
+                    styles: [".ngx-charts{float:left;overflow:visible}.ngx-charts .arc,.ngx-charts .bar,.ngx-charts .circle{cursor:pointer}.ngx-charts .arc.active,.ngx-charts .arc:hover,.ngx-charts .bar.active,.ngx-charts .bar:hover,.ngx-charts .card.active,.ngx-charts .card:hover,.ngx-charts .cell.active,.ngx-charts .cell:hover{opacity:.8;-webkit-transition:opacity .1s ease-in-out;transition:opacity .1s ease-in-out}.ngx-charts .arc:focus,.ngx-charts .bar:focus,.ngx-charts .card:focus,.ngx-charts .cell:focus{outline:0}.ngx-charts .arc.hidden,.ngx-charts .bar.hidden,.ngx-charts .card.hidden,.ngx-charts .cell.hidden{display:none}.ngx-charts g:focus{outline:0}.ngx-charts .area-series.inactive,.ngx-charts .line-series-range.inactive,.ngx-charts .line-series.inactive{-webkit-transition:opacity .1s ease-in-out;transition:opacity .1s ease-in-out;opacity:.2}.ngx-charts .line-highlight{display:none}.ngx-charts .line-highlight.active{display:block}.ngx-charts .area{opacity:.6}.ngx-charts .circle:hover{cursor:pointer}.ngx-charts .label{font-size:12px;font-weight:400}.ngx-charts .tooltip-anchor{fill:#000}.ngx-charts .gridline-path{stroke:#ddd;stroke-width:1;fill:none}.ngx-charts .grid-panel rect{fill:none}.ngx-charts .grid-panel.odd rect{fill:rgba(0,0,0,.05)}"]
+                }] }
+    ];
+    CmacsComboChartComponent.propDecorators = {
+        curve: [{ type: Input }],
+        legend: [{ type: Input }],
+        legendTitle: [{ type: Input }],
+        legendPosition: [{ type: Input }],
+        xAxis: [{ type: Input }],
+        yAxis: [{ type: Input }],
+        showXAxisLabel: [{ type: Input }],
+        showYAxisLabel: [{ type: Input }],
+        showRightYAxisLabel: [{ type: Input }],
+        xAxisLabel: [{ type: Input }],
+        yAxisLabel: [{ type: Input }],
+        yAxisLabelRight: [{ type: Input }],
+        tooltipDisabled: [{ type: Input }],
+        gradient: [{ type: Input }],
+        showGridLines: [{ type: Input }],
+        activeEntries: [{ type: Input }],
+        schemeType: [{ type: Input }],
+        xAxisTickFormatting: [{ type: Input }],
+        yAxisTickFormatting: [{ type: Input }],
+        yRightAxisTickFormatting: [{ type: Input }],
+        roundDomains: [{ type: Input }],
+        colorSchemeLine: [{ type: Input }],
+        autoScale: [{ type: Input }],
+        lineChart: [{ type: Input }],
+        yLeftAxisScaleFactor: [{ type: Input }],
+        yRightAxisScaleFactor: [{ type: Input }],
+        rangeFillOpacity: [{ type: Input }],
+        animations: [{ type: Input }],
+        noBarWhenZero: [{ type: Input }]
+    };
+    return CmacsComboChartComponent;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var CmacsComboSeriesVerticalComponent = /** @class */ (function () {
+    function CmacsComboSeriesVerticalComponent() {
+        this.type = 'standard';
+        this.tooltipDisabled = false;
+        this.animations = true;
+        this.noBarWhenZero = true;
+        this.select = new EventEmitter();
+        this.activate = new EventEmitter();
+        this.deactivate = new EventEmitter();
+        this.bandwidth = new EventEmitter();
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    CmacsComboSeriesVerticalComponent.prototype.ngOnChanges = /**
+     * @param {?} changes
+     * @return {?}
+     */
+    function (changes) {
+        this.update();
+    };
+    /**
+     * @return {?}
+     */
+    CmacsComboSeriesVerticalComponent.prototype.update = /**
+     * @return {?}
+     */
+    function () {
+        var _this = this;
+        /** @type {?} */
+        var width;
+        if (this.series.length) {
+            width = this.xScale.bandwidth();
+            this.bandwidth.emit(width);
+        }
+        /** @type {?} */
+        var d0 = 0;
+        /** @type {?} */
+        var total;
+        if (this.type === 'normalized') {
+            total = this.series.map((/**
+             * @param {?} d
+             * @return {?}
+             */
+            function (d) { return d.value; })).reduce((/**
+             * @param {?} sum
+             * @param {?} d
+             * @return {?}
+             */
+            function (sum, d) { return sum + d; }), 0);
+        }
+        this.bars = this.series.map((/**
+         * @param {?} d
+         * @param {?} index
+         * @return {?}
+         */
+        function (d, index) {
+            /** @type {?} */
+            var value = d.value;
+            /** @type {?} */
+            var label = d.name;
+            /** @type {?} */
+            var formattedLabel = formatLabel(label);
+            /** @type {?} */
+            var roundEdges = _this.type === 'standard';
+            /** @type {?} */
+            var bar = {
+                value: value,
+                label: label,
+                roundEdges: roundEdges,
+                data: d,
+                width: width,
+                formattedLabel: formattedLabel,
+                height: 0,
+                x: 0,
+                y: 0
+            };
+            if (_this.type === 'standard') {
+                bar.height = Math.abs(_this.yScale(value) - _this.yScale(0));
+                bar.x = _this.xScale(label);
+                if (value < 0) {
+                    bar.y = _this.yScale(0);
+                }
+                else {
+                    bar.y = _this.yScale(value);
+                }
+            }
+            else if (_this.type === 'stacked') {
+                /** @type {?} */
+                var offset0 = d0;
+                /** @type {?} */
+                var offset1 = offset0 + value;
+                d0 += value;
+                bar.height = _this.yScale(offset0) - _this.yScale(offset1);
+                bar.x = 0;
+                bar.y = _this.yScale(offset1);
+                bar.offset0 = offset0;
+                bar.offset1 = offset1;
+            }
+            else if (_this.type === 'normalized') {
+                /** @type {?} */
+                var offset0 = d0;
+                /** @type {?} */
+                var offset1 = offset0 + value;
+                d0 += value;
+                if (total > 0) {
+                    offset0 = (offset0 * 100) / total;
+                    offset1 = (offset1 * 100) / total;
+                }
+                else {
+                    offset0 = 0;
+                    offset1 = 0;
+                }
+                bar.height = _this.yScale(offset0) - _this.yScale(offset1);
+                bar.x = 0;
+                bar.y = _this.yScale(offset1);
+                bar.offset0 = offset0;
+                bar.offset1 = offset1;
+                value = (offset1 - offset0).toFixed(2) + '%';
+            }
+            if (_this.colors.scaleType === 'ordinal') {
+                bar.color = _this.colors.getColor(label);
+            }
+            else {
+                if (_this.type === 'standard') {
+                    bar.color = _this.colors.getColor(value);
+                    bar.gradientStops = _this.colors.getLinearGradientStops(value);
+                }
+                else {
+                    bar.color = _this.colors.getColor(bar.offset1);
+                    bar.gradientStops = _this.colors.getLinearGradientStops(bar.offset1, bar.offset0);
+                }
+            }
+            /** @type {?} */
+            var tooltipLabel = formattedLabel;
+            if (_this.seriesName) {
+                tooltipLabel = _this.seriesName + " \u2022 " + formattedLabel;
+            }
+            _this.getSeriesTooltips(_this.seriesLine, index);
+            /** @type {?} */
+            var lineValue = _this.seriesLine[0].series[index].value;
+            bar.tooltipText = "\n        <span class=\"tooltip-label\">" + tooltipLabel + "</span>\n        <span class=\"tooltip-val\"> Y1 - " + value.toLocaleString() + " \u2022 Y2 - " + lineValue.toLocaleString() + "%</span>\n      ";
+            return bar;
+        }));
+    };
+    /**
+     * @param {?} seriesLine
+     * @param {?} index
+     * @return {?}
+     */
+    CmacsComboSeriesVerticalComponent.prototype.getSeriesTooltips = /**
+     * @param {?} seriesLine
+     * @param {?} index
+     * @return {?}
+     */
+    function (seriesLine, index) {
+        return seriesLine.map((/**
+         * @param {?} d
+         * @return {?}
+         */
+        function (d) {
+            return d.series[index];
+        }));
+    };
+    /**
+     * @param {?} entry
+     * @return {?}
+     */
+    CmacsComboSeriesVerticalComponent.prototype.isActive = /**
+     * @param {?} entry
+     * @return {?}
+     */
+    function (entry) {
+        if (!this.activeEntries) {
+            return false;
+        }
+        /** @type {?} */
+        var item = this.activeEntries.find((/**
+         * @param {?} d
+         * @return {?}
+         */
+        function (d) {
+            return entry.name === d.name && entry.series === d.series;
+        }));
+        return item !== undefined;
+    };
+    /**
+     * @param {?} data
+     * @return {?}
+     */
+    CmacsComboSeriesVerticalComponent.prototype.onClick = /**
+     * @param {?} data
+     * @return {?}
+     */
+    function (data) {
+        this.select.emit(data);
+    };
+    /**
+     * @param {?} index
+     * @param {?} bar
+     * @return {?}
+     */
+    CmacsComboSeriesVerticalComponent.prototype.trackBy = /**
+     * @param {?} index
+     * @param {?} bar
+     * @return {?}
+     */
+    function (index, bar) {
+        return bar.label;
+    };
+    CmacsComboSeriesVerticalComponent.decorators = [
+        { type: Component, args: [{
+                    // tslint:disable-next-line: component-selector
+                    selector: 'g[ngx-combo-charts-series-vertical]',
+                    template: "\n    <svg:g\n      ngx-charts-bar\n      *ngFor=\"let bar of bars; trackBy: trackBy\"\n      [@animationState]=\"'active'\"\n      [width]=\"bar.width\"\n      [height]=\"bar.height\"\n      [x]=\"bar.x\"\n      [y]=\"bar.y\"\n      [fill]=\"bar.color\"\n      [stops]=\"bar.gradientStops\"\n      [data]=\"bar.data\"\n      [orientation]=\"'vertical'\"\n      [roundEdges]=\"bar.roundEdges\"\n      [gradient]=\"gradient\"\n      [isActive]=\"isActive(bar.data)\"\n      [animations]=\"animations\"\n      [noBarWhenZero]=\"noBarWhenZero\"\n      (select)=\"onClick($event)\"\n      (activate)=\"activate.emit($event)\"\n      (deactivate)=\"deactivate.emit($event)\"\n      ngx-tooltip\n      [tooltipDisabled]=\"tooltipDisabled\"\n      [tooltipPlacement]=\"'top'\"\n      [tooltipType]=\"'tooltip'\"\n      [tooltipTitle]=\"bar.tooltipText\"\n    ></svg:g>\n  ",
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                    animations: [
+                        trigger('animationState', [
+                            transition('* => void', [
+                                style({
+                                    opacity: 1,
+                                    transform: '*'
+                                }),
+                                animate(500, style({ opacity: 0, transform: 'scale(0)' }))
+                            ])
+                        ])
+                    ]
+                }] }
+    ];
+    CmacsComboSeriesVerticalComponent.propDecorators = {
+        dims: [{ type: Input }],
+        type: [{ type: Input }],
+        series: [{ type: Input }],
+        seriesLine: [{ type: Input }],
+        xScale: [{ type: Input }],
+        yScale: [{ type: Input }],
+        colors: [{ type: Input }],
+        tooltipDisabled: [{ type: Input }],
+        gradient: [{ type: Input }],
+        activeEntries: [{ type: Input }],
+        seriesName: [{ type: Input }],
+        animations: [{ type: Input }],
+        noBarWhenZero: [{ type: Input }],
+        select: [{ type: Output }],
+        activate: [{ type: Output }],
+        deactivate: [{ type: Output }],
+        bandwidth: [{ type: Output }]
+    };
+    return CmacsComboSeriesVerticalComponent;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
 /** @type {?} */
 var KPI_COLORS = [
     '#2a7cff',
@@ -16838,8 +17468,8 @@ var CmacsKpiComponent = /** @class */ (function () {
      * @param {?} style
      * @return {?}
      */
-    function (style) {
-        return this.sanitizer.bypassSecurityTrustStyle(style);
+    function (style$$1) {
+        return this.sanitizer.bypassSecurityTrustStyle(style$$1);
     };
     /**
      * @return {?}
@@ -17063,8 +17693,8 @@ var CmacsKPIOverviewComponent = /** @class */ (function () {
      * @param {?} style
      * @return {?}
      */
-    function (style) {
-        return this.sanitizer.bypassSecurityTrustStyle(style);
+    function (style$$1) {
+        return this.sanitizer.bypassSecurityTrustStyle(style$$1);
     };
     /**
      * @return {?}
@@ -17880,9 +18510,9 @@ var CmacsDropdownComponent = /** @class */ (function () {
      * @param {?=} trigger
      * @return {?}
      */
-    function (visible, trigger) {
-        if (trigger === void 0) { trigger = 'all'; }
-        if (this.trigger === trigger || trigger === 'all') {
+    function (visible, trigger$$1) {
+        if (trigger$$1 === void 0) { trigger$$1 = 'all'; }
+        if (this.trigger === trigger$$1 || trigger$$1 === 'all') {
             this.visible$.next(visible);
         }
     };
@@ -18001,7 +18631,7 @@ var CmacsDropdownComponent = /** @class */ (function () {
                     encapsulation: ViewEncapsulation.None,
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     template: "<ng-content select=\"[cmacs-dropdown]\"></ng-content>\r\n<ng-template\r\n  cdkConnectedOverlay\r\n  nzConnectedOverlay\r\n  [cdkConnectedOverlayHasBackdrop]=\"trigger === 'click'\"\r\n  [cdkConnectedOverlayPositions]=\"positions\"\r\n  [cdkConnectedOverlayOrigin]=\"cmacsDropdownDirective\"\r\n  [cdkConnectedOverlayMinWidth]=\"triggerWidth\"\r\n  [cdkConnectedOverlayOpen]=\"visible\"\r\n  (backdropClick)=\"setVisibleStateWhen(false)\"\r\n  (detach)=\"setVisibleStateWhen(false)\"\r\n  (positionChange)=\"onPositionChange($event)\">\r\n  <div #dropdown class=\"{{'cmacs-dropdown ant-dropdown ant-dropdown-placement-'+placement}}\"\r\n    [class.cmacs-dropdown-updated-position-bottom-top]=\"updatedPosition === 'top'\"\r\n    [class.cmacs-dropdown-updated-position-top-bottom]=\"updatedPosition === 'bottom'\"\r\n    [class.cmacs-dropdown-updated-overlay-end-start]=\"updatedOverLay === 'start'\"\r\n    [class.cmacs-dropdown-updated-origin-end-start]=\"updatedOrigin === 'start'\"\r\n    [class.cmacs-dropdown-open]=\"cmacsOpen\"\r\n    [ngClass]=\"overlayClassName\"\r\n    [ngStyle]=\"overlayStyle\"\r\n    [@slideMotion]=\"dropDownPosition\"\r\n    [nzNoAnimation]=\"noAnimation?.nzNoAnimation\"\r\n    [style.minWidth.px]=\"triggerWidth\"\r\n    (mouseenter)=\"setVisibleStateWhen(true,'hover')\"\r\n    (mouseleave)=\"setVisibleStateWhen(false,'hover')\">\r\n    <div [class.ant-table-filter-dropdown]=\"tableFilter\">\r\n      <ng-content select=\"[cmacs-menu]\"></ng-content>\r\n      <ng-content></ng-content>\r\n    </div>\r\n  </div>\r\n</ng-template>\r\n",
-                    styles: [":root{--bg-color:#ffffff}cmacs-select.ant-select{width:100%}.cmacs-dropdown .ant-dropdown-menu-item{padding:8px 10px 8px 5px;border-top:1px solid #dee0e5}.cmacs-dropdown .ant-dropdown-menu-item:first-child{border-top:none}.cmacs-dropdown ul{padding:0;border:1px solid #dee0e5}.cmacs-dropdown.ant-dropdown-placement-bottomCenter ul{top:8px}.cmacs-dropdown.ant-dropdown-placement-topCenter ul{top:-8px}.cmacs-dropdown.ant-dropdown-placement-leftTop ul{left:-7px;top:-5px}.cmacs-dropdown.ant-dropdown-placement-rightTop ul{right:-6px;top:-5px}.cmacs-dropdown.ant-dropdown-placement-bottomCenter .ant-dropdown-menu-item:first-child::before{content:'';opacity:1;margin:0 auto;display:table;width:10px;position:absolute;border:1px solid #dee0e5;border-top:transparent;border-left:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);top:-6px;-webkit-transition:.3s;transition:.3s;left:calc(50% - 10px)}.cmacs-dropdown-updated-position-bottom-top.cmacs-dropdown.ant-dropdown-placement-bottomCenter .ant-dropdown-menu-item:last-child:hover::after,.cmacs-dropdown-updated-position-top-bottom.cmacs-dropdown.ant-dropdown-placement-topCenter .ant-dropdown-menu-item:first-child:hover::before,.cmacs-dropdown.ant-dropdown-placement-bottomCenter .ant-dropdown-menu-item:first-child:hover::before,.cmacs-dropdown.ant-dropdown-placement-leftTop .ant-dropdown-menu-item:first-child:hover::before,.cmacs-dropdown.ant-dropdown-placement-rightTop .ant-dropdown-menu-item:first-child:hover::before,.cmacs-dropdown.ant-dropdown-placement-topCenter .ant-dropdown-menu-item:last-child:hover::after{background-color:#f6f7fb;-webkit-transition:.3s;transition:.3s}.cmacs-dropdown-updated-position-bottom-top.cmacs-dropdown.ant-dropdown-placement-bottomCenter .ant-dropdown-menu-item:first-child::before,.cmacs-dropdown-updated-position-top-bottom.cmacs-dropdown.ant-dropdown-placement-topCenter .ant-dropdown-menu-item:last-child::after{display:none}.cmacs-dropdown-updated-position-bottom-top.cmacs-dropdown.ant-dropdown-placement-bottomCenter .ant-dropdown-menu-item:last-child::after{width:10px;border:1px solid #dee0e5;border-bottom:#dee0e5;border-right:#dee0e5;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);content:'';opacity:1;left:calc(50% - 5px);position:fixed;margin-top:4px;-webkit-transition:.3s;transition:.3s}.cmacs-dropdown-updated-position-top-bottom.cmacs-dropdown.ant-dropdown-placement-topCenter .ant-dropdown-menu-item:first-child::before{content:'';opacity:1;margin:0 auto;display:table;width:10px;position:absolute;border:1px solid #dee0e5;border-top:transparent;border-left:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);top:-6px;-webkit-transition:.3s;transition:.3s;left:calc(50% - 10px)}.cmacs-dropdown.ant-dropdown-placement-topCenter .ant-dropdown-menu-item:last-child::after{width:10px;border:1px solid #dee0e5;border-bottom:#dee0e5;border-right:#dee0e5;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);content:'';opacity:1;left:calc(50% - 5px);position:fixed;margin-top:4px;-webkit-transition:.3s;transition:.3s}.cmacs-dropdown.ant-dropdown-placement-leftTop .ant-dropdown-menu-item:first-child::before{content:'';opacity:1;margin:0 auto;display:table;width:10px;position:absolute;border:1px solid #dee0e5;border-top:transparent;border-right:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);top:10px;left:calc(100% - 4px);-webkit-transition:.3s;transition:.3s}.cmacs-dropdown.ant-dropdown-placement-rightTop .ant-dropdown-menu-item:first-child::before{content:'';opacity:1;margin:0 auto;display:table;width:10px;position:absolute;border:1px solid #dee0e5;border-left:transparent;border-bottom:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);top:10px;right:calc(100% - 5px);-webkit-transition:.3s;transition:.3s}.cmacs-dropdown-updated-overlay-end-start.cmacs-dropdown.ant-dropdown-placement-leftTop ul{left:calc(-100% - 8px);top:38px}.cmacs-dropdown-updated-origin-end-start.cmacs-dropdown.ant-dropdown-placement-rightTop ul{left:calc(80% - 5px);top:38px}.cmacs-dropdown-updated-origin-end-start.cmacs-dropdown.ant-dropdown-placement-rightTop .ant-dropdown-menu-item:first-child::before,.cmacs-dropdown-updated-overlay-end-start.cmacs-dropdown.ant-dropdown-placement-leftTop .ant-dropdown-menu-item:first-child::before{display:none}.cmacs-dropdown-updated-overlay-end-start.cmacs-dropdown.ant-dropdown-placement-leftTop .ant-dropdown-menu-item:last-child::after{content:'';opacity:1;display:table;width:10px;position:fixed;border:1px solid #dee0e5;border-top:transparent;border-right:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);left:calc(100% - 4px);-webkit-transition:.3s;transition:.3s;margin-top:-12px}.cmacs-dropdown-updated-origin-end-start.cmacs-dropdown.ant-dropdown-placement-rightTop .ant-dropdown-menu-item:last-child::after{content:'';opacity:1;display:table;width:10px;position:fixed;border:1px solid #dee0e5;border-left:transparent;border-bottom:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);right:calc(100% - 5px);-webkit-transition:.3s;transition:.3s;margin-top:-12px}.cmacs-dropdown-updated-origin-end-start.cmacs-dropdown.ant-dropdown-placement-rightTop .ant-dropdown-menu-item:last-child:hover::after,.cmacs-dropdown-updated-overlay-end-start.cmacs-dropdown.ant-dropdown-placement-leftTop .ant-dropdown-menu-item:last-child:hover::after{background-color:#f6f7fb;-webkit-transition:.3s;transition:.3s}.ant-dropdown-menu-item:hover{background-color:#f6f7fb}.cmacs-dropdown-open li{border-top:none!important}.cmacs-open-dropdown-wrapper{font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.33;letter-spacing:normal;color:#656c79;border-bottom:2px dotted #656c79}.cmacs-open-dropdown-wrapper i{float:right}.cmacs-open-dropdown-label{color:#acb3bf;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.33;letter-spacing:normal;display:-webkit-inline-box;display:inline-flex;margin-right:5px}nz-dropdown-context .ant-dropdown-menu{border-radius:3px;padding:9px 0;box-shadow:0 3px 7px rgba(59,63,70,.2);border:1px solid #dee0e5}.ant-menu-submenu.ant-menu-submenu-popup .ant-dropdown-menu .ant-dropdown-menu-item,nz-dropdown-context .ant-dropdown-menu-submenu-title{padding:7px 30px 7px 10px}.ant-menu-submenu.ant-menu-submenu-popup{border-radius:3px}.ant-menu-submenu.ant-menu-submenu-popup .ant-dropdown-menu{padding:9px 0;border:1px solid #dee0e5;box-shadow:0 3px 7px rgba(59,63,70,.2);-webkit-clip-path:inset(-10% -10% -10% 0);clip-path:inset(-10% -10% -10% 0)}.ant-menu-submenu.ant-menu-submenu-placement-rightTop{left:0;top:-10px}.ant-select-disabled .ant-select-selection{background:#f6f7fb;cursor:default}.ant-select-disabled .ant-select-selection .ant-select-arrow{color:#bec4cd}.ant-select-arrow{color:#656c79}.ant-select-dropdown-menu-item-selected{background-color:transparent}.ant-select-dropdown-menu-item-selected:hover{font-weight:400}", "\n      .ant-dropdown {\n        top: 100%;\n        left: 0;\n        position: relative;\n        width: 100%;\n        margin-top: 4px;\n        margin-bottom: 4px;\n      }\n    "]
+                    styles: [":root{--bg-color:#ffffff}cmacs-select.ant-select{width:100%;color:#656c79}.cmacs-dropdown .ant-dropdown-menu-item{padding:8px 10px 8px 5px;border-top:1px solid #dee0e5}.cmacs-dropdown .ant-dropdown-menu-item:first-child{border-top:none}.cmacs-dropdown ul{padding:0;border:1px solid #dee0e5}.cmacs-dropdown.ant-dropdown-placement-bottomCenter ul{top:8px}.cmacs-dropdown.ant-dropdown-placement-topCenter ul{top:-8px}.cmacs-dropdown.ant-dropdown-placement-leftTop ul{left:-7px;top:-5px}.cmacs-dropdown.ant-dropdown-placement-rightTop ul{right:-6px;top:-5px}.cmacs-dropdown.ant-dropdown-placement-bottomCenter .ant-dropdown-menu-item:first-child::before{content:'';opacity:1;margin:0 auto;display:table;width:10px;position:absolute;border:1px solid #dee0e5;border-top:transparent;border-left:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);top:-6px;-webkit-transition:.3s;transition:.3s;left:calc(50% - 10px)}.cmacs-dropdown-updated-position-bottom-top.cmacs-dropdown.ant-dropdown-placement-bottomCenter .ant-dropdown-menu-item:last-child:hover::after,.cmacs-dropdown-updated-position-top-bottom.cmacs-dropdown.ant-dropdown-placement-topCenter .ant-dropdown-menu-item:first-child:hover::before,.cmacs-dropdown.ant-dropdown-placement-bottomCenter .ant-dropdown-menu-item:first-child:hover::before,.cmacs-dropdown.ant-dropdown-placement-leftTop .ant-dropdown-menu-item:first-child:hover::before,.cmacs-dropdown.ant-dropdown-placement-rightTop .ant-dropdown-menu-item:first-child:hover::before,.cmacs-dropdown.ant-dropdown-placement-topCenter .ant-dropdown-menu-item:last-child:hover::after{background-color:#f6f7fb;-webkit-transition:.3s;transition:.3s}.cmacs-dropdown-updated-position-bottom-top.cmacs-dropdown.ant-dropdown-placement-bottomCenter .ant-dropdown-menu-item:first-child::before,.cmacs-dropdown-updated-position-top-bottom.cmacs-dropdown.ant-dropdown-placement-topCenter .ant-dropdown-menu-item:last-child::after{display:none}.cmacs-dropdown-updated-position-bottom-top.cmacs-dropdown.ant-dropdown-placement-bottomCenter .ant-dropdown-menu-item:last-child::after{width:10px;border:1px solid #dee0e5;border-bottom:#dee0e5;border-right:#dee0e5;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);content:'';opacity:1;left:calc(50% - 5px);position:fixed;margin-top:4px;-webkit-transition:.3s;transition:.3s}.cmacs-dropdown-updated-position-top-bottom.cmacs-dropdown.ant-dropdown-placement-topCenter .ant-dropdown-menu-item:first-child::before{content:'';opacity:1;margin:0 auto;display:table;width:10px;position:absolute;border:1px solid #dee0e5;border-top:transparent;border-left:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);top:-6px;-webkit-transition:.3s;transition:.3s;left:calc(50% - 10px)}.cmacs-dropdown.ant-dropdown-placement-topCenter .ant-dropdown-menu-item:last-child::after{width:10px;border:1px solid #dee0e5;border-bottom:#dee0e5;border-right:#dee0e5;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);content:'';opacity:1;left:calc(50% - 5px);position:fixed;margin-top:4px;-webkit-transition:.3s;transition:.3s}.cmacs-dropdown.ant-dropdown-placement-leftTop .ant-dropdown-menu-item:first-child::before{content:'';opacity:1;margin:0 auto;display:table;width:10px;position:absolute;border:1px solid #dee0e5;border-top:transparent;border-right:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);top:10px;left:calc(100% - 4px);-webkit-transition:.3s;transition:.3s}.cmacs-dropdown.ant-dropdown-placement-rightTop .ant-dropdown-menu-item:first-child::before{content:'';opacity:1;margin:0 auto;display:table;width:10px;position:absolute;border:1px solid #dee0e5;border-left:transparent;border-bottom:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);top:10px;right:calc(100% - 5px);-webkit-transition:.3s;transition:.3s}.cmacs-dropdown-updated-overlay-end-start.cmacs-dropdown.ant-dropdown-placement-leftTop ul{left:calc(-100% - 8px);top:38px}.cmacs-dropdown-updated-origin-end-start.cmacs-dropdown.ant-dropdown-placement-rightTop ul{left:calc(80% - 5px);top:38px}.cmacs-dropdown-updated-origin-end-start.cmacs-dropdown.ant-dropdown-placement-rightTop .ant-dropdown-menu-item:first-child::before,.cmacs-dropdown-updated-overlay-end-start.cmacs-dropdown.ant-dropdown-placement-leftTop .ant-dropdown-menu-item:first-child::before{display:none}.cmacs-dropdown-updated-overlay-end-start.cmacs-dropdown.ant-dropdown-placement-leftTop .ant-dropdown-menu-item:last-child::after{content:'';opacity:1;display:table;width:10px;position:fixed;border:1px solid #dee0e5;border-top:transparent;border-right:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);left:calc(100% - 4px);-webkit-transition:.3s;transition:.3s;margin-top:-12px}.cmacs-dropdown-updated-origin-end-start.cmacs-dropdown.ant-dropdown-placement-rightTop .ant-dropdown-menu-item:last-child::after{content:'';opacity:1;display:table;width:10px;position:fixed;border:1px solid #dee0e5;border-left:transparent;border-bottom:transparent;height:10px;background-color:#fff;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);right:calc(100% - 5px);-webkit-transition:.3s;transition:.3s;margin-top:-12px}.cmacs-dropdown-updated-origin-end-start.cmacs-dropdown.ant-dropdown-placement-rightTop .ant-dropdown-menu-item:last-child:hover::after,.cmacs-dropdown-updated-overlay-end-start.cmacs-dropdown.ant-dropdown-placement-leftTop .ant-dropdown-menu-item:last-child:hover::after{background-color:#f6f7fb;-webkit-transition:.3s;transition:.3s}.ant-dropdown-menu-item:hover{background-color:#f6f7fb}.cmacs-dropdown-open li{border-top:none!important}.cmacs-open-dropdown-wrapper{font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.33;letter-spacing:normal;color:#656c79;border-bottom:2px dotted #656c79}.cmacs-open-dropdown-wrapper i{float:right}.cmacs-open-dropdown-label{color:#acb3bf;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.33;letter-spacing:normal;display:-webkit-inline-box;display:inline-flex;margin-right:5px}nz-dropdown-context .ant-dropdown-menu{border-radius:3px;padding:9px 0;box-shadow:0 3px 7px rgba(59,63,70,.2);border:1px solid #dee0e5}.ant-menu-submenu.ant-menu-submenu-popup .ant-dropdown-menu .ant-dropdown-menu-item,nz-dropdown-context .ant-dropdown-menu-submenu-title{padding:7px 30px 7px 10px}.ant-menu-submenu.ant-menu-submenu-popup{border-radius:3px}.ant-menu-submenu.ant-menu-submenu-popup .ant-dropdown-menu{padding:9px 0;border:1px solid #dee0e5;box-shadow:0 3px 7px rgba(59,63,70,.2);-webkit-clip-path:inset(-10% -10% -10% 0);clip-path:inset(-10% -10% -10% 0)}.ant-menu-submenu.ant-menu-submenu-placement-rightTop{left:0;top:-10px}.ant-select-disabled .ant-select-selection{background:#f6f7fb;cursor:default}.ant-select-disabled .ant-select-selection .ant-select-arrow{color:#bec4cd}.ant-select-arrow{color:#656c79}.ant-select-dropdown-menu-item-selected{background-color:transparent}.ant-select-dropdown-menu-item-selected:hover{font-weight:400}.ant-select-dropdown-menu-item-disabled,.ant-select-dropdown-menu-item-disabled:hover{cursor:default;background-color:#f6f7fb}.ant-select-search__field__placeholder,.ant-select-selection__placeholder,.ant-select.ant-select-disabled{color:#acb3bf}", "\n      .ant-dropdown {\n        top: 100%;\n        left: 0;\n        position: relative;\n        width: 100%;\n        margin-top: 4px;\n        margin-bottom: 4px;\n      }\n    "]
                 }] }
     ];
     /** @nocollapse */
@@ -21402,13 +22032,13 @@ var CmacsSliderMarksComponent = /** @class */ (function () {
         function (mark) {
             var value = mark.value, offset = mark.offset, config = mark.config;
             /** @type {?} */
-            var style = _this.buildStyles(value, range, config);
+            var style$$1 = _this.buildStyles(value, range, config);
             /** @type {?} */
             var label = isConfigAObject(config) ? config.label : config;
             return {
                 label: label,
                 offset: offset,
-                style: style,
+                style: style$$1,
                 value: value,
                 config: config,
                 active: false
@@ -21431,9 +22061,9 @@ var CmacsSliderMarksComponent = /** @class */ (function () {
      */
     function (value, range, config) {
         /** @type {?} */
-        var style;
+        var style$$1;
         if (this.nzVertical) {
-            style = {
+            style$$1 = {
                 marginBottom: '-50%',
                 bottom: ((value - this.nzMin) / range) * 100 + "%"
             };
@@ -21445,16 +22075,16 @@ var CmacsSliderMarksComponent = /** @class */ (function () {
             var unit = 100 / (marksCount - 1);
             /** @type {?} */
             var markWidth = unit * 0.9;
-            style = {
+            style$$1 = {
                 width: markWidth + "%",
                 marginLeft: -markWidth / 2 + "%",
                 left: ((value - this.nzMin) / range) * 100 + "%"
             };
         }
         if (isConfigAObject(config) && config.style) {
-            style = __assign({}, style, config.style);
+            style$$1 = __assign({}, style$$1, config.style);
         }
-        return style;
+        return style$$1;
     };
     /**
      * @private
@@ -24624,7 +25254,7 @@ var CmacsTabsNavComponent = /** @class */ (function () {
                     changeDetection: ChangeDetectionStrategy.OnPush,
                     encapsulation: ViewEncapsulation.None,
                     template: "<div style=\"float:right;\" *ngIf=\"tabBarExtraContent\" class=\"ant-tabs-extra-content\">\r\n  <ng-template [ngTemplateOutlet]=\"tabBarExtraContent\"></ng-template>\r\n</div>\r\n<div class=\"ant-tabs-nav-container\"\r\n  [class.ant-tabs-nav-container-scrolling]=\"showPaginationControls\"\r\n  #navContainerElement>\r\n  <span class=\"ant-tabs-tab-prev\"\r\n    (click)=\"scrollHeader('before')\"\r\n    [class.ant-tabs-tab-btn-disabled]=\"disableScrollBefore\"\r\n    [class.ant-tabs-tab-arrow-show]=\"showPaginationControls\">\r\n    <span class=\"ant-tabs-tab-prev-icon\">\r\n      <i nz-icon [type]=\"positionMode === 'horizontal' ? 'left' : 'up'\" class=\"ant-tabs-tab-prev-icon-target\"></i>\r\n    </span>\r\n  </span>\r\n  <span class=\"ant-tabs-tab-next\"\r\n    (click)=\"scrollHeader('after')\"\r\n    [class.ant-tabs-tab-btn-disabled]=\"disableScrollAfter\"\r\n    [class.ant-tabs-tab-arrow-show]=\"showPaginationControls\">\r\n    <span class=\"ant-tabs-tab-next-icon\">\r\n      <i nz-icon [type]=\"positionMode === 'horizontal' ? 'right' : 'down'\" class=\"ant-tabs-tab-next-icon-target\"></i>\r\n    </span>\r\n  </span>\r\n  <div class=\"ant-tabs-nav-wrap\">\r\n    <div class=\"ant-tabs-nav-scroll\"\r\n         [class.cmacs-tabs-icon]=\"isCmacsType('icon')\"\r\n         [class.cmacs-tabs-ems]=\"isCmacsType('ems')\"\r\n         [class.cmacs-tabs-schedule]=\"isCmacsType('schedule')\"\r\n         [class.cmacs-tabs-property]=\"isCmacsType('property')\"\r\n         #scrollListElement>\r\n      <div class=\"ant-tabs-nav\"\r\n        [class.ant-tabs-nav-animated]=\"animated\"\r\n        #navListElement\r\n        (cdkObserveContent)=\"onContentChanges()\">\r\n        <div>\r\n          <ng-content></ng-content>\r\n        </div>\r\n        <div cmacs-tabs-ink-bar [hidden]=\"hideBar\" [animated]=\"animated\" [positionMode]=\"positionMode\" style=\"display: block;\"></div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n",
-                    styles: [".ant-tabs-ink-bar{height:1px;background-color:#2a7cff}.ant-tabs-nav{font-weight:500;font-size:14px}.ant-tabs-nav .ant-tabs-tab-active,.ant-tabs-nav .ant-tabs-tab:hover{color:#2a7cff}.ant-tabs-nav .ant-tabs-tab:not(.cmacs-timeline-datepicker-label){line-height:2.86;padding:0 12px 2px;margin:unset}.ant-tabs-bar{border-color:#dee0e5}.cmacs-tabs-icon,.cmacs-tabs-property{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;margin:0 auto}.cmacs-tabs-icon .ant-tabs-nav .ant-tabs-tab .anticon{font-size:16px;margin:0 auto}.cmacs-tabs-icon .ant-tabs-nav .ant-tabs-tab-active{color:#2a7cff;border:1px solid #dee0e5;border-bottom-color:transparent}.cmacs-tabs-icon .ant-tabs-ink-bar{background-color:#fff}.cmacs-tabs-icon .ant-tabs-nav .ant-tabs-tab{padding:5px 8px;line-height:unset;margin-left:13px;margin-right:13px}.cmacs-tabs-ems .ant-tabs-nav .ant-tabs-tab .anticon,.cmacs-tabs-schedule .ant-tabs-nav .ant-tabs-tab .anticon{margin-right:0}.cmacs-tabs-ems .ant-tabs-nav,.cmacs-tabs-schedule .ant-tabs-nav{font-size:16px}.cmacs-tabs-ems .ant-tabs-nav .ant-tabs-tab{line-height:unset;padding:12px 18px;margin:unset}.cmacs-tabs-schedule .ant-tabs-nav .ant-tabs-tab{line-height:unset;padding:0 0 10px;margin-left:10px;margin-right:10px}.cmacs-tabs-schedule .ant-tabs-nav .ant-tabs-tab:first-child{margin-left:0}.cmacs-tabs-property .ant-tabs-nav .ant-tabs-tab{line-height:unset;padding:0 4px 15px;margin-left:30px;margin-right:30px}.cmacs-side-panel-wrapper cmacs-tabset{height:100%}.cmacs-side-panel-wrapper cmacs-tabset .ant-tabs-bar{margin-right:30px;margin-left:30px}.cmacs-side-panel-wrapper .ant-tabs-content{height:calc(100% - 56px);word-break:break-word}.cmacs-side-panel-wrapper .ant-tabs-content .ant-tabs-tabpane{overflow-y:auto;overflow-x:hidden;padding-right:30px;padding-left:30px}.cmacs-side-panel-wrapper .ant-tabs-content .ant-tabs-tabpane>span{width:310px;display:inline-block}"]
+                    styles: [".ant-tabs-ink-bar{height:1px;background-color:#2a7cff}.ant-tabs-nav{font-weight:500;font-size:14px}.ant-tabs-nav .ant-tabs-tab-active,.ant-tabs-nav .ant-tabs-tab:hover{color:#2a7cff}.ant-tabs-nav .ant-tabs-tab:not(.cmacs-timeline-datepicker-label){line-height:2.86;padding:0 12px 2px;margin:unset;font-weight:500;font-family:Roboto-Medium}.ant-tabs-bar{border-color:#dee0e5}.cmacs-tabs-icon,.cmacs-tabs-property{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;margin:0 auto}.cmacs-tabs-icon .ant-tabs-nav .ant-tabs-tab .anticon{font-size:16px;margin:0 auto}.cmacs-tabs-icon .ant-tabs-nav .ant-tabs-tab-active{color:#2a7cff;border:1px solid #dee0e5;border-bottom-color:transparent}.cmacs-tabs-icon .ant-tabs-ink-bar{background-color:#fff}.cmacs-tabs-icon .ant-tabs-nav .ant-tabs-tab{padding:5px 8px;line-height:unset;margin-left:13px;margin-right:13px}.cmacs-tabs-ems .ant-tabs-nav .ant-tabs-tab .anticon,.cmacs-tabs-schedule .ant-tabs-nav .ant-tabs-tab .anticon{margin-right:0}.cmacs-tabs-ems .ant-tabs-nav,.cmacs-tabs-schedule .ant-tabs-nav{font-size:16px}.cmacs-tabs-ems .ant-tabs-nav .ant-tabs-tab{line-height:unset;padding:12px 18px;margin:unset}.cmacs-tabs-schedule .ant-tabs-nav .ant-tabs-tab{line-height:unset;padding:0 0 10px;margin-left:10px;margin-right:10px}.cmacs-tabs-schedule .ant-tabs-nav .ant-tabs-tab:first-child{margin-left:0}.cmacs-tabs-property .ant-tabs-nav .ant-tabs-tab{line-height:unset;padding:0 4px 15px;margin-left:30px;margin-right:30px}.cmacs-side-panel-wrapper cmacs-tabset{height:100%}.cmacs-side-panel-wrapper cmacs-tabset .ant-tabs-bar{margin-right:30px;margin-left:30px}.cmacs-side-panel-wrapper .ant-tabs-content{height:calc(100% - 56px);word-break:break-word}.cmacs-side-panel-wrapper .ant-tabs-content .ant-tabs-tabpane{overflow-y:auto;overflow-x:hidden;padding-right:30px;padding-left:30px}.cmacs-side-panel-wrapper .ant-tabs-content .ant-tabs-tabpane>span{width:310px;display:inline-block}.ant-tabs-tab{color:#97a0ae}"]
                 }] }
     ];
     /** @nocollapse */
@@ -27971,7 +28601,7 @@ var CmacsCompactTableComponent = /** @class */ (function () {
                     host: {
                         '[class.cmacs-compact-table-logs]': 'logs'
                     },
-                    styles: [".cmacs-compact-table-edit-mode-invalid,.cmacs-compact-table-edit-mode-invalid:focus,.cmacs-compact-table-edit-mode-invalid:hover,.cmacs-compact-table-invalid.cmacs-compact-table-boolean-indeterminate-icon,::ng-deep .cmacs-compact-table-edit-mode-invalid .ant-select-selection,::ng-deep .cmacs-compact-table-edit-mode-invalid:focus .ant-select-selection,::ng-deep .cmacs-compact-table-edit-mode-invalid:hover .ant-select-selection{border-color:#8b0000!important}.cmacs-compact-table-invalid,.cmacs-compact-table-invalid+i{color:#8b0000!important;opacity:1!important}.cmacs-compact-table-invalid.cmacs-compact-table-boolean-indeterminate-icon .cmacs-compact-table-boolean-indeterminate-icon-inner{background-color:#8b0000}:host ::ng-deep .ant-table-thead>tr>th{padding:6px;font-family:Roboto-Regular;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1;letter-spacing:normal;color:#656c79}::ng-deep .ant-time-picker-panel-inner cmacs-select.ant-select{height:30px!important;margin:12px 0!important;display:-webkit-inline-box;display:inline-flex;width:auto!important}.cmacs-compact-table-drag-handler{color:#bec4cd;font-size:20px;padding:0 10px;margin:0;position:relative;top:3px}.cmacs-compact-table-drag-placeholder{border-bottom:1px solid #2a7cff;color:#2a7cff;text-align:center;min-width:100%}.cmacs-compact-table-drag-preview{color:#2a7cff;opacity:.5;text-align:center}.cmacs-compact-table-drag-handler:hover{cursor:pointer;color:#2a7cff}.cmacs-compact-table-drag-col{padding:0!important;margin:0!important}:host ::ng-deep .ant-table-tbody>tr:hover:not(.ant-table-expanded-row)>td.cmacs-compact-table-smart-table-hot-spot-row-add,:host ::ng-deep .ant-table-tbody>tr:hover:not(.ant-table-expanded-row)>td.cmacs-compact-table-smart-table-hot-spot-row-delete{background:#fff;border-bottom-color:transparent;border-top-color:transparent}:host ::ng-deep .ant-table-header{background:0 0}.cmacs-compact-table-balance-padding{padding:6px!important}.ant-table-tbody>tr>td{padding:10px 6px 6px;font-family:Roboto-Regular;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1;letter-spacing:normal;color:#97a0ae;background-color:#fff}:host ::ng-deep .ant-table-thead>tr>th.cmacs-compact-table-logs-header-th{background:#f6f7fb!important}:host ::ng-deep .ant-table-thead>tr>th:not(.cmacs-compact-table-logs-header-th){background:#fff!important}.ant-table-tbody>tr.cmacs-compact-table-header-logs:hover td:first-child,.ant-table-tbody>tr:hover td:first-child{border-left:3px solid #2a7cff}.ant-table-tbody>tr.cmacs-compact-table-smart-table-row:hover td:first-child{border-left:3px solid transparent}.ant-table-tbody>tr.cmacs-compact-table-header-logs td:first-child{border-left:3px solid #f6f7fb}.ant-table-tbody>.ant-table-selected-row:hover td{border-bottom:1px solid #2a7cff;border-top:1px solid #2a7cff}.editable-cell{position:relative}:host ::ng-deep .ant-rate-star{font-size:16px;margin:0}:host ::ng-deep .ant-table-thead>tr>th:first-child{border-left:3px solid transparent}.ant-table-tbody>tr:not(.cmacs-compact-table-smart-table-row):hover{box-shadow:0 3px 7px -7px rgba(5,6,6,.18)}.ant-table-tbody>tr.cmacs-compact-table-smart-table-row>td.cmacs-compact-table-smart-table-hot-spot-row-add:hover~td:not(.cmacs-compact-table-smart-table-hot-spot-row-delete),.ant-table-tbody>tr.cmacs-compact-table-smart-table-row>td.cmacs-compact-table-smart-table-hot-spot-row-delete:hover~td{border-bottom-color:#2a7cff}.ant-table-tbody>tr.cmacs-compact-table-smart-table-row>td.cmacs-compact-table-smart-table-hot-spot-row-delete:hover .ant-table-tbody>tr.cmacs-compact-table-smart-table-row>td{border-bottom-color:#f6503c}.cmacs-compact-table-smart-table-hot-spot-row-add,.cmacs-compact-table-smart-table-hot-spot-row-add:hover,.cmacs-compact-table-smart-table-hot-spot-row-delete,.cmacs-compact-table-smart-table-hot-spot-row-delete:hover{width:28px;border-bottom-color:transparent!important;border-top-color:transparent!important;background-color:transparent!important}:host ::ng-deep .ant-table-thead>tr:hover .cmacs-compact-table-smart-table-hot-spot-row-add-icon,:host ::ng-deep .ant-table-thead>tr:hover .cmacs-compact-table-smart-table-hot-spot-row-delete-icon,tr:hover .cmacs-compact-table-smart-table-hot-spot-row-add-icon,tr:hover .cmacs-compact-table-smart-table-hot-spot-row-delete-icon{opacity:1!important}.cmacs-compact-table-smart-table-hot-spot-row-add-icon:hover,.cmacs-compact-table-smart-table-hot-spot-row-delete-icon:hover{cursor:pointer}.cmacs-compact-table-smart-table-hot-spot-row-delete-icon{font-size:14px;border-radius:100px;background-color:#f6503c;color:#fff;padding:2px;display:-webkit-box;display:flex;opacity:0}.cmacs-compact-table-smart-table-hot-spot-row-add-icon{font-size:14px;border-radius:100px;background-color:#2a7cff;color:#fff;padding:2px;display:-webkit-box;display:flex;opacity:0;position:relative;top:18px}.ant-table-tbody>tr td:first-child{border-left:3px solid transparent}.ant-table-tbody>tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-selected-row):not(.cmacs-compact-table-header-logs)>td,.ant-table-tbody>tr:hover:not(.ant-table-expanded-row):not(.ant-table-selected-row):not(.cmacs-compact-table-header-logs)>td,:host ::ng-deep .ant-table-thead>tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-selected-row):not(.cmacs-compact-table-header-logs)>td,:host ::ng-deep .ant-table-thead>tr:hover:not(.ant-table-expanded-row):not(.ant-table-selected-row):not(.cmacs-compact-table-header-logs)>td{background-color:#fff}.ant-table-tbody>tr.ant-table-row-hover.cmacs-compact-table-header-logs:not(.ant-table-expanded-row):not(.ant-table-selected-row)>td,.ant-table-tbody>tr.cmacs-compact-table-header-logs:hover:not(.ant-table-expanded-row):not(.ant-table-selected-row)>td,:host ::ng-deep .ant-table-thead>tr.ant-table-row-hover.cmacs-compact-table-header-logs:not(.ant-table-expanded-row):not(.ant-table-selected-row)>td,:host ::ng-deep .ant-table-thead>tr.cmacs-compact-table-header-logs:hover:not(.ant-table-expanded-row):not(.ant-table-selected-row)>td{background-color:#f6f7fb;box-shadow:0 3px 7px -7px rgba(5,6,6,.18)}.ant-table-tbody>tr.ant-table-selected-row>td:not(.cmacs-compact-table-smart-table-hot-spot-row-add):not(.cmacs-compact-table-smart-table-hot-spot-row-delete){background-color:#f2f7ff;border-left-color:#f2f7ff}:host ::ng-deep .ant-spin-nested-loading{clear:both}.cmacs-compact-table-extra,.cmacs-compact-table-extra a,::ng-deep .cmacs-compact-table-extra a i,::ng-deep .cmacs-compact-table-extra i{font-size:16px;color:#656c79;display:-webkit-inline-box;display:inline-flex}.cmacs-compact-table-extra{position:relative;top:5px}.cmacs-compact-table-extra a,::ng-deep .cmacs-compact-table-extra a i,::ng-deep .cmacs-compact-table-extra i{margin-right:5px}.cmacs-compact-table-extra a i:hover,.cmacs-compact-table-extra a:hover,::ng-deep .cmacs-compact-table-extra i:hover{cursor:pointer}:host ::ng-deep a,:host ::ng-deep a:hover{color:#656c79}.cmacs-compact-table-edit-icon,.cmacs-compact-table-edit-icon-view{float:right;font-size:14px;position:relative;opacity:0}.cmacs-compact-table-edit-icon:hover{color:#2a7cff;cursor:pointer}.cmacs-compact-table-editable-row:hover .cmacs-compact-table-edit-icon,.cmacs-compact-table-expandable-row:hover .cmacs-compact-table-edit-icon{opacity:1}.cmacs-compact-table-input,.cmacs-compact-table-input:focus,.cmacs-compact-table-input:hover,.cmacs-compact-table-select{max-width:100%;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1;letter-spacing:normal;border-color:#2a7cff}.cmacs-compact-table-on-edit{padding:0 6px!important}.cmacs-compact-table-on-edit-expandable{padding-top:0!important;padding-bottom:0!important}.cmacs-compact-table-on-edit-no-padding{padding:0 0 0 6px!important}.cmacs-compact-table-calendar-icon,.cmacs-compact-table-calendar-icon-view,.cmacs-compact-table-input-number-icon,.cmacs-compact-table-input-number-icon-view,.cmacs-compact-table-select-icon,.cmacs-compact-table-select-icon-view{float:right;font-size:14px;position:relative}.cmacs-compact-table-editable-row:hover .cmacs-compact-table-calendar-icon,.cmacs-compact-table-editable-row:hover .cmacs-compact-table-input-number-icon,.cmacs-compact-table-editable-row:hover .cmacs-compact-table-select-icon,.cmacs-compact-table-expandable-row:hover .cmacs-compact-table-calendar-icon,.cmacs-compact-table-expandable-row:hover .cmacs-compact-table-input-number-icon,.cmacs-compact-table-expandable-row:hover .cmacs-compact-table-select-icon{color:#656c79}.cmacs-compact-table-calendar-icon:hover,.cmacs-compact-table-input-number-icon:hover,.cmacs-compact-table-select-icon:hover{cursor:pointer}.cmacs-compact-table-date,.cmacs-compact-table-input-number,.cmacs-compact-table-select{border-bottom:2px dotted transparent}.cmacs-compact-table-editable-row:hover .cmacs-compact-table-date,.cmacs-compact-table-editable-row:hover .cmacs-compact-table-input-number,.cmacs-compact-table-editable-row:hover .cmacs-compact-table-select,.cmacs-compact-table-expandable-row:hover .cmacs-compact-table-date,.cmacs-compact-table-expandable-row:hover .cmacs-compact-table-input-number,.cmacs-compact-table-expandable-row:hover .cmacs-compact-table-select{border-bottom:2px dotted #656c79}.cmacs-compact-table-date cmacs-picker span input,::ng-deep .ant-calendar-input{max-width:100%;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1;letter-spacing:normal}.cmacs-compact-table .cmacs-compact-table-select-cell{width:100%;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1;letter-spacing:normal}::ng-deep .cmacs-compact-table .cmacs-compact-table-select-cell .ant-select-selection{height:34px!important}:host ::ng-deep .ant-select-arrow{right:6px}cmacs-input-number,cmacs-input-number:focus,cmacs-input-number:focus-within,cmacs-input-number:hover{max-width:100%;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1;letter-spacing:normal;border-color:#2a7cff!important}.cmacs-compact-table-overflow-cell{max-width:calc(100% - 20px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block}td{text-align:left}:host ::ng-deep .ant-table-row-collapsed::after{font-family:ArrowSmall!important;content:\"\\e903\";-webkit-transition:.3s;transition:.3s}:host ::ng-deep .ant-table-row-collapsed{margin-right:5px;border:none;-webkit-transition:.3s;transition:.3s}:host ::ng-deep .ant-table-row-expanded::after{font-family:ArrowSmall!important;content:\"\\e900\";-webkit-transition:.3s;transition:.3s}:host ::ng-deep .ant-table-row-expanded{margin-right:5px;border:none;-webkit-transition:.3s;transition:.3s}.cmacs-compact-table-header-logs,.cmacs-compact-table-header-logs:hover{background-color:#f6f7fb!important;color:#656c79!important}.cmacs-compact-table-logs-header-th-font,.cmacs-compact-table-logs-header-th-font:hover{color:#656c79!important;background-color:#f6f7fb!important}:host ::ng-deep .cmacs-compact-table-header-logs .ant-table-row-expand-icon{background-color:#f6f7fb!important}.cmacs-table-overflow-cell-logs{max-width:calc(100% - 14px)}.cmacs-compact-table-overflow-cell-container-logs{max-width:calc(100% - 22px)}.cmacs-compact-table-boolean-false-icon{width:10px;border:1px solid #adaebb;height:10px;display:block}.cmacs-compact-table-boolean-indeterminate-icon{width:10px;border:1px solid #adaebb;height:10px;padding:1px;display:block}.cmacs-compact-table-boolean-indeterminate-icon-inner{width:6px;background-color:#adaebb;height:6px;display:block}.cmacs-compact-table-boolean-icon:hover{cursor:pointer;color:#2a7cff;border-color:#2a7cff}.cdk-drag-preview{box-sizing:border-box;border-radius:4px;box-shadow:0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12);opacity:0;border-bottom:1px solid #2a7cff!important}.cdk-drag-placeholder{border-bottom:1px solid #2a7cff!important}.cmacs-compact-table-smart-add-row-icon-visible{z-index:2;position:absolute;opacity:1!important}"]
+                    styles: [".cmacs-compact-table-edit-mode-invalid,.cmacs-compact-table-edit-mode-invalid:focus,.cmacs-compact-table-edit-mode-invalid:hover,.cmacs-compact-table-invalid.cmacs-compact-table-boolean-indeterminate-icon,::ng-deep .cmacs-compact-table-edit-mode-invalid .ant-select-selection,::ng-deep .cmacs-compact-table-edit-mode-invalid:focus .ant-select-selection,::ng-deep .cmacs-compact-table-edit-mode-invalid:hover .ant-select-selection{border-color:#8b0000!important}.cmacs-compact-table-invalid,.cmacs-compact-table-invalid+i{color:#8b0000!important;opacity:1!important}.cmacs-compact-table-invalid.cmacs-compact-table-boolean-indeterminate-icon .cmacs-compact-table-boolean-indeterminate-icon-inner{background-color:#8b0000}:host ::ng-deep .ant-table-thead>tr>th{padding:6px;font-family:Roboto-Regular;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1;letter-spacing:normal;color:#656c79}::ng-deep .ant-time-picker-panel-inner cmacs-select.ant-select{height:30px!important;margin:12px 0!important;display:-webkit-inline-box;display:inline-flex;width:auto!important}.cmacs-compact-table-drag-handler{color:#bec4cd;font-size:20px;padding:0 10px;margin:0;position:relative;top:3px}.cmacs-compact-table-drag-placeholder{border-bottom:1px solid #2a7cff;color:#2a7cff;text-align:center;min-width:100%}.cmacs-compact-table-drag-preview{color:#2a7cff;opacity:.5;text-align:center}.cmacs-compact-table-drag-handler:hover{cursor:pointer;color:#2a7cff}.cmacs-compact-table-drag-col{padding:0!important;margin:0!important}:host ::ng-deep .ant-table-tbody>tr:hover:not(.ant-table-expanded-row)>td.cmacs-compact-table-smart-table-hot-spot-row-add,:host ::ng-deep .ant-table-tbody>tr:hover:not(.ant-table-expanded-row)>td.cmacs-compact-table-smart-table-hot-spot-row-delete{background:#fff;border-bottom-color:transparent;border-top-color:transparent}:host ::ng-deep .ant-table-header{background:0 0}.cmacs-compact-table-balance-padding{padding:6px!important}:host ::ng-deep .ant-table-thead>tr>th.cmacs-compact-table-logs-header-th{background:#f6f7fb!important}:host ::ng-deep .ant-table-thead>tr>th:not(.cmacs-compact-table-logs-header-th){background:#fff!important}.ant-table-tbody>tr.cmacs-compact-table-header-logs:hover td:first-child,.ant-table-tbody>tr:hover td:first-child{border-left:3px solid #2a7cff}.ant-table-tbody>tr.cmacs-compact-table-smart-table-row:hover td:first-child{border-left:3px solid transparent}.ant-table-tbody>tr.cmacs-compact-table-header-logs td:first-child{border-left:3px solid #f6f7fb}.ant-table-tbody>.ant-table-selected-row:hover td{border-bottom:1px solid #2a7cff;border-top:1px solid #2a7cff}.editable-cell{position:relative}:host ::ng-deep .ant-rate-star{font-size:16px;margin:0}:host ::ng-deep .ant-table-thead>tr>th:first-child{border-left:3px solid transparent}.ant-table-tbody>tr:not(.cmacs-compact-table-smart-table-row):hover{box-shadow:0 3px 7px -7px rgba(5,6,6,.18)}.ant-table-tbody>tr.cmacs-compact-table-smart-table-row>td.cmacs-compact-table-smart-table-hot-spot-row-add:hover~td:not(.cmacs-compact-table-smart-table-hot-spot-row-delete),.ant-table-tbody>tr.cmacs-compact-table-smart-table-row>td.cmacs-compact-table-smart-table-hot-spot-row-delete:hover~td{border-bottom-color:#2a7cff}.ant-table-tbody>tr.cmacs-compact-table-smart-table-row>td.cmacs-compact-table-smart-table-hot-spot-row-delete:hover .ant-table-tbody>tr.cmacs-compact-table-smart-table-row>td{border-bottom-color:#f6503c}.cmacs-compact-table-smart-table-hot-spot-row-add,.cmacs-compact-table-smart-table-hot-spot-row-add:hover,.cmacs-compact-table-smart-table-hot-spot-row-delete,.cmacs-compact-table-smart-table-hot-spot-row-delete:hover{width:28px;border-bottom-color:transparent!important;border-top-color:transparent!important;background-color:transparent!important}:host ::ng-deep .ant-table-thead>tr:hover .cmacs-compact-table-smart-table-hot-spot-row-add-icon,:host ::ng-deep .ant-table-thead>tr:hover .cmacs-compact-table-smart-table-hot-spot-row-delete-icon,tr:hover .cmacs-compact-table-smart-table-hot-spot-row-add-icon,tr:hover .cmacs-compact-table-smart-table-hot-spot-row-delete-icon{opacity:1!important}.cmacs-compact-table-smart-table-hot-spot-row-add-icon:hover,.cmacs-compact-table-smart-table-hot-spot-row-delete-icon:hover{cursor:pointer}.cmacs-compact-table-smart-table-hot-spot-row-delete-icon{font-size:14px;border-radius:100px;background-color:#f6503c;color:#fff;padding:2px;display:-webkit-box;display:flex;opacity:0}.cmacs-compact-table-smart-table-hot-spot-row-add-icon{font-size:14px;border-radius:100px;background-color:#2a7cff;color:#fff;padding:2px;display:-webkit-box;display:flex;opacity:0;position:relative;top:18px}.ant-table-tbody>tr td:first-child{border-left:3px solid transparent}.ant-table-tbody>tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-selected-row):not(.cmacs-compact-table-header-logs)>td,.ant-table-tbody>tr:hover:not(.ant-table-expanded-row):not(.ant-table-selected-row):not(.cmacs-compact-table-header-logs)>td,:host ::ng-deep .ant-table-thead>tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-selected-row):not(.cmacs-compact-table-header-logs)>td,:host ::ng-deep .ant-table-thead>tr:hover:not(.ant-table-expanded-row):not(.ant-table-selected-row):not(.cmacs-compact-table-header-logs)>td{background-color:#fff}.ant-table-tbody>tr.ant-table-row-hover.cmacs-compact-table-header-logs:not(.ant-table-expanded-row):not(.ant-table-selected-row)>td,.ant-table-tbody>tr.cmacs-compact-table-header-logs:hover:not(.ant-table-expanded-row):not(.ant-table-selected-row)>td,:host ::ng-deep .ant-table-thead>tr.ant-table-row-hover.cmacs-compact-table-header-logs:not(.ant-table-expanded-row):not(.ant-table-selected-row)>td,:host ::ng-deep .ant-table-thead>tr.cmacs-compact-table-header-logs:hover:not(.ant-table-expanded-row):not(.ant-table-selected-row)>td{background-color:#f6f7fb;box-shadow:0 3px 7px -7px rgba(5,6,6,.18)}.ant-table-tbody>tr.ant-table-selected-row>td:not(.cmacs-compact-table-smart-table-hot-spot-row-add):not(.cmacs-compact-table-smart-table-hot-spot-row-delete){background-color:#f2f7ff}:host ::ng-deep .ant-spin-nested-loading{clear:both}.cmacs-compact-table-extra,.cmacs-compact-table-extra a,::ng-deep .cmacs-compact-table-extra a i,::ng-deep .cmacs-compact-table-extra i{font-size:16px;color:#656c79;display:-webkit-inline-box;display:inline-flex}.cmacs-compact-table-extra{position:relative}.cmacs-compact-table-extra a,::ng-deep .cmacs-compact-table-extra a i,::ng-deep .cmacs-compact-table-extra i{margin-right:5px}.cmacs-compact-table-extra a i:hover,.cmacs-compact-table-extra a:hover,::ng-deep .cmacs-compact-table-extra i:hover{cursor:pointer}:host ::ng-deep a,:host ::ng-deep a:hover{color:#656c79}.cmacs-compact-table-edit-icon,.cmacs-compact-table-edit-icon-view{float:right;font-size:14px;position:relative;opacity:0}.cmacs-compact-table-edit-icon:hover{color:#2a7cff;cursor:pointer}.cmacs-compact-table-editable-row:hover .cmacs-compact-table-edit-icon,.cmacs-compact-table-expandable-row:hover .cmacs-compact-table-edit-icon{opacity:1}.cmacs-compact-table-input,.cmacs-compact-table-input:focus,.cmacs-compact-table-input:hover,.cmacs-compact-table-select{max-width:100%;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1;letter-spacing:normal;border-color:#2a7cff}.cmacs-compact-table-on-edit{padding:0 6px!important}.cmacs-compact-table-on-edit-expandable{padding-top:0!important;padding-bottom:0!important}.cmacs-compact-table-on-edit-no-padding{padding:0 0 0 6px!important}.cmacs-compact-table-calendar-icon,.cmacs-compact-table-calendar-icon-view,.cmacs-compact-table-input-number-icon,.cmacs-compact-table-input-number-icon-view,.cmacs-compact-table-select-icon,.cmacs-compact-table-select-icon-view{float:right;font-size:14px;position:relative}.cmacs-compact-table-editable-row:hover .cmacs-compact-table-calendar-icon,.cmacs-compact-table-editable-row:hover .cmacs-compact-table-input-number-icon,.cmacs-compact-table-editable-row:hover .cmacs-compact-table-select-icon,.cmacs-compact-table-expandable-row:hover .cmacs-compact-table-calendar-icon,.cmacs-compact-table-expandable-row:hover .cmacs-compact-table-input-number-icon,.cmacs-compact-table-expandable-row:hover .cmacs-compact-table-select-icon{color:#656c79}.cmacs-compact-table-calendar-icon:hover,.cmacs-compact-table-input-number-icon:hover,.cmacs-compact-table-select-icon:hover{cursor:pointer}.cmacs-compact-table-date,.cmacs-compact-table-input-number,.cmacs-compact-table-select{border-bottom:2px dotted transparent}.cmacs-compact-table-editable-row:hover .cmacs-compact-table-date,.cmacs-compact-table-editable-row:hover .cmacs-compact-table-input-number,.cmacs-compact-table-editable-row:hover .cmacs-compact-table-select,.cmacs-compact-table-expandable-row:hover .cmacs-compact-table-date,.cmacs-compact-table-expandable-row:hover .cmacs-compact-table-input-number,.cmacs-compact-table-expandable-row:hover .cmacs-compact-table-select{border-bottom:2px dotted #656c79}.cmacs-compact-table-date cmacs-picker span input,::ng-deep .ant-calendar-input{max-width:100%;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1;letter-spacing:normal}.cmacs-compact-table .cmacs-compact-table-select-cell{width:100%;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1;letter-spacing:normal}::ng-deep .cmacs-compact-table .cmacs-compact-table-select-cell .ant-select-selection{height:34px!important}:host ::ng-deep .ant-select-arrow{right:6px}cmacs-input-number,cmacs-input-number:focus,cmacs-input-number:focus-within,cmacs-input-number:hover{max-width:100%;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1;letter-spacing:normal;border-color:#2a7cff!important}.cmacs-compact-table-overflow-cell{max-width:calc(100% - 20px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block}td{text-align:left}:host ::ng-deep .ant-table-row-collapsed::after{font-family:ArrowSmall!important;content:\"\\e903\";-webkit-transition:.3s;transition:.3s}:host ::ng-deep .ant-table-row-collapsed{margin-right:5px;border:none;-webkit-transition:.3s;transition:.3s}:host ::ng-deep .ant-table-row-expanded::after{font-family:ArrowSmall!important;content:\"\\e900\";-webkit-transition:.3s;transition:.3s}:host ::ng-deep .ant-table-row-expanded{margin-right:5px;border:none;-webkit-transition:.3s;transition:.3s}.cmacs-compact-table-header-logs,.cmacs-compact-table-header-logs:hover{background-color:#f6f7fb!important;color:#656c79!important}.cmacs-compact-table-logs-header-th-font,.cmacs-compact-table-logs-header-th-font:hover{color:#656c79!important;background-color:#f6f7fb!important}:host ::ng-deep .cmacs-compact-table-header-logs .ant-table-row-expand-icon{background-color:#f6f7fb!important}.cmacs-table-overflow-cell-logs{max-width:calc(100% - 14px)}.cmacs-compact-table-overflow-cell-container-logs{max-width:calc(100% - 22px)}.cmacs-compact-table-boolean-false-icon{width:10px;border:1px solid #adaebb;height:10px;display:block}.cmacs-compact-table-boolean-indeterminate-icon{width:10px;border:1px solid #adaebb;height:10px;padding:1px;display:block}.cmacs-compact-table-boolean-indeterminate-icon-inner{width:6px;background-color:#adaebb;height:6px;display:block}.cmacs-compact-table-boolean-icon:hover{cursor:pointer;color:#2a7cff;border-color:#2a7cff}.cdk-drag-preview{box-sizing:border-box;border-radius:4px;box-shadow:0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12);opacity:0;border-bottom:1px solid #2a7cff!important}.cdk-drag-placeholder{border-bottom:1px solid #2a7cff!important}.cmacs-compact-table-smart-add-row-icon-visible{z-index:2;position:absolute;opacity:1!important}.ant-table-tbody>tr>td{padding:10px 6px 6px;font-family:Roboto-Regular;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1;letter-spacing:normal;color:#97a0ae;background-color:#fff;border-bottom:1px solid #dee0e5;border-top:1px solid transparent}.ant-checkbox-wrapper{display:-ms-inline-grid;display:inline-grid}"]
                 }] }
     ];
     /** @nocollapse */
@@ -30700,6 +31330,8 @@ var CmacsComponentsLibModule = /** @class */ (function () {
                         CmacsMonthCellDirective,
                         CmacsMonthFullCellDirective,
                         CmacsGeneralChartComponent,
+                        CmacsComboChartComponent,
+                        CmacsComboSeriesVerticalComponent,
                         CmacsKpiGroupComponent,
                         CmacsKPIOverviewComponent,
                         CmacsNormalizedHorizontalBarChartComponent,
@@ -30792,6 +31424,8 @@ var CmacsComponentsLibModule = /** @class */ (function () {
                         CmacsListItemComponent,
                         CmacsListItemMetaComponent,
                         CmacsGeneralChartComponent,
+                        CmacsComboChartComponent,
+                        CmacsComboSeriesVerticalComponent,
                         CmacsKpiComponent,
                         CmacsOpenInputComponent,
                         CmacsGridConfigurationModalComponent,
@@ -31262,6 +31896,6 @@ var ModeTabType = {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsDividerComponent, CmacsFloatingMenuComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, CmacsDateCellDirective, CmacsMonthCellDirective, CmacsDateFullCellDirective, CmacsMonthFullCellDirective, CmacsCalendarHeaderComponent, CmacsCalendarComponent, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, WidgetActionType, WidgetType, WidgetDataType, CmacsModalRef, CmacsDropdownADirective, CmacsProgressComponent, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, CmacsDashboardSwitchPanelComponent, CmacsDashboardWidgetPanelComponent, CmacsKPIOverviewComponent, CmacsGeneralChartComponent, CmacsStatusDistributionComponent, CmacsNormalizedHorizontalBarGroupedComponent, CmacsNormalizedHorizontalBarChartComponent, CmacsAlertComponent, CmacsCommentComponent, CmacsCommentAvatarDirective, CmacsCommentContentDirective, CmacsCommentActionHostDirective, CmacsCommentActionComponent, CmacsSliderComponent, CmacsSliderHandleComponent, CmacsSliderMarksComponent, CmacsSliderStepComponent, CmacsSliderTrackComponent, isValueARange, isConfigAObject, Marks, CmacsDatetimePickerPanelComponent, CmacsDateTimePickerComponent, CmacsDatetimeValueAccessorDirective, CmacsVideoPlayerComponent, CmacsPhoneNumberComponent, CmacsKanbanComponent, CmacsColorPickerComponent, CmacsSwitchComponent, CmacsTabComponent, CmacsTabDirective, CmacsTabBodyComponent, CmacsTabLabelDirective, CmacsTabsInkBarDirective, CmacsTabsNavComponent, TabChangeEvent, CmacsTabsetComponent, CmacsSidePanelComponent, CmacsOpenTextareaComponent, CmacsMoveableListComponent, CmacsGridConfigurationModalComponent, CmacsOpenInputComponent, KPI_COLORS, CmacsKpiComponent, CmacsListItemMetaComponent, CmacsListItemComponent, CmacsListComponent, CmacsMessageComponent, CmacsMessageBaseService, CmacsMessageService, CmacsMessageContainerComponent, CMACS_MESSAGE_DEFAULT_CONFIG, CMACS_MESSAGE_CONFIG, CMACS_MESSAGE_DEFAULT_CONFIG_PROVIDER, CmacsCompactTableComponent, SIGNATURE_LOCALIZATION, CmacsSignatureComponent, CmacsSectionComponent, CmacsTooltipComponent, CmacsTooltipDirective, CmacsPopoverComponent, CmacsPopoverDirective, higherOrderServiceFactory, CmacsTreeSelectComponent, CmacsTreeSelectService, CmacsTimelineDatepickerComponent, CmacsXlsxLoaderComponent, CmacsDashboardWidgetContainerComponent as ɵm, AbstractPickerComponent as ɵb, CalendarFooterComponent as ɵbd, CalendarHeaderComponent as ɵbb, CalendarInputComponent as ɵbc, OkButtonComponent as ɵbe, TimePickerButtonComponent as ɵbf, TodayButtonComponent as ɵbg, DateTableComponent as ɵbh, DecadePanelComponent as ɵbl, MonthPanelComponent as ɵbj, MonthTableComponent as ɵbk, DateRangePopupComponent as ɵbn, InnerPopupComponent as ɵbm, YearPanelComponent as ɵbi, CmacsDropdownService as ɵbo, CmacsMenuDropdownService as ɵn, CmacsFormControlComponent as ɵt, CmacsFormExplainComponent as ɵr, CmacsFormExtraComponent as ɵo, CmacsFormItemComponent as ɵq, CmacsFormLabelComponent as ɵp, CmacsFormSplitComponent as ɵv, CmacsFormTextComponent as ɵu, CmacsFormDirective as ɵs, CmacsKpiGroupComponent as ɵk, CmacsMenuServiceFactory as ɵe, CmacsMenuService as ɵd, CmacsSubmenuService as ɵc, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵy, CmacsOptionGroupComponent as ɵh, CmacsOptionLiComponent as ɵz, NzFilterGroupOptionPipe as ɵx, NzFilterOptionPipe as ɵw, CmacsSelectUnselectableDirective as ɵba, CmacsSelectService as ɵg, CmacsTreeService as ɵf, ExcelService as ɵa, UtilService as ɵl };
+export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsDividerComponent, CmacsFloatingMenuComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, CmacsDateCellDirective, CmacsMonthCellDirective, CmacsDateFullCellDirective, CmacsMonthFullCellDirective, CmacsCalendarHeaderComponent, CmacsCalendarComponent, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, WidgetActionType, WidgetType, WidgetDataType, CmacsModalRef, CmacsDropdownADirective, CmacsProgressComponent, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, CmacsDashboardSwitchPanelComponent, CmacsDashboardWidgetPanelComponent, CmacsKPIOverviewComponent, CmacsGeneralChartComponent, CmacsStatusDistributionComponent, CmacsNormalizedHorizontalBarGroupedComponent, CmacsNormalizedHorizontalBarChartComponent, CmacsAlertComponent, CmacsCommentComponent, CmacsCommentAvatarDirective, CmacsCommentContentDirective, CmacsCommentActionHostDirective, CmacsCommentActionComponent, CmacsSliderComponent, CmacsSliderHandleComponent, CmacsSliderMarksComponent, CmacsSliderStepComponent, CmacsSliderTrackComponent, isValueARange, isConfigAObject, Marks, CmacsDatetimePickerPanelComponent, CmacsDateTimePickerComponent, CmacsDatetimeValueAccessorDirective, CmacsVideoPlayerComponent, CmacsPhoneNumberComponent, CmacsKanbanComponent, CmacsColorPickerComponent, CmacsSwitchComponent, CmacsTabComponent, CmacsTabDirective, CmacsTabBodyComponent, CmacsTabLabelDirective, CmacsTabsInkBarDirective, CmacsTabsNavComponent, TabChangeEvent, CmacsTabsetComponent, CmacsSidePanelComponent, CmacsOpenTextareaComponent, CmacsMoveableListComponent, CmacsGridConfigurationModalComponent, CmacsOpenInputComponent, KPI_COLORS, CmacsKpiComponent, CmacsListItemMetaComponent, CmacsListItemComponent, CmacsListComponent, CmacsMessageComponent, CmacsMessageBaseService, CmacsMessageService, CmacsMessageContainerComponent, CMACS_MESSAGE_DEFAULT_CONFIG, CMACS_MESSAGE_CONFIG, CMACS_MESSAGE_DEFAULT_CONFIG_PROVIDER, CmacsCompactTableComponent, SIGNATURE_LOCALIZATION, CmacsSignatureComponent, CmacsSectionComponent, CmacsTooltipComponent, CmacsTooltipDirective, CmacsPopoverComponent, CmacsPopoverDirective, higherOrderServiceFactory, CmacsTreeSelectComponent, CmacsTreeSelectService, CmacsTimelineDatepickerComponent, CmacsXlsxLoaderComponent, CmacsComboChartComponent as ɵk, CmacsComboSeriesVerticalComponent as ɵl, CmacsDashboardWidgetContainerComponent as ɵo, AbstractPickerComponent as ɵb, CalendarFooterComponent as ɵbf, CalendarHeaderComponent as ɵbd, CalendarInputComponent as ɵbe, OkButtonComponent as ɵbg, TimePickerButtonComponent as ɵbh, TodayButtonComponent as ɵbi, DateTableComponent as ɵbj, DecadePanelComponent as ɵbn, MonthPanelComponent as ɵbl, MonthTableComponent as ɵbm, DateRangePopupComponent as ɵbp, InnerPopupComponent as ɵbo, YearPanelComponent as ɵbk, CmacsDropdownService as ɵbq, CmacsMenuDropdownService as ɵp, CmacsFormControlComponent as ɵv, CmacsFormExplainComponent as ɵt, CmacsFormExtraComponent as ɵq, CmacsFormItemComponent as ɵs, CmacsFormLabelComponent as ɵr, CmacsFormSplitComponent as ɵx, CmacsFormTextComponent as ɵw, CmacsFormDirective as ɵu, CmacsKpiGroupComponent as ɵm, CmacsMenuServiceFactory as ɵe, CmacsMenuService as ɵd, CmacsSubmenuService as ɵc, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵba, CmacsOptionGroupComponent as ɵh, CmacsOptionLiComponent as ɵbb, NzFilterGroupOptionPipe as ɵz, NzFilterOptionPipe as ɵy, CmacsSelectUnselectableDirective as ɵbc, CmacsSelectService as ɵg, CmacsTreeService as ɵf, ExcelService as ɵa, UtilService as ɵn };
 
 //# sourceMappingURL=cmacs-components-lib.js.map
