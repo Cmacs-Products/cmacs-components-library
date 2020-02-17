@@ -84,6 +84,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     editId: string | null;
     property: string | null;
     rowOnEdition: number;
+    tapCount: number;
     inputElement: ElementRef;
     inputNumberElement: ElementRef;
     datePickerElement: ElementRef;
@@ -127,6 +128,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     exportToExcel(fileName: string): void;
     exportToPdf(fileName: string): void;
     ngOnDestroy(): void;
+    tapHandler($event: any, data: any): void;
     clickRow(data: any): void;
     dblClickRow(data: any): void;
 }

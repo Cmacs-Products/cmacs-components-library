@@ -5,9 +5,6 @@ import { UtilService } from '../core/services/util.service';
 export declare class CmacsNormalizedHorizontalBarChartComponent implements OnInit, AfterViewInit {
     private util;
     clickMenu: EventEmitter<any>;
-    headerText: string;
-    footerText: string;
-    footerValue: string;
     data: ChartDataMulti[];
     colorScheme: {
         domain: string[];

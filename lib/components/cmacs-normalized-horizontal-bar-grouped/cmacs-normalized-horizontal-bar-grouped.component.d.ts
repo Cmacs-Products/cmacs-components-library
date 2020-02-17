@@ -5,9 +5,6 @@ import { WidgetActionType } from '../core/enums/widget-action-type.enum';
 export declare class CmacsNormalizedHorizontalBarGroupedComponent implements OnInit, AfterViewInit {
     private util;
     clickMenu: EventEmitter<any>;
-    headerText: string;
-    footerText: string;
-    footerValue: string;
     data: ChartDataMulti[];
     colorScheme: {
         domain: string[];

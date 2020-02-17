@@ -42,12 +42,13 @@ export declare class CmacsSignatureComponent {
         'Browse Computer': string;
     };
     current: number;
-    signaturePadOptions: Object;
     files: any[];
     i18n: any;
     oncancel: EventEmitter<boolean>;
+    signaturePadOptions: Object;
     onsubmit: EventEmitter<any>;
     signaturePad: SignaturePad;
+    ondrawend: EventEmitter<any>;
     constructor(fb: FormBuilder, msg: CmacsMessageService);
     ngAfterViewInit(): void;
     beforeUpload: (file: UploadFile) => boolean;

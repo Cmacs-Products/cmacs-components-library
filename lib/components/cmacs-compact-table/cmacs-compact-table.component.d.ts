@@ -172,6 +172,8 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     ngOnDestroy(): void;
     clickRow(data: any): void;
     dblClickRow(data: any): void;
+    tapCount: number;
+    tapHandler($event: any, data: any): void;
     clickBooleanCell(data: any, id: any, property: string, event: MouseEvent): void;
     emitOnEditEvent(): void;
     getClassMap(field: Field): {

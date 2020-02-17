@@ -5,9 +5,6 @@ export declare class CmacsStatusDistributionComponent implements OnInit, AfterVi
     private util;
     columnTemplate: TemplateRef<{}>;
     clickMenu: EventEmitter<any>;
-    headerText: string;
-    footerText: string;
-    footerValue: string;
     data: any[];
     columnsHeader: string[];
     id: any;

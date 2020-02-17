@@ -2,9 +2,6 @@ import { OnInit } from '@angular/core';
 import { WidgetActionType } from '../core/enums/widget-action-type.enum';
 import { WidgetDataType } from '../core/enums/widget-type.enum';
 export declare class CmacsGeneralChartComponent implements OnInit {
-    headerText: string;
-    footerText: string;
-    footerValue: string;
     data: any[];
     chartSelected: WidgetActionType;
     dataType: WidgetDataType;
