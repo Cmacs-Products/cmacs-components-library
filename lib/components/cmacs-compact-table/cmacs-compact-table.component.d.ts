@@ -11,6 +11,7 @@ import { CookieService } from "ngx-cookie-service";
 import { CheckboxSelect } from "../cmacs-grid/cmacs-table.component";
 import { CdkDragDrop } from "@angular/cdk/drag-drop";
 import { NzDropdownContextComponent, NzDropdownService } from "ng-zorro-antd";
+import { CmacsInputNumberComponent } from "../cmacs-input-number/cmacs-input-number.component";
 export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnChanges, OnDestroy, AfterViewInit {
     private cdr;
     private i18n;
@@ -104,6 +105,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     fieldID: any;
     inputElement: ElementRef;
     inputNumberElement: ElementRef;
+    inputNumberComponent: CmacsInputNumberComponent;
     datePickerElement: ElementRef;
     dateTimePickerElement: ElementRef;
     selectElement: ElementRef;
