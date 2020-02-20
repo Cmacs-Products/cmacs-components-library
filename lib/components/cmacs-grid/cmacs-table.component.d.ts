@@ -109,11 +109,11 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     getLabel(data: any, field: Field): string;
     isSelect(field: Field): boolean;
     isReadOnly(field: Field): boolean;
-    isNumber(value: any): boolean;
-    isString(value: any): boolean;
     isBoolean(value: any): boolean;
     isObject(value: any): boolean;
     isDate(field: Field): boolean;
+    isString(field: Field): boolean;
+    isNumber(field: Field): boolean;
     isCeldTypeDefault(field: Field): boolean;
     isCeldTypeButton(field: Field): boolean;
     isCeldTypeTag(field: Field): boolean;
