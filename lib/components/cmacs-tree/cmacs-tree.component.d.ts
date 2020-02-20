@@ -96,7 +96,7 @@ export declare class CmacsTreeComponent extends NzTreeBase implements OnInit, On
     constructor(nzTreeService: CmacsTreeService, cdr: ChangeDetectorRef, noAnimation?: NzNoAnimationDirective);
     onKeydownHandler(event: any): void;
     ngOnInit(): void;
-    onSelectionMultiple(selectedNode: any): void;
+    onSelectionMultiple(selectedNode: NzFormatEmitEvent): void;
     ngOnChanges(changes: {
         [propertyName: string]: SimpleChange;
     }): void;

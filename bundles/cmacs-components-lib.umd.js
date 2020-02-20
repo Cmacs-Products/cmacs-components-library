@@ -7802,10 +7802,11 @@
                 var emitStructure = {};
                 emitStructure = {
                     eventName: 'selectedMultiple',
-                    node: nodesSelected.map(( /**
+                    selectedKeys: nodesSelected.map(( /**
                      * @param {?} n
                      * @return {?}
                      */function (n) { return n.key; })),
+                    node: selectedNode.node,
                     event: null
                 };
                 this.nzClick.emit(( /** @type {?} */(emitStructure)));
