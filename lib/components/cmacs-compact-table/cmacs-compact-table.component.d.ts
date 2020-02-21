@@ -176,7 +176,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     dblClickRow(data: any): void;
     tapCount: number;
     tapHandler($event: any, data: any): void;
-    clickBooleanCell(data: any, id: any, property: string, event: MouseEvent): void;
+    clickBooleanCell(data: any, id: any, property: string, index: number): void;
     emitOnEditEvent(): void;
     getClassMap(field: Field): {
         [x: string]: number | boolean;

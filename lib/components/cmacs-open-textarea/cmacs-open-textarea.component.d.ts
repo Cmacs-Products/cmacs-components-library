@@ -1,16 +1,16 @@
-import { AfterViewInit, ElementRef, EventEmitter } from '@angular/core';
+import { AfterViewInit, ElementRef } from '@angular/core';
+import { FormControl } from "@angular/forms";
 export declare class CmacsOpenTextareaComponent implements AfterViewInit {
-    value: string;
-    valueChange: EventEmitter<string>;
+    formControlCustom: FormControl;
     width: number;
+    placeholder: string;
     allowEdition: boolean;
     enableDivider: boolean;
     textarea: ElementRef;
     constructor();
     onClick(event: Event): void;
     isEnabled(): boolean;
-    isTextEnabled(): boolean;
+    isTextEnabled(): any;
     startEdition($event: Event): void;
     ngAfterViewInit(): void;
-    updateModel(): void;
 }

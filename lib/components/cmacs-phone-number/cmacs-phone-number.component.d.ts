@@ -1,6 +1,8 @@
 import { EventEmitter } from '@angular/core';
+import { FormControl } from "@angular/forms";
 export declare class CmacsPhoneNumberComponent {
     init: object;
+    formControlCustom: FormControl;
     hasError: EventEmitter<any>;
     telOutput: EventEmitter<any>;
     inputObject: EventEmitter<any>;
