@@ -7802,10 +7802,7 @@
                 var emitStructure = {};
                 emitStructure = {
                     eventName: 'selectedMultiple',
-                    selectedKeys: nodesSelected.map(( /**
-                     * @param {?} n
-                     * @return {?}
-                     */function (n) { return n.key; })),
+                    selectedKeys: nodesSelected,
                     node: selectedNode.node,
                     event: null
                 };
