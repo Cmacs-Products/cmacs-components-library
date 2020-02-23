@@ -42,7 +42,7 @@ import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, Type, inject, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -6592,26 +6592,16 @@ class CmacsTreeComponent extends NzTreeBase {
      */
     onSelectionMultiple(selectedNode) {
         /** @type {?} */
-        let flatNodesList = [];
-        /** @type {?} */
-        let idxs = [];
+        let endNodeFound = false;
         /** @type {?} */
         let nodesSelected = this.nzTreeService.getSelectedNodeList();
         /** @type {?} */
         const nodesSelectedCount = nodesSelected.length;
-        this.nzNodes.forEach((/**
-         * @param {?} node
-         * @return {?}
-         */
-        node => {
-            flatNodesList = this.convertTreeToList(node, selectedNode.node, nodesSelected[nodesSelectedCount - 1], idxs, flatNodesList);
-        }));
-        /** @type {?} */
-        let i = idxs[0];
-        for (i; i <= idxs[1]; i++) {
-            if (flatNodesList[i].isSelectable) {
-                flatNodesList[i].isSelected = true;
+        for (let i = 0; i < this.nzNodes.length; i++) {
+            if (endNodeFound) {
+                break;
             }
+            endNodeFound = this.convertTreeToList(this.nzNodes[i], selectedNode.node, nodesSelected[nodesSelectedCount - 1]);
         }
         nodesSelected = (/** @type {?} */ (this.nzTreeService.getSelectedNodeList()));
         /** @type {?} */
@@ -6664,11 +6654,9 @@ class CmacsTreeComponent extends NzTreeBase {
      * @param {?} root
      * @param {?} endNode
      * @param {?} startNode
-     * @param {?} idxs
-     * @param {?} array
      * @return {?}
      */
-    convertTreeToList(root, endNode, startNode, idxs, array) {
+    convertTreeToList(root, endNode, startNode) {
         /** @type {?} */
         let stack = [];
         /** @type {?} */
@@ -6677,9 +6665,15 @@ class CmacsTreeComponent extends NzTreeBase {
         while (stack.length !== 0) {
             /** @type {?} */
             let node = stack.pop();
-            this.visitNode(node, hashMap, array);
-            if (endNode.key === node.key || startNode.key === node.key) {
-                idxs.push(array.length - 1);
+            this.visitNode(node, hashMap);
+            if (!startNode.parentNode && !node.parentNode) {
+                node.isSelected = true;
+            }
+            if (startNode.parentNode === node.parentNode) {
+                node.isSelected = true;
+            }
+            if (endNode.key === node.key) {
+                return true;
             }
             if (node.children.length) {
                 for (let i = node.children.length - 1; i >= 0; i--) {
@@ -6687,18 +6681,16 @@ class CmacsTreeComponent extends NzTreeBase {
                 }
             }
         }
-        return array;
+        return false;
     }
     /**
      * @param {?} node
      * @param {?} hashMap
-     * @param {?} array
      * @return {?}
      */
-    visitNode(node, hashMap, array) {
+    visitNode(node, hashMap) {
         if (!hashMap[node.key]) {
             hashMap[node.key] = true;
-            array.push(node);
         }
     }
 }

@@ -102,6 +102,6 @@ export declare class CmacsTreeComponent extends NzTreeBase implements OnInit, On
     }): void;
     addParent(node: any, index?: any): void;
     ngOnDestroy(): void;
-    convertTreeToList(root: any, endNode: any, startNode: any, idxs: any, array: any): any;
-    visitNode(node: any, hashMap: any, array: any): void;
+    convertTreeToList(root: any, endNode: any, startNode: any): boolean;
+    visitNode(node: any, hashMap: any): void;
 }
