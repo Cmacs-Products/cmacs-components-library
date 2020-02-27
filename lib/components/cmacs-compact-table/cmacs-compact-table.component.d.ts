@@ -183,4 +183,5 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
         [`cmacs-compact-table-logs-header-th`]: boolean;
         [`cmacs-compact-table-logs-header-th-font`]: boolean;
     };
+    getMaxWidth(width: any): string;
 }

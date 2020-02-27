@@ -74,6 +74,8 @@ export declare class CmacsTreeNodeComponent implements OnInit, OnChanges, OnDest
      * click node to select, 200ms to dbl click
      */
     nzClick(event: MouseEvent): void;
+    checkSubTreeSelection(): boolean;
+    visitNode(node: any, hashMap: any): void;
     nzDblClick(event: MouseEvent): void;
     /**
      * @param event
