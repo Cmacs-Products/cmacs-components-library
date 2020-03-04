@@ -102,6 +102,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
         [key: string]: any[];
     };
     defaultTimeValue: Date;
+    lastIdxSelected: any;
     fieldID: any;
     inputElement: ElementRef;
     inputNumberElement: ElementRef;
@@ -172,7 +173,9 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     exportTreeExcelRec(data: any, dataToExport: any): void;
     exportToPdf(fileName: string): void;
     ngOnDestroy(): void;
-    clickRow(data: any): void;
+    clickRow(event: MouseEvent, data: any): void;
+    removeSelection(data: any): void;
+    selectMultiple(currentIdx: any): void;
     dblClickRow(data: any): void;
     tapCount: number;
     tapHandler($event: any, data: any): void;
@@ -183,5 +186,5 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
         [`cmacs-compact-table-logs-header-th`]: boolean;
         [`cmacs-compact-table-logs-header-th-font`]: boolean;
     };
-    getMaxWidth(width: any): string;
+    getMaxWidth(field: Field, item: any, i: number): string;
 }

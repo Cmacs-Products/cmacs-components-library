@@ -85,6 +85,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     property: string | null;
     rowOnEdition: number;
     tapCount: number;
+    lastIdxSelected: any;
     inputElement: ElementRef;
     inputNumberElement: ElementRef;
     datePickerElement: ElementRef;
@@ -129,7 +130,9 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     exportToPdf(fileName: string): void;
     ngOnDestroy(): void;
     tapHandler($event: any, data: any): void;
-    clickRow(data: any): void;
+    clickRow(event: MouseEvent, data: any): void;
+    removeSelection(data: any): void;
+    selectMultiple(currentIdx: any): void;
     dblClickRow(data: any): void;
 }
 export interface CheckboxSelect {
