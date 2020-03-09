@@ -14996,17 +14996,17 @@
      */
     /** @type {?} */
     var defaultDisabledTime = {
-        disabledHours: /**
+        nzDisabledHours: /**
          * @return {?}
          */ function () {
             return [];
         },
-        disabledMinutes: /**
+        nzDisabledMinutes: /**
          * @return {?}
          */ function () {
             return [];
         },
-        disabledSeconds: /**
+        nzDisabledSeconds: /**
          * @return {?}
          */ function () {
             return [];
@@ -15039,13 +15039,13 @@
             /** @type {?} */
             var seconds = value.getSeconds();
             /** @type {?} */
-            var disabledHours = disabledTimeConfig.disabledHours();
+            var disabledHours = disabledTimeConfig.nzDisabledHours();
             if (disabledHours.indexOf(hour) === -1) {
                 /** @type {?} */
-                var disabledMinutes = disabledTimeConfig.disabledMinutes(hour);
+                var disabledMinutes = disabledTimeConfig.nzDisabledMinutes(hour);
                 if (disabledMinutes.indexOf(minutes) === -1) {
                     /** @type {?} */
-                    var disabledSeconds = disabledTimeConfig.disabledSeconds(hour, minutes);
+                    var disabledSeconds = disabledTimeConfig.nzDisabledSeconds(hour, minutes);
                     invalidTime = disabledSeconds.indexOf(seconds) !== -1;
                 }
                 else {

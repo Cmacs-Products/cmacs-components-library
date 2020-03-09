@@ -36,13 +36,13 @@ import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName
 import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
 import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
 import { addMonths, addYears, endOfMonth, setDay, setMonth, addDays, differenceInCalendarDays, differenceInCalendarMonths, differenceInCalendarWeeks, isSameDay, isSameMonth, isSameYear, isThisMonth, isThisYear, setYear, startOfMonth, startOfWeek, startOfYear, getISOWeek, getISOWeeksInYear, getISOYear } from 'date-fns';
-import { __extends, __assign, __decorate, __metadata, __values, __spread, __read } from 'tslib';
+import { __assign, __decorate, __metadata, __extends, __values, __spread, __read } from 'tslib';
 import { InputBoolean as InputBoolean$1, NzDropdownService, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
 import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, ComponentFactoryResolver, defineInjectable, NgModule, inject, Type, Injector, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, Pipe, InjectionToken, ComponentFactoryResolver, defineInjectable, NgModule, Type, Injector, inject, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -15129,19 +15129,19 @@ var MonthTableComponent = /** @class */ (function () {
  */
 /** @type {?} */
 var defaultDisabledTime = {
-    disabledHours: /**
+    nzDisabledHours: /**
      * @return {?}
      */
     function () {
         return [];
     },
-    disabledMinutes: /**
+    nzDisabledMinutes: /**
      * @return {?}
      */
     function () {
         return [];
     },
-    disabledSeconds: /**
+    nzDisabledSeconds: /**
      * @return {?}
      */
     function () {
@@ -15175,13 +15175,13 @@ function isTimeValidByConfig(value, disabledTimeConfig) {
         /** @type {?} */
         var seconds = value.getSeconds();
         /** @type {?} */
-        var disabledHours = disabledTimeConfig.disabledHours();
+        var disabledHours = disabledTimeConfig.nzDisabledHours();
         if (disabledHours.indexOf(hour) === -1) {
             /** @type {?} */
-            var disabledMinutes = disabledTimeConfig.disabledMinutes(hour);
+            var disabledMinutes = disabledTimeConfig.nzDisabledMinutes(hour);
             if (disabledMinutes.indexOf(minutes) === -1) {
                 /** @type {?} */
-                var disabledSeconds = disabledTimeConfig.disabledSeconds(hour, minutes);
+                var disabledSeconds = disabledTimeConfig.nzDisabledSeconds(hour, minutes);
                 invalidTime = disabledSeconds.indexOf(seconds) !== -1;
             }
             else {
