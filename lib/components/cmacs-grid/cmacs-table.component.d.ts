@@ -51,6 +51,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
         $implicit: 'page' | 'prev' | 'next';
         page: number;
     }>;
+    printLandscape: boolean;
     frontPagination: boolean;
     templateMode: boolean;
     bordered: boolean;

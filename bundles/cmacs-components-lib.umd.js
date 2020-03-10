@@ -6380,6 +6380,7 @@
             this.configChange = new i0.EventEmitter();
             this.paginationPosition = 'bottom';
             this.scroll = { x: null, y: null };
+            this.printLandscape = false;
             this.frontPagination = true;
             this.templateMode = false;
             this.bordered = false;
@@ -7035,7 +7036,7 @@
             function (fileName) {
                 var _this = this;
                 /** @type {?} */
-                var doc = new jsPDF();
+                var doc = !this.printLandscape ? new jsPDF() : new jsPDF('l', 'pt');
                 /** @type {?} */
                 var columns = [];
                 /** @type {?} */
@@ -7288,6 +7289,7 @@
             paginationPosition: [{ type: i0.Input }],
             scroll: [{ type: i0.Input }],
             nzItemRender: [{ type: i0.Input }, { type: i0.ViewChild, args: ['renderItemTemplate',] }],
+            printLandscape: [{ type: i0.Input }],
             frontPagination: [{ type: i0.Input }],
             templateMode: [{ type: i0.Input }],
             bordered: [{ type: i0.Input }],
@@ -7327,6 +7329,10 @@
             i2.InputNumber(),
             __metadata("design:type", Object)
         ], CmacsGridComponent.prototype, "virtualItemSize", void 0);
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsGridComponent.prototype, "printLandscape", void 0);
         __decorate([
             i2.InputBoolean(),
             __metadata("design:type", Object)

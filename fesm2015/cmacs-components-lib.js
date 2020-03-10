@@ -42,7 +42,7 @@ import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, InjectionToken, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, Type, inject, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, Pipe, InjectionToken, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -5422,6 +5422,7 @@ class CmacsGridComponent {
         this.configChange = new EventEmitter();
         this.paginationPosition = 'bottom';
         this.scroll = { x: null, y: null };
+        this.printLandscape = false;
         this.frontPagination = true;
         this.templateMode = false;
         this.bordered = false;
@@ -5932,7 +5933,7 @@ class CmacsGridComponent {
      */
     exportToPdf(fileName) {
         /** @type {?} */
-        const doc = new jsPDF();
+        const doc = !this.printLandscape ? new jsPDF() : new jsPDF('l', 'pt');
         /** @type {?} */
         const columns = [];
         /** @type {?} */
@@ -6172,6 +6173,7 @@ CmacsGridComponent.propDecorators = {
     paginationPosition: [{ type: Input }],
     scroll: [{ type: Input }],
     nzItemRender: [{ type: Input }, { type: ViewChild, args: ['renderItemTemplate',] }],
+    printLandscape: [{ type: Input }],
     frontPagination: [{ type: Input }],
     templateMode: [{ type: Input }],
     bordered: [{ type: Input }],
@@ -6211,6 +6213,10 @@ __decorate([
     InputNumber(),
     __metadata("design:type", Object)
 ], CmacsGridComponent.prototype, "virtualItemSize", void 0);
+__decorate([
+    InputBoolean(),
+    __metadata("design:type", Object)
+], CmacsGridComponent.prototype, "printLandscape", void 0);
 __decorate([
     InputBoolean(),
     __metadata("design:type", Object)
