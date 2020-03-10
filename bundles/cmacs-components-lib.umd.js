@@ -6994,10 +6994,15 @@
                     _this.config.fields.filter(( /**
                      * @param {?} item
                      * @return {?}
-                     */function (item) { return item.celdType === CeldType.Default; })).forEach(( /**
-                     * @param {?} field
-                     * @return {?}
-                     */function (field) {
+                     */function (item) {
+                        return item.celdType === CeldType.Default ||
+                            item.celdType === CeldType.Tag ||
+                            item.celdType === CeldType.TemplateRef;
+                    }))
+                        .forEach(( /**
+                 * @param {?} field
+                 * @return {?}
+                 */function (field) {
                         if (field.editTemplate === TemplateType.Select) {
                             /** @type {?} */
                             var selectItem = field.select.selectData.find(( /**
@@ -7008,18 +7013,12 @@
                                 itemToExport[field.display] = selectItem[field.select.label];
                             }
                         }
+                        else if (field.celdType === CeldType.TemplateRef) {
+                            itemToExport[field.display] = item[field.property].context.exportValue;
+                        }
                         else {
                             itemToExport[field.display] = item[field.property];
                         }
-                    }));
-                    _this.config.fields.filter(( /**
-                     * @param {?} item
-                     * @return {?}
-                     */function (item) { return item.celdType === CeldType.TemplateRef; })).forEach(( /**
-                     * @param {?} field
-                     * @return {?}
-                     */function (field) {
-                        itemToExport[field.display] = item[field.property].context.exportValue;
                     }));
                     dataToExport.push(itemToExport);
                 }));
@@ -7044,7 +7043,7 @@
                 this.config.fields.filter(( /**
                  * @param {?} item
                  * @return {?}
-                 */function (item) { return item.celdType === CeldType.Default; })).forEach(( /**
+                 */function (item) { return item.celdType === CeldType.Default || item.celdType === CeldType.Tag; })).forEach(( /**
                  * @param {?} field
                  * @return {?}
                  */function (field) {
@@ -7069,7 +7068,7 @@
                     _this.config.fields.filter(( /**
                      * @param {?} item
                      * @return {?}
-                     */function (item) { return item.celdType === CeldType.Default; })).forEach(( /**
+                     */function (item) { return item.celdType === CeldType.Default || item.celdType === CeldType.Tag; })).forEach(( /**
                      * @param {?} field
                      * @return {?}
                      */function (field) {
