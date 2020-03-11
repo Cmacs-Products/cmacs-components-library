@@ -6981,9 +6981,17 @@
          * @return {?}
          */
             function (fileName) {
-                var _this = this;
                 /** @type {?} */
                 var dataToExport = [];
+                /** @type {?} */
+                var fields = this.config.fields.filter(( /**
+                 * @param {?} item
+                 * @return {?}
+                 */function (item) {
+                    return item.celdType === CeldType.Default ||
+                        item.celdType === CeldType.Tag ||
+                        item.celdType === CeldType.TemplateRef;
+                }));
                 this.data.forEach(( /**
                  * @param {?} item
                  * @return {?}
@@ -6991,18 +6999,10 @@
                     /** @type {?} */
                     var itemToExport = {};
                     // tslint:disable-next-line: no-shadowed-variable
-                    _this.config.fields.filter(( /**
-                     * @param {?} item
+                    fields.forEach(( /**
+                     * @param {?} field
                      * @return {?}
-                     */function (item) {
-                        return item.celdType === CeldType.Default ||
-                            item.celdType === CeldType.Tag ||
-                            item.celdType === CeldType.TemplateRef;
-                    }))
-                        .forEach(( /**
-                 * @param {?} field
-                 * @return {?}
-                 */function (field) {
+                     */function (field) {
                         if (field.editTemplate === TemplateType.Select) {
                             /** @type {?} */
                             var selectItem = field.select.selectData.find(( /**
@@ -7043,19 +7043,14 @@
                 this.config.fields.filter(( /**
                  * @param {?} item
                  * @return {?}
-                 */function (item) { return item.celdType === CeldType.Default || item.celdType === CeldType.Tag; })).forEach(( /**
-                 * @param {?} field
-                 * @return {?}
-                 */function (field) {
-                    columns.push(field.display);
-                }));
-                this.config.fields.filter(( /**
-                 * @param {?} item
-                 * @return {?}
-                 */function (item) { return item.celdType === CeldType.TemplateRef; })).forEach(( /**
-                 * @param {?} field
-                 * @return {?}
-                 */function (field) {
+                 */function (item) {
+                    return item.celdType === CeldType.Default ||
+                        item.celdType === CeldType.Tag ||
+                        item.celdType === CeldType.TemplateRef;
+                })).forEach(( /**
+             * @param {?} field
+             * @return {?}
+             */function (field) {
                     columns.push(field.display);
                 }));
                 this.data.forEach(( /**
@@ -7068,37 +7063,33 @@
                     _this.config.fields.filter(( /**
                      * @param {?} item
                      * @return {?}
-                     */function (item) { return item.celdType === CeldType.Default || item.celdType === CeldType.Tag; })).forEach(( /**
+                     */function (item) {
+                        return item.celdType === CeldType.Default ||
+                            item.celdType === CeldType.Tag ||
+                            item.celdType === CeldType.TemplateRef;
+                    })).forEach(( /**
                      * @param {?} field
                      * @return {?}
                      */function (field) {
-                        switch (field.editTemplate) {
-                            case TemplateType.Select:
-                                /** @type {?} */
-                                var selectItem = field.select.selectData.find(( /**
-                                 * @param {?} option
-                                 * @return {?}
-                                 */function (option) { return option[field.select.value] === item[field.property]; }));
-                                if (selectItem !== undefined) {
-                                    itemToExport.push(selectItem[field.select.label]);
-                                }
-                                break;
-                            case TemplateType.Date:
-                                itemToExport.push(_this.datePipe.transform(item[field.property], 'MMMM dd yyyy'));
-                                break;
-                            default:
-                                itemToExport.push(item[field.property]);
-                                break;
+                        if (field.editTemplate === TemplateType.Select) {
+                            /** @type {?} */
+                            var selectItem = field.select.selectData.find(( /**
+                             * @param {?} option
+                             * @return {?}
+                             */function (option) { return option[field.select.value] === item[field.property]; }));
+                            if (selectItem !== undefined) {
+                                itemToExport.push(selectItem[field.select.label]);
+                            }
                         }
-                    }));
-                    _this.config.fields.filter(( /**
-                     * @param {?} item
-                     * @return {?}
-                     */function (item) { return item.celdType === CeldType.TemplateRef; })).forEach(( /**
-                     * @param {?} field
-                     * @return {?}
-                     */function (field) {
-                        itemToExport.push(item[field.property].context.exportValue);
+                        else if (field.editTemplate === TemplateType.Date) {
+                            itemToExport.push(_this.datePipe.transform(item[field.property], 'MMMM dd yyyy'));
+                        }
+                        else if (field.celdType === CeldType.TemplateRef) {
+                            itemToExport.push(item[field.property].context.exportValue);
+                        }
+                        else {
+                            itemToExport.push(item[field.property]);
+                        }
                     }));
                     rows.push(itemToExport);
                 }));

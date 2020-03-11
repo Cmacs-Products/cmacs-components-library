@@ -42,7 +42,7 @@ import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, InjectionToken, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, Type, inject, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -5880,6 +5880,14 @@ class CmacsGridComponent {
     exportToExcel(fileName) {
         /** @type {?} */
         const dataToExport = [];
+        /** @type {?} */
+        const fields = this.config.fields.filter((/**
+         * @param {?} item
+         * @return {?}
+         */
+        item => item.celdType === CeldType.Default ||
+            item.celdType === CeldType.Tag ||
+            item.celdType === CeldType.TemplateRef));
         this.data.forEach((/**
          * @param {?} item
          * @return {?}
@@ -5888,14 +5896,7 @@ class CmacsGridComponent {
             /** @type {?} */
             const itemToExport = {};
             // tslint:disable-next-line: no-shadowed-variable
-            this.config.fields.filter((/**
-             * @param {?} item
-             * @return {?}
-             */
-            item => item.celdType === CeldType.Default ||
-                item.celdType === CeldType.Tag ||
-                item.celdType === CeldType.TemplateRef))
-                .forEach((/**
+            fields.forEach((/**
              * @param {?} field
              * @return {?}
              */
@@ -5937,18 +5938,9 @@ class CmacsGridComponent {
          * @param {?} item
          * @return {?}
          */
-        item => item.celdType === CeldType.Default || item.celdType === CeldType.Tag)).forEach((/**
-         * @param {?} field
-         * @return {?}
-         */
-        field => {
-            columns.push(field.display);
-        }));
-        this.config.fields.filter((/**
-         * @param {?} item
-         * @return {?}
-         */
-        item => item.celdType === CeldType.TemplateRef)).forEach((/**
+        item => item.celdType === CeldType.Default ||
+            item.celdType === CeldType.Tag ||
+            item.celdType === CeldType.TemplateRef)).forEach((/**
          * @param {?} field
          * @return {?}
          */
@@ -5967,41 +5959,33 @@ class CmacsGridComponent {
              * @param {?} item
              * @return {?}
              */
-            item => item.celdType === CeldType.Default || item.celdType === CeldType.Tag)).forEach((/**
+            item => item.celdType === CeldType.Default ||
+                item.celdType === CeldType.Tag ||
+                item.celdType === CeldType.TemplateRef)).forEach((/**
              * @param {?} field
              * @return {?}
              */
             field => {
-                switch (field.editTemplate) {
-                    case TemplateType.Select:
-                        /** @type {?} */
-                        const selectItem = field.select.selectData.find((/**
-                         * @param {?} option
-                         * @return {?}
-                         */
-                        option => option[field.select.value] === item[field.property]));
-                        if (selectItem !== undefined) {
-                            itemToExport.push(selectItem[field.select.label]);
-                        }
-                        break;
-                    case TemplateType.Date:
-                        itemToExport.push(this.datePipe.transform(item[field.property], 'MMMM dd yyyy'));
-                        break;
-                    default:
-                        itemToExport.push(item[field.property]);
-                        break;
+                if (field.editTemplate === TemplateType.Select) {
+                    /** @type {?} */
+                    const selectItem = field.select.selectData.find((/**
+                     * @param {?} option
+                     * @return {?}
+                     */
+                    option => option[field.select.value] === item[field.property]));
+                    if (selectItem !== undefined) {
+                        itemToExport.push(selectItem[field.select.label]);
+                    }
                 }
-            }));
-            this.config.fields.filter((/**
-             * @param {?} item
-             * @return {?}
-             */
-            item => item.celdType === CeldType.TemplateRef)).forEach((/**
-             * @param {?} field
-             * @return {?}
-             */
-            field => {
-                itemToExport.push(item[field.property].context.exportValue);
+                else if (field.editTemplate === TemplateType.Date) {
+                    itemToExport.push(this.datePipe.transform(item[field.property], 'MMMM dd yyyy'));
+                }
+                else if (field.celdType === CeldType.TemplateRef) {
+                    itemToExport.push(item[field.property].context.exportValue);
+                }
+                else {
+                    itemToExport.push(item[field.property]);
+                }
             }));
             rows.push(itemToExport);
         }));
