@@ -62,6 +62,7 @@ export declare class CmacsCardComponent implements OnInit {
     value: any;
     selectedChange: EventEmitter<boolean>;
     goToModule: EventEmitter<string>;
+    todoUserAssigned: TemplateRef<void>;
     iconClick: EventEmitter<string>;
     constructor(cdr: ChangeDetectorRef, renderer: Renderer2, sanitizer: DomSanitizer, elementRef: ElementRef);
     openMail($event: Event): void;
