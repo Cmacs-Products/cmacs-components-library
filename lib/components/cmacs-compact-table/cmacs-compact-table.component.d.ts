@@ -141,7 +141,6 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     isSelect(field: Field): boolean;
     isString(field: Field): boolean;
     isReadOnly(field: Field): boolean;
-    isTypeNumber(value: any): boolean;
     isNumber(field: Field): boolean;
     isBoolean(field: any): boolean;
     isObject(value: any): boolean;
