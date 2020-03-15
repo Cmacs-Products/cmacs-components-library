@@ -13,6 +13,7 @@ export interface Field {
     property?: string;
     width?: string;
     minWidth?: string;
+    showTooltip?: boolean;
     ngClass?: string;
     hidden?: boolean;
     select?: SelectConfig;
