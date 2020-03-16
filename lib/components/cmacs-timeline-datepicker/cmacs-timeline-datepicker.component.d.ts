@@ -1,6 +1,7 @@
 import { AfterContentChecked, ChangeDetectorRef, ElementRef, EventEmitter, OnChanges, OnInit, Renderer2, SimpleChanges } from '@angular/core';
 import { NzUpdateHostClassService } from 'ng-zorro-antd/core';
 import { TabChangeEvent } from "../cmacs-tabs/cmacs-tabset.component";
+import 'moment/locale/en-ie';
 export declare type CmacsTimelineDatePickerMode = 'week' | 'quarter' | 'month' | 'week-range' | 'month-range';
 export declare class CmacsTimelineDatepickerComponent implements AfterContentChecked, OnInit, OnChanges {
     private renderer;
@@ -18,6 +19,13 @@ export declare class CmacsTimelineDatepickerComponent implements AfterContentChe
     mode: CmacsTimelineDatePickerMode;
     restrictMode: boolean;
     ranged: boolean;
+    weekLocale: {
+        week: {
+            dow: number;
+            doy: number;
+        };
+    };
+    locale: string;
     readonly onNextClick: EventEmitter<void>;
     readonly onPrevClick: EventEmitter<void>;
     readonly selectChange: EventEmitter<TabChangeEvent>;
