@@ -3127,6 +3127,7 @@
             ];
         };
         CmacsDateRangePickerComponent.propDecorators = {
+            showWeek: [{ type: i0.Input }],
             dateRender: [{ type: i0.Input }],
             disabledTime: [{ type: i0.Input }],
             renderExtraFooter: [{ type: i0.Input }],
