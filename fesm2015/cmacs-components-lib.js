@@ -44,7 +44,7 @@ import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, Pipe, InjectionToken, ViewChildren, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -21865,6 +21865,7 @@ class CmacsMoveableListComponent {
         this.header = 'Default Title';
         this.data = [];
         this.dataChange = new EventEmitter();
+        this.displayChange = new EventEmitter();
         this.selectedChange = new EventEmitter();
         this.onEditIdx = null;
         this.allowEdition = false;
@@ -21888,6 +21889,7 @@ class CmacsMoveableListComponent {
                 this.allowEdition = false;
                 if (this.onEditIdx !== null && this.onEditIdx < this.data.length) {
                     this.data[this.onEditIdx].display = this.formControl.value;
+                    this.displayChange.emit(this.data[this.onEditIdx]);
                 }
                 this.onEditIdx = null;
             }
@@ -21924,6 +21926,7 @@ class CmacsMoveableListComponent {
      */
     stopEdition() {
         this.data[this.onEditIdx].display = this.formControl.value;
+        this.displayChange.emit(this.data[this.onEditIdx]);
         this.onEditIdx = null;
         this.allowEdition = false;
     }
@@ -21979,6 +21982,7 @@ CmacsMoveableListComponent.propDecorators = {
     header: [{ type: Input }],
     data: [{ type: Input }],
     dataChange: [{ type: Output }],
+    displayChange: [{ type: Output }],
     selectedChange: [{ type: Output }],
     handleClick: [{ type: HostListener, args: ['window:click', ['$event'],] }]
 };

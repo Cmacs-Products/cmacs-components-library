@@ -38,13 +38,13 @@ import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMa
 import { addMonths, addYears, endOfMonth, setDay, setMonth, addDays, differenceInCalendarDays, differenceInCalendarMonths, differenceInCalendarWeeks, isSameDay, isSameMonth, isSameYear, isThisMonth, isThisYear, setYear, startOfMonth, startOfWeek, startOfYear, getISOWeek, getISOWeeksInYear, getISOYear } from 'date-fns';
 import * as moment_ from 'moment';
 import 'moment/locale/en-ie';
-import { __assign, __decorate, __metadata, __extends, __values, __spread, __read } from 'tslib';
+import { __extends, __assign, __decorate, __metadata, __values, __spread, __read } from 'tslib';
 import { InputBoolean as InputBoolean$1, NzDropdownService, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
 import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, inject, Type, Injector, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, InjectionToken, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, inject, Injector, Type, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -26029,6 +26029,7 @@ var CmacsMoveableListComponent = /** @class */ (function () {
         this.header = 'Default Title';
         this.data = [];
         this.dataChange = new EventEmitter();
+        this.displayChange = new EventEmitter();
         this.selectedChange = new EventEmitter();
         this.onEditIdx = null;
         this.allowEdition = false;
@@ -26056,6 +26057,7 @@ var CmacsMoveableListComponent = /** @class */ (function () {
                 this.allowEdition = false;
                 if (this.onEditIdx !== null && this.onEditIdx < this.data.length) {
                     this.data[this.onEditIdx].display = this.formControl.value;
+                    this.displayChange.emit(this.data[this.onEditIdx]);
                 }
                 this.onEditIdx = null;
             }
@@ -26104,6 +26106,7 @@ var CmacsMoveableListComponent = /** @class */ (function () {
      */
     function () {
         this.data[this.onEditIdx].display = this.formControl.value;
+        this.displayChange.emit(this.data[this.onEditIdx]);
         this.onEditIdx = null;
         this.allowEdition = false;
     };
@@ -26166,6 +26169,7 @@ var CmacsMoveableListComponent = /** @class */ (function () {
         header: [{ type: Input }],
         data: [{ type: Input }],
         dataChange: [{ type: Output }],
+        displayChange: [{ type: Output }],
         selectedChange: [{ type: Output }],
         handleClick: [{ type: HostListener, args: ['window:click', ['$event'],] }]
     };

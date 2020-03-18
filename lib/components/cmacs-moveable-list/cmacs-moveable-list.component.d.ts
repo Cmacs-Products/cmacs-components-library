@@ -13,6 +13,7 @@ export declare class CmacsMoveableListComponent {
     header: string;
     data: MoveableListItem[];
     dataChange: EventEmitter<MoveableListItem[]>;
+    displayChange: EventEmitter<MoveableListItem>;
     selectedChange: EventEmitter<number>;
     onEditIdx: number;
     allowEdition: boolean;

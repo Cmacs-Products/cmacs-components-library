@@ -25828,6 +25828,7 @@
             this.header = 'Default Title';
             this.data = [];
             this.dataChange = new i0.EventEmitter();
+            this.displayChange = new i0.EventEmitter();
             this.selectedChange = new i0.EventEmitter();
             this.onEditIdx = null;
             this.allowEdition = false;
@@ -25855,6 +25856,7 @@
                         this.allowEdition = false;
                         if (this.onEditIdx !== null && this.onEditIdx < this.data.length) {
                             this.data[this.onEditIdx].display = this.formControl.value;
+                            this.displayChange.emit(this.data[this.onEditIdx]);
                         }
                         this.onEditIdx = null;
                     }
@@ -25903,6 +25905,7 @@
          */
             function () {
                 this.data[this.onEditIdx].display = this.formControl.value;
+                this.displayChange.emit(this.data[this.onEditIdx]);
                 this.onEditIdx = null;
                 this.allowEdition = false;
             };
@@ -25964,6 +25967,7 @@
             header: [{ type: i0.Input }],
             data: [{ type: i0.Input }],
             dataChange: [{ type: i0.Output }],
+            displayChange: [{ type: i0.Output }],
             selectedChange: [{ type: i0.Output }],
             handleClick: [{ type: i0.HostListener, args: ['window:click', ['$event'],] }]
         };
