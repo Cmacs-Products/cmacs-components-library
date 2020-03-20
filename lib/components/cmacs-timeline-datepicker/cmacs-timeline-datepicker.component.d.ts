@@ -55,6 +55,9 @@ export declare class CmacsTimelineDatepickerComponent implements AfterContentChe
     ngOnChanges(changes: SimpleChanges): void;
     updateSelectedMode(): void;
     getValuesSlider(): any[];
+    getDefaultMonths(): {
+        title: string;
+    }[];
     getWeeksInYear(date: Date): any[];
     formatWeekNumber(value: number): string;
     ngAfterContentChecked(): void;
