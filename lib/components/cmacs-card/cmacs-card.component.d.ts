@@ -63,7 +63,7 @@ export declare class CmacsCardComponent implements OnInit {
     selectedChange: EventEmitter<boolean>;
     goToModule: EventEmitter<string>;
     todoUserAssigned: TemplateRef<void>;
-    iconClick: EventEmitter<string>;
+    iconToDoClick: EventEmitter<any>;
     constructor(cdr: ChangeDetectorRef, renderer: Renderer2, sanitizer: DomSanitizer, elementRef: ElementRef);
     openMail($event: Event): void;
     ngOnInit(): void;
@@ -78,6 +78,6 @@ export declare class CmacsCardComponent implements OnInit {
     toggleEdit(titleContainer: any): void;
     getInitials(name: any): any;
     getBackgroundImage(): import("@angular/platform-browser").SafeStyle;
-    iconsClick(icon: string): void;
+    iconsToDoClick(icon: string): void;
     goToModuleToDo(event: any, url: string): void;
 }
