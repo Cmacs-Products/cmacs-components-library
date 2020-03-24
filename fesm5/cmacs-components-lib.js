@@ -44,7 +44,7 @@ import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, inject, Type, Injector, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, Pipe, InjectionToken, ComponentFactoryResolver, defineInjectable, NgModule, Type, Injector, inject, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -17466,9 +17466,16 @@ var KPI_COLORS = [
     '#688cda',
     '#bec4cd'
 ];
+/** @type {?} */
+var KPI_PRIORITY_COLORS = {
+    high: '#f6503c',
+    medium: '#00ce7d',
+    low: '#ffc634'
+};
 var CmacsKpiComponent = /** @class */ (function () {
     function CmacsKpiComponent(sanitizer) {
         this.sanitizer = sanitizer;
+        this.priority = false;
         this.type = 'line';
         this.width = 84;
         this.showTotalCount = false;
@@ -17519,6 +17526,29 @@ var CmacsKpiComponent = /** @class */ (function () {
             //to create the doughnut chart
             this.drawPieSlice(ctx, canvas.width / 2, canvas.height / 2, 0.8 * Math.min(canvas.width / 2, canvas.height / 2), 0, 2 * Math.PI, "#ffffff");
         }
+    };
+    /**
+     * @return {?}
+     */
+    CmacsKpiComponent.prototype.getColoredDataPriority = /**
+     * @return {?}
+     */
+    function () {
+        /** @type {?} */
+        var coloredData = [];
+        this.data.forEach((/**
+         * @param {?} item
+         * @return {?}
+         */
+        function (item) {
+            coloredData.push({
+                count: item.count,
+                description: item.description,
+                color: KPI_PRIORITY_COLORS[item.priority],
+                opacity: 1
+            });
+        }));
+        return coloredData;
     };
     /**
      * @param {?} ctx
@@ -17640,47 +17670,52 @@ var CmacsKpiComponent = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        /** @type {?} */
-        var coloredData = [];
-        /** @type {?} */
-        var remaining = this.data.length % KPI_COLORS.length;
-        /** @type {?} */
-        var rate = this.data.length / KPI_COLORS.length;
-        if (remaining > 0) {
-            rate = Math.trunc(rate) + 1;
+        if (!this.priority) {
+            /** @type {?} */
+            var coloredData_1 = [];
+            /** @type {?} */
+            var remaining = this.data.length % KPI_COLORS.length;
+            /** @type {?} */
+            var rate_1 = this.data.length / KPI_COLORS.length;
+            if (remaining > 0) {
+                rate_1 = Math.trunc(rate_1) + 1;
+            }
+            /** @type {?} */
+            var tempRate_1 = rate_1;
+            /** @type {?} */
+            var opacity_1 = 1;
+            /** @type {?} */
+            var colorIndex_1 = 0;
+            this.data.forEach((/**
+             * @param {?} item
+             * @return {?}
+             */
+            function (item) {
+                if (tempRate_1 === 0) {
+                    tempRate_1 = rate_1;
+                    colorIndex_1 += 1;
+                    opacity_1 = 1;
+                }
+                if (colorIndex_1 >= KPI_COLORS.length) {
+                    colorIndex_1 = 0;
+                }
+                if (opacity_1 === 0.4) {
+                    opacity_1 = 1;
+                }
+                coloredData_1.push({
+                    count: item.count,
+                    description: item.description,
+                    color: KPI_COLORS[colorIndex_1],
+                    opacity: opacity_1
+                });
+                opacity_1 = opacity_1 - 0.2;
+                tempRate_1--;
+            }));
+            return coloredData_1;
         }
-        /** @type {?} */
-        var tempRate = rate;
-        /** @type {?} */
-        var opacity = 1;
-        /** @type {?} */
-        var colorIndex = 0;
-        this.data.forEach((/**
-         * @param {?} item
-         * @return {?}
-         */
-        function (item) {
-            if (tempRate === 0) {
-                tempRate = rate;
-                colorIndex += 1;
-                opacity = 1;
-            }
-            if (colorIndex >= KPI_COLORS.length) {
-                colorIndex = 0;
-            }
-            if (opacity === 0.4) {
-                opacity = 1;
-            }
-            coloredData.push({
-                count: item.count,
-                description: item.description,
-                color: KPI_COLORS[colorIndex],
-                opacity: opacity
-            });
-            opacity = opacity - 0.2;
-            tempRate--;
-        }));
-        return coloredData;
+        else {
+            return this.getColoredDataPriority();
+        }
     };
     CmacsKpiComponent.decorators = [
         { type: Component, args: [{
@@ -17697,11 +17732,16 @@ var CmacsKpiComponent = /** @class */ (function () {
     CmacsKpiComponent.propDecorators = {
         data: [{ type: Input }],
         title: [{ type: Input }],
+        priority: [{ type: Input }],
         type: [{ type: Input }],
         width: [{ type: Input }],
         showTotalCount: [{ type: Input }],
         canvasRef: [{ type: ViewChild, args: ['canvas', { read: ElementRef },] }]
     };
+    __decorate([
+        InputBoolean$1(),
+        __metadata("design:type", Object)
+    ], CmacsKpiComponent.prototype, "priority", void 0);
     __decorate([
         InputBoolean$1(),
         __metadata("design:type", Object)
@@ -32157,6 +32197,6 @@ var ModeTabType = {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsDividerComponent, CmacsFloatingMenuComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, CmacsDateCellDirective, CmacsMonthCellDirective, CmacsDateFullCellDirective, CmacsMonthFullCellDirective, CmacsCalendarHeaderComponent, CmacsCalendarComponent, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, WidgetActionType, WidgetType, WidgetDataType, CmacsModalRef, CmacsDropdownADirective, CmacsProgressComponent, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, CmacsKPIOverviewComponent, CmacsGeneralChartComponent, CmacsStatusDistributionComponent, CmacsNormalizedHorizontalBarGroupedComponent, CmacsNormalizedHorizontalBarChartComponent, CmacsAlertComponent, CmacsCommentComponent, CmacsCommentAvatarDirective, CmacsCommentContentDirective, CmacsCommentActionHostDirective, CmacsCommentActionComponent, CmacsSliderComponent, CmacsSliderHandleComponent, CmacsSliderMarksComponent, CmacsSliderStepComponent, CmacsSliderTrackComponent, isValueARange, isConfigAObject, Marks, CmacsDatetimePickerPanelComponent, CmacsDateTimePickerComponent, CmacsDatetimeValueAccessorDirective, CmacsVideoPlayerComponent, CmacsPhoneNumberComponent, CmacsKanbanComponent, CmacsColorPickerComponent, CmacsSwitchComponent, CmacsTabComponent, CmacsTabDirective, CmacsTabBodyComponent, CmacsTabLabelDirective, CmacsTabsInkBarDirective, CmacsTabsNavComponent, TabChangeEvent, CmacsTabsetComponent, CmacsSidePanelComponent, CmacsOpenTextareaComponent, CmacsMoveableListComponent, CmacsGridConfigurationModalComponent, CmacsOpenInputComponent, KPI_COLORS, CmacsKpiComponent, CmacsListItemMetaComponent, CmacsListItemComponent, CmacsListComponent, CmacsMessageComponent, CmacsMessageBaseService, CmacsMessageService, CmacsMessageContainerComponent, CMACS_MESSAGE_DEFAULT_CONFIG, CMACS_MESSAGE_CONFIG, CMACS_MESSAGE_DEFAULT_CONFIG_PROVIDER, CmacsCompactTableComponent, SIGNATURE_LOCALIZATION, CmacsSignatureComponent, CmacsSectionComponent, CmacsTooltipComponent, CmacsTooltipDirective, CmacsPopoverComponent, CmacsPopoverDirective, higherOrderServiceFactory, CmacsTreeSelectComponent, CmacsTreeSelectService, CmacsTimelineDatepickerComponent, CmacsXlsxLoaderComponent, CmacsComboChartComponent as ɵk, CmacsComboSeriesVerticalComponent as ɵl, AbstractPickerComponent as ɵb, CalendarFooterComponent as ɵbe, CalendarHeaderComponent as ɵbc, CalendarInputComponent as ɵbd, OkButtonComponent as ɵbf, TimePickerButtonComponent as ɵbg, TodayButtonComponent as ɵbh, DateTableComponent as ɵbi, DecadePanelComponent as ɵbm, MonthPanelComponent as ɵbk, MonthTableComponent as ɵbl, DateRangePopupComponent as ɵbo, InnerPopupComponent as ɵbn, YearPanelComponent as ɵbj, CmacsDropdownService as ɵbp, CmacsMenuDropdownService as ɵo, CmacsFormControlComponent as ɵu, CmacsFormExplainComponent as ɵs, CmacsFormExtraComponent as ɵp, CmacsFormItemComponent as ɵr, CmacsFormLabelComponent as ɵq, CmacsFormSplitComponent as ɵw, CmacsFormTextComponent as ɵv, CmacsFormDirective as ɵt, CmacsKpiGroupComponent as ɵm, CmacsMenuServiceFactory as ɵe, CmacsMenuService as ɵd, CmacsSubmenuService as ɵc, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵz, CmacsOptionGroupComponent as ɵh, CmacsOptionLiComponent as ɵba, NzFilterGroupOptionPipe as ɵy, NzFilterOptionPipe as ɵx, CmacsSelectUnselectableDirective as ɵbb, CmacsSelectService as ɵg, CmacsTreeService as ɵf, ExcelService as ɵa, UtilService as ɵn };
+export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsDividerComponent, CmacsFloatingMenuComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, CmacsDateCellDirective, CmacsMonthCellDirective, CmacsDateFullCellDirective, CmacsMonthFullCellDirective, CmacsCalendarHeaderComponent, CmacsCalendarComponent, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, WidgetActionType, WidgetType, WidgetDataType, CmacsModalRef, CmacsDropdownADirective, CmacsProgressComponent, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, CmacsKPIOverviewComponent, CmacsGeneralChartComponent, CmacsStatusDistributionComponent, CmacsNormalizedHorizontalBarGroupedComponent, CmacsNormalizedHorizontalBarChartComponent, CmacsAlertComponent, CmacsCommentComponent, CmacsCommentAvatarDirective, CmacsCommentContentDirective, CmacsCommentActionHostDirective, CmacsCommentActionComponent, CmacsSliderComponent, CmacsSliderHandleComponent, CmacsSliderMarksComponent, CmacsSliderStepComponent, CmacsSliderTrackComponent, isValueARange, isConfigAObject, Marks, CmacsDatetimePickerPanelComponent, CmacsDateTimePickerComponent, CmacsDatetimeValueAccessorDirective, CmacsVideoPlayerComponent, CmacsPhoneNumberComponent, CmacsKanbanComponent, CmacsColorPickerComponent, CmacsSwitchComponent, CmacsTabComponent, CmacsTabDirective, CmacsTabBodyComponent, CmacsTabLabelDirective, CmacsTabsInkBarDirective, CmacsTabsNavComponent, TabChangeEvent, CmacsTabsetComponent, CmacsSidePanelComponent, CmacsOpenTextareaComponent, CmacsMoveableListComponent, CmacsGridConfigurationModalComponent, CmacsOpenInputComponent, KPI_COLORS, KPI_PRIORITY_COLORS, CmacsKpiComponent, CmacsListItemMetaComponent, CmacsListItemComponent, CmacsListComponent, CmacsMessageComponent, CmacsMessageBaseService, CmacsMessageService, CmacsMessageContainerComponent, CMACS_MESSAGE_DEFAULT_CONFIG, CMACS_MESSAGE_CONFIG, CMACS_MESSAGE_DEFAULT_CONFIG_PROVIDER, CmacsCompactTableComponent, SIGNATURE_LOCALIZATION, CmacsSignatureComponent, CmacsSectionComponent, CmacsTooltipComponent, CmacsTooltipDirective, CmacsPopoverComponent, CmacsPopoverDirective, higherOrderServiceFactory, CmacsTreeSelectComponent, CmacsTreeSelectService, CmacsTimelineDatepickerComponent, CmacsXlsxLoaderComponent, CmacsComboChartComponent as ɵk, CmacsComboSeriesVerticalComponent as ɵl, AbstractPickerComponent as ɵb, CalendarFooterComponent as ɵbe, CalendarHeaderComponent as ɵbc, CalendarInputComponent as ɵbd, OkButtonComponent as ɵbf, TimePickerButtonComponent as ɵbg, TodayButtonComponent as ɵbh, DateTableComponent as ɵbi, DecadePanelComponent as ɵbm, MonthPanelComponent as ɵbk, MonthTableComponent as ɵbl, DateRangePopupComponent as ɵbo, InnerPopupComponent as ɵbn, YearPanelComponent as ɵbj, CmacsDropdownService as ɵbp, CmacsMenuDropdownService as ɵo, CmacsFormControlComponent as ɵu, CmacsFormExplainComponent as ɵs, CmacsFormExtraComponent as ɵp, CmacsFormItemComponent as ɵr, CmacsFormLabelComponent as ɵq, CmacsFormSplitComponent as ɵw, CmacsFormTextComponent as ɵv, CmacsFormDirective as ɵt, CmacsKpiGroupComponent as ɵm, CmacsMenuServiceFactory as ɵe, CmacsMenuService as ɵd, CmacsSubmenuService as ɵc, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵz, CmacsOptionGroupComponent as ɵh, CmacsOptionLiComponent as ɵba, NzFilterGroupOptionPipe as ɵy, NzFilterOptionPipe as ɵx, CmacsSelectUnselectableDirective as ɵbb, CmacsSelectService as ɵg, CmacsTreeService as ɵf, ExcelService as ɵa, UtilService as ɵn };
 
 //# sourceMappingURL=cmacs-components-lib.js.map

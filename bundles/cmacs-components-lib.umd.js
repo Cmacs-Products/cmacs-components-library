@@ -17311,9 +17311,16 @@
         '#688cda',
         '#bec4cd'
     ];
+    /** @type {?} */
+    var KPI_PRIORITY_COLORS = {
+        high: '#f6503c',
+        medium: '#00ce7d',
+        low: '#ffc634'
+    };
     var CmacsKpiComponent = /** @class */ (function () {
         function CmacsKpiComponent(sanitizer) {
             this.sanitizer = sanitizer;
+            this.priority = false;
             this.type = 'line';
             this.width = 84;
             this.showTotalCount = false;
@@ -17370,6 +17377,28 @@
                     //to create the doughnut chart
                     this.drawPieSlice(ctx, canvas.width / 2, canvas.height / 2, 0.8 * Math.min(canvas.width / 2, canvas.height / 2), 0, 2 * Math.PI, "#ffffff");
                 }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsKpiComponent.prototype.getColoredDataPriority = /**
+         * @return {?}
+         */
+            function () {
+                /** @type {?} */
+                var coloredData = [];
+                this.data.forEach(( /**
+                 * @param {?} item
+                 * @return {?}
+                 */function (item) {
+                    coloredData.push({
+                        count: item.count,
+                        description: item.description,
+                        color: KPI_PRIORITY_COLORS[item.priority],
+                        opacity: 1
+                    });
+                }));
+                return coloredData;
             };
         /**
          * @param {?} ctx
@@ -17490,46 +17519,51 @@
          * @return {?}
          */
             function () {
-                /** @type {?} */
-                var coloredData = [];
-                /** @type {?} */
-                var remaining = this.data.length % KPI_COLORS.length;
-                /** @type {?} */
-                var rate = this.data.length / KPI_COLORS.length;
-                if (remaining > 0) {
-                    rate = Math.trunc(rate) + 1;
+                if (!this.priority) {
+                    /** @type {?} */
+                    var coloredData_1 = [];
+                    /** @type {?} */
+                    var remaining = this.data.length % KPI_COLORS.length;
+                    /** @type {?} */
+                    var rate_1 = this.data.length / KPI_COLORS.length;
+                    if (remaining > 0) {
+                        rate_1 = Math.trunc(rate_1) + 1;
+                    }
+                    /** @type {?} */
+                    var tempRate_1 = rate_1;
+                    /** @type {?} */
+                    var opacity_1 = 1;
+                    /** @type {?} */
+                    var colorIndex_1 = 0;
+                    this.data.forEach(( /**
+                     * @param {?} item
+                     * @return {?}
+                     */function (item) {
+                        if (tempRate_1 === 0) {
+                            tempRate_1 = rate_1;
+                            colorIndex_1 += 1;
+                            opacity_1 = 1;
+                        }
+                        if (colorIndex_1 >= KPI_COLORS.length) {
+                            colorIndex_1 = 0;
+                        }
+                        if (opacity_1 === 0.4) {
+                            opacity_1 = 1;
+                        }
+                        coloredData_1.push({
+                            count: item.count,
+                            description: item.description,
+                            color: KPI_COLORS[colorIndex_1],
+                            opacity: opacity_1
+                        });
+                        opacity_1 = opacity_1 - 0.2;
+                        tempRate_1--;
+                    }));
+                    return coloredData_1;
                 }
-                /** @type {?} */
-                var tempRate = rate;
-                /** @type {?} */
-                var opacity = 1;
-                /** @type {?} */
-                var colorIndex = 0;
-                this.data.forEach(( /**
-                 * @param {?} item
-                 * @return {?}
-                 */function (item) {
-                    if (tempRate === 0) {
-                        tempRate = rate;
-                        colorIndex += 1;
-                        opacity = 1;
-                    }
-                    if (colorIndex >= KPI_COLORS.length) {
-                        colorIndex = 0;
-                    }
-                    if (opacity === 0.4) {
-                        opacity = 1;
-                    }
-                    coloredData.push({
-                        count: item.count,
-                        description: item.description,
-                        color: KPI_COLORS[colorIndex],
-                        opacity: opacity
-                    });
-                    opacity = opacity - 0.2;
-                    tempRate--;
-                }));
-                return coloredData;
+                else {
+                    return this.getColoredDataPriority();
+                }
             };
         CmacsKpiComponent.decorators = [
             { type: i0.Component, args: [{
@@ -17548,11 +17582,16 @@
         CmacsKpiComponent.propDecorators = {
             data: [{ type: i0.Input }],
             title: [{ type: i0.Input }],
+            priority: [{ type: i0.Input }],
             type: [{ type: i0.Input }],
             width: [{ type: i0.Input }],
             showTotalCount: [{ type: i0.Input }],
             canvasRef: [{ type: i0.ViewChild, args: ['canvas', { read: i0.ElementRef },] }]
         };
+        __decorate([
+            ngZorroAntd.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsKpiComponent.prototype, "priority", void 0);
         __decorate([
             ngZorroAntd.InputBoolean(),
             __metadata("design:type", Object)
@@ -31999,6 +32038,7 @@
     exports.CmacsGridConfigurationModalComponent = CmacsGridConfigurationModalComponent;
     exports.CmacsOpenInputComponent = CmacsOpenInputComponent;
     exports.KPI_COLORS = KPI_COLORS;
+    exports.KPI_PRIORITY_COLORS = KPI_PRIORITY_COLORS;
     exports.CmacsKpiComponent = CmacsKpiComponent;
     exports.CmacsListItemMetaComponent = CmacsListItemMetaComponent;
     exports.CmacsListItemComponent = CmacsListItemComponent;
