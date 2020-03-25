@@ -154,6 +154,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     isRowSelected(data: any): boolean;
     constructor(cdr: ChangeDetectorRef, i18n: NzI18nService, exportAsService: ExportAsService, excelService: ExcelService, datePipe: DatePipe, nzDropdownService: NzDropdownService, cookies: CookieService);
     ngAfterViewInit(): void;
+    setFieldsDefault(): void;
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
     exportTreePdf(fileName: string): void;
@@ -178,7 +179,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     dblClickRow(data: any): void;
     tapCount: number;
     tapHandler($event: any, data: any): void;
-    clickBooleanCell(data: any, id: any, property: string, index: number): void;
+    clickBooleanCell(data: any, id: any, field: Field, index: number): void;
     emitOnEditEvent(): void;
     getClassMap(field: Field): {
         [x: string]: number | boolean;
