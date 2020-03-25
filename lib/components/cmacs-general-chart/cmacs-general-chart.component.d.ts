@@ -13,7 +13,7 @@ export declare class CmacsGeneralChartComponent implements OnInit {
     yAxisLabel: string;
     showLegend: boolean;
     legendTitle: string;
-    view: any[];
+    view: number[];
     colorScheme: {
         domain: string[];
     };
