@@ -1,11 +1,15 @@
-import { OnInit, AfterViewInit, EventEmitter } from '@angular/core';
+import { OnInit, EventEmitter, OnChanges } from '@angular/core';
 import { WidgetActionType } from '../core/enums/widget-action-type.enum';
 import { ChartDataMulti } from '../core/interfaces/chart-data-interface';
 import { UtilService } from '../core/services/util.service';
-export declare class CmacsNormalizedHorizontalBarChartComponent implements OnInit, AfterViewInit {
+export declare class CmacsNormalizedHorizontalBarChartComponent implements OnInit, OnChanges {
     private util;
     clickMenu: EventEmitter<any>;
     data: ChartDataMulti[];
+    view: number[];
+    minWidth: number;
+    width: number;
+    pw: number;
     colorScheme: {
         domain: string[];
     };
@@ -13,6 +17,6 @@ export declare class CmacsNormalizedHorizontalBarChartComponent implements OnIni
     legend: string[];
     constructor(util: UtilService);
     ngOnInit(): void;
-    ngAfterViewInit(): void;
+    ngOnChanges(): void;
     menuClick(type: WidgetActionType): void;
 }
