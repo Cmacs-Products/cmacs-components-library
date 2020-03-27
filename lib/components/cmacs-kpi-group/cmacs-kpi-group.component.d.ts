@@ -1,21 +1,33 @@
-import { OnInit, TemplateRef, EventEmitter, AfterViewInit, ElementRef } from '@angular/core';
+import { OnInit, TemplateRef, EventEmitter, AfterViewInit, ElementRef, OnChanges } from '@angular/core';
 import { WidgetActionType } from '../core/enums/widget-action-type.enum';
-export declare class CmacsKpiGroupComponent implements OnInit, AfterViewInit {
+export declare class CmacsKpiGroupComponent implements OnInit, AfterViewInit, OnChanges {
     columnTemplate: TemplateRef<{}>;
     canvasRef: ElementRef;
     clickMenu: EventEmitter<any>;
     headerText: string;
     footerText: string;
     footerValue: string;
+    view: number[];
     data: any[];
     columnsHeader: string[];
     width: number;
+    minCol2: number;
+    col2: number;
+    minCol3: number;
+    col3: number;
+    minWidth: number;
+    showChart: boolean;
+    scrollY: number;
     dataTable: any[];
     configurationExpandableRows: any;
     loading: boolean;
     selectedItem: string;
+    scroll: {
+        y: string;
+    };
     constructor();
     ngOnInit(): void;
+    ngOnChanges(): void;
     ngAfterViewInit(): void;
     drawCanvas(): void;
     drawPieSlice(ctx: CanvasRenderingContext2D, centerX: number, centerY: number, radius: number, startAngle: number, endAngle: number, color: any, lineWidth: number): void;
