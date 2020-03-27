@@ -17839,16 +17839,14 @@
             // chart
             this.chartWidth = 104;
             this.fontChartNumber = 20;
-            this.minCol2 = 150;
             this.col2 = 150;
-            this.minCol3 = 70;
             this.col3 = 70;
             this.minWidth = 300;
             this.showChart = false;
             this.scrollY = 200;
             this.p = 1;
-            this.loading = true;
             this.scroll = { x: '300px', y: this.scrollY + 'px' };
+            this.loading = true;
         }
         /**
          * @return {?}
@@ -17866,6 +17864,8 @@
          */
             function () {
                 var _this = this;
+                this.setScroll();
+                //
                 this.p = 1;
                 if (this.view && this.view.length === 2) {
                     this.p = this.view[0] > this.minWidth ? this.view[0] / this.minWidth : 1;
@@ -17891,6 +17891,20 @@
          * @return {?}
          */
             function () {
+            };
+        /**
+         * @return {?}
+         */
+        CmacsKpiGroupComponent.prototype.setScroll = /**
+         * @return {?}
+         */
+            function () {
+                /** @type {?} */
+                var p = 1;
+                if (this.view && this.view.length === 2) {
+                    p = this.view[1] * 0.5 > this.scrollY ? this.view[1] * 0.5 / this.scrollY : 1;
+                }
+                this.scroll = { x: '300px', y: this.scrollY * p + 'px' };
             };
         /**
          * @return {?}
@@ -18196,6 +18210,15 @@
             this.util = util$$1;
             this.clickMenu = new i0.EventEmitter();
             this.columnsHeader = [];
+            // chart
+            this.col2 = 150;
+            this.col3 = 70;
+            this.minWidth = 300;
+            this.chartWidth = 300;
+            this.showChart = false;
+            this.scrollY = 200;
+            this.p = 1;
+            this.scroll = { x: '300px', y: this.scrollY + 'px' };
             this.id = util$$1.uuidv4();
         }
         /**
@@ -18209,18 +18232,49 @@
         /**
          * @return {?}
          */
-        CmacsStatusDistributionComponent.prototype.ngAfterViewInit = /**
+        CmacsStatusDistributionComponent.prototype.ngOnChanges = /**
          * @return {?}
          */
             function () {
                 var _this = this;
-                this.drawCanvas();
-                this.setConfiguration();
+                this.setScroll();
+                //
+                this.p = 1;
+                if (this.view && this.view.length === 2) {
+                    this.p = this.view[0] > this.minWidth ? this.view[0] / this.minWidth : 1;
+                }
+                //
+                this.showChart = false;
                 setTimeout(( /**
                  * @return {?}
                  */function () {
+                    _this.drawCanvas();
+                    _this.setConfiguration();
                     _this.setData();
                 }), 0);
+                this.showChart = true;
+            };
+        /**
+         * @return {?}
+         */
+        CmacsStatusDistributionComponent.prototype.ngAfterViewInit = /**
+         * @return {?}
+         */
+            function () {
+            };
+        /**
+         * @return {?}
+         */
+        CmacsStatusDistributionComponent.prototype.setScroll = /**
+         * @return {?}
+         */
+            function () {
+                /** @type {?} */
+                var p = 1;
+                if (this.view && this.view.length === 2) {
+                    p = this.view[1] * 0.5 > this.scrollY ? this.view[1] * 0.5 / this.scrollY : 1;
+                }
+                this.scroll = { x: '300px', y: this.scrollY * p + 'px' };
             };
         /**
          * @param {?} type
@@ -18253,13 +18307,13 @@
                             display: this.columnsHeader[0],
                             property: 'name',
                             editTemplate: 3,
-                            width: '150px',
+                            width: this.col2 * this.p + 'px',
                         },
                         {
                             celdType: 0,
                             display: this.columnsHeader[1],
                             property: 'value',
-                            width: '70px',
+                            width: this.col3 * this.p + 'px',
                             editTemplate: 2,
                             editable: false
                         }
@@ -18331,7 +18385,7 @@
                 /** @type {?} */
                 var canvas = ( /** @type {?} */(document.getElementById('canvas-' + this.id)));
                 canvas.height = 40;
-                canvas.width -= 7;
+                canvas.width = this.chartWidth * this.p;
                 if (canvas.getContext) {
                     /** @type {?} */
                     var context = canvas.getContext('2d');
@@ -18378,7 +18432,7 @@
         CmacsStatusDistributionComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'cmacs-status-distribution',
-                        template: "<div class=\"sd-content\">\r\n  <!-- Legend -->\r\n  <div nz-row class=\"legend-row\">\r\n    <span class=\"legend-column\" *ngFor=\"let item of data\">\r\n      <span [style.background-color]=\"item.color\" class=\"legend-bar\"></span>\r\n      <span class=\"legend-text\">{{item.name}}</span>\r\n    </span>\r\n  </div>\r\n  <!-- Chart -->\r\n  <div nz-row class=\"char-content\">\r\n    <canvas id=\"canvas-{{id}}\" class=\"chart-canvas\"></canvas>\r\n  </div>\r\n  <div nz-row>\r\n    <cmacs-compact-table *ngIf=\"dataTable\" [data]=\"dataTable\" [(config)]=\"configurationExpandableRows\" [indentSize]=\"40\"\r\n      [logs]=\"true\" [expandable]=\"true\" [scroll]=\"{ y: '200px' }\" [frontPagination]=\"false\" [showPagination]=\"false\">\r\n    </cmacs-compact-table>\r\n  </div>\r\n</div>\r\n<ng-template #columnTemplate let-color=\"color\">\r\n  <div class=\"chart-dot\" [style.background-color]=\"color\"></div>\r\n</ng-template>",
+                        template: "<div class=\"sd-content\" *ngIf=\"showChart\">\r\n  <!-- Legend -->\r\n  <div nz-row class=\"legend-row\">\r\n    <span class=\"legend-column\" *ngFor=\"let item of data\">\r\n      <span [style.background-color]=\"item.color\" class=\"legend-bar\"></span>\r\n      <span class=\"legend-text\">{{item.name}}</span>\r\n    </span>\r\n  </div>\r\n  <!-- Chart -->\r\n  <div nz-row class=\"char-content\">\r\n    <canvas id=\"canvas-{{id}}\" class=\"chart-canvas\"></canvas>\r\n  </div>\r\n  <div nz-row>\r\n    <cmacs-compact-table *ngIf=\"dataTable\" [data]=\"dataTable\" [(config)]=\"configurationExpandableRows\" [indentSize]=\"40\"\r\n      [logs]=\"true\" [expandable]=\"true\" [scroll]=\"scroll\" [frontPagination]=\"false\" [showPagination]=\"false\">\r\n    </cmacs-compact-table>\r\n  </div>\r\n</div>\r\n<ng-template #columnTemplate let-color=\"color\">\r\n  <div class=\"chart-dot\" [style.background-color]=\"color\"></div>\r\n</ng-template>",
                         styles: [".legend-bar{width:4px;height:10px;border-radius:5px;display:inline-block}.legend-row{width:100%;margin-bottom:30px}.legend-column{display:table-cell;float:left;font-family:Roboto;font-size:12px;color:#656c79}.legend-text{padding-left:6px;padding-right:20px}.chart-content{text-align:center}.sd-content{margin:0 12px}.chart-dot{width:9px;height:9px;border-radius:5px;display:inline-block}"]
                     }] }
         ];
@@ -18391,6 +18445,7 @@
         CmacsStatusDistributionComponent.propDecorators = {
             columnTemplate: [{ type: i0.ViewChild, args: ['columnTemplate', { read: i0.TemplateRef },] }],
             clickMenu: [{ type: i0.Output }],
+            view: [{ type: i0.Input }],
             data: [{ type: i0.Input }],
             columnsHeader: [{ type: i0.Input }]
         };
