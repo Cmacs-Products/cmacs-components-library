@@ -10,7 +10,8 @@ export declare class CmacsKpiGroupComponent implements OnInit, AfterViewInit, On
     view: number[];
     data: any[];
     columnsHeader: string[];
-    width: number;
+    chartWidth: number;
+    fontChartNumber: number;
     minCol2: number;
     col2: number;
     minCol3: number;
@@ -18,11 +19,13 @@ export declare class CmacsKpiGroupComponent implements OnInit, AfterViewInit, On
     minWidth: number;
     showChart: boolean;
     scrollY: number;
+    p: number;
     dataTable: any[];
     configurationExpandableRows: any;
     loading: boolean;
     selectedItem: string;
     scroll: {
+        x: string;
         y: string;
     };
     constructor();

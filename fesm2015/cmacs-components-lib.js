@@ -44,7 +44,7 @@ import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, NgModule, Injector, ComponentFactoryResolver, defineInjectable, Type, inject, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -15096,8 +15096,9 @@ class CmacsKpiGroupComponent {
         this.footerText = '';
         this.footerValue = '';
         this.columnsHeader = [];
-        //
-        this.width = 104;
+        // chart
+        this.chartWidth = 104;
+        this.fontChartNumber = 20;
         this.minCol2 = 150;
         this.col2 = 150;
         this.minCol3 = 70;
@@ -15105,8 +15106,9 @@ class CmacsKpiGroupComponent {
         this.minWidth = 300;
         this.showChart = false;
         this.scrollY = 200;
+        this.p = 1;
         this.loading = true;
-        this.scroll = { y: this.scrollY + 'px' };
+        this.scroll = { x: '300px', y: this.scrollY + 'px' };
     }
     /**
      * @return {?}
@@ -15117,6 +15119,11 @@ class CmacsKpiGroupComponent {
      * @return {?}
      */
     ngOnChanges() {
+        this.p = 1;
+        if (this.view && this.view.length === 2) {
+            this.p = this.view[0] > this.minWidth ? this.view[0] / this.minWidth : 1;
+        }
+        //
         this.showChart = false;
         setTimeout((/**
          * @return {?}
@@ -15149,8 +15156,8 @@ class CmacsKpiGroupComponent {
         if (this.canvasRef && item) {
             /** @type {?} */
             const canvas = (/** @type {?} */ (this.canvasRef.nativeElement));
-            canvas.width = this.width;
-            canvas.height = this.width;
+            canvas.width = this.chartWidth * this.p;
+            canvas.height = this.chartWidth * this.p;
             //
             /** @type {?} */
             const ctx = canvas.getContext('2d');
@@ -15177,11 +15184,11 @@ class CmacsKpiGroupComponent {
                 const totalG = this.getTotalCateg(categ.data);
                 /** @type {?} */
                 const sliceAngle = 2 * Math.PI * totalG / total;
-                this.drawPieSlice(ctx, canvas.width / 2, canvas.height / 2, Math.min(canvas.width / 2, canvas.height / 2) - ((this.selectedItem === categ.key) ? 10 : 6), startAngle, startAngle + sliceAngle - 0.05, categ.color, (this.selectedItem === categ.key) ? 15 : 7);
+                this.drawPieSlice(ctx, canvas.width / 2, canvas.height / 2, Math.min(canvas.width / 2, canvas.height / 2) - ((this.selectedItem === categ.key) ? 10 * this.p : 6 * this.p), startAngle, startAngle + sliceAngle - 0.05, categ.color, (this.selectedItem === categ.key) ? 15 * this.p : 7 * this.p);
                 startAngle += sliceAngle;
             }
             // draw value
-            ctx.font = '20px Roboto';
+            ctx.font = this.fontChartNumber * this.p + 'px Roboto ';
             ctx.fillStyle = '#3b3f46';
             ctx.textAlign = 'center';
             ctx.fillText('' + totalShow, canvas.width / 2, canvas.width / 2 + 5);
@@ -15225,6 +15232,7 @@ class CmacsKpiGroupComponent {
      * @return {?}
      */
     setConfiguration() {
+        //
         this.configurationExpandableRows = {
             fields: [
                 {
@@ -15238,13 +15246,13 @@ class CmacsKpiGroupComponent {
                     display: this.columnsHeader[0],
                     property: 'name',
                     editTemplate: 3,
-                    width: this.col2 + 'px',
+                    width: this.col2 * this.p + 'px',
                 },
                 {
                     celdType: 0,
                     display: this.columnsHeader[1],
                     property: 'value',
-                    width: this.col3 + 'px',
+                    width: this.col3 * this.p + 'px',
                     editTemplate: 2,
                     editable: false
                 }
@@ -15329,7 +15337,7 @@ class CmacsKpiGroupComponent {
 CmacsKpiGroupComponent.decorators = [
     { type: Component, args: [{
                 selector: 'cmacs-kpi-group',
-                template: "<div class=\"sd-content\" *ngIf=\"showChart\">\r\n  <!-- Legend -->\r\n  <div nz-row class=\"legend-row\">\r\n    <span class=\"legend-column\" *ngFor=\"let item of data\" (click)=\"changeData(item.key)\">\r\n      <span [style.background-color]=\"item.color\" class=\"legend-bar\"></span>\r\n      <span class=\"legend-text\">{{item.name}}</span>\r\n    </span>\r\n  </div>\r\n  <!-- Chart -->\r\n  <div nz-row class=\"chart-content\">\r\n    <canvas #chartcanvas class=\"chart-canvas\"></canvas>\r\n  </div>\r\n  <div nz-row>\r\n    <cmacs-compact-table *ngIf=\"!loading && dataTable; else elseBlock\" [data]=\"dataTable\"\r\n      [(config)]=\"configurationExpandableRows\" [indentSize]=\"40\" [logs]=\"true\" [expandable]=\"true\"\r\n      [scroll]=\"\" [frontPagination]=\"false\" [showPagination]=\"false\"></cmacs-compact-table>\r\n  </div>\r\n</div>\r\n<ng-template #columnTemplate let-color=\"color\">\r\n  <div class=\"chart-dot\" [style.background-color]=\"color\"></div>\r\n</ng-template>\r\n\r\n<ng-template #elseBlock>\r\n  <nz-skeleton [nzActive]=\"true\" [nzParagraph]=\"{ rows: 8 }\"></nz-skeleton>\r\n</ng-template>",
+                template: "<div class=\"sd-content\" *ngIf=\"showChart\">\r\n  <!-- Legend -->\r\n  <div nz-row class=\"legend-row\">\r\n    <span class=\"legend-column\" *ngFor=\"let item of data\" (click)=\"changeData(item.key)\">\r\n      <span [style.background-color]=\"item.color\" class=\"legend-bar\"></span>\r\n      <span class=\"legend-text\">{{item.name}}</span>\r\n    </span>\r\n  </div>\r\n  <!-- Chart -->\r\n  <div nz-row class=\"chart-content\">\r\n    <canvas #chartcanvas class=\"chart-canvas\"></canvas>\r\n  </div>\r\n  <div nz-row>\r\n    <cmacs-compact-table *ngIf=\"!loading && dataTable; else elseBlock\" [data]=\"dataTable\"\r\n      [(config)]=\"configurationExpandableRows\" [indentSize]=\"40\" [logs]=\"true\" [expandable]=\"true\"\r\n      [scroll]=\"scroll\" [frontPagination]=\"false\" [showPagination]=\"false\"></cmacs-compact-table>\r\n  </div>\r\n</div>\r\n<ng-template #columnTemplate let-color=\"color\">\r\n  <div class=\"chart-dot\" [style.background-color]=\"color\"></div>\r\n</ng-template>\r\n\r\n<ng-template #elseBlock>\r\n  <nz-skeleton [nzActive]=\"true\" [nzParagraph]=\"{ rows: 8 }\"></nz-skeleton>\r\n</ng-template>",
                 styles: [".legend-bar{width:4px;height:10px;border-radius:5px;display:inline-block}.legend-row{width:100%;margin-bottom:30px;display:-webkit-box;display:flex;place-content:flex-end}.legend-column{display:table-cell;float:left;font-family:Roboto;font-size:12px;color:#656c79;cursor:pointer}.legend-text{padding-left:6px;padding-right:20px}.sd-content{margin:0 12px}.chart-dot{width:9px;height:9px;border-radius:5px;display:inline-block}.chart-content{text-align:center;margin-bottom:15px}"]
             }] }
 ];
