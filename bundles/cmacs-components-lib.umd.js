@@ -8510,6 +8510,9 @@
                     // tslint:disable-next-line: no-non-null-assertion
                     ( /** @type {?} */(( /** @type {?} */(this.nzTreeService)).triggerEventChange$)).next(eventNext);
                 }
+                if (this.checkable) {
+                    this._clickCheckBox(event);
+                }
             };
         /**
          * @return {?}
@@ -12415,6 +12418,8 @@
             this.selectedChange = new i0.EventEmitter();
             this.goToModule = new i0.EventEmitter();
             this.iconToDoClick = new i0.EventEmitter();
+            this.clickTimeout = null;
+            this.tapTimeoutHandler = null;
             renderer.addClass(elementRef.nativeElement, 'ant-card');
         }
         /**
@@ -12473,19 +12478,31 @@
          * @return {?}
          */
             function (event) {
-                if (!this.useDefaultContent || this.cmacsType === 'big-file') {
-                    this.select(event);
+                var _this = this;
+                if (!this.clickTimeout) {
+                    this.clickTimeout = setTimeout(( /**
+                     * @return {?}
+                     */function () {
+                        if (!_this.useDefaultContent || _this.cmacsType === 'big-file') {
+                            _this.select(event);
+                        }
+                        _this.clickTimeout = null;
+                    }), 200);
                 }
             };
         /**
-         * @param {?} event
+         * @param {?} $event
          * @return {?}
          */
         CmacsCardComponent.prototype.onDblClick = /**
-         * @param {?} event
+         * @param {?} $event
          * @return {?}
          */
-            function (event) {
+            function ($event) {
+                $event.preventDefault();
+                $event.stopImmediatePropagation();
+                clearTimeout(this.clickTimeout);
+                this.clickTimeout = null;
                 if (this.cmacsType === 'folder' && !this.useDefaultContent) {
                     this.opened = !this.opened;
                     this.folderIcon = this.opened ? this.cmacsIconOpenedFolder : this.cmacsIconClosedFolder;
@@ -12498,6 +12515,31 @@
                 }
                 if (this.cmacsType === 'project') {
                     this.ondlclickCard.emit(this.project);
+                }
+            };
+        /**
+         * @param {?} $event
+         * @return {?}
+         */
+        CmacsCardComponent.prototype.onTouchStart = /**
+         * @param {?} $event
+         * @return {?}
+         */
+            function ($event) {
+                var _this = this;
+                $event.preventDefault();
+                if (!this.tapTimeoutHandler) {
+                    this.tapTimeoutHandler = setTimeout(( /**
+                     * @return {?}
+                     */function () {
+                        _this.onClick($event);
+                        _this.tapTimeoutHandler = null;
+                    }), 300);
+                }
+                else {
+                    clearTimeout(this.tapTimeoutHandler);
+                    this.tapTimeoutHandler = null;
+                    this.onDblClick($event);
                 }
             };
         /**
@@ -12715,7 +12757,8 @@
             todoUserAssigned: [{ type: i0.Input }],
             iconToDoClick: [{ type: i0.Output }],
             onClick: [{ type: i0.HostListener, args: ['click', ['$event'],] }],
-            onDblClick: [{ type: i0.HostListener, args: ['dblclick', ['$event'],] }]
+            onDblClick: [{ type: i0.HostListener, args: ['dblclick', ['$event'],] }],
+            onTouchStart: [{ type: i0.HostListener, args: ['touchstart', ['$event'],] }]
         };
         __decorate([
             i2.InputBoolean(),
@@ -18273,7 +18316,7 @@
             this.minWidth = 300;
             this.chartWidth = 300;
             this.showChart = false;
-            this.scrollY = 200;
+            this.scrollY = 100;
             this.p = 1;
             this.scroll = { x: '300px', y: this.scrollY + 'px' };
             this.id = util$$1.uuidv4();
@@ -18326,12 +18369,10 @@
          * @return {?}
          */
             function () {
-                /** @type {?} */
-                var p = 1;
                 if (this.view && this.view.length === 2) {
-                    p = this.view[1] * 0.5 > this.scrollY ? this.view[1] * 0.5 / this.scrollY : 1;
+                    this.scrollY = this.view[1] - 100;
                 }
-                this.scroll = { x: '300px', y: this.scrollY * p + 'px' };
+                this.scroll = { x: '300px', y: this.scrollY + 'px' };
             };
         /**
          * @param {?} type

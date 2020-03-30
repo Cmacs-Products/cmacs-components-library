@@ -44,7 +44,7 @@ import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, Type, inject, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -7221,6 +7221,9 @@ class CmacsTreeNodeComponent {
             // tslint:disable-next-line: no-non-null-assertion
             (/** @type {?} */ ((/** @type {?} */ (this.nzTreeService)).triggerEventChange$)).next(eventNext);
         }
+        if (this.checkable) {
+            this._clickCheckBox(event);
+        }
     }
     /**
      * @return {?}
@@ -10504,6 +10507,8 @@ class CmacsCardComponent {
         this.selectedChange = new EventEmitter();
         this.goToModule = new EventEmitter();
         this.iconToDoClick = new EventEmitter();
+        this.clickTimeout = null;
+        this.tapTimeoutHandler = null;
         renderer.addClass(elementRef.nativeElement, 'ant-card');
     }
     /**
@@ -10544,15 +10549,27 @@ class CmacsCardComponent {
      * @return {?}
      */
     onClick(event) {
-        if (!this.useDefaultContent || this.cmacsType === 'big-file') {
-            this.select(event);
+        if (!this.clickTimeout) {
+            this.clickTimeout = setTimeout((/**
+             * @return {?}
+             */
+            () => {
+                if (!this.useDefaultContent || this.cmacsType === 'big-file') {
+                    this.select(event);
+                }
+                this.clickTimeout = null;
+            }), 200);
         }
     }
     /**
-     * @param {?} event
+     * @param {?} $event
      * @return {?}
      */
-    onDblClick(event) {
+    onDblClick($event) {
+        $event.preventDefault();
+        $event.stopImmediatePropagation();
+        clearTimeout(this.clickTimeout);
+        this.clickTimeout = null;
         if (this.cmacsType === 'folder' && !this.useDefaultContent) {
             this.opened = !this.opened;
             this.folderIcon = this.opened ? this.cmacsIconOpenedFolder : this.cmacsIconClosedFolder;
@@ -10565,6 +10582,27 @@ class CmacsCardComponent {
         }
         if (this.cmacsType === 'project') {
             this.ondlclickCard.emit(this.project);
+        }
+    }
+    /**
+     * @param {?} $event
+     * @return {?}
+     */
+    onTouchStart($event) {
+        $event.preventDefault();
+        if (!this.tapTimeoutHandler) {
+            this.tapTimeoutHandler = setTimeout((/**
+             * @return {?}
+             */
+            () => {
+                this.onClick($event);
+                this.tapTimeoutHandler = null;
+            }), 300);
+        }
+        else {
+            clearTimeout(this.tapTimeoutHandler);
+            this.tapTimeoutHandler = null;
+            this.onDblClick($event);
         }
     }
     /**
@@ -10746,7 +10784,8 @@ CmacsCardComponent.propDecorators = {
     todoUserAssigned: [{ type: Input }],
     iconToDoClick: [{ type: Output }],
     onClick: [{ type: HostListener, args: ['click', ['$event'],] }],
-    onDblClick: [{ type: HostListener, args: ['dblclick', ['$event'],] }]
+    onDblClick: [{ type: HostListener, args: ['dblclick', ['$event'],] }],
+    onTouchStart: [{ type: HostListener, args: ['touchstart', ['$event'],] }]
 };
 __decorate([
     InputBoolean(),
@@ -15442,7 +15481,7 @@ class CmacsStatusDistributionComponent {
         this.minWidth = 300;
         this.chartWidth = 300;
         this.showChart = false;
-        this.scrollY = 200;
+        this.scrollY = 100;
         this.p = 1;
         this.scroll = { x: '300px', y: this.scrollY + 'px' };
         this.id = util.uuidv4();
@@ -15483,12 +15522,10 @@ class CmacsStatusDistributionComponent {
      * @return {?}
      */
     setScroll() {
-        /** @type {?} */
-        let p = 1;
         if (this.view && this.view.length === 2) {
-            p = this.view[1] * 0.5 > this.scrollY ? this.view[1] * 0.5 / this.scrollY : 1;
+            this.scrollY = this.view[1] - 100;
         }
-        this.scroll = { x: '300px', y: this.scrollY * p + 'px' };
+        this.scroll = { x: '300px', y: this.scrollY + 'px' };
     }
     /**
      * @param {?} type

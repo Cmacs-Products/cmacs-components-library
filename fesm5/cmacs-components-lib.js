@@ -38,13 +38,13 @@ import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMa
 import { addMonths, addYears, endOfMonth, setDay, setMonth, addDays, differenceInCalendarDays, differenceInCalendarMonths, differenceInCalendarWeeks, isSameDay, isSameMonth, isSameYear, isThisMonth, isThisYear, setYear, startOfMonth, startOfWeek, startOfYear, getISOWeek, getISOWeeksInYear, getISOYear, getMonth } from 'date-fns';
 import * as moment_ from 'moment';
 import 'moment/locale/en-ie';
-import { __extends, __assign, __decorate, __metadata, __values, __spread, __read } from 'tslib';
+import { __assign, __decorate, __metadata, __extends, __spread, __values, __read } from 'tslib';
 import { InputBoolean as InputBoolean$1, NzDropdownService, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
 import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, Pipe, ViewChildren, InjectionToken, ComponentFactoryResolver, defineInjectable, NgModule, inject, Injector, Type, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, inject, Injector, Type, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -8546,6 +8546,9 @@ var CmacsTreeNodeComponent = /** @class */ (function () {
             // tslint:disable-next-line: no-non-null-assertion
             (/** @type {?} */ ((/** @type {?} */ (this.nzTreeService)).triggerEventChange$)).next(eventNext);
         }
+        if (this.checkable) {
+            this._clickCheckBox(event);
+        }
     };
     /**
      * @return {?}
@@ -12530,6 +12533,8 @@ var CmacsCardComponent = /** @class */ (function () {
         this.selectedChange = new EventEmitter();
         this.goToModule = new EventEmitter();
         this.iconToDoClick = new EventEmitter();
+        this.clickTimeout = null;
+        this.tapTimeoutHandler = null;
         renderer.addClass(elementRef.nativeElement, 'ant-card');
     }
     /**
@@ -12588,19 +12593,32 @@ var CmacsCardComponent = /** @class */ (function () {
      * @return {?}
      */
     function (event) {
-        if (!this.useDefaultContent || this.cmacsType === 'big-file') {
-            this.select(event);
+        var _this = this;
+        if (!this.clickTimeout) {
+            this.clickTimeout = setTimeout((/**
+             * @return {?}
+             */
+            function () {
+                if (!_this.useDefaultContent || _this.cmacsType === 'big-file') {
+                    _this.select(event);
+                }
+                _this.clickTimeout = null;
+            }), 200);
         }
     };
     /**
-     * @param {?} event
+     * @param {?} $event
      * @return {?}
      */
     CmacsCardComponent.prototype.onDblClick = /**
-     * @param {?} event
+     * @param {?} $event
      * @return {?}
      */
-    function (event) {
+    function ($event) {
+        $event.preventDefault();
+        $event.stopImmediatePropagation();
+        clearTimeout(this.clickTimeout);
+        this.clickTimeout = null;
         if (this.cmacsType === 'folder' && !this.useDefaultContent) {
             this.opened = !this.opened;
             this.folderIcon = this.opened ? this.cmacsIconOpenedFolder : this.cmacsIconClosedFolder;
@@ -12613,6 +12631,32 @@ var CmacsCardComponent = /** @class */ (function () {
         }
         if (this.cmacsType === 'project') {
             this.ondlclickCard.emit(this.project);
+        }
+    };
+    /**
+     * @param {?} $event
+     * @return {?}
+     */
+    CmacsCardComponent.prototype.onTouchStart = /**
+     * @param {?} $event
+     * @return {?}
+     */
+    function ($event) {
+        var _this = this;
+        $event.preventDefault();
+        if (!this.tapTimeoutHandler) {
+            this.tapTimeoutHandler = setTimeout((/**
+             * @return {?}
+             */
+            function () {
+                _this.onClick($event);
+                _this.tapTimeoutHandler = null;
+            }), 300);
+        }
+        else {
+            clearTimeout(this.tapTimeoutHandler);
+            this.tapTimeoutHandler = null;
+            this.onDblClick($event);
         }
     };
     /**
@@ -12828,7 +12872,8 @@ var CmacsCardComponent = /** @class */ (function () {
         todoUserAssigned: [{ type: Input }],
         iconToDoClick: [{ type: Output }],
         onClick: [{ type: HostListener, args: ['click', ['$event'],] }],
-        onDblClick: [{ type: HostListener, args: ['dblclick', ['$event'],] }]
+        onDblClick: [{ type: HostListener, args: ['dblclick', ['$event'],] }],
+        onTouchStart: [{ type: HostListener, args: ['touchstart', ['$event'],] }]
     };
     __decorate([
         InputBoolean(),
@@ -18410,7 +18455,7 @@ var CmacsStatusDistributionComponent = /** @class */ (function () {
         this.minWidth = 300;
         this.chartWidth = 300;
         this.showChart = false;
-        this.scrollY = 200;
+        this.scrollY = 100;
         this.p = 1;
         this.scroll = { x: '300px', y: this.scrollY + 'px' };
         this.id = util.uuidv4();
@@ -18464,12 +18509,10 @@ var CmacsStatusDistributionComponent = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        /** @type {?} */
-        var p = 1;
         if (this.view && this.view.length === 2) {
-            p = this.view[1] * 0.5 > this.scrollY ? this.view[1] * 0.5 / this.scrollY : 1;
+            this.scrollY = this.view[1] - 100;
         }
-        this.scroll = { x: '300px', y: this.scrollY * p + 'px' };
+        this.scroll = { x: '300px', y: this.scrollY + 'px' };
     };
     /**
      * @param {?} type
