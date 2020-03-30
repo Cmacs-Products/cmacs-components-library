@@ -1,4 +1,4 @@
-import { EventEmitter, OnChanges, SimpleChanges, OnInit } from '@angular/core';
+import { EventEmitter, OnChanges, SimpleChanges, OnInit, ElementRef } from '@angular/core';
 export interface CmacsConfigItemLoader {
     PropertyId: string;
     DisplayName: string;
@@ -12,10 +12,12 @@ export declare class CmacsXlsxLoaderComponent implements OnInit, OnChanges {
     modalTitle: string;
     visible: boolean;
     saveBtnLabel: string;
+    cancelBtnLabel: string;
     placeholder: string;
     cmacsStyle: {};
     files: any[];
     width: number | string;
+    infoTemplate: ElementRef;
     configurationChange: EventEmitter<any>;
     onsave: EventEmitter<any>;
     visibleChange: EventEmitter<any>;
@@ -24,6 +26,7 @@ export declare class CmacsXlsxLoaderComponent implements OnInit, OnChanges {
     ngOnChanges(changes: SimpleChanges): void;
     onVisibleChange($event: any): void;
     saveConfig(): void;
+    handleCancel(): void;
     parseXlsx(): void;
     createHeaders(data: any): void;
     onSelectionChange($event: any, header: any): void;
