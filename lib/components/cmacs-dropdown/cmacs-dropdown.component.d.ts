@@ -13,6 +13,7 @@ export declare class CmacsDropdownComponent implements OnDestroy, AfterContentIn
     private cmacsMenuDropdownService;
     noAnimation?: NzNoAnimationDirective;
     triggerWidth: number;
+    dropdownTriggerWidth: number;
     updatedPosition: string;
     updatedOverLay: string;
     updatedOrigin: string;
