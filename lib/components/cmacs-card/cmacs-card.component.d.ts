@@ -69,9 +69,8 @@ export declare class CmacsCardComponent implements OnInit {
     ngOnInit(): void;
     onPlayerReady(api: VgAPI): void;
     checkRadio(): void;
-    clickTimeout: any;
     onClick(event: Event): void;
-    onDblClick($event: Event): void;
+    onDblClick(event: Event): void;
     tapTimeoutHandler: any;
     onTouchStart($event: Event): void;
     markForCheck(): void;
