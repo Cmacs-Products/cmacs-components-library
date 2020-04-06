@@ -18,6 +18,7 @@ export declare class CmacsSelectTopControlComponent implements OnInit, OnDestroy
     nzPlaceHolder: string;
     tagsOut: boolean;
     nzOpen: boolean;
+    cmacsOpen: boolean;
     action: boolean;
     nzMaxTagCount: number;
     nzAllowClear: boolean;

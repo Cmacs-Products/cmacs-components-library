@@ -17,6 +17,7 @@ export declare class CmacsSelectComponent implements ControlValueAccessor, OnIni
     private platform;
     noAnimation?: NzNoAnimationDirective;
     nzOpen: boolean;
+    _tagsOut: boolean;
     value: any | any[];
     searchValue: string;
     onChange: (value: string | string[]) => void;
@@ -24,6 +25,7 @@ export declare class CmacsSelectComponent implements ControlValueAccessor, OnIni
     dropDownPosition: 'top' | 'center' | 'bottom';
     triggerWidth: number;
     private _disabled;
+    private _cmacsOpen;
     private _autoFocus;
     private isInit;
     private destroy$;
@@ -48,7 +50,6 @@ export declare class CmacsSelectComponent implements ControlValueAccessor, OnIni
     allowClear: boolean;
     open: boolean;
     showSearch: boolean;
-    tagsOut: boolean;
     showCmacsSearch: boolean;
     showCustomSearch: boolean;
     loading: boolean;
@@ -69,6 +70,7 @@ export declare class CmacsSelectComponent implements ControlValueAccessor, OnIni
     serverSearch: boolean;
     mode: 'default' | 'multiple' | 'tags' | 'tagsSingleSelect';
     filterOption: TFilterOption;
+    tagsOut: boolean;
     compareWith: (o1: any, o2: any) => boolean;
     autoFocus: boolean;
     cmacsOpen: boolean;

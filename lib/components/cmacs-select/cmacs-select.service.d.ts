@@ -12,6 +12,7 @@ import { TFilterOption } from './cmacs-option.pipe';
 export declare class CmacsSelectService {
     autoClearSearchValue: boolean;
     serverSearch: boolean;
+    tagsOut: boolean;
     filterOption: TFilterOption;
     mode: 'default' | 'multiple' | 'tags' | 'tagsSingleSelect';
     maxMultipleCount: number;
