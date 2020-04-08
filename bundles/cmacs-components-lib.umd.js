@@ -17404,8 +17404,8 @@
     /** @type {?} */
     var KPI_PRIORITY_COLORS = {
         high: '#f6503c',
-        medium: '#00ce7d',
-        low: '#ffc634'
+        medium: '#ffc634',
+        low: '#00ce7d'
     };
     var CmacsKpiComponent = /** @class */ (function () {
         function CmacsKpiComponent(sanitizer) {
@@ -20884,7 +20884,7 @@
         }
         CmacsCommentAvatarDirective.decorators = [
             { type: i0.Directive, args: [{
-                        selector: 'nz-avatar[cmacs-comment-avatar]',
+                        selector: 'div[cmacs-comment-avatar], cmacs-comment-avatar, [cmacs-comment-avatar]',
                         exportAs: 'cmacsCommentAvatar'
                     },] }
         ];
@@ -20999,13 +20999,13 @@
             { type: i0.Component, args: [{
                         selector: 'cmacs-comment',
                         exportAs: 'cmacsComment',
-                        template: "<div class=\"ant-comment-inner\">\r\n  <div class=\"ant-comment-avatar\">\r\n    <ng-content select=\"nz-avatar[cmacs-comment-avatar]\"></ng-content>\r\n    <div class=\"ant-comment-content-author\">\r\n      <span *ngIf=\"author\" class=\"ant-comment-content-author-name\">\r\n        <ng-container *cmacsStringTemplateOutlet=\"author\">{{ author }}</ng-container>\r\n      </span>\r\n    </div>\r\n    <ul class=\"ant-comment-actions\" *ngIf=\"actions?.length\">\r\n      <li *ngFor=\"let action of actions\">\r\n        <span><ng-template [cmacsCommentActionHost]=\"action.content\"></ng-template></span>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n  <div class=\"ant-comment-content\">\r\n    <ng-content select=\"cmacs-comment-content\"></ng-content>\r\n    <span *ngIf=\"datetime\" class=\"ant-comment-content-author-time\">\r\n        <ng-container *cmacsStringTemplateOutlet=\"datetime\">{{ datetime }}</ng-container>\r\n    </span>\r\n  </div>\r\n</div>\r\n<div class=\"ant-comment-nested\">\r\n  <ng-content></ng-content>\r\n</div>\r\n",
+                        template: "<div class=\"ant-comment-inner\">\r\n  <div class=\"ant-comment-avatar\">\r\n    <div class=\"cmacs-comment-avatar\">\r\n      <ng-content select=\"[cmacs-comment-avatar]\"></ng-content>\r\n    </div>\r\n\r\n    <div class=\"ant-comment-content-author\">\r\n      <span *ngIf=\"author\" class=\"ant-comment-content-author-name\">\r\n        <ng-container *cmacsStringTemplateOutlet=\"author\">{{ author }}</ng-container>\r\n      </span>\r\n    </div>\r\n    <ul class=\"ant-comment-actions\" *ngIf=\"actions?.length\">\r\n      <li *ngFor=\"let action of actions\">\r\n        <span><ng-template [cmacsCommentActionHost]=\"action.content\"></ng-template></span>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n  <div class=\"ant-comment-content\">\r\n    <ng-content select=\"cmacs-comment-content\"></ng-content>\r\n    <span *ngIf=\"datetime\" class=\"ant-comment-content-author-time\">\r\n        <ng-container *cmacsStringTemplateOutlet=\"datetime\">{{ datetime }}</ng-container>\r\n    </span>\r\n  </div>\r\n</div>\r\n<div class=\"ant-comment-nested\">\r\n  <ng-content></ng-content>\r\n</div>\r\n",
                         encapsulation: i0.ViewEncapsulation.None,
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
                         host: {
                             class: 'ant-comment'
                         },
-                        styles: [".ant-comment-content-author{display:inline-block;margin-left:10px;font-family:Roboto-Regular,Helvetica,Arial,sans-serif;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.67;letter-spacing:normal;color:#3b3f46}.ant-comment-inner{display:block;padding:16px 0}.ant-comment-avatar{margin-bottom:14px}.ant-comment-content{font-family:Roboto-Regular,Helvetica,Arial,sans-serif;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.83;letter-spacing:normal;color:#97a0ae}.ant-comment-content-author-time{font-family:Roboto-Regular,Helvetica,Arial,sans-serif;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.33;letter-spacing:normal;color:#656c79}.ant-comment-actions{display:inline-block;float:right;padding:0;margin:0;line-height:35px}.ant-comment-actions>li>span{font-size:19px;color:#bec4cd}", "\n      cmacs-comment {\n        display: block;\n      }\n\n      cmacs-comment-content {\n        display: block;\n      }\n    "]
+                        styles: [".ant-comment-content-author{display:inline-block;margin-left:10px;font-family:Roboto-Regular,Helvetica,Arial,sans-serif;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.67;letter-spacing:normal;color:#3b3f46}.ant-comment-inner{display:block;padding:16px 0}.ant-comment-avatar{margin-bottom:14px}.ant-comment-content{font-family:Roboto-Regular,Helvetica,Arial,sans-serif;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.83;letter-spacing:normal;color:#97a0ae}.ant-comment-content-author-time{font-family:Roboto-Regular,Helvetica,Arial,sans-serif;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.33;letter-spacing:normal;color:#656c79}.ant-comment-actions{display:inline-block;float:right;padding:0;margin:0;line-height:35px}.ant-comment-actions>li>span{font-size:19px;color:#bec4cd}.cmacs-comment-avatar{display:inline-block;border-radius:100px;border:none;max-width:32px;max-height:32px}", "\n      cmacs-comment {\n        display: block;\n      }\n\n      cmacs-comment-content {\n        display: block;\n      }\n    "]
                     }] }
         ];
         /** @nocollapse */
