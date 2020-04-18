@@ -30825,20 +30825,40 @@
          * @return {?}
          */
             function (index, disabled) {
-                if (!disabled && !this.ranged && this._date !== null) {
-                    this.selectedIndex = index;
-                    if (this.mode === 'week') {
-                        /** @type {?} */
-                        var d = new Date(this._date.getFullYear(), 0, 1);
-                        d.setDate(d.getDate() + (index * 7));
-                        this.date = d;
-                        this.dateChange.emit(this.date);
+                if (!disabled && this._date !== null) {
+                    if (!this.ranged) {
+                        this.selectedIndex = index;
+                        if (this.mode === 'week') {
+                            /** @type {?} */
+                            var d = new Date(this._date.getFullYear(), 0, 1);
+                            d.setDate(d.getDate() + (index * 7));
+                            this.date = d;
+                            this.dateChange.emit(this.date);
+                        }
+                        if (this.mode === 'month') {
+                            /** @type {?} */
+                            var d = new Date(this._date.getFullYear(), index, 1);
+                            this.date = d;
+                            this.dateChange.emit(this.date);
+                        }
                     }
-                    if (this.mode === 'month') {
-                        /** @type {?} */
-                        var d = new Date(this._date.getFullYear(), index, 1);
-                        this.date = d;
-                        this.dateChange.emit(this.date);
+                    else {
+                        this.selectedRangeIdxs = [index, index];
+                        if (this.mode === 'week') {
+                            /** @type {?} */
+                            var d = new Date(this._date.getFullYear(), 0, 1);
+                            d.setDate(d.getDate() + (index * 7));
+                            this.range = [d, d];
+                            this.rangeChange.emit(this.range);
+                        }
+                        if (this.mode === 'month') {
+                            /** @type {?} */
+                            var start = new Date(this._date.getFullYear(), index, 1);
+                            /** @type {?} */
+                            var end = new Date(this._date.getFullYear(), index + 1, 0);
+                            this.range = [start, end];
+                            this.rangeChange.emit(this.range);
+                        }
                     }
                 }
             };

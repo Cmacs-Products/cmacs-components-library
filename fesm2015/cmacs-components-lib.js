@@ -44,7 +44,7 @@ import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, Type, inject, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -26097,20 +26097,40 @@ class CmacsTimelineDatepickerComponent {
      * @return {?}
      */
     clickLabel(index, disabled) {
-        if (!disabled && !this.ranged && this._date !== null) {
-            this.selectedIndex = index;
-            if (this.mode === 'week') {
-                /** @type {?} */
-                let d = new Date(this._date.getFullYear(), 0, 1);
-                d.setDate(d.getDate() + (index * 7));
-                this.date = d;
-                this.dateChange.emit(this.date);
+        if (!disabled && this._date !== null) {
+            if (!this.ranged) {
+                this.selectedIndex = index;
+                if (this.mode === 'week') {
+                    /** @type {?} */
+                    const d = new Date(this._date.getFullYear(), 0, 1);
+                    d.setDate(d.getDate() + (index * 7));
+                    this.date = d;
+                    this.dateChange.emit(this.date);
+                }
+                if (this.mode === 'month') {
+                    /** @type {?} */
+                    const d = new Date(this._date.getFullYear(), index, 1);
+                    this.date = d;
+                    this.dateChange.emit(this.date);
+                }
             }
-            if (this.mode === 'month') {
-                /** @type {?} */
-                let d = new Date(this._date.getFullYear(), index, 1);
-                this.date = d;
-                this.dateChange.emit(this.date);
+            else {
+                this.selectedRangeIdxs = [index, index];
+                if (this.mode === 'week') {
+                    /** @type {?} */
+                    const d = new Date(this._date.getFullYear(), 0, 1);
+                    d.setDate(d.getDate() + (index * 7));
+                    this.range = [d, d];
+                    this.rangeChange.emit(this.range);
+                }
+                if (this.mode === 'month') {
+                    /** @type {?} */
+                    const start = new Date(this._date.getFullYear(), index, 1);
+                    /** @type {?} */
+                    const end = new Date(this._date.getFullYear(), index + 1, 0);
+                    this.range = [start, end];
+                    this.rangeChange.emit(this.range);
+                }
             }
         }
     }
