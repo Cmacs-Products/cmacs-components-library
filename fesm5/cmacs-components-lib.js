@@ -31,6 +31,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { isArray } from 'util';
 import { moveItemInArray, transferArrayItem, DragDropModule } from '@angular/cdk/drag-drop';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
+import { Object as Object$1 } from 'core-js';
 import { DOWN_ARROW, ENTER, UP_ARROW, BACKSPACE, SPACE, TAB, ESCAPE, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
 import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName, NgModel, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
@@ -38,13 +39,14 @@ import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMa
 import { addMonths, addYears, endOfMonth, setDay, setMonth, addDays, differenceInCalendarDays, differenceInCalendarMonths, differenceInCalendarWeeks, isSameDay, isSameMonth, isSameYear, isThisMonth, isThisYear, setYear, startOfMonth, startOfWeek, startOfYear, getISOWeek, getISOWeeksInYear, getISOYear, getMonth } from 'date-fns';
 import * as moment_ from 'moment';
 import 'moment/locale/en-ie';
-import { __extends, __decorate, __metadata, __assign, __values, __spread, __read } from 'tslib';
+import { __extends, __assign, __decorate, __metadata, __values, __spread, __read } from 'tslib';
 import { InputBoolean as InputBoolean$1, NzDropdownService, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
 import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
+import { AngularDraggableModule } from 'angular2-draggable';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, inject, Type, Injector, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, ComponentFactoryResolver, defineInjectable, NgModule, inject, Injector, Type, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -29202,18 +29204,28 @@ var SIGNATURE_LOCALIZATION = {
     'Browse Computer': 'Browse Computer'
 };
 var CmacsSignatureComponent = /** @class */ (function () {
-    function CmacsSignatureComponent(fb, msg) {
+    function CmacsSignatureComponent(fb, cdr) {
         var _this = this;
         this.fb = fb;
-        this.msg = msg;
+        this.cdr = cdr;
         this._isVisible = false;
         this.saveSignature = true;
         this._i18n = SIGNATURE_LOCALIZATION;
         this.current = 0;
         this.files = [];
+        this._signatureDataUrl = null;
+        this._currentValue = null;
+        this._signaturePadOptions = {
+            'dotSize': 0.4,
+            'canvasWidth': 420,
+            'canvasHeight': 126
+        };
+        this._uploadedImageSrc = null;
+        this._uploadedImageSrcStyle = {};
         this.i18n = SIGNATURE_LOCALIZATION;
-        this.oncancel = new EventEmitter();
         this.signaturePadOptions = {};
+        this.extendedVersion = false;
+        this.oncancel = new EventEmitter();
         this.onsubmit = new EventEmitter();
         this.ondrawend = new EventEmitter();
         this.beforeUpload = (/**
@@ -29222,27 +29234,46 @@ var CmacsSignatureComponent = /** @class */ (function () {
          */
         function (file) {
             _this.files = [].concat(file);
+            /** @type {?} */
+            var url = (/** @type {?} */ ((file.name || '')));
+            if (!url) {
+                _this.files = [];
+                return false;
+            }
+            /** @type {?} */
+            var extension = _this.extname(url);
+            if (/(webp|svg|png|gif|jpg|jpeg|bmp)$/i.test(extension)) {
+                /** @type {?} */
+                var reader_1 = new FileReader();
+                file.linkProps = typeof file.linkProps === 'string' ? JSON.parse(file.linkProps) : file.linkProps;
+                reader_1.onload = (/**
+                 * @return {?}
+                 */
+                function () {
+                    _this._uploadedImageSrc = (/** @type {?} */ (reader_1.result));
+                });
+                /** @type {?} */
+                var blob = (/** @type {?} */ (file));
+                reader_1.readAsDataURL(blob);
+            }
             return false;
-        });
-        this.showUploadList = {
-            showPreviewIcon: true,
-            showRemoveIcon: true,
-            hidePreviewIconInNonImage: true
-        };
-        this.previewImage = '';
-        this.previewVisible = false;
-        this.handlePreview = (/**
-         * @param {?} file
-         * @return {?}
-         */
-        function (file) {
-            _this.previewImage = file.url || file.thumbUrl;
-            _this.previewVisible = true;
         });
         this.formGroup = this.fb.group({
             username: ['', [Validators.required]]
         });
     }
+    Object$1.defineProperty(CmacsSignatureComponent.prototype, "currentValue", {
+        set: /**
+         * @param {?} value
+         * @return {?}
+         */
+        function (value) {
+            this._currentValue = value;
+            this.cdr.detectChanges();
+        },
+        enumerable: true,
+        configurable: true
+    });
     /**
      * @return {?}
      */
@@ -29251,6 +29282,47 @@ var CmacsSignatureComponent = /** @class */ (function () {
      */
     function () {
         this.signaturePad.clear();
+    };
+    /**
+     * @param {?} $event
+     * @return {?}
+     */
+    CmacsSignatureComponent.prototype.onResizeStop = /**
+     * @param {?} $event
+     * @return {?}
+     */
+    function ($event) {
+        this._uploadedImageSrcStyle.size = $event.size;
+    };
+    /**
+     * @param {?} $event
+     * @return {?}
+     */
+    CmacsSignatureComponent.prototype.onMoveEnd = /**
+     * @param {?} $event
+     * @return {?}
+     */
+    function ($event) {
+        this._uploadedImageSrcStyle.position = $event;
+    };
+    /**
+     * @private
+     * @param {?} url
+     * @return {?}
+     */
+    CmacsSignatureComponent.prototype.extname = /**
+     * @private
+     * @param {?} url
+     * @return {?}
+     */
+    function (url) {
+        /** @type {?} */
+        var temp = url.split('/');
+        /** @type {?} */
+        var filename = temp[temp.length - 1];
+        /** @type {?} */
+        var filenameWithoutSuffix = filename.split(/#|\?/)[0];
+        return (/\.[^./\\]*$/.exec(filenameWithoutSuffix) || [''])[0];
     };
     /**
      * @return {?}
@@ -29263,9 +29335,9 @@ var CmacsSignatureComponent = /** @class */ (function () {
             case 0:
                 return !this.formGroup.valid;
             case 1:
-                return true;
+                return !this._signatureDataUrl;
             case 2:
-                return true;
+                return !this._uploadedImageSrc;
             default:
                 return true;
         }
@@ -29288,6 +29360,10 @@ var CmacsSignatureComponent = /** @class */ (function () {
      * @return {?}
      */
     function () {
+        if (this.extendedVersion) {
+            this._signatureDataUrl = this.signaturePad.toDataURL();
+            return;
+        }
         this.ondrawend.emit(this.signaturePad.toDataURL());
     };
     /**
@@ -29307,6 +29383,18 @@ var CmacsSignatureComponent = /** @class */ (function () {
      */
     function () {
         this._isVisible = false;
+        for (var key in this.formGroup.controls) {
+            this.formGroup.controls[key].markAsPristine();
+            this.formGroup.controls[key].updateValueAndValidity();
+        }
+        this.formGroup.reset();
+        this.saveSignature = true;
+        this._signatureDataUrl = null;
+        this.signaturePad.clear();
+        this.current = 0;
+        this._uploadedImageSrc = null;
+        this._uploadedImageSrcStyle = {};
+        this.files = [];
         this.oncancel.emit(this._isVisible);
     };
     /**
@@ -29316,7 +29404,27 @@ var CmacsSignatureComponent = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        this.onsubmit.emit();
+        /** @type {?} */
+        var value = {};
+        if (this.current === 0) {
+            value.saveForFutureUse = this.saveSignature;
+            value.userSignature = (/** @type {?} */ (this.formGroup.get('username'))).value;
+            value.signatureType = 'type';
+        }
+        if (this.current === 1) {
+            value.saveForFutureUse = this.saveSignature;
+            value.userSignature = this._signatureDataUrl;
+            value.signatureType = 'draw';
+        }
+        if (this.current === 2) {
+            value.saveForFutureUse = this.saveSignature;
+            value.userSignature = this._uploadedImageSrc;
+            value.signatureImgStyle = this._uploadedImageSrcStyle;
+            value.signatureType = 'image';
+        }
+        this._currentValue = value;
+        this.onsubmit.emit(value);
+        this.handleCancel();
     };
     /**
      * @param {?} $event
@@ -29333,53 +29441,34 @@ var CmacsSignatureComponent = /** @class */ (function () {
             if (data) {
                 data.pop();
                 this.signaturePad.fromData(data);
+                this._signatureDataUrl = this.signaturePad.toDataURL();
             }
-        }
-    };
-    /**
-     * @param {?} __0
-     * @return {?}
-     */
-    CmacsSignatureComponent.prototype.handleChange = /**
-     * @param {?} __0
-     * @return {?}
-     */
-    function (_a) {
-        var file = _a.file, fileList = _a.fileList;
-        /** @type {?} */
-        var status = file.status;
-        if (status !== 'uploading') {
-            console.log(file, fileList);
-        }
-        if (status === 'done') {
-            this.msg.success(file.name + " file uploaded successfully.");
-        }
-        else if (status === 'error') {
-            this.msg.error(file.name + " file upload failed.");
         }
     };
     CmacsSignatureComponent.decorators = [
         { type: Component, args: [{
                     selector: 'cmacs-signature',
                     exportAs: 'cmacsSignature',
-                    template: "<div\r\n  class=\"cmacs-signature-sign-wrapper cmacs-signature-pad\"\r\n  tabindex='1'\r\n  (keydown)=\"checkPressedKeys($event)\"\r\n>\r\n  <span class=\"cmacs-signature-x\">X</span>\r\n  <signature-pad [options]=\"signaturePadOptions\"\r\n                 (onEndEvent)=\"drawComplete()\"\r\n  ></signature-pad>\r\n</div>\r\n\r\n\r\n<!--\r\n<div class=\"cmacs-signature-wrapper\">\r\n  <i class=\"cmacs-signature-close-icon iconUISmall-Excel\"></i>\r\n  <span class=\"cmacs-signature-placeholder\"\r\n        (click)=\"openModal()\">\r\n    {{i18n['Click here to sign'] ? i18n['Click here to sign'] : _i18n['Click here to sign']}}\r\n  </span>\r\n</div>\r\n\r\n<cmacs-modal\r\n  class=\"cmacs-signature-modal\"\r\n  modalType=\"helpfulTipsNoPanel\"\r\n  [(visible)]=\"_isVisible\"\r\n  [width]=\"'570px'\"\r\n  title=\"{{i18n['Sign to Complete'] ? i18n['Sign to Complete'] : _i18n['Sign to Complete']}}\"\r\n  (onCancel)=\"handleCancel()\"\r\n  [footer]=\"modalFooter\">\r\n\r\n  <div cmacs-modal-helpfulTips-no-panel-center>\r\n      <cmacs-tabset class=\"cmacs-signature-tabset cmacs-width-100\"\r\n                    [selectedIndex]=\"current\"\r\n                    (selectedIndexChange)=\"updateCurrent($event)\">\r\n\r\n        &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;Type pane-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;\r\n        <cmacs-tab title=\"{{i18n['Type'] ? i18n['Type'] : _i18n['Type']}}\" >\r\n          <form cmacs-form [formGroup]=\"formGroup\">\r\n              <cmacs-form-item>\r\n                <cmacs-form-label cmacsRequired>\r\n                  {{i18n['Enter Your Name'] ? i18n['Enter Your Name'] : _i18n['Enter Your Name']}}\r\n                </cmacs-form-label>\r\n                <cmacs-form-control>\r\n                  <input class=\"cmacs-signature-username-input\" cmacs-input [formControlName]=\"'username'\"\r\n                         placeholder=\"{{i18n['Text Here'] ? i18n['Text Here'] : _i18n['Text Here']}}\"\r\n                  />\r\n                </cmacs-form-control>\r\n              </cmacs-form-item>\r\n\r\n              <div class=\"cmacs-signature-sign-wrapper\">\r\n                <div class=\"cmacs-signature-sign-input\" *ngIf=\"formGroup.get('username')!.value.length\">{{formGroup.get('username')!.value}}</div>\r\n                <div class=\"cmacs-signature-sign-input cmacs-invisible-font\" *ngIf=\"!formGroup.get('username')!.value.length\">Test</div>\r\n              </div>\r\n          </form>\r\n\r\n          <div class=\"cmacs-signature-text cmacs-signature-text-format\">\r\n            {{i18n['I, User Full Name, have reviewed and completed this report.'] ? i18n['I, User Full Name, have reviewed and completed this report.']\r\n            : _i18n['I, User Full Name, have reviewed and completed this report.']}}\r\n          </div>\r\n          <label class=\"cmacs-signature-text\" cmacs-checkbox [(ngModel)]=\"saveSignature\">\r\n            {{i18n['Select here to save your signature for future use.'] ? i18n['Select here to save your signature for future use.']\r\n            : _i18n['Select here to save your signature for future use.']}}\r\n          </label>\r\n        </cmacs-tab>\r\n        &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;Type pane-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;\r\n\r\n        &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;Draw pane-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;\r\n        <cmacs-tab title=\"{{i18n['Draw'] ? i18n['Draw'] : _i18n['Draw']}}\">\r\n\r\n          <cmacs-form-item class=\"cmacs-no-margin\">\r\n            <cmacs-form-label cmacsRequired>\r\n              {{i18n['Signature'] ? i18n['Signature'] : _i18n['Signature']}}\r\n            </cmacs-form-label>\r\n          </cmacs-form-item>\r\n          <div\r\n            class=\"cmacs-signature-sign-wrapper cmacs-signature-pad\"\r\n            tabindex='1'\r\n            (keydown)=\"checkPressedKeys($event)\"\r\n          >\r\n            <signature-pad [options]=\"signaturePadOptions\"\r\n                           (onEndEvent)=\"drawComplete()\"\r\n            ></signature-pad>\r\n          </div>\r\n          <div class=\"cmacs-signature-text cmacs-signature-text-format\">\r\n            {{i18n['I, User Full Name, have reviewed and completed this report.'] ? i18n['I, User Full Name, have reviewed and completed this report.']\r\n            : _i18n['I, User Full Name, have reviewed and completed this report.']}}\r\n          </div>\r\n          <label class=\"cmacs-signature-text\" cmacs-checkbox [(ngModel)]=\"saveSignature\">\r\n            {{i18n['Select here to save your signature for future use.'] ? i18n['Select here to save your signature for future use.']\r\n            : _i18n['Select here to save your signature for future use.']}}\r\n          </label>\r\n        </cmacs-tab>\r\n        &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;Draw pane-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;\r\n\r\n        &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;Image pane-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;\r\n        <cmacs-tab title=\"{{i18n['Image'] ? i18n['Image'] : _i18n['Image']}}\">\r\n          <cmacs-form-item class=\"cmacs-no-margin\">\r\n            <cmacs-form-label cmacsRequired>\r\n              {{i18n['Signature'] ? i18n['Signature'] : _i18n['Signature']}}\r\n            </cmacs-form-label>\r\n          </cmacs-form-item>\r\n\r\n          <nz-upload\r\n            class=\"cmacs-signature-upload-area\"\r\n            nzType=\"drag\"\r\n            [nzMultiple]=\"false\"\r\n            [(nzFileList)]=\"files\"\r\n            [nzShowButton]=\"files.length < 1\"\r\n            [nzBeforeUpload]=\"beforeUpload\"\r\n            nzAction=\"https://jsonplaceholder.typicode.com/posts/\"\r\n            [nzShowUploadList]=\"showUploadList\"\r\n            [nzPreview]=\"handlePreview\"\r\n          >\r\n            <span class=\"ant-upload-drag-icon\">\r\n              <img src=\"/assets/upload-computer.png\">\r\n            </span>\r\n            <p class=\"cmacs-signature-upload-text\">\r\n              {{i18n['Drag & Drop File Here or'] ? i18n['Drag & Drop File Here or']\r\n              : _i18n['Drag & Drop File Here or']}}\r\n            </p>\r\n            <button cmacs-button>{{i18n['Browse Computer'] ? i18n['Browse Computer']\r\n              : _i18n['Browse Computer']}}</button>\r\n          </nz-upload>\r\n\r\n          <nz-modal\r\n            [nzVisible]=\"previewVisible\"\r\n            [nzContent]=\"modalContent\"\r\n            [nzFooter]=\"null\"\r\n            (nzOnCancel)=\"previewVisible = false\"\r\n          >\r\n            <ng-template #modalContent>\r\n              <img [src]=\"previewImage\" [ngStyle]=\"{ width: '100%' }\" />\r\n            </ng-template>\r\n          </nz-modal>\r\n\r\n          <div class=\"cmacs-signature-text cmacs-signature-text-format\">\r\n            {{i18n['I, User Full Name, have reviewed and completed this report.'] ? i18n['I, User Full Name, have reviewed and completed this report.']\r\n            : _i18n['I, User Full Name, have reviewed and completed this report.']}}\r\n          </div>\r\n          <label class=\"cmacs-signature-text\" cmacs-checkbox [(ngModel)]=\"saveSignature\">\r\n            {{i18n['Select here to save your signature for future use.'] ? i18n['Select here to save your signature for future use.']\r\n            : _i18n['Select here to save your signature for future use.']}}\r\n          </label>\r\n        </cmacs-tab>\r\n        &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;Image pane-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;\r\n      </cmacs-tabset>\r\n  </div>\r\n\r\n</cmacs-modal>\r\n\r\n<ng-template #modalFooter>\r\n  <button cmacs-button type=\"default\" ghost style=\"float: left;\" (click)=\"handleCancel()\">\r\n    {{i18n['Cancel'] ? i18n['Cancel'] : _i18n['Cancel']}}\r\n  </button>\r\n  <button cmacs-button ghost type=\"primary\" [disabled]=\"isValid()\" (click)=\"handleOk()\">\r\n    <span>{{i18n['Verify'] ? i18n['Verify'] : _i18n['Verify']}}</span>\r\n  </button>\r\n</ng-template>\r\n-->\r\n",
+                    template: "<ng-container *ngIf=\"!extendedVersion\">\r\n  <div class=\"cmacs-signature-sign-wrapper cmacs-signature-pad\"\r\n       tabindex='1'\r\n       (keydown)=\"checkPressedKeys($event)\">\r\n    <span class=\"cmacs-signature-x\">X</span>\r\n    <signature-pad [options]=\"signaturePadOptions\"\r\n                   (onEndEvent)=\"drawComplete()\"></signature-pad>\r\n  </div>\r\n</ng-container>\r\n\r\n<ng-container *ngIf=\"extendedVersion\">\r\n  <div class=\"cmacs-signature-wrapper\">\r\n    <ng-container *ngIf=\"!_currentValue\">\r\n      <i class=\"cmacs-signature-close-icon iconUISmall-Excel\"></i>\r\n      <span class=\"cmacs-signature-placeholder\"\r\n            (click)=\"openModal()\">\r\n        {{i18n['Click here to sign'] ? i18n['Click here to sign'] : _i18n['Click here to sign']}}\r\n      </span>\r\n    </ng-container>\r\n    <ng-container *ngIf=\"_currentValue\">\r\n      <ng-container *ngIf=\"_currentValue.signatureType === 'type'\">\r\n        <div class=\"cmacs-signature-sign-input cmacs-signature-input-userSignature\">{{_currentValue.userSignature}}</div>\r\n      </ng-container>\r\n      <ng-container *ngIf=\"_currentValue.signatureType === 'draw'\">\r\n        <img class=\"centered\" style=\"max-height: 50px !important; max-width: inherit\" [src]=\"_currentValue.userSignature\" />\r\n      </ng-container>\r\n      <ng-container *ngIf=\"_currentValue.signatureType === 'image'\">\r\n        <img class=\"centered\" style=\"max-height: 50px !important\"\r\n             max-width: inherit\r\n             [style.width.px]=\"_currentValue.signatureImgStyle.size ? _currentValue.signatureImgStyle.size.width : null\"\r\n             [style.height.px]=\"_currentValue.signatureImgStyle.size ? _currentValue.signatureImgStyle.size.height : null\"\r\n             [src]=\"_currentValue.userSignature\"\r\n       />\r\n      </ng-container>\r\n    </ng-container>\r\n  </div>\r\n\r\n  <cmacs-modal\r\n    class=\"cmacs-signature-modal\"\r\n    modalType=\"helpfulTipsNoPanel\"\r\n    [(visible)]=\"_isVisible\"\r\n    [width]=\"'570px'\"\r\n    title=\"{{i18n['Sign to Complete'] ? i18n['Sign to Complete'] : _i18n['Sign to Complete']}}\"\r\n    (onCancel)=\"handleCancel()\"\r\n    [footer]=\"modalFooter\">\r\n\r\n    <div cmacs-modal-helpfulTips-no-panel-center>\r\n        <cmacs-tabset class=\"cmacs-signature-tabset cmacs-width-100\"\r\n                      [selectedIndex]=\"current\"\r\n                      (selectedIndexChange)=\"updateCurrent($event)\">\r\n\r\n          <!--Type Pane-->\r\n          <cmacs-tab title=\"{{i18n['Type'] ? i18n['Type'] : _i18n['Type']}}\" >\r\n            <form cmacs-form [formGroup]=\"formGroup\">\r\n              <cmacs-form-item>\r\n                <cmacs-form-label cmacsRequired>\r\n                  {{i18n['Enter Your Name'] ? i18n['Enter Your Name'] : _i18n['Enter Your Name']}}\r\n                </cmacs-form-label>\r\n                <cmacs-form-control>\r\n                  <input class=\"cmacs-signature-username-input\" cmacs-input [formControlName]=\"'username'\"\r\n                         placeholder=\"{{i18n['Text Here'] ? i18n['Text Here'] : _i18n['Text Here']}}\" />\r\n                </cmacs-form-control>\r\n              </cmacs-form-item>\r\n\r\n              <div class=\"cmacs-signature-sign-wrapper\">\r\n                <span class=\"cmacs-signature-x\">X</span>\r\n                <div class=\"cmacs-signature-sign-input\" *ngIf=\"formGroup.get('username')!.value && formGroup.get('username')!.value.length\">{{formGroup.get('username')!.value}}</div>\r\n                <div class=\"cmacs-signature-sign-input cmacs-invisible-font\" *ngIf=\"!formGroup.get('username')!.value || (formGroup.get('username')!.value && !formGroup.get('username')!.value.length)\">Test</div>\r\n              </div>\r\n            </form>\r\n\r\n            <div class=\"cmacs-signature-text cmacs-signature-text-format\">\r\n              {{i18n['I, User Full Name, have reviewed and completed this report.'] ? i18n['I, User Full Name, have reviewed and completed this report.']\r\n              : _i18n['I, User Full Name, have reviewed and completed this report.']}}\r\n            </div>\r\n            <label class=\"cmacs-signature-text\" cmacs-checkbox [(ngModel)]=\"saveSignature\">\r\n              {{i18n['Select here to save your signature for future use.'] ? i18n['Select here to save your signature for future use.']\r\n              : _i18n['Select here to save your signature for future use.']}}\r\n            </label>\r\n          </cmacs-tab>\r\n          <!--Type Pane-->\r\n\r\n          <!--Draw pane-->\r\n          <cmacs-tab title=\"{{i18n['Draw'] ? i18n['Draw'] : _i18n['Draw']}}\">\r\n\r\n            <cmacs-form-item class=\"cmacs-no-margin\">\r\n              <cmacs-form-label cmacsRequired>\r\n                {{i18n['Signature'] ? i18n['Signature'] : _i18n['Signature']}}\r\n              </cmacs-form-label>\r\n            </cmacs-form-item>\r\n            <div class=\"cmacs-signature-sign-wrapper cmacs-signature-pad\"\r\n                 tabindex='1'\r\n                 (keydown)=\"checkPressedKeys($event)\">\r\n              <span class=\"cmacs-signature-x\">X</span>\r\n              <signature-pad [options]=\"_signaturePadOptions\"\r\n                             (onEndEvent)=\"drawComplete()\"></signature-pad>\r\n            </div>\r\n            <div class=\"cmacs-signature-text cmacs-signature-text-format\">\r\n              {{i18n['I, User Full Name, have reviewed and completed this report.'] ? i18n['I, User Full Name, have reviewed and completed this report.']\r\n              : _i18n['I, User Full Name, have reviewed and completed this report.']}}\r\n            </div>\r\n            <label class=\"cmacs-signature-text\" cmacs-checkbox [(ngModel)]=\"saveSignature\">\r\n              {{i18n['Select here to save your signature for future use.'] ? i18n['Select here to save your signature for future use.']\r\n              : _i18n['Select here to save your signature for future use.']}}\r\n            </label>\r\n          </cmacs-tab>\r\n          <!--Draw pane-->\r\n\r\n          <!--Image pane-->\r\n          <cmacs-tab title=\"{{i18n['Image'] ? i18n['Image'] : _i18n['Image']}}\">\r\n            <cmacs-form-item class=\"cmacs-no-margin\">\r\n              <cmacs-form-label cmacsRequired>\r\n                {{i18n['Signature'] ? i18n['Signature'] : _i18n['Signature']}}\r\n              </cmacs-form-label>\r\n            </cmacs-form-item>\r\n\r\n            <ng-container *ngIf=\"!_uploadedImageSrc\">\r\n                <nz-upload\r\n                class=\"cmacs-signature-upload-area\"\r\n                nzType=\"drag\"\r\n                nzAccept=\"image/*\"\r\n                [nzMultiple]=\"false\"\r\n                [(nzFileList)]=\"files\"\r\n                [nzBeforeUpload]=\"beforeUpload\"\r\n              >\r\n                  <span class=\"ant-upload-drag-icon\">\r\n                    <img src=\"/assets/upload-computer.png\">\r\n                  </span>\r\n                  <p class=\"cmacs-signature-upload-text\">\r\n                    {{i18n['Drag & Drop File Here or'] ? i18n['Drag & Drop File Here or']\r\n                    : _i18n['Drag & Drop File Here or']}}\r\n                  </p>\r\n                  <button cmacs-button>{{i18n['Browse Computer'] ? i18n['Browse Computer']\r\n                    : _i18n['Browse Computer']}}</button>\r\n                </nz-upload>\r\n            </ng-container>\r\n\r\n            <ng-container *ngIf=\"_uploadedImageSrc\">\r\n              <div class=\"cmacs-signature-sign-wrapper cmacs-signature-image-src\">\r\n                <span class=\"cmacs-signature-x\">X</span>\r\n                <div #dragBounds\r\n                     style=\"max-width: 480px; width: 480px; max-height: 100px; height: 100px\"\r\n                     class=\"cmacs-signature-sign-input cmacs-signature-img-wrapper\">\r\n                  <div ngResizable\r\n                       style=\"max-width: 480px; max-height: 100px;\"\r\n                       class=\"cmacs-signature-img-wrapper-resizable-area\"\r\n                       rzHandles=\"n,s,e,w,se,sw\"\r\n                       ngDraggable\r\n                       [bounds]=\"dragBounds\"\r\n                       (rzStop)=\"onResizeStop($event)\"\r\n                       (endOffset)=\"onMoveEnd($event)\"\r\n                       [inBounds]=\"true\"\r\n                       [preventDefaultEvent]=\"true\">\r\n                    <img style=\"max-width: 480px; width: inherit; max-height: 100px; height: inherit\" [src]=\"_uploadedImageSrc\"/>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </ng-container>\r\n\r\n            <div class=\"cmacs-signature-text cmacs-signature-text-format\">\r\n              {{i18n['I, User Full Name, have reviewed and completed this report.'] ? i18n['I, User Full Name, have reviewed and completed this report.']\r\n              : _i18n['I, User Full Name, have reviewed and completed this report.']}}\r\n            </div>\r\n            <label class=\"cmacs-signature-text\" cmacs-checkbox [(ngModel)]=\"saveSignature\">\r\n              {{i18n['Select here to save your signature for future use.'] ? i18n['Select here to save your signature for future use.']\r\n              : _i18n['Select here to save your signature for future use.']}}\r\n            </label>\r\n          </cmacs-tab>\r\n          <!--Image pane-->\r\n        </cmacs-tabset>\r\n    </div>\r\n\r\n  </cmacs-modal>\r\n\r\n  <ng-template #modalFooter>\r\n    <button cmacs-button type=\"default\" ghost style=\"float: left;\" (click)=\"handleCancel()\">\r\n      {{i18n['Cancel'] ? i18n['Cancel'] : _i18n['Cancel']}}\r\n    </button>\r\n    <button cmacs-button ghost type=\"primary\" [disabled]=\"isValid()\" (click)=\"handleOk()\">\r\n      <span>{{i18n['Verify'] ? i18n['Verify'] : _i18n['Verify']}}</span>\r\n    </button>\r\n  </ng-template>\r\n</ng-container>\r\n",
                     encapsulation: ViewEncapsulation.None,
                     preserveWhitespaces: false,
-                    styles: [".cmacs-signature-wrapper{background-color:#fff;height:58px;border-radius:3px;border:1px solid #dee0e5;width:100%;text-align:center}.cmacs-signature-x{font-size:18px;color:#bec4cd}.cmacs-signature-placeholder{font-family:Roboto-Regular;font-size:14px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.71;letter-spacing:normal;color:#2a7cff;top:calc(50% - 11px);position:relative}.cmacs-signature-placeholder:hover{cursor:pointer}.cmacs-signature-close-icon{font-family:Roboto-Regular;font-size:18px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.11;letter-spacing:normal;color:#bec4cd;top:calc(50% - 9px);position:relative}.cmacs-signature-username-input{width:225px!important;display:block!important}.cmacs-signature-sign-wrapper{height:177px;border-radius:3px;border:1px solid #dee0e5;background-color:#f6f7fb;text-align:center;padding-top:20px}.cmacs-invisible-font{color:transparent!important}.cmacs-signature-sign-input,.cmacs-signature-sign-input:focus,.cmacs-signature-sign-input:hover{border-radius:unset;width:89%!important;max-width:89%;overflow:hidden;margin:0 auto;text-overflow:clip;white-space:nowrap;border-bottom:1px solid #dee0e5;background-color:#f6f7fb;font-family:AlexBrush,AlexBrush-Regular;font-size:96px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1;letter-spacing:normal;color:#3b3f46}.cmacs-signature-text{font-family:Roboto-Regular;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;color:#656c79!important}.cmacs-signature-text-format{margin-top:15px;margin-bottom:25px}.cmacs-signature-modal .ant-modal-body{height:490px!important}.cmacs-signature-tabset .ant-tabs-bar{border-color:transparent!important}.cmacs-width-100{width:100%}.cmacs-signature-pad{height:231px;padding-top:0}.cmacs-signature-pad signature-pad{border-bottom:1px solid #bec4cd}.cmacs-no-margin{margin:0!important}.cmacs-signature-upload-area .ant-upload.ant-upload-drag{height:231px}.cmacs-signature-upload-text{font-family:Roboto,Roboto-Regular;font-size:14px;font-weight:400;font-stretch:normal;font-style:normal;line-height:.86;letter-spacing:normal;color:#97a0ae;margin:20px 0!important}"]
+                    styles: [".cmacs-signature-wrapper{background-color:#fff;height:58px;border-radius:3px;border:1px solid #dee0e5;width:100%;max-width:100%;text-align:center}.centered{top:50%;position:relative;-webkit-transform:translateY(-50%);transform:translateY(-50%)}mwlResizable{box-sizing:border-box}.resize-handle-bottom,.resize-handle-top{position:absolute;height:5px;cursor:row-resize;width:100%}.resize-handle-top{top:0}.resize-handle-bottom{bottom:0}.resize-handle-left,.resize-handle-right{position:absolute;height:100%;cursor:col-resize;width:5px}.resize-handle-left{left:0}.resize-handle-right{right:0}.cmacs-signature-x{font-size:18px;color:#bec4cd}.cmacs-signature-placeholder{font-family:Roboto-Regular;font-size:14px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.71;letter-spacing:normal;color:#2a7cff;top:calc(50% - 11px);position:relative}.cmacs-signature-placeholder:hover{cursor:pointer}.cmacs-signature-close-icon{font-family:Roboto-Regular;font-size:18px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.11;letter-spacing:normal;color:#bec4cd;top:calc(50% - 9px);position:relative}.cmacs-signature-username-input{width:225px!important;display:block!important}.cmacs-signature-sign-wrapper{height:177px;border-radius:3px;border:1px solid #dee0e5;background-color:#f6f7fb;text-align:center;padding-top:45px}.cmacs-invisible-font{color:transparent!important}.cmacs-signature-sign-input,.cmacs-signature-sign-input:focus,.cmacs-signature-sign-input:hover{border-radius:unset;width:88%!important;display:inline-block;max-width:88%;margin-left:8px!important;overflow:hidden;margin:0 auto;text-overflow:clip;white-space:nowrap;border-bottom:1px solid #dee0e5;background-color:#f6f7fb;font-family:AlexBrush,AlexBrush-Regular;font-size:44px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.5;letter-spacing:normal;color:#3b3f46}.cmacs-signature-text{font-family:Roboto-Regular;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;color:#656c79!important}.cmacs-signature-text-format{margin-top:15px;margin-bottom:25px}.cmacs-signature-modal .ant-modal-body{height:490px!important}.cmacs-signature-tabset .ant-tabs-bar{border-color:transparent!important}.cmacs-width-100{width:100%}.cmacs-signature-pad{height:231px;padding-top:0}.cmacs-signature-pad signature-pad{border-bottom:1px solid #bec4cd}.cmacs-no-margin{margin:0!important}.cmacs-signature-upload-area .ant-upload.ant-upload-drag{height:231px}.cmacs-signature-upload-text{font-family:Roboto,Roboto-Regular;font-size:14px;font-weight:400;font-stretch:normal;font-style:normal;line-height:.86;letter-spacing:normal;color:#97a0ae;margin:20px 0!important}.cmacs-signature-image-src{height:231px!important;background-color:#fff!important;border-radius:3px!important;border:1px dashed #bec4cd!important}.cmacs-signature-img-wrapper{background-color:#fff!important}.cmacs-signature-img-wrapper-resizable-area{border:1px dashed #2a7cff;overflow:hidden!important}.cmacs-signature-input-userSignature{border-bottom:none!important;background-color:#fff!important;height:100%!important;overflow:hidden!important;line-height:1!important}"]
                 }] }
     ];
     /** @nocollapse */
     CmacsSignatureComponent.ctorParameters = function () { return [
         { type: FormBuilder },
-        { type: CmacsMessageService }
+        { type: ChangeDetectorRef }
     ]; };
     CmacsSignatureComponent.propDecorators = {
         i18n: [{ type: Input }],
-        oncancel: [{ type: Output }],
         signaturePadOptions: [{ type: Input }],
+        extendedVersion: [{ type: Input }],
+        oncancel: [{ type: Output }],
         onsubmit: [{ type: Output }],
         signaturePad: [{ type: ViewChild, args: [SignaturePad,] }],
-        ondrawend: [{ type: Output }]
+        ondrawend: [{ type: Output }],
+        currentValue: [{ type: Input }]
     };
     return CmacsSignatureComponent;
 }());
@@ -31922,7 +32011,8 @@ var CmacsComponentsLibModule = /** @class */ (function () {
                         ObserversModule,
                         NzAddOnModule,
                         LazyLoadImageModule,
-                        SignaturePadModule
+                        SignaturePadModule,
+                        AngularDraggableModule
                     ],
                     exports: __spread([
                         CmacsTimelineDatepickerComponent,

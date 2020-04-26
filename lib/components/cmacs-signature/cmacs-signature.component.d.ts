@@ -1,8 +1,7 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
-import { UploadChangeParam, UploadFile } from "ng-zorro-antd";
-import { CmacsMessageService } from "../cmacs-message/cmacs-message.service";
+import { UploadFile } from "ng-zorro-antd";
 export declare const SIGNATURE_LOCALIZATION: {
     'Click here to sign': string;
     'Sign to Complete': string;
@@ -21,7 +20,7 @@ export declare const SIGNATURE_LOCALIZATION: {
 };
 export declare class CmacsSignatureComponent {
     private fb;
-    private msg;
+    private cdr;
     _isVisible: boolean;
     formGroup: FormGroup;
     saveSignature: boolean;
@@ -43,23 +42,25 @@ export declare class CmacsSignatureComponent {
     };
     current: number;
     files: any[];
+    _signatureDataUrl: any;
+    _currentValue: any;
+    _signaturePadOptions: Object;
+    _uploadedImageSrc: any;
+    _uploadedImageSrcStyle: any;
     i18n: any;
-    oncancel: EventEmitter<boolean>;
     signaturePadOptions: Object;
+    extendedVersion: boolean;
+    oncancel: EventEmitter<boolean>;
     onsubmit: EventEmitter<any>;
     signaturePad: SignaturePad;
     ondrawend: EventEmitter<any>;
-    constructor(fb: FormBuilder, msg: CmacsMessageService);
+    currentValue: any;
+    constructor(fb: FormBuilder, cdr: ChangeDetectorRef);
     ngAfterViewInit(): void;
+    onResizeStop($event: any): void;
+    onMoveEnd($event: any): void;
     beforeUpload: (file: UploadFile) => boolean;
-    showUploadList: {
-        showPreviewIcon: boolean;
-        showRemoveIcon: boolean;
-        hidePreviewIconInNonImage: boolean;
-    };
-    previewImage: string | undefined;
-    previewVisible: boolean;
-    handlePreview: (file: UploadFile) => void;
+    private extname;
     isValid(): boolean;
     updateCurrent(idx: any): void;
     drawComplete(): void;
@@ -67,5 +68,4 @@ export declare class CmacsSignatureComponent {
     handleCancel(): void;
     handleOk(): void;
     checkPressedKeys($event: any): void;
-    handleChange({ file, fileList }: UploadChangeParam): void;
 }
