@@ -45,6 +45,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     widthConfig: string[];
     pageIndex: number;
     pageSize: number;
+    wrapLines: boolean;
     data: any[];
     config: GridConfig;
     configChange: EventEmitter<GridConfig>;
@@ -118,6 +119,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     deleteRow(idx: number): void;
     startEdit(id: string, property: string, event: MouseEvent): void;
     sort($event: any, fieldProperty: string): void;
+    getHeaderMaxWidth(field: Field): string;
     handleMouseDown(e: Event): void;
     getCustomPadding(item: any, i: number): number;
     childOf(node: any, ancestor: any): boolean;

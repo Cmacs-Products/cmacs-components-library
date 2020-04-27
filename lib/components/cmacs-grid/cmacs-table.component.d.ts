@@ -52,6 +52,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
         page: number;
     }>;
     printLandscape: boolean;
+    wrapLines: boolean;
     frontPagination: boolean;
     templateMode: boolean;
     bordered: boolean;
@@ -95,6 +96,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     contextMenu($event: MouseEvent, template: TemplateRef<void>): void;
     startEdit(id: string, property: string, event: MouseEvent): void;
     sort($event: any, fieldProperty: string): void;
+    getHeaderMaxWidth(field: Field): string;
     handleClick(e: Event): void;
     childOf(node: any, ancestor: any): boolean;
     endEditMode($event: KeyboardEvent, index: number): void;
