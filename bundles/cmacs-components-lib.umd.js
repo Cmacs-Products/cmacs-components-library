@@ -16370,7 +16370,7 @@
             this.clickMenu = new i0.EventEmitter();
             // otpions
             this.colorScheme = {
-                domain: ['#5AA454', '#C7B42C', '#AAAAAA']
+                domain: ['#00CE7D', '#FFC634', '#F6503C']
             };
             // chart
             this.chartWidth = 250;
@@ -16509,9 +16509,9 @@
         CmacsNormalizedHorizontalBarGroupedComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'cmacs-normalized-horizontal-bar-grouped',
-                        template: "<!-- Legend -->\r\n<div nz-row class=\"legend-row\">\r\n  <div class=\"legend-column\" *ngFor=\"let l of legend; let i = index;\">\r\n    <span [style.background-color]=\"colorScheme.domain[i]\" class=\"legend-bar\"> </span>\r\n    <span class=\"legend-text\">{{l}}</span>\r\n  </div>\r\n</div>\r\n<!-- Chart -->\r\n<div nz-row class=\"chart-content\">\r\n  <div nz-row class=\"chart-content-canvas\">\r\n    <canvas id=\"canvas-{{id}}\" class=\"chart-canvas\"></canvas>\r\n  </div>\r\n  <div nz-row class=\"chart-select\">\r\n    <cmacs-select style=\"width: 120px;\" [(ngModel)]=\"selectedValue\" (ngModelChange)=\"drawCanvas()\">\r\n      <cmacs-option *ngFor=\"let item of selectList\" value=\"{{ item }}\" label=\"{{ item }}\"></cmacs-option>\r\n    </cmacs-select>\r\n  </div>\r\n</div>",
+                        template: "<div class=\"sd-content\">\r\n  <!-- Legend -->\r\n  <div nz-row class=\"legend-row\">\r\n    <div class=\"legend-column\" *ngFor=\"let l of legend; let i = index;\">\r\n      <span [style.background-color]=\"colorScheme.domain[i]\" class=\"legend-bar\"> </span>\r\n      <span class=\"legend-text\">{{l}}</span>\r\n    </div>\r\n  </div>\r\n  <!-- Chart -->\r\n  <div nz-row class=\"chart-content\">\r\n    <div nz-row class=\"chart-content-canvas\">\r\n      <canvas id=\"canvas-{{id}}\" class=\"chart-canvas\"></canvas>\r\n    </div>\r\n    <div nz-row class=\"chart-select\">\r\n      <cmacs-select style=\"width: 120px;\" [(ngModel)]=\"selectedValue\" (ngModelChange)=\"drawCanvas()\">\r\n        <cmacs-option *ngFor=\"let item of selectList\" value=\"{{ item }}\" label=\"{{ item }}\"></cmacs-option>\r\n      </cmacs-select>\r\n    </div>\r\n  </div>\r\n</div>",
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
-                        styles: [":host{padding:15px;display:block}.legend-bar{width:4px;height:10px;border-radius:5px;display:inline-block}.legend-row{width:100%}.legend-column{display:table-cell;float:right;font-family:Roboto;font-size:12px;color:#656c79}.legend-text{padding-left:6px;padding-right:20px}::ng-deep .chart-select .ant-select-selection,::ng-deep .chart-select .ant-select-selection:focus,::ng-deep .chart-select .ant-select-selection:hover{border:0;background-color:transparent!important}"]
+                        styles: [".legend-column{display:table-cell;float:left;font-family:Roboto;font-size:12px;color:#656c79}.legend-text{padding-left:6px;padding-right:20px}.legend-column:last-child .legend-text{padding-right:0}.legend-bar{width:4px;height:10px;border-radius:5px;display:inline-block}.legend-row{width:100%;display:-webkit-box;display:flex;place-content:flex-end}.chart-content-canvas{text-align:center}.sd-content{margin:0 20px}::ng-deep .chart-select .ant-select-selection,::ng-deep .chart-select .ant-select-selection:focus,::ng-deep .chart-select .ant-select-selection:hover{border:0;background-color:transparent!important}"]
                     }] }
         ];
         /** @nocollapse */
@@ -16542,7 +16542,7 @@
             this.pw = 1;
             // otpions
             this.colorScheme = {
-                domain: ['#5AA454', '#C7B42C', '#AAAAAA']
+                domain: ['#00CE7D', '#FFC634', '#F6503C']
             };
             this.id = util$$1.uuidv4();
         }
@@ -16649,8 +16649,8 @@
         CmacsNormalizedHorizontalBarChartComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'cmacs-normalized-horizontal-bar-chart',
-                        template: "<!-- Legend -->\r\n<div nz-row class=\"legend-row\">\r\n  <div class=\"legend-column\" *ngFor=\"let l of legend; let i = index;\">\r\n    <span [style.background-color]=\"colorScheme.domain[i]\" class=\"legend-bar\"> </span>\r\n    <span class=\"legend-text\">{{l}}</span>\r\n  </div>\r\n</div>\r\n<!-- Chart -->\r\n<div nz-row class=\"chart-content\">\r\n  <div *ngFor=\"let item of data; let i = index\" nz-row class=\"chart-content-row\">\r\n    <div nz-col nzSpan=\"8\">{{item.name}}</div>\r\n    <div nz-col nzSpan=\"16\" style=\"height: 8px; margin-top: 7px;\">\r\n      <canvas id=\"canvas-{{id}}-{{i}}\" class=\"chart-content-canvas\"></canvas>\r\n    </div>\r\n  </div>\r\n</div>",
-                        styles: [".legend-bar{width:4px;height:10px;border-radius:5px;display:inline-block}.legend-row{width:100%}.legend-column{display:table-cell;float:right;font-family:Roboto;font-size:12px;color:#656c79}.legend-text{padding-left:6px;padding-right:20px}.chart-content{margin-top:15px;padding-left:20px;padding-right:20px;margin-right:20px}.chart-content-row{margin-bottom:15px;font-family:Roboto;font-size:12px;letter-spacing:.12px;color:#656c79}"]
+                        template: "<div class=\"sd-content\">\r\n  <!-- Legend -->\r\n  <div nz-row class=\"legend-row\">\r\n    <div class=\"legend-column\" *ngFor=\"let l of legend; let i = index;\">\r\n      <span [style.background-color]=\"colorScheme.domain[i]\" class=\"legend-bar\"> </span>\r\n      <span class=\"legend-text\">{{l}}</span>\r\n    </div>\r\n  </div>\r\n  <!-- Chart -->\r\n  <div nz-row class=\"chart-content\">\r\n    <div *ngFor=\"let item of data; let i = index\" nz-row class=\"chart-content-row\">\r\n      <div nz-col nzSpan=\"8\" class=\"chart-content-row\">{{item.name}}</div>\r\n      <div nz-col nzSpan=\"16\" style=\"height: 8px; margin-top: 4px;\">\r\n        <canvas id=\"canvas-{{id}}-{{i}}\" class=\"chart-content-canvas\"></canvas>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>",
+                        styles: [".legend-column{display:table-cell;float:left;font-family:Roboto;font-size:12px;color:#656c79}.legend-text{padding-left:6px;padding-right:20px}.legend-column:last-child .legend-text{padding-right:0}.legend-bar{width:4px;height:10px;border-radius:5px;display:inline-block}.legend-row{width:100%;margin-bottom:30px;display:-webkit-box;display:flex;place-content:flex-end}.chart-content-row{margin-bottom:15px;font-family:Roboto;font-size:12px;letter-spacing:.12px;color:#656c79}.sd-content{margin:0 20px}"]
                     }] }
         ];
         /** @nocollapse */
@@ -18329,8 +18329,8 @@
         CmacsKpiGroupComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'cmacs-kpi-group',
-                        template: "<div class=\"sd-content\" *ngIf=\"showChart\">\r\n  <!-- Legend -->\r\n  <div nz-row class=\"legend-row\">\r\n    <span class=\"legend-column\" *ngFor=\"let item of data\" (click)=\"changeData(item.key)\">\r\n      <span [style.background-color]=\"item.color\" class=\"legend-bar\"></span>\r\n      <span class=\"legend-text\">{{item.name}}</span>\r\n    </span>\r\n  </div>\r\n  <!-- Chart -->\r\n  <div nz-row class=\"chart-content\">\r\n    <canvas #chartcanvas class=\"chart-canvas\"></canvas>\r\n  </div>\r\n  <div nz-row>\r\n    <cmacs-compact-table *ngIf=\"!loading && dataTable; else elseBlock\" [data]=\"dataTable\"\r\n      [(config)]=\"configurationExpandableRows\" [indentSize]=\"40\" [logs]=\"true\" [expandable]=\"true\"\r\n      [scroll]=\"scroll\" [frontPagination]=\"false\" [showPagination]=\"false\"></cmacs-compact-table>\r\n  </div>\r\n</div>\r\n<ng-template #columnTemplate let-color=\"color\">\r\n  <div class=\"chart-dot\" [style.background-color]=\"color\"></div>\r\n</ng-template>\r\n\r\n<ng-template #elseBlock>\r\n  <nz-skeleton [nzActive]=\"true\" [nzParagraph]=\"{ rows: 8 }\"></nz-skeleton>\r\n</ng-template>",
-                        styles: [".legend-bar{width:4px;height:10px;border-radius:5px;display:inline-block}.legend-row{width:100%;margin-bottom:30px;display:-webkit-box;display:flex;place-content:flex-end}.legend-column{display:table-cell;float:left;font-family:Roboto;font-size:12px;color:#656c79;cursor:pointer}.legend-text{padding-left:6px;padding-right:20px}.sd-content{margin:0 12px}.chart-dot{width:9px;height:9px;border-radius:5px;display:inline-block}.chart-content{text-align:center;margin-bottom:15px}"]
+                        template: "<div class=\"sd-content\" *ngIf=\"showChart\">\r\n  <!-- Legend -->\r\n  <div nz-row class=\"legend-row\">\r\n    <span class=\"legend-column\" *ngFor=\"let item of data\" (click)=\"changeData(item.key)\">\r\n      <span [style.background-color]=\"item.color\" class=\"legend-bar\"></span>\r\n      <span class=\"legend-text\">{{item.name}}</span>\r\n    </span>\r\n  </div>\r\n  <!-- Chart -->\r\n  <div nz-row class=\"chart-content\">\r\n    <canvas #chartcanvas class=\"chart-canvas\"></canvas>\r\n  </div>\r\n  <div nz-row class=\"chart-data-table\">\r\n    <cmacs-compact-table *ngIf=\"!loading && dataTable; else elseBlock\" [data]=\"dataTable\"\r\n      [(config)]=\"configurationExpandableRows\" [indentSize]=\"40\" [logs]=\"true\" [expandable]=\"true\"\r\n      [scroll]=\"scroll\" [frontPagination]=\"false\" [showPagination]=\"false\"></cmacs-compact-table>\r\n  </div>\r\n</div>\r\n<ng-template #columnTemplate let-color=\"color\">\r\n  <div class=\"chart-dot\" [style.background-color]=\"color\"></div>\r\n</ng-template>\r\n\r\n<ng-template #elseBlock>\r\n  <nz-skeleton [nzActive]=\"true\" [nzParagraph]=\"{ rows: 8 }\"></nz-skeleton>\r\n</ng-template>",
+                        styles: [".legend-column{display:table-cell;float:left;font-family:Roboto;font-size:12px;color:#656c79;cursor:pointer}.legend-text{padding-left:6px;padding-right:20px}.legend-column:last-child .legend-text{padding-right:0}.legend-bar{width:4px;height:10px;border-radius:5px;display:inline-block}.legend-row{width:100%;margin-bottom:32px;display:-webkit-box;display:flex;place-content:flex-end}.chart-content{text-align:center;margin-bottom:25px}.chart-dot{width:9px;height:9px;border-radius:5px;display:inline-block;margin-left:13px}.sd-content{margin:0 20px}::ng-deep .chart-data-table cmacs-compact-table .cmacs-compact-table-input-number-icon-view{display:none}::ng-deep .chart-data-table cmacs-compact-table .cmacs-compact-table-header-logs,::ng-deep .chart-data-table cmacs-compact-table .cmacs-compact-table-header-logs .ant-table-row-expand-icon,::ng-deep .chart-data-table cmacs-compact-table .cmacs-compact-table-logs-header-th-font,::ng-deep .chart-data-table cmacs-compact-table .cmacs-compact-table-logs-header-th-font:hover{background-color:#fff!important}::ng-deep .chart-data-table .cmacs-compact-table .ant-table-tbody>tr:not(.cmacs-compact-table-header-logs)>td{background-color:#f6f7fb!important}"]
                     }] }
         ];
         /** @nocollapse */
@@ -18578,8 +18578,8 @@
         CmacsStatusDistributionComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'cmacs-status-distribution',
-                        template: "<div class=\"sd-content\" *ngIf=\"showChart\">\r\n  <!-- Legend -->\r\n  <div nz-row class=\"legend-row\">\r\n    <span class=\"legend-column\" *ngFor=\"let item of data\">\r\n      <span [style.background-color]=\"item.color\" class=\"legend-bar\"></span>\r\n      <span class=\"legend-text\">{{item.name}}</span>\r\n    </span>\r\n  </div>\r\n  <!-- Chart -->\r\n  <div nz-row class=\"char-content\">\r\n    <canvas id=\"canvas-{{id}}\" class=\"chart-canvas\"></canvas>\r\n  </div>\r\n  <div nz-row>\r\n    <cmacs-compact-table *ngIf=\"dataTable\" [data]=\"dataTable\" [(config)]=\"configurationExpandableRows\" [indentSize]=\"40\"\r\n      [logs]=\"true\" [expandable]=\"true\" [scroll]=\"scroll\" [frontPagination]=\"false\" [showPagination]=\"false\">\r\n    </cmacs-compact-table>\r\n  </div>\r\n</div>\r\n<ng-template #columnTemplate let-color=\"color\">\r\n  <div class=\"chart-dot\" [style.background-color]=\"color\"></div>\r\n</ng-template>",
-                        styles: [".legend-bar{width:4px;height:10px;border-radius:5px;display:inline-block}.legend-row{width:100%;margin-bottom:30px}.legend-column{display:table-cell;float:left;font-family:Roboto;font-size:12px;color:#656c79}.legend-text{padding-left:6px;padding-right:20px}.chart-content{text-align:center}.sd-content{margin:0 12px}.chart-dot{width:9px;height:9px;border-radius:5px;display:inline-block}"]
+                        template: "<div class=\"sd-content\" *ngIf=\"showChart\">\r\n  <!-- Legend -->\r\n  <div nz-row class=\"legend-row\">\r\n    <span class=\"legend-column\" *ngFor=\"let item of data\">\r\n      <span [style.background-color]=\"item.color\" class=\"legend-bar\"></span>\r\n      <span class=\"legend-text\">{{item.name}}</span>\r\n    </span>\r\n  </div>\r\n  <!-- Chart -->\r\n  <div nz-row class=\"char-content\">\r\n    <canvas id=\"canvas-{{id}}\" class=\"chart-canvas\"></canvas>\r\n  </div>\r\n  <div nz-row class=\"chart-data-table\">\r\n    <cmacs-compact-table *ngIf=\"dataTable\" [data]=\"dataTable\" [(config)]=\"configurationExpandableRows\" [indentSize]=\"40\"\r\n      [logs]=\"true\" [expandable]=\"true\" [scroll]=\"scroll\" [frontPagination]=\"false\" [showPagination]=\"false\">\r\n    </cmacs-compact-table>\r\n  </div>\r\n</div>\r\n<ng-template #columnTemplate let-color=\"color\">\r\n  <div class=\"chart-dot\" [style.background-color]=\"color\"></div>\r\n</ng-template>",
+                        styles: [".legend-column{display:table-cell;float:left;font-family:Roboto;font-size:12px;color:#656c79}.legend-text{padding-left:6px;padding-right:20px}.legend-column:last-child .legend-text{padding-right:0}.legend-bar{width:4px;height:10px;border-radius:5px;display:inline-block}.legend-row{width:100%;margin-bottom:30px;display:-webkit-box;display:flex;place-content:flex-end}.chart-content{text-align:center;margin-bottom:30px}.chart-dot{width:9px;height:9px;border-radius:5px;display:inline-block;margin-left:13px}.sd-content{margin:0 20px}::ng-deep .chart-data-table cmacs-compact-table .cmacs-compact-table-input-number-icon-view{display:none}::ng-deep .chart-data-table cmacs-compact-table .cmacs-compact-table-header-logs,::ng-deep .chart-data-table cmacs-compact-table .cmacs-compact-table-header-logs .ant-table-row-expand-icon,::ng-deep .chart-data-table cmacs-compact-table .cmacs-compact-table-logs-header-th-font,::ng-deep .chart-data-table cmacs-compact-table .cmacs-compact-table-logs-header-th-font:hover{background-color:#fff!important}::ng-deep .chart-data-table .cmacs-compact-table .ant-table-tbody>tr:not(.cmacs-compact-table-header-logs)>td{background-color:#f6f7fb!important}"]
                     }] }
         ];
         /** @nocollapse */
@@ -19160,23 +19160,79 @@
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var CmacsDividerComponent = /** @class */ (function () {
-        function CmacsDividerComponent() {
-            this.size = '20px';
+        function CmacsDividerComponent(elementRef, nzUpdateHostClassService) {
+            this.elementRef = elementRef;
+            this.nzUpdateHostClassService = nzUpdateHostClassService;
+            this.type = 'vertical';
+            this.orientation = '';
+            this.dashed = false;
         }
+        /**
+         * @private
+         * @return {?}
+         */
+        CmacsDividerComponent.prototype.setClass = /**
+         * @private
+         * @return {?}
+         */
+            function () {
+                var _a;
+                /** @type {?} */
+                var orientationPrefix = this.orientation.length > 0 ? '-' + this.orientation : this.orientation;
+                this.nzUpdateHostClassService.updateHostClass(this.elementRef.nativeElement, (_a = {},
+                    _a['ant-divider'] = true,
+                    _a["ant-divider-" + this.type] = true,
+                    _a["ant-divider-with-text" + orientationPrefix] = this.text,
+                    _a["ant-divider-dashed"] = this.dashed,
+                    _a));
+            };
+        /**
+         * @return {?}
+         */
+        CmacsDividerComponent.prototype.ngOnChanges = /**
+         * @return {?}
+         */
+            function () {
+                this.setClass();
+            };
+        /**
+         * @return {?}
+         */
+        CmacsDividerComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+                this.setClass();
+            };
         CmacsDividerComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'cmacs-divider',
-                        template: "<span class=\"ant-divider ant-divider-vertical\" [style.font-size]=\"size\">\r\n  <ng-container></ng-container>\r\n</span>\r\n",
+                        exportAs: 'cmacsDivider',
+                        template: "<span *ngIf=\"text\" class=\"ant-divider-inner-text\">\r\n  <ng-container *cmacsStringTemplateOutlet=\"text\">{{ text }}</ng-container>\r\n</span>\r\n",
                         preserveWhitespaces: false,
+                        providers: [i2.NzUpdateHostClassService],
                         encapsulation: i0.ViewEncapsulation.None,
-                        styles: [".ant-divider-vertical{height:1em}"]
+                        changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                        styles: [".ant-divider-vertical{height:1em!important}"]
                     }] }
         ];
         /** @nocollapse */
-        CmacsDividerComponent.ctorParameters = function () { return []; };
-        CmacsDividerComponent.propDecorators = {
-            size: [{ type: i0.Input }]
+        CmacsDividerComponent.ctorParameters = function () {
+            return [
+                { type: i0.ElementRef },
+                { type: i2.NzUpdateHostClassService }
+            ];
         };
+        CmacsDividerComponent.propDecorators = {
+            text: [{ type: i0.Input }],
+            type: [{ type: i0.Input }],
+            orientation: [{ type: i0.Input }],
+            dashed: [{ type: i0.Input }]
+        };
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsDividerComponent.prototype, "dashed", void 0);
         return CmacsDividerComponent;
     }());
 
@@ -20069,37 +20125,183 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    /** @type {?} */
+    var FLOATING_MENU_LOCALIZATION = {
+        'Dock To Left': 'Dock To Left',
+        'Dock To Right': 'Dock To Right',
+        'Dock To Top': 'Dock To Top',
+        'Dock To Bottom': 'Dock To Bottom',
+        'Minimize Toolbar': 'Minimize Toolbar'
+    };
     var CmacsFloatingMenuComponent = /** @class */ (function () {
         function CmacsFloatingMenuComponent() {
-            this.carrot = ''; // bottom | top | '';
+            this._minimizeToolbar = false;
+            this._i18n = FLOATING_MENU_LOCALIZATION;
+            this.position = 'bottom';
+            this.visible = false;
+            this.positionChange = new i0.EventEmitter();
+            this.carrot = '';
+            this.i18n = FLOATING_MENU_LOCALIZATION;
         }
+        /**
+         * @return {?}
+         */
+        CmacsFloatingMenuComponent.prototype.ngOnChanges = /**
+         * @return {?}
+         */
+            function () {
+                if (this.cdkDrag) {
+                    this.resetDragDrop();
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFloatingMenuComponent.prototype.minimizeToolbar = /**
+         * @return {?}
+         */
+            function () {
+                this.resetDragDrop();
+                this._minimizeToolbar = true;
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFloatingMenuComponent.prototype.expandToolbar = /**
+         * @return {?}
+         */
+            function () {
+                this.resetDragDrop();
+                this._minimizeToolbar = false;
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFloatingMenuComponent.prototype.dockToLeft = /**
+         * @return {?}
+         */
+            function () {
+                this.resetDragDrop();
+                this.top = null;
+                this.left = '0';
+                this.right = null;
+                this.bottom = null;
+                this.position = 'left';
+                this.positionChange.emit(this.position);
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFloatingMenuComponent.prototype.dockToRight = /**
+         * @return {?}
+         */
+            function () {
+                this.resetDragDrop();
+                this.top = null;
+                this.left = null;
+                this.right = '0';
+                this.bottom = null;
+                this.position = 'right';
+                this.positionChange.emit(this.position);
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFloatingMenuComponent.prototype.dockToTop = /**
+         * @return {?}
+         */
+            function () {
+                this.resetDragDrop();
+                this.top = '0';
+                this.left = null;
+                this.right = null;
+                this.bottom = null;
+                this.position = 'top';
+                this.positionChange.emit(this.position);
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFloatingMenuComponent.prototype.dockToBottom = /**
+         * @return {?}
+         */
+            function () {
+                this.resetDragDrop();
+                this.bottom = '0';
+                this.left = null;
+                this.right = null;
+                this.top = null;
+                this.position = 'bottom';
+                this.positionChange.emit(this.position);
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFloatingMenuComponent.prototype.getPlacement = /**
+         * @return {?}
+         */
+            function () {
+                switch (this.position) {
+                    case 'bottom':
+                        return 'top';
+                    case 'top':
+                        return 'bottom';
+                    case 'left':
+                        return 'right';
+                    case 'right':
+                        return 'left';
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsFloatingMenuComponent.prototype.resetDragDrop = /**
+         * @return {?}
+         */
+            function () {
+                this.cdkDrag._dragRef['_previewRect'] = undefined;
+                this.cdkDrag._dragRef['_boundaryRect'] = undefined;
+                this.cdkDrag.reset();
+            };
         CmacsFloatingMenuComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'cmacs-floating-menu',
                         exportAs: 'cmacsFloatingMenu',
-                        template: "<div #fixedEl>\r\n  <!--<cmacs-dropdown [trigger]=\"'click'\" [cmacsOpen]=\"true\" style=\"display: inline-flex\">\r\n    <a cmacs-dropdown><i class=\"icon-more-horizontal_icon\"></i></a>\r\n\r\n    <ul cmacs-menu style=\"width: 200px\">\r\n      <li cmacs-menu-item>\r\n        <i nz-icon type=\"copy\"></i>\r\n        <span>Dock to Left</span>\r\n      </li>\r\n      <li cmacs-menu-item>\r\n        <i nz-icon type=\"delete\"></i>\r\n        <span>Dock to Right</span>\r\n      </li>\r\n      <li cmacs-menu-item>\r\n        <i nz-icon type=\"delete\"></i>\r\n        <span>Dock to Top</span>\r\n      </li>\r\n      <li cmacs-menu-item>\r\n        <i nz-icon type=\"delete\"></i>\r\n        <span>Dock to Bottom</span>\r\n      </li>\r\n      <li cmacs-menu-item>\r\n        <i nz-icon type=\"delete\"></i>\r\n        <span>Minimize Toolbar</span>\r\n      </li>   \r\n    </ul>\r\n  </cmacs-dropdown>-->\r\n  <ng-content></ng-content>\r\n</div>\r\n",
+                        template: "<div cdkDrag\r\n     *ngIf=\"visible\"\r\n     [cdkDragBoundary]=\"dragBoundary\">\r\n  <div cdkDragHandle class=\"cmacs-floating-menu-draggable-north-area\"></div>\r\n  <div cdkDragHandle class=\"cmacs-floating-menu-draggable-south-area\"></div>\r\n  <div cdkDragHandle class=\"cmacs-floating-menu-draggable-east-area\"></div>\r\n  <div cdkDragHandle class=\"cmacs-floating-menu-draggable-west-area\"></div>\r\n  <div #fixedEl\r\n       [class.cmacs-floating-menu-horizontal]=\"position === 'top' || position === 'bottom'\"\r\n       [class.cmacs-floating-menu-vertical]=\"position === 'left' || position === 'right'\">\r\n\r\n    <button cmacs-button ghost *ngIf=\"_minimizeToolbar\" (click)=\"expandToolbar()\">\r\n      <i class=\"iconUILarge-Sort\"></i>\r\n    </button>\r\n\r\n    <div class=\"cmacs-floating-menu-main\" *ngIf=\"!_minimizeToolbar\">\r\n      <cmacs-dropdown [trigger]=\"'click'\" [cmacsOpen]=\"true\" [placement]=\"getPlacement()\">\r\n        <button cmacs-button ghost cmacs-dropdown class=\"cmacs-floating-menu-main-button\">\r\n          <i class=\"iconUILarge-More-Veritcal_Icon\"></i>\r\n        </button>\r\n\r\n        <ul cmacs-menu\r\n            class=\"cmacs-floating-menu-main-ul\"\r\n            [class.cmacs-floating-menu-main-ul-right]=\"position === 'left'\"\r\n            [class.cmacs-floating-menu-main-ul-top]=\"position === 'bottom'\"\r\n            [class.cmacs-floating-menu-main-ul-bottom]=\"position === 'top'\"\r\n            [class.cmacs-floating-menu-main-ul-left]=\"position === 'right'\">\r\n          <li (click)=\"dockToLeft()\" cmacs-menu-item>\r\n            <span>{{i18n['Dock To Left'] ? i18n['Dock To Left'] : _i18n['Dock To Left']}}</span>\r\n          </li>\r\n          <li (click)=\"dockToRight()\" cmacs-menu-item>\r\n            <span>{{i18n['Dock To Right'] ? i18n['Dock To Right'] : _i18n['Dock To Right']}}</span>\r\n          </li>\r\n          <li (click)=\"dockToTop()\" cmacs-menu-item>\r\n            <span>{{i18n['Dock To Top'] ? i18n['Dock To Top'] : _i18n['Dock To Top']}}</span>\r\n          </li>\r\n          <li (click)=\"dockToBottom()\" cmacs-menu-item>\r\n            <span>{{i18n['Dock To Bottom'] ? i18n['Dock To Bottom'] : _i18n['Dock To Bottom']}}</span>\r\n          </li>\r\n          <li cmacs-menu-item (click)=\"minimizeToolbar()\">\r\n            <i class=\"iconArrowLarge-Collapse\"></i>\r\n            <span>{{i18n['Minimize Toolbar'] ? i18n['Minimize Toolbar'] : _i18n['Minimize Toolbar']}}</span>\r\n          </li>\r\n        </ul>\r\n      </cmacs-dropdown>\r\n    </div>\r\n    <ng-container *ngIf=\"!_minimizeToolbar\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  </div>\r\n</div>\r\n\r\n",
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
                         encapsulation: i0.ViewEncapsulation.None,
                         host: {
                             '[class.carrot-bottom-menu]': "carrot === 'bottom'",
                             '[class.carrot-top-menu]': "carrot === 'top'",
+                            '[class.cmacs-floating-menu-align-x]': "position === 'bottom' || position === 'top'",
+                            '[class.cmacs-floating-menu-align-y]': "position === 'left' || position === 'right'",
                             '[style.top]': "top",
                             '[style.bottom]': "bottom",
                             '[style.left]': "left",
                             '[style.right]': "right",
                         },
-                        styles: ["cmacs-floating-menu{display:inline-block;position:absolute}cmacs-floating-menu>div{background:#0d1e3b;border-radius:5px;box-shadow:0 3px 4px rgba(59,63,70,.2);padding:0 15px;z-index:1;width:-webkit-max-content;width:-moz-max-content;width:max-content}cmacs-floating-menu.carrot-top-menu::before{width:10px;border:8px solid #0d1e3b;display:block;content:'';margin:0 auto;position:relative;-webkit-transform:rotate(-135deg) translateY(-8px) translateX(-8px);transform:rotate(-135deg) translateY(-8px) translateX(-8px)}cmacs-floating-menu.carrot-bottom-menu::after{width:10px;border:8px solid #0d1e3b;display:block;content:'';margin:0 auto;position:relative;-webkit-transform:rotate(-135deg) translateY(8px) translateX(8px);transform:rotate(-135deg) translateY(8px) translateX(8px)}cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default:enabled:focus,cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default:enabled:hover,cmacs-floating-menu .ant-btn-icon-only,cmacs-floating-menu .ant-menu-vertical{background-color:transparent!important}cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default:enabled,cmacs-floating-menu .ant-menu-item>a{color:#fff;padding:0}cmacs-floating-menu .ant-menu-vertical .ant-menu-item,cmacs-floating-menu .ant-menu-vertical .ant-menu-item:not(:last-child){margin:0 auto}cmacs-floating-menu .ant-menu-vertical,cmacs-floating-menu .ant-menu-vertical-left{border:#97a0ae}cmacs-floating-menu .ant-menu-item>a{color:#97a0ae}cmacs-floating-menu .ant-menu-item .ant-menu-item-selected,cmacs-floating-menu .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{background-color:#001333;border-radius:3px}cmacs-floating-menu cmacs-divider .ant-divider{background-color:#656c79}"]
+                        styles: ["cmacs-floating-menu{display:inline-block;position:absolute}.cmacs-floating-menu-horizontal,.cmacs-floating-menu-vertical{background:#0d1e3b;border-radius:5px;box-shadow:0 3px 4px rgba(59,63,70,.2);z-index:1;width:-webkit-max-content;width:-moz-max-content;width:max-content;padding:4px 3px}.cmacs-floating-menu-align-x{left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}.cmacs-floating-menu-align-y{top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%)}cmacs-floating-menu.carrot-top-menu::before{width:10px;border:8px solid #0d1e3b;display:block;content:'';margin:0 auto;position:relative;-webkit-transform:rotate(-135deg) translateY(-8px) translateX(-8px);transform:rotate(-135deg) translateY(-8px) translateX(-8px)}cmacs-floating-menu.carrot-bottom-menu::after{width:10px;border:8px solid #0d1e3b;display:block;content:'';margin:0 auto;position:relative;-webkit-transform:rotate(-135deg) translateY(8px) translateX(8px);transform:rotate(-135deg) translateY(8px) translateX(8px)}cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default:not(.cmacs-floating-menu-main-button):enabled:focus,cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default:not(.cmacs-floating-menu-main-button):enabled:hover,cmacs-floating-menu .ant-btn-icon-only:not(.cmacs-floating-menu-main-button),cmacs-floating-menu .ant-menu-vertical{background-color:transparent!important}cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default.cmacs-floating-menu-main-button:enabled:focus,cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default.cmacs-floating-menu-main-button:enabled:hover{background-color:rgba(0,159,227,.3)!important}cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default:enabled,cmacs-floating-menu .ant-menu-item>a{color:#fff!important;padding:0}cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default:enabled i{font-size:16px;color:#fff!important}cmacs-floating-menu .ant-menu-vertical .ant-menu-item,cmacs-floating-menu .ant-menu-vertical .ant-menu-item:not(:last-child){margin:0 auto}cmacs-floating-menu .ant-menu-vertical,cmacs-floating-menu .ant-menu-vertical-left{border:#97a0ae}cmacs-floating-menu .ant-menu-item>a{color:#97a0ae}cmacs-floating-menu .ant-menu-item .ant-menu-item-selected,cmacs-floating-menu .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{background-color:#001333;border-radius:3px}cmacs-floating-menu cmacs-divider .ant-divider{background-color:#656c79}.cmacs-floating-menu-main button{padding-right:0!important}.cmacs-floating-menu-horizontal .cmacs-floating-menu-main{display:inline-block}.cmacs-floating-menu-main-ul{width:150px;min-width:150px;border-radius:5px;background-color:#0d1e3b;border-color:#0d1e3b!important}.cmacs-floating-menu-main-ul li{padding:8px 10px 8px 12px!important;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:normal;color:#97a0ae;border-top:none!important}.cmacs-floating-menu-main-ul li:hover{background-color:#001333!important}.cmacs-floating-menu-main-ul .ant-dropdown-menu-item i,.cmacs-floating-menu-main-ul .ant-dropdown-menu-submenu-title i{position:relative;top:2px}cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default.cmacs-floating-menu-main-button{background-color:rgba(0,159,227,.3)!important;border-radius:unset!important;padding-right:2px!important;padding-left:3px!important}.cmacs-floating-menu-vertical button,.cmacs-floating-menu-vertical cmacs-dropdown,.cmacs-floating-menu-vertical div{display:block}.cmacs-floating-menu-horizontal button,.cmacs-floating-menu-horizontal cmacs-dropdown,.cmacs-floating-menu-horizontal div{display:inline-block}cmacs-floating-menu .cmacs-floating-menu-vertical .ant-btn-background-ghost.ant-btn-default.cmacs-floating-menu-main-button{width:100%}cmacs-floating-menu .cmacs-floating-menu-vertical .ant-divider-horizontal{width:60%;margin:5px auto;min-width:unset}.cmacs-floating-menu-main-ul-right{margin-left:5px!important}.cmacs-floating-menu-main-ul-bottom{margin-top:8px!important}.cmacs-floating-menu-main-ul-top{margin-bottom:8px!important}.cmacs-floating-menu-main-ul-left{margin-right:8px!important}.cmacs-floating-menu-draggable-north-area{width:100%;height:3px;background-color:#0d1e3b;position:absolute;top:0;border-radius:5px 5px 0 0}.cmacs-floating-menu-draggable-south-area{width:100%;height:3px;background-color:#0d1e3b;position:absolute;bottom:0;border-radius:0 0 5px 5px}.cmacs-floating-menu-draggable-east-area{height:100%;width:3px;background-color:#0d1e3b;position:absolute;right:0;border-radius:0 5px 5px 0}.cmacs-floating-menu-draggable-west-area{height:100%;width:3px;background-color:#0d1e3b;position:absolute;left:0;border-radius:5px 0 0 5px}.cmacs-floating-menu-draggable-east-area:hover,.cmacs-floating-menu-draggable-north-area:hover,.cmacs-floating-menu-draggable-south-area:hover,.cmacs-floating-menu-draggable-west-area:hover{cursor:move}"]
                     }] }
         ];
         /** @nocollapse */
         CmacsFloatingMenuComponent.ctorParameters = function () { return []; };
         CmacsFloatingMenuComponent.propDecorators = {
+            cdkDrag: [{ type: i0.ViewChild, args: [dragDrop.CdkDrag,] }],
+            position: [{ type: i0.Input }],
+            visible: [{ type: i0.Input }],
+            dragBoundary: [{ type: i0.Input }],
+            positionChange: [{ type: i0.Output }],
             carrot: [{ type: i0.Input }],
             top: [{ type: i0.Input }],
             bottom: [{ type: i0.Input }],
             left: [{ type: i0.Input }],
-            right: [{ type: i0.Input }]
+            right: [{ type: i0.Input }],
+            i18n: [{ type: i0.Input }]
         };
+        __decorate([
+            ngZorroAntd.InputBoolean(),
+            __metadata("design:type", Object)
+        ], CmacsFloatingMenuComponent.prototype, "visible", void 0);
         return CmacsFloatingMenuComponent;
     }());
 
@@ -26016,7 +26218,7 @@
                         animations: [i2.slideAlertMotion],
                         template: "<div class=\"cmacs-textarea-opened-wrapper\"\r\n     [style.width.px]=\"width\"\r\n     style=\"display: inline-flex;\">\r\n  <cmacs-divider class=\"cmacs-open-textarea-divider\"\r\n                 [style.opacity]=\"enableDivider || !formControlCustom.value\"></cmacs-divider>\r\n  <textarea class=\"cmacs-textarea\"\r\n            *ngIf=\"isEnabled()\"\r\n            [style.width.px]=\"width\"\r\n            #textarea [opened]=\"true\" cmacs-input\r\n            [placeholder]=\"placeholder\"\r\n            [formControl]=\"formControlCustom\"\r\n            nzAutosize>\r\n    </textarea>\r\n  <span (click)=\"startEdition($event)\"\r\n        [style.width.px]=\"width\"\r\n        *ngIf=\"isTextEnabled()\"\r\n        (mouseover)=\"enableDivider = true;\"\r\n        (mouseout)=\"enableDivider = false;\"\r\n        class=\"cmacs-textarea cmacs-text-area-span\">\r\n      {{formControlCustom.value}}\r\n    </span>\r\n</div>\r\n",
                         preserveWhitespaces: false,
-                        styles: [".cmacs-textarea{padding:5px 0 0;overflow:hidden;font-size:12px;min-height:31px;line-height:1.83}.cmacs-text-area-span:after{content:\"\"}.cmacs-text-area-span:hover:after{font-family:UISmall!important;content:\"\\e945\";font-size:19px;position:absolute;margin-top:-3px;margin-left:5px;color:#2a7cff}.cmacs-open-textarea-divider{height:20px;margin-top:2px}.cmacs-input-opened.ant-input:enabled:hover,.cmacs-input-opened.ant-input:focus{box-shadow:none;border:none}textarea.cmacs-input-opened{border:none;resize:none}", "\n      cmacs-open-textarea {\n        display: block;\n      }\n    "]
+                        styles: [".cmacs-textarea{padding:5px 0 0;overflow:hidden;font-size:12px;min-height:31px;line-height:1.83}.cmacs-text-area-span:after{content:\"\"}.cmacs-text-area-span:hover:after{font-family:UISmall!important;content:\"\\e99f\";font-size:19px;position:absolute;margin-top:-3px;margin-left:5px;color:#2a7cff}.cmacs-open-textarea-divider{height:20px;margin-top:2px}.cmacs-input-opened.ant-input:enabled:hover,.cmacs-input-opened.ant-input:focus{box-shadow:none;border:none}textarea.cmacs-input-opened{border:none;resize:none}", "\n      cmacs-open-textarea {\n        display: block;\n      }\n    "]
                     }] }
         ];
         /** @nocollapse */
@@ -26307,7 +26509,7 @@
                         exportAs: 'cmacsOpenInput',
                         encapsulation: i0.ViewEncapsulation.None,
                         template: "<input [style.width]=\"width | cmacsToCssUnit\"\r\n       cmacs-input\r\n       [placeholder]=\"placeholder\"\r\n       [formControl]=\"formControlCustom\"\r\n       class=\"cmacs-open-input\"/>\r\n<span class=\"cmacs-open-input-wrapper\"></span>\r\n",
-                        styles: [".cmacs-open-input,.cmacs-open-input:focus,.cmacs-open-input:hover{border-top:none!important;border-left:none!important;border-right:none!important;border-bottom:2px dotted #bec4cd!important;padding:0!important;height:25px}cmacs-form-explain.ant-form-explain{color:#f6503c;font-size:10px}.cmacs-open-input-wrapper:after{font-family:UISmall!important;content:\"\\e945\";font-size:19px;position:absolute;margin-top:-2px;margin-left:5px;color:#bec4cd}.cmacs-open-input:focus~.cmacs-open-input-wrapper:after,.cmacs-open-input:hover~.cmacs-open-input-wrapper:after{color:#2a7cff!important}cmacs-form-label+cmacs-open-input:hover .cmacs-open-input-wrapper:after,cmacs-form-label~cmacs-open-input .cmacs-open-input:focus~.cmacs-open-input-wrapper:after,cmacs-form-label~cmacs-open-input .cmacs-open-input~.cmacs-open-input-wrapper:after{content:\"\"}.ant-form-item-label,.ant-form-item-label>label{color:#acb3bf!important;font-size:12px!important}"]
+                        styles: [".cmacs-open-input,.cmacs-open-input:focus,.cmacs-open-input:hover{border-top:none!important;border-left:none!important;border-right:none!important;border-bottom:2px dotted #bec4cd!important;padding:0!important;height:25px}cmacs-form-explain.ant-form-explain{color:#f6503c;font-size:10px}.cmacs-open-input-wrapper:after{font-family:UISmall!important;content:\"\\e99f\";font-size:19px;position:absolute;margin-top:-2px;margin-left:5px;color:#bec4cd}.cmacs-open-input:focus~.cmacs-open-input-wrapper:after,.cmacs-open-input:hover~.cmacs-open-input-wrapper:after{color:#2a7cff!important}cmacs-form-label+cmacs-open-input:hover .cmacs-open-input-wrapper:after,cmacs-form-label~cmacs-open-input .cmacs-open-input:focus~.cmacs-open-input-wrapper:after,cmacs-form-label~cmacs-open-input .cmacs-open-input~.cmacs-open-input-wrapper:after{content:\"\"}.ant-form-item-label,.ant-form-item-label>label{color:#acb3bf!important;font-size:12px!important}"]
                     }] }
         ];
         /** @nocollapse */
@@ -32269,6 +32471,7 @@
     exports.CmacsWeekPickerComponent = CmacsWeekPickerComponent;
     exports.CmacsRangePickerComponent = CmacsRangePickerComponent;
     exports.CmacsDividerComponent = CmacsDividerComponent;
+    exports.FLOATING_MENU_LOCALIZATION = FLOATING_MENU_LOCALIZATION;
     exports.CmacsFloatingMenuComponent = CmacsFloatingMenuComponent;
     exports.CmacsTimePickerComponent = CmacsTimePickerComponent;
     exports.CmacsWizardComponent = CmacsWizardComponent;
