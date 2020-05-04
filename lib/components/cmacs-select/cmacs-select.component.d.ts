@@ -15,6 +15,7 @@ export declare class CmacsSelectComponent implements ControlValueAccessor, OnIni
     private cdr;
     private focusMonitor;
     private platform;
+    private elementRef;
     noAnimation?: NzNoAnimationDirective;
     nzOpen: boolean;
     _tagsOut: boolean;
