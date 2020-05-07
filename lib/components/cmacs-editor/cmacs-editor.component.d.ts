@@ -5,23 +5,9 @@ export declare class CmacsEditorComponent implements OnInit {
     onchange: EventEmitter<any>;
     disabled: boolean;
     height: string;
-    tinyMceSettings: {
-        mobile: {
-            theme: string;
-            plugins: string[];
-            toolbar: string[];
-        };
-        menubar: boolean;
-        image_title: boolean;
-        resize: boolean;
-        automatic_uploads: boolean;
-        height: string;
-        file_picker_types: string;
-        images_upload_url: string;
-        setup: (editor: any) => void;
-        plugins: string[];
-        toolbar: string;
-    };
+    statusbar: boolean;
+    resize: boolean;
+    tinyMceSettings: any;
     constructor();
     ngOnInit(): void;
 }

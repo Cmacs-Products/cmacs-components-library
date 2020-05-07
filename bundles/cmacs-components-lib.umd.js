@@ -31846,46 +31846,12 @@
      */
     var CmacsEditorComponent = /** @class */ (function () {
         function CmacsEditorComponent() {
-            var _this = this;
             this.showEditor = false;
             this.oninit = new i0.EventEmitter();
             this.onchange = new i0.EventEmitter();
             this.height = '250px';
-            this.tinyMceSettings = {
-                mobile: {
-                    theme: 'mobile',
-                    plugins: ['image table'],
-                    toolbar: [
-                        'bold', 'italic', 'underline', 'strikethrough', 'alignleft', 'aligncenter', 'alignright', 'alignjustify', 'bullist', 'numlist', 'forecolor'
-                    ]
-                },
-                menubar: false,
-                image_title: true,
-                resize: true,
-                automatic_uploads: true,
-                height: this.height,
-                file_picker_types: 'image',
-                images_upload_url: '#',
-                setup: ( /**
-                 * @param {?} editor
-                 * @return {?}
-                 */function (editor) {
-                    editor.on('init', ( /**
-                     * @param {?} obj
-                     * @return {?}
-                     */function (obj) {
-                        _this.oninit.emit(obj);
-                    }));
-                    editor.on('Change', ( /**
-                     * @param {?} obj
-                     * @return {?}
-                     */function (obj) {
-                        _this.onchange.emit(obj);
-                    }));
-                }),
-                plugins: ['image table'],
-                toolbar: 'bold italic underline strikethrough  | alignleft aligncenter alignright alignjustify | bullist numlist | forecolor'
-            };
+            this.statusbar = false;
+            this.resize = false;
         }
         /**
          * @return {?}
@@ -31895,6 +31861,44 @@
          */
             function () {
                 var _this = this;
+                if (this.tinyMceSettings === undefined) {
+                    this.tinyMceSettings = {
+                        mobile: {
+                            theme: 'mobile',
+                            plugins: ['image table'],
+                            toolbar: [
+                                // tslint:disable-next-line: max-line-length
+                                'bold', 'italic', 'underline', 'strikethrough', 'alignleft', 'aligncenter', 'alignright', 'alignjustify', 'bullist', 'numlist', 'forecolor'
+                            ]
+                        },
+                        menubar: false,
+                        image_title: true,
+                        resize: true,
+                        automatic_uploads: true,
+                        height: this.height,
+                        file_picker_types: 'image',
+                        images_upload_url: '#',
+                        setup: ( /**
+                         * @param {?} editor
+                         * @return {?}
+                         */function (editor) {
+                            editor.on('init', ( /**
+                             * @param {?} obj
+                             * @return {?}
+                             */function (obj) {
+                                _this.oninit.emit(obj);
+                            }));
+                            editor.on('Change', ( /**
+                             * @param {?} obj
+                             * @return {?}
+                             */function (obj) {
+                                _this.onchange.emit(obj);
+                            }));
+                        }),
+                        plugins: ['image table'],
+                        toolbar: 'bold italic underline strikethrough  | alignleft aligncenter alignright alignjustify | bullist numlist | forecolor'
+                    };
+                }
                 setTimeout(( /**
                  * @return {?}
                  */function () {
@@ -31917,6 +31921,8 @@
             onchange: [{ type: i0.Output }],
             disabled: [{ type: i0.Input }],
             height: [{ type: i0.Input }],
+            statusbar: [{ type: i0.Input }],
+            resize: [{ type: i0.Input }],
             tinyMceSettings: [{ type: i0.Input }]
         };
         return CmacsEditorComponent;
