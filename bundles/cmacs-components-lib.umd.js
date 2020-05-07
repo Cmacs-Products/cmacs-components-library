@@ -31849,9 +31849,13 @@
             this.showEditor = false;
             this.oninit = new i0.EventEmitter();
             this.onchange = new i0.EventEmitter();
+            this.onblur = new i0.EventEmitter();
             this.height = '250px';
             this.statusbar = false;
             this.resize = false;
+            // tslint:disable-next-line: max-line-length
+            this.toolbarmobile = ['bold', 'italic', 'underline', 'strikethrough', 'alignleft', 'aligncenter', 'alignright', 'alignjustify', 'bullist', 'numlist', 'forecolor'];
+            this.toolbar = 'bold italic underline strikethrough  | alignleft aligncenter alignright alignjustify | bullist numlist | forecolor';
         }
         /**
          * @return {?}
@@ -31865,17 +31869,15 @@
                     this.tinyMceSettings = {
                         mobile: {
                             theme: 'mobile',
-                            plugins: ['image table'],
-                            toolbar: [
-                                // tslint:disable-next-line: max-line-length
-                                'bold', 'italic', 'underline', 'strikethrough', 'alignleft', 'aligncenter', 'alignright', 'alignjustify', 'bullist', 'numlist', 'forecolor'
-                            ]
+                            plugins: ['image table textcolor'],
+                            toolbar: this.toolbarmobile
                         },
                         menubar: false,
                         image_title: true,
-                        resize: true,
+                        resize: this.resize,
                         automatic_uploads: true,
                         height: this.height,
+                        statusbar: this.statusbar,
                         file_picker_types: 'image',
                         images_upload_url: '#',
                         setup: ( /**
@@ -31888,6 +31890,12 @@
                              */function (obj) {
                                 _this.oninit.emit(obj);
                             }));
+                            editor.on('blur', ( /**
+                             * @param {?} obj
+                             * @return {?}
+                             */function (obj) {
+                                _this.onblur.emit(obj);
+                            }));
                             editor.on('Change', ( /**
                              * @param {?} obj
                              * @return {?}
@@ -31895,8 +31903,8 @@
                                 _this.onchange.emit(obj);
                             }));
                         }),
-                        plugins: ['image table'],
-                        toolbar: 'bold italic underline strikethrough  | alignleft aligncenter alignright alignjustify | bullist numlist | forecolor'
+                        plugins: ['image table textcolor'],
+                        toolbar: this.toolbar
                     };
                 }
                 setTimeout(( /**
@@ -31919,10 +31927,13 @@
         CmacsEditorComponent.propDecorators = {
             oninit: [{ type: i0.Output }],
             onchange: [{ type: i0.Output }],
+            onblur: [{ type: i0.Output }],
             disabled: [{ type: i0.Input }],
             height: [{ type: i0.Input }],
             statusbar: [{ type: i0.Input }],
             resize: [{ type: i0.Input }],
+            toolbarmobile: [{ type: i0.Input }],
+            toolbar: [{ type: i0.Input }],
             tinyMceSettings: [{ type: i0.Input }]
         };
         return CmacsEditorComponent;

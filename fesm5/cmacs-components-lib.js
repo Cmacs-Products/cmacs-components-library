@@ -40,14 +40,14 @@ import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMa
 import { addMonths, addYears, endOfMonth, setDay, setMonth, addDays, differenceInCalendarDays, differenceInCalendarMonths, differenceInCalendarWeeks, isSameDay, isSameMonth, isSameYear, isThisMonth, isThisYear, setYear, startOfMonth, startOfWeek, startOfYear, getISOWeek, getISOWeeksInYear, getISOYear, getMonth } from 'date-fns';
 import * as moment_ from 'moment';
 import 'moment/locale/en-ie';
-import { __assign, __decorate, __metadata, __extends, __values, __spread, __read } from 'tslib';
+import { __extends, __decorate, __metadata, __assign, __values, __spread, __read } from 'tslib';
 import { InputBoolean as InputBoolean$1, NzDropdownService, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
 import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { AngularDraggableModule } from 'angular2-draggable';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, inject, Type, Injector, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, InjectionToken, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, inject, Injector, Type, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -32121,9 +32121,13 @@ var CmacsEditorComponent = /** @class */ (function () {
         this.showEditor = false;
         this.oninit = new EventEmitter();
         this.onchange = new EventEmitter();
+        this.onblur = new EventEmitter();
         this.height = '250px';
         this.statusbar = false;
         this.resize = false;
+        // tslint:disable-next-line: max-line-length
+        this.toolbarmobile = ['bold', 'italic', 'underline', 'strikethrough', 'alignleft', 'aligncenter', 'alignright', 'alignjustify', 'bullist', 'numlist', 'forecolor'];
+        this.toolbar = 'bold italic underline strikethrough  | alignleft aligncenter alignright alignjustify | bullist numlist | forecolor';
     }
     /**
      * @return {?}
@@ -32137,17 +32141,15 @@ var CmacsEditorComponent = /** @class */ (function () {
             this.tinyMceSettings = {
                 mobile: {
                     theme: 'mobile',
-                    plugins: ['image table'],
-                    toolbar: [
-                        // tslint:disable-next-line: max-line-length
-                        'bold', 'italic', 'underline', 'strikethrough', 'alignleft', 'aligncenter', 'alignright', 'alignjustify', 'bullist', 'numlist', 'forecolor'
-                    ]
+                    plugins: ['image table textcolor'],
+                    toolbar: this.toolbarmobile
                 },
                 menubar: false,
                 image_title: true,
-                resize: true,
+                resize: this.resize,
                 automatic_uploads: true,
                 height: this.height,
+                statusbar: this.statusbar,
                 file_picker_types: 'image',
                 images_upload_url: '#',
                 setup: (/**
@@ -32162,6 +32164,13 @@ var CmacsEditorComponent = /** @class */ (function () {
                     function (obj) {
                         _this.oninit.emit(obj);
                     }));
+                    editor.on('blur', (/**
+                     * @param {?} obj
+                     * @return {?}
+                     */
+                    function (obj) {
+                        _this.onblur.emit(obj);
+                    }));
                     editor.on('Change', (/**
                      * @param {?} obj
                      * @return {?}
@@ -32170,8 +32179,8 @@ var CmacsEditorComponent = /** @class */ (function () {
                         _this.onchange.emit(obj);
                     }));
                 }),
-                plugins: ['image table'],
-                toolbar: 'bold italic underline strikethrough  | alignleft aligncenter alignright alignjustify | bullist numlist | forecolor'
+                plugins: ['image table textcolor'],
+                toolbar: this.toolbar
             };
         }
         setTimeout((/**
@@ -32195,10 +32204,13 @@ var CmacsEditorComponent = /** @class */ (function () {
     CmacsEditorComponent.propDecorators = {
         oninit: [{ type: Output }],
         onchange: [{ type: Output }],
+        onblur: [{ type: Output }],
         disabled: [{ type: Input }],
         height: [{ type: Input }],
         statusbar: [{ type: Input }],
         resize: [{ type: Input }],
+        toolbarmobile: [{ type: Input }],
+        toolbar: [{ type: Input }],
         tinyMceSettings: [{ type: Input }]
     };
     return CmacsEditorComponent;
