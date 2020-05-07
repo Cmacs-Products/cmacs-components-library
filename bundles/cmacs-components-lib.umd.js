@@ -31905,7 +31905,7 @@
             { type: i0.Component, args: [{
                         selector: 'cmacs-editor',
                         exportAs: 'cmacsEditor',
-                        template: "<editor *ngIf=\"showEditor\" [init]=\"tinyMceSettings\" class=\"cmacs-editor\"></editor>\r\n",
+                        template: "<editor *ngIf=\"showEditor\" [init]=\"tinyMceSettings\" class=\"cmacs-editor\" [disabled]=\"disabled\"></editor>\r\n",
                         encapsulation: i0.ViewEncapsulation.None,
                         styles: [".cmacs-editor .tox .tox-statusbar{border-top:none}.cmacs-editor .tox .tox-statusbar__text-container{display:none}"]
                     }] }
@@ -31915,6 +31915,7 @@
         CmacsEditorComponent.propDecorators = {
             oninit: [{ type: i0.Output }],
             onchange: [{ type: i0.Output }],
+            disabled: [{ type: i0.Input }],
             height: [{ type: i0.Input }],
             tinyMceSettings: [{ type: i0.Input }]
         };

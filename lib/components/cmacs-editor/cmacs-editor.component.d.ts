@@ -3,6 +3,7 @@ export declare class CmacsEditorComponent implements OnInit {
     showEditor: boolean;
     oninit: EventEmitter<any>;
     onchange: EventEmitter<any>;
+    disabled: boolean;
     height: string;
     tinyMceSettings: {
         mobile: {
