@@ -4,6 +4,7 @@ export declare class CmacsEditorComponent implements OnInit {
     oninit: EventEmitter<any>;
     onchange: EventEmitter<any>;
     onblur: EventEmitter<any>;
+    onkeyup: EventEmitter<any>;
     disabled: boolean;
     height: string;
     statusbar: boolean;
