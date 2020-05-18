@@ -20,6 +20,7 @@ export declare class CmacsFloatingMenuComponent implements OnChanges {
     cdkDrag: CdkDrag;
     position: FloatingMenuType;
     visible: boolean;
+    showExtras: boolean;
     dragBoundary: string;
     positionChange: EventEmitter<FloatingMenuType>;
     carrot: string;
