@@ -12,6 +12,7 @@ import { CheckboxSelect } from "../cmacs-grid/cmacs-table.component";
 import { CdkDragDrop } from "@angular/cdk/drag-drop";
 import { NzDropdownContextComponent, NzDropdownService } from "ng-zorro-antd";
 import { CmacsInputNumberComponent } from "../cmacs-input-number/cmacs-input-number.component";
+import { UtilService } from '../core/services/util.service';
 export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnChanges, OnDestroy, AfterViewInit {
     private cdr;
     private i18n;
@@ -20,6 +21,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     private datePipe;
     private nzDropdownService;
     private cookies;
+    private utilService;
     locale: any;
     headerBottomStyle: {};
     private destroy$;
@@ -119,7 +121,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     deleteRow(idx: number): void;
     startEdit(id: string, property: string, event: MouseEvent): void;
     sort($event: any, fieldProperty: string): void;
-    getHeaderMaxWidth(field: Field): string;
+    getHeaderMaxWidth(field: Field): "calc(100% - 15px)" | "100%";
     handleMouseDown(e: Event): void;
     getCustomPadding(item: any, i: number): number;
     childOf(node: any, ancestor: any): boolean;
@@ -154,7 +156,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     isCeldTypeTemplateRef(field: Field): boolean;
     isUndefined(value: any): boolean;
     isRowSelected(data: any): boolean;
-    constructor(cdr: ChangeDetectorRef, i18n: NzI18nService, exportAsService: ExportAsService, excelService: ExcelService, datePipe: DatePipe, nzDropdownService: NzDropdownService, cookies: CookieService);
+    constructor(cdr: ChangeDetectorRef, i18n: NzI18nService, exportAsService: ExportAsService, excelService: ExcelService, datePipe: DatePipe, nzDropdownService: NzDropdownService, cookies: CookieService, utilService: UtilService);
     ngAfterViewInit(): void;
     setFieldsDefault(): void;
     ngOnInit(): void;
@@ -189,4 +191,5 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
         [`cmacs-compact-table-logs-header-th-font`]: boolean;
     };
     getMaxWidth(field: Field, item: any, i: number): string;
+    getMaxWidthFieldViewMode(field: Field, i: number): "18px" | "0px";
 }
