@@ -1,4 +1,4 @@
-.cmacs-input-fix{
+.cmacs-input-fix:not(.cmacs-textarea){
   height: 34px;
   border: solid 1px #dee0e5;
   background-color: #ffffff;

@@ -47,7 +47,7 @@ import { SignaturePadModule } from 'angular2-signaturepad';
 import { AngularDraggableModule } from 'angular2-draggable';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -17169,6 +17169,10 @@ class CmacsFloatingMenuComponent {
         this.showExtras = true;
         this.positionChange = new EventEmitter();
         this.carrot = '';
+        this.topBoundary = '0';
+        this.bottomBoundary = '0';
+        this.leftBoundary = '0';
+        this.rightBoundary = '0';
         this.i18n = FLOATING_MENU_LOCALIZATION;
     }
     /**
@@ -17199,7 +17203,7 @@ class CmacsFloatingMenuComponent {
     dockToLeft() {
         this.resetDragDrop();
         this.top = null;
-        this.left = '0';
+        this.left = this.leftBoundary;
         this.right = null;
         this.bottom = null;
         this.position = 'left';
@@ -17212,7 +17216,7 @@ class CmacsFloatingMenuComponent {
         this.resetDragDrop();
         this.top = null;
         this.left = null;
-        this.right = '0';
+        this.right = this.rightBoundary;
         this.bottom = null;
         this.position = 'right';
         this.positionChange.emit(this.position);
@@ -17222,7 +17226,7 @@ class CmacsFloatingMenuComponent {
      */
     dockToTop() {
         this.resetDragDrop();
-        this.top = '0';
+        this.top = this.topBoundary;
         this.left = null;
         this.right = null;
         this.bottom = null;
@@ -17234,7 +17238,7 @@ class CmacsFloatingMenuComponent {
      */
     dockToBottom() {
         this.resetDragDrop();
-        this.bottom = '0';
+        this.bottom = this.bottomBoundary;
         this.left = null;
         this.right = null;
         this.top = null;
@@ -17299,6 +17303,10 @@ CmacsFloatingMenuComponent.propDecorators = {
     bottom: [{ type: Input }],
     left: [{ type: Input }],
     right: [{ type: Input }],
+    topBoundary: [{ type: Input }],
+    bottomBoundary: [{ type: Input }],
+    leftBoundary: [{ type: Input }],
+    rightBoundary: [{ type: Input }],
     i18n: [{ type: Input }]
 };
 __decorate([
@@ -20734,9 +20742,9 @@ CmacsDatetimePickerPanelComponent.decorators = [
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 selector: 'cmacs-datetime-picker-panel',
                 exportAs: 'cmacsDateTimePickerPanel',
-                template: "<div class=\"{{ nzInDatePicker ? prefixCls + '-panel' : '' }} cmacs-datetime-picker\">\r\n  <div\r\n    class=\"{{ prefixCls }}-inner {{ nzInDatePicker ? prefixCls + '-column-' + enabledColumns : '' }}\"\r\n    [style.width.px]=\"nzInDatePicker ? null : enabledColumns * 56\">\r\n    <div class=\"{{ prefixCls }}-input-wrap\">\r\n      <input\r\n        type=\"text\"\r\n        class=\"{{ prefixCls }}-input\"\r\n        [placeholder]=\"nzPlaceHolder\"\r\n        [nzTime]=\"format\"\r\n        [(ngModel)]=\"time.value\"\r\n        (blur)=\"time.changed()\">\r\n    </div>\r\n    <div>\r\n      <cmacs-input-number style=\"margin-right: 5px\" class=\"cmacs-datetime-picker-input-number\" [min]=\"1\" [max]=\"12\" [(ngModel)]=\"hours\"\r\n                          (ngModelChange)=\"updateTime($event, 'hours')\"></cmacs-input-number>\r\n      <div class=\"cmacs-datetime-dividers\"><span>:</span></div>\r\n      <cmacs-input-number style=\"margin-left: 5px\" class=\"cmacs-datetime-picker-input-number\" [min]=\"0\" [max]=\"59\" [(ngModel)]=\"minutes\"\r\n                          (ngModelChange)=\"updateTime($event, 'minutes')\"></cmacs-input-number>\r\n      <cmacs-select style=\"margin: 11px 11px 11px 0;\" [(ngModel)]=\"range\" (ngModelChange)=\"select12Hours($event)\">\r\n        <cmacs-option *ngFor=\"let range2 of use12HoursRange\" [value]=\"range2.value\" [label]=\"range2.value | uppercase\">\r\n        </cmacs-option>\r\n      </cmacs-select>\r\n    </div>\r\n    <div class=\"{{ prefixCls }}-addon\" *ngIf=\"nzAddOn\">\r\n      <ng-template [ngTemplateOutlet]=\"nzAddOn\"></ng-template>\r\n    </div>\r\n  </div>\r\n</div>\r\n",
+                template: "<div class=\"{{ nzInDatePicker ? prefixCls + '-panel' : '' }} cmacs-datetime-picker\">\r\n  <div\r\n    class=\"{{ prefixCls }}-inner {{ nzInDatePicker ? prefixCls + '-column-' + enabledColumns : '' }}\"\r\n    [style.width.px]=\"nzInDatePicker ? null : enabledColumns * 56\">\r\n    <div class=\"{{ prefixCls }}-input-wrap\">\r\n      <input\r\n        type=\"text\"\r\n        class=\"{{ prefixCls }}-input\"\r\n        [placeholder]=\"nzPlaceHolder\"\r\n        [nzTime]=\"format\"\r\n        [(ngModel)]=\"time.value\"\r\n        (blur)=\"time.changed()\">\r\n    </div>\r\n    <div>\r\n      <cmacs-input-number style=\"margin-right: 5px\" class=\"cmacs-datetime-picker-input-number\" [min]=\"1\" [max]=\"12\" [(ngModel)]=\"hours\"\r\n                          (ngModelChange)=\"updateTime($event, 'hours')\"></cmacs-input-number>\r\n      <div class=\"cmacs-datetime-dividers\"><span>:</span></div>\r\n      <cmacs-input-number style=\"margin-left: 5px\" class=\"cmacs-datetime-picker-input-number\" [min]=\"0\" [max]=\"59\" [(ngModel)]=\"minutes\"\r\n                          (ngModelChange)=\"updateTime($event, 'minutes')\"></cmacs-input-number>\r\n      <cmacs-select class=\"ampmdropdown\" [(ngModel)]=\"range\" (ngModelChange)=\"select12Hours($event)\">\r\n        <cmacs-option *ngFor=\"let range2 of use12HoursRange\" [value]=\"range2.value\" [label]=\"range2.value | uppercase\">\r\n        </cmacs-option>\r\n      </cmacs-select>\r\n    </div>\r\n    <div class=\"{{ prefixCls }}-addon\" *ngIf=\"nzAddOn\">\r\n      <ng-template [ngTemplateOutlet]=\"nzAddOn\"></ng-template>\r\n    </div>\r\n  </div>\r\n</div>\r\n",
                 providers: [NzUpdateHostClassService, { provide: NG_VALUE_ACCESSOR, useExisting: CmacsDatetimePickerPanelComponent, multi: true }],
-                styles: [".cmacs-datetime-picker-input-number{width:55px;height:30px!important;margin:11px}cmacs-select .ant-select-selection{height:30px}.cmacs-datetime-dividers{display:inline-block;position:relative;top:-3px}.ant-time-picker-panel-inner{width:224px!important}::ng-deep .cmacs-datetime-picker .ant-time-picker-panel-inner cmacs-select.ant-select{height:30px!important;margin:12px 0!important;display:-webkit-inline-box;display:inline-flex;width:auto!important}"]
+                styles: [".cmacs-datetime-picker-input-number{width:55px;height:30px!important;margin:11px}cmacs-select .ant-select-selection{height:30px}.cmacs-datetime-dividers{display:inline-block;position:relative;top:-3px}.ant-time-picker-panel-inner{width:224px!important}.ampmdropdown{margin:11px 11px 11px 0;width:calc(100% - 156px)}::ng-deep .cmacs-datetime-picker .ant-time-picker-panel-inner cmacs-select.ant-select{height:30px!important;margin:12px 0!important;display:-webkit-inline-box;display:inline-flex;width:auto!important}"]
             }] }
 ];
 /** @nocollapse */

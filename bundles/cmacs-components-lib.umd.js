@@ -20176,6 +20176,10 @@
             this.showExtras = true;
             this.positionChange = new i0.EventEmitter();
             this.carrot = '';
+            this.topBoundary = '0';
+            this.bottomBoundary = '0';
+            this.leftBoundary = '0';
+            this.rightBoundary = '0';
             this.i18n = FLOATING_MENU_LOCALIZATION;
         }
         /**
@@ -20218,7 +20222,7 @@
             function () {
                 this.resetDragDrop();
                 this.top = null;
-                this.left = '0';
+                this.left = this.leftBoundary;
                 this.right = null;
                 this.bottom = null;
                 this.position = 'left';
@@ -20234,7 +20238,7 @@
                 this.resetDragDrop();
                 this.top = null;
                 this.left = null;
-                this.right = '0';
+                this.right = this.rightBoundary;
                 this.bottom = null;
                 this.position = 'right';
                 this.positionChange.emit(this.position);
@@ -20247,7 +20251,7 @@
          */
             function () {
                 this.resetDragDrop();
-                this.top = '0';
+                this.top = this.topBoundary;
                 this.left = null;
                 this.right = null;
                 this.bottom = null;
@@ -20262,7 +20266,7 @@
          */
             function () {
                 this.resetDragDrop();
-                this.bottom = '0';
+                this.bottom = this.bottomBoundary;
                 this.left = null;
                 this.right = null;
                 this.top = null;
@@ -20332,6 +20336,10 @@
             bottom: [{ type: i0.Input }],
             left: [{ type: i0.Input }],
             right: [{ type: i0.Input }],
+            topBoundary: [{ type: i0.Input }],
+            bottomBoundary: [{ type: i0.Input }],
+            leftBoundary: [{ type: i0.Input }],
+            rightBoundary: [{ type: i0.Input }],
             i18n: [{ type: i0.Input }]
         };
         __decorate([
@@ -24523,9 +24531,9 @@
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
                         selector: 'cmacs-datetime-picker-panel',
                         exportAs: 'cmacsDateTimePickerPanel',
-                        template: "<div class=\"{{ nzInDatePicker ? prefixCls + '-panel' : '' }} cmacs-datetime-picker\">\r\n  <div\r\n    class=\"{{ prefixCls }}-inner {{ nzInDatePicker ? prefixCls + '-column-' + enabledColumns : '' }}\"\r\n    [style.width.px]=\"nzInDatePicker ? null : enabledColumns * 56\">\r\n    <div class=\"{{ prefixCls }}-input-wrap\">\r\n      <input\r\n        type=\"text\"\r\n        class=\"{{ prefixCls }}-input\"\r\n        [placeholder]=\"nzPlaceHolder\"\r\n        [nzTime]=\"format\"\r\n        [(ngModel)]=\"time.value\"\r\n        (blur)=\"time.changed()\">\r\n    </div>\r\n    <div>\r\n      <cmacs-input-number style=\"margin-right: 5px\" class=\"cmacs-datetime-picker-input-number\" [min]=\"1\" [max]=\"12\" [(ngModel)]=\"hours\"\r\n                          (ngModelChange)=\"updateTime($event, 'hours')\"></cmacs-input-number>\r\n      <div class=\"cmacs-datetime-dividers\"><span>:</span></div>\r\n      <cmacs-input-number style=\"margin-left: 5px\" class=\"cmacs-datetime-picker-input-number\" [min]=\"0\" [max]=\"59\" [(ngModel)]=\"minutes\"\r\n                          (ngModelChange)=\"updateTime($event, 'minutes')\"></cmacs-input-number>\r\n      <cmacs-select style=\"margin: 11px 11px 11px 0;\" [(ngModel)]=\"range\" (ngModelChange)=\"select12Hours($event)\">\r\n        <cmacs-option *ngFor=\"let range2 of use12HoursRange\" [value]=\"range2.value\" [label]=\"range2.value | uppercase\">\r\n        </cmacs-option>\r\n      </cmacs-select>\r\n    </div>\r\n    <div class=\"{{ prefixCls }}-addon\" *ngIf=\"nzAddOn\">\r\n      <ng-template [ngTemplateOutlet]=\"nzAddOn\"></ng-template>\r\n    </div>\r\n  </div>\r\n</div>\r\n",
+                        template: "<div class=\"{{ nzInDatePicker ? prefixCls + '-panel' : '' }} cmacs-datetime-picker\">\r\n  <div\r\n    class=\"{{ prefixCls }}-inner {{ nzInDatePicker ? prefixCls + '-column-' + enabledColumns : '' }}\"\r\n    [style.width.px]=\"nzInDatePicker ? null : enabledColumns * 56\">\r\n    <div class=\"{{ prefixCls }}-input-wrap\">\r\n      <input\r\n        type=\"text\"\r\n        class=\"{{ prefixCls }}-input\"\r\n        [placeholder]=\"nzPlaceHolder\"\r\n        [nzTime]=\"format\"\r\n        [(ngModel)]=\"time.value\"\r\n        (blur)=\"time.changed()\">\r\n    </div>\r\n    <div>\r\n      <cmacs-input-number style=\"margin-right: 5px\" class=\"cmacs-datetime-picker-input-number\" [min]=\"1\" [max]=\"12\" [(ngModel)]=\"hours\"\r\n                          (ngModelChange)=\"updateTime($event, 'hours')\"></cmacs-input-number>\r\n      <div class=\"cmacs-datetime-dividers\"><span>:</span></div>\r\n      <cmacs-input-number style=\"margin-left: 5px\" class=\"cmacs-datetime-picker-input-number\" [min]=\"0\" [max]=\"59\" [(ngModel)]=\"minutes\"\r\n                          (ngModelChange)=\"updateTime($event, 'minutes')\"></cmacs-input-number>\r\n      <cmacs-select class=\"ampmdropdown\" [(ngModel)]=\"range\" (ngModelChange)=\"select12Hours($event)\">\r\n        <cmacs-option *ngFor=\"let range2 of use12HoursRange\" [value]=\"range2.value\" [label]=\"range2.value | uppercase\">\r\n        </cmacs-option>\r\n      </cmacs-select>\r\n    </div>\r\n    <div class=\"{{ prefixCls }}-addon\" *ngIf=\"nzAddOn\">\r\n      <ng-template [ngTemplateOutlet]=\"nzAddOn\"></ng-template>\r\n    </div>\r\n  </div>\r\n</div>\r\n",
                         providers: [i2.NzUpdateHostClassService, { provide: forms.NG_VALUE_ACCESSOR, useExisting: CmacsDatetimePickerPanelComponent, multi: true }],
-                        styles: [".cmacs-datetime-picker-input-number{width:55px;height:30px!important;margin:11px}cmacs-select .ant-select-selection{height:30px}.cmacs-datetime-dividers{display:inline-block;position:relative;top:-3px}.ant-time-picker-panel-inner{width:224px!important}::ng-deep .cmacs-datetime-picker .ant-time-picker-panel-inner cmacs-select.ant-select{height:30px!important;margin:12px 0!important;display:-webkit-inline-box;display:inline-flex;width:auto!important}"]
+                        styles: [".cmacs-datetime-picker-input-number{width:55px;height:30px!important;margin:11px}cmacs-select .ant-select-selection{height:30px}.cmacs-datetime-dividers{display:inline-block;position:relative;top:-3px}.ant-time-picker-panel-inner{width:224px!important}.ampmdropdown{margin:11px 11px 11px 0;width:calc(100% - 156px)}::ng-deep .cmacs-datetime-picker .ant-time-picker-panel-inner cmacs-select.ant-select{height:30px!important;margin:12px 0!important;display:-webkit-inline-box;display:inline-flex;width:auto!important}"]
                     }] }
         ];
         /** @nocollapse */

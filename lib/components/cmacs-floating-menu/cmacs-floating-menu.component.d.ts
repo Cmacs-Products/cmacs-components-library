@@ -28,6 +28,10 @@ export declare class CmacsFloatingMenuComponent implements OnChanges {
     bottom: string;
     left: string;
     right: string;
+    topBoundary: string;
+    bottomBoundary: string;
+    leftBoundary: string;
+    rightBoundary: string;
     i18n: any;
     constructor();
     ngOnChanges(): void;
