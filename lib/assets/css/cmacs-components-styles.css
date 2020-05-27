@@ -128,11 +128,12 @@ nz-divider {
 }
 
 .cmacs-menu-side-bar.ant-menu-inline-collapsed {
-  width: 39px !important;
+  width: 40px;
+    border-right: none;
 }
 
 .cmacs-menu-side-bar.ant-menu-inline-collapsed li {
-  padding: 11px !important;
+  padding: 5px 10px !important;
 }
 
 .cmacs-menu-side-bar.ant-menu-inline-collapsed li.ant-menu-submenu {
