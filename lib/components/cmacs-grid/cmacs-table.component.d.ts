@@ -102,9 +102,12 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     endEditMode($event: KeyboardEvent, index: number): void;
     endEditModeNgModel(index: number): void;
     getIndex(id: any): number;
+    order: number;
     updateCheckboxCache(): void;
     onButtonClick(field: any): void;
-    onCheckboxChange(oninit?: boolean): void;
+    onCheckboxChange($event: any, data: any): void;
+    refreshCheckboxState(oninit?: boolean): void;
+    checkCheckboxState(): CheckboxSelect[];
     ngModelChange(index: number): void;
     onRateChange(count: number, data: any): void;
     onRateClick(event: any): void;
@@ -133,7 +136,10 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     exportToPdf(fileName: string): void;
     ngOnDestroy(): void;
     tapHandler($event: any, data: any): void;
+    clicks: number;
     clickRow(event: MouseEvent, data: any): void;
+    preventDefault($event: MouseEvent): void;
+    selectRow(event: MouseEvent, data: any): void;
     removeSelection(data: any): void;
     selectMultiple(currentIdx: any): void;
     dblClickRow(data: any): void;
@@ -141,4 +147,5 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
 export interface CheckboxSelect {
     data: any;
     selected: boolean;
+    order?: number;
 }

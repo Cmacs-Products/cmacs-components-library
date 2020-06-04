@@ -1,12 +1,14 @@
 import { ChangeDetectorRef, EventEmitter, OnChanges, OnDestroy, OnInit, SimpleChange, TemplateRef } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 import { Observable, ReplaySubject, Subject } from 'rxjs';
-import { NzFormatBeforeDropEvent, NzFormatEmitEvent, NzNoAnimationDirective, NzTreeBase, NzTreeBaseService, NzTreeNode } from 'ng-zorro-antd/core';
+import { NzFormatBeforeDropEvent, NzFormatEmitEvent, NzNoAnimationDirective, NzTreeBase, NzTreeBaseService, NzTreeNode, NzTreeNodeOptions } from 'ng-zorro-antd/core';
 import { CmacsTreeService } from './cmacs-tree.service';
 export declare function NzTreeServiceFactory(higherOrderService: NzTreeBaseService, treeService: CmacsTreeService): NzTreeBaseService;
 export declare class CmacsTreeComponent extends NzTreeBase implements OnInit, OnDestroy, ControlValueAccessor, OnChanges {
     private cdr;
     noAnimation?: NzNoAnimationDirective;
+    displayDataAsyncLoading: any[];
+    treeDataAsyncLoading: any[];
     showIcon: boolean;
     showExpand: boolean;
     showLine: boolean;
@@ -23,6 +25,7 @@ export declare class CmacsTreeComponent extends NzTreeBase implements OnInit, On
     nzBlockNode: boolean;
     inlineEdit: boolean;
     radio: boolean;
+    cmacsAsyncData: boolean;
     onaddchild: EventEmitter<NzTreeNode>;
     /**
      * @deprecated use
@@ -94,7 +97,7 @@ export declare class CmacsTreeComponent extends NzTreeBase implements OnInit, On
     registerOnTouched(fn: () => void): void;
     initNzData(value: any[]): void;
     constructor(nzTreeService: CmacsTreeService, cdr: ChangeDetectorRef, noAnimation?: NzNoAnimationDirective);
-    onKeydownHandler(event: any): void;
+    onKeyupHandler(event: any): void;
     ngOnInit(): void;
     onSelectionMultiple(selectedNode: NzFormatEmitEvent): void;
     ngOnChanges(changes: {
@@ -107,4 +110,9 @@ export declare class CmacsTreeComponent extends NzTreeBase implements OnInit, On
         endNodeFound: any;
     };
     visitNode(node: any, hashMap: any): void;
+    getFirstLevelNodes(subTree: any): any[];
+    searchTree(treeData: any, key: any): any;
+    searchSubTree(root: any, key: any): any;
+    onClickAsyncNode(event: NzFormatEmitEvent): void;
+    loadNodeChildren(key: any): Promise<NzTreeNodeOptions[]>;
 }
