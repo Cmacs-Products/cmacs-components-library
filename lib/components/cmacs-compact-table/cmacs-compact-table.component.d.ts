@@ -13,6 +13,7 @@ import { CdkDragDrop } from "@angular/cdk/drag-drop";
 import { NzDropdownContextComponent, NzDropdownService } from "ng-zorro-antd";
 import { CmacsInputNumberComponent } from "../cmacs-input-number/cmacs-input-number.component";
 import { UtilService } from '../core/services/util.service';
+import 'moment/locale/en-ie';
 export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnChanges, OnDestroy, AfterViewInit {
     private cdr;
     private i18n;
@@ -177,7 +178,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     exportToExcel(fileName: string): void;
     exportTreeExcel(fileName: string): void;
     exportTreeExcelRec(data: any, dataToExport: any): void;
-    exportToPdf(fileName: string): void;
+    exportToPdf(config: any): void;
     ngOnDestroy(): void;
     clicks: number;
     clickRow(event: MouseEvent, data: any): void;

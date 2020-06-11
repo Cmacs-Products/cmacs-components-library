@@ -48,7 +48,7 @@ import { SignaturePadModule } from 'angular2-signaturepad';
 import { AngularDraggableModule } from 'angular2-draggable';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, InjectionToken, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -4199,7 +4199,7 @@ CmacsTagComponent.decorators = [
                 preserveWhitespaces: false,
                 providers: [NzUpdateHostClassService],
                 animations: [fadeMotion],
-                template: "<div [class.cmacs-closeable-inner]=\"mode === 'closeable' && !disabled\" [class.cmacs-closeable-disabled]=\"disabled\">\r\n  <ng-content></ng-content>\r\n</div>\r\n\r\n<i nz-icon type=\"close\" *ngIf=\"mode==='closeable' && !disabled\" tabindex=\"-1\" (click)=\"closeTag($event)\"></i>\r\n",
+                template: "<div [class.cmacs-closeable-inner]=\"mode === 'closeable' && !disabled\" [class.cmacs-closeable-disabled]=\"disabled\">\r\n  <span><ng-content></ng-content></span>\r\n</div>\r\n\r\n<i nz-icon type=\"close\" *ngIf=\"mode==='closeable' && !disabled\" tabindex=\"-1\" (click)=\"closeTag($event)\"></i>\r\n",
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 encapsulation: ViewEncapsulation.None,
                 host: {
@@ -5347,7 +5347,7 @@ class ExcelService {
      * @return {?}
      */
     static toExportFileName(excelFileName) {
-        return `${excelFileName}_export_${new Date().getTime()}.xlsx`;
+        return `${excelFileName}.xlsx`;
     }
     /**
      * @param {?} json
@@ -5388,6 +5388,369 @@ const ExportType = {
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+/** @type {?} */
+const moment = moment_;
+class UtilService {
+    /**
+     * @param {?} exportAsService
+     */
+    constructor(exportAsService) {
+        this.exportAsService = exportAsService;
+        this.fileName = '';
+        this.elemID = '';
+        this.exportCompanyName = 'Company Name';
+        this.exportUserName = 'User Name';
+        this.exportTitle = '';
+        this.exportCompanyLogoUrl = 'assets/PToB_logo.png';
+        this.exportTableCustomWidth = null;
+        this.exportTableCustomHeight = null;
+        this.imagesLoaded = 0;
+    }
+    /**
+     * @return {?}
+     */
+    uuidv4() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (/**
+         * @param {?} c
+         * @return {?}
+         */
+        (c) => {
+            // tslint:disable-next-line: no-bitwise
+            /** @type {?} */
+            const r = Math.random() * 16 | 0;
+            // tslint:disable-next-line: triple-equals
+            /** @type {?} */
+            const v = c == 'x' ?
+                // tslint:disable-next-line: no-bitwise
+                r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        }));
+    }
+    /**
+     * @param {?=} format
+     * @param {?=} fileName
+     * @param {?=} elemID
+     * @param {?=} exportCompanyName
+     * @param {?=} exportUserName
+     * @param {?=} exportTitle
+     * @param {?=} exportCompanyLogoUrl
+     * @param {?=} exportTableCustomWidth
+     * @param {?=} exportTableCustomHeight
+     * @return {?}
+     */
+    exportTable(format = 'png', fileName, elemID, exportCompanyName = 'Company Name', exportUserName = 'User Name', exportTitle = '', exportCompanyLogoUrl = 'assets/PToB_logo.png', exportTableCustomWidth = null, exportTableCustomHeight = null) {
+        this.fileName = fileName;
+        this.elemID = elemID;
+        this.exportCompanyName = exportCompanyName;
+        this.exportUserName = exportUserName;
+        this.exportTitle = exportTitle;
+        this.exportCompanyLogoUrl = exportCompanyLogoUrl;
+        this.exportTableCustomWidth = exportTableCustomWidth;
+        this.exportTableCustomHeight = exportTableCustomHeight;
+        /** @type {?} */
+        const tables = document.getElementById(elemID).getElementsByTagName('table');
+        this.getTableCapture(tables, format);
+    }
+    /**
+     * @param {?} imgData
+     * @return {?}
+     */
+    initExportToPdf(imgData) {
+        /** @type {?} */
+        const getLogo = (/**
+         * @return {?}
+         */
+        () => {
+            /** @type {?} */
+            const canvasL = document.createElement('canvas');
+            /** @type {?} */
+            const ctx = canvasL.getContext('2d');
+            canvasL.height = imgLogo.height;
+            canvasL.width = imgLogo.width;
+            ctx.drawImage(imgLogo, 0, 0);
+            /** @type {?} */
+            const logo = canvasL.toDataURL('image/PNG');
+            this.saveImageToPdf(logo, imgData);
+        });
+        /** @type {?} */
+        const imgLogo = new Image();
+        imgLogo.crossOrigin = "Anonymous";
+        imgLogo.onload = getLogo;
+        imgLogo.src = this.exportCompanyLogoUrl;
+    }
+    /**
+     * @param {?} logoData
+     * @param {?} imgData
+     * @return {?}
+     */
+    saveImageToPdf(logoData, imgData) {
+        /** @type {?} */
+        const cutImageUp = (/**
+         * @return {?}
+         */
+        () => {
+            /** @type {?} */
+            const doc = new jsPDF('l', 'mm', 'a4', 1);
+            /** @type {?} */
+            const imgProps = ((/** @type {?} */ (doc))).getImageProperties(imgData);
+            /** @type {?} */
+            const cuts = Math.trunc(imgProps.height / 2080) + 1;
+            /** @type {?} */
+            const pdfWidth = this.exportTableCustomWidth ? this.exportTableCustomWidth : doc.internal.pageSize.getWidth() - 2 * 15;
+            /** @type {?} */
+            let pdfHeight = (1500 * pdfWidth) / imgProps.width;
+            if (this.exportTableCustomHeight) {
+                pdfHeight = (this.exportTableCustomHeight * pdfWidth) / imgProps.width;
+            }
+            for (let y = 0; y < cuts; y++) {
+                /** @type {?} */
+                const canvas = document.createElement('canvas');
+                canvas.width = imgProps.width;
+                canvas.height = 2080;
+                /** @type {?} */
+                const context = canvas.getContext('2d');
+                context.drawImage(image, 0, y * 2080, imgProps.width, 2080, 0, 0, canvas.width, canvas.height);
+                /** @type {?} */
+                const img = canvas.toDataURL("image/PNG");
+                if (y) {
+                    doc.addPage();
+                }
+                doc.addImage(img, 'PNG', 15, 35, pdfWidth, pdfHeight, undefined, 'FAST');
+            }
+            this.addFooters(doc, logoData);
+            /** @type {?} */
+            const filenameFormatted = moment().format("DD.MM.YYYY.HH.mm.ss") + '_' + this.fileName + '.pdf';
+            doc.save(filenameFormatted);
+        });
+        /** @type {?} */
+        const image = new Image();
+        image.onload = cutImageUp;
+        image.src = imgData;
+    }
+    /**
+     * @param {?} doc
+     * @param {?} logo
+     * @return {?}
+     */
+    addFooters(doc, logo) {
+        /** @type {?} */
+        const pageCount = doc.internal.getNumberOfPages();
+        /** @type {?} */
+        const date = moment().format('MMMM DD, YYYY');
+        doc.setFont('times');
+        doc.setTextColor(101, 108, 121);
+        doc.setFontSize(9);
+        for (var i = 1; i <= pageCount; i++) {
+            doc.setPage(i);
+            doc.text(this.exportCompanyName, 15, 8, {
+                align: 'left'
+            });
+            doc.text(this.exportUserName, doc.internal.pageSize.width - 15, 8, {
+                align: 'right'
+            });
+            doc.addImage(logo, 'PNG', 15, 14, 40, 5, undefined, 'FAST');
+            doc.setFontType('bold');
+            doc.text(this.exportTitle, 15, 30, {
+                align: 'left'
+            });
+            doc.setFontType('normal');
+            doc.text('Page ' + String(i) + ' of ' + String(pageCount), 15, doc.internal.pageSize.height - 10, {
+                align: 'left'
+            });
+            doc.text(date, doc.internal.pageSize.width - 15, doc.internal.pageSize.height - 10, {
+                align: 'right'
+            });
+        }
+    }
+    /**
+     * @param {?} targetElem
+     * @return {?}
+     */
+    setInlineStyles(targetElem) {
+        /** @type {?} */
+        const transformProperties = [
+            'fill',
+            'color',
+            'font-size',
+            'stroke',
+            'font'
+        ];
+        /** @type {?} */
+        let svgElems = Array.from(targetElem.getElementsByTagName("svg"));
+        /** @type {?} */
+        const recurseElementChildren = (/**
+         * @param {?} node
+         * @return {?}
+         */
+        (node) => {
+            if (!node.style)
+                return;
+            /** @type {?} */
+            let styles = getComputedStyle(node);
+            for (let transformProperty of transformProperties) {
+                node.style[transformProperty] = styles[transformProperty];
+            }
+            for (let child of Array.from(node.childNodes)) {
+                recurseElementChildren((/** @type {?} */ (child)));
+            }
+        });
+        for (let svgElement of svgElems) {
+            recurseElementChildren(svgElement);
+        }
+    }
+    /**
+     * @param {?} tables
+     * @param {?} format
+     * @return {?}
+     */
+    getTableCapture(tables, format) {
+        tables[0].id = this.elemID + '-table-header';
+        this.setInlineStyles(tables[0]);
+        /** @type {?} */
+        const options = {
+            background: 'white',
+            scale: 3,
+            allowTaint: true,
+            scrollY: -window.scrollY,
+            imageTimeout: 0,
+            useCORS: true
+        };
+        /** @type {?} */
+        const exportAsConfig = {
+            type: 'png',
+            // the type you want to download
+            elementId: tables[0].id,
+            options
+        };
+        /** @type {?} */
+        const interval = setInterval((/**
+         * @return {?}
+         */
+        () => {
+            // tslint:disable-next-line: max-line-length
+            this.exportAsService.get(exportAsConfig).subscribe((/**
+             * @param {?} header
+             * @return {?}
+             */
+            header => {
+                if (tables.length > 1) {
+                    tables[1].id = this.elemID + '-table-body';
+                    this.setInlineStyles(tables[1]);
+                    /** @type {?} */
+                    const exportAsConfig = {
+                        type: 'png',
+                        // the type you want to download
+                        elementId: tables[1].id,
+                        options
+                    };
+                    this.exportAsService.get(exportAsConfig).subscribe((/**
+                     * @param {?} body
+                     * @return {?}
+                     */
+                    body => {
+                        this.combineTwoImages(header, body, format);
+                    }));
+                }
+                else {
+                    /** @type {?} */
+                    const logDimensions = (/**
+                     * @return {?}
+                     */
+                    () => {
+                        console.log('Image Width', img.width, 'Image Height', img.height);
+                    });
+                    /** @type {?} */
+                    const img = new Image();
+                    img.onload = logDimensions;
+                    img.src = header;
+                    if (format === 'png') {
+                        this.exportAsService.contentToBlob(header).subscribe((/**
+                         * @param {?} blob
+                         * @return {?}
+                         */
+                        blob => {
+                            /** @type {?} */
+                            const filenameFormatted = moment().format("DD.MM.YYYY.HH.mm.ss") + '_' + this.fileName + '.png';
+                            this.exportAsService.downloadFromBlob(blob, filenameFormatted);
+                        }));
+                    }
+                    else {
+                        this.initExportToPdf(header);
+                    }
+                }
+            }));
+            clearInterval(interval);
+        }), 100);
+    }
+    /**
+     * @param {?} img1
+     * @param {?} img2
+     * @param {?} format
+     * @return {?}
+     */
+    combineTwoImages(img1, img2, format) {
+        /** @type {?} */
+        const mergeImages = (/**
+         * @param {?} event
+         * @return {?}
+         */
+        (event) => {
+            this.imagesLoaded++;
+            if (this.imagesLoaded < 2) {
+                return;
+            }
+            this.imagesLoaded = 0;
+            /** @type {?} */
+            const canvas = document.createElement('canvas');
+            canvas.width = image1.width;
+            canvas.height = image1.height + image2.height;
+            /** @type {?} */
+            const context = canvas.getContext('2d');
+            context.drawImage(image1, 0, 0, image1.width, image1.height);
+            context.drawImage(image2, 0, image1.height, image2.width, image2.height);
+            /** @type {?} */
+            const combined = canvas.toDataURL('image/png');
+            console.log('Image Width', canvas.width, 'Image Height', canvas.height);
+            if (format === 'png') {
+                this.exportAsService.contentToBlob(combined).subscribe((/**
+                 * @param {?} blob
+                 * @return {?}
+                 */
+                blob => {
+                    /** @type {?} */
+                    const filenameFormatted = moment().format("DD.MM.YYYY.HH.mm.ss") + '_' + this.fileName + '.png';
+                    this.exportAsService.downloadFromBlob(blob, filenameFormatted);
+                }));
+            }
+            else {
+                this.initExportToPdf(combined);
+            }
+        });
+        /** @type {?} */
+        const image1 = new Image();
+        image1.onload = mergeImages;
+        image1.src = img1;
+        /** @type {?} */
+        const image2 = new Image();
+        image2.onload = mergeImages;
+        image2.src = img2;
+    }
+}
+UtilService.decorators = [
+    { type: Injectable, args: [{ providedIn: 'root' },] }
+];
+/** @nocollapse */
+UtilService.ctorParameters = () => [
+    { type: ExportAsService }
+];
+/** @nocollapse */ UtilService.ngInjectableDef = defineInjectable({ factory: function UtilService_Factory() { return new UtilService(inject(ExportAsService)); }, token: UtilService, providedIn: "root" });
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/** @type {?} */
+const moment$1 = moment_;
 /**
  * @template T
  */
@@ -5399,15 +5762,17 @@ class CmacsGridComponent {
      * @param {?} exportAsService
      * @param {?} nzDropdownService
      * @param {?} excelService
+     * @param {?} utilService
      * @param {?} datePipe
      * @param {?} cookies
      */
-    constructor(cdr, i18n, exportAsService, nzDropdownService, excelService, datePipe, cookies) {
+    constructor(cdr, i18n, exportAsService, nzDropdownService, excelService, utilService, datePipe, cookies) {
         this.cdr = cdr;
         this.i18n = i18n;
         this.exportAsService = exportAsService;
         this.nzDropdownService = nzDropdownService;
         this.excelService = excelService;
+        this.utilService = utilService;
         this.datePipe = datePipe;
         this.cookies = cookies;
         this.locale = {}; // tslint:disable-line:no-any
@@ -5429,7 +5794,7 @@ class CmacsGridComponent {
         this.configChange = new EventEmitter();
         this.paginationPosition = 'bottom';
         this.scroll = { x: null, y: null };
-        this.printLandscape = false;
+        this.printLandscape = true;
         this.wrapLines = false;
         this.frontPagination = true;
         this.templateMode = false;
@@ -5870,7 +6235,7 @@ class CmacsGridComponent {
         (config) => {
             switch (config.exportType) {
                 case ExportType.Pdf:
-                    this.exportToPdf(config.fileName);
+                    this.exportToPdf(config);
                     break;
                 case ExportType.Xslx:
                     this.exportToExcel(config.fileName);
@@ -5896,25 +6261,7 @@ class CmacsGridComponent {
      * @return {?}
      */
     exportToPng(fileName) {
-        /** @type {?} */
-        const exportAsConfig = {
-            type: 'png',
-            // the type you want to download
-            elementId: this.gridID,
-        };
-        this.frontPagination = false;
-        this.showPagination = false;
-        /** @type {?} */
-        const interval = setInterval((/**
-         * @return {?}
-         */
-        () => {
-            // tslint:disable-next-line: max-line-length
-            this.exportAsService.save(exportAsConfig, fileName + '_export_' + Date.now());
-            this.frontPagination = true;
-            this.showPagination = true;
-            clearInterval(interval);
-        }), 100);
+        this.utilService.exportTable('png', fileName, this.gridID);
     }
     /**
      * @param {?} fileName
@@ -5964,81 +6311,16 @@ class CmacsGridComponent {
             }));
             dataToExport.push(itemToExport);
         }));
-        this.excelService.exportAsExcelFile(dataToExport, fileName);
+        /** @type {?} */
+        const filenameFormatted = moment$1().format("DD.MM.YYYY.HH.mm.ss") + '_' + fileName;
+        this.excelService.exportAsExcelFile(dataToExport, filenameFormatted);
     }
     /**
-     * @param {?} fileName
+     * @param {?} config
      * @return {?}
      */
-    exportToPdf(fileName) {
-        /** @type {?} */
-        const doc = !this.printLandscape ? new jsPDF() : new jsPDF('l', 'pt');
-        /** @type {?} */
-        const columns = [];
-        /** @type {?} */
-        const rows = [];
-        this.config.fields.filter((/**
-         * @param {?} item
-         * @return {?}
-         */
-        item => item.celdType === CeldType.Default ||
-            item.celdType === CeldType.Tag ||
-            item.celdType === CeldType.TemplateRef)).forEach((/**
-         * @param {?} field
-         * @return {?}
-         */
-        field => {
-            columns.push(field.display);
-        }));
-        this.data.forEach((/**
-         * @param {?} item
-         * @return {?}
-         */
-        item => {
-            /** @type {?} */
-            const itemToExport = [];
-            // tslint:disable-next-line: no-shadowed-variable
-            this.config.fields.filter((/**
-             * @param {?} item
-             * @return {?}
-             */
-            item => item.celdType === CeldType.Default ||
-                item.celdType === CeldType.Tag ||
-                item.celdType === CeldType.TemplateRef)).forEach((/**
-             * @param {?} field
-             * @return {?}
-             */
-            field => {
-                if (field.editTemplate === TemplateType.Select) {
-                    /** @type {?} */
-                    const selectItem = field.select.selectData.find((/**
-                     * @param {?} option
-                     * @return {?}
-                     */
-                    option => option[field.select.value] === item[field.property]));
-                    if (selectItem !== undefined) {
-                        itemToExport.push(selectItem[field.select.label]);
-                    }
-                }
-                else if (field.editTemplate === TemplateType.Date) {
-                    itemToExport.push(this.datePipe.transform(item[field.property], 'MMMM dd yyyy'));
-                }
-                else if (field.celdType === CeldType.TemplateRef) {
-                    itemToExport.push(item[field.property].context.exportValue);
-                }
-                else {
-                    itemToExport.push(item[field.property]);
-                }
-            }));
-            rows.push(itemToExport);
-        }));
-        doc.autoTable({
-            theme: 'striped',
-            margin: { top: 5 },
-            body: rows,
-            columns
-        });
-        doc.save(fileName + '_export_' + Date.now());
+    exportToPdf(config) {
+        this.utilService.exportTable('pdf', config.fileName, this.gridID, config.exportCompanyName, config.exportUserName, config.exportTitle, config.exportCompanyLogoUrl, config.exportTableCustomWidth, config.exportTableCustomHeight);
     }
     /**
      * @return {?}
@@ -6208,6 +6490,7 @@ CmacsGridComponent.ctorParameters = () => [
     { type: ExportAsService },
     { type: NzDropdownService },
     { type: ExcelService },
+    { type: UtilService },
     { type: DatePipe },
     { type: CookieService }
 ];
@@ -13935,40 +14218,6 @@ LibPackerModule.decorators = [
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
-class UtilService {
-    constructor() { }
-    /**
-     * @return {?}
-     */
-    uuidv4() {
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (/**
-         * @param {?} c
-         * @return {?}
-         */
-        (c) => {
-            // tslint:disable-next-line: no-bitwise
-            /** @type {?} */
-            const r = Math.random() * 16 | 0;
-            // tslint:disable-next-line: triple-equals
-            /** @type {?} */
-            const v = c == 'x' ?
-                // tslint:disable-next-line: no-bitwise
-                r : (r & 0x3 | 0x8);
-            return v.toString(16);
-        }));
-    }
-}
-UtilService.decorators = [
-    { type: Injectable, args: [{ providedIn: 'root' },] }
-];
-/** @nocollapse */
-UtilService.ctorParameters = () => [];
-/** @nocollapse */ UtilService.ngInjectableDef = defineInjectable({ factory: function UtilService_Factory() { return new UtilService(); }, token: UtilService, providedIn: "root" });
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 class CmacsNormalizedHorizontalBarGroupedComponent {
     /**
      * @param {?} util
@@ -17481,7 +17730,7 @@ CmacsFloatingMenuComponent.decorators = [
                     '[style.left]': `left`,
                     '[style.right]': `right`,
                 },
-                styles: ["cmacs-floating-menu{display:inline-block;position:absolute}.cmacs-floating-menu-horizontal,.cmacs-floating-menu-vertical{box-shadow:0 3px 4px rgba(59,63,70,.2);z-index:1;width:-webkit-max-content;width:-moz-max-content;width:max-content;border-radius:5px}.cmacs-floating-menu-align-x{left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}.cmacs-floating-menu-align-y{top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%)}cmacs-floating-menu.carrot-top-menu::before{width:10px;border:8px solid #0d1e3b;display:block;content:'';margin:0 auto;position:relative;-webkit-transform:rotate(-135deg) translateY(-8px) translateX(-8px);transform:rotate(-135deg) translateY(-8px) translateX(-8px)}cmacs-floating-menu.carrot-bottom-menu::after{width:10px;border:8px solid #0d1e3b;display:block;content:'';margin:0 auto;position:relative;-webkit-transform:rotate(-135deg) translateY(8px) translateX(8px);transform:rotate(-135deg) translateY(8px) translateX(8px)}cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default.cmacs-floating-menu-main-button:enabled:focus,cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default.cmacs-floating-menu-main-button:enabled:hover,cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default:not(.cmacs-floating-menu-main-button):enabled:focus,cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default:not(.cmacs-floating-menu-main-button):enabled:hover,cmacs-floating-menu .ant-btn-icon-only:not(.cmacs-floating-menu-main-button),cmacs-floating-menu .ant-menu-vertical{background-color:transparent!important}cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default:enabled,cmacs-floating-menu .ant-menu-item>a{color:#fff!important;padding:0}cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default:enabled i{font-size:16px;color:#fff!important}cmacs-floating-menu .ant-menu-vertical .ant-menu-item,cmacs-floating-menu .ant-menu-vertical .ant-menu-item:not(:last-child){margin:0 auto}cmacs-floating-menu .ant-menu-vertical,cmacs-floating-menu .ant-menu-vertical-left{border:#97a0ae}cmacs-floating-menu .ant-menu-item>a{color:#97a0ae}cmacs-floating-menu .ant-menu-item .ant-menu-item-selected,cmacs-floating-menu .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{background-color:#001333;border-radius:3px}cmacs-floating-menu cmacs-divider .ant-divider{background-color:#656c79}.cmacs-floating-menu-main{background-color:#778899;border-radius:5px 0 0 5px!important;padding:4px 4px 4px 0}.cmacs-floating-menu-vertical .cmacs-floating-menu-main{border-radius:5px 5px 0 0!important}.cmacs-floating-menu-main button{padding-right:0!important}.cmacs-floating-menu-horizontal .cmacs-floating-menu-main{display:inline-block}.cmacs-floating-menu-main-ul{width:150px;min-width:150px;border-radius:5px;background-color:#0d1e3b;border-color:#0d1e3b!important}.cmacs-floating-menu-main-ul li{padding:8px 10px 8px 12px!important;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:normal;color:#97a0ae;border-top:none!important}.cmacs-floating-menu-main-ul li:hover{background-color:#001333!important}.cmacs-floating-menu-main-ul .ant-dropdown-menu-item i,.cmacs-floating-menu-main-ul .ant-dropdown-menu-submenu-title i{position:relative;top:2px}.cmacs-floating-menu-vertical button,.cmacs-floating-menu-vertical cmacs-dropdown,.cmacs-floating-menu-vertical div{display:block}.cmacs-floating-menu-horizontal button,.cmacs-floating-menu-horizontal cmacs-dropdown,.cmacs-floating-menu-horizontal div{display:inline-block}cmacs-floating-menu .cmacs-floating-menu-vertical .ant-btn-background-ghost.ant-btn-default.cmacs-floating-menu-main-button{width:100%;border-radius:5px 5px 0 0!important}cmacs-floating-menu .cmacs-floating-menu-vertical .ant-divider-horizontal{width:60%;margin:5px auto;min-width:unset}.cmacs-floating-menu-main-ul-right{margin-left:5px!important}.cmacs-floating-menu-main-ul-bottom{margin-top:8px!important}.cmacs-floating-menu-main-ul-top{margin-bottom:8px!important}.cmacs-floating-menu-main-ul-left{margin-right:8px!important}.cmacs-floating-menu-draggable-north-area{width:100%;height:3px;position:absolute;top:0;border-radius:5px 5px 0 0}.cmacs-floating-menu-draggable-south-area{width:100%;height:3px;position:absolute;bottom:0;border-radius:0 0 5px 5px}.cmacs-floating-menu-draggable-east-area{height:100%;width:3px;position:absolute;right:0;border-radius:0 5px 5px 0}.cmacs-floating-menu-draggable-west-area{height:100%;width:3px;position:absolute;left:0;border-radius:5px 0 0 5px}.cmacs-floating-menu-draggable-east-area:hover,.cmacs-floating-menu-draggable-north-area:hover,.cmacs-floating-menu-draggable-south-area:hover,.cmacs-floating-menu-draggable-west-area:hover{cursor:move}.cmacs-floating-menu-user-content{padding:4px 3px;background:#0d1e3b;border-radius:0 5px 5px 0}.cmacs-floating-menu-vertical .cmacs-floating-menu-user-content{border-radius:0 0 5px 5px}.cmacs-floating-menu-collapsed{padding:4px 3px;background:#0d1e3b}"]
+                styles: ["cmacs-floating-menu{display:inline-block;position:absolute}.cmacs-floating-menu-horizontal,.cmacs-floating-menu-vertical{box-shadow:0 3px 4px rgba(59,63,70,.2);z-index:1;width:-webkit-max-content;width:-moz-max-content;width:max-content;border-radius:5px}.cmacs-floating-menu-align-x{left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}.cmacs-floating-menu-align-y{top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%)}cmacs-floating-menu.carrot-top-menu::before{width:10px;border:8px solid #0d1e3b;display:block;content:'';margin:0 auto;position:relative;-webkit-transform:rotate(-135deg) translateY(-8px) translateX(-8px);transform:rotate(-135deg) translateY(-8px) translateX(-8px)}cmacs-floating-menu.carrot-bottom-menu::after{width:10px;border:8px solid #0d1e3b;display:block;content:'';margin:0 auto;position:relative;-webkit-transform:rotate(-135deg) translateY(8px) translateX(8px);transform:rotate(-135deg) translateY(8px) translateX(8px)}cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default.cmacs-floating-menu-main-button:enabled:focus,cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default.cmacs-floating-menu-main-button:enabled:hover,cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default:not(.cmacs-floating-menu-main-button):enabled:focus,cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default:not(.cmacs-floating-menu-main-button):enabled:hover,cmacs-floating-menu .ant-btn-icon-only:not(.cmacs-floating-menu-main-button),cmacs-floating-menu .ant-menu-vertical{background-color:transparent!important}cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default:enabled,cmacs-floating-menu .ant-menu-item>a{color:#fff!important;padding:0}cmacs-floating-menu .ant-btn-background-ghost.ant-btn-default:enabled i{font-size:16px;color:#fff!important}cmacs-floating-menu .ant-menu-vertical .ant-menu-item,cmacs-floating-menu .ant-menu-vertical .ant-menu-item:not(:last-child){margin:0 auto}cmacs-floating-menu .ant-menu-vertical,cmacs-floating-menu .ant-menu-vertical-left{border:#97a0ae}cmacs-floating-menu .ant-menu-item>a{color:#97a0ae}cmacs-floating-menu .ant-menu-item .ant-menu-item-selected,cmacs-floating-menu .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{background-color:#001333;border-radius:3px}cmacs-floating-menu cmacs-divider .ant-divider{background-color:#656c79}.cmacs-floating-menu-main{background-color:#778899;border-radius:5px 0 0 5px!important;padding:5px 5px 4px 0}.cmacs-floating-menu-vertical .cmacs-floating-menu-main{border-radius:5px 5px 0 0!important}.cmacs-floating-menu-main button{padding-right:0!important}.cmacs-floating-menu-horizontal .cmacs-floating-menu-main{display:inline-block}.cmacs-floating-menu-main-ul{width:150px;min-width:150px;border-radius:5px;background-color:#0d1e3b;border-color:#0d1e3b!important}.cmacs-floating-menu-main-ul li{padding:8px 10px 8px 12px!important;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:normal;color:#97a0ae;border-top:none!important}.cmacs-floating-menu-main-ul li:hover{background-color:#001333!important}.cmacs-floating-menu-main-ul .ant-dropdown-menu-item i,.cmacs-floating-menu-main-ul .ant-dropdown-menu-submenu-title i{position:relative;top:2px}.cmacs-floating-menu-vertical button,.cmacs-floating-menu-vertical cmacs-dropdown,.cmacs-floating-menu-vertical div{display:block}.cmacs-floating-menu-horizontal button,.cmacs-floating-menu-horizontal cmacs-dropdown,.cmacs-floating-menu-horizontal div{display:inline-block}cmacs-floating-menu .cmacs-floating-menu-vertical .ant-btn-background-ghost.ant-btn-default.cmacs-floating-menu-main-button{width:100%;border-radius:5px 5px 0 0!important}cmacs-floating-menu .cmacs-floating-menu-vertical .ant-divider-horizontal{width:60%;margin:5px auto;min-width:unset}.cmacs-floating-menu-main-ul-right{margin-left:5px!important}.cmacs-floating-menu-main-ul-bottom{margin-top:8px!important}.cmacs-floating-menu-main-ul-top{margin-bottom:8px!important}.cmacs-floating-menu-main-ul-left{margin-right:8px!important}.cmacs-floating-menu-draggable-north-area{width:100%;height:3px;position:absolute;top:0;border-radius:5px 5px 0 0}.cmacs-floating-menu-draggable-south-area{width:100%;height:3px;position:absolute;bottom:0;border-radius:0 0 5px 5px}.cmacs-floating-menu-draggable-east-area{height:100%;width:3px;position:absolute;right:0;border-radius:0 5px 5px 0}.cmacs-floating-menu-draggable-west-area{height:100%;width:3px;position:absolute;left:0;border-radius:5px 0 0 5px}.cmacs-floating-menu-draggable-east-area:hover,.cmacs-floating-menu-draggable-north-area:hover,.cmacs-floating-menu-draggable-south-area:hover,.cmacs-floating-menu-draggable-west-area:hover{cursor:move}.cmacs-floating-menu-user-content{padding:4px 3px;background:#0d1e3b;border-radius:0 5px 5px 0}.cmacs-floating-menu-vertical .cmacs-floating-menu-user-content{border-radius:0 0 5px 5px}.cmacs-floating-menu-collapsed{padding:4px 3px;background:#0d1e3b}"]
             }] }
 ];
 /** @nocollapse */
@@ -23332,6 +23581,8 @@ CmacsMessageService.ctorParameters = () => [
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+/** @type {?} */
+const moment$2 = moment_;
 /**
  * @template T
  */
@@ -24064,7 +24315,7 @@ class CmacsCompactTableComponent {
         (config) => {
             switch (config.exportType) {
                 case ExportType.Pdf:
-                    this.exportToPdf(config.fileName);
+                    this.exportToPdf(config);
                     break;
                 case ExportType.Xslx:
                     this.exportToExcel(config.fileName);
@@ -24185,7 +24436,9 @@ class CmacsCompactTableComponent {
             body: rows,
             columns
         });
-        doc.save(fileName + '_export_' + Date.now());
+        /** @type {?} */
+        const filenameFormatted = moment$2().format("DD.MM.YYYY.HH.mm.ss") + '_' + fileName + '.pdf';
+        doc.save(filenameFormatted);
     }
     /**
      * @param {?} rows
@@ -24404,25 +24657,7 @@ class CmacsCompactTableComponent {
      * @return {?}
      */
     exportToPng(fileName) {
-        /** @type {?} */
-        const exportAsConfig = {
-            type: 'png',
-            // the type you want to download
-            elementId: this.gridID,
-        };
-        this.frontPagination = false;
-        this.showPagination = false;
-        /** @type {?} */
-        const interval = setInterval((/**
-         * @return {?}
-         */
-        () => {
-            // tslint:disable-next-line: max-line-length
-            this.exportAsService.save(exportAsConfig, fileName + '_export_' + Date.now());
-            this.frontPagination = true;
-            this.showPagination = true;
-            clearInterval(interval);
-        }), 100);
+        this.utilService.exportTable('png', fileName, this.gridID);
     }
     /**
      * @param {?} fileName
@@ -24468,7 +24703,9 @@ class CmacsCompactTableComponent {
             }));
             dataToExport.push(itemToExport);
         }));
-        this.excelService.exportAsExcelFile(dataToExport, fileName);
+        /** @type {?} */
+        const filenameFormatted = moment$2().format("DD.MM.YYYY.HH.mm.ss") + '_' + fileName;
+        this.excelService.exportAsExcelFile(dataToExport, filenameFormatted);
     }
     /* Expandable Rows */
     /**
@@ -24479,7 +24716,9 @@ class CmacsCompactTableComponent {
         /** @type {?} */
         const dataToExport = [];
         this.exportTreeExcelRec(this.data, dataToExport);
-        this.excelService.exportAsExcelFile(dataToExport, fileName);
+        /** @type {?} */
+        const filenameFormatted = moment$2().format("DD.MM.YYYY.HH.mm.ss") + '_' + fileName;
+        this.excelService.exportAsExcelFile(dataToExport, filenameFormatted);
     }
     /**
      * @param {?} data
@@ -24533,81 +24772,11 @@ class CmacsCompactTableComponent {
         }));
     }
     /**
-     * @param {?} fileName
+     * @param {?} config
      * @return {?}
      */
-    exportToPdf(fileName) {
-        /** @type {?} */
-        const doc = new jsPDF();
-        /** @type {?} */
-        const columns = [];
-        /** @type {?} */
-        const rows = [];
-        this.config.fields.filter((/**
-         * @param {?} item
-         * @return {?}
-         */
-        item => item.celdType === CeldType.Default || item.celdType === CeldType.TemplateRef)).forEach((/**
-         * @param {?} field
-         * @return {?}
-         */
-        field => {
-            columns.push(field.display);
-        }));
-        this.data.forEach((/**
-         * @param {?} item
-         * @return {?}
-         */
-        item => {
-            /** @type {?} */
-            const itemToExport = [];
-            // tslint:disable-next-line: no-shadowed-variable
-            this.config.fields.filter((/**
-             * @param {?} item
-             * @return {?}
-             */
-            item => item.celdType === CeldType.Default || item.celdType === CeldType.TemplateRef)).forEach((/**
-             * @param {?} field
-             * @return {?}
-             */
-            field => {
-                if (field.celdType === CeldType.TemplateRef) {
-                    itemToExport.push(item[field.property].context.exportValue);
-                }
-                else {
-                    switch (field.editTemplate) {
-                        case TemplateType.Select:
-                            /** @type {?} */
-                            const selectItem = field.select.selectData.find((/**
-                             * @param {?} option
-                             * @return {?}
-                             */
-                            option => option[field.select.value] === item[field.property]));
-                            if (selectItem !== undefined) {
-                                itemToExport.push(selectItem[field.select.label]);
-                            }
-                            break;
-                        case TemplateType.Date:
-                            itemToExport.push(this.datePipe.transform(item[field.property], 'MMMM dd yyyy'));
-                            break;
-                        case TemplateType.Time:
-                            itemToExport.push(this.datePipe.transform(item[field.property], 'h:mm a'));
-                            break;
-                        default:
-                            itemToExport.push(item[field.property]);
-                            break;
-                    }
-                }
-            }));
-            rows.push(itemToExport);
-        }));
-        doc.autoTable({
-            theme: 'striped',
-            margin: { top: 5 },
-            body: rows,
-            columns
-        });
-        doc.save(fileName + '_export_' + Date.now());
+    exportToPdf(config) {
+        this.utilService.exportTable('pdf', config.fileName, this.gridID, config.exportCompanyName, config.exportUserName, config.exportTitle, config.exportCompanyLogoUrl, config.exportTableCustomWidth, config.exportTableCustomHeight);
     }
     /**
      * @return {?}
@@ -26555,7 +26724,7 @@ __decorate([
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /** @type {?} */
-const moment = moment_;
+const moment$3 = moment_;
 class CmacsTimelineDatepickerComponent {
     /**
      * @param {?} renderer
@@ -26716,10 +26885,10 @@ class CmacsTimelineDatepickerComponent {
      */
     getWeekNumber(date) {
         /** @type {?} */
-        const month = moment(date).month();
-        moment.updateLocale(this.locale, this.weekLocale);
+        const month = moment$3(date).month();
+        moment$3.updateLocale(this.locale, this.weekLocale);
         /** @type {?} */
-        const week = moment(date).week();
+        const week = moment$3(date).week();
         /** @type {?} */
         const weeksInYear = getISOWeeksInYear(date);
         if (month === 11 && week === 1) {
