@@ -9,7 +9,6 @@ export declare class CmacsNormalizedHorizontalBarChartComponent implements OnIni
     view: number[];
     minWidth: number;
     width: number;
-    pw: number;
     colorScheme: {
         domain: string[];
     };
