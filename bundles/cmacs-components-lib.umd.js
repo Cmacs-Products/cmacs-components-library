@@ -17192,7 +17192,7 @@
             function () {
                 var _this = this;
                 if (this.view && this.view.length === 2) {
-                    this.width = this.view[0] - 115 > this.minWidth ? this.view[0] - 115 : 275;
+                    this.width = this.view[0] - 148;
                 }
                 setTimeout(( /**
                  * @return {?}
@@ -17262,8 +17262,8 @@
         CmacsNormalizedHorizontalBarChartComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'cmacs-normalized-horizontal-bar-chart',
-                        template: "<div class=\"sd-content\">\r\n  <!-- Legend -->\r\n  <div nz-row class=\"legend-row\">\r\n    <div class=\"legend-column\" *ngFor=\"let l of legend; let i = index;\">\r\n      <span [style.background-color]=\"colorScheme.domain[i]\" class=\"legend-bar\"> </span>\r\n      <span class=\"legend-text\">{{l}}</span>\r\n    </div>\r\n  </div>\r\n  <!-- Chart -->\r\n  <div nz-row class=\"chart-content\">\r\n    <div *ngFor=\"let item of data; let i = index\" nz-row class=\"chart-content-row\">\r\n      <div nz-col class=\"chart-content-text\" style=\"width: 110px; display: inline-block; vertical-align: top;\">{{item.name}}</div>\r\n      <canvas style=\"display: inline-block; margin-top: 4px;\" id=\"canvas-{{id}}-{{i}}\" class=\"chart-content-canvas\"></canvas>\r\n    </div>\r\n  </div>\r\n</div>",
-                        styles: [".legend-column{display:inline;font-family:Roboto-Regular;font-size:12px;color:#656c79}.legend-text{padding-left:6px}.legend-column:last-child .legend-text{padding-right:0}.legend-bar{width:4px;height:10px;border-radius:5px;display:inline-block;margin-left:15px}.legend-row{width:100%;margin-bottom:30px;text-align:right}.chart-content-row{margin-bottom:15px;font-family:Roboto-Regular;font-size:12px;letter-spacing:.12px;color:#656c79}.chart-content-text{width:115px;display:inline-block;vertical-align:top;margin-right:5px}"]
+                        template: "<div class=\"sd-content\">\r\n  <!-- Legend -->\r\n  <div nz-row class=\"legend-row\">\r\n    <div class=\"legend-column\" *ngFor=\"let l of legend; let i = index;\">\r\n      <span [style.background-color]=\"colorScheme.domain[i]\" class=\"legend-bar\"> </span>\r\n      <span class=\"legend-text\">{{l}}</span>\r\n    </div>\r\n  </div>\r\n  <!-- Chart -->\r\n  <div nz-row class=\"chart-content\">\r\n    <div *ngFor=\"let item of data; let i = index\" nz-row class=\"chart-content-row\">\r\n      <div nz-col class=\"chart-content-text\">{{item.name}}</div>\r\n      <canvas style=\"display: inline-block; margin-top: 4px;\" id=\"canvas-{{id}}-{{i}}\" class=\"chart-content-canvas\"></canvas>\r\n    </div>\r\n  </div>\r\n</div>",
+                        styles: [".legend-column{display:inline;font-family:Roboto-Regular;font-size:12px;color:#656c79}.legend-text{padding-left:6px}.legend-column:last-child .legend-text{padding-right:0}.legend-bar{width:4px;height:10px;border-radius:5px;display:inline-block;margin-left:15px}.legend-row{width:100%;margin-bottom:30px;text-align:right}.chart-content-row{margin-bottom:15px;font-family:Roboto-Regular;font-size:12px;letter-spacing:.12px;color:#656c79}.chart-content-text{width:110px;display:inline-block;vertical-align:top;margin-right:5px}"]
                     }] }
         ];
         /** @nocollapse */
