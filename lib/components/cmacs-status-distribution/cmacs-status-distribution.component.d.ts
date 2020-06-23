@@ -1,9 +1,12 @@
-import { OnInit, EventEmitter, AfterViewInit, TemplateRef, OnChanges } from '@angular/core';
+import { OnInit, EventEmitter, AfterViewInit, TemplateRef, OnChanges, ElementRef, Renderer2 } from '@angular/core';
 import { UtilService } from '../core/services/util.service';
 import { WidgetActionType } from '../core/enums/widget-action-type.enum';
 export declare class CmacsStatusDistributionComponent implements OnInit, AfterViewInit, OnChanges {
+    private renderer;
+    private elementRef;
     private util;
     columnTemplate: TemplateRef<{}>;
+    legendContent: ElementRef<any>;
     clickMenu: EventEmitter<any>;
     view: number[];
     data: any[];
@@ -22,11 +25,14 @@ export declare class CmacsStatusDistributionComponent implements OnInit, AfterVi
     id: any;
     dataTable: any[];
     configurationExpandableRows: any;
-    constructor(util: UtilService);
+    constructor(renderer: Renderer2, elementRef: ElementRef, util: UtilService);
     ngOnInit(): void;
     ngOnChanges(): void;
     ngAfterViewInit(): void;
+    resize(): void;
     setScroll(): void;
+    scrollRight(): void;
+    scrollLeft(): void;
     menuClick(type: WidgetActionType): void;
     setConfiguration(): void;
     setData(): void;
