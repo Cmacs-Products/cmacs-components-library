@@ -45,6 +45,7 @@ export declare class CmacsCardComponent implements OnInit {
     project: any;
     todo: any;
     weather: Weather;
+    celcius: boolean;
     type: string;
     cmacsType: CmacsCardType;
     cmacsIcon: string;
