@@ -1,8 +1,10 @@
 import { OnInit, TemplateRef, EventEmitter, AfterViewInit, ElementRef, OnChanges, Renderer2 } from '@angular/core';
 import { WidgetActionType } from '../core/enums/widget-action-type.enum';
+import { UtilService } from '../core/services/util.service';
 export declare class CmacsKpiGroupComponent implements OnInit, AfterViewInit, OnChanges {
     private renderer;
     private elementRef;
+    private utilService;
     columnTemplate: TemplateRef<{}>;
     canvasRef: ElementRef;
     legendContent: ElementRef<any>;
@@ -13,6 +15,7 @@ export declare class CmacsKpiGroupComponent implements OnInit, AfterViewInit, On
     view: number[];
     data: any[];
     columnsHeader: string[];
+    displayArrowBtns: boolean;
     chartWidth: number;
     fontChartNumber: number;
     col2: number;
@@ -29,7 +32,7 @@ export declare class CmacsKpiGroupComponent implements OnInit, AfterViewInit, On
     configurationExpandableRows: any;
     loading: boolean;
     selectedItem: string;
-    constructor(renderer: Renderer2, elementRef: ElementRef);
+    constructor(renderer: Renderer2, elementRef: ElementRef, utilService: UtilService);
     ngOnInit(): void;
     ngOnChanges(): void;
     ngAfterViewInit(): void;
@@ -45,4 +48,5 @@ export declare class CmacsKpiGroupComponent implements OnInit, AfterViewInit, On
     getChildren(items: any[]): any[];
     menuClick(type: WidgetActionType): void;
     changeData(key: string): void;
+    showArrowBtns(): void;
 }

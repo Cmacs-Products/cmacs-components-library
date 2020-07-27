@@ -12,6 +12,7 @@ export declare class UtilService {
     exportTableCustomHeight: any;
     constructor(exportAsService: ExportAsService);
     uuidv4(): string;
+    get_tex_size(txt: any, font: any): any;
     exportTable(format: string, fileName: any, elemID: any, exportCompanyName?: string, exportUserName?: string, exportTitle?: string, exportCompanyLogoUrl?: string, exportTableCustomWidth?: any, exportTableCustomHeight?: any): void;
     initExportToPdf(imgData: any): void;
     saveImageToPdf(logoData: any, imgData: any): void;

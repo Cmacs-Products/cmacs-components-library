@@ -12,6 +12,7 @@ export declare class CmacsNormalizedHorizontalBarChartComponent implements OnIni
     view: number[];
     width: number;
     height: number;
+    displayArrowBtns: boolean;
     colorScheme: {
         domain: string[];
     };
@@ -24,4 +25,5 @@ export declare class CmacsNormalizedHorizontalBarChartComponent implements OnIni
     scrollRight(): void;
     scrollLeft(): void;
     menuClick(type: WidgetActionType): void;
+    showArrowBtns(): void;
 }

@@ -11,6 +11,7 @@ export declare class CmacsStatusDistributionComponent implements OnInit, AfterVi
     view: number[];
     data: any[];
     columnsHeader: string[];
+    displayArrowBtns: boolean;
     col2: number;
     col3: number;
     minWidth: number;
@@ -37,4 +38,5 @@ export declare class CmacsStatusDistributionComponent implements OnInit, AfterVi
     setConfiguration(): void;
     setData(): void;
     drawCanvas(): void;
+    showArrowBtns(): void;
 }
