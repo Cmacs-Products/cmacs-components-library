@@ -44,6 +44,7 @@ export declare class CmacsModalComponent<T = any, R = any> extends CmacsModalRef
     className: string;
     cmacsStyle: object;
     title: string | TemplateRef<{}>;
+    cmacsTitle: string | TemplateRef<{}>;
     maskStyle: object;
     bodyStyle: object;
     cmacsOkText: string | null;

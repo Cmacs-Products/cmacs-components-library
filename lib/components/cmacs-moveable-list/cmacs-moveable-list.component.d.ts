@@ -11,6 +11,8 @@ export interface MoveableListItem {
 }
 export declare class CmacsMoveableListComponent {
     header: string;
+    showLabel: string;
+    hideLabel: string;
     data: MoveableListItem[];
     dataChange: EventEmitter<MoveableListItem[]>;
     displayChange: EventEmitter<MoveableListItem>;

@@ -13,6 +13,7 @@ export interface ModalOptions<T = any, R = any> {
     cmacsStyle?: object;
     iconType?: string;
     title?: string | TemplateRef<{}>;
+    cmacsTitle?: string | TemplateRef<{}>;
     content?: string | TemplateRef<{}> | Type<T>;
     componentParams?: Partial<T>;
     closable?: boolean;

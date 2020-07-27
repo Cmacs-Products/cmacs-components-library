@@ -10,6 +10,8 @@ export declare class UtilService {
     exportCompanyLogoUrl: string;
     exportTableCustomWidth: any;
     exportTableCustomHeight: any;
+    private _exportCompleted;
+    exportCompleted: import("rxjs").Observable<any>;
     constructor(exportAsService: ExportAsService);
     uuidv4(): string;
     get_tex_size(txt: any, font: any): any;

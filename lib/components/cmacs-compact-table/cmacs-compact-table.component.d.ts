@@ -2,7 +2,6 @@ import { DatePipe } from '@angular/common';
 import { ChangeDetectorRef, ElementRef, EventEmitter, OnChanges, OnDestroy, OnInit, SimpleChanges, AfterViewInit, TemplateRef } from '@angular/core';
 import { NzSizeMDSType } from 'ng-zorro-antd/core';
 import { NzI18nService } from 'ng-zorro-antd/i18n';
-import { ExportAsService } from 'ngx-export-as';
 import 'jspdf-autotable';
 import { GridConfig, Field } from '../core/interfaces/grid-config';
 import { GridExpConfig } from '../core/interfaces/grid-exp-config';
@@ -17,7 +16,6 @@ import 'moment/locale/en-ie';
 export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnChanges, OnDestroy, AfterViewInit {
     private cdr;
     private i18n;
-    private exportAsService;
     private excelService;
     private datePipe;
     private nzDropdownService;
@@ -161,7 +159,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     isCeldTypeTemplateRef(field: Field): boolean;
     isUndefined(value: any): boolean;
     isRowSelected(data: any): boolean;
-    constructor(cdr: ChangeDetectorRef, i18n: NzI18nService, exportAsService: ExportAsService, excelService: ExcelService, datePipe: DatePipe, nzDropdownService: NzDropdownService, cookies: CookieService, utilService: UtilService);
+    constructor(cdr: ChangeDetectorRef, i18n: NzI18nService, excelService: ExcelService, datePipe: DatePipe, nzDropdownService: NzDropdownService, cookies: CookieService, utilService: UtilService);
     ngAfterViewInit(): void;
     setFieldsDefault(): void;
     ngOnInit(): void;

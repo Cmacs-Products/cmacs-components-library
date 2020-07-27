@@ -66,6 +66,7 @@ export declare class CmacsSelectComponent implements ControlValueAccessor, OnIni
     maxTagPlaceholder: TemplateRef<{
         $implicit: any[];
     }>;
+    selectAllLabel: string;
     autoClearSearchValue: boolean;
     maxMultipleCount: number;
     serverSearch: boolean;
