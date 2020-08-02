@@ -1,10 +1,3 @@
-/**
- * @license
- * Copyright Alibaba.com All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://github.com/NG-ZORRO/ng-zorro-antd/blob/master/LICENSE
- */
 import { CdkOverlayOrigin, ConnectionPositionPair } from '@angular/cdk/overlay';
 import { AfterViewInit, ChangeDetectorRef, ElementRef, EventEmitter, OnChanges, OnInit, Renderer2, SimpleChanges, TemplateRef } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
@@ -37,9 +30,9 @@ export declare class CmacsDateTimePickerComponent implements ControlValueAccesso
     disabledHours: () => number[];
     disabledMinutes: (hour: number) => number[];
     disabledSeconds: (hour: number, minute: number) => number[];
-    format: string;
     cmacsOpen: boolean;
     use12Hours: boolean;
+    format: any;
     readonly openChange: EventEmitter<boolean>;
     hideDisabledOptions: boolean;
     allowEmpty: boolean;

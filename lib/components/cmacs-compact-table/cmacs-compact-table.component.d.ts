@@ -195,4 +195,6 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     };
     getMaxWidth(field: Field, item: any, i: number): string;
     getMaxWidthFieldViewMode(field: Field, i: number): "18px" | "0px";
+    getStickyWidth(position: any): string;
+    getStickyWidthRight(position: any): string;
 }
