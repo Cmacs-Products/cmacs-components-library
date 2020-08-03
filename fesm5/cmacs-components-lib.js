@@ -41,7 +41,7 @@ import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMa
 import { addMonths, addYears, endOfMonth, setDay, setMonth, addDays, differenceInCalendarDays, differenceInCalendarMonths, differenceInCalendarWeeks, isSameDay, isSameMonth, isSameYear, isThisMonth, isThisYear, setYear, startOfMonth, startOfWeek, startOfYear, getISOWeeksInYear, getISOYear, getMonth } from 'date-fns';
 import * as moment_ from 'moment';
 import 'moment/locale/en-ie';
-import { __assign, __decorate, __metadata, __extends, __values, __spread, __read } from 'tslib';
+import { __extends, __assign, __decorate, __metadata, __values, __spread, __read } from 'tslib';
 import { InputBoolean as InputBoolean$1, NzDropdownService, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
 import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
@@ -21556,7 +21556,6 @@ var CmacsOptionContainerComponent = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        var _this = this;
         /** @type {?} */
         var isCheckedState = this.isAllChecked();
         if (!isCheckedState || isCheckedState === -1) {
@@ -21574,13 +21573,7 @@ var CmacsOptionContainerComponent = /** @class */ (function () {
             this.nzSelectService.updateListOfSelectedValue(listOfSelectedValue_1, true);
         }
         else {
-            this.nzSelectService.listOfCachedSelectedOption.reverse().forEach((/**
-             * @param {?} option
-             * @return {?}
-             */
-            function (option) {
-                _this.nzSelectService.removeValueFormSelected(option);
-            }));
+            this.nzSelectService.updateListOfSelectedValue([], true);
         }
     };
     /**

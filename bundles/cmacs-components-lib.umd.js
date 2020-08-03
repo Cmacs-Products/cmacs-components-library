@@ -21445,7 +21445,6 @@
          * @return {?}
          */
             function () {
-                var _this = this;
                 /** @type {?} */
                 var isCheckedState = this.isAllChecked();
                 if (!isCheckedState || isCheckedState === -1) {
@@ -21462,12 +21461,7 @@
                     this.nzSelectService.updateListOfSelectedValue(listOfSelectedValue_1, true);
                 }
                 else {
-                    this.nzSelectService.listOfCachedSelectedOption.reverse().forEach(( /**
-                     * @param {?} option
-                     * @return {?}
-                     */function (option) {
-                        _this.nzSelectService.removeValueFormSelected(option);
-                    }));
+                    this.nzSelectService.updateListOfSelectedValue([], true);
                 }
             };
         /**
