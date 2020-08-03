@@ -49,6 +49,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     wrapLines: boolean;
     data: any[];
     config: GridConfig;
+    use12Hours: boolean;
     configChange: EventEmitter<GridConfig>;
     fieldId: string;
     gridID: string;
@@ -92,6 +93,8 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     indentSize: number;
     dropdown: NzDropdownContextComponent;
     selected: boolean;
+    formatter: (value: number) => string;
+    parser: (value: string) => string;
     defaultSortOrder: any;
     checkboxCache: CheckboxSelect[];
     isIndeterminate: boolean;

@@ -16,6 +16,7 @@ export interface Field {
     showTooltip?: boolean;
     ngClass?: string;
     hidden?: boolean;
+    useCommaMarker?: boolean;
     select?: SelectConfig;
     button?: ButtonConfig;
     tag?: TagConfig;
@@ -23,6 +24,7 @@ export interface Field {
     editTemplate?: TemplateType;
     showSort?: boolean;
     dateFormat?: string;
+    timeFormat?: string;
     readonly?: boolean;
     default?: any;
     left?: string;
@@ -31,6 +33,9 @@ export interface Field {
     editable?: boolean;
     validators?: any[];
     placeholder?: string;
+    cmacsStep?: number;
+    min?: number;
+    max?: number;
 }
 export interface SelectConfig {
     selectData: any[];
