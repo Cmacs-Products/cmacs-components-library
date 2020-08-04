@@ -24502,7 +24502,7 @@ class CmacsCompactTableComponent {
             }
             this.showPagination = false;
         }
-        this.exportEvent.subscribe((/**
+        this.exportEvent.pipe(takeUntil(this.destroy$)).subscribe((/**
          * @param {?} config
          * @return {?}
          */
@@ -24590,19 +24590,19 @@ class CmacsCompactTableComponent {
         this.cdr.detectChanges();
     }
     /* getTreeNodeByKey(node: any, key: any) {
-        console.log(node)
-        if (isArray(node)) {
-          node.forEach(el => {
-            this.getTreeNodeByKey(el, key);
-          })
-        } else if (node[this.fieldID] === key) {
-          return node;
-        } else if (node.children) {
-          node.children.forEach(el => {
-            this.getTreeNodeByKey(el, key);
-          })
-        }
-      }*/
+         console.log(node)
+         if (isArray(node)) {
+           node.forEach(el => {
+             this.getTreeNodeByKey(el, key);
+           })
+         } else if (node[this.fieldID] === key) {
+           return node;
+         } else if (node.children) {
+           node.children.forEach(el => {
+             this.getTreeNodeByKey(el, key);
+           })
+         }
+       }*/
     /* Expandable Rows */
     /**
      * @param {?} fileName
