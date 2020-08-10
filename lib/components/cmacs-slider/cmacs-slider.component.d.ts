@@ -25,7 +25,7 @@ export declare class CmacsSliderComponent implements ControlValueAccessor, OnIni
     step: number;
     tooltipVisible: SliderShowTooltip;
     tipFormatter: (value: number) => string;
-    readonly onAfterChange: EventEmitter<number | number[]>;
+    readonly onAfterChange: EventEmitter<SliderValue>;
     value: SliderValue | null;
     sliderDOM: HTMLDivElement;
     cacheSliderStart: number | null;

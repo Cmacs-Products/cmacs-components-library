@@ -12,6 +12,7 @@ export declare class UtilService {
     exportTableCustomHeight: any;
     private _exportCompleted;
     exportCompleted: import("rxjs").Observable<any>;
+    private cmacsPdfImages;
     constructor(exportAsService: ExportAsService);
     uuidv4(): string;
     get_tex_size(txt: any, font: any): any;
@@ -23,4 +24,12 @@ export declare class UtilService {
     getTableCapture(tables: any, format: any): void;
     imagesLoaded: number;
     combineTwoImages(img1: any, img2: any, format: any): void;
+    templatesCellQtty: number;
+    templatesHeaderQtty: number;
+    images: any[];
+    exportTablev2(exportConfig: any): void;
+    getColumns(exportConfig: any): any[];
+    getRows(exportConfig: any): any[];
+    renderTemplate(doc: any, data: any): void;
+    exportToPdfV2(doc: any): void;
 }
