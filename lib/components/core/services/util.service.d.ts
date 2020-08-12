@@ -24,8 +24,6 @@ export declare class UtilService {
     getTableCapture(tables: any, format: any): void;
     imagesLoaded: number;
     combineTwoImages(img1: any, img2: any, format: any): void;
-    templatesCellQtty: number;
-    templatesHeaderQtty: number;
     images: any[];
     exportTablev2(exportConfig: any): void;
     getColumns(exportConfig: any): any[];
