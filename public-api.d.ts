@@ -65,6 +65,7 @@ export * from './lib/components/core/interfaces/grid-config';
 export * from './lib/components/core/interfaces/grid-exp-config';
 export * from './lib/components/core/interfaces/chart-data-interface';
 export * from './lib/components/core/interfaces/options';
+export * from './lib/components/core/services/util.service';
 export * from './lib/components/cmacs-modal/cmacs-modal-ref.class';
 export * from './lib/components/cmacs-dropdown/cmacs-dropdown-a.directive';
 export * from './lib/components/cmacs-progress/cmacs-progress.component';
