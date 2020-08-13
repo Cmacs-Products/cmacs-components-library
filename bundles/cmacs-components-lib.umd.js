@@ -6860,9 +6860,9 @@
                 /** @type {?} */
                 var doc = new jsPDF('l', 'mm', 'a4', 1);
                 /** @type {?} */
-                var columns = this.getColumns(exportConfig);
+                var columns = ( /** @type {?} */(( /** @type {?} */(exportConfig.columns)))) ? exportConfig.columns : this.getColumns(exportConfig);
                 /** @type {?} */
-                var rows = this.getRows(exportConfig);
+                var rows = ( /** @type {?} */(( /** @type {?} */(exportConfig.rows)))) ? exportConfig.rows : this.getRows(exportConfig);
                 if (!!exportConfig.exportCompanyLogoUrl)
                     this.exportCompanyLogoUrl = exportConfig.exportCompanyLogoUrl;
                 if (!!exportConfig.exportCompanyName)
@@ -6874,7 +6874,8 @@
                 if (!!exportConfig.exportTitle)
                     this.exportTitle = exportConfig.exportTitle;
                 doc.autoTable({
-                    head: [columns],
+                    head: ( /** @type {?} */(( /** @type {?} */(exportConfig.columns)))) ? null : [columns],
+                    columns: ( /** @type {?} */(( /** @type {?} */(exportConfig.columns)))) ? columns : null,
                     body: rows,
                     theme: 'plain',
                     headStyles: {
