@@ -6898,57 +6898,59 @@
                      * @param {?} docdata
                      * @return {?}
                      */function (docdata) {
-                        /** @type {?} */
-                        var textPos = docdata.cell.textPos;
-                        /** @type {?} */
-                        var dim = docdata.cell.height - docdata.cell.padding('vertical');
-                        /** @type {?} */
-                        var customWidth = exportConfig.columnStyles && exportConfig.columnStyles[docdata.column.index]
-                            && exportConfig.columnStyles[docdata.column.index].contentWidth ? exportConfig.columnStyles[docdata.column.index].contentWidth : dim;
-                        /** @type {?} */
-                        var columnIdx = exportConfig.checkboxSelect ? docdata.column.index - 1 : docdata.column.index;
-                        /* Draw checkboxes header */
-                        if (exportConfig.checkboxSelect && docdata.section === 'head' && docdata.column.index === '0') {
-                            if (exportConfig.selectedItems.length === exportConfig.data.length) {
-                                doc.addImage(_this.cmacsPdfImages.checkboxSelected, 'PNG', textPos.x, textPos.y, dim, dim, 'checkboxSelected', "FAST");
-                            }
-                            else if (!exportConfig.selectedItems.length) {
-                                doc.addImage(_this.cmacsPdfImages.checkboxEmpty, 'PNG', textPos.x, textPos.y, dim, dim, 'checkboxEmpty', "FAST");
-                            }
-                            else {
-                                doc.addImage(_this.cmacsPdfImages.checkboxIndeterminate, 'PNG', textPos.x, textPos.y, dim, dim, 'checkboxIndeterminate', "FAST");
-                            }
-                        }
-                        /* Draw checkboxes body */
-                        if (exportConfig.checkboxSelect && docdata.section === 'body' && docdata.column.index === '0') {
+                        if (exportConfig.rows === null || exportConfig.rows === undefined) {
                             /** @type {?} */
-                            var row = exportConfig.data[docdata.row.index];
+                            var textPos = docdata.cell.textPos;
                             /** @type {?} */
-                            var idx = exportConfig.selectedItems.indexOf(row[exportConfig.config.fieldId]);
-                            if (idx < 0) {
-                                doc.addImage(_this.cmacsPdfImages.checkboxEmpty, 'PNG', textPos.x, textPos.y, dim, dim, 'checkboxEmpty', "FAST");
+                            var dim = docdata.cell.height - docdata.cell.padding('vertical');
+                            /** @type {?} */
+                            var customWidth = exportConfig.columnStyles && exportConfig.columnStyles[docdata.column.index]
+                                && exportConfig.columnStyles[docdata.column.index].contentWidth ? exportConfig.columnStyles[docdata.column.index].contentWidth : dim;
+                            /** @type {?} */
+                            var columnIdx = exportConfig.checkboxSelect ? docdata.column.index - 1 : docdata.column.index;
+                            /* Draw checkboxes header */
+                            if (exportConfig.checkboxSelect && docdata.section === 'head' && docdata.column.index === '0') {
+                                if (exportConfig.selectedItems.length === exportConfig.data.length) {
+                                    doc.addImage(_this.cmacsPdfImages.checkboxSelected, 'PNG', textPos.x, textPos.y, dim, dim, 'checkboxSelected', "FAST");
+                                }
+                                else if (!exportConfig.selectedItems.length) {
+                                    doc.addImage(_this.cmacsPdfImages.checkboxEmpty, 'PNG', textPos.x, textPos.y, dim, dim, 'checkboxEmpty', "FAST");
+                                }
+                                else {
+                                    doc.addImage(_this.cmacsPdfImages.checkboxIndeterminate, 'PNG', textPos.x, textPos.y, dim, dim, 'checkboxIndeterminate', "FAST");
+                                }
                             }
-                            else {
-                                doc.addImage(_this.cmacsPdfImages.checkboxSelected, 'PNG', textPos.x, textPos.y, dim, dim, 'checkboxSelected', "FAST");
+                            /* Draw checkboxes body */
+                            if (exportConfig.checkboxSelect && docdata.section === 'body' && docdata.column.index === '0') {
+                                /** @type {?} */
+                                var row = exportConfig.data[docdata.row.index];
+                                /** @type {?} */
+                                var idx = exportConfig.selectedItems.indexOf(row[exportConfig.config.fieldId]);
+                                if (idx < 0) {
+                                    doc.addImage(_this.cmacsPdfImages.checkboxEmpty, 'PNG', textPos.x, textPos.y, dim, dim, 'checkboxEmpty', "FAST");
+                                }
+                                else {
+                                    doc.addImage(_this.cmacsPdfImages.checkboxSelected, 'PNG', textPos.x, textPos.y, dim, dim, 'checkboxSelected', "FAST");
+                                }
                             }
-                        }
-                        /* Draw header templates */
-                        if (exportConfig.config.fields[columnIdx] && exportConfig.config.fields[columnIdx].template && (docdata.section === 'head')) {
-                            /** @type {?} */
-                            var img = document.getElementById(exportConfig.elemID + 'column' + columnIdx);
-                            _this.setInlineStyles(img);
-                            _this.images.push({ src: img, x: textPos.x, y: textPos.y, width: dim, height: dim });
-                        }
-                        /* Draw body templates and tags */
-                        if (exportConfig.config.fields[columnIdx]
-                            && (exportConfig.config.fields[columnIdx].celdType === CeldType.TemplateRef
-                                || exportConfig.config.fields[columnIdx].celdType === CeldType.Tag)
-                            && (docdata.section === 'body')) {
-                            /** @type {?} */
-                            var img = document.getElementById(exportConfig.elemID + 'column' + columnIdx + 'row' + docdata.row.index);
-                            if (img) {
+                            /* Draw header templates */
+                            if (exportConfig.config.fields[columnIdx] && exportConfig.config.fields[columnIdx].template && (docdata.section === 'head')) {
+                                /** @type {?} */
+                                var img = document.getElementById(exportConfig.elemID + 'column' + columnIdx);
                                 _this.setInlineStyles(img);
-                                _this.images.push({ src: img, x: textPos.x, y: textPos.y, width: customWidth, height: dim });
+                                _this.images.push({ src: img, x: textPos.x, y: textPos.y, width: dim, height: dim });
+                            }
+                            /* Draw body templates and tags */
+                            if (exportConfig.config.fields[columnIdx]
+                                && (exportConfig.config.fields[columnIdx].celdType === CeldType.TemplateRef
+                                    || exportConfig.config.fields[columnIdx].celdType === CeldType.Tag)
+                                && (docdata.section === 'body')) {
+                                /** @type {?} */
+                                var img = document.getElementById(exportConfig.elemID + 'column' + columnIdx + 'row' + docdata.row.index);
+                                if (img) {
+                                    _this.setInlineStyles(img);
+                                    _this.images.push({ src: img, x: textPos.x, y: textPos.y, width: customWidth, height: dim });
+                                }
                             }
                         }
                         /* Draw borders */
