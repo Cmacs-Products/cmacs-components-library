@@ -1,4 +1,4 @@
-import { OnInit, EventEmitter, OnChanges, Renderer2, ElementRef } from '@angular/core';
+import { OnInit, EventEmitter, OnChanges, Renderer2, ElementRef, TemplateRef } from '@angular/core';
 import { WidgetActionType } from '../core/enums/widget-action-type.enum';
 import { ChartDataMulti } from '../core/interfaces/chart-data-interface';
 import { UtilService } from '../core/services/util.service';
@@ -8,6 +8,7 @@ export declare class CmacsNormalizedHorizontalBarChartComponent implements OnIni
     private util;
     clickMenu: EventEmitter<any>;
     legendContent: ElementRef<any>;
+    chartTooltip: string | TemplateRef<void> | null;
     data: ChartDataMulti[];
     view: number[];
     width: number;

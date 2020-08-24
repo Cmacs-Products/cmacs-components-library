@@ -20,6 +20,7 @@ export declare class CmacsTooltipDirective implements AfterViewInit, OnChanges, 
     readonly cmacsVisibleChange: EventEmitter<boolean>;
     title: string | TemplateRef<void> | null;
     setTitle: string | TemplateRef<void> | null;
+    setCmacsTitle: string | TemplateRef<void> | null;
     content: string | TemplateRef<void>;
     mouseEnterDelay: number;
     mouseLeaveDelay: number;
