@@ -50,7 +50,7 @@ import * as moment_ from 'moment';
 import 'moment/locale/en-ie';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, Type, Injector, inject, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, inject, Type, Injector, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -19903,15 +19903,17 @@ var CmacsStatusDistributionComponent = /** @class */ (function () {
             try {
                 for (var _b = __values(this.data), _c = _b.next(); !_c.done; _c = _b.next()) {
                     var item = _c.value;
-                    context.beginPath();
-                    context.moveTo(move, 1);
-                    context.lineWidth = 10;
-                    /** @type {?} */
-                    var val = item.value;
-                    move += val / total * canvas.width;
-                    context.strokeStyle = item.color;
-                    context.lineTo(move - 5, 1);
-                    context.stroke();
+                    if (item.value > 0) {
+                        context.beginPath();
+                        context.moveTo(move, 1);
+                        context.lineWidth = 10;
+                        /** @type {?} */
+                        var val = item.value;
+                        move += val / total * canvas.width;
+                        context.strokeStyle = item.color;
+                        context.lineTo(move - 5, 1);
+                        context.stroke();
+                    }
                 }
             }
             catch (e_2_1) { e_2 = { error: e_2_1 }; }

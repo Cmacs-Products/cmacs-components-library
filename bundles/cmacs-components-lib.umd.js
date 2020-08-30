@@ -19774,15 +19774,17 @@
                     try {
                         for (var _b = __values(this.data), _c = _b.next(); !_c.done; _c = _b.next()) {
                             var item = _c.value;
-                            context.beginPath();
-                            context.moveTo(move, 1);
-                            context.lineWidth = 10;
-                            /** @type {?} */
-                            var val = item.value;
-                            move += val / total * canvas.width;
-                            context.strokeStyle = item.color;
-                            context.lineTo(move - 5, 1);
-                            context.stroke();
+                            if (item.value > 0) {
+                                context.beginPath();
+                                context.moveTo(move, 1);
+                                context.lineWidth = 10;
+                                /** @type {?} */
+                                var val = item.value;
+                                move += val / total * canvas.width;
+                                context.strokeStyle = item.color;
+                                context.lineTo(move - 5, 1);
+                                context.stroke();
+                            }
                         }
                     }
                     catch (e_2_1) {

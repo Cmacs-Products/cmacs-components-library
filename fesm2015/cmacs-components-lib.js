@@ -16692,15 +16692,17 @@ class CmacsStatusDistributionComponent {
             /** @type {?} */
             let move = 0;
             for (const item of this.data) {
-                context.beginPath();
-                context.moveTo(move, 1);
-                context.lineWidth = 10;
-                /** @type {?} */
-                const val = item.value;
-                move += val / total * canvas.width;
-                context.strokeStyle = item.color;
-                context.lineTo(move - 5, 1);
-                context.stroke();
+                if (item.value > 0) {
+                    context.beginPath();
+                    context.moveTo(move, 1);
+                    context.lineWidth = 10;
+                    /** @type {?} */
+                    const val = item.value;
+                    move += val / total * canvas.width;
+                    context.strokeStyle = item.color;
+                    context.lineTo(move - 5, 1);
+                    context.stroke();
+                }
             }
         }
     }
