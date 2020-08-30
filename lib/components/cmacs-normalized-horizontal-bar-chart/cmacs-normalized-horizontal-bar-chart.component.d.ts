@@ -27,4 +27,5 @@ export declare class CmacsNormalizedHorizontalBarChartComponent implements OnIni
     scrollLeft(): void;
     menuClick(type: WidgetActionType): void;
     showArrowBtns(): void;
+    getSeriesValue(item: any, label: any): any;
 }
