@@ -82,6 +82,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     ondlclickRow: EventEmitter<any>;
     onclickRow: EventEmitter<any>;
     onedit: EventEmitter<any>;
+    onRowExpandCollapse: EventEmitter<any>;
     ondrop: EventEmitter<any>;
     rateCount: number;
     multiSelect: boolean;
@@ -171,7 +172,8 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     exportTreeToPdfRec(rows: any, data: any, offSetMargin?: number): void;
     convertTreeToList(root: any): any[];
     visitNode(node: any, hashMap: any, array: any[]): void;
-    collapse(array: any[], data: any, $event: boolean): void;
+    ExpandCollapse(array: any[], data: any, $event: boolean): void;
+    collapseChildren(array: any[], data: any, $event: boolean): void;
     onCheckboxTreeChange($event: any, item: any): void;
     updateTreeCheckboxes($event: boolean, array: any, key: any): void;
     getNode(key: any): CheckboxSelect;
