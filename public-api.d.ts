@@ -74,6 +74,7 @@ export * from './lib/components/cmacs-dropdown/cmacs-dropdown-context.component'
 export * from './lib/components/cmacs-dropdown/cmacs-dropdown.component';
 export * from './lib/components/cmacs-dropdown/cmacs-dropdown.directive';
 export * from './lib/components/cmacs-kpioverview/cmacs-kpioverview.component';
+export * from './lib/components/cmacs-kpi-group/cmacs-kpi-group.component';
 export * from './lib/components/cmacs-general-chart/cmacs-general-chart.component';
 export * from './lib/components/cmacs-status-distribution/cmacs-status-distribution.component';
 export * from './lib/components/cmacs-normalized-horizontal-bar-grouped/cmacs-normalized-horizontal-bar-grouped.component';
