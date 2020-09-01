@@ -49,4 +49,6 @@ export declare class CmacsKpiGroupComponent implements OnInit, AfterViewInit, On
     menuClick(type: WidgetActionType): void;
     changeData(key: string): void;
     showArrowBtns(): void;
+    getDataTable(): any[];
+    getConfiguration(): any;
 }
