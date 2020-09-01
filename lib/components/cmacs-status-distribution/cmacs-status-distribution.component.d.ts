@@ -41,4 +41,5 @@ export declare class CmacsStatusDistributionComponent implements OnInit, AfterVi
     showArrowBtns(): void;
     getDataTable(): any[];
     getConfiguration(): any;
+    getChartImage(): string;
 }

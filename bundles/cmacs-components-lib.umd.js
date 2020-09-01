@@ -6921,7 +6921,7 @@
                         fontSize: 9
                     },
                     columnStyles: exportConfig.columnStyles,
-                    margin: { top: 35, bottom: 30, left: 15, right: 15 },
+                    margin: ( /** @type {?} */(( /** @type {?} */(exportConfig.customPdf)))) ? exportConfig.customPdf.margin : { top: 35, bottom: 30, left: 15, right: 15 },
                     didDrawCell: ( /**
                      * @param {?} docdata
                      * @return {?}
@@ -7007,8 +7007,19 @@
                                 _this.customizeCell(doc, customizedCell[0]);
                             }
                         }
+                    }),
+                    didDrawPage: ( /**
+                     * @param {?} data
+                     * @return {?}
+                     */function (data) {
+                        // Reseting top margin. The change will be reflected only after print the first page.
+                        data.settings.margin = { top: 35, bottom: 30, left: 15, right: 15 };
                     })
                 });
+                /* Add custom images */
+                if (( /** @type {?} */(( /** @type {?} */(exportConfig.customImages))))) {
+                    this.addCustomImages(doc, exportConfig.customImages);
+                }
                 if (this.images.length) {
                     this.renderTemplate(doc, exportConfig.data);
                 }
@@ -7183,6 +7194,38 @@
                 imgLogo.crossOrigin = "Anonymous";
                 imgLogo.onload = getLogo;
                 imgLogo.src = this.exportCompanyLogoUrl;
+            };
+        /**
+         * @param {?} doc
+         * @param {?} images
+         * @return {?}
+         */
+        UtilService.prototype.addCustomImages = /**
+         * @param {?} doc
+         * @param {?} images
+         * @return {?}
+         */
+            function (doc, images) {
+                var e_4, _a;
+                try {
+                    for (var images_1 = __values(images), images_1_1 = images_1.next(); !images_1_1.done; images_1_1 = images_1.next()) {
+                        var image = images_1_1.value;
+                        doc.addImage(image.src, 'PNG', image.x, image.y, image.width, image.height, image.id, "FAST");
+                    }
+                }
+                catch (e_4_1) {
+                    e_4 = { error: e_4_1 };
+                }
+                finally {
+                    try {
+                        if (images_1_1 && !images_1_1.done && (_a = images_1.return))
+                            _a.call(images_1);
+                    }
+                    finally {
+                        if (e_4)
+                            throw e_4.error;
+                    }
+                }
             };
         UtilService.decorators = [
             { type: i0.Injectable, args: [{ providedIn: 'root' },] }
@@ -19543,6 +19586,15 @@
             function () {
                 return this.configurationExpandableRows;
             };
+        /**
+         * @return {?}
+         */
+        CmacsKpiGroupComponent.prototype.getChartImage = /**
+         * @return {?}
+         */
+            function () {
+                return this.canvasRef.nativeElement.toDataURL('image/png');
+            };
         CmacsKpiGroupComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'cmacs-kpi-group',
@@ -19871,6 +19923,17 @@
          */
             function () {
                 return this.configurationExpandableRows;
+            };
+        /**
+         * @return {?}
+         */
+        CmacsStatusDistributionComponent.prototype.getChartImage = /**
+         * @return {?}
+         */
+            function () {
+                /** @type {?} */
+                var canvas = ( /** @type {?} */(document.getElementById('canvas-' + this.id)));
+                return canvas.toDataURL('image/png');
             };
         CmacsStatusDistributionComponent.decorators = [
             { type: i0.Component, args: [{

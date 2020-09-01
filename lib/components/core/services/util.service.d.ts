@@ -33,4 +33,5 @@ export declare class UtilService {
     getRows(exportConfig: any): any[];
     renderTemplate(doc: any, data: any): void;
     exportToPdfV2(doc: any): void;
+    addCustomImages(doc: any, images: any): void;
 }

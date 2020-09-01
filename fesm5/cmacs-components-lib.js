@@ -40,7 +40,7 @@ import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName
 import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
 import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
 import { addMonths, addYears, endOfMonth, setDay, setMonth, addDays, differenceInCalendarDays, differenceInCalendarMonths, differenceInCalendarWeeks, isSameDay, isSameMonth, isSameYear, isThisMonth, isThisYear, setYear, startOfMonth, startOfWeek, startOfYear, getISOWeeksInYear, getISOYear, getMonth } from 'date-fns';
-import { __extends, __assign, __decorate, __metadata, __spread, __read, __values } from 'tslib';
+import { __assign, __decorate, __metadata, __extends, __spread, __read, __values } from 'tslib';
 import { InputBoolean as InputBoolean$1, NzDropdownService, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
 import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
@@ -50,7 +50,7 @@ import * as moment_ from 'moment';
 import 'moment/locale/en-ie';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, Type, Injector, inject, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, ComponentFactoryResolver, defineInjectable, inject, Injector, Type, NgModule, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -6884,7 +6884,7 @@ var UtilService = /** @class */ (function () {
                 fontSize: 9
             },
             columnStyles: exportConfig.columnStyles,
-            margin: { top: 35, bottom: 30, left: 15, right: 15 },
+            margin: (/** @type {?} */ ((/** @type {?} */ (exportConfig.customPdf)))) ? exportConfig.customPdf.margin : { top: 35, bottom: 30, left: 15, right: 15 },
             didDrawCell: (/**
              * @param {?} docdata
              * @return {?}
@@ -6971,8 +6971,20 @@ var UtilService = /** @class */ (function () {
                         _this.customizeCell(doc, customizedCell[0]);
                     }
                 }
+            }),
+            didDrawPage: (/**
+             * @param {?} data
+             * @return {?}
+             */
+            function (data) {
+                // Reseting top margin. The change will be reflected only after print the first page.
+                data.settings.margin = { top: 35, bottom: 30, left: 15, right: 15 };
             })
         });
+        /* Add custom images */
+        if ((/** @type {?} */ ((/** @type {?} */ (exportConfig.customImages))))) {
+            this.addCustomImages(doc, exportConfig.customImages);
+        }
         if (this.images.length) {
             this.renderTemplate(doc, exportConfig.data);
         }
@@ -7151,6 +7163,32 @@ var UtilService = /** @class */ (function () {
         imgLogo.crossOrigin = "Anonymous";
         imgLogo.onload = getLogo;
         imgLogo.src = this.exportCompanyLogoUrl;
+    };
+    /**
+     * @param {?} doc
+     * @param {?} images
+     * @return {?}
+     */
+    UtilService.prototype.addCustomImages = /**
+     * @param {?} doc
+     * @param {?} images
+     * @return {?}
+     */
+    function (doc, images) {
+        var e_4, _a;
+        try {
+            for (var images_1 = __values(images), images_1_1 = images_1.next(); !images_1_1.done; images_1_1 = images_1.next()) {
+                var image = images_1_1.value;
+                doc.addImage(image.src, 'PNG', image.x, image.y, image.width, image.height, image.id, "FAST");
+            }
+        }
+        catch (e_4_1) { e_4 = { error: e_4_1 }; }
+        finally {
+            try {
+                if (images_1_1 && !images_1_1.done && (_a = images_1.return)) _a.call(images_1);
+            }
+            finally { if (e_4) throw e_4.error; }
+        }
     };
     UtilService.decorators = [
         { type: Injectable, args: [{ providedIn: 'root' },] }
@@ -19678,6 +19716,15 @@ var CmacsKpiGroupComponent = /** @class */ (function () {
     function () {
         return this.configurationExpandableRows;
     };
+    /**
+     * @return {?}
+     */
+    CmacsKpiGroupComponent.prototype.getChartImage = /**
+     * @return {?}
+     */
+    function () {
+        return this.canvasRef.nativeElement.toDataURL('image/png');
+    };
     CmacsKpiGroupComponent.decorators = [
         { type: Component, args: [{
                     selector: 'cmacs-kpi-group',
@@ -19996,6 +20043,17 @@ var CmacsStatusDistributionComponent = /** @class */ (function () {
      */
     function () {
         return this.configurationExpandableRows;
+    };
+    /**
+     * @return {?}
+     */
+    CmacsStatusDistributionComponent.prototype.getChartImage = /**
+     * @return {?}
+     */
+    function () {
+        /** @type {?} */
+        var canvas = (/** @type {?} */ (document.getElementById('canvas-' + this.id)));
+        return canvas.toDataURL('image/png');
     };
     CmacsStatusDistributionComponent.decorators = [
         { type: Component, args: [{

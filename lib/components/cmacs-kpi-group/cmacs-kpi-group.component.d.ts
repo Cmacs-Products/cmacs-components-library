@@ -51,4 +51,5 @@ export declare class CmacsKpiGroupComponent implements OnInit, AfterViewInit, On
     showArrowBtns(): void;
     getDataTable(): any[];
     getConfiguration(): any;
+    getChartImage(): any;
 }

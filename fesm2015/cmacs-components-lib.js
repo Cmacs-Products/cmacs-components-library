@@ -50,7 +50,7 @@ import * as moment_ from 'moment';
 import 'moment/locale/en-ie';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, InjectionToken, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, Type, inject, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -5836,7 +5836,7 @@ class UtilService {
                 fontSize: 9
             },
             columnStyles: exportConfig.columnStyles,
-            margin: { top: 35, bottom: 30, left: 15, right: 15 },
+            margin: (/** @type {?} */ ((/** @type {?} */ (exportConfig.customPdf)))) ? exportConfig.customPdf.margin : { top: 35, bottom: 30, left: 15, right: 15 },
             didDrawCell: (/**
              * @param {?} docdata
              * @return {?}
@@ -5923,8 +5923,20 @@ class UtilService {
                         this.customizeCell(doc, customizedCell[0]);
                     }
                 }
+            }),
+            didDrawPage: (/**
+             * @param {?} data
+             * @return {?}
+             */
+            function (data) {
+                // Reseting top margin. The change will be reflected only after print the first page.
+                data.settings.margin = { top: 35, bottom: 30, left: 15, right: 15 };
             })
         });
+        /* Add custom images */
+        if ((/** @type {?} */ ((/** @type {?} */ (exportConfig.customImages))))) {
+            this.addCustomImages(doc, exportConfig.customImages);
+        }
         if (this.images.length) {
             this.renderTemplate(doc, exportConfig.data);
         }
@@ -6084,6 +6096,16 @@ class UtilService {
         imgLogo.crossOrigin = "Anonymous";
         imgLogo.onload = getLogo;
         imgLogo.src = this.exportCompanyLogoUrl;
+    }
+    /**
+     * @param {?} doc
+     * @param {?} images
+     * @return {?}
+     */
+    addCustomImages(doc, images) {
+        for (const image of images) {
+            doc.addImage(image.src, 'PNG', image.x, image.y, image.width, image.height, image.id, "FAST");
+        }
     }
 }
 UtilService.decorators = [
@@ -16501,6 +16523,12 @@ class CmacsKpiGroupComponent {
     getConfiguration() {
         return this.configurationExpandableRows;
     }
+    /**
+     * @return {?}
+     */
+    getChartImage() {
+        return this.canvasRef.nativeElement.toDataURL('image/png');
+    }
 }
 CmacsKpiGroupComponent.decorators = [
     { type: Component, args: [{
@@ -16757,6 +16785,14 @@ class CmacsStatusDistributionComponent {
      */
     getConfiguration() {
         return this.configurationExpandableRows;
+    }
+    /**
+     * @return {?}
+     */
+    getChartImage() {
+        /** @type {?} */
+        const canvas = (/** @type {?} */ (document.getElementById('canvas-' + this.id)));
+        return canvas.toDataURL('image/png');
     }
 }
 CmacsStatusDistributionComponent.decorators = [
