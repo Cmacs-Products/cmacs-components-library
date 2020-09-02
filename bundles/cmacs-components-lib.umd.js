@@ -6878,13 +6878,8 @@
              * @return {?}
              */
             function (exportConfig) {
-                var _this = this;
                 /** @type {?} */
                 var doc = new jsPDF('l', 'mm', 'a4', 1);
-                /** @type {?} */
-                var columns = ( /** @type {?} */(( /** @type {?} */(exportConfig.columns)))) ? exportConfig.columns : this.getColumns(exportConfig);
-                /** @type {?} */
-                var rows = ( /** @type {?} */(( /** @type {?} */(exportConfig.rows)))) ? exportConfig.rows : this.getRows(exportConfig);
                 if (!!exportConfig.exportCompanyLogoUrl)
                     this.exportCompanyLogoUrl = exportConfig.exportCompanyLogoUrl;
                 if (!!exportConfig.exportCompanyName)
@@ -6901,6 +6896,39 @@
                 doc.addFont('Roboto-Regular.ttf', 'Roboto', 'normal');
                 doc.addFont('Roboto-Bold.ttf', 'Roboto', 'bold');
                 doc.setFont('Roboto');
+                if (exportConfig.legend) {
+                    this.drawLegendTable(doc, exportConfig.legend);
+                }
+                if (!exportConfig.hideTable) {
+                    this.drawTableContent(doc, exportConfig);
+                }
+                /* Add custom images */
+                if (( /** @type {?} */(( /** @type {?} */(exportConfig.customImages))))) {
+                    this.addCustomImages(doc, exportConfig.customImages);
+                }
+                if (this.images.length) {
+                    this.renderTemplate(doc, exportConfig.data);
+                }
+                else {
+                    this.exportToPdfV2(doc);
+                }
+            };
+        /**
+         * @param {?} doc
+         * @param {?} exportConfig
+         * @return {?}
+         */
+        UtilService.prototype.drawTableContent = /**
+         * @param {?} doc
+         * @param {?} exportConfig
+         * @return {?}
+         */
+            function (doc, exportConfig) {
+                var _this = this;
+                /** @type {?} */
+                var columns = ( /** @type {?} */(( /** @type {?} */(exportConfig.columns)))) ? exportConfig.columns : this.getColumns(exportConfig);
+                /** @type {?} */
+                var rows = ( /** @type {?} */(( /** @type {?} */(exportConfig.rows)))) ? exportConfig.rows : this.getRows(exportConfig);
                 doc.autoTable({
                     head: ( /** @type {?} */(( /** @type {?} */(exportConfig.columns)))) ? null : [columns],
                     columns: ( /** @type {?} */(( /** @type {?} */(exportConfig.columns)))) ? columns : null,
@@ -6921,14 +6949,14 @@
                         fontSize: 9
                     },
                     columnStyles: exportConfig.columnStyles,
-                    margin: ( /** @type {?} */(( /** @type {?} */(exportConfig.customPdf)))) ? exportConfig.customPdf.margin : { top: 35, bottom: 30, left: 15, right: 15 },
+                    margin: exportConfig.customPdf !== null && exportConfig.customPdf !== undefined ? exportConfig.customPdf.margin : { top: 35, bottom: 30, left: 15, right: 15 },
                     didDrawCell: ( /**
                      * @param {?} docdata
                      * @return {?}
                      */function (docdata) {
+                        /** @type {?} */
+                        var textPos = docdata.cell.textPos;
                         if (exportConfig.rows === null || exportConfig.rows === undefined) {
-                            /** @type {?} */
-                            var textPos = docdata.cell.textPos;
                             /** @type {?} */
                             var dim = docdata.cell.height - docdata.cell.padding('vertical');
                             /** @type {?} */
@@ -6981,6 +7009,20 @@
                                 }
                             }
                         }
+                        /* Draw images in cells */
+                        if (( /** @type {?} */(( /** @type {?} */(exportConfig.customCellImages)))) && docdata.section === 'body') {
+                            /** @type {?} */
+                            var customizedImage = exportConfig.customCellImages.find(( /**
+                             * @param {?} item
+                             * @return {?}
+                             */function (item) {
+                                return item.row === docdata.row.index &&
+                                    (item.columnOrder === docdata.column.index || item.columnDataKey === docdata.column.dataKey);
+                            }));
+                            if (customizedImage) {
+                                doc.addImage(customizedImage.src, 'PNG', textPos.x, textPos.y, customizedImage.width, customizedImage.height, customizedImage.id, "FAST");
+                            }
+                        }
                         /* Draw borders */
                         if (docdata.section === 'body') {
                             /** @type {?} */
@@ -7016,16 +7058,53 @@
                         data.settings.margin = { top: 35, bottom: 30, left: 15, right: 15 };
                     })
                 });
-                /* Add custom images */
-                if (( /** @type {?} */(( /** @type {?} */(exportConfig.customImages))))) {
-                    this.addCustomImages(doc, exportConfig.customImages);
-                }
-                if (this.images.length) {
-                    this.renderTemplate(doc, exportConfig.data);
-                }
-                else {
-                    this.exportToPdfV2(doc);
-                }
+            };
+        /**
+         * @param {?} doc
+         * @param {?} legend
+         * @return {?}
+         */
+        UtilService.prototype.drawLegendTable = /**
+         * @param {?} doc
+         * @param {?} legend
+         * @return {?}
+         */
+            function (doc, legend) {
+                var _this = this;
+                doc.autoTable({
+                    columns: legend.columns,
+                    body: legend.rows,
+                    theme: 'plain',
+                    showHead: 'never',
+                    columnStyles: legend.columnStyles,
+                    bodyStyles: {
+                        font: 'Roboto',
+                        minCellHeight: 4,
+                        fontStyle: 'normal',
+                        fillColor: '#ffffff',
+                        textColor: '#97a0ae',
+                        fontSize: 8
+                    },
+                    margin: legend.customPdf.margin,
+                    willDrawCell: ( /**
+                     * @param {?} docdata
+                     * @return {?}
+                     */function (docdata) {
+                        if (docdata.section === 'body') {
+                            /** @type {?} */
+                            var customizedCell = legend.customCells.find(( /**
+                             * @param {?} item
+                             * @return {?}
+                             */function (item) {
+                                return item.row === docdata.row.index &&
+                                    (item.columnOrder === docdata.column.index || item.columnDataKey === docdata.column.dataKey);
+                            }));
+                            if (customizedCell) {
+                                _this.customizeCell(doc, customizedCell);
+                            }
+                        }
+                    }),
+                });
             };
         /**
          * @param {?} exportConfig
@@ -7207,10 +7286,11 @@
          */
             function (doc, images) {
                 var e_4, _a;
+                doc.setPage(1);
                 try {
                     for (var images_1 = __values(images), images_1_1 = images_1.next(); !images_1_1.done; images_1_1 = images_1.next()) {
                         var image = images_1_1.value;
-                        doc.addImage(image.src, 'PNG', image.x, image.y, image.width, image.height, image.id, "FAST");
+                        doc.addImage(image.src, 'PNG', image.x, image.y, image.width, image.height, image.id);
                     }
                 }
                 catch (e_4_1) {

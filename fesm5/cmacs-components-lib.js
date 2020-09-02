@@ -50,7 +50,7 @@ import * as moment_ from 'moment';
 import 'moment/locale/en-ie';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, ComponentFactoryResolver, defineInjectable, inject, Injector, Type, NgModule, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, Pipe, InjectionToken, ComponentFactoryResolver, defineInjectable, NgModule, Type, Injector, inject, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -6841,13 +6841,8 @@ var UtilService = /** @class */ (function () {
      * @return {?}
      */
     function (exportConfig) {
-        var _this = this;
         /** @type {?} */
         var doc = new jsPDF('l', 'mm', 'a4', 1);
-        /** @type {?} */
-        var columns = (/** @type {?} */ ((/** @type {?} */ (exportConfig.columns)))) ? exportConfig.columns : this.getColumns(exportConfig);
-        /** @type {?} */
-        var rows = (/** @type {?} */ ((/** @type {?} */ (exportConfig.rows)))) ? exportConfig.rows : this.getRows(exportConfig);
         if (!!exportConfig.exportCompanyLogoUrl)
             this.exportCompanyLogoUrl = exportConfig.exportCompanyLogoUrl;
         if (!!exportConfig.exportCompanyName)
@@ -6864,6 +6859,39 @@ var UtilService = /** @class */ (function () {
         doc.addFont('Roboto-Regular.ttf', 'Roboto', 'normal');
         doc.addFont('Roboto-Bold.ttf', 'Roboto', 'bold');
         doc.setFont('Roboto');
+        if (exportConfig.legend) {
+            this.drawLegendTable(doc, exportConfig.legend);
+        }
+        if (!exportConfig.hideTable) {
+            this.drawTableContent(doc, exportConfig);
+        }
+        /* Add custom images */
+        if ((/** @type {?} */ ((/** @type {?} */ (exportConfig.customImages))))) {
+            this.addCustomImages(doc, exportConfig.customImages);
+        }
+        if (this.images.length) {
+            this.renderTemplate(doc, exportConfig.data);
+        }
+        else {
+            this.exportToPdfV2(doc);
+        }
+    };
+    /**
+     * @param {?} doc
+     * @param {?} exportConfig
+     * @return {?}
+     */
+    UtilService.prototype.drawTableContent = /**
+     * @param {?} doc
+     * @param {?} exportConfig
+     * @return {?}
+     */
+    function (doc, exportConfig) {
+        var _this = this;
+        /** @type {?} */
+        var columns = (/** @type {?} */ ((/** @type {?} */ (exportConfig.columns)))) ? exportConfig.columns : this.getColumns(exportConfig);
+        /** @type {?} */
+        var rows = (/** @type {?} */ ((/** @type {?} */ (exportConfig.rows)))) ? exportConfig.rows : this.getRows(exportConfig);
         doc.autoTable({
             head: (/** @type {?} */ ((/** @type {?} */ (exportConfig.columns)))) ? null : [columns],
             columns: (/** @type {?} */ ((/** @type {?} */ (exportConfig.columns)))) ? columns : null,
@@ -6884,15 +6912,15 @@ var UtilService = /** @class */ (function () {
                 fontSize: 9
             },
             columnStyles: exportConfig.columnStyles,
-            margin: (/** @type {?} */ ((/** @type {?} */ (exportConfig.customPdf)))) ? exportConfig.customPdf.margin : { top: 35, bottom: 30, left: 15, right: 15 },
+            margin: exportConfig.customPdf !== null && exportConfig.customPdf !== undefined ? exportConfig.customPdf.margin : { top: 35, bottom: 30, left: 15, right: 15 },
             didDrawCell: (/**
              * @param {?} docdata
              * @return {?}
              */
             function (docdata) {
+                /** @type {?} */
+                var textPos = docdata.cell.textPos;
                 if (exportConfig.rows === null || exportConfig.rows === undefined) {
-                    /** @type {?} */
-                    var textPos = docdata.cell.textPos;
                     /** @type {?} */
                     var dim = docdata.cell.height - docdata.cell.padding('vertical');
                     /** @type {?} */
@@ -6945,6 +6973,19 @@ var UtilService = /** @class */ (function () {
                         }
                     }
                 }
+                /* Draw images in cells */
+                if ((/** @type {?} */ ((/** @type {?} */ (exportConfig.customCellImages)))) && docdata.section === 'body') {
+                    /** @type {?} */
+                    var customizedImage = exportConfig.customCellImages.find((/**
+                     * @param {?} item
+                     * @return {?}
+                     */
+                    function (item) { return item.row === docdata.row.index &&
+                        (item.columnOrder === docdata.column.index || item.columnDataKey === docdata.column.dataKey); }));
+                    if (customizedImage) {
+                        doc.addImage(customizedImage.src, 'PNG', textPos.x, textPos.y, customizedImage.width, customizedImage.height, customizedImage.id, "FAST");
+                    }
+                }
                 /* Draw borders */
                 if (docdata.section === 'body') {
                     /** @type {?} */
@@ -6981,16 +7022,53 @@ var UtilService = /** @class */ (function () {
                 data.settings.margin = { top: 35, bottom: 30, left: 15, right: 15 };
             })
         });
-        /* Add custom images */
-        if ((/** @type {?} */ ((/** @type {?} */ (exportConfig.customImages))))) {
-            this.addCustomImages(doc, exportConfig.customImages);
-        }
-        if (this.images.length) {
-            this.renderTemplate(doc, exportConfig.data);
-        }
-        else {
-            this.exportToPdfV2(doc);
-        }
+    };
+    /**
+     * @param {?} doc
+     * @param {?} legend
+     * @return {?}
+     */
+    UtilService.prototype.drawLegendTable = /**
+     * @param {?} doc
+     * @param {?} legend
+     * @return {?}
+     */
+    function (doc, legend) {
+        var _this = this;
+        doc.autoTable({
+            columns: legend.columns,
+            body: legend.rows,
+            theme: 'plain',
+            showHead: 'never',
+            columnStyles: legend.columnStyles,
+            bodyStyles: {
+                font: 'Roboto',
+                minCellHeight: 4,
+                fontStyle: 'normal',
+                fillColor: '#ffffff',
+                textColor: '#97a0ae',
+                fontSize: 8
+            },
+            margin: legend.customPdf.margin,
+            willDrawCell: (/**
+             * @param {?} docdata
+             * @return {?}
+             */
+            function (docdata) {
+                if (docdata.section === 'body') {
+                    /** @type {?} */
+                    var customizedCell = legend.customCells.find((/**
+                     * @param {?} item
+                     * @return {?}
+                     */
+                    function (item) { return item.row === docdata.row.index &&
+                        (item.columnOrder === docdata.column.index || item.columnDataKey === docdata.column.dataKey); }));
+                    if (customizedCell) {
+                        _this.customizeCell(doc, customizedCell);
+                    }
+                }
+            }),
+        });
     };
     /**
      * @param {?} exportConfig
@@ -7176,10 +7254,11 @@ var UtilService = /** @class */ (function () {
      */
     function (doc, images) {
         var e_4, _a;
+        doc.setPage(1);
         try {
             for (var images_1 = __values(images), images_1_1 = images_1.next(); !images_1_1.done; images_1_1 = images_1.next()) {
                 var image = images_1_1.value;
-                doc.addImage(image.src, 'PNG', image.x, image.y, image.width, image.height, image.id, "FAST");
+                doc.addImage(image.src, 'PNG', image.x, image.y, image.width, image.height, image.id);
             }
         }
         catch (e_4_1) { e_4 = { error: e_4_1 }; }
