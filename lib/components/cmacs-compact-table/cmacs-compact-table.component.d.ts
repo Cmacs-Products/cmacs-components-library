@@ -9,7 +9,7 @@ import { ExcelService } from '../core/services/excel.service';
 import { CookieService } from "ngx-cookie-service";
 import { CheckboxSelect } from "../cmacs-grid/cmacs-table.component";
 import { CdkDragDrop } from "@angular/cdk/drag-drop";
-import { NzDropdownContextComponent, NzDropdownService } from "ng-zorro-antd";
+import { NzDropdownContextComponent, NzDropdownService, NzTableComponent } from "ng-zorro-antd";
 import { CmacsInputNumberComponent } from "../cmacs-input-number/cmacs-input-number.component";
 import { UtilService } from '../core/services/util.service';
 import 'moment/locale/en-ie';
@@ -24,6 +24,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     locale: any;
     headerBottomStyle: {};
     private destroy$;
+    nzTableComponent: NzTableComponent;
     size: NzSizeMDSType;
     showTotal: TemplateRef<{
         $implicit: number;
@@ -201,4 +202,5 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     getMaxWidthFieldViewMode(field: Field, i: number): "18px" | "0px";
     getStickyWidth(position: any): string;
     getStickyWidthRight(position: any): string;
+    getTableComponent(): NzTableComponent<any>;
 }
