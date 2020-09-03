@@ -40,7 +40,7 @@ import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName
 import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
 import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
 import { addMonths, addYears, endOfMonth, setDay, setMonth, addDays, differenceInCalendarDays, differenceInCalendarMonths, differenceInCalendarWeeks, isSameDay, isSameMonth, isSameYear, isThisMonth, isThisYear, setYear, startOfMonth, startOfWeek, startOfYear, getISOWeeksInYear, getISOYear, getMonth } from 'date-fns';
-import { __assign, __decorate, __metadata, __extends, __spread, __read, __values } from 'tslib';
+import { __assign, __decorate, __metadata, __extends, __read, __spread, __values } from 'tslib';
 import { InputBoolean as InputBoolean$1, NzDropdownService, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
 import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
@@ -50,7 +50,7 @@ import * as moment_ from 'moment';
 import 'moment/locale/en-ie';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, Pipe, InjectionToken, ComponentFactoryResolver, defineInjectable, NgModule, Type, Injector, inject, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, InjectionToken, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, inject, Type, Injector, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -6862,12 +6862,12 @@ var UtilService = /** @class */ (function () {
         if (exportConfig.legend) {
             this.drawLegendTable(doc, exportConfig.legend);
         }
-        if (!exportConfig.hideTable) {
-            this.drawTableContent(doc, exportConfig);
-        }
         /* Add custom images */
         if ((/** @type {?} */ ((/** @type {?} */ (exportConfig.customImages))))) {
             this.addCustomImages(doc, exportConfig.customImages);
+        }
+        if (!exportConfig.hideTable) {
+            this.drawTableContent(doc, exportConfig);
         }
         if (this.images.length) {
             this.renderTemplate(doc, exportConfig.data);
@@ -6912,7 +6912,8 @@ var UtilService = /** @class */ (function () {
                 fontSize: 9
             },
             columnStyles: exportConfig.columnStyles,
-            margin: exportConfig.customPdf !== null && exportConfig.customPdf !== undefined ? exportConfig.customPdf.margin : { top: 35, bottom: 30, left: 15, right: 15 },
+            startY: exportConfig.customPdf && exportConfig.customPdf.margin ? exportConfig.customPdf.margin.top : null,
+            margin: exportConfig.customPdf ? exportConfig.customPdf.margin : { top: 35, bottom: 30, left: 15, right: 15 },
             didDrawCell: (/**
              * @param {?} docdata
              * @return {?}
@@ -7043,13 +7044,15 @@ var UtilService = /** @class */ (function () {
             columnStyles: legend.columnStyles,
             bodyStyles: {
                 font: 'Roboto',
-                minCellHeight: 4,
+                minCellHeight: 1,
+                minCellWidth: 1,
                 fontStyle: 'normal',
                 fillColor: '#ffffff',
                 textColor: '#97a0ae',
                 fontSize: 8
             },
-            margin: legend.customPdf.margin,
+            startY: legend.customPdf && legend.customPdf.margin ? legend.customPdf.margin.top : null,
+            margin: legend.customPdf ? legend.customPdf.margin : null,
             willDrawCell: (/**
              * @param {?} docdata
              * @return {?}

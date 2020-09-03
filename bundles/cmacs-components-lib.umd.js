@@ -6899,12 +6899,12 @@
                 if (exportConfig.legend) {
                     this.drawLegendTable(doc, exportConfig.legend);
                 }
-                if (!exportConfig.hideTable) {
-                    this.drawTableContent(doc, exportConfig);
-                }
                 /* Add custom images */
                 if (( /** @type {?} */(( /** @type {?} */(exportConfig.customImages))))) {
                     this.addCustomImages(doc, exportConfig.customImages);
+                }
+                if (!exportConfig.hideTable) {
+                    this.drawTableContent(doc, exportConfig);
                 }
                 if (this.images.length) {
                     this.renderTemplate(doc, exportConfig.data);
@@ -6949,7 +6949,8 @@
                         fontSize: 9
                     },
                     columnStyles: exportConfig.columnStyles,
-                    margin: exportConfig.customPdf !== null && exportConfig.customPdf !== undefined ? exportConfig.customPdf.margin : { top: 35, bottom: 30, left: 15, right: 15 },
+                    startY: exportConfig.customPdf && exportConfig.customPdf.margin ? exportConfig.customPdf.margin.top : null,
+                    margin: exportConfig.customPdf ? exportConfig.customPdf.margin : { top: 35, bottom: 30, left: 15, right: 15 },
                     didDrawCell: ( /**
                      * @param {?} docdata
                      * @return {?}
@@ -7079,13 +7080,15 @@
                     columnStyles: legend.columnStyles,
                     bodyStyles: {
                         font: 'Roboto',
-                        minCellHeight: 4,
+                        minCellHeight: 1,
+                        minCellWidth: 1,
                         fontStyle: 'normal',
                         fillColor: '#ffffff',
                         textColor: '#97a0ae',
                         fontSize: 8
                     },
-                    margin: legend.customPdf.margin,
+                    startY: legend.customPdf && legend.customPdf.margin ? legend.customPdf.margin.top : null,
+                    margin: legend.customPdf ? legend.customPdf.margin : null,
                     willDrawCell: ( /**
                      * @param {?} docdata
                      * @return {?}
