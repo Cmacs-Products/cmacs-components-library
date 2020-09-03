@@ -136,8 +136,6 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     getIndex(id: any): number;
     order: number;
     updateCheckboxCache(): void;
-    checkChildrenState(item: any): void;
-    checkChildrenStateRec(item: any): boolean;
     updateCheckboxCacheTreeData(): void;
     convertExpandTreeToList(item: any, plainList: any[]): void;
     onButtonClick(field: any): void;
@@ -174,8 +172,9 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     visitNode(node: any, hashMap: any, array: any[]): void;
     ExpandCollapse(array: any[], data: any, $event: boolean): void;
     collapseChildren(array: any[], data: any, $event: boolean): void;
-    onCheckboxTreeChange($event: any, item: any): void;
-    updateTreeCheckboxes($event: boolean, array: any, key: any): void;
+    onCheckboxTreeChange($event: any, item: any, subtree?: any): void;
+    updateTreeCheckboxes($event: boolean, array: any): void;
+    refreshSubTreeCheckboxes(subtree: any): void;
     getNode(key: any): CheckboxSelect;
     exportToPng(fileName: string): void;
     exportToExcel(fileName: string): void;

@@ -150,6 +150,6 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
 }
 export interface CheckboxSelect {
     data: any;
-    selected: boolean;
+    selected: boolean | number;
     order?: number;
 }
