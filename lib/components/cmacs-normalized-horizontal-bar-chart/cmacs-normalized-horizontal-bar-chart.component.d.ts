@@ -1,4 +1,4 @@
-import { OnInit, EventEmitter, OnChanges, Renderer2, ElementRef, TemplateRef } from '@angular/core';
+import { OnInit, EventEmitter, OnChanges, Renderer2, ElementRef, TemplateRef, QueryList } from '@angular/core';
 import { WidgetActionType } from '../core/enums/widget-action-type.enum';
 import { ChartDataMulti } from '../core/interfaces/chart-data-interface';
 import { UtilService } from '../core/services/util.service';
@@ -8,6 +8,8 @@ export declare class CmacsNormalizedHorizontalBarChartComponent implements OnIni
     private util;
     clickMenu: EventEmitter<any>;
     legendContent: ElementRef<any>;
+    canvasRef: ElementRef;
+    canvas: QueryList<ElementRef>;
     chartTooltip: string | TemplateRef<void> | null;
     data: ChartDataMulti[];
     view: number[];
@@ -28,4 +30,7 @@ export declare class CmacsNormalizedHorizontalBarChartComponent implements OnIni
     menuClick(type: WidgetActionType): void;
     showArrowBtns(): void;
     getSeriesValue(item: any, label: any): any;
+    getDataTable(): ChartDataMulti[];
+    getChartImage(): QueryList<ElementRef<any>>;
+    getLegend(): string[];
 }
