@@ -40,7 +40,7 @@ import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName
 import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
 import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
 import { addMonths, addYears, endOfMonth, setDay, setMonth, addDays, differenceInCalendarDays, differenceInCalendarMonths, differenceInCalendarWeeks, isSameDay, isSameMonth, isSameYear, isThisMonth, isThisYear, setYear, startOfMonth, startOfWeek, startOfYear, getISOWeeksInYear, getISOYear, getMonth } from 'date-fns';
-import { __assign, __decorate, __metadata, __extends, __spread, __read, __values } from 'tslib';
+import { __assign, __decorate, __metadata, __extends, __read, __spread, __values } from 'tslib';
 import { InputBoolean as InputBoolean$1, NzDropdownService, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
 import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
@@ -6862,6 +6862,9 @@ var UtilService = /** @class */ (function () {
         if (exportConfig.legend) {
             this.drawLegendTable(doc, exportConfig.legend);
         }
+        if ((/** @type {?} */ ((/** @type {?} */ (exportConfig.bigImage))))) {
+            this.exportBigImage(doc, exportConfig.bigImage);
+        }
         /* Add custom images */
         if ((/** @type {?} */ ((/** @type {?} */ (exportConfig.customImages))))) {
             this.addCustomImages(doc, exportConfig.customImages);
@@ -6875,6 +6878,49 @@ var UtilService = /** @class */ (function () {
         else {
             this.exportToPdfV2(doc);
         }
+    };
+    /**
+     * @param {?} doc
+     * @param {?} bigImage
+     * @return {?}
+     */
+    UtilService.prototype.exportBigImage = /**
+     * @param {?} doc
+     * @param {?} bigImage
+     * @return {?}
+     */
+    function (doc, bigImage) {
+        /** @type {?} */
+        var cutImageUp = (/**
+         * @return {?}
+         */
+        function () {
+            /** @type {?} */
+            var cuts = Math.trunc(image.naturalHeight / bigImage.pdfHeight) + 1;
+            /** @type {?} */
+            var pdfWidth = doc.internal.pageSize.getWidth() - 2 * 15;
+            /** @type {?} */
+            var imageWidth = bigImage.width >= pdfWidth ? pdfWidth : bigImage.width;
+            for (var y = 0; y < cuts; y++) {
+                /** @type {?} */
+                var canvas = document.createElement('canvas');
+                canvas.width = image.naturalWidth;
+                canvas.height = bigImage.pdfHeight;
+                /** @type {?} */
+                var context = canvas.getContext('2d');
+                (/** @type {?} */ (context)).drawImage(image, 0, y * bigImage.pdfHeight, image.naturalWidth, bigImage.pdfHeight, 0, 0, canvas.width, canvas.height);
+                /** @type {?} */
+                var img = canvas.toDataURL("image/PNG");
+                if (y) {
+                    doc.addPage();
+                }
+                doc.addImage(img, 'PNG', 15, bigImage.top, imageWidth, bigImage.height, undefined, 'FAST');
+            }
+        });
+        /** @type {?} */
+        var image = new Image();
+        image.onload = cutImageUp;
+        image.src = bigImage.src;
     };
     /**
      * @param {?} doc

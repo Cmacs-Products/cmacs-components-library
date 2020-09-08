@@ -50,7 +50,7 @@ import * as moment_ from 'moment';
 import 'moment/locale/en-ie';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, NgModule, Injector, ComponentFactoryResolver, defineInjectable, Type, inject, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -5815,6 +5815,9 @@ class UtilService {
         if (exportConfig.legend) {
             this.drawLegendTable(doc, exportConfig.legend);
         }
+        if ((/** @type {?} */ ((/** @type {?} */ (exportConfig.bigImage))))) {
+            this.exportBigImage(doc, exportConfig.bigImage);
+        }
         /* Add custom images */
         if ((/** @type {?} */ ((/** @type {?} */ (exportConfig.customImages))))) {
             this.addCustomImages(doc, exportConfig.customImages);
@@ -5828,6 +5831,44 @@ class UtilService {
         else {
             this.exportToPdfV2(doc);
         }
+    }
+    /**
+     * @param {?} doc
+     * @param {?} bigImage
+     * @return {?}
+     */
+    exportBigImage(doc, bigImage) {
+        /** @type {?} */
+        const cutImageUp = (/**
+         * @return {?}
+         */
+        () => {
+            /** @type {?} */
+            const cuts = Math.trunc(image.naturalHeight / bigImage.pdfHeight) + 1;
+            /** @type {?} */
+            const pdfWidth = doc.internal.pageSize.getWidth() - 2 * 15;
+            /** @type {?} */
+            const imageWidth = bigImage.width >= pdfWidth ? pdfWidth : bigImage.width;
+            for (let y = 0; y < cuts; y++) {
+                /** @type {?} */
+                const canvas = document.createElement('canvas');
+                canvas.width = image.naturalWidth;
+                canvas.height = bigImage.pdfHeight;
+                /** @type {?} */
+                const context = canvas.getContext('2d');
+                (/** @type {?} */ (context)).drawImage(image, 0, y * bigImage.pdfHeight, image.naturalWidth, bigImage.pdfHeight, 0, 0, canvas.width, canvas.height);
+                /** @type {?} */
+                const img = canvas.toDataURL("image/PNG");
+                if (y) {
+                    doc.addPage();
+                }
+                doc.addImage(img, 'PNG', 15, bigImage.top, imageWidth, bigImage.height, undefined, 'FAST');
+            }
+        });
+        /** @type {?} */
+        const image = new Image();
+        image.onload = cutImageUp;
+        image.src = bigImage.src;
     }
     /**
      * @param {?} doc

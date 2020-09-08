@@ -6899,6 +6899,9 @@
                 if (exportConfig.legend) {
                     this.drawLegendTable(doc, exportConfig.legend);
                 }
+                if (( /** @type {?} */(( /** @type {?} */(exportConfig.bigImage))))) {
+                    this.exportBigImage(doc, exportConfig.bigImage);
+                }
                 /* Add custom images */
                 if (( /** @type {?} */(( /** @type {?} */(exportConfig.customImages))))) {
                     this.addCustomImages(doc, exportConfig.customImages);
@@ -6912,6 +6915,48 @@
                 else {
                     this.exportToPdfV2(doc);
                 }
+            };
+        /**
+         * @param {?} doc
+         * @param {?} bigImage
+         * @return {?}
+         */
+        UtilService.prototype.exportBigImage = /**
+         * @param {?} doc
+         * @param {?} bigImage
+         * @return {?}
+         */
+            function (doc, bigImage) {
+                /** @type {?} */
+                var cutImageUp = ( /**
+                 * @return {?}
+                 */function () {
+                    /** @type {?} */
+                    var cuts = Math.trunc(image.naturalHeight / bigImage.pdfHeight) + 1;
+                    /** @type {?} */
+                    var pdfWidth = doc.internal.pageSize.getWidth() - 2 * 15;
+                    /** @type {?} */
+                    var imageWidth = bigImage.width >= pdfWidth ? pdfWidth : bigImage.width;
+                    for (var y = 0; y < cuts; y++) {
+                        /** @type {?} */
+                        var canvas = document.createElement('canvas');
+                        canvas.width = image.naturalWidth;
+                        canvas.height = bigImage.pdfHeight;
+                        /** @type {?} */
+                        var context = canvas.getContext('2d');
+                        ( /** @type {?} */(context)).drawImage(image, 0, y * bigImage.pdfHeight, image.naturalWidth, bigImage.pdfHeight, 0, 0, canvas.width, canvas.height);
+                        /** @type {?} */
+                        var img = canvas.toDataURL("image/PNG");
+                        if (y) {
+                            doc.addPage();
+                        }
+                        doc.addImage(img, 'PNG', 15, bigImage.top, imageWidth, bigImage.height, undefined, 'FAST');
+                    }
+                });
+                /** @type {?} */
+                var image = new Image();
+                image.onload = cutImageUp;
+                image.src = bigImage.src;
             };
         /**
          * @param {?} doc

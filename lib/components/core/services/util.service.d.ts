@@ -29,6 +29,7 @@ export declare class UtilService {
     combineTwoImages(img1: any, img2: any, format: any): void;
     images: any[];
     exportTablev2(exportConfig: any): void;
+    exportBigImage(doc: any, bigImage: any): void;
     drawTableContent(doc: any, exportConfig: any): void;
     drawLegendTable(doc: any, legend: any): void;
     getColumns(exportConfig: any): any[];
