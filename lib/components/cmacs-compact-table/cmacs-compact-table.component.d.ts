@@ -95,8 +95,8 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     indentSize: number;
     dropdown: NzDropdownContextComponent;
     selected: boolean;
-    formatter: (value: number) => any;
-    parser: (value: string) => any;
+    formatter: (value: number) => string;
+    parser: (value: string) => string;
     defaultSortOrder: any;
     checkboxCache: CheckboxSelect[];
     isIndeterminate: boolean;

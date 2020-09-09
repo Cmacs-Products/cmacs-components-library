@@ -33,8 +33,6 @@ import 'jspdf-autotable';
 import { CookieService } from 'ngx-cookie-service';
 import { isArray } from 'util';
 import { CdkDrag, moveItemInArray, transferArrayItem, DragDropModule } from '@angular/cdk/drag-drop';
-import formatNumber from 'accounting-js/lib/formatNumber.js';
-import unformat from 'accounting-js/lib/unformat.js';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 import { Object as Object$1 } from 'core-js';
 import { DOWN_ARROW, ENTER, UP_ARROW, BACKSPACE, SPACE, TAB, ESCAPE, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
@@ -42,7 +40,7 @@ import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName
 import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
 import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
 import { addMonths, addYears, endOfMonth, setDay, setMonth, addDays, differenceInCalendarDays, differenceInCalendarMonths, differenceInCalendarWeeks, isSameDay, isSameMonth, isSameYear, isThisMonth, isThisYear, setYear, startOfMonth, startOfWeek, startOfYear, getISOWeeksInYear, getISOYear, getMonth } from 'date-fns';
-import { __assign, __decorate, __metadata, __extends, __spread, __read, __values } from 'tslib';
+import { __extends, __decorate, __metadata, __assign, __spread, __read, __values } from 'tslib';
 import { InputBoolean as InputBoolean$1, NzDropdownService, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
 import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
@@ -654,9 +652,8 @@ var CmacsInputNumberComponent = /** @class */ (function () {
         this.actualValue = this.parser(value
             .trim()
             .replace(/。/g, '.')
-        //.replace(/[^\w\.-]+/g, '')
-        );
-        //this.inputElement.nativeElement.value = this.actualValue;
+            .replace(/[^\w\.-]+/g, ''));
+        this.inputElement.nativeElement.value = this.actualValue;
     };
     /**
      * @param {?} value
@@ -29063,22 +29060,12 @@ var CmacsCompactTableComponent = /** @class */ (function () {
          * @param {?} value
          * @return {?}
          */
-        function (value) {
-            if (value) {
-                return formatNumber(value, { precision: 3, thousand: " ", decimal: "," });
-            }
-            return value;
-        });
+        function (value) { return value ? "" + value.toString().replace('.', ',') : ''; });
         this.parser = (/**
          * @param {?} value
          * @return {?}
          */
-        function (value) {
-            if (value) {
-                return unformat(value, ',');
-            }
-            return value;
-        });
+        function (value) { return value.replace(',', '.'); });
         this.defaultSortOrder = null;
         this.checkboxCache = [];
         this.isIndeterminate = false;

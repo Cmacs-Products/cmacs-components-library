@@ -33,8 +33,6 @@ import 'jspdf-autotable';
 import { CookieService } from 'ngx-cookie-service';
 import { isArray } from 'util';
 import { CdkDrag, moveItemInArray, transferArrayItem, DragDropModule } from '@angular/cdk/drag-drop';
-import formatNumber from 'accounting-js/lib/formatNumber.js';
-import unformat from 'accounting-js/lib/unformat.js';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 import 'core-js';
 import { DOWN_ARROW, ENTER, UP_ARROW, BACKSPACE, SPACE, TAB, ESCAPE, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
@@ -52,7 +50,7 @@ import * as moment_ from 'moment';
 import 'moment/locale/en-ie';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, InjectionToken, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, Type, inject, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -583,9 +581,8 @@ class CmacsInputNumberComponent {
         this.actualValue = this.parser(value
             .trim()
             .replace(/。/g, '.')
-        //.replace(/[^\w\.-]+/g, '')
-        );
-        //this.inputElement.nativeElement.value = this.actualValue;
+            .replace(/[^\w\.-]+/g, ''));
+        this.inputElement.nativeElement.value = this.actualValue;
     }
     /**
      * @param {?} value
@@ -24420,22 +24417,12 @@ class CmacsCompactTableComponent {
          * @param {?} value
          * @return {?}
          */
-        (value) => {
-            if (value) {
-                return formatNumber(value, { precision: 3, thousand: " ", decimal: "," });
-            }
-            return value;
-        });
+        (value) => value ? `${value.toString().replace('.', ',')}` : '');
         this.parser = (/**
          * @param {?} value
          * @return {?}
          */
-        (value) => {
-            if (value) {
-                return unformat(value, ',');
-            }
-            return value;
-        });
+        (value) => value.replace(',', '.'));
         this.defaultSortOrder = null;
         this.checkboxCache = [];
         this.isIndeterminate = false;
