@@ -40,7 +40,7 @@ import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName
 import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
 import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
 import { addMonths, addYears, endOfMonth, setDay, setMonth, addDays, differenceInCalendarDays, differenceInCalendarMonths, differenceInCalendarWeeks, isSameDay, isSameMonth, isSameYear, isThisMonth, isThisYear, setYear, startOfMonth, startOfWeek, startOfYear, getISOWeeksInYear, getISOYear, getMonth } from 'date-fns';
-import { __extends, __decorate, __metadata, __assign, __spread, __read, __values } from 'tslib';
+import { __assign, __decorate, __metadata, __extends, __read, __spread, __values } from 'tslib';
 import { InputBoolean as InputBoolean$1, NzDropdownService, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
 import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
@@ -652,8 +652,9 @@ var CmacsInputNumberComponent = /** @class */ (function () {
         this.actualValue = this.parser(value
             .trim()
             .replace(/。/g, '.')
-            .replace(/[^\w\.-]+/g, ''));
-        this.inputElement.nativeElement.value = this.actualValue;
+        //.replace(/[^\w\.-]+/g, '')
+        );
+        //this.inputElement.nativeElement.value = this.actualValue;
     };
     /**
      * @param {?} value
@@ -29060,12 +29061,22 @@ var CmacsCompactTableComponent = /** @class */ (function () {
          * @param {?} value
          * @return {?}
          */
-        function (value) { return value ? "" + value.toString().replace('.', ',') : ''; });
+        function (value) {
+            if (value) {
+                return accounting.formatNumber(value, { precision: 3, thousand: " ", decimal: "," });
+            }
+            return value;
+        });
         this.parser = (/**
          * @param {?} value
          * @return {?}
          */
-        function (value) { return value.replace(',', '.'); });
+        function (value) {
+            if (value) {
+                return accounting.unformat(value, ',');
+            }
+            return value;
+        });
         this.defaultSortOrder = null;
         this.checkboxCache = [];
         this.isIndeterminate = false;

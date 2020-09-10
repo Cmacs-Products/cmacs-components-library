@@ -707,8 +707,9 @@
                 this.actualValue = this.parser(value
                     .trim()
                     .replace(/。/g, '.')
-                    .replace(/[^\w\.-]+/g, ''));
-                this.inputElement.nativeElement.value = this.actualValue;
+                //.replace(/[^\w\.-]+/g, '')
+                );
+                //this.inputElement.nativeElement.value = this.actualValue;
             };
         /**
          * @param {?} value
@@ -28882,11 +28883,21 @@
             this.formatter = ( /**
              * @param {?} value
              * @return {?}
-             */function (value) { return value ? "" + value.toString().replace('.', ',') : ''; });
+             */function (value) {
+                if (value) {
+                    return accounting.formatNumber(value, { precision: 3, thousand: " ", decimal: "," });
+                }
+                return value;
+            });
             this.parser = ( /**
              * @param {?} value
              * @return {?}
-             */function (value) { return value.replace(',', '.'); });
+             */function (value) {
+                if (value) {
+                    return accounting.unformat(value, ',');
+                }
+                return value;
+            });
             this.defaultSortOrder = null;
             this.checkboxCache = [];
             this.isIndeterminate = false;

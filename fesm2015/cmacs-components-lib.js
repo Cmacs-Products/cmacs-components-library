@@ -581,8 +581,9 @@ class CmacsInputNumberComponent {
         this.actualValue = this.parser(value
             .trim()
             .replace(/。/g, '.')
-            .replace(/[^\w\.-]+/g, ''));
-        this.inputElement.nativeElement.value = this.actualValue;
+        //.replace(/[^\w\.-]+/g, '')
+        );
+        //this.inputElement.nativeElement.value = this.actualValue;
     }
     /**
      * @param {?} value
@@ -24417,12 +24418,22 @@ class CmacsCompactTableComponent {
          * @param {?} value
          * @return {?}
          */
-        (value) => value ? `${value.toString().replace('.', ',')}` : '');
+        (value) => {
+            if (value) {
+                return accounting.formatNumber(value, { precision: 3, thousand: " ", decimal: "," });
+            }
+            return value;
+        });
         this.parser = (/**
          * @param {?} value
          * @return {?}
          */
-        (value) => value.replace(',', '.'));
+        (value) => {
+            if (value) {
+                return accounting.unformat(value, ',');
+            }
+            return value;
+        });
         this.defaultSortOrder = null;
         this.checkboxCache = [];
         this.isIndeterminate = false;
