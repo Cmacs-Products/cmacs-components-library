@@ -55,6 +55,7 @@ export declare class CmacsDatetimePickerPanelComponent implements ControlValueAc
     nzInDatePicker: boolean;
     nzAddOn: TemplateRef<void>;
     nzHideDisabledOptions: boolean;
+    hideSeconds: boolean;
     nzClearText: string;
     nzPlaceHolder: string;
     nzUse12Hours: boolean;

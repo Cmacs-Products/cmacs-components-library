@@ -32,6 +32,7 @@ export declare class CmacsDateTimePickerComponent implements ControlValueAccesso
     disabledSeconds: (hour: number, minute: number) => number[];
     cmacsOpen: boolean;
     use12Hours: boolean;
+    hideSeconds: boolean;
     format: any;
     readonly openChange: EventEmitter<boolean>;
     hideDisabledOptions: boolean;
