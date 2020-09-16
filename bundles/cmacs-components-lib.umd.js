@@ -6371,6 +6371,7 @@
             this.exportCompanyName = 'Company Name';
             this.exportUserName = 'User Name';
             this.exportTitle = '';
+            this.exportSubtitle = [];
             this.exportCompanyLogoUrl = 'assets/PToB_logo.png';
             this.exportTableCustomWidth = null;
             this.exportTableCustomHeight = null;
@@ -6379,7 +6380,8 @@
             this.cmacsPdfImages = {
                 checkboxEmpty: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAaCAYAAABGiCfwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAB+SURBVEhL7ZbRCoAwCEX7/z/c68QH9xPGhb0YQmUWUR4YbODuYb64RR/kRzJmViLS1lpo4S4yPIwMRWOMeYqDDE9oZL33ubuOl2VkaEMWXlbJTlOyFEqWQslSeJcsc8RgiG4xMgw8EZmnOMjYHZ4ARXgh2hBZh78Fd/NVmeoKcvHOkd9CE50AAAAASUVORK5CYII=',
                 checkboxIndeterminate: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAaCAYAAACkVDyJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACISURBVEhL7ZYxCsAgDEV7np6xF3VVHOIlUr50kCagVVtomwcZhJhHXL4LP8xPhTFGDiGwc66rvPd5hoYQopGIjlM/KSVVKoTYbBbY9IwQ4klmoc2qCtftWpWYMGPCWpWYMGPCWpW8QzhCk3BmPGmzhBChifAcpTmAARpHvhi4q8mAKryTrwuZd8TadLIlxV8gAAAAAElFTkSuQmCC',
-                checkboxSelected: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAbCAYAAABiFp9rAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAE4SURBVEhL1ZZPSgMxHEbnOvYC4jU8jnWpuy69hl135cqN4Aw4BbUi7UJxKbgSnD8/88YMJkGGJJMO+OCjaZr5HpkukkwUrUpV1/JVVUlDJ92QMfhrUcrgyPaxEzc4Mnfy7v5ZivVGrq7zqOTlputwey0RC562L907HQMdrswS5eWjXjqeQnWZ3ZaIraeCLrP7/4g+PkVe3/UXg6QiJMcXIodnIg9velKTTNRLZqc/QcZcT7DoZqsHBq6ELJ1Hg0Q8TMnJpZ5Q+EjAW8QfbJYh85VA1I7IgcrRuZ8EgkRAGZLZ3F8CwSKYL23JYqV/GCBKBL2MTx+iRXC70wMPRolCGBSlPCboMrst0WQHH2FBoY5jth4TrgGuhEx3OZnsusU7ZbCPndFJN3SinqZtpW6absGY0EHXLyLfIjpzYqgNw6oAAAAASUVORK5CYII='
+                checkboxSelected: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAbCAYAAABiFp9rAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAE4SURBVEhL1ZZPSgMxHEbnOvYC4jU8jnWpuy69hl135cqN4Aw4BbUi7UJxKbgSnD8/88YMJkGGJJMO+OCjaZr5HpkukkwUrUpV1/JVVUlDJ92QMfhrUcrgyPaxEzc4Mnfy7v5ZivVGrq7zqOTlputwey0RC562L907HQMdrswS5eWjXjqeQnWZ3ZaIraeCLrP7/4g+PkVe3/UXg6QiJMcXIodnIg9velKTTNRLZqc/QcZcT7DoZqsHBq6ELJ1Hg0Q8TMnJpZ5Q+EjAW8QfbJYh85VA1I7IgcrRuZ8EgkRAGZLZ3F8CwSKYL23JYqV/GCBKBL2MTx+iRXC70wMPRolCGBSlPCboMrst0WQHH2FBoY5jth4TrgGuhEx3OZnsusU7ZbCPndFJN3SinqZtpW6absGY0EHXLyLfIjpzYqgNw6oAAAAASUVORK5CYII=',
+                arrowDown: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiM2NTZDNzkiIGQ9Ik0xNC4wOTggNkg1LjkwMmMtLjM5MyAwLS42MzIuNDMyLS40MjQuNzY1bDQuMDk4IDYuNTU3Yy4xOTYuMzEzLjY1Mi4zMTMuODQ4IDBsNC4wOTgtNi41NTdDMTQuNzMgNi40MzIgMTQuNDkgNiAxNC4wOTggNnoiLz4KPC9zdmc+Cg=='
             };
             this.imagesLoaded = 0;
             this.images = [];
@@ -6590,8 +6592,8 @@
                 /** @type {?} */
                 var date = moment().format('MMMM DD, YYYY');
                 doc.setFont('Roboto');
-                doc.setTextColor(101, 108, 121);
-                doc.setFontSize(9);
+                doc.setTextColor(151, 160, 174);
+                doc.setFontSize(8);
                 for (var i = 1; i <= pageCount; i++) {
                     doc.setPage(i);
                     doc.text(this.exportCompanyName, 15, 8, {
@@ -6601,11 +6603,23 @@
                         align: 'right'
                     });
                     doc.addImage(logo, 'PNG', 15, 14, 40, 5, undefined, 'FAST');
-                    doc.setFontType('bold');
+                    doc.setFontSize(9);
+                    doc.setTextColor(59, 63, 70);
                     doc.text(this.exportTitle, 15, 30, {
                         align: 'left'
                     });
-                    doc.setFontType('normal');
+                    doc.setFontSize(8);
+                    if (( /** @type {?} */(( /** @type {?} */(this.exportSubtitle))))) {
+                        for (var j = 0; j < this.exportSubtitle.length; j++) {
+                            /** @type {?} */
+                            var text = this.exportSubtitle[j];
+                            doc.setTextColor.apply(doc, __spread(text.color));
+                            doc.text(text.text, text.x, text.y);
+                        }
+                    }
+                    doc.setFontSize(8);
+                    doc.setFont('Roboto', 'normal');
+                    doc.setTextColor(101, 108, 121);
                     doc.text('Page ' + String(i) + ' of ' + String(pageCount), 15, doc.internal.pageSize.height - 10, {
                         align: 'left'
                     });
@@ -6881,16 +6895,12 @@
             function (exportConfig) {
                 /** @type {?} */
                 var doc = new jsPDF('l', 'mm', 'a4', 1);
-                if (!!exportConfig.exportCompanyLogoUrl)
-                    this.exportCompanyLogoUrl = exportConfig.exportCompanyLogoUrl;
-                if (!!exportConfig.exportCompanyName)
-                    this.exportCompanyName = exportConfig.exportCompanyName;
-                if (!!exportConfig.exportUserName)
-                    this.exportUserName = exportConfig.exportUserName;
-                if (!!exportConfig.fileName)
-                    this.fileName = exportConfig.fileName;
-                if (!!exportConfig.exportTitle)
-                    this.exportTitle = exportConfig.exportTitle;
+                this.exportCompanyLogoUrl = !!exportConfig.exportCompanyLogoUrl ? exportConfig.exportCompanyLogoUrl : '';
+                this.exportCompanyName = !!exportConfig.exportCompanyName ? exportConfig.exportCompanyName : '';
+                this.exportUserName = !!exportConfig.exportUserName ? exportConfig.exportUserName : '';
+                this.fileName = !!exportConfig.fileName ? exportConfig.fileName : '';
+                this.exportTitle = !!exportConfig.exportTitle ? exportConfig.exportTitle : '';
+                this.exportSubtitle = !!exportConfig.exportSubtitle && exportConfig.exportSubtitle.length ? exportConfig.exportSubtitle : [];
                 /* Adding Roboto Font */
                 doc.addFileToVFS('Roboto-Regular.ttf', ROBOTO);
                 doc.addFileToVFS('Roboto-Bold.ttf', ROBOTO_BOLD);
@@ -6981,13 +6991,15 @@
                     body: rows,
                     theme: 'plain',
                     showHead: exportConfig.hideHeader !== null && exportConfig.hideHeader !== undefined && exportConfig.hideHeader ? 'never' : 'everyPage',
-                    headStyles: {
-                        font: 'Roboto',
-                        fontStyle: 'normal',
-                        fillColor: '#f6f7fb',
-                        textColor: '#656c79',
-                        fontSize: 9
-                    },
+                    headStyles: exportConfig.headStyles ?
+                        exportConfig.headStyles :
+                        {
+                            font: 'Roboto',
+                            fontStyle: 'normal',
+                            fillColor: '#f6f7fb',
+                            textColor: '#656c79',
+                            fontSize: 9,
+                        },
                     bodyStyles: {
                         font: 'Roboto',
                         fontStyle: 'normal',
@@ -6997,7 +7009,7 @@
                     },
                     columnStyles: exportConfig.columnStyles,
                     startY: exportConfig.customPdf && exportConfig.customPdf.margin ? exportConfig.customPdf.margin.top : null,
-                    margin: exportConfig.customPdf ? exportConfig.customPdf.margin : { top: 35, bottom: 30, left: 15, right: 15 },
+                    margin: exportConfig.customPdf ? exportConfig.customPdf.margin : { top: ( /** @type {?} */(( /** @type {?} */(this.exportSubtitle)))) && this.exportSubtitle.length ? 45 : 35, bottom: 30, left: 15, right: 15 },
                     didDrawCell: ( /**
                      * @param {?} docdata
                      * @return {?}
@@ -7103,7 +7115,7 @@
                      * @return {?}
                      */function (data) {
                         // Reseting top margin. The change will be reflected only after print the first page.
-                        data.settings.margin = { top: 35, bottom: 30, left: 15, right: 15 };
+                        data.settings.margin = { top: ( /** @type {?} */(( /** @type {?} */(_this.exportSubtitle)))) && _this.exportSubtitle.length ? 45 : 35, bottom: 30, left: 15, right: 15 };
                     })
                 });
             };

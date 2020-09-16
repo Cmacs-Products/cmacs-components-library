@@ -9,6 +9,7 @@ export declare class UtilService {
     exportCompanyName: string;
     exportUserName: string;
     exportTitle: string;
+    exportSubtitle: any[];
     exportCompanyLogoUrl: string;
     exportTableCustomWidth: any;
     exportTableCustomHeight: any;
