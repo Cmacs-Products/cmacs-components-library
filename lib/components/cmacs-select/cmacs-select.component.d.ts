@@ -36,6 +36,7 @@ export declare class CmacsSelectComponent implements ControlValueAccessor, OnIni
     listOfCmacsOptionComponent: QueryList<CmacsOptionComponent>;
     listOfCmacsOptionGroupComponent: QueryList<CmacsOptionGroupComponent>;
     readonly cmacsOnSearch: EventEmitter<string>;
+    readonly cmacsEditedInput: EventEmitter<string>;
     readonly scrollToBottom: EventEmitter<void>;
     readonly openChange: EventEmitter<boolean>;
     readonly cmacsBlur: EventEmitter<void>;
@@ -62,6 +63,7 @@ export declare class CmacsSelectComponent implements ControlValueAccessor, OnIni
     removeIcon: TemplateRef<void>;
     menuItemSelectedIcon: TemplateRef<void>;
     showArrow: boolean;
+    cmacsEditable: boolean;
     tokenSeparators: string[];
     maxTagPlaceholder: TemplateRef<{
         $implicit: any[];

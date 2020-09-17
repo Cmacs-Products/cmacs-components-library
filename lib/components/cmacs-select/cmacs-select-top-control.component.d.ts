@@ -8,10 +8,12 @@ export declare class CmacsSelectTopControlComponent implements OnInit, OnDestroy
     private cdr;
     noAnimation?: NzNoAnimationDirective;
     inputValue: string;
+    inputValueEditableMode: string;
     searchValue: string;
     isComposing: boolean;
     private destroy$;
     inputElement: ElementRef;
+    inputElementCustom: ElementRef;
     nzShowSearch: boolean;
     showCustomSearch: boolean;
     showCmacsSearch: boolean;
@@ -19,6 +21,7 @@ export declare class CmacsSelectTopControlComponent implements OnInit, OnDestroy
     tagsOut: boolean;
     nzOpen: boolean;
     cmacsOpen: boolean;
+    cmacsEditable: boolean;
     action: boolean;
     nzMaxTagCount: number;
     nzAllowClear: boolean;
@@ -34,6 +37,7 @@ export declare class CmacsSelectTopControlComponent implements OnInit, OnDestroy
     onClearSelection(e: MouseEvent): void;
     getSelectedValues(): any[];
     setInputValue(value: string): void;
+    setInputValueCustom(value: string): void;
     readonly placeHolderDisplay: string;
     readonly selectedValueStyle: {
         [key: string]: string;
@@ -43,6 +47,7 @@ export declare class CmacsSelectTopControlComponent implements OnInit, OnDestroy
     };
     trackValue(_index: number, option: CmacsOptionComponent): any;
     updateWidth(): void;
+    updateWidthCustom(): void;
     removeSelectedValue(option: CmacsOptionComponent, e: MouseEvent): void;
     constructor(renderer: Renderer2, nzSelectService: CmacsSelectService, cdr: ChangeDetectorRef, noAnimation?: NzNoAnimationDirective);
     ngOnInit(): void;

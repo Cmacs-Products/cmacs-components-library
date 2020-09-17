@@ -21,12 +21,14 @@ export declare class CmacsSelectService {
     private listOfSelectedValueWithEmit$;
     private mapOfTemplateOption$;
     private searchValueRaw$;
+    private editedValueRaw$;
     private listOfFilteredOption;
     private openRaw$;
     private checkRaw$;
     private open;
     clearInput$: Subject<boolean>;
     searchValue: string;
+    editedValue: string;
     isShowNotFound: boolean;
     open$: import("rxjs").Observable<boolean>;
     activatedOption: CmacsOptionComponent | null;
@@ -34,6 +36,7 @@ export declare class CmacsSelectService {
     listOfSelectedValue$: import("rxjs").Observable<any[]>;
     modelChange$: import("rxjs").Observable<any[]>;
     searchValue$: import("rxjs").Observable<string>;
+    editedValue$: import("rxjs").Observable<string>;
     listOfSelectedValue: any[];
     listOfTemplateOption: CmacsOptionComponent[];
     listOfTagOption: CmacsOptionComponent[];
@@ -46,10 +49,7 @@ export declare class CmacsSelectService {
         listOfNzOptionComponent: CmacsOptionComponent[];
         listOfNzOptionGroupComponent: CmacsOptionGroupComponent[];
     }]>;
-    check$: import("rxjs").Observable<string | boolean | {} | any[] | CmacsOptionComponent | [any[], {
-        listOfNzOptionComponent: CmacsOptionComponent[];
-        listOfNzOptionGroupComponent: CmacsOptionGroupComponent[];
-    }]>;
+    check$: import("rxjs").Observable<{}>;
     clickOption(option: CmacsOptionComponent): void;
     updateListOfCachedOption(): void;
     updateListOfTagOption(): void;
@@ -64,6 +64,7 @@ export declare class CmacsSelectService {
     resetActivatedOptionIfNeeded(): void;
     updateTemplateOption(listOfNzOptionComponent: CmacsOptionComponent[], listOfNzOptionGroupComponent: CmacsOptionGroupComponent[]): void;
     updateSearchValue(value: string): void;
+    updateEditedValue(value: string): void;
     updateSelectedValueByLabelList(listOfLabel: string[]): void;
     onKeyDown(e: KeyboardEvent): void;
     removeValueFormSelected(option: CmacsOptionComponent): void;
