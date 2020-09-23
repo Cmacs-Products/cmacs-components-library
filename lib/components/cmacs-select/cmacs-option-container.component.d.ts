@@ -21,10 +21,14 @@ export declare class CmacsOptionContainerComponent implements OnDestroy, OnInit 
     dropdownUl: ElementRef;
     inputElement: ElementRef;
     nzNotFoundContent: string;
+    notFoundContentShow: boolean;
+    userDropdown: boolean;
     showSearch: boolean;
+    showSelectAll: boolean;
     selectAllLabel: string;
     showCmacsSearch: boolean;
     nzMenuItemSelectedIcon: TemplateRef<void>;
+    notFoundContentCustom: TemplateRef<void>;
     readonly nzScrollToBottom: EventEmitter<void>;
     readonly onSearch: EventEmitter<string>;
     scrollIntoViewIfNeeded(option: CmacsOptionComponent): void;

@@ -30,6 +30,7 @@ export declare class CmacsSelectTopControlComponent implements OnInit, OnDestroy
     nzSuffixIcon: TemplateRef<void>;
     nzClearIcon: TemplateRef<void>;
     nzRemoveIcon: TemplateRef<void>;
+    userDropdown: boolean;
     nzMaxTagPlaceholder: TemplateRef<{
         $implicit: any[];
     }>;
