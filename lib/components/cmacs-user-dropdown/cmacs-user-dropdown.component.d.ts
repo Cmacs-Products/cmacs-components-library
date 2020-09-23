@@ -1,0 +1,36 @@
+import { EventEmitter, OnInit } from '@angular/core';
+import { CmacsSelectComponent } from '../cmacs-select/cmacs-select.component';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
+export declare class CmacsUserDropdownComponent implements OnInit {
+    private sanitizer;
+    private fb;
+    mode: string;
+    emailErrorLabel: string;
+    inviteGuestLabel: string;
+    placeHolder: string;
+    selectedValue: any;
+    listOfOption: any[];
+    maxTagCount: any;
+    selectedValueChange: EventEmitter<any>;
+    onAddGuestUserByEmail: EventEmitter<any>;
+    _searchValue: string;
+    showEmailError: boolean;
+    selectComponent: CmacsSelectComponent;
+    listOfFilteredOption: any[];
+    listDividers: any[];
+    operatedData: any[];
+    firstElemByDivider: any;
+    emailForm: FormGroup;
+    constructor(sanitizer: DomSanitizer, fb: FormBuilder);
+    onSelectedValueChange($event: any): void;
+    ngOnInit(): void;
+    readonly searchValue: string;
+    operateData(): void;
+    onsearch($event: any): void;
+    getFirstElemByDivider(): void;
+    getInitials(name: any): any;
+    getBackgroundImage(picture: any): import("@angular/platform-browser").SafeStyle;
+    addGuestUser(): void;
+    addOption(option: any): void;
+}

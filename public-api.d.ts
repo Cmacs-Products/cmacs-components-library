@@ -131,3 +131,4 @@ export * from './lib/components/cmacs-timeline-datepicker/cmacs-timeline-datepic
 export * from './lib/components/cmacs-xlsx-loader/cmacs-xlsx-loader.component';
 export * from './lib/components/cmacs-editor/cmacs-editor.component';
 export * from './lib/components/cmacs-timeline-chart/cmacs-timeline-chart.component';
+export * from './lib/components/cmacs-user-dropdown/cmacs-user-dropdown.component';
