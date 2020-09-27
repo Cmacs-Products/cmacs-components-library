@@ -22,6 +22,7 @@ export declare class CmacsUserDropdownComponent implements OnInit {
     operatedData: any[];
     firstElemByDivider: any;
     emailForm: FormGroup;
+    highlightKeys: any[];
     constructor(sanitizer: DomSanitizer, fb: FormBuilder);
     onSelectedValueChange($event: any): void;
     ngOnInit(): void;
@@ -33,4 +34,5 @@ export declare class CmacsUserDropdownComponent implements OnInit {
     getBackgroundImage(picture: any): import("@angular/platform-browser").SafeStyle;
     addGuestUser(): void;
     addOption(option: any): void;
+    highlightValue(elem: any): any[];
 }

@@ -17,6 +17,7 @@ export declare class CmacsOptionLiComponent implements OnInit, OnDestroy {
     selected: boolean;
     active: boolean;
     destroy$: Subject<{}>;
+    highlightKeys: any[];
     nzOption: CmacsOptionComponent;
     nzMenuItemSelectedIcon: TemplateRef<void>;
     clickOption(): void;
