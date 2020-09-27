@@ -42,7 +42,7 @@ CmacsMonthPickerComponent.decorators = [
                         () => CmacsMonthPickerComponent))
                     }
                 ],
-                styles: [".ant-calendar-month-panel-header{line-height:17px;border:0}.ant-calendar-month-panel-month{padding-top:3px}.ant-calendar-month-panel-selected-cell .ant-calendar-month-panel-month{background-color:transparent;color:#656c79;display:-ms-grid;display:grid}.ant-calendar-month-panel-selected-cell .ant-calendar-month-panel-month::after{content:'\u25CF';color:#2a7cff;font-size:10px}.ant-calendar-month-panel-selected-cell .ant-calendar-month-panel-month:hover{color:#656c79;background-color:#fff}.ant-calendar-month-panel-month:hover{background-color:#f6f7fb}"]
+                styles: [".ant-calendar-month-panel-header{line-height:17px;border:0}.ant-calendar-month-panel-month{padding-top:3px}.ant-calendar-month-panel-current-cell .ant-calendar-month-panel-month{background-color:transparent;color:#656c79;display:-ms-grid;display:grid}.ant-calendar-month-panel-current-cell .ant-calendar-month-panel-month::after{content:'\u25CF';color:#2a7cff;font-size:10px}.ant-calendar-month-panel-current-cell .ant-calendar-month-panel-month:hover{color:#656c79;background-color:#fff}.ant-calendar-month-panel-month:hover{background-color:#f6f7fb}"]
             }] }
 ];
 /** @nocollapse */
