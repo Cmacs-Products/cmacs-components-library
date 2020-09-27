@@ -13,6 +13,7 @@ export declare class CmacsSelectService {
     autoClearSearchValue: boolean;
     serverSearch: boolean;
     tagsOut: boolean;
+    cmacsEditable: boolean;
     filterOption: TFilterOption;
     mode: 'default' | 'multiple' | 'tags' | 'tagsSingleSelect';
     maxMultipleCount: number;

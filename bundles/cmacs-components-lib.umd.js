@@ -10529,6 +10529,7 @@
             this.autoClearSearchValue = true;
             this.serverSearch = false;
             this.tagsOut = false;
+            this.cmacsEditable = false;
             this.filterOption = defaultFilterOption;
             this.mode = 'default';
             this.maxMultipleCount = Infinity;
@@ -10676,7 +10677,7 @@
                         listOfSelectedValue = [option.nzValue];
                         this.updateListOfSelectedValue(listOfSelectedValue, true);
                     }
-                    if (this.isSingleMode || this.isTagsSingleSelectMode) {
+                    if ((this.isSingleMode && !this.cmacsEditable) || this.isTagsSingleSelectMode) {
                         this.setOpenState(false);
                     }
                     else if (this.autoClearSearchValue) {
@@ -11625,7 +11626,6 @@
             this.showSelectAll = true;
             // tslint:disable-next-line: member-ordering
             this.showArrow = true;
-            this.cmacsEditable = false;
             // tslint:disable-next-line: member-ordering
             this.tokenSeparators = [];
             this.selectAllLabel = 'Select All';
@@ -11657,6 +11657,21 @@
              * @return {?}
              */ function (value) {
                 this.nzSelectService.serverSearch = i2.toBoolean(value);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(CmacsSelectComponent.prototype, "cmacsEditable", {
+            get: /**
+             * @return {?}
+             */ function () {
+                return this.nzSelectService.cmacsEditable;
+            },
+            set: /**
+             * @param {?} value
+             * @return {?}
+             */ function (value) {
+                this.nzSelectService.cmacsEditable = i2.toBoolean(value);
             },
             enumerable: true,
             configurable: true
@@ -12182,13 +12197,13 @@
             notFoundContentCustom: [{ type: i0.Input }],
             menuItemSelectedIcon: [{ type: i0.Input }],
             showArrow: [{ type: i0.Input }],
-            cmacsEditable: [{ type: i0.Input }],
             tokenSeparators: [{ type: i0.Input }],
             maxTagPlaceholder: [{ type: i0.Input }],
             selectAllLabel: [{ type: i0.Input }],
             autoClearSearchValue: [{ type: i0.Input }],
             maxMultipleCount: [{ type: i0.Input }],
             serverSearch: [{ type: i0.Input }],
+            cmacsEditable: [{ type: i0.Input }],
             mode: [{ type: i0.Input }],
             filterOption: [{ type: i0.Input }],
             tagsOut: [{ type: i0.Input }],

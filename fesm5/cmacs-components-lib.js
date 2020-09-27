@@ -50,7 +50,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { InputBoolean as InputBoolean$1, NzDropdownService, isNotNil as isNotNil$1, NzFilterOptionPipe, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, inject, Injector, Type, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, ComponentFactoryResolver, defineInjectable, NgModule, inject, Type, Injector, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -10567,6 +10567,7 @@ var CmacsSelectService = /** @class */ (function () {
         this.autoClearSearchValue = true;
         this.serverSearch = false;
         this.tagsOut = false;
+        this.cmacsEditable = false;
         this.filterOption = defaultFilterOption;
         this.mode = 'default';
         this.maxMultipleCount = Infinity;
@@ -10724,7 +10725,7 @@ var CmacsSelectService = /** @class */ (function () {
                 listOfSelectedValue = [option.nzValue];
                 this.updateListOfSelectedValue(listOfSelectedValue, true);
             }
-            if (this.isSingleMode || this.isTagsSingleSelectMode) {
+            if ((this.isSingleMode && !this.cmacsEditable) || this.isTagsSingleSelectMode) {
                 this.setOpenState(false);
             }
             else if (this.autoClearSearchValue) {
@@ -11705,7 +11706,6 @@ var CmacsSelectComponent = /** @class */ (function () {
         this.showSelectAll = true;
         // tslint:disable-next-line: member-ordering
         this.showArrow = true;
-        this.cmacsEditable = false;
         // tslint:disable-next-line: member-ordering
         this.tokenSeparators = [];
         this.selectAllLabel = 'Select All';
@@ -11740,6 +11740,23 @@ var CmacsSelectComponent = /** @class */ (function () {
          */
         function (value) {
             this.nzSelectService.serverSearch = toBoolean(value);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(CmacsSelectComponent.prototype, "cmacsEditable", {
+        get: /**
+         * @return {?}
+         */
+        function () {
+            return this.nzSelectService.cmacsEditable;
+        },
+        set: /**
+         * @param {?} value
+         * @return {?}
+         */
+        function (value) {
+            this.nzSelectService.cmacsEditable = toBoolean(value);
         },
         enumerable: true,
         configurable: true
@@ -12285,13 +12302,13 @@ var CmacsSelectComponent = /** @class */ (function () {
         notFoundContentCustom: [{ type: Input }],
         menuItemSelectedIcon: [{ type: Input }],
         showArrow: [{ type: Input }],
-        cmacsEditable: [{ type: Input }],
         tokenSeparators: [{ type: Input }],
         maxTagPlaceholder: [{ type: Input }],
         selectAllLabel: [{ type: Input }],
         autoClearSearchValue: [{ type: Input }],
         maxMultipleCount: [{ type: Input }],
         serverSearch: [{ type: Input }],
+        cmacsEditable: [{ type: Input }],
         mode: [{ type: Input }],
         filterOption: [{ type: Input }],
         tagsOut: [{ type: Input }],

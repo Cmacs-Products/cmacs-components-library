@@ -67,7 +67,6 @@ export declare class CmacsSelectComponent implements ControlValueAccessor, OnIni
     notFoundContentCustom: TemplateRef<void>;
     menuItemSelectedIcon: TemplateRef<void>;
     showArrow: boolean;
-    cmacsEditable: boolean;
     tokenSeparators: string[];
     maxTagPlaceholder: TemplateRef<{
         $implicit: any[];
@@ -76,6 +75,7 @@ export declare class CmacsSelectComponent implements ControlValueAccessor, OnIni
     autoClearSearchValue: boolean;
     maxMultipleCount: number;
     serverSearch: boolean;
+    cmacsEditable: boolean;
     mode: 'default' | 'multiple' | 'tags' | 'tagsSingleSelect';
     filterOption: TFilterOption;
     tagsOut: boolean;
