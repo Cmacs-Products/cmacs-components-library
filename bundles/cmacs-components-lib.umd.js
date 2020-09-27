@@ -28121,7 +28121,7 @@
          */
             function ($event) {
                 this.data.fields = $event;
-                this.dataChange.emit(this.data);
+                this.dataChange.emit(JSON.parse(JSON.stringify(this.data)));
             };
         /**
          * @return {?}
