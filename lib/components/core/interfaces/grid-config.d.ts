@@ -23,6 +23,7 @@ export interface Field {
     sortOrder?: string | null;
     editTemplate?: TemplateType;
     showSort?: boolean;
+    customFilter?: CmacsGridFilterTemplateRef;
     dateFormat?: string;
     timeFormat?: string;
     readonly?: boolean;
@@ -63,4 +64,8 @@ export interface CmacsGridTemplateRefContext {
     index: number;
     title: string;
     exportValue?: string;
+}
+export interface CmacsGridFilterTemplateRef {
+    ref: TemplateRef<any>;
+    context: any;
 }
