@@ -6375,6 +6375,8 @@
             this.exportCompanyLogoUrl = 'assets/PToB_logo.png';
             this.exportTableCustomWidth = null;
             this.exportTableCustomHeight = null;
+            this.exportCompanyLogoConfig = null;
+            this.exportTitleConfig = null;
             this._exportCompleted = new rxjs.Subject();
             this.exportCompleted = this._exportCompleted.asObservable();
             this.cmacsPdfImages = {
@@ -6579,14 +6581,19 @@
         /**
          * @param {?} doc
          * @param {?} logo
+         * @param {?=} imgLogo
          * @return {?}
          */
         UtilService.prototype.addFooters = /**
          * @param {?} doc
          * @param {?} logo
+         * @param {?=} imgLogo
          * @return {?}
          */
-            function (doc, logo) {
+            function (doc, logo, imgLogo) {
+                if (imgLogo === void 0) {
+                    imgLogo = null;
+                }
                 /** @type {?} */
                 var pageCount = doc.internal.getNumberOfPages();
                 /** @type {?} */
@@ -6602,10 +6609,12 @@
                     doc.text(this.exportUserName, doc.internal.pageSize.width - 15, 8, {
                         align: 'right'
                     });
-                    doc.addImage(logo, 'PNG', 15, 14, 40, 5, undefined, 'FAST');
+                    /** @type {?} */
+                    var dim = this.scaleDimension({ width: this.pxToMm(imgLogo.width), height: this.pxToMm(imgLogo.height) });
+                    doc.addImage(logo, 'PNG', this.exportCompanyLogoConfig && this.exportCompanyLogoConfig.x ? this.exportCompanyLogoConfig.x : 15, this.exportCompanyLogoConfig && this.exportCompanyLogoConfig.y ? this.exportCompanyLogoConfig.y : 14, this.exportCompanyLogoUrl !== 'assets/PToB_logo.png' ? dim.width : 40, this.exportCompanyLogoUrl !== 'assets/PToB_logo.png' ? dim.height : 5, undefined, 'FAST');
                     doc.setFontSize(9);
                     doc.setTextColor(59, 63, 70);
-                    doc.text(this.exportTitle, 15, 30, {
+                    doc.text(this.exportTitle, this.exportTitleConfig && this.exportTitleConfig.x ? this.exportTitleConfig.x : 15, this.exportCompanyLogoUrl !== 'assets/PToB_logo.png' ? dim.height + 20 : 30, {
                         align: 'left'
                     });
                     doc.setFontSize(8);
@@ -6614,7 +6623,7 @@
                             /** @type {?} */
                             var text = this.exportSubtitle[j];
                             doc.setTextColor.apply(doc, __spread(text.color));
-                            doc.text(text.text, text.x, text.y);
+                            doc.text(text.text, text.x, this.exportCompanyLogoUrl !== 'assets/PToB_logo.png' ? dim.height + 27 : text.y);
                         }
                     }
                     doc.setFontSize(8);
@@ -6895,12 +6904,14 @@
             function (exportConfig) {
                 /** @type {?} */
                 var doc = new jsPDF('l', 'mm', 'a4', 1);
-                this.exportCompanyLogoUrl = !!exportConfig.exportCompanyLogoUrl ? exportConfig.exportCompanyLogoUrl : '';
+                this.exportCompanyLogoUrl = !!exportConfig.exportCompanyLogoUrl ? exportConfig.exportCompanyLogoUrl : 'assets/PToB_logo.png';
                 this.exportCompanyName = !!exportConfig.exportCompanyName ? exportConfig.exportCompanyName : '';
                 this.exportUserName = !!exportConfig.exportUserName ? exportConfig.exportUserName : '';
                 this.fileName = !!exportConfig.fileName ? exportConfig.fileName : '';
                 this.exportTitle = !!exportConfig.exportTitle ? exportConfig.exportTitle : '';
                 this.exportSubtitle = !!exportConfig.exportSubtitle && exportConfig.exportSubtitle.length ? exportConfig.exportSubtitle : [];
+                this.exportCompanyLogoConfig = !!exportConfig.exportCompanyLogoConfig ? exportConfig.exportCompanyLogoConfig : null;
+                this.exportTitleConfig = !!exportConfig.exportTitleConfig ? exportConfig.exportTitleConfig : null;
                 /* Adding Roboto Font */
                 doc.addFileToVFS('Roboto-Regular.ttf', ROBOTO);
                 doc.addFileToVFS('Roboto-Bold.ttf', ROBOTO_BOLD);
@@ -7010,7 +7021,13 @@
                     },
                     columnStyles: exportConfig.columnStyles,
                     startY: exportConfig.customPdf && exportConfig.customPdf.margin ? exportConfig.customPdf.margin.top : null,
-                    margin: exportConfig.customPdf ? exportConfig.customPdf.margin : { top: ( /** @type {?} */(( /** @type {?} */(this.exportSubtitle)))) && this.exportSubtitle.length ? 45 : 35, bottom: 30, left: 15, right: 15 },
+                    margin: exportConfig.customPdf ? exportConfig.customPdf.margin :
+                        {
+                            top: ( /** @type {?} */(( /** @type {?} */(this.exportSubtitle)))) && this.exportSubtitle.length ? 45 : 35,
+                            bottom: 30,
+                            left: 15,
+                            right: 15
+                        },
                     didDrawCell: ( /**
                      * @param {?} docdata
                      * @return {?}
@@ -7325,7 +7342,7 @@
                     ctx.drawImage(imgLogo, 0, 0);
                     /** @type {?} */
                     var logo = canvasL.toDataURL('image/PNG');
-                    _this.addFooters(doc, logo);
+                    _this.addFooters(doc, logo, imgLogo);
                     /** @type {?} */
                     var filenameFormatted = moment().format("DD.MM.YYYY.HH.mm.ss") + '_' + _this.fileName + '.pdf';
                     _this._exportCompleted.next(true);
@@ -7369,6 +7386,52 @@
                             throw e_4.error;
                     }
                 }
+            };
+        /**
+         * @param {?} pixels
+         * @return {?}
+         */
+        UtilService.prototype.pxToMm = /**
+         * @param {?} pixels
+         * @return {?}
+         */
+            function (pixels) {
+                /** @type {?} */
+                var DPR = window.devicePixelRatio;
+                /** @type {?} */
+                var mm = pixels * 2.54 / (96 / DPR) * 10;
+                return mm;
+            };
+        /**
+         * @param {?} dim
+         * @return {?}
+         */
+        UtilService.prototype.scaleDimension = /**
+         * @param {?} dim
+         * @return {?}
+         */
+            function (dim) {
+                /** @type {?} */
+                var maxWidth = 40;
+                /** @type {?} */
+                var maxHeight = 20;
+                /** @type {?} */
+                var ratio = 0;
+                /** @type {?} */
+                var height = dim.height;
+                /** @type {?} */
+                var width = dim.width;
+                if (width > maxWidth) {
+                    ratio = maxWidth / width;
+                    height = height * ratio;
+                    width = width * ratio;
+                }
+                if (height > maxHeight) {
+                    ratio = maxHeight / height;
+                    width = width * ratio;
+                    height = height * ratio;
+                }
+                return { height: height, width: width };
             };
         UtilService.decorators = [
             { type: i0.Injectable, args: [{ providedIn: 'root' },] }
@@ -34145,7 +34208,7 @@
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
                         encapsulation: i0.ViewEncapsulation.None,
                         preserveWhitespaces: false,
-                        styles: [".cmacs-user-dropdown-person-picture{text-align:center;padding-top:2px;border-radius:3px;width:34px;height:34px;background-color:#a100cd;color:#fff;background-repeat:no-repeat;background-position:center center;background-size:contain}.cmacs-user-dropdown-divider{font-family:Roboto;font-size:13px;font-weight:500;font-stretch:normal;font-style:normal;line-height:1.23;letter-spacing:normal;color:#3b3f46;padding:7px 14px 8px;background-color:#fff!important}.cmacs-user-dropdown-divider:hover{background-color:#fff!important}.cmacs-user-dropdown-divider nz-divider:first-child{-webkit-transform:scaleX(1.5);transform:scaleX(1.5);position:relative;top:-7px}.cmacs-user-dropdown-initials{position:relative;top:5px;font-size:14px}.cmacs-user-dropdown-title{position:absolute;top:0;left:45px;font-family:Roboto-Regular;font-size:12px;font-weight:500;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;color:#656c79;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:calc(100% - 75px)}.cmacs-user-dropdown-subtitle{position:absolute;top:16px;left:45px;font-family:Roboto-Regular;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;color:#97a0ae;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:calc(100% - 75px)}.cmacs-team-no-picture{border-radius:3px;border:1.1px solid #dee0e5;background-color:#fff;color:#656c79;font-size:16px;padding:5px 0}.cmacs-user-dropdown-team-title{top:7px}.cmacs-guest-no-picture{border-radius:3px;background-color:#00cda1;font-size:16px;padding:6px 0}.cmacs-user-dropdown-error{color:#f6503c;font-size:10px;font-weight:400;font-stretch:normal;font-style:normal;line-height:2;letter-spacing:normal;padding:5px 0;position:relative;left:12px}.ant-select-dropdown.cmacs-select-user-dropdown.ant-select-dropdown--multiple .cmacs-user-dropdown-error{left:12px}.cmacs-select-user-dropdown .ant-select-dropdown-menu-item{padding:0!important}.cmacs-user-dropdown-option-wrapper{padding:7px 0}.cmacs-user-dropdown-info-wrapper{position:relative;margin:0 14px}.ant-select-dropdown.cmacs-select-user-dropdown.ant-select-dropdown--multiple .cmacs-user-dropdown-info-wrapper{margin:0 14px 0 42px}.cmacs-user-dropdown-divider-first-option{padding-top:0}.cmacs-user-dropdown-divider-first-option .cmacs-user-dropdown-info-wrapper{margin-top:7px!important}.cmacs-user-dropdown-last-elem{padding-bottom:14px}.cmacs-user-dropdown-invite-guest{height:34px;box-shadow:0 -2px 5px 0 rgba(59,63,70,.1);background-color:#fff;color:#2a7cff;padding:6px 11px;font-size:12px;cursor:pointer}.cmacs-user-dropdown-invite-guest:hover{background-color:#f2f7ff}.cmacs-user-dropdown-no-picture{opacity:0}.cmacs-user-dropdown-hide-picture .cmacs-user-dropdown-subtitle,.cmacs-user-dropdown-hide-picture .cmacs-user-dropdown-title{left:0}"]
+                        styles: [".cmacs-user-dropdown-person-picture{text-align:center;padding-top:2px;border-radius:3px;width:34px;height:34px;background-color:#a100cd;color:#fff;background-repeat:no-repeat;background-position:center center;background-size:contain}.cmacs-user-dropdown-divider{font-family:Roboto-Medium;font-size:13px;font-weight:500;font-stretch:normal;font-style:normal;line-height:1.23;letter-spacing:normal;color:#3b3f46;padding:7px 14px 8px;background-color:#fff!important}.cmacs-user-dropdown-divider:hover{background-color:#fff!important}.cmacs-user-dropdown-divider nz-divider:first-child{-webkit-transform:scaleX(1.5);transform:scaleX(1.5);position:relative;top:-7px}.cmacs-user-dropdown-initials{position:relative;top:5px;font-size:14px}.cmacs-user-dropdown-title{position:absolute;top:0;left:45px;font-family:Roboto-Regular;font-size:12px;font-weight:500;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;color:#656c79;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:calc(100% - 75px)}.cmacs-user-dropdown-subtitle{position:absolute;top:16px;left:45px;font-family:Roboto-Regular;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;color:#97a0ae;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:calc(100% - 75px)}.cmacs-team-no-picture{border-radius:3px;border:1.1px solid #dee0e5;background-color:#fff;color:#656c79;font-size:16px;padding:5px 0}.cmacs-user-dropdown-team-title{top:7px}.cmacs-guest-no-picture{border-radius:3px;background-color:#00cda1;font-size:16px;padding:6px 0}.cmacs-user-dropdown-error{color:#f6503c;font-size:10px;font-weight:400;font-stretch:normal;font-style:normal;line-height:2;letter-spacing:normal;padding:5px 0;position:relative;left:12px}.ant-select-dropdown.cmacs-select-user-dropdown.ant-select-dropdown--multiple .cmacs-user-dropdown-error{left:12px}.cmacs-select-user-dropdown .ant-select-dropdown-menu-item{padding:0!important}.cmacs-user-dropdown-option-wrapper{padding:7px 0}.cmacs-user-dropdown-info-wrapper{position:relative;margin:0 14px}.ant-select-dropdown.cmacs-select-user-dropdown.ant-select-dropdown--multiple .cmacs-user-dropdown-info-wrapper{margin:0 14px 0 42px}.cmacs-user-dropdown-divider-first-option{padding-top:0}.cmacs-user-dropdown-divider-first-option .cmacs-user-dropdown-info-wrapper{margin-top:7px!important}.cmacs-user-dropdown-last-elem{padding-bottom:14px}.cmacs-user-dropdown-invite-guest{height:34px;box-shadow:0 -2px 5px 0 rgba(59,63,70,.1);background-color:#fff;color:#2a7cff;padding:6px 11px;font-size:12px;cursor:pointer}.cmacs-user-dropdown-invite-guest:hover{background-color:#f2f7ff}.cmacs-user-dropdown-no-picture{opacity:0}.cmacs-user-dropdown-hide-picture .cmacs-user-dropdown-subtitle,.cmacs-user-dropdown-hide-picture .cmacs-user-dropdown-title{left:0}.ant-select-dropdown-menu{scrollbar-color:#cfd3d9 #fff;scrollbar-width:thin}"]
                     }] }
         ];
         /** @nocollapse */

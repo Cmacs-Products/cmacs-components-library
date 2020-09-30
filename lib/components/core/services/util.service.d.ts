@@ -13,6 +13,8 @@ export declare class UtilService {
     exportCompanyLogoUrl: string;
     exportTableCustomWidth: any;
     exportTableCustomHeight: any;
+    exportCompanyLogoConfig: any;
+    exportTitleConfig: any;
     private _exportCompleted;
     exportCompleted: import("rxjs").Observable<any>;
     private cmacsPdfImages;
@@ -22,7 +24,7 @@ export declare class UtilService {
     exportTable(format: string, fileName: any, elemID: any, exportCompanyName?: string, exportUserName?: string, exportTitle?: string, exportCompanyLogoUrl?: string, exportTableCustomWidth?: any, exportTableCustomHeight?: any): void;
     initExportToPdf(imgData: any): void;
     saveImageToPdf(logoData: any, imgData: any): void;
-    addFooters(doc: any, logo: any): void;
+    addFooters(doc: any, logo: any, imgLogo?: HTMLImageElement): void;
     customizeCell(doc: any, cellCustomized: any): void;
     setInlineStyles(targetElem: HTMLElement | SVGElement): void;
     getTableCapture(tables: any, format: any): void;
@@ -38,4 +40,9 @@ export declare class UtilService {
     renderTemplate(doc: any, data: any): void;
     exportToPdfV2(doc: any): void;
     addCustomImages(doc: any, images: any): void;
+    pxToMm(pixels: any): number;
+    scaleDimension(dim: any): {
+        height: any;
+        width: any;
+    };
 }
