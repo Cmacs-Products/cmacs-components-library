@@ -107,7 +107,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     getIndex(id: any): number;
     order: number;
     updateCheckboxCache(): void;
-    getMaxWidth(): string;
+    getMaxWidth(): "100%" | "calc(100% - 20px)";
     onButtonClick(field: any): void;
     onCheckboxChange($event: any, data: any): void;
     refreshCheckboxState(oninit?: boolean): void;
