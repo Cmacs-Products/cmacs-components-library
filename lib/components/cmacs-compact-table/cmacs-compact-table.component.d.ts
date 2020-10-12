@@ -88,6 +88,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     rateCount: number;
     multiSelect: boolean;
     sortChange: EventEmitter<any>;
+    filterChange: EventEmitter<any>;
     onrowdeleted: EventEmitter<any>;
     onrowadded: EventEmitter<any>;
     extra: string | TemplateRef<void>;
@@ -127,6 +128,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     deleteRow(idx: number, $event?: any): void;
     startEdit(id: string, property: string, event: MouseEvent): void;
     sort($event: any, fieldProperty: string): void;
+    filter($event: any, fieldProperty: string): void;
     getHeaderMaxWidth(field: Field): "calc(100% - 15px)" | "100%";
     handleMouseDown(e: Event): void;
     getCustomPadding(item: any, i: number): number;

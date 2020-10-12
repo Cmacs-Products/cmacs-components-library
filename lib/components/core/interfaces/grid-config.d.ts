@@ -23,6 +23,7 @@ export interface Field {
     sortOrder?: string | null;
     editTemplate?: TemplateType;
     showSort?: boolean;
+    showFilter?: boolean;
     customFilter?: CmacsGridFilterTemplateRef;
     dateFormat?: string;
     timeFormat?: string;
@@ -32,7 +33,9 @@ export interface Field {
     right?: string;
     template?: CmacsGridTemplateRef;
     editable?: boolean;
+    filterMultiple?: boolean;
     validators?: any[];
+    filters?: any[];
     placeholder?: string;
     cmacsStep?: number;
     min?: number;
