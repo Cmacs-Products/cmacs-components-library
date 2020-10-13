@@ -11,6 +11,7 @@ export declare class CmacsSelectTopControlComponent implements OnInit, OnDestroy
     inputValueEditableMode: string;
     searchValue: string;
     isComposing: boolean;
+    isComposingCustom: boolean;
     private destroy$;
     inputElement: ElementRef;
     inputElementCustom: ElementRef;
