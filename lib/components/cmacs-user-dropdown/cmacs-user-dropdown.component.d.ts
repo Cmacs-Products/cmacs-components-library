@@ -17,6 +17,7 @@ export declare class CmacsUserDropdownComponent {
     onAddGuestUserByEmail: EventEmitter<any>;
     cmacsOnSearch: EventEmitter<any>;
     _isLoading: boolean;
+    _inviteGuest: boolean;
     _searchValue: string;
     _listOfOption: any[];
     showEmailError: boolean;
@@ -28,6 +29,7 @@ export declare class CmacsUserDropdownComponent {
     emailForm: FormGroup;
     highlightKeys: any[];
     isLoading: boolean;
+    inviteGuest: boolean;
     listOfOption: any[];
     constructor(sanitizer: DomSanitizer, cdr: ChangeDetectorRef, fb: FormBuilder);
     onSelectedValueChange($event: any): void;
