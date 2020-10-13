@@ -38,19 +38,19 @@ import { DOWN_ARROW, ENTER, UP_ARROW, BACKSPACE, SPACE, TAB, ESCAPE, LEFT_ARROW,
 import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
 import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
 import { addMonths, addYears, endOfMonth, setDay, setMonth, addDays, differenceInCalendarDays, differenceInCalendarMonths, differenceInCalendarWeeks, isSameDay, isSameMonth, isSameYear, isThisMonth, isThisYear, setYear, startOfMonth, startOfWeek, startOfYear, getISOWeeksInYear, getISOYear, getMonth } from 'date-fns';
-import { __decorate, __metadata } from 'tslib';
+import { InputBoolean as InputBoolean$1, NzDropdownService, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
 import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { AngularDraggableModule } from 'angular2-draggable';
 import { GoogleChartsModule } from 'angular-google-charts';
 import * as moment_ from 'moment';
 import 'moment/locale/en-ie';
+import { __decorate, __metadata } from 'tslib';
 import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName, NgModel, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { InputBoolean as InputBoolean$1, NzDropdownService, isNotNil as isNotNil$1, NzFilterOptionPipe, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, Pipe, InjectionToken, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, NgModule, Injector, ComponentFactoryResolver, defineInjectable, Type, inject, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -8885,7 +8885,7 @@ __decorate([
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
-class NzFilterOptionPipe$1 {
+class NzFilterOptionPipe {
     /**
      * @param {?} options
      * @param {?} searchValue
@@ -8906,7 +8906,7 @@ class NzFilterOptionPipe$1 {
         }
     }
 }
-NzFilterOptionPipe$1.decorators = [
+NzFilterOptionPipe.decorators = [
     { type: Pipe, args: [{ name: 'nzFilterOption' },] }
 ];
 class NzFilterGroupOptionPipe {
@@ -9222,7 +9222,7 @@ class CmacsSelectService {
     updateListOfFilteredOption() {
         this.updateAddTagOption();
         /** @type {?} */
-        const listOfFilteredOption = new NzFilterOptionPipe$1().transform(this.listOfTagAndTemplateOption, this.searchValue, this.filterOption, this.serverSearch);
+        const listOfFilteredOption = new NzFilterOptionPipe().transform(this.listOfTagAndTemplateOption, this.searchValue, this.filterOption, this.serverSearch);
         this.listOfFilteredOption = this.addedTagOption
             ? [this.addedTagOption, ...listOfFilteredOption]
             : [...listOfFilteredOption];
@@ -18781,7 +18781,7 @@ class CmacsOptionLiComponent {
         value => {
             this.highlightKeys = [];
             // tslint:disable-next-line: no-non-null-assertion
-            if (value && (/** @type {?} */ (this.nzOption.nzLabel.toLowerCase())).includes(value.toLowerCase())) {
+            if (value && this.nzOption.nzLabel && (/** @type {?} */ (this.nzOption.nzLabel.toLowerCase())).includes(value.toLowerCase())) {
                 // match the search value
                 /** @type {?} */
                 const index = this.nzOption.nzLabel.toLowerCase().indexOf(value.toLowerCase());
@@ -28787,21 +28787,26 @@ CmacsTimelineChartComponent.propDecorators = {
 class CmacsUserDropdownComponent {
     /**
      * @param {?} sanitizer
+     * @param {?} cdr
      * @param {?} fb
      */
-    constructor(sanitizer, fb) {
+    constructor(sanitizer, cdr, fb) {
         this.sanitizer = sanitizer;
+        this.cdr = cdr;
         this.fb = fb;
         this.mode = 'default';
         this.emailErrorLabel = 'Email must be a valid Email Address';
         this.inviteGuestLabel = 'Invite a guest via email';
+        this.loadingLabel = 'Loading data...';
         this.placeHolder = 'Add Users / Teams';
         this.selectedValue = null;
-        this.listOfOption = [];
         this.maxTagCount = null;
         this.selectedValueChange = new EventEmitter();
         this.onAddGuestUserByEmail = new EventEmitter();
+        this.cmacsOnSearch = new EventEmitter();
+        this._isLoading = false;
         this._searchValue = '';
+        this._listOfOption = [];
         this.showEmailError = false;
         this.listOfFilteredOption = [];
         this.listDividers = [];
@@ -28813,18 +28818,33 @@ class CmacsUserDropdownComponent {
         });
     }
     /**
+     * @param {?} value
+     * @return {?}
+     */
+    set isLoading(value) {
+        this._isLoading = value;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set listOfOption(value) {
+        this._listOfOption = [...value];
+        this.listOfFilteredOption = [...value];
+        this.operateData();
+    }
+    /**
+     * @return {?}
+     */
+    get listOfOption() {
+        return this._listOfOption;
+    }
+    /**
      * @param {?} $event
      * @return {?}
      */
     onSelectedValueChange($event) {
         this.selectedValueChange.emit($event);
-    }
-    /**
-     * @return {?}
-     */
-    ngOnInit() {
-        this.listOfFilteredOption = [...this.listOfOption];
-        this.operateData();
     }
     /**
      * @return {?}
@@ -28865,10 +28885,16 @@ class CmacsUserDropdownComponent {
     onsearch($event) {
         this.showEmailError = false;
         this._searchValue = $event;
-        /** @type {?} */
-        const listOfFilteredOption = new NzFilterOptionPipe().transform(this.selectComponent.nzSelectService.listOfNzOptionComponent, this.selectComponent.nzSelectService.searchValue, this.selectComponent.nzSelectService.filterOption, this.selectComponent.nzSelectService.serverSearch);
+        /*const listOfFilteredOption = new NzFilterOptionPipe().transform(
+          this.selectComponent.nzSelectService.listOfNzOptionComponent,
+          this.selectComponent.nzSelectService.searchValue,
+          this.selectComponent.nzSelectService.filterOption,
+          this.selectComponent.nzSelectService.serverSearch
+        );
         this.listOfFilteredOption = listOfFilteredOption;
         this.getFirstElemByDivider();
+        console.log($event, listOfFilteredOption);*/
+        this.cmacsOnSearch.emit($event);
     }
     /**
      * @return {?}
@@ -28970,30 +28996,39 @@ CmacsUserDropdownComponent.decorators = [
     { type: Component, args: [{
                 selector: 'cmacs-user-dropdown',
                 exportAs: 'cmacsUserDropdown',
-                template: "<cmacs-select [showCmacsSearch]=\"true\"\r\n              allowClear\r\n              [maxTagCount]=\"maxTagCount\"\r\n              style=\"width: inherit !important\"\r\n              [mode]=\"mode\"\r\n              [showSelectAll]=\"false\"\r\n              [userDropdown]=\"true\"\r\n              [notFoundContentCustom]=\"notFoundContent\"\r\n              [placeHolder]=\"placeHolder\"\r\n              (cmacsOnSearch)=\"onsearch($event)\"\r\n              [dropdownRender]=\"render\"\r\n              (ngModelChange)=\"onSelectedValueChange($event)\"\r\n              [(ngModel)]=\"selectedValue\">\r\n  <ng-container *ngFor=\"let option of operatedData; index as i\">\r\n    <ng-container *ngFor=\"let elem of option.children; index as j\">\r\n      <cmacs-option [label]=\"elem.label\" [value]=\"elem.value\" customContent>\r\n        <div class=\"cmacs-user-dropdown-option-wrapper\"\r\n             [class.cmacs-user-dropdown-last-elem]=\"j === option.children.length - 1\"\r\n             [class.cmacs-user-dropdown-divider-first-option]=\"firstElemByDivider[option.divider] && firstElemByDivider[option.divider].length &&\r\n            firstElemByDivider[option.divider][0].value === elem.value\">\r\n          <div *ngIf=\"firstElemByDivider[option.divider] && firstElemByDivider[option.divider].length &&\r\n            firstElemByDivider[option.divider][0].value === elem.value\" class=\"cmacs-user-dropdown-divider\">\r\n            <nz-divider></nz-divider>\r\n            {{option.divider}} <span style=\"color: #97a0ae\">({{firstElemByDivider[option.divider].length}})</span>\r\n          </div>\r\n\r\n          <div class=\"cmacs-user-dropdown-info-wrapper\" [class.cmacs-user-dropdown-hide-picture]=\"elem.hidePicture\">\r\n\r\n            <div class=\"cmacs-user-dropdown-person-picture\"\r\n                 [class.cmacs-user-dropdown-no-picture]=\"elem.hidePicture\"\r\n                 *ngIf=\"elem.role === 'user'\"\r\n                 [style.background-image]=\"elem.picture ? getBackgroundImage(elem.picture): 'none'\">\r\n              <span class=\"cmacs-user-dropdown-initials\" *ngIf=\"!elem.picture\">{{getInitials(elem.label)}}</span>\r\n            </div>\r\n\r\n            <div class=\"cmacs-user-dropdown-person-picture\"\r\n                 [class.cmacs-guest-no-picture]=\"!elem.picture\"\r\n                 [class.cmacs-user-dropdown-no-picture]=\"elem.hidePicture\"\r\n                 *ngIf=\"elem.role === 'guest'\"\r\n                 [style.background-image]=\"elem.picture ? getBackgroundImage(elem.picture): 'none'\">\r\n              <i class=\"iconCreation-User\" *ngIf=\"!elem.picture\"></i>\r\n            </div>\r\n\r\n            <div class=\"cmacs-user-dropdown-person-picture\"\r\n                 [class.cmacs-team-no-picture]=\"!elem.picture\"\r\n                 [class.cmacs-user-dropdown-no-picture]=\"elem.hidePicture\"\r\n                 *ngIf=\"elem.role === 'team'\"\r\n                 [style.background-image]=\"elem.picture ? getBackgroundImage(elem.picture): 'none'\">\r\n              <i class=\"iconCreation-Team\" *ngIf=\"!elem.picture\"></i>\r\n            </div>\r\n\r\n            <div class=\"cmacs-user-dropdown-title\" [class.cmacs-user-dropdown-team-title]=\"elem.role === 'team'\">\r\n              <ng-container *ngIf=\"highlightValue(elem).length === 3\">\r\n                <span>\r\n                  {{highlightKeys[0]}}<span style=\"color: #2a7cff\">{{highlightKeys[1]}}</span>{{highlightKeys[2]}}\r\n                </span>\r\n              </ng-container>\r\n              <ng-container *ngIf=\"!highlightValue(elem).length\">\r\n                {{elem.label}}\r\n              </ng-container>\r\n            </div>\r\n            <div *ngIf=\"elem.role === 'user' || elem.role === 'guest'\" class=\"cmacs-user-dropdown-subtitle\">{{elem.charge}}</div>\r\n          </div>\r\n        </div>\r\n      </cmacs-option>\r\n    </ng-container>\r\n  </ng-container>\r\n</cmacs-select>\r\n\r\n<ng-template #render>\r\n  <div class=\"cmacs-user-dropdown-invite-guest\"\r\n       (click)=\"addGuestUser()\">\r\n    <i style=\"font-size: 17px; position: relative; top: 3px; margin-right: 6px;\" class=\"iconUISmall-Message\"></i>\r\n    <span>{{inviteGuestLabel}}</span>\r\n  </div>\r\n</ng-template>\r\n\r\n<ng-template #notFoundContent>\r\n  <div *ngIf=\"showEmailError\" class=\"cmacs-user-dropdown-error\">{{emailErrorLabel}}</div>\r\n</ng-template>\r\n",
+                template: "<cmacs-select [showCmacsSearch]=\"true\"\r\n              allowClear\r\n              [maxTagCount]=\"maxTagCount\"\r\n              style=\"width: inherit !important\"\r\n              [mode]=\"mode\"\r\n              [showSelectAll]=\"false\"\r\n              [userDropdown]=\"true\"\r\n              [notFoundContentCustom]=\"notFoundContent\"\r\n              [placeHolder]=\"placeHolder\"\r\n              (cmacsOnSearch)=\"onsearch($event)\"\r\n              [serverSearch]=\"true\"\r\n              [dropdownRender]=\"render\"\r\n              (ngModelChange)=\"onSelectedValueChange($event)\"\r\n              [(ngModel)]=\"selectedValue\">\r\n  <ng-container *ngFor=\"let option of operatedData; index as i\">\r\n    <ng-container *ngFor=\"let elem of option.children; index as j\">\r\n      <cmacs-option [label]=\"elem.label\" [value]=\"elem.value\" customContent>\r\n        <div class=\"cmacs-user-dropdown-option-wrapper\"\r\n             [class.cmacs-user-dropdown-last-elem]=\"j === option.children.length - 1\"\r\n             [class.cmacs-user-dropdown-divider-first-option]=\"firstElemByDivider[option.divider] && firstElemByDivider[option.divider].length &&\r\n            firstElemByDivider[option.divider][0].value === elem.value\">\r\n          <div *ngIf=\"firstElemByDivider[option.divider] && firstElemByDivider[option.divider].length &&\r\n            firstElemByDivider[option.divider][0].value === elem.value\" class=\"cmacs-user-dropdown-divider\">\r\n            <nz-divider></nz-divider>\r\n            {{option.divider}} <span style=\"color: #97a0ae\">({{firstElemByDivider[option.divider].length}})</span>\r\n          </div>\r\n\r\n          <ng-container *ngIf=\"elem.template; else defaultTPL\">\r\n            <ng-container [ngTemplateOutlet]=\"elem.template.ref\"\r\n                          [ngTemplateOutletContext]=\"elem.template.context\">\r\n            </ng-container>\r\n          </ng-container>\r\n\r\n          <ng-template #defaultTPL>\r\n            <div class=\"cmacs-user-dropdown-info-wrapper\" [class.cmacs-user-dropdown-hide-picture]=\"elem.hidePicture\">\r\n\r\n              <div class=\"cmacs-user-dropdown-person-picture\"\r\n                   [class.cmacs-user-dropdown-no-picture]=\"elem.hidePicture\"\r\n                   *ngIf=\"elem.role === 'user'\"\r\n                   [style.background-image]=\"elem.picture ? getBackgroundImage(elem.picture): 'none'\">\r\n                <span class=\"cmacs-user-dropdown-initials\" *ngIf=\"!elem.picture\">{{getInitials(elem.label)}}</span>\r\n              </div>\r\n\r\n              <div class=\"cmacs-user-dropdown-person-picture\"\r\n                   [class.cmacs-guest-no-picture]=\"!elem.picture\"\r\n                   [class.cmacs-user-dropdown-no-picture]=\"elem.hidePicture\"\r\n                   *ngIf=\"elem.role === 'guest'\"\r\n                   [style.background-image]=\"elem.picture ? getBackgroundImage(elem.picture): 'none'\">\r\n                <i class=\"iconCreation-User\" *ngIf=\"!elem.picture\"></i>\r\n              </div>\r\n\r\n              <div class=\"cmacs-user-dropdown-person-picture\"\r\n                   [class.cmacs-team-no-picture]=\"!elem.picture\"\r\n                   [class.cmacs-user-dropdown-no-picture]=\"elem.hidePicture\"\r\n                   *ngIf=\"elem.role === 'team'\"\r\n                   [style.background-image]=\"elem.picture ? getBackgroundImage(elem.picture): 'none'\">\r\n                <i class=\"iconCreation-Team\" *ngIf=\"!elem.picture\"></i>\r\n              </div>\r\n\r\n              <div class=\"cmacs-user-dropdown-title\" [class.cmacs-user-dropdown-team-title]=\"elem.role === 'team'\">\r\n                <ng-container *ngIf=\"highlightValue(elem).length === 3\">\r\n                  <span>\r\n                    {{highlightKeys[0]}}<span style=\"color: #2a7cff\">{{highlightKeys[1]}}</span>{{highlightKeys[2]}}\r\n                  </span>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"!highlightValue(elem).length\">\r\n                  {{elem.label}}\r\n                </ng-container>\r\n              </div>\r\n              <div *ngIf=\"elem.role === 'user' || elem.role === 'guest'\" class=\"cmacs-user-dropdown-subtitle\">{{elem.charge}}</div>\r\n            </div>\r\n          </ng-template>\r\n        </div>\r\n      </cmacs-option>\r\n    </ng-container>\r\n  </ng-container>\r\n  <cmacs-option *ngIf=\"_isLoading\" disabled customContent>\r\n    <div class=\"cmacs-user-dropdown-loading-wrapper\">\r\n      <i nz-icon type=\"loading\" class=\"cmacs-user-dropdown-loading-icon\"></i> {{loadingLabel}}\r\n    </div>  \r\n  </cmacs-option>\r\n</cmacs-select>\r\n\r\n<ng-template #render>\r\n  <div class=\"cmacs-user-dropdown-invite-guest\"\r\n       (click)=\"addGuestUser()\">\r\n    <i style=\"font-size: 17px; position: relative; top: 3px; margin-right: 6px;\" class=\"iconUISmall-Message\"></i>\r\n    <span>{{inviteGuestLabel}}</span>\r\n  </div>\r\n</ng-template>\r\n\r\n<ng-template #notFoundContent>\r\n  <div *ngIf=\"showEmailError\" class=\"cmacs-user-dropdown-error\">{{emailErrorLabel}}</div>\r\n</ng-template>\r\n",
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 encapsulation: ViewEncapsulation.None,
                 preserveWhitespaces: false,
-                styles: [".cmacs-user-dropdown-person-picture{text-align:center;padding-top:2px;border-radius:3px;width:34px;height:34px;background-color:#a100cd;color:#fff;background-repeat:no-repeat;background-position:center center;background-size:contain}.cmacs-user-dropdown-divider{font-family:Roboto-Medium;font-size:13px;font-weight:500;font-stretch:normal;font-style:normal;line-height:1.23;letter-spacing:normal;color:#3b3f46;padding:7px 14px 8px;background-color:#fff!important}.cmacs-user-dropdown-divider:hover{background-color:#fff!important}.cmacs-user-dropdown-divider nz-divider:first-child{-webkit-transform:scaleX(1.5);transform:scaleX(1.5);position:relative;top:-7px}.cmacs-user-dropdown-initials{position:relative;top:5px;font-size:14px}.cmacs-user-dropdown-title{position:absolute;top:0;left:45px;font-family:Roboto-Regular;font-size:12px;font-weight:500;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;color:#656c79;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:calc(100% - 75px)}.cmacs-user-dropdown-subtitle{position:absolute;top:16px;left:45px;font-family:Roboto-Regular;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;color:#97a0ae;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:calc(100% - 75px)}.cmacs-team-no-picture{border-radius:3px;border:1.1px solid #dee0e5;background-color:#fff;color:#656c79;font-size:16px;padding:5px 0}.cmacs-user-dropdown-team-title{top:7px}.cmacs-guest-no-picture{border-radius:3px;background-color:#00cda1;font-size:16px;padding:6px 0}.cmacs-user-dropdown-error{color:#f6503c;font-size:10px;font-weight:400;font-stretch:normal;font-style:normal;line-height:2;letter-spacing:normal;padding:5px 0;position:relative;left:12px}.ant-select-dropdown.cmacs-select-user-dropdown.ant-select-dropdown--multiple .cmacs-user-dropdown-error{left:12px}.cmacs-select-user-dropdown .ant-select-dropdown-menu-item{padding:0!important}.cmacs-user-dropdown-option-wrapper{padding:7px 0}.cmacs-user-dropdown-info-wrapper{position:relative;margin:0 14px}.ant-select-dropdown.cmacs-select-user-dropdown.ant-select-dropdown--multiple .cmacs-user-dropdown-info-wrapper{margin:0 14px 0 42px}.cmacs-user-dropdown-divider-first-option{padding-top:0}.cmacs-user-dropdown-divider-first-option .cmacs-user-dropdown-info-wrapper{margin-top:7px!important}.cmacs-user-dropdown-last-elem{padding-bottom:14px}.cmacs-user-dropdown-invite-guest{height:34px;box-shadow:0 -2px 5px 0 rgba(59,63,70,.1);background-color:#fff;color:#2a7cff;padding:6px 11px;font-size:12px;cursor:pointer}.cmacs-user-dropdown-invite-guest:hover{background-color:#f2f7ff}.cmacs-user-dropdown-no-picture{opacity:0}.cmacs-user-dropdown-hide-picture .cmacs-user-dropdown-subtitle,.cmacs-user-dropdown-hide-picture .cmacs-user-dropdown-title{left:0}.ant-select-dropdown-menu{scrollbar-color:#cfd3d9 #fff;scrollbar-width:thin}"]
+                styles: [".cmacs-user-dropdown-person-picture{text-align:center;padding-top:2px;border-radius:3px;width:34px;height:34px;background-color:#a100cd;color:#fff;background-repeat:no-repeat;background-position:center center;background-size:contain}.cmacs-user-dropdown-divider{font-family:Roboto-Medium;font-size:13px;font-weight:500;font-stretch:normal;font-style:normal;line-height:1.23;letter-spacing:normal;color:#3b3f46;padding:7px 14px 8px;background-color:#fff!important}.cmacs-user-dropdown-divider:hover{background-color:#fff!important}.cmacs-user-dropdown-divider nz-divider:first-child{-webkit-transform:scaleX(1.5);transform:scaleX(1.5);position:relative;top:-7px}.cmacs-user-dropdown-initials{position:relative;top:5px;font-size:14px}.cmacs-user-dropdown-title{position:absolute;top:0;left:45px;font-family:Roboto-Regular;font-size:12px;font-weight:500;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;color:#656c79;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:calc(100% - 75px)}.cmacs-user-dropdown-subtitle{position:absolute;top:16px;left:45px;font-family:Roboto-Regular;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;color:#97a0ae;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:calc(100% - 75px)}.cmacs-team-no-picture{border-radius:3px;border:1.1px solid #dee0e5;background-color:#fff;color:#656c79;font-size:16px;padding:5px 0}.cmacs-user-dropdown-team-title{top:7px}.cmacs-guest-no-picture{border-radius:3px;background-color:#00cda1;font-size:16px;padding:6px 0}.cmacs-user-dropdown-error{color:#f6503c;font-size:10px;font-weight:400;font-stretch:normal;font-style:normal;line-height:2;letter-spacing:normal;padding:5px 0;position:relative;left:12px}.ant-select-dropdown.cmacs-select-user-dropdown.ant-select-dropdown--multiple .cmacs-user-dropdown-error{left:12px}.cmacs-select-user-dropdown .ant-select-dropdown-menu-item{padding:0!important}.cmacs-user-dropdown-option-wrapper{padding:7px 0}.cmacs-user-dropdown-info-wrapper{position:relative;margin:0 14px}.ant-select-dropdown.cmacs-select-user-dropdown.ant-select-dropdown--multiple .cmacs-user-dropdown-info-wrapper{margin:0 14px 0 42px}.cmacs-user-dropdown-divider-first-option{padding-top:0}.cmacs-user-dropdown-divider-first-option .cmacs-user-dropdown-info-wrapper{margin-top:7px!important}.cmacs-user-dropdown-last-elem{padding-bottom:14px}.cmacs-user-dropdown-invite-guest{height:34px;box-shadow:0 -2px 5px 0 rgba(59,63,70,.1);background-color:#fff;color:#2a7cff;padding:6px 11px;font-size:12px;cursor:pointer}.cmacs-user-dropdown-invite-guest:hover{background-color:#f2f7ff}.cmacs-user-dropdown-no-picture{opacity:0}.cmacs-user-dropdown-hide-picture .cmacs-user-dropdown-subtitle,.cmacs-user-dropdown-hide-picture .cmacs-user-dropdown-title{left:0}.ant-select-dropdown-menu{scrollbar-color:#cfd3d9 #fff;scrollbar-width:thin}.cmacs-user-dropdown-loading-wrapper{padding:7px 12px}.cmacs-user-dropdown-loading-icon{margin-right:6px}"]
             }] }
 ];
 /** @nocollapse */
 CmacsUserDropdownComponent.ctorParameters = () => [
     { type: DomSanitizer },
+    { type: ChangeDetectorRef },
     { type: FormBuilder }
 ];
 CmacsUserDropdownComponent.propDecorators = {
     mode: [{ type: Input }],
     emailErrorLabel: [{ type: Input }],
     inviteGuestLabel: [{ type: Input }],
+    loadingLabel: [{ type: Input }],
     placeHolder: [{ type: Input }],
     selectedValue: [{ type: Input }],
-    listOfOption: [{ type: Input }],
     maxTagCount: [{ type: Input }],
     selectedValueChange: [{ type: Output }],
     onAddGuestUserByEmail: [{ type: Output }],
-    selectComponent: [{ type: ViewChild, args: [CmacsSelectComponent,] }]
+    cmacsOnSearch: [{ type: Output }],
+    selectComponent: [{ type: ViewChild, args: [CmacsSelectComponent,] }],
+    isLoading: [{ type: Input }],
+    listOfOption: [{ type: Input }]
 };
+__decorate([
+    InputBoolean(),
+    __metadata("design:type", Boolean),
+    __metadata("design:paramtypes", [Boolean])
+], CmacsUserDropdownComponent.prototype, "isLoading", null);
 
 /**
  * @fileoverview added by tsickle
@@ -29123,7 +29158,7 @@ CmacsComponentsLibModule.decorators = [
                     CmacsFormTextComponent,
                     CmacsFormSplitComponent,
                     NzFilterGroupOptionPipe,
-                    NzFilterOptionPipe$1,
+                    NzFilterOptionPipe,
                     CmacsOptionContainerComponent,
                     CmacsOptionGroupComponent,
                     CmacsOptionLiComponent,
@@ -29588,6 +29623,6 @@ const ModeTabType = {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsDividerComponent, FLOATING_MENU_LOCALIZATION, CmacsFloatingMenuComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, CmacsDateCellDirective, CmacsMonthCellDirective, CmacsDateFullCellDirective, CmacsMonthFullCellDirective, CmacsCalendarHeaderComponent, CmacsCalendarComponent, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, WidgetActionType, WidgetType, WidgetDataType, ROBOTO, ROBOTO_BOLD, UtilService, CmacsModalRef, CmacsDropdownADirective, CmacsProgressComponent, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, CmacsKPIOverviewComponent, CmacsKpiGroupComponent, CmacsGeneralChartComponent, CmacsStatusDistributionComponent, CmacsNormalizedHorizontalBarGroupedComponent, CmacsNormalizedHorizontalBarChartComponent, CmacsAlertComponent, CmacsCommentComponent, CmacsCommentAvatarDirective, CmacsCommentContentDirective, CmacsCommentActionHostDirective, CmacsCommentActionComponent, CmacsSliderComponent, CmacsSliderHandleComponent, CmacsSliderMarksComponent, CmacsSliderStepComponent, CmacsSliderTrackComponent, isValueARange, isConfigAObject, Marks, CmacsDatetimePickerPanelComponent, CmacsDateTimePickerComponent, CmacsDatetimeValueAccessorDirective, CmacsVideoPlayerComponent, CmacsPhoneNumberComponent, CmacsKanbanComponent, CmacsColorPickerComponent, CmacsSwitchComponent, CmacsTabComponent, CmacsTabDirective, CmacsTabBodyComponent, CmacsTabLabelDirective, CmacsTabsInkBarDirective, CmacsTabsNavComponent, TabChangeEvent, CmacsTabsetComponent, CmacsSidePanelComponent, CmacsOpenTextareaComponent, CmacsMoveableListComponent, CmacsGridConfigurationModalComponent, CmacsOpenInputComponent, KPI_COLORS, KPI_PRIORITY_COLORS, CmacsKpiComponent, CmacsListItemMetaComponent, CmacsListItemComponent, CmacsListComponent, CmacsMessageComponent, CmacsMessageBaseService, CmacsMessageService, CmacsMessageContainerComponent, CMACS_MESSAGE_DEFAULT_CONFIG, CMACS_MESSAGE_CONFIG, CMACS_MESSAGE_DEFAULT_CONFIG_PROVIDER, CmacsCompactTableComponent, SIGNATURE_LOCALIZATION, CmacsSignatureComponent, CmacsSectionComponent, CmacsTooltipComponent, CmacsTooltipDirective, CmacsPopoverComponent, CmacsPopoverDirective, higherOrderServiceFactory, CmacsTreeSelectComponent, CmacsTreeSelectService, CmacsTimelineDatepickerComponent, CmacsXlsxLoaderComponent, CmacsEditorComponent, CmacsTimelineChartComponent, CmacsUserDropdownComponent, CmacsComboChartComponent as ɵk, CmacsComboSeriesVerticalComponent as ɵl, AbstractPickerComponent as ɵd, CalendarFooterComponent as ɵbc, CalendarHeaderComponent as ɵba, CalendarInputComponent as ɵbb, OkButtonComponent as ɵbd, TimePickerButtonComponent as ɵbe, TodayButtonComponent as ɵbf, DateTableComponent as ɵbg, DecadePanelComponent as ɵbk, MonthPanelComponent as ɵbi, MonthTableComponent as ɵbj, DateRangePopupComponent as ɵbm, InnerPopupComponent as ɵbl, YearPanelComponent as ɵbh, CmacsDropdownService as ɵbn, CmacsMenuDropdownService as ɵm, CmacsFormControlComponent as ɵs, CmacsFormExplainComponent as ɵq, CmacsFormExtraComponent as ɵn, CmacsFormItemComponent as ɵp, CmacsFormLabelComponent as ɵo, CmacsFormSplitComponent as ɵu, CmacsFormTextComponent as ɵt, CmacsFormDirective as ɵr, CmacsMenuServiceFactory as ɵg, CmacsMenuService as ɵf, CmacsSubmenuService as ɵe, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵx, CmacsOptionGroupComponent as ɵb, CmacsOptionLiComponent as ɵy, NzFilterGroupOptionPipe as ɵw, NzFilterOptionPipe$1 as ɵv, CmacsSelectUnselectableDirective as ɵz, CmacsSelectService as ɵa, CmacsTreeService as ɵh, ExcelService as ɵc };
+export { CmacsButtonGroupComponent, CmacsComponentsLibModule, CmacsButtonComponent, CmacsInputDirective, CmacsInputNumberComponent, CmacsInputGroupComponent, CmacsHeaderPickerComponent, CmacsDateRangePickerComponent, CmacsPickerComponent, CmacsDatePickerComponent, CmacsMonthPickerComponent, CmacsYearPickerComponent, CmacsWeekPickerComponent, CmacsRangePickerComponent, CmacsDividerComponent, FLOATING_MENU_LOCALIZATION, CmacsFloatingMenuComponent, CmacsTimePickerComponent, CmacsWizardComponent, CmacsCheckboxComponent, CmacsCheckboxWrapperComponent, CmacsCheckboxGroupComponent, CmacsRadioComponent, CmacsRadioButtonComponent, CmacsRadioGroupComponent, CmacsTagComponent, CmacsTimelineComponent, CmacsTimelineItemComponent, CmacsStringTemplateOutletDirective, CmacsMenuDividerDirective, CmacsMenuGroupComponent, CmacsMenuItemDirective, CmacsMenuDirective, CmacsSubMenuComponent, CmacsGridComponent, NzTreeServiceFactory, CmacsTreeComponent, CmacsTreeNodeComponent, CmacsSelectComponent, CmacsOptionComponent, CmacsSelectTopControlComponent, CmacsSearchComponent, CmacsStepComponent, MODAL_ANIMATE_DURATION, CmacsModalComponent, CmacsToCssUnitPipe, CMACS_ROUTE_DATA_BREADCRUMB, CmacsBreadcrumbComponent, CmacsBreadcrumbItemComponent, CmacsCardComponent, CmacsCardTabComponent, CmacsCardLoadingComponent, CmacsCardMetaComponent, CmacsCardGridDirective, CmacsDateCellDirective, CmacsMonthCellDirective, CmacsDateFullCellDirective, CmacsMonthFullCellDirective, CmacsCalendarHeaderComponent, CmacsCalendarComponent, ModalBuilderForService, CmacsModalService, ModalControlService, LibPackerModule, ButtonStyle, CeldType, ExportType, ModeTabType, TemplateType, WidgetActionType, WidgetType, WidgetDataType, ROBOTO, ROBOTO_BOLD, UtilService, CmacsModalRef, CmacsDropdownADirective, CmacsProgressComponent, CmacsDropdownButtonComponent, CmacsDropdownContextComponent, menuServiceFactory, CMACS_DROPDOWN_POSITIONS, CmacsDropdownComponent, CmacsDropdownDirective, CmacsKPIOverviewComponent, CmacsKpiGroupComponent, CmacsGeneralChartComponent, CmacsStatusDistributionComponent, CmacsNormalizedHorizontalBarGroupedComponent, CmacsNormalizedHorizontalBarChartComponent, CmacsAlertComponent, CmacsCommentComponent, CmacsCommentAvatarDirective, CmacsCommentContentDirective, CmacsCommentActionHostDirective, CmacsCommentActionComponent, CmacsSliderComponent, CmacsSliderHandleComponent, CmacsSliderMarksComponent, CmacsSliderStepComponent, CmacsSliderTrackComponent, isValueARange, isConfigAObject, Marks, CmacsDatetimePickerPanelComponent, CmacsDateTimePickerComponent, CmacsDatetimeValueAccessorDirective, CmacsVideoPlayerComponent, CmacsPhoneNumberComponent, CmacsKanbanComponent, CmacsColorPickerComponent, CmacsSwitchComponent, CmacsTabComponent, CmacsTabDirective, CmacsTabBodyComponent, CmacsTabLabelDirective, CmacsTabsInkBarDirective, CmacsTabsNavComponent, TabChangeEvent, CmacsTabsetComponent, CmacsSidePanelComponent, CmacsOpenTextareaComponent, CmacsMoveableListComponent, CmacsGridConfigurationModalComponent, CmacsOpenInputComponent, KPI_COLORS, KPI_PRIORITY_COLORS, CmacsKpiComponent, CmacsListItemMetaComponent, CmacsListItemComponent, CmacsListComponent, CmacsMessageComponent, CmacsMessageBaseService, CmacsMessageService, CmacsMessageContainerComponent, CMACS_MESSAGE_DEFAULT_CONFIG, CMACS_MESSAGE_CONFIG, CMACS_MESSAGE_DEFAULT_CONFIG_PROVIDER, CmacsCompactTableComponent, SIGNATURE_LOCALIZATION, CmacsSignatureComponent, CmacsSectionComponent, CmacsTooltipComponent, CmacsTooltipDirective, CmacsPopoverComponent, CmacsPopoverDirective, higherOrderServiceFactory, CmacsTreeSelectComponent, CmacsTreeSelectService, CmacsTimelineDatepickerComponent, CmacsXlsxLoaderComponent, CmacsEditorComponent, CmacsTimelineChartComponent, CmacsUserDropdownComponent, CmacsComboChartComponent as ɵk, CmacsComboSeriesVerticalComponent as ɵl, AbstractPickerComponent as ɵd, CalendarFooterComponent as ɵbc, CalendarHeaderComponent as ɵba, CalendarInputComponent as ɵbb, OkButtonComponent as ɵbd, TimePickerButtonComponent as ɵbe, TodayButtonComponent as ɵbf, DateTableComponent as ɵbg, DecadePanelComponent as ɵbk, MonthPanelComponent as ɵbi, MonthTableComponent as ɵbj, DateRangePopupComponent as ɵbm, InnerPopupComponent as ɵbl, YearPanelComponent as ɵbh, CmacsDropdownService as ɵbn, CmacsMenuDropdownService as ɵm, CmacsFormControlComponent as ɵs, CmacsFormExplainComponent as ɵq, CmacsFormExtraComponent as ɵn, CmacsFormItemComponent as ɵp, CmacsFormLabelComponent as ɵo, CmacsFormSplitComponent as ɵu, CmacsFormTextComponent as ɵt, CmacsFormDirective as ɵr, CmacsMenuServiceFactory as ɵg, CmacsMenuService as ɵf, CmacsSubmenuService as ɵe, MODAL_CONFIG as ɵj, CmacsOptionContainerComponent as ɵx, CmacsOptionGroupComponent as ɵb, CmacsOptionLiComponent as ɵy, NzFilterGroupOptionPipe as ɵw, NzFilterOptionPipe as ɵv, CmacsSelectUnselectableDirective as ɵz, CmacsSelectService as ɵa, CmacsTreeService as ɵh, ExcelService as ɵc };
 
 //# sourceMappingURL=cmacs-components-lib.js.map

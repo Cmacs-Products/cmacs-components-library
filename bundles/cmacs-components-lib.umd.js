@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/platform-browser/animations'), require('@angular/common/locales/en'), require('@tinymce/tinymce-angular'), require('html2canvas'), require('lodash/cloneDeep'), require('@angular/router'), require('@angular/cdk/coercion'), require('ng-zorro-antd/icon'), require('ng-zorro-antd/time-picker'), require('ngx-export-as'), require('@swimlane/ngx-charts'), require('@angular/animations'), require('@swimlane/ngx-charts/release/common/label.helper'), require('ng-zorro-antd/menu'), require('@angular/cdk/layout'), require('ng-zorro-antd/grid'), require('ng-zorro-antd/tooltip'), require('@angular/cdk/platform'), require('videogular2/compiled/controls'), require('videogular2/compiled/overlay-play'), require('videogular2/compiled/buffering'), require('videogular2/compiled/core'), require('ng2-tel-input'), require('@angular/cdk/a11y'), require('@angular/cdk/observers'), require('@angular/cdk/bidi'), require('ng-lazyload-image'), require('@angular/common'), require('ng-zorro-antd/i18n'), require('jspdf'), require('jspdf-autotable'), require('ngx-cookie-service'), require('util'), require('@angular/cdk/drag-drop'), require('angular2-signaturepad/signature-pad'), require('core-js'), require('@angular/cdk/keycodes'), require('rxjs'), require('rxjs/operators'), require('date-fns'), require('xlsx'), require('angular2-signaturepad'), require('angular2-draggable'), require('angular-google-charts'), require('moment'), require('moment/locale/en-ie'), require('@angular/forms'), require('@angular/platform-browser'), require('ng-zorro-antd'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core'), require('ng-zorro-antd/core')) :
-    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/platform-browser/animations', '@angular/common/locales/en', '@tinymce/tinymce-angular', 'html2canvas', 'lodash/cloneDeep', '@angular/router', '@angular/cdk/coercion', 'ng-zorro-antd/icon', 'ng-zorro-antd/time-picker', 'ngx-export-as', '@swimlane/ngx-charts', '@angular/animations', '@swimlane/ngx-charts/release/common/label.helper', 'ng-zorro-antd/menu', '@angular/cdk/layout', 'ng-zorro-antd/grid', 'ng-zorro-antd/tooltip', '@angular/cdk/platform', 'videogular2/compiled/controls', 'videogular2/compiled/overlay-play', 'videogular2/compiled/buffering', 'videogular2/compiled/core', 'ng2-tel-input', '@angular/cdk/a11y', '@angular/cdk/observers', '@angular/cdk/bidi', 'ng-lazyload-image', '@angular/common', 'ng-zorro-antd/i18n', 'jspdf', 'jspdf-autotable', 'ngx-cookie-service', 'util', '@angular/cdk/drag-drop', 'angular2-signaturepad/signature-pad', 'core-js', '@angular/cdk/keycodes', 'rxjs', 'rxjs/operators', 'date-fns', 'xlsx', 'angular2-signaturepad', 'angular2-draggable', 'angular-google-charts', 'moment', 'moment/locale/en-ie', '@angular/forms', '@angular/platform-browser', 'ng-zorro-antd', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core', 'ng-zorro-antd/core'], factory) :
-    (factory((global['cmacs-components-lib'] = {}),global.ng.platformBrowser.animations,global.ng.common.locales.en,global.tinymceAngular,global.html2canvas,global.cloneDeep,global.ng.router,global.ng.cdk.coercion,global.icon,global.timePicker,global.i1,global.ngxCharts,global.ng.animations,global.label_helper,global.menu,global.ng.cdk.layout,global.grid,global.tooltip,global.ng.cdk.platform,global.controls,global.overlayPlay,global.buffering,global.core,global.ng2TelInput,global.ng.cdk.a11y,global.ng.cdk.observers,global.ng.cdk.bidi,global.ngLazyloadImage,global.ng.common,global.i18n,global.jsPDF,null,global.ngxCookieService,global.util,global.ng.cdk['drag-drop'],global.signaturePad,global.coreJs,global.ng.cdk.keycodes,global.rxjs,global.rxjs.operators,global.dateFns,global.XLSX,global.angular2Signaturepad,global.angular2Draggable,global.angularGoogleCharts,global.moment_,null,global.ng.forms,global.ng.platformBrowser,global.ngZorroAntd,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core,global.i2));
-}(this, (function (exports,animations,en,tinymceAngular,html2canvas,cloneDeep,router,coercion,icon,timePicker,i1,ngxCharts,animations$1,label_helper,menu,layout,grid,tooltip,platform,controls,overlayPlay,buffering,core,ng2TelInput,a11y,observers,bidi,ngLazyloadImage,common,i18n,jsPDF,jspdfAutotable,ngxCookieService,util,dragDrop,signaturePad,coreJs,keycodes,rxjs,operators,dateFns,XLSX,angular2Signaturepad,angular2Draggable,angularGoogleCharts,moment_,enIe,forms,platformBrowser,ngZorroAntd,i1$1,portal,i0,i2) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/platform-browser/animations'), require('@angular/common/locales/en'), require('@tinymce/tinymce-angular'), require('html2canvas'), require('lodash/cloneDeep'), require('@angular/router'), require('@angular/cdk/coercion'), require('ng-zorro-antd/icon'), require('ng-zorro-antd/time-picker'), require('ngx-export-as'), require('@swimlane/ngx-charts'), require('@angular/animations'), require('@swimlane/ngx-charts/release/common/label.helper'), require('ng-zorro-antd/menu'), require('@angular/cdk/layout'), require('ng-zorro-antd/grid'), require('ng-zorro-antd/tooltip'), require('@angular/cdk/platform'), require('videogular2/compiled/controls'), require('videogular2/compiled/overlay-play'), require('videogular2/compiled/buffering'), require('videogular2/compiled/core'), require('ng2-tel-input'), require('@angular/cdk/a11y'), require('@angular/cdk/observers'), require('@angular/cdk/bidi'), require('ng-lazyload-image'), require('@angular/common'), require('ng-zorro-antd/i18n'), require('jspdf'), require('jspdf-autotable'), require('ngx-cookie-service'), require('util'), require('@angular/cdk/drag-drop'), require('angular2-signaturepad/signature-pad'), require('core-js'), require('@angular/cdk/keycodes'), require('rxjs'), require('rxjs/operators'), require('date-fns'), require('ng-zorro-antd'), require('xlsx'), require('angular2-signaturepad'), require('angular2-draggable'), require('angular-google-charts'), require('moment'), require('moment/locale/en-ie'), require('@angular/forms'), require('@angular/platform-browser'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core'), require('ng-zorro-antd/core')) :
+    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/platform-browser/animations', '@angular/common/locales/en', '@tinymce/tinymce-angular', 'html2canvas', 'lodash/cloneDeep', '@angular/router', '@angular/cdk/coercion', 'ng-zorro-antd/icon', 'ng-zorro-antd/time-picker', 'ngx-export-as', '@swimlane/ngx-charts', '@angular/animations', '@swimlane/ngx-charts/release/common/label.helper', 'ng-zorro-antd/menu', '@angular/cdk/layout', 'ng-zorro-antd/grid', 'ng-zorro-antd/tooltip', '@angular/cdk/platform', 'videogular2/compiled/controls', 'videogular2/compiled/overlay-play', 'videogular2/compiled/buffering', 'videogular2/compiled/core', 'ng2-tel-input', '@angular/cdk/a11y', '@angular/cdk/observers', '@angular/cdk/bidi', 'ng-lazyload-image', '@angular/common', 'ng-zorro-antd/i18n', 'jspdf', 'jspdf-autotable', 'ngx-cookie-service', 'util', '@angular/cdk/drag-drop', 'angular2-signaturepad/signature-pad', 'core-js', '@angular/cdk/keycodes', 'rxjs', 'rxjs/operators', 'date-fns', 'ng-zorro-antd', 'xlsx', 'angular2-signaturepad', 'angular2-draggable', 'angular-google-charts', 'moment', 'moment/locale/en-ie', '@angular/forms', '@angular/platform-browser', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core', 'ng-zorro-antd/core'], factory) :
+    (factory((global['cmacs-components-lib'] = {}),global.ng.platformBrowser.animations,global.ng.common.locales.en,global.tinymceAngular,global.html2canvas,global.cloneDeep,global.ng.router,global.ng.cdk.coercion,global.icon,global.timePicker,global.i1,global.ngxCharts,global.ng.animations,global.label_helper,global.menu,global.ng.cdk.layout,global.grid,global.tooltip,global.ng.cdk.platform,global.controls,global.overlayPlay,global.buffering,global.core,global.ng2TelInput,global.ng.cdk.a11y,global.ng.cdk.observers,global.ng.cdk.bidi,global.ngLazyloadImage,global.ng.common,global.i18n,global.jsPDF,null,global.ngxCookieService,global.util,global.ng.cdk['drag-drop'],global.signaturePad,global.coreJs,global.ng.cdk.keycodes,global.rxjs,global.rxjs.operators,global.dateFns,global.ngZorroAntd,global.XLSX,global.angular2Signaturepad,global.angular2Draggable,global.angularGoogleCharts,global.moment_,null,global.ng.forms,global.ng.platformBrowser,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core,global.i2));
+}(this, (function (exports,animations,en,tinymceAngular,html2canvas,cloneDeep,router,coercion,icon,timePicker,i1,ngxCharts,animations$1,label_helper,menu,layout,grid,tooltip,platform,controls,overlayPlay,buffering,core,ng2TelInput,a11y,observers,bidi,ngLazyloadImage,common,i18n,jsPDF,jspdfAutotable,ngxCookieService,util,dragDrop,signaturePad,coreJs,keycodes,rxjs,operators,dateFns,ngZorroAntd,XLSX,angular2Signaturepad,angular2Draggable,angularGoogleCharts,moment_,enIe,forms,platformBrowser,i1$1,portal,i0,i2) { 'use strict';
 
     en = en && en.hasOwnProperty('default') ? en['default'] : en;
     html2canvas = html2canvas && html2canvas.hasOwnProperty('default') ? html2canvas['default'] : html2canvas;
@@ -22103,7 +22103,7 @@
                  */function (value) {
                     _this.highlightKeys = [];
                     // tslint:disable-next-line: no-non-null-assertion
-                    if (value && ( /** @type {?} */(_this.nzOption.nzLabel.toLowerCase())).includes(value.toLowerCase())) {
+                    if (value && _this.nzOption.nzLabel && ( /** @type {?} */(_this.nzOption.nzLabel.toLowerCase())).includes(value.toLowerCase())) {
                         // match the search value
                         /** @type {?} */
                         var index = _this.nzOption.nzLabel.toLowerCase().indexOf(value.toLowerCase());
@@ -33999,19 +33999,23 @@
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var CmacsUserDropdownComponent = /** @class */ (function () {
-        function CmacsUserDropdownComponent(sanitizer, fb) {
+        function CmacsUserDropdownComponent(sanitizer, cdr, fb) {
             this.sanitizer = sanitizer;
+            this.cdr = cdr;
             this.fb = fb;
             this.mode = 'default';
             this.emailErrorLabel = 'Email must be a valid Email Address';
             this.inviteGuestLabel = 'Invite a guest via email';
+            this.loadingLabel = 'Loading data...';
             this.placeHolder = 'Add Users / Teams';
             this.selectedValue = null;
-            this.listOfOption = [];
             this.maxTagCount = null;
             this.selectedValueChange = new i0.EventEmitter();
             this.onAddGuestUserByEmail = new i0.EventEmitter();
+            this.cmacsOnSearch = new i0.EventEmitter();
+            this._isLoading = false;
             this._searchValue = '';
+            this._listOfOption = [];
             this.showEmailError = false;
             this.listOfFilteredOption = [];
             this.listDividers = [];
@@ -34022,6 +34026,33 @@
                 email: [this._searchValue, [forms.Validators.email]]
             });
         }
+        Object.defineProperty(CmacsUserDropdownComponent.prototype, "isLoading", {
+            set: /**
+             * @param {?} value
+             * @return {?}
+             */ function (value) {
+                this._isLoading = value;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(CmacsUserDropdownComponent.prototype, "listOfOption", {
+            get: /**
+             * @return {?}
+             */ function () {
+                return this._listOfOption;
+            },
+            set: /**
+             * @param {?} value
+             * @return {?}
+             */ function (value) {
+                this._listOfOption = __spread(value);
+                this.listOfFilteredOption = __spread(value);
+                this.operateData();
+            },
+            enumerable: true,
+            configurable: true
+        });
         /**
          * @param {?} $event
          * @return {?}
@@ -34032,16 +34063,6 @@
          */
             function ($event) {
                 this.selectedValueChange.emit($event);
-            };
-        /**
-         * @return {?}
-         */
-        CmacsUserDropdownComponent.prototype.ngOnInit = /**
-         * @return {?}
-         */
-            function () {
-                this.listOfFilteredOption = __spread(this.listOfOption);
-                this.operateData();
             };
         Object.defineProperty(CmacsUserDropdownComponent.prototype, "searchValue", {
             get: /**
@@ -34094,10 +34115,16 @@
             function ($event) {
                 this.showEmailError = false;
                 this._searchValue = $event;
-                /** @type {?} */
-                var listOfFilteredOption = new ngZorroAntd.NzFilterOptionPipe().transform(this.selectComponent.nzSelectService.listOfNzOptionComponent, this.selectComponent.nzSelectService.searchValue, this.selectComponent.nzSelectService.filterOption, this.selectComponent.nzSelectService.serverSearch);
+                /*const listOfFilteredOption = new NzFilterOptionPipe().transform(
+                  this.selectComponent.nzSelectService.listOfNzOptionComponent,
+                  this.selectComponent.nzSelectService.searchValue,
+                  this.selectComponent.nzSelectService.filterOption,
+                  this.selectComponent.nzSelectService.serverSearch
+                );
                 this.listOfFilteredOption = listOfFilteredOption;
                 this.getFirstElemByDivider();
+                console.log($event, listOfFilteredOption);*/
+                this.cmacsOnSearch.emit($event);
             };
         /**
          * @return {?}
@@ -34222,17 +34249,18 @@
             { type: i0.Component, args: [{
                         selector: 'cmacs-user-dropdown',
                         exportAs: 'cmacsUserDropdown',
-                        template: "<cmacs-select [showCmacsSearch]=\"true\"\r\n              allowClear\r\n              [maxTagCount]=\"maxTagCount\"\r\n              style=\"width: inherit !important\"\r\n              [mode]=\"mode\"\r\n              [showSelectAll]=\"false\"\r\n              [userDropdown]=\"true\"\r\n              [notFoundContentCustom]=\"notFoundContent\"\r\n              [placeHolder]=\"placeHolder\"\r\n              (cmacsOnSearch)=\"onsearch($event)\"\r\n              [dropdownRender]=\"render\"\r\n              (ngModelChange)=\"onSelectedValueChange($event)\"\r\n              [(ngModel)]=\"selectedValue\">\r\n  <ng-container *ngFor=\"let option of operatedData; index as i\">\r\n    <ng-container *ngFor=\"let elem of option.children; index as j\">\r\n      <cmacs-option [label]=\"elem.label\" [value]=\"elem.value\" customContent>\r\n        <div class=\"cmacs-user-dropdown-option-wrapper\"\r\n             [class.cmacs-user-dropdown-last-elem]=\"j === option.children.length - 1\"\r\n             [class.cmacs-user-dropdown-divider-first-option]=\"firstElemByDivider[option.divider] && firstElemByDivider[option.divider].length &&\r\n            firstElemByDivider[option.divider][0].value === elem.value\">\r\n          <div *ngIf=\"firstElemByDivider[option.divider] && firstElemByDivider[option.divider].length &&\r\n            firstElemByDivider[option.divider][0].value === elem.value\" class=\"cmacs-user-dropdown-divider\">\r\n            <nz-divider></nz-divider>\r\n            {{option.divider}} <span style=\"color: #97a0ae\">({{firstElemByDivider[option.divider].length}})</span>\r\n          </div>\r\n\r\n          <div class=\"cmacs-user-dropdown-info-wrapper\" [class.cmacs-user-dropdown-hide-picture]=\"elem.hidePicture\">\r\n\r\n            <div class=\"cmacs-user-dropdown-person-picture\"\r\n                 [class.cmacs-user-dropdown-no-picture]=\"elem.hidePicture\"\r\n                 *ngIf=\"elem.role === 'user'\"\r\n                 [style.background-image]=\"elem.picture ? getBackgroundImage(elem.picture): 'none'\">\r\n              <span class=\"cmacs-user-dropdown-initials\" *ngIf=\"!elem.picture\">{{getInitials(elem.label)}}</span>\r\n            </div>\r\n\r\n            <div class=\"cmacs-user-dropdown-person-picture\"\r\n                 [class.cmacs-guest-no-picture]=\"!elem.picture\"\r\n                 [class.cmacs-user-dropdown-no-picture]=\"elem.hidePicture\"\r\n                 *ngIf=\"elem.role === 'guest'\"\r\n                 [style.background-image]=\"elem.picture ? getBackgroundImage(elem.picture): 'none'\">\r\n              <i class=\"iconCreation-User\" *ngIf=\"!elem.picture\"></i>\r\n            </div>\r\n\r\n            <div class=\"cmacs-user-dropdown-person-picture\"\r\n                 [class.cmacs-team-no-picture]=\"!elem.picture\"\r\n                 [class.cmacs-user-dropdown-no-picture]=\"elem.hidePicture\"\r\n                 *ngIf=\"elem.role === 'team'\"\r\n                 [style.background-image]=\"elem.picture ? getBackgroundImage(elem.picture): 'none'\">\r\n              <i class=\"iconCreation-Team\" *ngIf=\"!elem.picture\"></i>\r\n            </div>\r\n\r\n            <div class=\"cmacs-user-dropdown-title\" [class.cmacs-user-dropdown-team-title]=\"elem.role === 'team'\">\r\n              <ng-container *ngIf=\"highlightValue(elem).length === 3\">\r\n                <span>\r\n                  {{highlightKeys[0]}}<span style=\"color: #2a7cff\">{{highlightKeys[1]}}</span>{{highlightKeys[2]}}\r\n                </span>\r\n              </ng-container>\r\n              <ng-container *ngIf=\"!highlightValue(elem).length\">\r\n                {{elem.label}}\r\n              </ng-container>\r\n            </div>\r\n            <div *ngIf=\"elem.role === 'user' || elem.role === 'guest'\" class=\"cmacs-user-dropdown-subtitle\">{{elem.charge}}</div>\r\n          </div>\r\n        </div>\r\n      </cmacs-option>\r\n    </ng-container>\r\n  </ng-container>\r\n</cmacs-select>\r\n\r\n<ng-template #render>\r\n  <div class=\"cmacs-user-dropdown-invite-guest\"\r\n       (click)=\"addGuestUser()\">\r\n    <i style=\"font-size: 17px; position: relative; top: 3px; margin-right: 6px;\" class=\"iconUISmall-Message\"></i>\r\n    <span>{{inviteGuestLabel}}</span>\r\n  </div>\r\n</ng-template>\r\n\r\n<ng-template #notFoundContent>\r\n  <div *ngIf=\"showEmailError\" class=\"cmacs-user-dropdown-error\">{{emailErrorLabel}}</div>\r\n</ng-template>\r\n",
+                        template: "<cmacs-select [showCmacsSearch]=\"true\"\r\n              allowClear\r\n              [maxTagCount]=\"maxTagCount\"\r\n              style=\"width: inherit !important\"\r\n              [mode]=\"mode\"\r\n              [showSelectAll]=\"false\"\r\n              [userDropdown]=\"true\"\r\n              [notFoundContentCustom]=\"notFoundContent\"\r\n              [placeHolder]=\"placeHolder\"\r\n              (cmacsOnSearch)=\"onsearch($event)\"\r\n              [serverSearch]=\"true\"\r\n              [dropdownRender]=\"render\"\r\n              (ngModelChange)=\"onSelectedValueChange($event)\"\r\n              [(ngModel)]=\"selectedValue\">\r\n  <ng-container *ngFor=\"let option of operatedData; index as i\">\r\n    <ng-container *ngFor=\"let elem of option.children; index as j\">\r\n      <cmacs-option [label]=\"elem.label\" [value]=\"elem.value\" customContent>\r\n        <div class=\"cmacs-user-dropdown-option-wrapper\"\r\n             [class.cmacs-user-dropdown-last-elem]=\"j === option.children.length - 1\"\r\n             [class.cmacs-user-dropdown-divider-first-option]=\"firstElemByDivider[option.divider] && firstElemByDivider[option.divider].length &&\r\n            firstElemByDivider[option.divider][0].value === elem.value\">\r\n          <div *ngIf=\"firstElemByDivider[option.divider] && firstElemByDivider[option.divider].length &&\r\n            firstElemByDivider[option.divider][0].value === elem.value\" class=\"cmacs-user-dropdown-divider\">\r\n            <nz-divider></nz-divider>\r\n            {{option.divider}} <span style=\"color: #97a0ae\">({{firstElemByDivider[option.divider].length}})</span>\r\n          </div>\r\n\r\n          <ng-container *ngIf=\"elem.template; else defaultTPL\">\r\n            <ng-container [ngTemplateOutlet]=\"elem.template.ref\"\r\n                          [ngTemplateOutletContext]=\"elem.template.context\">\r\n            </ng-container>\r\n          </ng-container>\r\n\r\n          <ng-template #defaultTPL>\r\n            <div class=\"cmacs-user-dropdown-info-wrapper\" [class.cmacs-user-dropdown-hide-picture]=\"elem.hidePicture\">\r\n\r\n              <div class=\"cmacs-user-dropdown-person-picture\"\r\n                   [class.cmacs-user-dropdown-no-picture]=\"elem.hidePicture\"\r\n                   *ngIf=\"elem.role === 'user'\"\r\n                   [style.background-image]=\"elem.picture ? getBackgroundImage(elem.picture): 'none'\">\r\n                <span class=\"cmacs-user-dropdown-initials\" *ngIf=\"!elem.picture\">{{getInitials(elem.label)}}</span>\r\n              </div>\r\n\r\n              <div class=\"cmacs-user-dropdown-person-picture\"\r\n                   [class.cmacs-guest-no-picture]=\"!elem.picture\"\r\n                   [class.cmacs-user-dropdown-no-picture]=\"elem.hidePicture\"\r\n                   *ngIf=\"elem.role === 'guest'\"\r\n                   [style.background-image]=\"elem.picture ? getBackgroundImage(elem.picture): 'none'\">\r\n                <i class=\"iconCreation-User\" *ngIf=\"!elem.picture\"></i>\r\n              </div>\r\n\r\n              <div class=\"cmacs-user-dropdown-person-picture\"\r\n                   [class.cmacs-team-no-picture]=\"!elem.picture\"\r\n                   [class.cmacs-user-dropdown-no-picture]=\"elem.hidePicture\"\r\n                   *ngIf=\"elem.role === 'team'\"\r\n                   [style.background-image]=\"elem.picture ? getBackgroundImage(elem.picture): 'none'\">\r\n                <i class=\"iconCreation-Team\" *ngIf=\"!elem.picture\"></i>\r\n              </div>\r\n\r\n              <div class=\"cmacs-user-dropdown-title\" [class.cmacs-user-dropdown-team-title]=\"elem.role === 'team'\">\r\n                <ng-container *ngIf=\"highlightValue(elem).length === 3\">\r\n                  <span>\r\n                    {{highlightKeys[0]}}<span style=\"color: #2a7cff\">{{highlightKeys[1]}}</span>{{highlightKeys[2]}}\r\n                  </span>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"!highlightValue(elem).length\">\r\n                  {{elem.label}}\r\n                </ng-container>\r\n              </div>\r\n              <div *ngIf=\"elem.role === 'user' || elem.role === 'guest'\" class=\"cmacs-user-dropdown-subtitle\">{{elem.charge}}</div>\r\n            </div>\r\n          </ng-template>\r\n        </div>\r\n      </cmacs-option>\r\n    </ng-container>\r\n  </ng-container>\r\n  <cmacs-option *ngIf=\"_isLoading\" disabled customContent>\r\n    <div class=\"cmacs-user-dropdown-loading-wrapper\">\r\n      <i nz-icon type=\"loading\" class=\"cmacs-user-dropdown-loading-icon\"></i> {{loadingLabel}}\r\n    </div>  \r\n  </cmacs-option>\r\n</cmacs-select>\r\n\r\n<ng-template #render>\r\n  <div class=\"cmacs-user-dropdown-invite-guest\"\r\n       (click)=\"addGuestUser()\">\r\n    <i style=\"font-size: 17px; position: relative; top: 3px; margin-right: 6px;\" class=\"iconUISmall-Message\"></i>\r\n    <span>{{inviteGuestLabel}}</span>\r\n  </div>\r\n</ng-template>\r\n\r\n<ng-template #notFoundContent>\r\n  <div *ngIf=\"showEmailError\" class=\"cmacs-user-dropdown-error\">{{emailErrorLabel}}</div>\r\n</ng-template>\r\n",
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
                         encapsulation: i0.ViewEncapsulation.None,
                         preserveWhitespaces: false,
-                        styles: [".cmacs-user-dropdown-person-picture{text-align:center;padding-top:2px;border-radius:3px;width:34px;height:34px;background-color:#a100cd;color:#fff;background-repeat:no-repeat;background-position:center center;background-size:contain}.cmacs-user-dropdown-divider{font-family:Roboto-Medium;font-size:13px;font-weight:500;font-stretch:normal;font-style:normal;line-height:1.23;letter-spacing:normal;color:#3b3f46;padding:7px 14px 8px;background-color:#fff!important}.cmacs-user-dropdown-divider:hover{background-color:#fff!important}.cmacs-user-dropdown-divider nz-divider:first-child{-webkit-transform:scaleX(1.5);transform:scaleX(1.5);position:relative;top:-7px}.cmacs-user-dropdown-initials{position:relative;top:5px;font-size:14px}.cmacs-user-dropdown-title{position:absolute;top:0;left:45px;font-family:Roboto-Regular;font-size:12px;font-weight:500;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;color:#656c79;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:calc(100% - 75px)}.cmacs-user-dropdown-subtitle{position:absolute;top:16px;left:45px;font-family:Roboto-Regular;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;color:#97a0ae;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:calc(100% - 75px)}.cmacs-team-no-picture{border-radius:3px;border:1.1px solid #dee0e5;background-color:#fff;color:#656c79;font-size:16px;padding:5px 0}.cmacs-user-dropdown-team-title{top:7px}.cmacs-guest-no-picture{border-radius:3px;background-color:#00cda1;font-size:16px;padding:6px 0}.cmacs-user-dropdown-error{color:#f6503c;font-size:10px;font-weight:400;font-stretch:normal;font-style:normal;line-height:2;letter-spacing:normal;padding:5px 0;position:relative;left:12px}.ant-select-dropdown.cmacs-select-user-dropdown.ant-select-dropdown--multiple .cmacs-user-dropdown-error{left:12px}.cmacs-select-user-dropdown .ant-select-dropdown-menu-item{padding:0!important}.cmacs-user-dropdown-option-wrapper{padding:7px 0}.cmacs-user-dropdown-info-wrapper{position:relative;margin:0 14px}.ant-select-dropdown.cmacs-select-user-dropdown.ant-select-dropdown--multiple .cmacs-user-dropdown-info-wrapper{margin:0 14px 0 42px}.cmacs-user-dropdown-divider-first-option{padding-top:0}.cmacs-user-dropdown-divider-first-option .cmacs-user-dropdown-info-wrapper{margin-top:7px!important}.cmacs-user-dropdown-last-elem{padding-bottom:14px}.cmacs-user-dropdown-invite-guest{height:34px;box-shadow:0 -2px 5px 0 rgba(59,63,70,.1);background-color:#fff;color:#2a7cff;padding:6px 11px;font-size:12px;cursor:pointer}.cmacs-user-dropdown-invite-guest:hover{background-color:#f2f7ff}.cmacs-user-dropdown-no-picture{opacity:0}.cmacs-user-dropdown-hide-picture .cmacs-user-dropdown-subtitle,.cmacs-user-dropdown-hide-picture .cmacs-user-dropdown-title{left:0}.ant-select-dropdown-menu{scrollbar-color:#cfd3d9 #fff;scrollbar-width:thin}"]
+                        styles: [".cmacs-user-dropdown-person-picture{text-align:center;padding-top:2px;border-radius:3px;width:34px;height:34px;background-color:#a100cd;color:#fff;background-repeat:no-repeat;background-position:center center;background-size:contain}.cmacs-user-dropdown-divider{font-family:Roboto-Medium;font-size:13px;font-weight:500;font-stretch:normal;font-style:normal;line-height:1.23;letter-spacing:normal;color:#3b3f46;padding:7px 14px 8px;background-color:#fff!important}.cmacs-user-dropdown-divider:hover{background-color:#fff!important}.cmacs-user-dropdown-divider nz-divider:first-child{-webkit-transform:scaleX(1.5);transform:scaleX(1.5);position:relative;top:-7px}.cmacs-user-dropdown-initials{position:relative;top:5px;font-size:14px}.cmacs-user-dropdown-title{position:absolute;top:0;left:45px;font-family:Roboto-Regular;font-size:12px;font-weight:500;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;color:#656c79;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:calc(100% - 75px)}.cmacs-user-dropdown-subtitle{position:absolute;top:16px;left:45px;font-family:Roboto-Regular;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;line-height:1.67;letter-spacing:normal;color:#97a0ae;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:calc(100% - 75px)}.cmacs-team-no-picture{border-radius:3px;border:1.1px solid #dee0e5;background-color:#fff;color:#656c79;font-size:16px;padding:5px 0}.cmacs-user-dropdown-team-title{top:7px}.cmacs-guest-no-picture{border-radius:3px;background-color:#00cda1;font-size:16px;padding:6px 0}.cmacs-user-dropdown-error{color:#f6503c;font-size:10px;font-weight:400;font-stretch:normal;font-style:normal;line-height:2;letter-spacing:normal;padding:5px 0;position:relative;left:12px}.ant-select-dropdown.cmacs-select-user-dropdown.ant-select-dropdown--multiple .cmacs-user-dropdown-error{left:12px}.cmacs-select-user-dropdown .ant-select-dropdown-menu-item{padding:0!important}.cmacs-user-dropdown-option-wrapper{padding:7px 0}.cmacs-user-dropdown-info-wrapper{position:relative;margin:0 14px}.ant-select-dropdown.cmacs-select-user-dropdown.ant-select-dropdown--multiple .cmacs-user-dropdown-info-wrapper{margin:0 14px 0 42px}.cmacs-user-dropdown-divider-first-option{padding-top:0}.cmacs-user-dropdown-divider-first-option .cmacs-user-dropdown-info-wrapper{margin-top:7px!important}.cmacs-user-dropdown-last-elem{padding-bottom:14px}.cmacs-user-dropdown-invite-guest{height:34px;box-shadow:0 -2px 5px 0 rgba(59,63,70,.1);background-color:#fff;color:#2a7cff;padding:6px 11px;font-size:12px;cursor:pointer}.cmacs-user-dropdown-invite-guest:hover{background-color:#f2f7ff}.cmacs-user-dropdown-no-picture{opacity:0}.cmacs-user-dropdown-hide-picture .cmacs-user-dropdown-subtitle,.cmacs-user-dropdown-hide-picture .cmacs-user-dropdown-title{left:0}.ant-select-dropdown-menu{scrollbar-color:#cfd3d9 #fff;scrollbar-width:thin}.cmacs-user-dropdown-loading-wrapper{padding:7px 12px}.cmacs-user-dropdown-loading-icon{margin-right:6px}"]
                     }] }
         ];
         /** @nocollapse */
         CmacsUserDropdownComponent.ctorParameters = function () {
             return [
                 { type: platformBrowser.DomSanitizer },
+                { type: i0.ChangeDetectorRef },
                 { type: forms.FormBuilder }
             ];
         };
@@ -34240,14 +34268,22 @@
             mode: [{ type: i0.Input }],
             emailErrorLabel: [{ type: i0.Input }],
             inviteGuestLabel: [{ type: i0.Input }],
+            loadingLabel: [{ type: i0.Input }],
             placeHolder: [{ type: i0.Input }],
             selectedValue: [{ type: i0.Input }],
-            listOfOption: [{ type: i0.Input }],
             maxTagCount: [{ type: i0.Input }],
             selectedValueChange: [{ type: i0.Output }],
             onAddGuestUserByEmail: [{ type: i0.Output }],
-            selectComponent: [{ type: i0.ViewChild, args: [CmacsSelectComponent,] }]
+            cmacsOnSearch: [{ type: i0.Output }],
+            selectComponent: [{ type: i0.ViewChild, args: [CmacsSelectComponent,] }],
+            isLoading: [{ type: i0.Input }],
+            listOfOption: [{ type: i0.Input }]
         };
+        __decorate([
+            i2.InputBoolean(),
+            __metadata("design:type", Boolean),
+            __metadata("design:paramtypes", [Boolean])
+        ], CmacsUserDropdownComponent.prototype, "isLoading", null);
         return CmacsUserDropdownComponent;
     }());
 
