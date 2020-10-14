@@ -45,12 +45,12 @@ import { AngularDraggableModule } from 'angular2-draggable';
 import { GoogleChartsModule } from 'angular-google-charts';
 import * as moment_ from 'moment';
 import 'moment/locale/en-ie';
-import { __extends, __assign, __decorate, __metadata, __spread, __read, __values } from 'tslib';
+import { __assign, __decorate, __metadata, __extends, __spread, __read, __values } from 'tslib';
 import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName, NgModel, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, ComponentFactoryResolver, defineInjectable, NgModule, Type, Injector, inject, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, inject, Type, Injector, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -29468,6 +29468,33 @@ var CmacsCompactTableComponent = /** @class */ (function () {
             }
             this.editId = id;
             this.property = property;
+            this.cdr.detectChanges();
+            this.focusSelect(this.inputElement);
+            if (this.inputNumberComponent) {
+                this.focusSelect(this.inputNumberComponent.inputElement);
+            }
+            if (this.dateTimePicker) {
+                this.focusSelect(this.dateTimePicker.inputRef);
+            }
+        }
+    };
+    /**
+     * @param {?} elem
+     * @return {?}
+     */
+    CmacsCompactTableComponent.prototype.focusSelect = /**
+     * @param {?} elem
+     * @return {?}
+     */
+    function (elem) {
+        if (elem) {
+            elem.nativeElement.focus();
+            setTimeout((/**
+             * @return {?}
+             */
+            function () {
+                elem.nativeElement.select();
+            }), 100);
         }
     };
     /**
@@ -31273,6 +31300,7 @@ var CmacsCompactTableComponent = /** @class */ (function () {
         dateTimePickerElement: [{ type: ViewChild, args: ['fieldTypeDateTimePicker', { read: ElementRef },] }],
         selectElement: [{ type: ViewChild, args: ['fieldTypeSelect', { read: ElementRef },] }],
         boolElement: [{ type: ViewChild, args: ['fieldTypeBool', { read: ElementRef },] }],
+        dateTimePicker: [{ type: ViewChild, args: [CmacsDateTimePickerComponent,] }],
         handleMouseDown: [{ type: HostListener, args: ['document:mousedown', ['$event'],] }]
     };
     __decorate([

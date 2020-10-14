@@ -13,6 +13,7 @@ import { NzDropdownContextComponent, NzDropdownService, NzTableComponent } from 
 import { CmacsInputNumberComponent } from "../cmacs-input-number/cmacs-input-number.component";
 import { UtilService } from '../core/services/util.service';
 import 'moment/locale/en-ie';
+import { CmacsDateTimePickerComponent } from '../cmacs-datetime-picker/cmacs-datetime-picker.component';
 export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnChanges, OnDestroy, AfterViewInit {
     private cdr;
     private i18n;
@@ -119,6 +120,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     dateTimePickerElement: ElementRef;
     selectElement: ElementRef;
     boolElement: ElementRef;
+    dateTimePicker: CmacsDateTimePickerComponent;
     preventDefault($event: MouseEvent): void;
     contextMenu($event: MouseEvent, template: TemplateRef<void>): void;
     validate(data: any, field: Field): boolean;
@@ -127,6 +129,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     editionOpTriggered: boolean;
     deleteRow(idx: number, $event?: any): void;
     startEdit(id: string, property: string, event: MouseEvent): void;
+    focusSelect(elem: any): void;
     sort($event: any, fieldProperty: string): void;
     filter($event: any, fieldProperty: string): void;
     getHeaderMaxWidth(field: Field): "calc(100% - 15px)" | "100%";

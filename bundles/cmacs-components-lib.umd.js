@@ -29288,6 +29288,32 @@
                     }
                     this.editId = id;
                     this.property = property;
+                    this.cdr.detectChanges();
+                    this.focusSelect(this.inputElement);
+                    if (this.inputNumberComponent) {
+                        this.focusSelect(this.inputNumberComponent.inputElement);
+                    }
+                    if (this.dateTimePicker) {
+                        this.focusSelect(this.dateTimePicker.inputRef);
+                    }
+                }
+            };
+        /**
+         * @param {?} elem
+         * @return {?}
+         */
+        CmacsCompactTableComponent.prototype.focusSelect = /**
+         * @param {?} elem
+         * @return {?}
+         */
+            function (elem) {
+                if (elem) {
+                    elem.nativeElement.focus();
+                    setTimeout(( /**
+                     * @return {?}
+                     */function () {
+                        elem.nativeElement.select();
+                    }), 100);
                 }
             };
         /**
@@ -31065,6 +31091,7 @@
             dateTimePickerElement: [{ type: i0.ViewChild, args: ['fieldTypeDateTimePicker', { read: i0.ElementRef },] }],
             selectElement: [{ type: i0.ViewChild, args: ['fieldTypeSelect', { read: i0.ElementRef },] }],
             boolElement: [{ type: i0.ViewChild, args: ['fieldTypeBool', { read: i0.ElementRef },] }],
+            dateTimePicker: [{ type: i0.ViewChild, args: [CmacsDateTimePickerComponent,] }],
             handleMouseDown: [{ type: i0.HostListener, args: ['document:mousedown', ['$event'],] }]
         };
         __decorate([
