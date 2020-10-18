@@ -26,6 +26,7 @@ export declare class CalendarHeaderComponent implements OnInit, OnChanges {
     readonly chooseMonth: EventEmitter<CandyDate>;
     prefixCls: string;
     yearMonthDaySelectors: YearMonthDaySelector[];
+    selectedDate: CandyDate;
     private yearToMonth;
     constructor(dateHelper: DateHelperService);
     ngOnInit(): void;

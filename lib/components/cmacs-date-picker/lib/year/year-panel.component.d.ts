@@ -14,6 +14,7 @@ export declare class YearPanelComponent implements OnChanges {
     readonly valueChange: EventEmitter<CandyDate>;
     disabledDate: (date: Date) => boolean;
     readonly decadePanelShow: EventEmitter<void>;
+    selectedDate: CandyDate;
     readonly currentYear: number;
     readonly startYear: number;
     readonly endYear: number;

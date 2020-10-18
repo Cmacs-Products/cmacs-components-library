@@ -16,6 +16,7 @@ export declare class DateTableComponent implements OnInit, OnChanges {
     selectedValue: CandyDate[];
     hoverValue: CandyDate[];
     value: CandyDate;
+    selectedDate: CandyDate;
     readonly valueChange: EventEmitter<CandyDate>;
     showWeek: boolean;
     disabledDate: (d: Date) => boolean;

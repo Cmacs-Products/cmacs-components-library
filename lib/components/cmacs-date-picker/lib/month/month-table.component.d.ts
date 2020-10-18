@@ -13,6 +13,7 @@ export declare class MonthTableComponent implements OnInit, OnChanges {
     value: CandyDate;
     readonly valueChange: EventEmitter<CandyDate>;
     disabledDate: (date: Date) => boolean;
+    selectedDate: CandyDate;
     prefixCls: string;
     panelMonths: PanelMonthData[][];
     constructor(dateHelper: DateHelperService);

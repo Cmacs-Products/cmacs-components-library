@@ -45,12 +45,12 @@ import { AngularDraggableModule } from 'angular2-draggable';
 import { GoogleChartsModule } from 'angular-google-charts';
 import * as moment_ from 'moment';
 import 'moment/locale/en-ie';
-import { __extends, __decorate, __metadata, __assign, __spread, __read, __values } from 'tslib';
+import { __extends, __assign, __decorate, __metadata, __spread, __read, __values } from 'tslib';
 import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName, NgModel, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, Pipe, InjectionToken, ComponentFactoryResolver, defineInjectable, NgModule, inject, Type, Injector, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, Type, Injector, inject, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -15321,6 +15321,7 @@ var CalendarHeaderComponent = /** @class */ (function () {
         this.chooseYear = new EventEmitter();
         this.chooseMonth = new EventEmitter();
         this.prefixCls = 'ant-calendar';
+        this.selectedDate = null;
         this.yearToMonth = false; // Indicate whether should change to month panel when current is year panel (if referer=month, it should show month panel when choosed a year)
     }
     /**
@@ -15343,6 +15344,13 @@ var CalendarHeaderComponent = /** @class */ (function () {
      * @return {?}
      */
     function (changes) {
+        if (changes.value && !this.value) {
+            this.value = new CandyDate();
+            this.selectedDate = null;
+        }
+        else {
+            this.selectedDate = this.value;
+        }
         if (changes.value || changes.showTimePicker || changes.panelMode) {
             this.render();
         }
@@ -15589,7 +15597,7 @@ var CalendarHeaderComponent = /** @class */ (function () {
                     // tslint:disable-next-line:component-selector
                     selector: 'calendar-header',
                     exportAs: 'calendarHeader',
-                    template: "<div class=\"{{ prefixCls }}-header\">\r\n  <div style=\"position: relative;\">\r\n    <a *ngIf=\"enablePrev && !showTimePicker\"\r\n      class=\"{{ prefixCls }}-prev-year-btn\"\r\n      role=\"button\"\r\n      (click)=\"previousYear()\"\r\n      title=\"{{ locale.previousYear }}\"\r\n    ></a>\r\n    <a *ngIf=\"enablePrev && !showTimePicker\"\r\n      class=\"{{ prefixCls }}-prev-month-btn\"\r\n      role=\"button\"\r\n      (click)=\"previousMonth()\"\r\n      title=\"{{ locale.previousMonth }}\"\r\n    ></a>\r\n\r\n    <span class=\"{{ prefixCls }}-{{ locale.monthBeforeYear ? 'my-select' : 'ym-select' }}\">\r\n      <ng-container *ngFor=\"let selector of yearMonthDaySelectors\">\r\n        <a class=\"{{ selector.className }}\"\r\n          role=\"button\"\r\n          (click)=\"selector.onClick ? selector.onClick() : null\"\r\n          title=\"{{ selector.title || null }}\"\r\n        >\r\n          {{ selector.label }}\r\n        </a>\r\n      </ng-container>\r\n    </span>\r\n\r\n    <a *ngIf=\"enableNext && !showTimePicker\"\r\n      class=\"{{ prefixCls }}-next-month-btn\"\r\n      role=\"button\"\r\n      (click)=\"nextMonth()\"\r\n      title=\"{{ locale.nextMonth }}\"\r\n    ></a>\r\n    <a *ngIf=\"enableNext && !showTimePicker\"\r\n      class=\"{{ prefixCls }}-next-year-btn\"\r\n      role=\"button\"\r\n      (click)=\"nextYear()\"\r\n      title=\"{{ locale.nextYear }}\"\r\n    ></a>\r\n  </div>\r\n\r\n  <ng-container [ngSwitch]=\"panelMode\">\r\n    <ng-container *ngSwitchCase=\"'decade'\">\r\n      <decade-panel\r\n        [locale]=\"locale\"\r\n        [value]=\"value\"\r\n        (valueChange)=\"onChooseDecade($event)\"\r\n      ></decade-panel>\r\n    </ng-container>\r\n    <ng-container *ngSwitchCase=\"'year'\">\r\n      <year-panel\r\n        [locale]=\"locale\"\r\n        [value]=\"value\"\r\n        [disabledDate]=\"disabledYear\"\r\n        (valueChange)=\"onChooseYear($event)\"\r\n        (decadePanelShow)=\"changePanel('decade')\"\r\n      ></year-panel>\r\n    </ng-container>\r\n    <ng-container *ngSwitchCase=\"'month'\">\r\n      <month-panel\r\n        [locale]=\"locale\"\r\n        [value]=\"value\"\r\n        [disabledDate]=\"disabledMonth\"\r\n        (valueChange)=\"onChooseMonth($event)\"\r\n        (yearPanelShow)=\"changePanel('year')\"\r\n      ></month-panel>\r\n    </ng-container>\r\n  </ng-container>\r\n</div>"
+                    template: "<div class=\"{{ prefixCls }}-header\">\r\n  <div style=\"position: relative;\">\r\n    <a *ngIf=\"enablePrev && !showTimePicker\"\r\n      class=\"{{ prefixCls }}-prev-year-btn\"\r\n      role=\"button\"\r\n      (click)=\"previousYear()\"\r\n      title=\"{{ locale.previousYear }}\"\r\n    ></a>\r\n    <a *ngIf=\"enablePrev && !showTimePicker\"\r\n      class=\"{{ prefixCls }}-prev-month-btn\"\r\n      role=\"button\"\r\n      (click)=\"previousMonth()\"\r\n      title=\"{{ locale.previousMonth }}\"\r\n    ></a>\r\n\r\n    <span class=\"{{ prefixCls }}-{{ locale.monthBeforeYear ? 'my-select' : 'ym-select' }}\">\r\n      <ng-container *ngFor=\"let selector of yearMonthDaySelectors\">\r\n        <a class=\"{{ selector.className }}\"\r\n          role=\"button\"\r\n          (click)=\"selector.onClick ? selector.onClick() : null\"\r\n          title=\"{{ selector.title || null }}\"\r\n        >\r\n          {{ selector.label }}\r\n        </a>\r\n      </ng-container>\r\n    </span>\r\n\r\n    <a *ngIf=\"enableNext && !showTimePicker\"\r\n      class=\"{{ prefixCls }}-next-month-btn\"\r\n      role=\"button\"\r\n      (click)=\"nextMonth()\"\r\n      title=\"{{ locale.nextMonth }}\"\r\n    ></a>\r\n    <a *ngIf=\"enableNext && !showTimePicker\"\r\n      class=\"{{ prefixCls }}-next-year-btn\"\r\n      role=\"button\"\r\n      (click)=\"nextYear()\"\r\n      title=\"{{ locale.nextYear }}\"\r\n    ></a>\r\n  </div>\r\n\r\n  <ng-container [ngSwitch]=\"panelMode\">\r\n    <ng-container *ngSwitchCase=\"'decade'\">\r\n      <decade-panel\r\n        [locale]=\"locale\"\r\n        [value]=\"value\"\r\n        (valueChange)=\"onChooseDecade($event)\"\r\n      ></decade-panel>\r\n    </ng-container>\r\n    <ng-container *ngSwitchCase=\"'year'\">\r\n      <year-panel\r\n        [locale]=\"locale\"\r\n        [value]=\"value\"\r\n        [selectedDate]=\"selectedDate\"\r\n        [disabledDate]=\"disabledYear\"\r\n        (valueChange)=\"onChooseYear($event)\"\r\n        (decadePanelShow)=\"changePanel('decade')\"\r\n      ></year-panel>\r\n    </ng-container>\r\n    <ng-container *ngSwitchCase=\"'month'\">\r\n      <month-panel\r\n        [locale]=\"locale\"\r\n        [value]=\"value\"\r\n        [disabledDate]=\"disabledMonth\"\r\n        (valueChange)=\"onChooseMonth($event)\"\r\n        (yearPanelShow)=\"changePanel('year')\"\r\n      ></month-panel>\r\n    </ng-container>\r\n  </ng-container>\r\n</div>\r\n"
                 }] }
     ];
     /** @nocollapse */
@@ -16107,7 +16115,7 @@ var DateTableComponent = /** @class */ (function () {
                         }
                     }
                 }
-                else if (current.isSame(this_1.value, 'day')) {
+                else if (current.isSame(this_1.selectedDate, 'day')) {
                     cell.isSelected = true;
                     week.isActive = true;
                 }
@@ -16228,6 +16236,7 @@ var DateTableComponent = /** @class */ (function () {
         selectedValue: [{ type: Input }],
         hoverValue: [{ type: Input }],
         value: [{ type: Input }],
+        selectedDate: [{ type: Input }],
         valueChange: [{ type: Output }],
         showWeek: [{ type: Input }],
         disabledDate: [{ type: Input }],
@@ -16461,6 +16470,7 @@ var DecadePanelComponent = /** @class */ (function () {
  */
 var MonthPanelComponent = /** @class */ (function () {
     function MonthPanelComponent() {
+        this.selectedDate = null;
         this.valueChange = new EventEmitter();
         this.yearPanelShow = new EventEmitter();
         this.prefixCls = 'ant-calendar-month-panel';
@@ -16482,6 +16492,23 @@ var MonthPanelComponent = /** @class */ (function () {
      */
     function () {
         this.gotoYear(1);
+    };
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    MonthPanelComponent.prototype.ngOnChanges = /**
+     * @param {?} changes
+     * @return {?}
+     */
+    function (changes) {
+        if (changes.value && !this.value) {
+            this.value = new CandyDate();
+            this.selectedDate = null;
+        }
+        else {
+            this.selectedDate = this.value;
+        }
     };
     // Re-render panel content by the header's buttons (NOTE: Do not try to trigger final value change)
     // Re-render panel content by the header's buttons (NOTE: Do not try to trigger final value change)
@@ -16508,7 +16535,7 @@ var MonthPanelComponent = /** @class */ (function () {
                     selector: 'month-panel',
                     // tslint:disable-line:component-selector
                     exportAs: 'monthPanel',
-                    template: "<div class=\"{{ prefixCls }}\">\r\n  <div>\r\n    <div class=\"{{ prefixCls }}-header\">\r\n      <a\r\n        class=\"{{ prefixCls }}-prev-year-btn\"\r\n        role=\"button\"\r\n        (click)=\"previousYear()\"\r\n        title=\"{{ locale.previousYear }}\"\r\n      ></a>\r\n\r\n      <a\r\n        class=\"{{ prefixCls }}-year-select\"\r\n        role=\"button\"\r\n        (click)=\"yearPanelShow.emit()\"\r\n        title=\"{{ locale.yearSelect }}\"\r\n      >\r\n        <span class=\"{{ prefixCls }}-year-select-content\">{{ value.getYear() }}</span>\r\n        <span class=\"{{ prefixCls }}-year-select-arrow\">x</span>\r\n      </a>\r\n\r\n      <a\r\n        class=\"{{ prefixCls }}-next-year-btn\"\r\n        role=\"button\"\r\n        (click)=\"nextYear()\"\r\n        title=\"{{ locale.nextYear }}\"\r\n      ></a>\r\n    </div>\r\n    <div class=\"{{ prefixCls }}-body\">\r\n      <month-table [disabledDate]=\"disabledDate\" [value]=\"value\" (valueChange)=\"valueChange.emit($event)\"></month-table>\r\n    </div>\r\n  </div>\r\n</div>"
+                    template: "<div class=\"{{ prefixCls }}\">\r\n  <div>\r\n    <div class=\"{{ prefixCls }}-header\">\r\n      <a\r\n        class=\"{{ prefixCls }}-prev-year-btn\"\r\n        role=\"button\"\r\n        (click)=\"previousYear()\"\r\n        title=\"{{ locale.previousYear }}\"\r\n      ></a>\r\n\r\n      <a\r\n        class=\"{{ prefixCls }}-year-select\"\r\n        role=\"button\"\r\n        (click)=\"yearPanelShow.emit()\"\r\n        title=\"{{ locale.yearSelect }}\"\r\n      >\r\n        <span class=\"{{ prefixCls }}-year-select-content\">{{ value.getYear() }}</span>\r\n        <span class=\"{{ prefixCls }}-year-select-arrow\">x</span>\r\n      </a>\r\n\r\n      <a\r\n        class=\"{{ prefixCls }}-next-year-btn\"\r\n        role=\"button\"\r\n        (click)=\"nextYear()\"\r\n        title=\"{{ locale.nextYear }}\"\r\n      ></a>\r\n    </div>\r\n    <div class=\"{{ prefixCls }}-body\">\r\n      <month-table [selectedDate]=\"selectedDate\"\r\n                   [disabledDate]=\"disabledDate\"\r\n                   [value]=\"value\"\r\n                   (valueChange)=\"valueChange.emit($event)\">\r\n      </month-table>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
                 }] }
     ];
     MonthPanelComponent.propDecorators = {
@@ -16594,8 +16621,6 @@ var MonthTableComponent = /** @class */ (function () {
         /** @type {?} */
         var months = [];
         /** @type {?} */
-        var currentMonth = this.value.getMonth();
-        /** @type {?} */
         var today = new CandyDate();
         /** @type {?} */
         var monthValue = 0;
@@ -16624,7 +16649,7 @@ var MonthTableComponent = /** @class */ (function () {
                 cell.classMap = (_a = {},
                     _a[this_1.prefixCls + "-cell"] = true,
                     _a[this_1.prefixCls + "-cell-disabled"] = disabled,
-                    _a[this_1.prefixCls + "-selected-cell"] = cell.month === currentMonth,
+                    _a[this_1.prefixCls + "-selected-cell"] = this_1.selectedDate.getYear() === this_1.value.getYear() && cell.month === this_1.selectedDate.getMonth(),
                     _a[this_1.prefixCls + "-current-cell"] = today.getYear() === this_1.value.getYear() && cell.month === today.getMonth(),
                     _a);
                 monthValue++;
@@ -16668,7 +16693,8 @@ var MonthTableComponent = /** @class */ (function () {
     MonthTableComponent.propDecorators = {
         value: [{ type: Input }],
         valueChange: [{ type: Output }],
-        disabledDate: [{ type: Input }]
+        disabledDate: [{ type: Input }],
+        selectedDate: [{ type: Input }]
     };
     return MonthTableComponent;
 }());
@@ -17559,6 +17585,7 @@ var DateRangePopupComponent = /** @class */ (function () {
 var InnerPopupComponent = /** @class */ (function () {
     function InnerPopupComponent() {
         this.panelModeChange = new EventEmitter();
+        this.selectedDate = null;
         this.headerChange = new EventEmitter(); // Emitted when user changed the header's value
         // Emitted when user changed the header's value
         this.selectDate = new EventEmitter(); // Emitted when the date is selected by click the date panel
@@ -17574,7 +17601,8 @@ var InnerPopupComponent = /** @class */ (function () {
     InnerPopupComponent.prototype.ngOnInit = /**
      * @return {?}
      */
-    function () { };
+    function () {
+    };
     /**
      * @param {?} changes
      * @return {?}
@@ -17586,6 +17614,10 @@ var InnerPopupComponent = /** @class */ (function () {
     function (changes) {
         if (changes.value && !this.value) {
             this.value = new CandyDate();
+            this.selectedDate = null;
+        }
+        else {
+            this.selectedDate = this.value;
         }
     };
     /**
@@ -17614,6 +17646,7 @@ var InnerPopupComponent = /** @class */ (function () {
     function (date) {
         /** @type {?} */
         var value = date instanceof CandyDate ? date : new CandyDate(date);
+        this.selectedDate = value;
         this.selectDate.emit(value);
     };
     InnerPopupComponent.decorators = [
@@ -17623,7 +17656,7 @@ var InnerPopupComponent = /** @class */ (function () {
                     // tslint:disable-next-line:component-selector
                     selector: 'inner-popup',
                     exportAs: 'innerPopup',
-                    template: "<calendar-header\r\n  [(panelMode)]=\"panelMode\"\r\n  (panelModeChange)=\"panelModeChange.emit($event)\"\r\n  [(value)]=\"value\"\r\n  (valueChange)=\"headerChange.emit($event)\"\r\n  [locale]=\"locale\"\r\n  [showTimePicker]=\"showTimePicker\"\r\n  [enablePrev]=\"enablePrev\"\r\n  [enableNext]=\"enableNext\"\r\n></calendar-header>\r\n\r\n<ng-container *ngIf=\"showTimePicker && timeOptions\">\r\n  <nz-time-picker-panel\r\n    [nzInDatePicker]=\"true\"\r\n    [ngModel]=\"value.nativeDate\"\r\n    (ngModelChange)=\"onSelectTime($event)\"\r\n    [format]=\"timeOptions.nzFormat\"\r\n    [nzHourStep]=\"timeOptions.nzHourStep\"\r\n    [nzMinuteStep]=\"timeOptions.nzMinuteStep\"\r\n    [nzSecondStep]=\"timeOptions.nzSecondStep\"\r\n    [nzDisabledHours]=\"timeOptions.nzDisabledHours\"\r\n    [nzDisabledMinutes]=\"timeOptions.nzDisabledMinutes\"\r\n    [nzDisabledSeconds]=\"timeOptions.nzDisabledSeconds\"\r\n    [nzHideDisabledOptions]=\"timeOptions.nzHideDisabledOptions\"\r\n    [nzDefaultOpenValue]=\"timeOptions.nzDefaultOpenValue\"\r\n    [nzAddOn]=\"timeOptions.nzAddOn\"\r\n  ></nz-time-picker-panel>\r\n</ng-container>\r\n\r\n<div class=\"{{ prefixCls }}-body\">\r\n  <date-table\r\n    [locale]=\"locale\"\r\n    [showWeek]=\"showWeek\"\r\n    [value]=\"value\"\r\n    (valueChange)=\"onSelectDate($event)\"\r\n    showWeekNumber=\"false\"\r\n    [disabledDate]=\"disabledDate\"\r\n    [dateRender]=\"dateRender\"\r\n    [selectedValue]=\"selectedValue\"\r\n    [hoverValue]=\"hoverValue\"\r\n    (dayHover)=\"dayHover.emit($event)\"\r\n  ></date-table>\r\n</div>"
+                    template: "<calendar-header\r\n  [(panelMode)]=\"panelMode\"\r\n  (panelModeChange)=\"panelModeChange.emit($event)\"\r\n  [(value)]=\"value\"\r\n  (valueChange)=\"headerChange.emit($event)\"\r\n  [locale]=\"locale\"\r\n  [showTimePicker]=\"showTimePicker\"\r\n  [enablePrev]=\"enablePrev\"\r\n  [enableNext]=\"enableNext\"\r\n></calendar-header>\r\n\r\n<ng-container *ngIf=\"showTimePicker && timeOptions\">\r\n  <nz-time-picker-panel\r\n    [nzInDatePicker]=\"true\"\r\n    [ngModel]=\"value.nativeDate\"\r\n    (ngModelChange)=\"onSelectTime($event)\"\r\n    [format]=\"timeOptions.nzFormat\"\r\n    [nzHourStep]=\"timeOptions.nzHourStep\"\r\n    [nzMinuteStep]=\"timeOptions.nzMinuteStep\"\r\n    [nzSecondStep]=\"timeOptions.nzSecondStep\"\r\n    [nzDisabledHours]=\"timeOptions.nzDisabledHours\"\r\n    [nzDisabledMinutes]=\"timeOptions.nzDisabledMinutes\"\r\n    [nzDisabledSeconds]=\"timeOptions.nzDisabledSeconds\"\r\n    [nzHideDisabledOptions]=\"timeOptions.nzHideDisabledOptions\"\r\n    [nzDefaultOpenValue]=\"timeOptions.nzDefaultOpenValue\"\r\n    [nzAddOn]=\"timeOptions.nzAddOn\"\r\n  ></nz-time-picker-panel>\r\n</ng-container>\r\n\r\n<div class=\"{{ prefixCls }}-body\">\r\n  <date-table\r\n    [locale]=\"locale\"\r\n    [selectedDate]=\"selectedDate\"\r\n    [showWeek]=\"showWeek\"\r\n    [value]=\"value\"\r\n    (valueChange)=\"onSelectDate($event)\"\r\n    showWeekNumber=\"false\"\r\n    [disabledDate]=\"disabledDate\"\r\n    [dateRender]=\"dateRender\"\r\n    [selectedValue]=\"selectedValue\"\r\n    [hoverValue]=\"hoverValue\"\r\n    (dayHover)=\"dayHover.emit($event)\"\r\n  ></date-table>\r\n</div>\r\n"
                 }] }
     ];
     /** @nocollapse */
@@ -17662,6 +17695,7 @@ var YearPanelComponent = /** @class */ (function () {
     function YearPanelComponent() {
         this.valueChange = new EventEmitter();
         this.decadePanelShow = new EventEmitter();
+        this.selectedDate = null;
         this.prefixCls = 'ant-calendar-year-panel';
     }
     Object.defineProperty(YearPanelComponent.prototype, "currentYear", {
@@ -17831,7 +17865,7 @@ var YearPanelComponent = /** @class */ (function () {
                 });
                 cell.classMap = (_a = {},
                     _a[this_1.prefixCls + "-cell"] = true,
-                    _a[this_1.prefixCls + "-selected-cell"] = cell.isCurrent,
+                    _a[this_1.prefixCls + "-selected-cell"] = this_1.selectedDate && this_1.selectedDate.getYear() === cell.year,
                     _a[this_1.prefixCls + "-cell-disabled"] = disabled,
                     _a[this_1.prefixCls + "-last-decade-cell"] = cell.isLowerThanStart,
                     _a[this_1.prefixCls + "-next-decade-cell"] = cell.isBiggerThanEnd,
@@ -17883,7 +17917,8 @@ var YearPanelComponent = /** @class */ (function () {
         value: [{ type: Input }],
         valueChange: [{ type: Output }],
         disabledDate: [{ type: Input }],
-        decadePanelShow: [{ type: Output }]
+        decadePanelShow: [{ type: Output }],
+        selectedDate: [{ type: Input }]
     };
     return YearPanelComponent;
 }());

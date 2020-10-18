@@ -24,6 +24,7 @@ export declare class InnerPopupComponent implements OnInit, OnChanges {
     panelMode: PanelMode;
     readonly panelModeChange: EventEmitter<PanelMode>;
     value: CandyDate;
+    selectedDate: CandyDate;
     readonly headerChange: EventEmitter<CandyDate>;
     readonly selectDate: EventEmitter<CandyDate>;
     readonly selectTime: EventEmitter<CandyDate>;
