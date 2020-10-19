@@ -67,6 +67,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     frontPagination: boolean;
     templateMode: boolean;
     bordered: boolean;
+    centerTable: boolean;
     showPagination: boolean;
     loading: boolean;
     showSizeChanger: boolean;
