@@ -43,6 +43,7 @@ export declare class CmacsCardComponent implements OnInit {
     team: any;
     file: BigFile;
     project: any;
+    projectDateLabel: string;
     todo: any;
     weather: Weather;
     celcius: boolean;
