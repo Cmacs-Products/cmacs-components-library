@@ -1,5 +1,8 @@
-import { EventEmitter, OnInit } from '@angular/core';
-export declare class CmacsEditorComponent implements OnInit {
+import { EventEmitter, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { NzI18nService } from 'ng-zorro-antd';
+export declare class CmacsEditorComponent implements OnDestroy, OnInit {
+    private i18n;
+    private cdr;
     showEditor: boolean;
     oninit: EventEmitter<any>;
     onchange: EventEmitter<any>;
@@ -12,6 +15,8 @@ export declare class CmacsEditorComponent implements OnInit {
     toolbarmobile: string[];
     toolbar: string;
     tinyMceSettings: any;
-    constructor();
+    private destroy$;
+    constructor(i18n: NzI18nService, cdr: ChangeDetectorRef);
     ngOnInit(): void;
+    ngOnDestroy(): void;
 }
