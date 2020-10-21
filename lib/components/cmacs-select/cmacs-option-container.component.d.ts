@@ -10,10 +10,12 @@ import { CmacsOptionGroupComponent } from './cmacs-option-group.component';
 import { CmacsOptionLiComponent } from './cmacs-option-li.component';
 import { CmacsOptionComponent } from './cmacs-option.component';
 import { CmacsSelectService } from './cmacs-select.service';
+import { NzI18nService } from 'ng-zorro-antd';
 export declare class CmacsOptionContainerComponent implements OnDestroy, OnInit {
     nzSelectService: CmacsSelectService;
     private cdr;
     private ngZone;
+    private i18n;
     private destroy$;
     private lastScrollTop;
     inputValue: string;
@@ -26,6 +28,7 @@ export declare class CmacsOptionContainerComponent implements OnDestroy, OnInit 
     showSearch: boolean;
     showSelectAll: boolean;
     selectAllLabel: string;
+    searchLabel: string;
     showCmacsSearch: boolean;
     nzMenuItemSelectedIcon: TemplateRef<void>;
     notFoundContentCustom: TemplateRef<void>;
@@ -35,7 +38,7 @@ export declare class CmacsOptionContainerComponent implements OnDestroy, OnInit 
     setInputValue(value: string): void;
     trackLabel(_index: number, option: CmacsOptionGroupComponent): string | TemplateRef<void>;
     trackValue(_index: number, option: CmacsOptionComponent): any;
-    constructor(nzSelectService: CmacsSelectService, cdr: ChangeDetectorRef, ngZone: NgZone);
+    constructor(nzSelectService: CmacsSelectService, cdr: ChangeDetectorRef, ngZone: NgZone, i18n: NzI18nService);
     ngOnInit(): void;
     isAllChecked(): 0 | 1 | -1;
     updateCheckboxCache(): void;
