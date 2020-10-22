@@ -51,7 +51,6 @@ export declare class CmacsSelectComponent implements ControlValueAccessor, OnIni
     notFoundContent: string;
     notFoundContentShow: boolean;
     allowClear: boolean;
-    userDropdown: boolean;
     open: boolean;
     showSearch: boolean;
     showCmacsSearch: boolean;
@@ -76,6 +75,7 @@ export declare class CmacsSelectComponent implements ControlValueAccessor, OnIni
     maxMultipleCount: number;
     serverSearch: boolean;
     cmacsEditable: boolean;
+    userDropdown: boolean;
     mode: 'default' | 'multiple' | 'tags' | 'tagsSingleSelect';
     filterOption: TFilterOption;
     tagsOut: boolean;

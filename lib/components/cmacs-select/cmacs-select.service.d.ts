@@ -14,6 +14,7 @@ export declare class CmacsSelectService {
     serverSearch: boolean;
     tagsOut: boolean;
     cmacsEditable: boolean;
+    userDropdown: boolean;
     filterOption: TFilterOption;
     mode: 'default' | 'multiple' | 'tags' | 'tagsSingleSelect';
     maxMultipleCount: number;
