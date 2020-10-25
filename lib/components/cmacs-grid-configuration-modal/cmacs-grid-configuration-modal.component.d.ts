@@ -1,8 +1,11 @@
-import { EventEmitter, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { EventEmitter, OnChanges, OnInit, SimpleChanges, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { NzI18nService } from "ng-zorro-antd";
 import { MoveableListItem } from "../cmacs-moveable-list/cmacs-moveable-list.component";
 import { CookieService } from "ngx-cookie-service";
-export declare class CmacsGridConfigurationModalComponent implements OnInit, OnChanges {
+export declare class CmacsGridConfigurationModalComponent implements OnInit, OnChanges, OnDestroy {
     private cookies;
+    private cdr;
+    private i18n;
     visible: boolean;
     modalTitle: string;
     header: string;
@@ -13,7 +16,9 @@ export declare class CmacsGridConfigurationModalComponent implements OnInit, OnC
     visibleChange: EventEmitter<boolean>;
     dataChange: EventEmitter<any>;
     origin: any;
-    constructor(cookies: CookieService);
+    private destroy$;
+    constructor(cookies: CookieService, cdr: ChangeDetectorRef, i18n: NzI18nService);
+    ngOnDestroy(): void;
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
     onDataChange($event: MoveableListItem[]): void;

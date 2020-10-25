@@ -1,7 +1,8 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormControl } from "@angular/forms";
 import { CdkDragDrop } from "@angular/cdk/drag-drop";
 import { CmacsGridTemplateRef } from "../core/interfaces/grid-config";
+import { NzI18nService } from 'ng-zorro-antd';
 export interface MoveableListItem {
     display: string;
     hidden: boolean;
@@ -9,7 +10,10 @@ export interface MoveableListItem {
     draggable: boolean;
     template?: CmacsGridTemplateRef;
 }
-export declare class CmacsMoveableListComponent {
+export declare class CmacsMoveableListComponent implements OnDestroy, OnInit {
+    private cdr;
+    private i18n;
+    private destroy$;
     header: string;
     showLabel: string;
     hideLabel: string;
@@ -21,6 +25,9 @@ export declare class CmacsMoveableListComponent {
     allowEdition: boolean;
     rowSelectedIdx: number;
     formControl: FormControl;
+    constructor(cdr: ChangeDetectorRef, i18n: NzI18nService);
+    ngOnInit(): void;
+    ngOnDestroy(): void;
     handleClick(e: Event): void;
     drop(event: CdkDragDrop<string[]>): void;
     switchToEditMode(row: any, index: number): void;

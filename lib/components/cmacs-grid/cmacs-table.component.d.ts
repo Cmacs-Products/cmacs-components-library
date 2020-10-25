@@ -147,6 +147,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     removeSelection(data: any): void;
     selectMultiple(currentIdx: any): void;
     dblClickRow(data: any): void;
+    transformDate(date: any): string;
 }
 export interface CheckboxSelect {
     data: any;
