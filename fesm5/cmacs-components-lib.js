@@ -50,7 +50,7 @@ import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName
 import { DomSanitizer } from '@angular/platform-browser';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, inject, Injector, Type, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, ComponentFactoryResolver, defineInjectable, NgModule, Type, Injector, inject, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -33306,12 +33306,14 @@ var CmacsTreeSelectComponent = /** @class */ (function (_super) {
 /** @type {?} */
 var moment$4 = moment_;
 var CmacsTimelineDatepickerComponent = /** @class */ (function () {
-    function CmacsTimelineDatepickerComponent(renderer, nzUpdateHostClassService, elementRef, cdr) {
+    function CmacsTimelineDatepickerComponent(renderer, nzUpdateHostClassService, elementRef, i18n, cdr) {
         this.renderer = renderer;
         this.nzUpdateHostClassService = nzUpdateHostClassService;
         this.elementRef = elementRef;
+        this.i18n = i18n;
         this.cdr = cdr;
         this.indexToSelect = 0;
+        this.destroy$ = new Subject();
         this.el = this.elementRef.nativeElement;
         this._selectedIndex = null;
         this._selectedRangeIdxs = [];
@@ -33604,6 +33606,26 @@ var CmacsTimelineDatepickerComponent = /** @class */ (function () {
      * @return {?}
      */
     function () {
+        var _this = this;
+        this.i18n.localeChange.pipe(takeUntil(this.destroy$)).subscribe((/**
+         * @return {?}
+         */
+        function () {
+            switch (_this.i18n.getLocale().locale) {
+                case 'de':
+                    _this.modeOptions[0].title = 'Woche';
+                    _this.modeOptions[1].title = 'Monat';
+                    break;
+                case 'en':
+                    _this.modeOptions[0].title = 'Week';
+                    _this.modeOptions[1].title = 'Month';
+                    break;
+                default:
+                    _this.modeOptions[0].title = 'Week';
+                    _this.modeOptions[1].title = 'Month';
+            }
+            _this.cdr.markForCheck();
+        }));
         this.setClassMap();
         this.updateSelectedMode();
     };
@@ -33698,8 +33720,10 @@ var CmacsTimelineDatepickerComponent = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        return [{ title: 'Jan' }, { title: 'Feb' }, { title: 'Mar' }, { title: 'Apr' }, { title: 'May' }, { title: 'Jun' },
-            { title: 'Jul' }, { title: 'Aug' }, { title: 'Sep' }, { title: 'Oct' }, { title: 'Nov' }, { title: 'Dec' }];
+        return this.i18n.getLocale().locale === 'de' ? [{ title: 'Jan.' }, { title: 'Feb.' }, { title: 'März' }, { title: 'Apr.' }, { title: 'Mai' }, { title: 'Juni' },
+            { title: 'Juli' }, { title: 'Aug.' }, { title: 'Sept.' }, { title: 'Okt.' }, { title: 'Nov.' }, { title: 'Dez.' }] :
+            [{ title: 'Jan' }, { title: 'Feb' }, { title: 'Mar' }, { title: 'Apr' }, { title: 'May' }, { title: 'Jun' },
+                { title: 'Jul' }, { title: 'Aug' }, { title: 'Sep' }, { title: 'Oct' }, { title: 'Nov' }, { title: 'Dec' }];
     };
     /**
      * @param {?} date
@@ -33837,6 +33861,16 @@ var CmacsTimelineDatepickerComponent = /** @class */ (function () {
     function (result) {
         this.dateChange.emit(result);
     };
+    /**
+     * @return {?}
+     */
+    CmacsTimelineDatepickerComponent.prototype.ngOnDestroy = /**
+     * @return {?}
+     */
+    function () {
+        this.destroy$.next();
+        this.destroy$.complete();
+    };
     CmacsTimelineDatepickerComponent.decorators = [
         { type: Component, args: [{
                     selector: 'cmacs-timeline-datepicker',
@@ -33854,6 +33888,7 @@ var CmacsTimelineDatepickerComponent = /** @class */ (function () {
         { type: Renderer2 },
         { type: NzUpdateHostClassService },
         { type: ElementRef },
+        { type: NzI18nService$1 },
         { type: ChangeDetectorRef }
     ]; };
     CmacsTimelineDatepickerComponent.propDecorators = {
@@ -34242,23 +34277,14 @@ var CmacsEditorComponent = /** @class */ (function () {
                 plugins: ['image table textcolor'],
                 toolbar: this.toolbar
             };
-            this.i18n.localeChange.pipe(takeUntil(this.destroy$)).subscribe((/**
-             * @return {?}
-             */
-            function () {
-                switch (_this.i18n.getLocale().locale) {
-                    case 'de':
-                        _this.tinyMceSettings.language = 'de';
-                        break;
-                    case 'en':
-                        _this.tinyMceSettings.language = null;
-                        break;
-                    default:
-                        _this.tinyMceSettings.language = null;
-                }
-                _this.cdr.detectChanges();
-            }));
         }
+        this.i18n.localeChange.pipe(takeUntil(this.destroy$)).subscribe((/**
+         * @return {?}
+         */
+        function () {
+            _this.tinyMceSettings.language = _this.i18n.getLocale().locale === 'de' ? 'de' : null;
+            _this.cdr.detectChanges();
+        }));
         setTimeout((/**
          * @return {?}
          */

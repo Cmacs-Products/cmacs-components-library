@@ -33073,12 +33073,14 @@
     /** @type {?} */
     var moment$4 = moment_;
     var CmacsTimelineDatepickerComponent = /** @class */ (function () {
-        function CmacsTimelineDatepickerComponent(renderer, nzUpdateHostClassService, elementRef, cdr) {
+        function CmacsTimelineDatepickerComponent(renderer, nzUpdateHostClassService, elementRef, i18n$$1, cdr) {
             this.renderer = renderer;
             this.nzUpdateHostClassService = nzUpdateHostClassService;
             this.elementRef = elementRef;
+            this.i18n = i18n$$1;
             this.cdr = cdr;
             this.indexToSelect = 0;
+            this.destroy$ = new rxjs.Subject();
             this.el = this.elementRef.nativeElement;
             this._selectedIndex = null;
             this._selectedRangeIdxs = [];
@@ -33362,6 +33364,25 @@
          * @return {?}
          */
             function () {
+                var _this = this;
+                this.i18n.localeChange.pipe(operators.takeUntil(this.destroy$)).subscribe(( /**
+                 * @return {?}
+                 */function () {
+                    switch (_this.i18n.getLocale().locale) {
+                        case 'de':
+                            _this.modeOptions[0].title = 'Woche';
+                            _this.modeOptions[1].title = 'Monat';
+                            break;
+                        case 'en':
+                            _this.modeOptions[0].title = 'Week';
+                            _this.modeOptions[1].title = 'Month';
+                            break;
+                        default:
+                            _this.modeOptions[0].title = 'Week';
+                            _this.modeOptions[1].title = 'Month';
+                    }
+                    _this.cdr.markForCheck();
+                }));
                 this.setClassMap();
                 this.updateSelectedMode();
             };
@@ -33455,8 +33476,10 @@
          * @return {?}
          */
             function () {
-                return [{ title: 'Jan' }, { title: 'Feb' }, { title: 'Mar' }, { title: 'Apr' }, { title: 'May' }, { title: 'Jun' },
-                    { title: 'Jul' }, { title: 'Aug' }, { title: 'Sep' }, { title: 'Oct' }, { title: 'Nov' }, { title: 'Dec' }];
+                return this.i18n.getLocale().locale === 'de' ? [{ title: 'Jan.' }, { title: 'Feb.' }, { title: 'März' }, { title: 'Apr.' }, { title: 'Mai' }, { title: 'Juni' },
+                    { title: 'Juli' }, { title: 'Aug.' }, { title: 'Sept.' }, { title: 'Okt.' }, { title: 'Nov.' }, { title: 'Dez.' }] :
+                    [{ title: 'Jan' }, { title: 'Feb' }, { title: 'Mar' }, { title: 'Apr' }, { title: 'May' }, { title: 'Jun' },
+                        { title: 'Jul' }, { title: 'Aug' }, { title: 'Sep' }, { title: 'Oct' }, { title: 'Nov' }, { title: 'Dec' }];
             };
         /**
          * @param {?} date
@@ -33589,6 +33612,16 @@
             function (result) {
                 this.dateChange.emit(result);
             };
+        /**
+         * @return {?}
+         */
+        CmacsTimelineDatepickerComponent.prototype.ngOnDestroy = /**
+         * @return {?}
+         */
+            function () {
+                this.destroy$.next();
+                this.destroy$.complete();
+            };
         CmacsTimelineDatepickerComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'cmacs-timeline-datepicker',
@@ -33607,6 +33640,7 @@
                 { type: i0.Renderer2 },
                 { type: i2.NzUpdateHostClassService },
                 { type: i0.ElementRef },
+                { type: ngZorroAntd.NzI18nService },
                 { type: i0.ChangeDetectorRef }
             ];
         };
@@ -33982,22 +34016,13 @@
                         plugins: ['image table textcolor'],
                         toolbar: this.toolbar
                     };
-                    this.i18n.localeChange.pipe(operators.takeUntil(this.destroy$)).subscribe(( /**
-                     * @return {?}
-                     */function () {
-                        switch (_this.i18n.getLocale().locale) {
-                            case 'de':
-                                _this.tinyMceSettings.language = 'de';
-                                break;
-                            case 'en':
-                                _this.tinyMceSettings.language = null;
-                                break;
-                            default:
-                                _this.tinyMceSettings.language = null;
-                        }
-                        _this.cdr.detectChanges();
-                    }));
                 }
+                this.i18n.localeChange.pipe(operators.takeUntil(this.destroy$)).subscribe(( /**
+                 * @return {?}
+                 */function () {
+                    _this.tinyMceSettings.language = _this.i18n.getLocale().locale === 'de' ? 'de' : null;
+                    _this.cdr.detectChanges();
+                }));
                 setTimeout(( /**
                  * @return {?}
                  */function () {

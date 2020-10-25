@@ -1,14 +1,17 @@
-import { AfterContentChecked, ChangeDetectorRef, ElementRef, EventEmitter, OnChanges, OnInit, Renderer2, SimpleChanges } from '@angular/core';
+import { AfterContentChecked, ChangeDetectorRef, ElementRef, EventEmitter, OnChanges, OnInit, Renderer2, SimpleChanges, OnDestroy } from '@angular/core';
 import { NzUpdateHostClassService } from 'ng-zorro-antd/core';
 import { TabChangeEvent } from "../cmacs-tabs/cmacs-tabset.component";
+import { NzI18nService } from "ng-zorro-antd";
 import 'moment/locale/en-ie';
 export declare type CmacsTimelineDatePickerMode = 'week' | 'quarter' | 'month' | 'week-range' | 'month-range';
-export declare class CmacsTimelineDatepickerComponent implements AfterContentChecked, OnInit, OnChanges {
+export declare class CmacsTimelineDatepickerComponent implements AfterContentChecked, OnInit, OnChanges, OnDestroy {
     private renderer;
     private nzUpdateHostClassService;
     private elementRef;
+    private i18n;
     private cdr;
     private indexToSelect;
+    private destroy$;
     private el;
     private _selectedIndex;
     private _selectedRangeIdxs;
@@ -50,7 +53,7 @@ export declare class CmacsTimelineDatepickerComponent implements AfterContentChe
     createChangeEvent(index: number): TabChangeEvent;
     /** Clamps the given index to the bounds of 0 and the tabs length. */
     private clampTabIndex;
-    constructor(renderer: Renderer2, nzUpdateHostClassService: NzUpdateHostClassService, elementRef: ElementRef, cdr: ChangeDetectorRef);
+    constructor(renderer: Renderer2, nzUpdateHostClassService: NzUpdateHostClassService, elementRef: ElementRef, i18n: NzI18nService, cdr: ChangeDetectorRef);
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
     updateSelectedMode(): void;
@@ -68,4 +71,5 @@ export declare class CmacsTimelineDatepickerComponent implements AfterContentChe
         selected: boolean;
     }[];
     getMonth(result: Date): void;
+    ngOnDestroy(): void;
 }
