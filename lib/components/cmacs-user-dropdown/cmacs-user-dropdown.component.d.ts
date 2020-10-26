@@ -41,5 +41,6 @@ export declare class CmacsUserDropdownComponent {
     getBackgroundImage(picture: any): import("@angular/platform-browser").SafeStyle;
     addGuestUser(): void;
     addOption(option: any): void;
+    removeOption(option: any): void;
     highlightValue(elem: any): any[];
 }
