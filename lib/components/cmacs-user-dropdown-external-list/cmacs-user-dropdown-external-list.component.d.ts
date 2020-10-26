@@ -6,6 +6,7 @@ export declare class CmacsUserDropdownExternalListComponent {
     listDividers: any[];
     origin: any[];
     removedOption: EventEmitter<any>;
+    selectedValue: any;
     data: any[];
     constructor(sanitizer: DomSanitizer);
     operateData(values: any[]): any[];
