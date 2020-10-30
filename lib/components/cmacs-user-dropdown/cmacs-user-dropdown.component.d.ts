@@ -13,6 +13,7 @@ export declare class CmacsUserDropdownComponent {
     placeHolder: string;
     selectedValue: any;
     maxTagCount: any;
+    serverSearch: boolean;
     selectedValueChange: EventEmitter<any>;
     onAddGuestUserByEmail: EventEmitter<any>;
     cmacsOnSearch: EventEmitter<any>;
