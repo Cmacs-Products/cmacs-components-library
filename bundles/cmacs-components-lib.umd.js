@@ -22412,7 +22412,7 @@
                  */function () {
                     switch (_this.i18n.getLocale().locale) {
                         case 'de':
-                            _this.selectAllLabel = 'Wählen Sie Alle';
+                            _this.selectAllLabel = 'Alle auswählen';
                             _this.searchLabel = 'Suche';
                             break;
                         case 'en':
