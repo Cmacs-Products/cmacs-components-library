@@ -39,18 +39,18 @@ import { addMonths, addYears, endOfMonth, setDay, setMonth, addDays, differenceI
 import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { AngularDraggableModule } from 'angular2-draggable';
-import { InputBoolean as InputBoolean$1, NzDropdownService, isNotNil as isNotNil$1, NzI18nService as NzI18nService$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
-import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
-import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
 import { GoogleChartsModule } from 'angular-google-charts';
 import * as moment_ from 'moment';
 import 'moment/locale/en-ie';
+import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
+import { InputBoolean as InputBoolean$1, NzDropdownService, isNotNil as isNotNil$1, NzI18nService as NzI18nService$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
+import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
 import { __decorate, __metadata } from 'tslib';
 import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName, NgModel, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, InjectionToken, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, Type, inject, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -29015,10 +29015,17 @@ CmacsEditorComponent.propDecorators = {
 /** @type {?} */
 const moment$5 = moment_;
 class CmacsTimelineChartComponent {
-    constructor() {
+    /**
+     * @param {?} cdr
+     * @param {?} i18n
+     */
+    constructor(cdr, i18n) {
+        this.cdr = cdr;
+        this.i18n = i18n;
         this.legendLabels = [];
         this.colNames = [];
         this.data = [];
+        this.destroy$ = new Subject();
         this.options = {
             colors: ['#2a7cff', '#ffa234'],
             backgroundColor: '#ffffff',
@@ -29049,6 +29056,22 @@ class CmacsTimelineChartComponent {
      */
     ngOnInit() {
         this.operateData();
+        this.i18n.localeChange.pipe(takeUntil(this.destroy$)).subscribe((/**
+         * @return {?}
+         */
+        () => {
+            switch (this.i18n.getLocale().locale) {
+                case 'de':
+                    google.charts.load('current', { 'packages': ['corechart'], 'language': 'de' });
+                    break;
+                case 'en':
+                    google.charts.load('current', { 'packages': ['corechart'], 'language': 'en' });
+                    break;
+                default:
+                    google.charts.load('current', { 'packages': ['corechart'], 'language': 'en' });
+            }
+            this.cdr.markForCheck();
+        }));
     }
     /**
      * @return {?}
@@ -29092,6 +29115,13 @@ class CmacsTimelineChartComponent {
   </div>
 </div>`;
     }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        this.destroy$.next();
+        this.destroy$.complete();
+    }
 }
 CmacsTimelineChartComponent.decorators = [
     { type: Component, args: [{
@@ -29101,7 +29131,10 @@ CmacsTimelineChartComponent.decorators = [
             }] }
 ];
 /** @nocollapse */
-CmacsTimelineChartComponent.ctorParameters = () => [];
+CmacsTimelineChartComponent.ctorParameters = () => [
+    { type: ChangeDetectorRef },
+    { type: NzI18nService$1 }
+];
 CmacsTimelineChartComponent.propDecorators = {
     legendLabels: [{ type: Input }],
     colNames: [{ type: Input }],

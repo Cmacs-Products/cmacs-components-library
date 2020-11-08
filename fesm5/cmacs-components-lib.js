@@ -39,12 +39,12 @@ import { addMonths, addYears, endOfMonth, setDay, setMonth, addDays, differenceI
 import { utils, writeFile, read } from 'xlsx';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { AngularDraggableModule } from 'angular2-draggable';
-import { InputBoolean as InputBoolean$1, NzDropdownService, isNotNil as isNotNil$1, NzI18nService as NzI18nService$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
-import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
-import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
 import { GoogleChartsModule } from 'angular-google-charts';
 import * as moment_ from 'moment';
 import 'moment/locale/en-ie';
+import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
+import { InputBoolean as InputBoolean$1, NzDropdownService, isNotNil as isNotNil$1, NzI18nService as NzI18nService$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
+import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
 import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName, NgModel, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { __assign, __decorate, __metadata, __extends, __spread, __read, __values } from 'tslib';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -34504,10 +34504,13 @@ var CmacsEditorComponent = /** @class */ (function () {
 /** @type {?} */
 var moment$5 = moment_;
 var CmacsTimelineChartComponent = /** @class */ (function () {
-    function CmacsTimelineChartComponent() {
+    function CmacsTimelineChartComponent(cdr, i18n) {
+        this.cdr = cdr;
+        this.i18n = i18n;
         this.legendLabels = [];
         this.colNames = [];
         this.data = [];
+        this.destroy$ = new Subject();
         this.options = {
             colors: ['#2a7cff', '#ffa234'],
             backgroundColor: '#ffffff',
@@ -34544,7 +34547,24 @@ var CmacsTimelineChartComponent = /** @class */ (function () {
      * @return {?}
      */
     function () {
+        var _this = this;
         this.operateData();
+        this.i18n.localeChange.pipe(takeUntil(this.destroy$)).subscribe((/**
+         * @return {?}
+         */
+        function () {
+            switch (_this.i18n.getLocale().locale) {
+                case 'de':
+                    google.charts.load('current', { 'packages': ['corechart'], 'language': 'de' });
+                    break;
+                case 'en':
+                    google.charts.load('current', { 'packages': ['corechart'], 'language': 'en' });
+                    break;
+                default:
+                    google.charts.load('current', { 'packages': ['corechart'], 'language': 'en' });
+            }
+            _this.cdr.markForCheck();
+        }));
     };
     /**
      * @return {?}
@@ -34589,6 +34609,16 @@ var CmacsTimelineChartComponent = /** @class */ (function () {
         var duration = moment$5.duration(moment$5(data[4]).diff(moment$5(data[3])));
         return "<div class=\"cmacs-timeline-chart-tooltip-wrapper\">\n  <div class=\"cmacs-timeline-chart-tooltip-title\">\n    <span class=\"cmacs-timeline-chart-legend-marker\" style=\"background-color: " + color + "\"></span>\n    <span class=\"cmacs-timeline-chart-legend-label\">" + data[1] + "</span>\n  </div>\n  <div class=\"cmacs-timeline-chart-tooltip-project-title\">" + data[0] + ":</div>\n  <div class=\"cmacs-timeline-chart-tooltip-project-dates\">" + moment$5(data[3]).format('MMM, YYYY') + " - " + moment$5(data[4]).format('MMM, YYYY') + "</div>\n  <div class=\"cmacs-timeline-chart-tooltip-project-duration-wrapper\">\n    <div class=\"cmacs-timeline-chart-tooltip-project-duration\">Duration:</div>\n    <div class=\"cmacs-timeline-chart-tooltip-project-duration-date\">" + duration.get('years') + " years, " + duration.get('months') + " months, " + duration.get('days') + " days</div>\n  </div>\n</div>";
     };
+    /**
+     * @return {?}
+     */
+    CmacsTimelineChartComponent.prototype.ngOnDestroy = /**
+     * @return {?}
+     */
+    function () {
+        this.destroy$.next();
+        this.destroy$.complete();
+    };
     CmacsTimelineChartComponent.decorators = [
         { type: Component, args: [{
                     selector: 'cmacs-timeline-chart',
@@ -34597,7 +34627,10 @@ var CmacsTimelineChartComponent = /** @class */ (function () {
                 }] }
     ];
     /** @nocollapse */
-    CmacsTimelineChartComponent.ctorParameters = function () { return []; };
+    CmacsTimelineChartComponent.ctorParameters = function () { return [
+        { type: ChangeDetectorRef },
+        { type: NzI18nService$1 }
+    ]; };
     CmacsTimelineChartComponent.propDecorators = {
         legendLabels: [{ type: Input }],
         colNames: [{ type: Input }],

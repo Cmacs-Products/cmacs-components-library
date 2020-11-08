@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/platform-browser/animations'), require('@angular/common/locales/en'), require('@tinymce/tinymce-angular'), require('html2canvas'), require('lodash/cloneDeep'), require('@angular/router'), require('@angular/cdk/coercion'), require('ng-zorro-antd/icon'), require('ng-zorro-antd/time-picker'), require('ngx-export-as'), require('@swimlane/ngx-charts'), require('@angular/animations'), require('@swimlane/ngx-charts/release/common/label.helper'), require('ng-zorro-antd/menu'), require('@angular/cdk/layout'), require('ng-zorro-antd/grid'), require('ng-zorro-antd/tooltip'), require('@angular/cdk/platform'), require('videogular2/compiled/controls'), require('videogular2/compiled/overlay-play'), require('videogular2/compiled/buffering'), require('videogular2/compiled/core'), require('ng2-tel-input'), require('@angular/cdk/a11y'), require('@angular/cdk/observers'), require('@angular/cdk/bidi'), require('ng-lazyload-image'), require('@angular/common'), require('ng-zorro-antd/i18n'), require('jspdf'), require('jspdf-autotable'), require('ngx-cookie-service'), require('util'), require('@angular/cdk/drag-drop'), require('angular2-signaturepad/signature-pad'), require('core-js'), require('@angular/cdk/keycodes'), require('date-fns'), require('xlsx'), require('angular2-signaturepad'), require('angular2-draggable'), require('ng-zorro-antd'), require('rxjs/operators'), require('rxjs'), require('angular-google-charts'), require('moment'), require('moment/locale/en-ie'), require('@angular/forms'), require('@angular/platform-browser'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core'), require('ng-zorro-antd/core')) :
-    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/platform-browser/animations', '@angular/common/locales/en', '@tinymce/tinymce-angular', 'html2canvas', 'lodash/cloneDeep', '@angular/router', '@angular/cdk/coercion', 'ng-zorro-antd/icon', 'ng-zorro-antd/time-picker', 'ngx-export-as', '@swimlane/ngx-charts', '@angular/animations', '@swimlane/ngx-charts/release/common/label.helper', 'ng-zorro-antd/menu', '@angular/cdk/layout', 'ng-zorro-antd/grid', 'ng-zorro-antd/tooltip', '@angular/cdk/platform', 'videogular2/compiled/controls', 'videogular2/compiled/overlay-play', 'videogular2/compiled/buffering', 'videogular2/compiled/core', 'ng2-tel-input', '@angular/cdk/a11y', '@angular/cdk/observers', '@angular/cdk/bidi', 'ng-lazyload-image', '@angular/common', 'ng-zorro-antd/i18n', 'jspdf', 'jspdf-autotable', 'ngx-cookie-service', 'util', '@angular/cdk/drag-drop', 'angular2-signaturepad/signature-pad', 'core-js', '@angular/cdk/keycodes', 'date-fns', 'xlsx', 'angular2-signaturepad', 'angular2-draggable', 'ng-zorro-antd', 'rxjs/operators', 'rxjs', 'angular-google-charts', 'moment', 'moment/locale/en-ie', '@angular/forms', '@angular/platform-browser', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core', 'ng-zorro-antd/core'], factory) :
-    (factory((global['cmacs-components-lib'] = {}),global.ng.platformBrowser.animations,global.ng.common.locales.en,global.tinymceAngular,global.html2canvas,global.cloneDeep,global.ng.router,global.ng.cdk.coercion,global.icon,global.timePicker,global.i1,global.ngxCharts,global.ng.animations,global.label_helper,global.menu,global.ng.cdk.layout,global.grid,global.tooltip,global.ng.cdk.platform,global.controls,global.overlayPlay,global.buffering,global.core,global.ng2TelInput,global.ng.cdk.a11y,global.ng.cdk.observers,global.ng.cdk.bidi,global.ngLazyloadImage,global.ng.common,global.i18n,global.jsPDF,null,global.ngxCookieService,global.util,global.ng.cdk['drag-drop'],global.signaturePad,global.coreJs,global.ng.cdk.keycodes,global.dateFns,global.XLSX,global.angular2Signaturepad,global.angular2Draggable,global.ngZorroAntd,global.rxjs.operators,global.rxjs,global.angularGoogleCharts,global.moment_,null,global.ng.forms,global.ng.platformBrowser,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core,global.i2));
-}(this, (function (exports,animations,en,tinymceAngular,html2canvas,cloneDeep,router,coercion,icon,timePicker,i1,ngxCharts,animations$1,label_helper,menu,layout,grid,tooltip,platform,controls,overlayPlay,buffering,core,ng2TelInput,a11y,observers,bidi,ngLazyloadImage,common,i18n,jsPDF,jspdfAutotable,ngxCookieService,util,dragDrop,signaturePad,coreJs,keycodes,dateFns,XLSX,angular2Signaturepad,angular2Draggable,ngZorroAntd,operators,rxjs,angularGoogleCharts,moment_,enIe,forms,platformBrowser,i1$1,portal,i0,i2) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/platform-browser/animations'), require('@angular/common/locales/en'), require('@tinymce/tinymce-angular'), require('html2canvas'), require('lodash/cloneDeep'), require('@angular/router'), require('@angular/cdk/coercion'), require('ng-zorro-antd/icon'), require('ng-zorro-antd/time-picker'), require('ngx-export-as'), require('@swimlane/ngx-charts'), require('@angular/animations'), require('@swimlane/ngx-charts/release/common/label.helper'), require('ng-zorro-antd/menu'), require('@angular/cdk/layout'), require('ng-zorro-antd/grid'), require('ng-zorro-antd/tooltip'), require('@angular/cdk/platform'), require('videogular2/compiled/controls'), require('videogular2/compiled/overlay-play'), require('videogular2/compiled/buffering'), require('videogular2/compiled/core'), require('ng2-tel-input'), require('@angular/cdk/a11y'), require('@angular/cdk/observers'), require('@angular/cdk/bidi'), require('ng-lazyload-image'), require('@angular/common'), require('ng-zorro-antd/i18n'), require('jspdf'), require('jspdf-autotable'), require('ngx-cookie-service'), require('util'), require('@angular/cdk/drag-drop'), require('angular2-signaturepad/signature-pad'), require('core-js'), require('@angular/cdk/keycodes'), require('date-fns'), require('xlsx'), require('angular2-signaturepad'), require('angular2-draggable'), require('angular-google-charts'), require('moment'), require('moment/locale/en-ie'), require('rxjs/operators'), require('ng-zorro-antd'), require('rxjs'), require('@angular/forms'), require('@angular/platform-browser'), require('@angular/cdk/overlay'), require('@angular/cdk/portal'), require('@angular/core'), require('ng-zorro-antd/core')) :
+    typeof define === 'function' && define.amd ? define('cmacs-components-lib', ['exports', '@angular/platform-browser/animations', '@angular/common/locales/en', '@tinymce/tinymce-angular', 'html2canvas', 'lodash/cloneDeep', '@angular/router', '@angular/cdk/coercion', 'ng-zorro-antd/icon', 'ng-zorro-antd/time-picker', 'ngx-export-as', '@swimlane/ngx-charts', '@angular/animations', '@swimlane/ngx-charts/release/common/label.helper', 'ng-zorro-antd/menu', '@angular/cdk/layout', 'ng-zorro-antd/grid', 'ng-zorro-antd/tooltip', '@angular/cdk/platform', 'videogular2/compiled/controls', 'videogular2/compiled/overlay-play', 'videogular2/compiled/buffering', 'videogular2/compiled/core', 'ng2-tel-input', '@angular/cdk/a11y', '@angular/cdk/observers', '@angular/cdk/bidi', 'ng-lazyload-image', '@angular/common', 'ng-zorro-antd/i18n', 'jspdf', 'jspdf-autotable', 'ngx-cookie-service', 'util', '@angular/cdk/drag-drop', 'angular2-signaturepad/signature-pad', 'core-js', '@angular/cdk/keycodes', 'date-fns', 'xlsx', 'angular2-signaturepad', 'angular2-draggable', 'angular-google-charts', 'moment', 'moment/locale/en-ie', 'rxjs/operators', 'ng-zorro-antd', 'rxjs', '@angular/forms', '@angular/platform-browser', '@angular/cdk/overlay', '@angular/cdk/portal', '@angular/core', 'ng-zorro-antd/core'], factory) :
+    (factory((global['cmacs-components-lib'] = {}),global.ng.platformBrowser.animations,global.ng.common.locales.en,global.tinymceAngular,global.html2canvas,global.cloneDeep,global.ng.router,global.ng.cdk.coercion,global.icon,global.timePicker,global.i1,global.ngxCharts,global.ng.animations,global.label_helper,global.menu,global.ng.cdk.layout,global.grid,global.tooltip,global.ng.cdk.platform,global.controls,global.overlayPlay,global.buffering,global.core,global.ng2TelInput,global.ng.cdk.a11y,global.ng.cdk.observers,global.ng.cdk.bidi,global.ngLazyloadImage,global.ng.common,global.i18n,global.jsPDF,null,global.ngxCookieService,global.util,global.ng.cdk['drag-drop'],global.signaturePad,global.coreJs,global.ng.cdk.keycodes,global.dateFns,global.XLSX,global.angular2Signaturepad,global.angular2Draggable,global.angularGoogleCharts,global.moment_,null,global.rxjs.operators,global.ngZorroAntd,global.rxjs,global.ng.forms,global.ng.platformBrowser,global.ng.cdk.overlay,global.ng.cdk.portal,global.ng.core,global.i2));
+}(this, (function (exports,animations,en,tinymceAngular,html2canvas,cloneDeep,router,coercion,icon,timePicker,i1,ngxCharts,animations$1,label_helper,menu,layout,grid,tooltip,platform,controls,overlayPlay,buffering,core,ng2TelInput,a11y,observers,bidi,ngLazyloadImage,common,i18n,jsPDF,jspdfAutotable,ngxCookieService,util,dragDrop,signaturePad,coreJs,keycodes,dateFns,XLSX,angular2Signaturepad,angular2Draggable,angularGoogleCharts,moment_,enIe,operators,ngZorroAntd,rxjs,forms,platformBrowser,i1$1,portal,i0,i2) { 'use strict';
 
     en = en && en.hasOwnProperty('default') ? en['default'] : en;
     html2canvas = html2canvas && html2canvas.hasOwnProperty('default') ? html2canvas['default'] : html2canvas;
@@ -34242,10 +34242,13 @@
     /** @type {?} */
     var moment$5 = moment_;
     var CmacsTimelineChartComponent = /** @class */ (function () {
-        function CmacsTimelineChartComponent() {
+        function CmacsTimelineChartComponent(cdr, i18n$$1) {
+            this.cdr = cdr;
+            this.i18n = i18n$$1;
             this.legendLabels = [];
             this.colNames = [];
             this.data = [];
+            this.destroy$ = new rxjs.Subject();
             this.options = {
                 colors: ['#2a7cff', '#ffa234'],
                 backgroundColor: '#ffffff',
@@ -34282,7 +34285,23 @@
          * @return {?}
          */
             function () {
+                var _this = this;
                 this.operateData();
+                this.i18n.localeChange.pipe(operators.takeUntil(this.destroy$)).subscribe(( /**
+                 * @return {?}
+                 */function () {
+                    switch (_this.i18n.getLocale().locale) {
+                        case 'de':
+                            google.charts.load('current', { 'packages': ['corechart'], 'language': 'de' });
+                            break;
+                        case 'en':
+                            google.charts.load('current', { 'packages': ['corechart'], 'language': 'en' });
+                            break;
+                        default:
+                            google.charts.load('current', { 'packages': ['corechart'], 'language': 'en' });
+                    }
+                    _this.cdr.markForCheck();
+                }));
             };
         /**
          * @return {?}
@@ -34326,6 +34345,16 @@
                 var duration = moment$5.duration(moment$5(data[4]).diff(moment$5(data[3])));
                 return "<div class=\"cmacs-timeline-chart-tooltip-wrapper\">\n  <div class=\"cmacs-timeline-chart-tooltip-title\">\n    <span class=\"cmacs-timeline-chart-legend-marker\" style=\"background-color: " + color + "\"></span>\n    <span class=\"cmacs-timeline-chart-legend-label\">" + data[1] + "</span>\n  </div>\n  <div class=\"cmacs-timeline-chart-tooltip-project-title\">" + data[0] + ":</div>\n  <div class=\"cmacs-timeline-chart-tooltip-project-dates\">" + moment$5(data[3]).format('MMM, YYYY') + " - " + moment$5(data[4]).format('MMM, YYYY') + "</div>\n  <div class=\"cmacs-timeline-chart-tooltip-project-duration-wrapper\">\n    <div class=\"cmacs-timeline-chart-tooltip-project-duration\">Duration:</div>\n    <div class=\"cmacs-timeline-chart-tooltip-project-duration-date\">" + duration.get('years') + " years, " + duration.get('months') + " months, " + duration.get('days') + " days</div>\n  </div>\n</div>";
             };
+        /**
+         * @return {?}
+         */
+        CmacsTimelineChartComponent.prototype.ngOnDestroy = /**
+         * @return {?}
+         */
+            function () {
+                this.destroy$.next();
+                this.destroy$.complete();
+            };
         CmacsTimelineChartComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'cmacs-timeline-chart',
@@ -34334,7 +34363,12 @@
                     }] }
         ];
         /** @nocollapse */
-        CmacsTimelineChartComponent.ctorParameters = function () { return []; };
+        CmacsTimelineChartComponent.ctorParameters = function () {
+            return [
+                { type: i0.ChangeDetectorRef },
+                { type: ngZorroAntd.NzI18nService }
+            ];
+        };
         CmacsTimelineChartComponent.propDecorators = {
             legendLabels: [{ type: i0.Input }],
             colNames: [{ type: i0.Input }],
