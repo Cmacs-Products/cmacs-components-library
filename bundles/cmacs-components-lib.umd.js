@@ -2923,7 +2923,7 @@
                  */function () {
                     switch (_this.i18n.getLocale().locale) {
                         case 'de':
-                            _this.format = _this.showTime ? 'dd.MM.yyyy hh:mm' : 'dd.MM.yyyy';
+                            _this.format = _this.showTime ? 'dd.MM.yyyy HH:mm' : 'dd.MM.yyyy';
                             break;
                         case 'en':
                             _this.format = _this.showTime ? 'MM/dd/yyyy hh:mm' : 'MM/dd/yyyy';
