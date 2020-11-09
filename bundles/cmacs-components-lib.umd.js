@@ -2926,10 +2926,10 @@
                             _this.format = _this.showTime ? 'dd.MM.yyyy HH:mm' : 'dd.MM.yyyy';
                             break;
                         case 'en':
-                            _this.format = _this.showTime ? 'MM/dd/yyyy hh:mm' : 'MM/dd/yyyy';
+                            _this.format = _this.showTime ? 'MM/dd/yyyy hh:mm a' : 'MM/dd/yyyy';
                             break;
                         default:
-                            _this.format = _this.showTime ? 'MM/dd/yyyy hh:mm' : 'MM/dd/yyyy';
+                            _this.format = _this.showTime ? 'MM/dd/yyyy hh:mm a' : 'MM/dd/yyyy';
                     }
                     _this.cdr.markForCheck();
                 }));
