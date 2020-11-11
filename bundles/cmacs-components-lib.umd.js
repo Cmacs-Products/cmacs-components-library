@@ -30264,10 +30264,8 @@
                 var _this = this;
                 if (changes.data && this.config) {
                     if (this.expandable) {
-                        if (!this.data.length) {
-                            this.checkboxCache = [];
-                            this.mapOfExpandedData = {};
-                        }
+                        this.mapOfExpandedData = {};
+                        this.checkboxCache = [];
                         this.updateCheckboxCacheTreeData();
                         this.fieldID = this.config.fieldId;
                         /** @type {?} */
