@@ -33933,7 +33933,7 @@
                  */function () {
                     switch (_this.i18n.getLocale().locale) {
                         case 'de':
-                            _this.placeholder = 'Wählen Sie Spalte';
+                            _this.placeholder = 'Spalte auswählen';
                             break;
                         case 'en':
                             _this.placeholder = 'Select Column';
