@@ -170,6 +170,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     isRowSelected(data: any): boolean;
     constructor(cdr: ChangeDetectorRef, i18n: NzI18nService, excelService: ExcelService, datePipe: DatePipe, nzDropdownService: NzDropdownService, cookies: CookieService, utilService: UtilService);
     ngAfterViewInit(): void;
+    getIndexCookie(): boolean;
     setFieldsDefault(): void;
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;

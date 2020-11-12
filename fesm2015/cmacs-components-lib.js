@@ -50,7 +50,7 @@ import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName
 import { DomSanitizer } from '@angular/platform-browser';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, Type, inject, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -6758,7 +6758,7 @@ class CmacsGridComponent {
      * @return {?}
      */
     ngAfterViewInit() {
-        if (this.cookies.check(this.gridID)) {
+        if (this.getIndexCookie() && this.cookies.check(this.gridID)) {
             /** @type {?} */
             const savedConfigStr = this.cookies.get(this.gridID);
             // reset expiration date
@@ -6772,6 +6772,32 @@ class CmacsGridComponent {
             }
         }
         this.cdr.detectChanges();
+    }
+    /**
+     * @return {?}
+     */
+    getIndexCookie() {
+        /** @type {?} */
+        let allowIndexPageCookie = false;
+        /** @type {?} */
+        let consentCookie = this.cookies.get('OptanonConsent');
+        if (consentCookie != "") {
+            /** @type {?} */
+            let groupIndex = consentCookie.indexOf('groups=');
+            /** @type {?} */
+            let groups = consentCookie.substring(groupIndex);
+            //will return somethinglike groups=C0002:0,C0001:1
+            /** @type {?} */
+            let functionalGroupIndex = groups.indexOf('C0009:');
+            if (functionalGroupIndex != -1) {
+                /** @type {?} */
+                const categoryValue = groups.substring(functionalGroupIndex + 6, functionalGroupIndex + 7);
+                if (Number(categoryValue) === 1) {
+                    allowIndexPageCookie = true;
+                }
+            }
+        }
+        return allowIndexPageCookie;
     }
     /**
      * @return {?}
@@ -24080,7 +24106,6 @@ class CmacsGridConfigurationModalComponent {
                 }
             }
         }
-        console.log('IndexCookies', allowIndexPageCookie);
         return allowIndexPageCookie;
     }
     /**
@@ -24088,7 +24113,9 @@ class CmacsGridConfigurationModalComponent {
      * @return {?}
      */
     onVisibleChange($event) {
-        this.dataChange.emit(this.origin);
+        if (this.getIndexCookie()) {
+            this.dataChange.emit(this.origin);
+        }
         this.visibleChange.emit($event);
     }
 }
@@ -24096,7 +24123,7 @@ CmacsGridConfigurationModalComponent.decorators = [
     { type: Component, args: [{
                 selector: 'cmacs-grid-configuration-modal',
                 exportAs: 'cmacsGridConfigurationModal',
-                template: "<cmacs-modal\r\n  [(visible)]=\"visible\"\r\n  [title]=\"modalTitle\"\r\n  modalType=\"interaction\"\r\n  [width]=\"'570px'\"\r\n  [zIndex]=\"10000\"\r\n  [cmacsStyle]=\"cmacsStyle\"\r\n  (visibleChange)=\"onVisibleChange($event)\"\r\n>\r\n  <div style=\"padding: 10px 10px 60px 10px;\">\r\n    <cmacs-moveable-list [header]=\"header\"\r\n                         [(data)]=\"data.fields\"\r\n                         (dataChange)=\"onDataChange($event)\"\r\n    >\r\n    </cmacs-moveable-list>\r\n    <button style=\"margin-top: 20px; float: right\" cmacs-button [type]=\"'primary'\" (click)=\"saveConfig()\">{{saveBtnLabel}}</button>\r\n  </div>\r\n</cmacs-modal>\r\n",
+                template: "<cmacs-modal\r\n  [(visible)]=\"visible\"\r\n  [title]=\"modalTitle\"\r\n  modalType=\"interaction\"\r\n  [width]=\"'570px'\"\r\n  [zIndex]=\"10000\"\r\n  [cmacsStyle]=\"cmacsStyle\"\r\n  (visibleChange)=\"onVisibleChange($event)\"\r\n>\r\n  <div style=\"padding: 10px 10px 60px 10px;\">\r\n    <cmacs-moveable-list [header]=\"header\"\r\n                         [(data)]=\"data.fields\"\r\n                         (dataChange)=\"onDataChange($event)\"\r\n    >\r\n    </cmacs-moveable-list>\r\n    <button *ngIf=\"getIndexCookie()\" style=\"margin-top: 20px; float: right\" cmacs-button [type]=\"'primary'\" (click)=\"saveConfig()\">{{saveBtnLabel}}</button>\r\n  </div>\r\n</cmacs-modal>\r\n",
                 styles: [".cmacs-custom-grid-list{max-width:100%;border:1px solid #dee0e5;display:block;background:#fff;border-radius:4px;overflow:hidden;font-size:12px;font-weight:400;font-style:normal;font-stretch:normal;line-height:1.5;letter-spacing:normal;color:#97a0ae}.cmacs-custom-grid-box{border-bottom:1px solid #dee0e5;box-sizing:border-box;background:#fff;font-size:12px;display:-webkit-box;display:flex;font-weight:400;font-style:normal;font-stretch:normal;letter-spacing:normal;color:#656c79;padding:0 10px}.cdk-drag-preview{box-sizing:border-box;border-radius:4px;box-shadow:0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12);opacity:0}.cdk-drag-placeholder{opacity:1;border-bottom:1px solid #2a7cff!important}.cdk-drag-animating{-webkit-transition:-webkit-transform 250ms cubic-bezier(0,0,.2,1);transition:transform 250ms cubic-bezier(0,0,.2,1);transition:transform 250ms cubic-bezier(0,0,.2,1),-webkit-transform 250ms cubic-bezier(0,0,.2,1)}.cmacs-custom-grid-box:last-child{border:none}.cmacs-custom-grid-list.cdk-drop-list-dragging .cmacs-custom-grid-box:not(.cdk-drag-placeholder){-webkit-transition:-webkit-transform 250ms cubic-bezier(0,0,.2,1);transition:transform 250ms cubic-bezier(0,0,.2,1);transition:transform 250ms cubic-bezier(0,0,.2,1),-webkit-transform 250ms cubic-bezier(0,0,.2,1)}.handler-icon{font-size:20px;color:#bec4cd;position:relative;top:2px;cursor:move}.moveable-title{padding-left:15px;padding-top:7px}.cmacs-custom-grid-title{-webkit-box-align:start;align-items:flex-start;position:relative;top:7px;color:#97a0ae;padding:0 10px 0 35px}.cmacs-custom-grid-lock{margin-left:auto;font-size:20px;padding-right:15px}.cmacs-custom-grid-box:hover{background-color:#f6f7fb}.cmacs-custom-grid-box-selected{background-color:#f2f7ff}.cmacs-custom-grid-box-selected .handler-icon{color:#656c79}.cmacs-custom-grid-input{height:26px;width:371px;position:relative;top:2px;padding-left:7px;font-size:12px;margin-left:7px}.cmacs-custom-grid-input:focus,.cmacs-custom-grid-input:hover{border-color:#2a7cff}.cmacs-custom-hide-show{margin-left:auto;font-size:20px;position:relative;top:3px;padding-right:15px;cursor:pointer}::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-thumb{background-color:#cfd3d9;border-radius:10px}::-webkit-scrollbar-thumb:hover{background-color:#bec4cd;border-radius:10px}"]
             }] }
 ];
@@ -25466,7 +25493,7 @@ class CmacsCompactTableComponent {
      * @return {?}
      */
     ngAfterViewInit() {
-        if (this.cookies.check(this.gridID)) {
+        if (this.getIndexCookie() && this.cookies.check(this.gridID)) {
             /** @type {?} */
             const savedConfigStr = this.cookies.get(this.gridID);
             // reset expiration date
@@ -25480,6 +25507,32 @@ class CmacsCompactTableComponent {
             }
         }
         this.cdr.detectChanges();
+    }
+    /**
+     * @return {?}
+     */
+    getIndexCookie() {
+        /** @type {?} */
+        let allowIndexPageCookie = false;
+        /** @type {?} */
+        let consentCookie = this.cookies.get('OptanonConsent');
+        if (consentCookie != "") {
+            /** @type {?} */
+            let groupIndex = consentCookie.indexOf('groups=');
+            /** @type {?} */
+            let groups = consentCookie.substring(groupIndex);
+            //will return somethinglike groups=C0002:0,C0001:1
+            /** @type {?} */
+            let functionalGroupIndex = groups.indexOf('C0009:');
+            if (functionalGroupIndex != -1) {
+                /** @type {?} */
+                const categoryValue = groups.substring(functionalGroupIndex + 6, functionalGroupIndex + 7);
+                if (Number(categoryValue) === 1) {
+                    allowIndexPageCookie = true;
+                }
+            }
+        }
+        return allowIndexPageCookie;
     }
     /**
      * @return {?}
@@ -28683,7 +28736,7 @@ class CmacsXlsxLoaderComponent {
                 default:
                     this.placeholder = 'Select Column';
             }
-            this.cdr.markForCheck();
+            this.cdr.detectChanges();
         }));
     }
     /**

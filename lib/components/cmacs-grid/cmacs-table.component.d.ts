@@ -133,6 +133,7 @@ export declare class CmacsGridComponent<T = any> implements OnInit, OnChanges, O
     isRowSelected(data: any): boolean;
     constructor(cdr: ChangeDetectorRef, i18n: NzI18nService, exportAsService: ExportAsService, nzDropdownService: NzDropdownService, excelService: ExcelService, utilService: UtilService, datePipe: DatePipe, cookies: CookieService);
     ngAfterViewInit(): void;
+    getIndexCookie(): boolean;
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
     exportToPng(fileName: string): void;
