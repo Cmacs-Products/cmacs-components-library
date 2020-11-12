@@ -24013,17 +24013,17 @@ class CmacsGridConfigurationModalComponent {
         () => {
             switch (this.i18n.getLocale().locale) {
                 case 'de':
-                    this.saveBtnLabel = 'In Cookies speichern';
+                    this.saveBtnLabel = 'Speichern';
                     this.modalTitle = 'Spaltenoptionen';
                     this.header = 'Spaltenoptionen';
                     break;
                 case 'en':
-                    this.saveBtnLabel = 'Save to Cookies';
+                    this.saveBtnLabel = 'Save';
                     this.modalTitle = 'Column Options';
                     this.header = 'Column Options';
                     break;
                 default:
-                    this.saveBtnLabel = 'Save to Cookies';
+                    this.saveBtnLabel = 'Save';
                     this.modalTitle = 'Column Options';
             }
             this.cdr.markForCheck();
@@ -24052,7 +24052,36 @@ class CmacsGridConfigurationModalComponent {
     saveConfig() {
         this.visible = false;
         this.visibleChange.emit(false);
-        this.cookies.set(this.gridID, JSON.stringify(this.data), 365);
+        if (this.getIndexCookie()) {
+            this.cookies.set(this.gridID, JSON.stringify(this.data), 365);
+        }
+    }
+    /**
+     * @return {?}
+     */
+    getIndexCookie() {
+        /** @type {?} */
+        let allowIndexPageCookie = false;
+        /** @type {?} */
+        let consentCookie = this.cookies.get('OptanonConsent');
+        if (consentCookie != "") {
+            /** @type {?} */
+            let groupIndex = consentCookie.indexOf('groups=');
+            /** @type {?} */
+            let groups = consentCookie.substring(groupIndex);
+            //will return somethinglike groups=C0002:0,C0001:1
+            /** @type {?} */
+            let functionalGroupIndex = groups.indexOf('C0009:');
+            if (functionalGroupIndex != -1) {
+                /** @type {?} */
+                const categoryValue = groups.substring(functionalGroupIndex + 6, functionalGroupIndex + 7);
+                if (Number(categoryValue) === 1) {
+                    allowIndexPageCookie = true;
+                }
+            }
+        }
+        console.log('IndexCookies', allowIndexPageCookie);
+        return allowIndexPageCookie;
     }
     /**
      * @param {?} $event
@@ -25554,7 +25583,9 @@ class CmacsCompactTableComponent {
         if (changes.data && this.config) {
             if (this.expandable) {
                 this.mapOfExpandedData = {};
-                this.checkboxCache = [];
+                if (!this.data.length) {
+                    this.checkboxCache = [];
+                }
                 this.updateCheckboxCacheTreeData();
                 this.fieldID = this.config.fieldId;
                 /** @type {?} */

@@ -50,7 +50,7 @@ import { __assign, __decorate, __metadata, __extends, __spread, __read, __values
 import { DomSanitizer } from '@angular/platform-browser';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, inject, Type, Injector, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, Pipe, InjectionToken, ComponentFactoryResolver, defineInjectable, NgModule, inject, Injector, Type, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -28560,17 +28560,17 @@ var CmacsGridConfigurationModalComponent = /** @class */ (function () {
         function () {
             switch (_this.i18n.getLocale().locale) {
                 case 'de':
-                    _this.saveBtnLabel = 'In Cookies speichern';
+                    _this.saveBtnLabel = 'Speichern';
                     _this.modalTitle = 'Spaltenoptionen';
                     _this.header = 'Spaltenoptionen';
                     break;
                 case 'en':
-                    _this.saveBtnLabel = 'Save to Cookies';
+                    _this.saveBtnLabel = 'Save';
                     _this.modalTitle = 'Column Options';
                     _this.header = 'Column Options';
                     break;
                 default:
-                    _this.saveBtnLabel = 'Save to Cookies';
+                    _this.saveBtnLabel = 'Save';
                     _this.modalTitle = 'Column Options';
             }
             _this.cdr.markForCheck();
@@ -28610,7 +28610,39 @@ var CmacsGridConfigurationModalComponent = /** @class */ (function () {
     function () {
         this.visible = false;
         this.visibleChange.emit(false);
-        this.cookies.set(this.gridID, JSON.stringify(this.data), 365);
+        if (this.getIndexCookie()) {
+            this.cookies.set(this.gridID, JSON.stringify(this.data), 365);
+        }
+    };
+    /**
+     * @return {?}
+     */
+    CmacsGridConfigurationModalComponent.prototype.getIndexCookie = /**
+     * @return {?}
+     */
+    function () {
+        /** @type {?} */
+        var allowIndexPageCookie = false;
+        /** @type {?} */
+        var consentCookie = this.cookies.get('OptanonConsent');
+        if (consentCookie != "") {
+            /** @type {?} */
+            var groupIndex = consentCookie.indexOf('groups=');
+            /** @type {?} */
+            var groups = consentCookie.substring(groupIndex);
+            //will return somethinglike groups=C0002:0,C0001:1
+            /** @type {?} */
+            var functionalGroupIndex = groups.indexOf('C0009:');
+            if (functionalGroupIndex != -1) {
+                /** @type {?} */
+                var categoryValue = groups.substring(functionalGroupIndex + 6, functionalGroupIndex + 7);
+                if (Number(categoryValue) === 1) {
+                    allowIndexPageCookie = true;
+                }
+            }
+        }
+        console.log('IndexCookies', allowIndexPageCookie);
+        return allowIndexPageCookie;
     };
     /**
      * @param {?} $event
@@ -30460,7 +30492,9 @@ var CmacsCompactTableComponent = /** @class */ (function () {
         if (changes.data && this.config) {
             if (this.expandable) {
                 this.mapOfExpandedData = {};
-                this.checkboxCache = [];
+                if (!this.data.length) {
+                    this.checkboxCache = [];
+                }
                 this.updateCheckboxCacheTreeData();
                 this.fieldID = this.config.fieldId;
                 /** @type {?} */

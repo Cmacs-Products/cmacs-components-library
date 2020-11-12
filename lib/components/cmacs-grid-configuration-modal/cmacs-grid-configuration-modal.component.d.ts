@@ -23,5 +23,6 @@ export declare class CmacsGridConfigurationModalComponent implements OnInit, OnC
     ngOnChanges(changes: SimpleChanges): void;
     onDataChange($event: MoveableListItem[]): void;
     saveConfig(): void;
+    getIndexCookie(): boolean;
     onVisibleChange($event: any): void;
 }

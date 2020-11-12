@@ -28357,17 +28357,17 @@
                  */function () {
                     switch (_this.i18n.getLocale().locale) {
                         case 'de':
-                            _this.saveBtnLabel = 'In Cookies speichern';
+                            _this.saveBtnLabel = 'Speichern';
                             _this.modalTitle = 'Spaltenoptionen';
                             _this.header = 'Spaltenoptionen';
                             break;
                         case 'en':
-                            _this.saveBtnLabel = 'Save to Cookies';
+                            _this.saveBtnLabel = 'Save';
                             _this.modalTitle = 'Column Options';
                             _this.header = 'Column Options';
                             break;
                         default:
-                            _this.saveBtnLabel = 'Save to Cookies';
+                            _this.saveBtnLabel = 'Save';
                             _this.modalTitle = 'Column Options';
                     }
                     _this.cdr.markForCheck();
@@ -28407,7 +28407,39 @@
             function () {
                 this.visible = false;
                 this.visibleChange.emit(false);
-                this.cookies.set(this.gridID, JSON.stringify(this.data), 365);
+                if (this.getIndexCookie()) {
+                    this.cookies.set(this.gridID, JSON.stringify(this.data), 365);
+                }
+            };
+        /**
+         * @return {?}
+         */
+        CmacsGridConfigurationModalComponent.prototype.getIndexCookie = /**
+         * @return {?}
+         */
+            function () {
+                /** @type {?} */
+                var allowIndexPageCookie = false;
+                /** @type {?} */
+                var consentCookie = this.cookies.get('OptanonConsent');
+                if (consentCookie != "") {
+                    /** @type {?} */
+                    var groupIndex = consentCookie.indexOf('groups=');
+                    /** @type {?} */
+                    var groups = consentCookie.substring(groupIndex);
+                    //will return somethinglike groups=C0002:0,C0001:1
+                    /** @type {?} */
+                    var functionalGroupIndex = groups.indexOf('C0009:');
+                    if (functionalGroupIndex != -1) {
+                        /** @type {?} */
+                        var categoryValue = groups.substring(functionalGroupIndex + 6, functionalGroupIndex + 7);
+                        if (Number(categoryValue) === 1) {
+                            allowIndexPageCookie = true;
+                        }
+                    }
+                }
+                console.log('IndexCookies', allowIndexPageCookie);
+                return allowIndexPageCookie;
             };
         /**
          * @param {?} $event
@@ -30265,7 +30297,9 @@
                 if (changes.data && this.config) {
                     if (this.expandable) {
                         this.mapOfExpandedData = {};
-                        this.checkboxCache = [];
+                        if (!this.data.length) {
+                            this.checkboxCache = [];
+                        }
                         this.updateCheckboxCacheTreeData();
                         this.fieldID = this.config.fieldId;
                         /** @type {?} */
