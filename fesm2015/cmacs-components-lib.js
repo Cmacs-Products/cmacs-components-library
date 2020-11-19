@@ -43,14 +43,14 @@ import { GoogleChartsModule } from 'angular-google-charts';
 import * as moment_ from 'moment';
 import 'moment/locale/en-ie';
 import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMap, filter, share, skip, mapTo, debounceTime, take, pluck } from 'rxjs/operators';
-import { InputBoolean as InputBoolean$1, NzDropdownService, isNotNil as isNotNil$1, NzI18nService as NzI18nService$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
+import { InputBoolean as InputBoolean$1, NzI18nService as NzI18nService$1, NzDropdownService, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
 import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
 import { __decorate, __metadata } from 'tslib';
 import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName, NgModel, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, Pipe, InjectionToken, ViewChildren, Injector, NgModule, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -5412,9 +5412,11 @@ const ROBOTO_BOLD = "AAEAAAASAQAABAAgR0RFRrRCsIIAAhxIAAACYkdQT1P5bkuGAAIerAAAZS5
 class UtilService {
     /**
      * @param {?} exportAsService
+     * @param {?} i18n
      */
-    constructor(exportAsService) {
+    constructor(exportAsService, i18n) {
         this.exportAsService = exportAsService;
+        this.i18n = i18n;
         this.fileName = '';
         this.elemID = '';
         this.exportCompanyName = 'Company Name';
@@ -5588,7 +5590,7 @@ class UtilService {
         /** @type {?} */
         const pageCount = doc.internal.getNumberOfPages();
         /** @type {?} */
-        const date = moment$1().format('MMMM DD, YYYY');
+        const date = this.i18n.getLocale().locale === 'en' ? moment$1().format('MMMM DD, YYYY') : moment$1().locale('DE-DE').format('DD. MMM YYYY');
         doc.setFont('Roboto');
         doc.setTextColor(151, 160, 174);
         doc.setFontSize(8);
@@ -5620,7 +5622,7 @@ class UtilService {
             doc.setFontSize(8);
             doc.setFont('Roboto', 'normal');
             doc.setTextColor(101, 108, 121);
-            doc.text('Page ' + String(i) + ' of ' + String(pageCount), 15, doc.internal.pageSize.height - 10, {
+            doc.text(this.i18n.getLocale().locale === 'en' ? 'Page ' + String(i) + ' of ' + String(pageCount) : 'Seite ' + String(i) + ' von ' + String(pageCount), 15, doc.internal.pageSize.height - 10, {
                 align: 'left'
             });
             doc.text(date, doc.internal.pageSize.width - 15, doc.internal.pageSize.height - 10, {
@@ -6299,9 +6301,10 @@ UtilService.decorators = [
 ];
 /** @nocollapse */
 UtilService.ctorParameters = () => [
-    { type: ExportAsService }
+    { type: ExportAsService },
+    { type: NzI18nService$1 }
 ];
-/** @nocollapse */ UtilService.ngInjectableDef = defineInjectable({ factory: function UtilService_Factory() { return new UtilService(inject(ExportAsService)); }, token: UtilService, providedIn: "root" });
+/** @nocollapse */ UtilService.ngInjectableDef = defineInjectable({ factory: function UtilService_Factory() { return new UtilService(inject(ExportAsService), inject(NzI18nService)); }, token: UtilService, providedIn: "root" });
 
 /**
  * @fileoverview added by tsickle
