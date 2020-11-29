@@ -6371,6 +6371,8 @@ var UtilService = /** @class */ (function () {
         this.exportTableCustomHeight = null;
         this.exportCompanyLogoConfig = null;
         this.exportTitleConfig = null;
+        this.pageBreakTitle = null;
+        this.exportNewTitle = '';
         this._exportCompleted = new Subject();
         this.exportCompleted = this._exportCompleted.asObservable();
         this.cmacsPdfImages = {
@@ -6595,9 +6597,16 @@ var UtilService = /** @class */ (function () {
             doc.addImage(logo, 'PNG', this.exportCompanyLogoConfig && this.exportCompanyLogoConfig.x ? this.exportCompanyLogoConfig.x : 15, this.exportCompanyLogoConfig && this.exportCompanyLogoConfig.y ? this.exportCompanyLogoConfig.y : 14, this.exportCompanyLogoUrl !== 'assets/PToB_logo.png' ? dim.width : 40, this.exportCompanyLogoUrl !== 'assets/PToB_logo.png' ? dim.height : 5, undefined, 'FAST');
             doc.setFontSize(9);
             doc.setTextColor(59, 63, 70);
-            doc.text(this.exportTitle, this.exportTitleConfig && this.exportTitleConfig.x ? this.exportTitleConfig.x : 15, this.exportCompanyLogoUrl !== 'assets/PToB_logo.png' ? dim.height + 20 : 30, {
-                align: 'left'
-            });
+            if (this.pageBreakTitle && i >= this.pageBreakTitle) {
+                doc.text(this.exportNewTitle, this.exportTitleConfig && this.exportTitleConfig.x ? this.exportTitleConfig.x : 15, this.exportCompanyLogoUrl !== 'assets/PToB_logo.png' ? dim.height + 20 : 30, {
+                    align: 'left'
+                });
+            }
+            else {
+                doc.text(this.exportTitle, this.exportTitleConfig && this.exportTitleConfig.x ? this.exportTitleConfig.x : 15, this.exportCompanyLogoUrl !== 'assets/PToB_logo.png' ? dim.height + 20 : 30, {
+                    align: 'left'
+                });
+            }
             doc.setFontSize(8);
             if ((/** @type {?} */ ((/** @type {?} */ (this.exportSubtitle))))) {
                 for (var j = 0; j < this.exportSubtitle.length; j++) {
@@ -6617,6 +6626,8 @@ var UtilService = /** @class */ (function () {
                 align: 'right'
             });
         }
+        this.exportNewTitle = '';
+        this.pageBreakTitle = null;
     };
     /**
      * @param {?} doc
@@ -6905,6 +6916,13 @@ var UtilService = /** @class */ (function () {
                 try {
                     for (var _b = __values(exportConfig.exportMultipleData), _c = _b.next(); !_c.done; _c = _b.next()) {
                         var item = _c.value;
+                        if (item.newPage) {
+                            doc.addPage();
+                        }
+                        if (item.newTitle) {
+                            this.pageBreakTitle = doc.internal.getNumberOfPages();
+                            this.exportNewTitle = item.newTitle;
+                        }
                         this.drawTableContent(doc, item);
                     }
                 }

@@ -17,6 +17,8 @@ export declare class UtilService {
     exportTableCustomHeight: any;
     exportCompanyLogoConfig: any;
     exportTitleConfig: any;
+    pageBreakTitle: any;
+    exportNewTitle: string;
     private _exportCompleted;
     exportCompleted: import("rxjs").Observable<any>;
     private cmacsPdfImages;
