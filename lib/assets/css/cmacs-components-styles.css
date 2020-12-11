@@ -13,6 +13,15 @@
   border-radius: 3px;
 }
 
+.ant-input:disabled,
+.ant-input-disabled,
+.ant-input[disabled] {
+    color: #bec4cd !important;
+    border: solid 1px #dee0e5;
+    background-color: #f6f7fb !important;
+    cursor: default !important;
+}
+
 .ant-dropdown-menu nz-divider {
   margin: 0 !important;
 }

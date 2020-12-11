@@ -33,6 +33,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     }>;
     pageSizeOptions: number[];
     virtualScroll: boolean;
+    exclusiveSelect: boolean;
     logs: boolean;
     expandable: boolean;
     smartTable: boolean;
