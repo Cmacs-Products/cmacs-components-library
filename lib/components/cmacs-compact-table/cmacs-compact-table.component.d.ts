@@ -206,6 +206,9 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
         [`cmacs-compact-table-logs-header-th`]: boolean;
         [`cmacs-compact-table-logs-header-th-font`]: boolean;
     };
+    getCustomClass(field: Field): {
+        [x: string]: boolean;
+    };
     getMaxWidth(field: Field, item: any, i: number): string;
     getMaxWidthFieldViewMode(field: Field, i: number): "18px" | "0px";
     getStickyWidth(position: any): string;
