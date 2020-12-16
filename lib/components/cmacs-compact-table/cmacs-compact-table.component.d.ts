@@ -14,6 +14,7 @@ import { CmacsInputNumberComponent } from "../cmacs-input-number/cmacs-input-num
 import { UtilService } from '../core/services/util.service';
 import 'moment/locale/en-ie';
 import { CmacsDateTimePickerComponent } from '../cmacs-datetime-picker/cmacs-datetime-picker.component';
+import { SelectionModel } from '@angular/cdk/collections';
 export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnChanges, OnDestroy, AfterViewInit {
     private cdr;
     private i18n;
@@ -26,6 +27,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     headerBottomStyle: {};
     private destroy$;
     nzTableComponent: NzTableComponent;
+    selection: SelectionModel<any>;
     size: NzSizeMDSType;
     showTotal: TemplateRef<{
         $implicit: number;
