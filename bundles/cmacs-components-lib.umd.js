@@ -31402,7 +31402,12 @@
             function (item) {
                 if (!this.checkboxSelect) {
                     this.selection.toggle(item[this.fieldID]);
-                    this.selectionChange.emit([item]);
+                    if (this.selection.isSelected(item[this.fieldID])) {
+                        this.selectionChange.emit([item]);
+                    }
+                    else {
+                        this.selectionChange.emit([]);
+                    }
                 }
             };
         CmacsCompactTableComponent.decorators = [
