@@ -217,4 +217,5 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     getStickyWidthRight(position: any): string;
     getTableComponent(): NzTableComponent<any>;
     transformDate(date: any): string;
+    selectTreeSingle(item: any): void;
 }
