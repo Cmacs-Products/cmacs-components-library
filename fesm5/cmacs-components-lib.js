@@ -51,7 +51,7 @@ import { __assign, __decorate, __metadata, __extends, __spread, __read, __values
 import { DomSanitizer } from '@angular/platform-browser';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, InjectionToken, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, Type, Injector, inject, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, InjectionToken, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, inject, Type, Injector, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -27437,7 +27437,6 @@ var CmacsTabsNavComponent = /** @class */ (function () {
              * @return {?}
              */
             function () {
-                console.log('here');
                 if (_this.showPagination) {
                     _this.updatePagination();
                     _this.cdr.markForCheck();
@@ -27495,7 +27494,6 @@ var CmacsTabsNavComponent = /** @class */ (function () {
     function () {
         /** @type {?} */
         var isEnabled = this.tabListScrollWidthHeightPix > this.tabListScrollOffSetWidthHeight;
-        console.log('isEnable', isEnabled);
         if (!isEnabled) {
             this.scrollDistance = 0;
         }
@@ -34712,12 +34710,11 @@ var CmacsTimelineChartComponent = /** @class */ (function () {
         this.cdr = cdr;
         this.i18n = i18n;
         this.legendLabels = [];
-        this.colors = null;
         this.colNames = [];
         this.data = [];
         this.destroy$ = new Subject();
         this.options = {
-            colors: this.colors ? this.colors : ['#2a7cff', '#ffa234'],
+            colors: ['#2a7cff', '#ffa234'],
             backgroundColor: '#ffffff',
             avoidOverlappingGridLines: false,
             tooltip: {
@@ -34732,6 +34729,18 @@ var CmacsTimelineChartComponent = /** @class */ (function () {
             }
         };
     }
+    Object.defineProperty(CmacsTimelineChartComponent.prototype, "colors", {
+        set: /**
+         * @param {?} colors
+         * @return {?}
+         */
+        function (colors) {
+            this.options.colors = colors;
+            this.cdr.detectChanges();
+        },
+        enumerable: true,
+        configurable: true
+    });
     /**
      * @param {?} changes
      * @return {?}
@@ -34838,11 +34847,11 @@ var CmacsTimelineChartComponent = /** @class */ (function () {
     ]; };
     CmacsTimelineChartComponent.propDecorators = {
         legendLabels: [{ type: Input }],
-        colors: [{ type: Input }],
         colNames: [{ type: Input }],
         data: [{ type: Input }],
         width: [{ type: Input }],
-        height: [{ type: Input }]
+        height: [{ type: Input }],
+        colors: [{ type: Input }]
     };
     return CmacsTimelineChartComponent;
 }());

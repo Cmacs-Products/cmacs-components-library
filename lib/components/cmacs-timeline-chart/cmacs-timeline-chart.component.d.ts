@@ -5,14 +5,13 @@ export declare class CmacsTimelineChartComponent implements OnInit, OnChanges, O
     private cdr;
     private i18n;
     legendLabels: any[];
-    colors: any;
     colNames: Array<any>;
     data: Array<any>;
     width: number;
     height: number;
     private destroy$;
     options: {
-        colors: any;
+        colors: string[];
         backgroundColor: string;
         avoidOverlappingGridLines: boolean;
         tooltip: {
@@ -26,6 +25,7 @@ export declare class CmacsTimelineChartComponent implements OnInit, OnChanges, O
             };
         };
     };
+    colors: any;
     ngOnChanges(changes: SimpleChanges): void;
     ngOnInit(): void;
     constructor(cdr: ChangeDetectorRef, i18n: NzI18nService);

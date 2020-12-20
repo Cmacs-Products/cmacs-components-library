@@ -27250,7 +27250,6 @@
                         .subscribe(( /**
                  * @return {?}
                  */function () {
-                        console.log('here');
                         if (_this.showPagination) {
                             _this.updatePagination();
                             _this.cdr.markForCheck();
@@ -27308,7 +27307,6 @@
             function () {
                 /** @type {?} */
                 var isEnabled = this.tabListScrollWidthHeightPix > this.tabListScrollOffSetWidthHeight;
-                console.log('isEnable', isEnabled);
                 if (!isEnabled) {
                     this.scrollDistance = 0;
                 }
@@ -34453,12 +34451,11 @@
             this.cdr = cdr;
             this.i18n = i18n;
             this.legendLabels = [];
-            this.colors = null;
             this.colNames = [];
             this.data = [];
             this.destroy$ = new rxjs.Subject();
             this.options = {
-                colors: this.colors ? this.colors : ['#2a7cff', '#ffa234'],
+                colors: ['#2a7cff', '#ffa234'],
                 backgroundColor: '#ffffff',
                 avoidOverlappingGridLines: false,
                 tooltip: {
@@ -34473,6 +34470,17 @@
                 }
             };
         }
+        Object.defineProperty(CmacsTimelineChartComponent.prototype, "colors", {
+            set: /**
+             * @param {?} colors
+             * @return {?}
+             */ function (colors) {
+                this.options.colors = colors;
+                this.cdr.detectChanges();
+            },
+            enumerable: true,
+            configurable: true
+        });
         /**
          * @param {?} changes
          * @return {?}
@@ -34579,11 +34587,11 @@
         };
         CmacsTimelineChartComponent.propDecorators = {
             legendLabels: [{ type: i0.Input }],
-            colors: [{ type: i0.Input }],
             colNames: [{ type: i0.Input }],
             data: [{ type: i0.Input }],
             width: [{ type: i0.Input }],
-            height: [{ type: i0.Input }]
+            height: [{ type: i0.Input }],
+            colors: [{ type: i0.Input }]
         };
         return CmacsTimelineChartComponent;
     }());
