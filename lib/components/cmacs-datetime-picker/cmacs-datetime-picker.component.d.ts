@@ -7,7 +7,7 @@ export declare class CmacsDateTimePickerComponent implements ControlValueAccesso
     private renderer;
     private updateCls;
     cdr: ChangeDetectorRef;
-    private _disabled;
+    _disabled: boolean;
     private _value;
     private _allowEmpty;
     private _autoFocus;
