@@ -5,13 +5,14 @@ export declare class CmacsTimelineChartComponent implements OnInit, OnChanges, O
     private cdr;
     private i18n;
     legendLabels: any[];
+    colors: any;
     colNames: Array<any>;
     data: Array<any>;
     width: number;
     height: number;
     private destroy$;
     options: {
-        colors: string[];
+        colors: any;
         backgroundColor: string;
         avoidOverlappingGridLines: boolean;
         tooltip: {

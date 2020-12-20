@@ -23054,8 +23054,10 @@ class CmacsTabsNavComponent {
              * @return {?}
              */
             () => {
+                console.log('here');
                 if (this.showPagination) {
                     this.updatePagination();
+                    this.cdr.markForCheck();
                 }
                 this.alignInkBarToSelectedTab();
             }));
@@ -23098,6 +23100,7 @@ class CmacsTabsNavComponent {
     checkPaginationEnabled() {
         /** @type {?} */
         const isEnabled = this.tabListScrollWidthHeightPix > this.tabListScrollOffSetWidthHeight;
+        console.log('isEnable', isEnabled);
         if (!isEnabled) {
             this.scrollDistance = 0;
         }
@@ -23105,6 +23108,9 @@ class CmacsTabsNavComponent {
             this.cdr.markForCheck();
         }
         this.showPaginationControls = isEnabled;
+        if (this.showPaginationControls) {
+            this.cdr.detectChanges();
+        }
     }
     /**
      * @param {?} labelIndex
@@ -29193,11 +29199,12 @@ class CmacsTimelineChartComponent {
         this.cdr = cdr;
         this.i18n = i18n;
         this.legendLabels = [];
+        this.colors = null;
         this.colNames = [];
         this.data = [];
         this.destroy$ = new Subject();
         this.options = {
-            colors: ['#2a7cff', '#ffa234'],
+            colors: this.colors ? this.colors : ['#2a7cff', '#ffa234'],
             backgroundColor: '#ffffff',
             avoidOverlappingGridLines: false,
             tooltip: {
@@ -29307,6 +29314,7 @@ CmacsTimelineChartComponent.ctorParameters = () => [
 ];
 CmacsTimelineChartComponent.propDecorators = {
     legendLabels: [{ type: Input }],
+    colors: [{ type: Input }],
     colNames: [{ type: Input }],
     data: [{ type: Input }],
     width: [{ type: Input }],
