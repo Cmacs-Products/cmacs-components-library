@@ -47,11 +47,11 @@ import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMa
 import { InputBoolean as InputBoolean$1, NzI18nService as NzI18nService$1, NzDropdownService, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
 import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
 import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName, NgModel, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { __extends, __assign, __decorate, __metadata, __spread, __read, __values } from 'tslib';
+import { __assign, __decorate, __metadata, __extends, __spread, __read, __values } from 'tslib';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, InjectionToken, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, Type, Injector, inject, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, Type, Injector, inject, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -7030,7 +7030,7 @@ var UtilService = /** @class */ (function () {
             },
             columnStyles: exportConfig.columnStyles,
             startY: exportConfig.customPdf && exportConfig.customPdf.margin ? exportConfig.customPdf.margin.top : null,
-            margin: exportConfig.customPdf ? exportConfig.customPdf.margin :
+            margin: exportConfig.customPdf && exportConfig.customPdf.margin ? exportConfig.customPdf.margin :
                 {
                     top: (/** @type {?} */ ((/** @type {?} */ (this.exportSubtitle)))) && this.exportSubtitle.length ? 45 : 35,
                     bottom: 30,
@@ -7117,6 +7117,18 @@ var UtilService = /** @class */ (function () {
                     s.lineColor = '#DEE0E5';
                     s.lineWidth = 0.1;
                     doc.line(docdata.cell.x, docdata.table.cursor.y, docdata.cell.x + docdata.cell.width, docdata.table.cursor.y, s);
+                }
+                if ((exportConfig.hideBorders === null || exportConfig.hideBorders === undefined || !exportConfig.hideBorders)) {
+                    if (exportConfig.customPdf && exportConfig.customPdf.columns) {
+                        /** @type {?} */
+                        var customColumn = exportConfig.customPdf.columns.find((/**
+                         * @param {?} e
+                         * @return {?}
+                         */
+                        function (e) { return e.marginLeft && e.dataKey === docdata.column.dataKey; }));
+                        if (customColumn)
+                            doc.line(docdata.table.cursor.x, docdata.cell.y, docdata.table.cursor.x, docdata.cell.y + docdata.cell.height, s);
+                    }
                 }
             }),
             willDrawCell: (/**

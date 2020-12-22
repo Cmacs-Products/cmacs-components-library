@@ -7072,7 +7072,7 @@
                     },
                     columnStyles: exportConfig.columnStyles,
                     startY: exportConfig.customPdf && exportConfig.customPdf.margin ? exportConfig.customPdf.margin.top : null,
-                    margin: exportConfig.customPdf ? exportConfig.customPdf.margin :
+                    margin: exportConfig.customPdf && exportConfig.customPdf.margin ? exportConfig.customPdf.margin :
                         {
                             top: ( /** @type {?} */(( /** @type {?} */(this.exportSubtitle)))) && this.exportSubtitle.length ? 45 : 35,
                             bottom: 30,
@@ -7159,6 +7159,17 @@
                             s.lineColor = '#DEE0E5';
                             s.lineWidth = 0.1;
                             doc.line(docdata.cell.x, docdata.table.cursor.y, docdata.cell.x + docdata.cell.width, docdata.table.cursor.y, s);
+                        }
+                        if ((exportConfig.hideBorders === null || exportConfig.hideBorders === undefined || !exportConfig.hideBorders)) {
+                            if (exportConfig.customPdf && exportConfig.customPdf.columns) {
+                                /** @type {?} */
+                                var customColumn = exportConfig.customPdf.columns.find(( /**
+                                 * @param {?} e
+                                 * @return {?}
+                                 */function (e) { return e.marginLeft && e.dataKey === docdata.column.dataKey; }));
+                                if (customColumn)
+                                    doc.line(docdata.table.cursor.x, docdata.cell.y, docdata.table.cursor.x, docdata.cell.y + docdata.cell.height, s);
+                            }
                         }
                     }),
                     willDrawCell: ( /**
