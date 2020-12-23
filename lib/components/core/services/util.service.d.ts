@@ -37,7 +37,7 @@ export declare class UtilService {
     images: any[];
     exportTablev2(exportConfig: any): void;
     exportBigImage(doc: any, bigImage: any): void;
-    drawTableContent(doc: any, exportConfig: any): void;
+    drawTableContent(doc: any, exportConfig: any, finalY?: any): void;
     drawLegendTable(doc: any, legend: any): void;
     getColumns(exportConfig: any): any[];
     getRows(exportConfig: any): any[];

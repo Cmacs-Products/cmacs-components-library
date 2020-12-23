@@ -47,7 +47,7 @@ import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMa
 import { InputBoolean as InputBoolean$1, NzI18nService as NzI18nService$1, NzDropdownService, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
 import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
 import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName, NgModel, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { __assign, __decorate, __metadata, __extends, __spread, __read, __values } from 'tslib';
+import { __extends, __decorate, __metadata, __spread, __assign, __read, __values } from 'tslib';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
@@ -6581,7 +6581,7 @@ var UtilService = /** @class */ (function () {
         /** @type {?} */
         var pageCount = doc.internal.getNumberOfPages();
         /** @type {?} */
-        var date = this.i18n.getLocale().locale === 'en' ? moment$1().format('MMMM DD, YYYY') : moment$1().locale('DE-DE').format('DD. MMM YYYY');
+        var date = this.i18n.getLocale().locale !== 'de' ? moment$1().format('MMMM DD, YYYY') : moment$1().locale('DE-DE').format('DD. MMM YYYY');
         doc.setFont('Roboto');
         doc.setTextColor(151, 160, 174);
         doc.setFontSize(8);
@@ -6917,14 +6917,19 @@ var UtilService = /** @class */ (function () {
                 try {
                     for (var _b = __values(exportConfig.exportMultipleData), _c = _b.next(); !_c.done; _c = _b.next()) {
                         var item = _c.value;
+                        /** @type {?} */
+                        var finalY = null;
                         if (item.newPage) {
                             doc.addPage();
+                        }
+                        else {
+                            finalY = item.startY !== null && item.startY !== undefined ? doc.lastAutoTable.finalY + item.startY : null;
                         }
                         if (item.newTitle) {
                             this.pageBreakTitle = doc.internal.getNumberOfPages();
                             this.exportNewTitle = item.newTitle;
                         }
-                        this.drawTableContent(doc, item);
+                        this.drawTableContent(doc, item, finalY);
                     }
                 }
                 catch (e_4_1) { e_4 = { error: e_4_1 }; }
@@ -6992,15 +6997,18 @@ var UtilService = /** @class */ (function () {
     /**
      * @param {?} doc
      * @param {?} exportConfig
+     * @param {?=} finalY
      * @return {?}
      */
     UtilService.prototype.drawTableContent = /**
      * @param {?} doc
      * @param {?} exportConfig
+     * @param {?=} finalY
      * @return {?}
      */
-    function (doc, exportConfig) {
+    function (doc, exportConfig, finalY) {
         var _this = this;
+        if (finalY === void 0) { finalY = null; }
         /** @type {?} */
         var columns = (/** @type {?} */ ((/** @type {?} */ (exportConfig.columns)))) ? exportConfig.columns : this.getColumns(exportConfig);
         /** @type {?} */
@@ -7029,10 +7037,11 @@ var UtilService = /** @class */ (function () {
                 fontSize: 9
             },
             columnStyles: exportConfig.columnStyles,
-            startY: exportConfig.customPdf && exportConfig.customPdf.margin ? exportConfig.customPdf.margin.top : null,
+            tableWidth: exportConfig.tableWidth ? exportConfig.tableWidth : 'auto',
+            startY: exportConfig.customPdf && exportConfig.customPdf.margin ? exportConfig.customPdf.margin.top : finalY,
             margin: exportConfig.customPdf && exportConfig.customPdf.margin ? exportConfig.customPdf.margin :
                 {
-                    top: (/** @type {?} */ ((/** @type {?} */ (this.exportSubtitle)))) && this.exportSubtitle.length ? 45 : 35,
+                    top: (/** @type {?} */ ((/** @type {?} */ (this.exportSubtitle)))) && this.exportSubtitle.length ? 45 : (/** @type {?} */ ((/** @type {?} */ (this.exportTitle)))) && this.exportTitle.length ? 35 : 30,
                     bottom: 30,
                     left: 15,
                     right: 15
@@ -7155,7 +7164,7 @@ var UtilService = /** @class */ (function () {
              */
             function (data) {
                 // Reseting top margin. The change will be reflected only after print the first page.
-                data.settings.margin = { top: (/** @type {?} */ ((/** @type {?} */ (_this.exportSubtitle)))) && _this.exportSubtitle.length ? 45 : 35, bottom: 30, left: 15, right: 15 };
+                data.settings.margin = { top: (/** @type {?} */ ((/** @type {?} */ (_this.exportSubtitle)))) && _this.exportSubtitle.length ? 45 : (/** @type {?} */ ((/** @type {?} */ (_this.exportTitle)))) && _this.exportTitle.length ? 35 : 30, bottom: 30, left: 15, right: 15 };
             })
         });
     };
@@ -7432,9 +7441,9 @@ var UtilService = /** @class */ (function () {
      */
     function (dim) {
         /** @type {?} */
-        var maxWidth = 40;
+        var maxWidth = 30;
         /** @type {?} */
-        var maxHeight = 20;
+        var maxHeight = 10;
         /** @type {?} */
         var ratio = 0;
         /** @type {?} */

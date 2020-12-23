@@ -51,7 +51,7 @@ import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName
 import { DomSanitizer } from '@angular/platform-browser';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, InjectionToken, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, Type, inject, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, InjectionToken, Pipe, Injector, NgModule, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -5593,7 +5593,7 @@ class UtilService {
         /** @type {?} */
         const pageCount = doc.internal.getNumberOfPages();
         /** @type {?} */
-        const date = this.i18n.getLocale().locale === 'en' ? moment$1().format('MMMM DD, YYYY') : moment$1().locale('DE-DE').format('DD. MMM YYYY');
+        const date = this.i18n.getLocale().locale !== 'de' ? moment$1().format('MMMM DD, YYYY') : moment$1().locale('DE-DE').format('DD. MMM YYYY');
         doc.setFont('Roboto');
         doc.setTextColor(151, 160, 174);
         doc.setFontSize(8);
@@ -5865,14 +5865,19 @@ class UtilService {
         if (!exportConfig.hideTable) {
             if (exportConfig.exportMutiple) {
                 for (let item of exportConfig.exportMultipleData) {
+                    /** @type {?} */
+                    let finalY = null;
                     if (item.newPage) {
                         doc.addPage();
+                    }
+                    else {
+                        finalY = item.startY !== null && item.startY !== undefined ? doc.lastAutoTable.finalY + item.startY : null;
                     }
                     if (item.newTitle) {
                         this.pageBreakTitle = doc.internal.getNumberOfPages();
                         this.exportNewTitle = item.newTitle;
                     }
-                    this.drawTableContent(doc, item);
+                    this.drawTableContent(doc, item, finalY);
                 }
             }
             else {
@@ -5927,9 +5932,10 @@ class UtilService {
     /**
      * @param {?} doc
      * @param {?} exportConfig
+     * @param {?=} finalY
      * @return {?}
      */
-    drawTableContent(doc, exportConfig) {
+    drawTableContent(doc, exportConfig, finalY = null) {
         /** @type {?} */
         const columns = (/** @type {?} */ ((/** @type {?} */ (exportConfig.columns)))) ? exportConfig.columns : this.getColumns(exportConfig);
         /** @type {?} */
@@ -5958,10 +5964,11 @@ class UtilService {
                 fontSize: 9
             },
             columnStyles: exportConfig.columnStyles,
-            startY: exportConfig.customPdf && exportConfig.customPdf.margin ? exportConfig.customPdf.margin.top : null,
+            tableWidth: exportConfig.tableWidth ? exportConfig.tableWidth : 'auto',
+            startY: exportConfig.customPdf && exportConfig.customPdf.margin ? exportConfig.customPdf.margin.top : finalY,
             margin: exportConfig.customPdf && exportConfig.customPdf.margin ? exportConfig.customPdf.margin :
                 {
-                    top: (/** @type {?} */ ((/** @type {?} */ (this.exportSubtitle)))) && this.exportSubtitle.length ? 45 : 35,
+                    top: (/** @type {?} */ ((/** @type {?} */ (this.exportSubtitle)))) && this.exportSubtitle.length ? 45 : (/** @type {?} */ ((/** @type {?} */ (this.exportTitle)))) && this.exportTitle.length ? 35 : 30,
                     bottom: 30,
                     left: 15,
                     right: 15
@@ -6084,7 +6091,7 @@ class UtilService {
              */
             (data) => {
                 // Reseting top margin. The change will be reflected only after print the first page.
-                data.settings.margin = { top: (/** @type {?} */ ((/** @type {?} */ (this.exportSubtitle)))) && this.exportSubtitle.length ? 45 : 35, bottom: 30, left: 15, right: 15 };
+                data.settings.margin = { top: (/** @type {?} */ ((/** @type {?} */ (this.exportSubtitle)))) && this.exportSubtitle.length ? 45 : (/** @type {?} */ ((/** @type {?} */ (this.exportTitle)))) && this.exportTitle.length ? 35 : 30, bottom: 30, left: 15, right: 15 };
             })
         });
     }
@@ -6312,9 +6319,9 @@ class UtilService {
      */
     scaleDimension(dim) {
         /** @type {?} */
-        const maxWidth = 40;
+        const maxWidth = 30;
         /** @type {?} */
-        const maxHeight = 20;
+        const maxHeight = 10;
         /** @type {?} */
         let ratio = 0;
         /** @type {?} */
