@@ -51,7 +51,7 @@ import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName
 import { DomSanitizer } from '@angular/platform-browser';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, InjectionToken, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, Type, inject, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, NgModule, Injector, ComponentFactoryResolver, defineInjectable, inject, Type, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -29258,22 +29258,29 @@ class CmacsTimelineChartComponent {
      */
     ngOnInit() {
         this.operateData();
+        this.checkLang();
         this.i18n.localeChange.pipe(takeUntil(this.destroy$)).subscribe((/**
          * @return {?}
          */
         () => {
-            switch (this.i18n.getLocale().locale) {
-                case 'de':
-                    google.charts.load('46', { 'packages': ['corechart'], 'language': 'de' });
-                    break;
-                case 'en':
-                    google.charts.load('46', { 'packages': ['corechart'], 'language': 'en' });
-                    break;
-                default:
-                    google.charts.load('46', { 'packages': ['corechart'], 'language': 'en' });
-            }
-            this.cdr.markForCheck();
+            this.checkLang();
         }));
+    }
+    /**
+     * @return {?}
+     */
+    checkLang() {
+        switch (this.i18n.getLocale().locale) {
+            case 'de':
+                google.charts.load('46', { 'packages': ['corechart'], 'language': 'de' });
+                break;
+            case 'en':
+                google.charts.load('46', { 'packages': ['corechart'], 'language': 'en' });
+                break;
+            default:
+                google.charts.load('46', { 'packages': ['corechart'], 'language': 'en' });
+        }
+        this.cdr.markForCheck();
     }
     /**
      * @return {?}

@@ -34526,21 +34526,31 @@
             function () {
                 var _this = this;
                 this.operateData();
+                this.checkLang();
                 this.i18n.localeChange.pipe(operators.takeUntil(this.destroy$)).subscribe(( /**
                  * @return {?}
                  */function () {
-                    switch (_this.i18n.getLocale().locale) {
-                        case 'de':
-                            google.charts.load('46', { 'packages': ['corechart'], 'language': 'de' });
-                            break;
-                        case 'en':
-                            google.charts.load('46', { 'packages': ['corechart'], 'language': 'en' });
-                            break;
-                        default:
-                            google.charts.load('46', { 'packages': ['corechart'], 'language': 'en' });
-                    }
-                    _this.cdr.markForCheck();
+                    _this.checkLang();
                 }));
+            };
+        /**
+         * @return {?}
+         */
+        CmacsTimelineChartComponent.prototype.checkLang = /**
+         * @return {?}
+         */
+            function () {
+                switch (this.i18n.getLocale().locale) {
+                    case 'de':
+                        google.charts.load('46', { 'packages': ['corechart'], 'language': 'de' });
+                        break;
+                    case 'en':
+                        google.charts.load('46', { 'packages': ['corechart'], 'language': 'en' });
+                        break;
+                    default:
+                        google.charts.load('46', { 'packages': ['corechart'], 'language': 'en' });
+                }
+                this.cdr.markForCheck();
             };
         /**
          * @return {?}

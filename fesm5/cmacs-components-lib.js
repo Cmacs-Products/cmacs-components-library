@@ -51,7 +51,7 @@ import { __assign, __decorate, __metadata, __extends, __spread, __read, __values
 import { DomSanitizer } from '@angular/platform-browser';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, ViewChildren, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, inject, Type, Injector, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, InjectionToken, Pipe, ViewChildren, ComponentFactoryResolver, defineInjectable, NgModule, Type, Injector, inject, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -34785,22 +34785,32 @@ var CmacsTimelineChartComponent = /** @class */ (function () {
     function () {
         var _this = this;
         this.operateData();
+        this.checkLang();
         this.i18n.localeChange.pipe(takeUntil(this.destroy$)).subscribe((/**
          * @return {?}
          */
         function () {
-            switch (_this.i18n.getLocale().locale) {
-                case 'de':
-                    google.charts.load('46', { 'packages': ['corechart'], 'language': 'de' });
-                    break;
-                case 'en':
-                    google.charts.load('46', { 'packages': ['corechart'], 'language': 'en' });
-                    break;
-                default:
-                    google.charts.load('46', { 'packages': ['corechart'], 'language': 'en' });
-            }
-            _this.cdr.markForCheck();
+            _this.checkLang();
         }));
+    };
+    /**
+     * @return {?}
+     */
+    CmacsTimelineChartComponent.prototype.checkLang = /**
+     * @return {?}
+     */
+    function () {
+        switch (this.i18n.getLocale().locale) {
+            case 'de':
+                google.charts.load('46', { 'packages': ['corechart'], 'language': 'de' });
+                break;
+            case 'en':
+                google.charts.load('46', { 'packages': ['corechart'], 'language': 'en' });
+                break;
+            default:
+                google.charts.load('46', { 'packages': ['corechart'], 'language': 'en' });
+        }
+        this.cdr.markForCheck();
     };
     /**
      * @return {?}

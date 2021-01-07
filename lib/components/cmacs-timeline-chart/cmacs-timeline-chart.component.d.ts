@@ -28,6 +28,7 @@ export declare class CmacsTimelineChartComponent implements OnInit, OnChanges, O
     colors: any;
     ngOnChanges(changes: SimpleChanges): void;
     ngOnInit(): void;
+    checkLang(): void;
     constructor(cdr: ChangeDetectorRef, i18n: NzI18nService);
     operateData(): void;
     createCustomTooltip(data: any, color: any): string;
