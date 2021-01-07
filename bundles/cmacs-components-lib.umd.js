@@ -35258,7 +35258,7 @@
                             ngLazyloadImage.LazyLoadImageModule,
                             angular2Signaturepad.SignaturePadModule,
                             angular2Draggable.AngularDraggableModule,
-                            angularGoogleCharts.GoogleChartsModule
+                            angularGoogleCharts.GoogleChartsModule.forRoot(null, 'current'),
                         ],
                         exports: __spread([
                             CmacsUserDropdownExternalListComponent,
