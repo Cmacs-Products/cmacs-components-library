@@ -34531,13 +34531,13 @@
                  */function () {
                     switch (_this.i18n.getLocale().locale) {
                         case 'de':
-                            google.charts.load('current', { 'packages': ['corechart'], 'language': 'de' });
+                            google.charts.load('46', { 'packages': ['corechart'], 'language': 'de' });
                             break;
                         case 'en':
-                            google.charts.load('current', { 'packages': ['corechart'], 'language': 'en' });
+                            google.charts.load('46', { 'packages': ['corechart'], 'language': 'en' });
                             break;
                         default:
-                            google.charts.load('current', { 'packages': ['corechart'], 'language': 'en' });
+                            google.charts.load('46', { 'packages': ['corechart'], 'language': 'en' });
                     }
                     _this.cdr.markForCheck();
                 }));
@@ -35258,7 +35258,7 @@
                             ngLazyloadImage.LazyLoadImageModule,
                             angular2Signaturepad.SignaturePadModule,
                             angular2Draggable.AngularDraggableModule,
-                            angularGoogleCharts.GoogleChartsModule.forRoot(null, 'current'),
+                            angularGoogleCharts.GoogleChartsModule.forRoot(null, '46'),
                         ],
                         exports: __spread([
                             CmacsUserDropdownExternalListComponent,
