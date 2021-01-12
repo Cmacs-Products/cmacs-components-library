@@ -99,6 +99,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     extra: string | TemplateRef<void>;
     contextmenu: string | TemplateRef<void>;
     indentSize: number;
+    virtualMaxBufferPx: number;
     dropdown: NzDropdownContextComponent;
     selected: boolean;
     formatter: (value: number) => any;
