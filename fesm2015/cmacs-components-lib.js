@@ -29322,7 +29322,7 @@ class CmacsTimelineChartComponent {
   <div class="cmacs-timeline-chart-tooltip-project-dates">${this.i18n.getLocale().locale === 'de' ? `${moment$5(data[3]).locale('de').format('MMM YYYY')} - ${moment$5(data[4]).locale('de').format('MMM YYYY')}` : `${moment$5(data[3]).format('MMM, YYYY')} - ${moment$5(data[4]).format('MMM, YYYY')}`} </div>
   <div class="cmacs-timeline-chart-tooltip-project-duration-wrapper">
     <div class="cmacs-timeline-chart-tooltip-project-duration">${this.i18n.getLocale().locale === 'de' ? 'Dauer' : 'Duration'}:</div>
-    <div class="cmacs-timeline-chart-tooltip-project-duration-date">${duration.get('years')} ${this.i18n.getLocale().locale === 'de' ? 'jahre' : 'years'}, ${duration.get('months')} ${this.i18n.getLocale().locale === 'de' ? 'monate' : 'months'}, ${duration.get('days')} ${this.i18n.getLocale().locale === 'de' ? 'tage' : 'days'}</div>
+    <div class="cmacs-timeline-chart-tooltip-project-duration-date">${duration.get('years')} ${this.i18n.getLocale().locale === 'de' ? 'Jahre' : 'years'}, ${duration.get('months')} ${this.i18n.getLocale().locale === 'de' ? 'Monate' : 'months'}, ${duration.get('days')} ${this.i18n.getLocale().locale === 'de' ? 'Tage' : 'days'}</div>
   </div>
 </div>`;
     }
