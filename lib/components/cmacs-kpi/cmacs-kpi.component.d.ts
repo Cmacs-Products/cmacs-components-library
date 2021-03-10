@@ -19,6 +19,7 @@ export declare class CmacsKpiComponent implements AfterViewInit {
     type: 'line' | 'doughnut';
     width: number;
     showTotalCount: boolean;
+    fixed: number;
     canvasRef: ElementRef;
     constructor(sanitizer: DomSanitizer);
     ngAfterViewInit(): void;
