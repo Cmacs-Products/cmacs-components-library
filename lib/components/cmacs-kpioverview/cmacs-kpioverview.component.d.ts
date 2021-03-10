@@ -6,6 +6,7 @@ export declare class CmacsKPIOverviewComponent implements OnChanges {
     data: KPI[];
     title: string;
     view: number[];
+    fixed: number;
     minWidth: number;
     fontChartNumber: number;
     chartWidth: number;
