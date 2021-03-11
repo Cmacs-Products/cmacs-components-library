@@ -36,12 +36,13 @@ export declare class CmacsTimelineDatepickerComponent implements AfterContentChe
     readonly dateChange: EventEmitter<Date>;
     readonly rangeChange: EventEmitter<Date[]>;
     modeChange: EventEmitter<any>;
+    showPreviousYearWeek: boolean;
     modeOptions: {
         title: string;
         value: string;
         selected: boolean;
     }[];
-    selectedIndex: number | null;
+    selectedIndex: any;
     selectedRangeIdxs: number[];
     date: Date | null;
     range: Date[];
@@ -49,6 +50,7 @@ export declare class CmacsTimelineDatepickerComponent implements AfterContentChe
     getWeek(result: Date): void;
     setClassMap(): void;
     getWeekNumber(date: any): number;
+    getWeeksInYearCustom(date: any): number;
     clickLabel(index: number, disabled: boolean): void;
     createChangeEvent(index: number): TabChangeEvent;
     /** Clamps the given index to the bounds of 0 and the tabs length. */
@@ -72,4 +74,5 @@ export declare class CmacsTimelineDatepickerComponent implements AfterContentChe
     }[];
     getMonth(result: Date): void;
     ngOnDestroy(): void;
+    checkActiveTab(index: number): boolean;
 }

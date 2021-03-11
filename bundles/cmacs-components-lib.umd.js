@@ -33442,7 +33442,7 @@
             this.elementRef = elementRef;
             this.i18n = i18n;
             this.cdr = cdr;
-            this.indexToSelect = 0;
+            this.indexToSelect = null;
             this.destroy$ = new rxjs.Subject();
             this.el = this.elementRef.nativeElement;
             this._selectedIndex = null;
@@ -33453,7 +33453,7 @@
             this.mode = 'week';
             this.restrictMode = false;
             this.ranged = false;
-            this.weekLocale = { week: { dow: 0, doy: 6 } };
+            this.weekLocale = { week: { dow: 1, doy: 4 } };
             this.locale = 'en';
             this.onNextClick = new i0.EventEmitter();
             this.onPrevClick = new i0.EventEmitter();
@@ -33462,6 +33462,7 @@
             this.dateChange = new i0.EventEmitter();
             this.rangeChange = new i0.EventEmitter();
             this.modeChange = new i0.EventEmitter();
+            this.showPreviousYearWeek = false;
             this.modeOptions = [
                 { title: 'Week', value: 'week', selected: true },
                 { title: 'Month', value: 'month', selected: false }
@@ -33510,6 +33511,8 @@
                 if (value !== null) {
                     this._date = value;
                     if (this.mode === 'week') {
+                        this.listOfNzTabComponent = this.getWeeksInYear(this.date);
+                        this.showPreviousYearWeek = false;
                         this.selectedIndex = this.getWeekNumber(value) - 1;
                     }
                     else if (this.mode === 'month') {
@@ -33531,12 +33534,13 @@
              * @return {?}
              */ function (range) {
                 if (range !== null && range.length) {
+                    this.showPreviousYearWeek = false;
                     this._range = range;
                     /** @type {?} */
-                    var stDateYear = dateFns.getISOYear(this.range[0]);
+                    var stDateYear = moment$4(this.range[0]).year();
                     /** @type {?} */
-                    var ndDateYear = dateFns.getISOYear(this.range[1]);
-                    if (dateFns.getISOYear(this.range[0]) === dateFns.getISOYear(this.range[1])) {
+                    var ndDateYear = moment$4(this.range[1]).year();
+                    if (moment$4(this.range[0]).year() === moment$4(this.range[1]).year()) {
                         if (this.mode === 'week') {
                             this.selectedRangeIdxs = [this.getWeekNumber(this._range[0]) - 1, this.getWeekNumber(this._range[1]) - 1];
                         }
@@ -33549,7 +33553,7 @@
                             /** @type {?} */
                             var sumWeeks = 0;
                             while (ndDateYear - stDateYear) {
-                                sumWeeks += dateFns.getISOWeeksInYear(new Date(stDateYear));
+                                sumWeeks += this.getWeeksInYearCustom(new Date(stDateYear));
                                 stDateYear++;
                             }
                             this.selectedRangeIdxs = [this.getWeekNumber(this._range[0]) - 1, sumWeeks + this.getWeekNumber(this._range[1]) - 1];
@@ -33618,13 +33622,29 @@
                 var month = moment$4(date).month();
                 moment$4.updateLocale(this.locale, this.weekLocale);
                 /** @type {?} */
-                var week = moment$4(date).week();
+                var week = moment$4(date).isoWeek();
                 /** @type {?} */
-                var weeksInYear = dateFns.getISOWeeksInYear(date);
+                var weeksInYear = this.getWeeksInYearCustom(date);
                 if (month === 11 && week === 1) {
                     return weeksInYear;
                 }
+                if (month === 0 && week === 53) {
+                    this.showPreviousYearWeek = true;
+                    return -1;
+                }
                 return week;
+            };
+        /**
+         * @param {?} date
+         * @return {?}
+         */
+        CmacsTimelineDatepickerComponent.prototype.getWeeksInYearCustom = /**
+         * @param {?} date
+         * @return {?}
+         */
+            function (date) {
+                moment$4.updateLocale(this.locale, this.weekLocale);
+                return moment$4(date).isoWeeksInYear();
             };
         /**
          * @param {?} index
@@ -33643,7 +33663,7 @@
                         if (this.mode === 'week') {
                             /** @type {?} */
                             var d = new Date(this._date.getFullYear(), 0, 1);
-                            d.setDate(d.getDate() + (index * 7));
+                            d.setDate(d.getDate() + ((index + 1) * 7));
                             this.date = d;
                             this.dateChange.emit(this.date);
                         }
@@ -33659,7 +33679,7 @@
                         if (this.mode === 'week') {
                             /** @type {?} */
                             var d = new Date(this._date.getFullYear(), 0, 1);
-                            d.setDate(d.getDate() + (index * 7));
+                            d.setDate(d.getDate() + ((index + 1) * 7));
                             this.range = [d, d];
                             this.rangeChange.emit(this.range);
                         }
@@ -33796,9 +33816,9 @@
                     this.date = this.date;
                     if (this.range.length) {
                         /** @type {?} */
-                        var stDateYear = dateFns.getISOYear(this.range[0]);
+                        var stDateYear = moment$4(this.range[0]).year();
                         /** @type {?} */
-                        var ndDateYear = dateFns.getISOYear(this.range[1]);
+                        var ndDateYear = moment$4(this.range[1]).year();
                         if (stDateYear !== ndDateYear) {
                             /** @type {?} */
                             var rangedMonth = this.getDefaultMonths();
@@ -33815,9 +33835,9 @@
                 else if (this.mode === 'week' && this.ranged) {
                     if (this.range.length) {
                         /** @type {?} */
-                        var stDateYear = dateFns.getISOYear(this.range[0]);
+                        var stDateYear = moment$4(this.range[0]).year();
                         /** @type {?} */
-                        var ndDateYear = dateFns.getISOYear(this.range[1]);
+                        var ndDateYear = moment$4(this.range[1]).year();
                         if (stDateYear !== ndDateYear) {
                             /** @type {?} */
                             var rangedWeeks = this.getWeeksInYear(new Date(stDateYear));
@@ -33856,7 +33876,7 @@
                 /** @type {?} */
                 var temp = [];
                 /** @type {?} */
-                var length = dateFns.getISOWeeksInYear(date);
+                var length = this.getWeeksInYearCustom(date);
                 for (var i = 0; i < length; i++) {
                     temp.push({ title: this.formatWeekNumber(i + 1) });
                 }
@@ -33985,11 +34005,27 @@
                 this.destroy$.next();
                 this.destroy$.complete();
             };
+        /**
+         * @param {?} index
+         * @return {?}
+         */
+        CmacsTimelineDatepickerComponent.prototype.checkActiveTab = /**
+         * @param {?} index
+         * @return {?}
+         */
+            function (index) {
+                if (!this.ranged) {
+                    return this.selectedIndex >= 0 && !this.showPreviousYearWeek && this.selectedIndex === index;
+                }
+                else {
+                    return this.selectedRangeIdxs.length ? index >= this.selectedRangeIdxs[0] && index <= this.selectedRangeIdxs[1] : false;
+                }
+            };
         CmacsTimelineDatepickerComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'cmacs-timeline-datepicker',
                         exportAs: 'cmacsTimelineDatepicker',
-                        template: "<div class=\"cmacs-timeline-item cmacs-timeline-item-dropdown\" *ngIf=\"!restrictMode\">\r\n  <cmacs-dropdown [trigger]=\"'click'\" [cmacsOpen]=\"true\" style=\"display: inline-flex\">\r\n    <a cmacs-dropdown class=\"cmacs-dropdowm-timeline-datepicker\">\r\n      <div class=\"cmacs-open-dropdown-wrapper\" style=\"width: 80px;\">\r\n        {{getSelected().length ? getSelected()[0].title : 'Select'}} <i class=\"iconArrowLarge-Solid-Down\"></i>\r\n      </div>\r\n    </a>\r\n\r\n    <ul cmacs-menu style=\"min-width: 125px\">\r\n      <li *ngFor=\"let option of modeOptions; index as i\" cmacs-menu-item (click)=\"customSelect(i)\">\r\n        <i [style.opacity]=\"option.selected ? 1 : 0\" nz-icon type=\"check\"></i>\r\n        <span>{{option.title}}</span>\r\n      </li>\r\n    </ul>\r\n  </cmacs-dropdown>\r\n</div>\r\n\r\n<div class=\"cmacs-timeline-item cmacs-timeline-item-dropdown\" *ngIf=\"restrictMode\">\r\n  <a class=\"cmacs-dropdowm-timeline-datepicker\">\r\n    <div class=\"cmacs-open-dropdown-wrapper\" style=\"width: 80px;\">\r\n      {{getSelected().length ? getSelected()[0].title : 'Select'}}\r\n    </div>\r\n  </a>\r\n</div>\r\n\r\n<div class=\"cmacs-timeline-item\" style=\"margin-right: 10px; max-width: calc(100% - 160px - 16px);\">\r\n  <div nz-tabs-nav\r\n       role=\"tablist\"\r\n       tabindex=\"0\"\r\n       class=\"ant-tabs-bar ant-tabs-top-bar cmacs-timeline-datepicker-slider\"\r\n       [nzType]=\"'line'\"\r\n       [nzShowPagination]=\"true\"\r\n       [nzPositionMode]=\"'horizontal'\"\r\n       [nzAnimated]=\"true\"\r\n       [nzHideBar]=\"true\"\r\n       [selectedIndex]=\"selectedIndex\"\r\n       (nzOnNextClick)=\"onNextClick.emit()\"\r\n       (nzOnPrevClick)=\"onPrevClick.emit()\">\r\n    <div nz-tab-label\r\n         role=\"tab\"\r\n         [style.margin-right.px]=\"gutter\"\r\n         class=\"cmacs-timeline-datepicker-label\"\r\n         [class.ant-tabs-tab-active]=\"!ranged ? selectedIndex === i :\r\n         selectedRangeIdxs.length ? i >= selectedRangeIdxs[0] && i <= selectedRangeIdxs[1] : 0\"\r\n         [disabled]=\"tab.disabled\"\r\n         (click)=\"clickLabel(i,tab.disabled)\"\r\n         *ngFor=\"let tab of listOfNzTabComponent; let i = index\">\r\n      <ng-container *cmacsStringTemplateOutlet=\"tab.title\">{{ tab.title }}</ng-container>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"cmacs-timeline-item\">\r\n  <ng-container *ngIf=\"mode === 'week' && !ranged\">\r\n    <cmacs-week-picker [(ngModel)]=\"date\" (ngModelChange)=\"getWeek($event)\" placeHolder=\"\"></cmacs-week-picker>\r\n  </ng-container>\r\n  <ng-container *ngIf=\"mode === 'month' && !ranged\">\r\n    <cmacs-month-picker\r\n      [(ngModel)]=\"date\"\r\n      (ngModelChange)=\"getMonth($event)\"\r\n      placeHolder=\"\"\r\n    ></cmacs-month-picker>\r\n  </ng-container>\r\n  <ng-container *ngIf=\"(mode === 'week' || mode === 'month') && ranged\">\r\n    <cmacs-range-picker\r\n      [dropdownClassName]=\"'cmacs-timeline-range-popup'\"\r\n      [ranges]=\"range\"\r\n      [mode]=\"'week'\"\r\n      ngModel\r\n      placeHolder=\"\"\r\n      (ngModelChange)=\"onChange($event)\">\r\n    </cmacs-range-picker>\r\n  </ng-container>\r\n</div>\r\n",
+                        template: "<div class=\"cmacs-timeline-item cmacs-timeline-item-dropdown\" *ngIf=\"!restrictMode\">\r\n  <cmacs-dropdown [trigger]=\"'click'\" [cmacsOpen]=\"true\" style=\"display: inline-flex\">\r\n    <a cmacs-dropdown class=\"cmacs-dropdowm-timeline-datepicker\">\r\n      <div class=\"cmacs-open-dropdown-wrapper\" style=\"width: 80px;\">\r\n        {{getSelected().length ? getSelected()[0].title : 'Select'}} <i class=\"iconArrowLarge-Solid-Down\"></i>\r\n      </div>\r\n    </a>\r\n\r\n    <ul cmacs-menu style=\"min-width: 125px\">\r\n      <li *ngFor=\"let option of modeOptions; index as i\" cmacs-menu-item (click)=\"customSelect(i)\">\r\n        <i [style.opacity]=\"option.selected ? 1 : 0\" nz-icon type=\"check\"></i>\r\n        <span>{{option.title}}</span>\r\n      </li>\r\n    </ul>\r\n  </cmacs-dropdown>\r\n</div>\r\n\r\n<div class=\"cmacs-timeline-item cmacs-timeline-item-dropdown\" *ngIf=\"restrictMode\">\r\n  <a class=\"cmacs-dropdowm-timeline-datepicker\">\r\n    <div class=\"cmacs-open-dropdown-wrapper\" style=\"width: 80px;\">\r\n      {{getSelected().length ? getSelected()[0].title : 'Select'}}\r\n    </div>\r\n  </a>\r\n</div>\r\n\r\n<div class=\"cmacs-timeline-item\" style=\"margin-right: 10px; max-width: calc(100% - 160px - 16px);\">\r\n  <div nz-tabs-nav\r\n       role=\"tablist\"\r\n       tabindex=\"0\"\r\n       class=\"ant-tabs-bar ant-tabs-top-bar cmacs-timeline-datepicker-slider\"\r\n       [nzType]=\"'line'\"\r\n       [nzShowPagination]=\"true\"\r\n       [nzPositionMode]=\"'horizontal'\"\r\n       [nzAnimated]=\"true\"\r\n       [nzHideBar]=\"true\"\r\n       [selectedIndex]=\"selectedIndex\"\r\n       (nzOnNextClick)=\"onNextClick.emit()\"\r\n       (nzOnPrevClick)=\"onPrevClick.emit()\">\r\n    <div nz-tab-label\r\n         role=\"tab\"\r\n         [style.margin-right.px]=\"gutter\"\r\n         class=\"cmacs-timeline-datepicker-label\"\r\n         [class.ant-tabs-tab-active]=\"true\"\r\n         *ngIf=\"showPreviousYearWeek\"\r\n         >\r\n      {{ 53 }}\r\n    </div>\r\n    <div nz-tab-label\r\n         role=\"tab\"\r\n         [style.margin-right.px]=\"gutter\"\r\n         class=\"cmacs-timeline-datepicker-label\"\r\n         [class.ant-tabs-tab-active]=\"checkActiveTab(i)\"\r\n         [disabled]=\"tab.disabled\"\r\n         (click)=\"clickLabel(i,tab.disabled)\"\r\n         *ngFor=\"let tab of listOfNzTabComponent; let i = index\">\r\n      <ng-container *cmacsStringTemplateOutlet=\"tab.title\">{{ tab.title }}</ng-container>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"cmacs-timeline-item\">\r\n  <ng-container *ngIf=\"mode === 'week' && !ranged\">\r\n    <cmacs-week-picker [(ngModel)]=\"date\" (ngModelChange)=\"getWeek($event)\" placeHolder=\"\"></cmacs-week-picker>\r\n  </ng-container>\r\n  <ng-container *ngIf=\"mode === 'month' && !ranged\">\r\n    <cmacs-month-picker\r\n      [(ngModel)]=\"date\"\r\n      (ngModelChange)=\"getMonth($event)\"\r\n      placeHolder=\"\"\r\n    ></cmacs-month-picker>\r\n  </ng-container>\r\n  <ng-container *ngIf=\"(mode === 'week' || mode === 'month') && ranged\">\r\n    <cmacs-range-picker\r\n      [dropdownClassName]=\"'cmacs-timeline-range-popup'\"\r\n      [(ngModel)]=\"range\"\r\n      [mode]=\"'week'\"\r\n      placeHolder=\"\"\r\n      (ngModelChange)=\"onChange($event)\">\r\n    </cmacs-range-picker>\r\n  </ng-container>\r\n</div>\r\n",
                         changeDetection: i0.ChangeDetectionStrategy.OnPush,
                         encapsulation: i0.ViewEncapsulation.None,
                         preserveWhitespaces: false,
