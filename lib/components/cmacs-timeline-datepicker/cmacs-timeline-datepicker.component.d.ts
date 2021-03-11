@@ -37,6 +37,7 @@ export declare class CmacsTimelineDatepickerComponent implements AfterContentChe
     readonly rangeChange: EventEmitter<Date[]>;
     modeChange: EventEmitter<any>;
     showPreviousYearWeek: boolean;
+    previousYearWeek: any;
     modeOptions: {
         title: string;
         value: string;
