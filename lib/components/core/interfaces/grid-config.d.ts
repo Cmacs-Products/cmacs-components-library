@@ -40,6 +40,8 @@ export interface Field {
     cmacsStep?: number;
     min?: number;
     max?: number;
+    comboboxBtnText?: string;
+    combobox?: boolean;
 }
 export interface SelectConfig {
     selectData: any[];

@@ -15,6 +15,7 @@ import { UtilService } from '../core/services/util.service';
 import 'moment/locale/en-ie';
 import { CmacsDateTimePickerComponent } from '../cmacs-datetime-picker/cmacs-datetime-picker.component';
 import { SelectionModel } from '@angular/cdk/collections';
+import { CmacsSelectComponent } from '../cmacs-select/cmacs-select.component';
 export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnChanges, OnDestroy, AfterViewInit {
     private cdr;
     private i18n;
@@ -124,8 +125,11 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     datePickerElement: ElementRef;
     dateTimePickerElement: ElementRef;
     selectElement: ElementRef;
+    selectElementComponent: CmacsSelectComponent;
     boolElement: ElementRef;
     dateTimePicker: CmacsDateTimePickerComponent;
+    searchValue: string;
+    addOption($event: Event, select: any): void;
     preventDefault($event: MouseEvent): void;
     contextMenu($event: MouseEvent, template: TemplateRef<void>): void;
     validate(data: any, field: Field): boolean;
@@ -143,6 +147,7 @@ export declare class CmacsCompactTableComponent<T = any> implements OnInit, OnCh
     childOf(node: any, ancestor: any): boolean;
     endEditMode($event: KeyboardEvent, index: number, data?: any): void;
     endEditModeNgModel(index: number, data?: any, property?: any): void;
+    onComboboxEdit($event: any): void;
     ngModelChange(index: number, data?: any): void;
     getIndex(id: any): number;
     order: number;
