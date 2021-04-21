@@ -14349,15 +14349,18 @@
          * @return {?}
          */
             function (value) {
-                /** @type {?} */
-                var result = '&nbsp;';
-                if (value.length > 20) {
-                    result = value.slice(0, 20) + "...";
+                if (value) {
+                    /** @type {?} */
+                    var result = '&nbsp;';
+                    if (value.length > 20) {
+                        result = value.slice(0, 20) + "...";
+                    }
+                    else if (value !== undefined && value !== null && value !== '' && value.length > 0) {
+                        result = value;
+                    }
+                    return result;
                 }
-                else if (value !== undefined && value !== null && value !== '' && value.length > 0) {
-                    result = value;
-                }
-                return result;
+                return null;
             };
         CmacsCardComponent.decorators = [
             { type: i0.Component, args: [{

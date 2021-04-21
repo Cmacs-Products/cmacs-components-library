@@ -84,5 +84,5 @@ export declare class CmacsCardComponent implements OnInit {
     getBackgroundImage(): import("@angular/platform-browser").SafeStyle;
     iconsToDoClick(icon: string): void;
     goToModuleToDo(event: any, url: string): void;
-    buildLabel(value: string): string;
+    buildLabel(value: string): string | null;
 }
