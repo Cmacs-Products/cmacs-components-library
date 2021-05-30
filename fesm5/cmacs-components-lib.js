@@ -47,11 +47,11 @@ import { takeUntil, startWith, auditTime, distinctUntilChanged, map, tap, flatMa
 import { InputBoolean as InputBoolean$1, NzI18nService as NzI18nService$1, NzDropdownService, isNotNil as isNotNil$1, NgZorroAntdModule, NZ_I18N, en_US, NzNoAnimationModule, NzOverlayModule } from 'ng-zorro-antd';
 import { Subject, merge, combineLatest, BehaviorSubject, EMPTY, ReplaySubject, fromEvent, Subscription, of } from 'rxjs';
 import { NgControl, NG_VALUE_ACCESSOR, FormsModule, FormControl, FormControlName, NgModel, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { __extends, __assign, __decorate, __metadata, __spread, __read, __values } from 'tslib';
+import { __extends, __decorate, __metadata, __assign, __spread, __read, __values } from 'tslib';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef, ConnectionPositionPair, OverlayConfig, OverlayModule } from '@angular/cdk/overlay';
 import { ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, InjectionToken, Pipe, ComponentFactoryResolver, defineInjectable, NgModule, inject, Type, Injector, ApplicationRef, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, HostBinding, Inject, Input, NgZone, Optional, Renderer2, ViewChild, ViewEncapsulation, Directive, Self, forwardRef, EventEmitter, Output, Host, HostListener, TemplateRef, ContentChild, ViewContainerRef, Injectable, SkipSelf, ViewChildren, Pipe, InjectionToken, ComponentFactoryResolver, defineInjectable, NgModule, inject, Type, Injector, ApplicationRef, INJECTOR } from '@angular/core';
 import { findFirstNotEmptyNode, findLastNotEmptyNode, isEmpty, InputBoolean, NzUpdateHostClassService, NzWaveDirective, NZ_WAVE_GLOBAL_CONFIG, toBoolean, isNotNil, slideMotion, valueFunctionProp, NzNoAnimationDirective, fadeMotion, reverseChildNodes, NzMenuBaseService, collapseMotion, getPlacementName, zoomBigMotion, DEFAULT_SUBMENU_POSITIONS, POSITION_MAP, NzDropdownHigherOrderServiceToken, InputNumber, NzTreeBaseService, NzTreeBase, NzTreeHigherOrderServiceToken, isNil, zoomMotion, getElementOffset, isPromise, isNonEmptyString, isTemplateRef, helpMotion, slideAlertMotion, arraysEqual, ensureNumberInRange, getPercent, getPrecision, shallowCopyArray, silentEvent, reqAnimFrame, toNumber, toCssPixel, moveUpMotion, DEFAULT_TOOLTIP_POSITIONS, NzAddOnModule, LoggerService } from 'ng-zorro-antd/core';
 
 /**
@@ -1277,6 +1277,23 @@ var CmacsInputGroupComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(CmacsInputGroupComponent.prototype, "prefixIcon", {
+        get: /**
+         * @return {?}
+         */
+        function () {
+            return this.prefixicon;
+        },
+        set: /**
+         * @param {?} value
+         * @return {?}
+         */
+        function (value) {
+            this.prefixicon = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(CmacsInputGroupComponent.prototype, "isLarge", {
         get: /**
          * @return {?}
@@ -1474,7 +1491,6 @@ var CmacsInputGroupComponent = /** @class */ (function () {
         listOfNzInputDirective: [{ type: ContentChildren, args: [CmacsInputDirective,] }],
         addOnBeforeIcon: [{ type: Input }],
         addOnAfterIcon: [{ type: Input }],
-        prefixIcon: [{ type: Input }],
         suffixIcon: [{ type: Input }],
         addOnBefore: [{ type: Input }],
         addOnAfter: [{ type: Input }],
@@ -1482,7 +1498,8 @@ var CmacsInputGroupComponent = /** @class */ (function () {
         suffix: [{ type: Input }],
         search: [{ type: Input }],
         compact: [{ type: Input }],
-        size: [{ type: Input }]
+        size: [{ type: Input }],
+        prefixIcon: [{ type: Input }]
     };
     __decorate([
         InputBoolean(),

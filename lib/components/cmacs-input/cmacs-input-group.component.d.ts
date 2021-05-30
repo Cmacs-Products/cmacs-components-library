@@ -4,9 +4,9 @@ import { CmacsInputDirective } from './cmacs-input.directive';
 export declare class CmacsInputGroupComponent implements AfterContentInit {
     listOfNzInputDirective: QueryList<CmacsInputDirective>;
     private _size;
+    private prefixicon;
     addOnBeforeIcon: NgClassType;
     addOnAfterIcon: NgClassType;
-    prefixIcon: NgClassType;
     suffixIcon: NgClassType;
     addOnBefore: string | TemplateRef<void>;
     addOnAfter: string | TemplateRef<void>;
@@ -15,6 +15,7 @@ export declare class CmacsInputGroupComponent implements AfterContentInit {
     search: boolean;
     compact: boolean;
     size: NzSizeLDSType;
+    prefixIcon: NgClassType;
     readonly isLarge: boolean;
     readonly isSmall: boolean;
     readonly isAffix: boolean;

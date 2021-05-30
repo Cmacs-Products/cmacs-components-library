@@ -1329,6 +1329,21 @@
             enumerable: true,
             configurable: true
         });
+        Object.defineProperty(CmacsInputGroupComponent.prototype, "prefixIcon", {
+            get: /**
+             * @return {?}
+             */ function () {
+                return this.prefixicon;
+            },
+            set: /**
+             * @param {?} value
+             * @return {?}
+             */ function (value) {
+                this.prefixicon = value;
+            },
+            enumerable: true,
+            configurable: true
+        });
         Object.defineProperty(CmacsInputGroupComponent.prototype, "isLarge", {
             get: /**
              * @return {?}
@@ -1511,7 +1526,6 @@
             listOfNzInputDirective: [{ type: i0.ContentChildren, args: [CmacsInputDirective,] }],
             addOnBeforeIcon: [{ type: i0.Input }],
             addOnAfterIcon: [{ type: i0.Input }],
-            prefixIcon: [{ type: i0.Input }],
             suffixIcon: [{ type: i0.Input }],
             addOnBefore: [{ type: i0.Input }],
             addOnAfter: [{ type: i0.Input }],
@@ -1519,7 +1533,8 @@
             suffix: [{ type: i0.Input }],
             search: [{ type: i0.Input }],
             compact: [{ type: i0.Input }],
-            size: [{ type: i0.Input }]
+            size: [{ type: i0.Input }],
+            prefixIcon: [{ type: i0.Input }]
         };
         __decorate([
             i2$1.InputBoolean(),
